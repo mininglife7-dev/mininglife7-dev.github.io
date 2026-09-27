@@ -1,0 +1,35 @@
+name: sync-site
+on:
+  push:
+    branches: [main]
+    paths: [source_url.txt, files.txt, .github/workflows/sync.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: sync-site
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror site from origin
+        run: |
+          SRC=$(tr -d ' \r\n' < source_url.txt)
+          echo "SRC=$SRC" >> $GITHUB_ENV
+          mkdir -p /tmp/out
+          while read -r f; do
+            [ -z "$f" ] && continue
+            curl -fsSL --retry 3 "$SRC/$f" -o "/tmp/out/$f"
+          done < files.txt
+          grep -q HaanJi /tmp/out/index.html
+          grep -q UPI /tmp/out/pay.html
+          cp /tmp/out/* .
+          ls -la
+      - name: Commit
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add -A
+          git diff --cached --quiet && { echo no changes; exit 0; }
+          git commit -qm "sync site from $SRC"
+          git push
