@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing | HaanJi</title>
+<meta name="description" content="HaanJi pricing: ₹15,000 one-time setup with a 14-day money-back guarantee, then ₹4,000 per month. Cancel anytime.">
+<meta name="theme-color" content="#0f766e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { sans: ['Inter','Noto Sans Devanagari','system-ui','sans-serif'], hi: ['Noto Sans Devanagari','Inter','sans-serif'] },
+  colors: { brand: { 50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a' }, saffron: { 400:'#fb923c', 500:'#f97316' } }
+}}}
+</script>
+<style>
+  .prose-legal h2 { font-size:1.25rem; font-weight:700; color:#0f172a; margin-top:2rem; margin-bottom:.5rem; }
+  .prose-legal h3 { font-size:1.05rem; font-weight:600; color:#0f172a; margin-top:1.25rem; margin-bottom:.25rem; }
+  .prose-legal p, .prose-legal li { color:#334155; line-height:1.7; }
+  .prose-legal p { margin-top:.5rem; }
+  .prose-legal ul { list-style:disc; padding-left:1.25rem; margin-top:.5rem; }
+  .prose-legal ol { list-style:decimal; padding-left:1.25rem; margin-top:.5rem; }
+  .prose-legal li { margin-top:.25rem; }
+  .prose-legal a { color:#0f766e; text-decoration:underline; }
+  .prose-legal table { width:100%; border-collapse:collapse; margin-top:.75rem; font-size:.95rem; }
+  .prose-legal th, .prose-legal td { border:1px solid #e2e8f0; padding:.5rem .75rem; text-align:left; vertical-align:top; }
+  .prose-legal th { background:#f0fdfa; color:#115e59; }
+</style>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased">
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 font-extrabold text-xl text-brand-800">
+      <span class="w-9 h-9 rounded-xl bg-brand-700 text-white grid place-items-center text-lg font-hi">जी</span>
+      <span>HaanJi<span class="text-saffron-500">.</span></span>
+    </a>
+    <nav class="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+      <a href="index.html" class="hover:text-brand-700">Home</a>
+      <a href="pricing.html" class="hover:text-brand-700">Pricing</a>
+      <a href="contact.html" class="hover:text-brand-700">Contact</a>
+    </nav>
+    <a href="pay.html" class="text-sm font-semibold bg-brand-700 hover:bg-brand-800 text-white px-4 py-2 rounded-lg">Pay</a>
+  </div>
+</header>
+<main class="bg-gradient-to-b from-brand-50 to-white">
+  <div class="max-w-3xl mx-auto px-4 pt-10 pb-4">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900">Pricing</h1>
+    <p class="mt-2 text-sm text-slate-500">Last updated: 27 September 2026 · HaanJi — operated by Lalit Kumar D (sole proprietor)</p>
+  </div>
+</main>
+<article class="prose-legal max-w-3xl mx-auto px-4 pb-16">
+<p>We have one plan for clinics, with no per-minute charges and no lock-in.</p>
+<table>
+  <tr><th>Item</th><th>Price</th><th>When you pay</th></tr>
+  <tr><td>One-time setup</td><td><strong>₹15,000</strong></td><td>Upfront, before setup starts. Full refund if you ask within 14 days of your go-live day (<a href="refund.html">details</a>).</td></tr>
+  <tr><td>Monthly subscription</td><td><strong>₹4,000 / month</strong></td><td>In advance for each monthly cycle, starting on day 15 after go-live. Cancel anytime. The cancellation takes effect from the next cycle.</td></tr>
+</table>
+
+<h2>What's included</h2>
+<ul>
+  <li>Done-for-you setup: we load your clinic's timings, services, location and FAQs, and help your staff set call forwarding from your existing number.</li>
+  <li>Answering of missed and after-hours calls, from go-live, in Hindi, English and Hinglish.</li>
+  <li>Appointment requests saved for your staff to confirm.</li>
+  <li>Updates when your timings or fees change.</li>
+</ul>
+
+<h2>Taxes</h2>
+<p>We are not registered under GST at present, so no GST is added to these prices. If that changes, we will tell you in writing before your next billing cycle. Your receipt will show exactly what you paid.</p>
+
+<h2>Not included</h2>
+<ul>
+  <li>Charges from your own telecom operator for call forwarding, if your plan has any. These are between you and your operator.</li>
+</ul>
+
+<h2>How to pay</h2>
+<p>By UPI today. See the <a href="pay.html">payment page</a>. We plan to add card and net-banking payments through Razorpay later. After you pay, we send a receipt. Final terms are the ones on your written quote and receipt, together with our <a href="terms.html">Terms &amp; Conditions</a>.</p>
+</article>
+<footer class="border-t border-slate-100 py-10 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 text-sm text-slate-500">
+    <nav class="flex flex-wrap gap-x-5 gap-y-2"><a href="index.html" class="hover:text-brand-700">Home</a> <a href="about.html" class="hover:text-brand-700">About us</a> <a href="pricing.html" class="hover:text-brand-700 font-semibold text-brand-800">Pricing</a> <a href="contact.html" class="hover:text-brand-700">Contact us</a> <a href="terms.html" class="hover:text-brand-700">Terms & Conditions</a> <a href="privacy.html" class="hover:text-brand-700">Privacy Policy</a> <a href="refund.html" class="hover:text-brand-700">Cancellation & Refunds</a> <a href="shipping.html" class="hover:text-brand-700">Service Delivery (Shipping)</a> <a href="pay.html" class="hover:text-brand-700">Pay</a></nav>
+    <p class="mt-5">HaanJi — operated by Lalit Kumar D (sole proprietor) · India · Phone/WhatsApp <a href="tel:+919491145032" class="hover:text-brand-700">+91 94911 45032</a> · Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3e5357505750595257585b097e59535f5752105d5153">[email&#160;protected]</a></p>
+    <p class="mt-1">© 2026 HaanJi. Last updated 27 September 2026.</p>
+  </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
