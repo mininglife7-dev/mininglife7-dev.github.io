@@ -37,6 +37,7 @@ tailwind.config = { theme: { extend: {
       <a href="#problem" class="hover:text-brand-700">Why</a>
       <a href="#how" class="hover:text-brand-700">How it works</a>
       <a href="#languages" class="hover:text-brand-700">Languages</a>
+      <a href="#roi" class="hover:text-brand-700">ROI</a>
       <a href="#pricing" class="hover:text-brand-700">Pricing</a>
       <a href="#faq" class="hover:text-brand-700">FAQ</a>
     </nav>
@@ -165,6 +166,40 @@ tailwind.config = { theme: { extend: {
   </div>
 </section>
 
+<!-- ROI calculator (client-side; uses the clinic's own inputs) -->
+<section id="roi" class="py-16 md:py-24 bg-slate-50">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 text-center">Rough ROI check</h2>
+    <p class="mt-3 text-center text-slate-600">Plug in <em>your</em> numbers. This is a pocket calculator, not a promise — HaanJi has not measured these rates for your clinic.</p>
+    <div class="mt-10 rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm space-y-5">
+      <div class="grid md:grid-cols-2 gap-4">
+        <label class="block text-sm text-slate-700">Missed calls / week
+          <input id="roi-missed" type="number" min="0" step="1" value="20" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2">
+        </label>
+        <label class="block text-sm text-slate-700">Share you think you could book (%)
+          <input id="roi-book" type="number" min="0" max="100" step="1" value="25" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2">
+        </label>
+        <label class="block text-sm text-slate-700">Avg revenue / new patient (₹)
+          <input id="roi-rev" type="number" min="0" step="100" value="1500" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2">
+        </label>
+        <label class="block text-sm text-slate-700">HaanJi cost / month (₹)
+          <input id="roi-cost" type="number" min="0" step="100" value="4000" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2">
+        </label>
+      </div>
+      <div class="rounded-2xl bg-brand-50 border border-brand-100 p-5">
+        <p class="text-sm text-slate-600">Estimated extra bookings / month (assumption)</p>
+        <p id="roi-bookings" class="text-2xl font-extrabold text-slate-900">—</p>
+        <p class="mt-3 text-sm text-slate-600">Estimated extra revenue / month (assumption)</p>
+        <p id="roi-extra" class="text-2xl font-extrabold text-slate-900">—</p>
+        <p class="mt-3 text-sm text-slate-600">Vs ₹4,000/month after setup (assumption)</p>
+        <p id="roi-net" class="text-xl font-bold text-brand-800">—</p>
+      </div>
+      <p class="text-xs text-slate-500">Formula: missed/week × 4.3 × book% × revenue − monthly fee. Setup ₹15,000 is not in the monthly line. Change the inputs to match your diary — we do not replace your own count of missed calls.</p>
+      <a href="#book" class="inline-block text-center bg-brand-700 hover:bg-brand-800 text-white font-semibold px-6 py-3 rounded-xl">Book a 10-min demo call</a>
+    </div>
+  </div>
+</section>
+
 <!-- Pricing -->
 <section id="pricing" class="py-16 md:py-24">
   <div class="max-w-6xl mx-auto px-4">
@@ -269,5 +304,30 @@ function haanjiWA(e){
   return false;
 }
 </script>
+
+<script>
+(function(){
+  function n(id){var el=document.getElementById(id); return el? Number(el.value)||0 : 0;}
+  function inr(x){return '₹' + Math.round(x).toLocaleString('en-IN');}
+  function calc(){
+    var missed=n('roi-missed'), book=n('roi-book')/100, rev=n('roi-rev'), cost=n('roi-cost');
+    var bookings = missed * 4.3 * book;
+    var extra = bookings * rev;
+    var net = extra - cost;
+    var b=document.getElementById('roi-bookings');
+    var e=document.getElementById('roi-extra');
+    var m=document.getElementById('roi-net');
+    if(!b) return;
+    b.textContent = bookings.toFixed(1);
+    e.textContent = inr(extra);
+    m.textContent = (net>=0? 'about ' : 'about −') + inr(Math.abs(net)) + ' / month (assumption)';
+  }
+  ['roi-missed','roi-book','roi-rev','roi-cost'].forEach(function(id){
+    var el=document.getElementById(id); if(el){ el.addEventListener('input', calc); }
+  });
+  calc();
+})();
+</script>
+
 </body>
 </html>
