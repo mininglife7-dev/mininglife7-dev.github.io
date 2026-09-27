@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asha: AI receptionist demo · HaanJi</title>
+<meta name="description" content="Sample demo: Asha, HaanJi's AI receptionist for dental and skin clinics, talking with a patient in Hindi and English and noting an appointment request for clinic staff.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0f766e">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Devanagari",sans-serif;background:#f0fdfa;color:#0f172a;line-height:1.45}
+.wrap{max-width:560px;margin:0 auto;padding:14px 14px 90px}
+.tag{display:inline-block;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;letter-spacing:.02em}
+h1{font-size:26px;line-height:1.15;margin:10px 0 4px}
+h1 .cl{color:#0f766e}
+.sub{color:#475569;font-size:15px;margin:0 0 12px}
+.card{background:#fff;border-radius:16px;box-shadow:0 1px 4px #0001,0 4px 16px #0f766e14;padding:14px;margin:14px 0}
+h2{font-size:18px;margin:0 0 8px}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tabs button{flex:1;border:1px solid #99f6e4;background:#f0fdfa;color:#115e59;border-radius:10px;padding:9px;font-size:15px;font-weight:600}
+.tabs button.on{background:#0f766e;color:#fff;border-color:#0f766e}
+.chat{display:flex;flex-direction:column;gap:8px;max-height:none}
+.msg{max-width:86%;padding:8px 11px;border-radius:14px;font-size:15px;transition:box-shadow .2s,transform .2s}
+.msg b{display:block;font-size:11px;letter-spacing:.03em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+.a{align-self:flex-start;background:#ccfbf1;border-bottom-left-radius:4px}
+.p{align-self:flex-end;background:#f1f5f9;border-bottom-right-radius:4px}
+.msg.now{box-shadow:0 0 0 3px #f97316;transform:scale(1.01)}
+.play{display:flex;gap:8px;margin:10px 0 4px}
+.btn{border:0;border-radius:12px;padding:12px 14px;font-size:16px;font-weight:700;cursor:pointer}
+.btn.pri{background:#0f766e;color:#fff;flex:1}
+.btn.sec{background:#e2e8f0;color:#0f172a}
+.note{font-size:12.5px;color:#64748b;margin:6px 0 0}
+.warn{font-size:13px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:7px 9px;margin-top:8px;display:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{font-size:13px;color:#334155;display:block}
+input[type=number]{width:100%;margin-top:3px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:17px}
+.big label{font-size:15px;font-weight:600}
+.res{background:#fff7ed;border:2px dashed #fb923c;border-radius:14px;padding:12px;margin-top:12px}
+.res .k{font-size:12px;font-weight:800;color:#c2410c;letter-spacing:.04em}
+.res .v{font-size:26px;font-weight:800;margin:2px 0}
+.res .v2{font-size:17px;font-weight:700}
+ul.f{margin:6px 0 0;padding-left:18px;font-size:14.5px}
+ul.f li{margin:3px 0}
+.wa{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(#f0fdfa00,#f0fdfa 30%)}
+.wa a{display:block;max-width:560px;margin:0 auto;text-align:center;background:#25d366;color:#fff;text-decoration:none;font-size:18px;font-weight:800;border-radius:14px;padding:14px;box-shadow:0 4px 14px #25d36655}
+footer{font-size:12px;color:#64748b;text-align:center;margin-top:18px}
+footer a{color:#0f766e}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">DEMO · SAMPLE CONVERSATION</span>
+  <h1>Asha for <span class="cl" id="clinic">your clinic</span></h1>
+  <p class="sub" id="subline">AI receptionist in Hindi & English, by HaanJi</p>
+
+  <div class="card">
+    <h2 id="convtitle">Sample call: a patient asks for an appointment</h2>
+    <div class="tabs"><button id="tab-hi" class="on" type="button">हिंदी</button><button id="tab-en" type="button">English</button></div>
+    <div class="play"><button class="btn pri" id="playbtn" type="button">▶ Play conversation</button><button class="btn sec" id="stopbtn" type="button">■ Stop</button></div>
+    <div class="warn" id="warn"></div>
+    <div class="chat" id="chat" aria-live="polite"></div>
+    <p class="note">This is a <b>sample conversation written for this demo</b>, not a real call or a real patient. The audio uses your phone's built-in voice, not Asha's actual voice. Asha takes appointment <b>requests</b>; your staff confirm them. Asha is instructed never to give medical advice.</p>
+    <p class="note">Want to talk to Asha yourself? The live voice demo link is on our <a href="https://mininglife7-dev.github.io/" style="color:#0f766e;font-weight:600">main site</a> (it runs on our demo server and can sometimes be offline), or ask Lalit for a 10-min demo call.</p>
+  </div>
+
+  <div class="card">
+    <h2>Missed-call calculator</h2>
+    <div class="big"><label>Calls your clinic gets per day<input type="number" id="calls" min="0" max="500" step="1" value="20" inputmode="numeric"></label></div>
+    <div class="grid" style="margin-top:10px">
+      <label>% of calls missed (your guess)<input type="number" id="miss" min="0" max="100" step="1" value="20" inputmode="numeric"></label>
+      <label>% of missed callers who'd have come in<input type="number" id="conv" min="0" max="100" step="1" value="20" inputmode="numeric"></label>
+      <label>Avg. ₹ per new patient<input type="number" id="val" min="0" step="100" value="1500" inputmode="numeric"></label>
+      <label>Clinic days per month<input type="number" id="days" min="1" max="31" step="1" value="26" inputmode="numeric"></label>
+    </div>
+    <div class="res" id="res">
+      <div class="k">ESTIMATE ONLY: BASED ON THE NUMBERS ABOVE</div>
+      <div class="v" id="outpat">≈ 0 patients / month</div>
+      <div class="v2" id="outrs">≈ ₹0 / month</div>
+      <div class="note" id="outcalls"></div>
+    </div>
+    <p class="note">Formula: calls/day × % missed × days × % who'd have come in. The defaults are <b>assumptions</b>, not data about your clinic. AI-receptionist vendors <i>report</i> clinics miss about 35–40% of calls (vendor figures, not independent). The best check is to count your own missed calls for a week. This is not a promise of new patients.</p>
+  </div>
+
+  <div class="card">
+    <h2>What Asha does</h2>
+    <ul class="f">
+      <li>Talks to patients in Hindi, English and Hinglish</li>
+      <li>Answers your clinic's FAQs (timings, fees, address, doctors), set up from your details</li>
+      <li>Notes appointment requests (name, phone, day, time, reason) for your staff to confirm</li>
+      <li>Flags emergencies and "talk to a human" requests for your staff</li>
+      <li>Picks up your missed and after-hours calls <b>after our phone line setup (in progress)</b>. Your receptionist stays.</li>
+    </ul>
+    <p style="margin:10px 0 0;font-size:15px"><b>₹15,000 setup, then ₹4,000/month</b> from day 15 after go-live. Go-live within 7 days of your clinic details (our phone line setup is in progress). 14-day no-questions money-back from your go-live day, and a full setup refund anytime before go-live.</p>
+  </div>
+
+  <footer>HaanJi · <a href="https://mininglife7-dev.github.io/">mininglife7-dev.github.io</a> · <a href="privacy.html">Privacy</a> · <a href="refund.html">Refund</a><br>Demo page. Clinic name comes from the link only. Nothing you type here is sent anywhere.</footer>
+</div>
+<div class="wa"><a id="wabtn" href="https://wa.me/919491145032" target="_blank" rel="noopener">💬 WhatsApp Lalit</a></div>
+
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  function clean(s,max){return (s||'').replace(/[\u0000-\u001f<>{}]/g,'').replace(/\s+/g,' ').trim().slice(0,max)}
+  var clinic=clean(q.get('c'),70)||'';
+  var city=clean(q.get('city'),30);
+  var t=(q.get('t')||'dental').toLowerCase().indexOf('skin')===0?'skin':'dental';
+  var name=clinic||(t==='skin'?'your skin clinic':'your dental clinic');
+  var nameHi=clinic||(t==='skin'?'आपके स्किन क्लिनिक':'आपके डेंटल क्लिनिक');
+  document.getElementById('clinic').textContent=name;
+  if(clinic)document.title='Asha for '+clinic+' · HaanJi demo';
+  document.getElementById('subline').textContent=(city?city+' · ':'')+(t==='skin'?'Skin clinic':'Dental clinic')+' · AI receptionist in Hindi & English, by HaanJi';
+  if(t==='skin')document.getElementById('val').value=1000;
+
+  var S={
+   dental:{
+    hi:[
+     ['a','नमस्ते, '+nameHi+' में आपका स्वागत है। मैं आशा बोल रही हूँ, क्लिनिक की AI रिसेप्शनिस्ट। बताइए, मैं आपकी क्या मदद कर सकती हूँ?'],
+     ['p','नमस्ते। मेरे दांत में कल रात से बहुत दर्द है। डॉक्टर साहब को दिखाना है।'],
+     ['a','ओह, सुनकर बुरा लगा। मैं आपके लिए अपॉइंटमेंट की रिक्वेस्ट नोट कर देती हूँ। आपका नाम बताइए?'],
+     ['p','रमेश शर्मा।'],
+     ['a','धन्यवाद रमेश जी। आप किस दिन और किस समय आना चाहेंगे?'],
+     ['p','कल शाम छह बजे के आसपास। और तब तक कौन सी दवा ले लूँ?'],
+     ['a','माफ़ कीजिए, दवा की सलाह मैं नहीं दे सकती, वो डॉक्टर साहब देखकर ही बताएँगे। आपका मोबाइल नंबर बता दीजिए, ताकि स्टाफ़ टाइम कन्फ़र्म कर सके।'],
+     ['p','नौ आठ सात छह पाँच, चार तीन दो एक शून्य।'],
+     ['a','धन्यवाद। रमेश शर्मा जी, दांत दर्द के लिए कल शाम लगभग छह बजे की रिक्वेस्ट नोट हो गई है। क्लिनिक का स्टाफ़ आपको कॉल करके टाइम कन्फ़र्म करेगा। सूजन या तेज़ बुखार हो तो बताइए, मैं स्टाफ़ को तुरंत अर्जेंट फ़्लैग कर दूँगी।'],
+     ['p','ठीक है, धन्यवाद।'],
+     ['a','धन्यवाद, अपना ख़्याल रखिए।']],
+    en:[
+     ['a','Hello, welcome to '+name+'. I am Asha, the clinic\u2019s AI receptionist. How can I help you?'],
+     ['p','Hi. I have had a bad toothache since last night. I want to see the doctor.'],
+     ['a','Sorry to hear that. I will note an appointment request for you. May I have your name?'],
+     ['p','Ramesh Sharma.'],
+     ['a','Thank you, Ramesh ji. Which day and time would suit you?'],
+     ['p','Tomorrow, around 6 in the evening. And which medicine should I take till then?'],
+     ['a','Sorry, I can\u2019t suggest medicines. The doctor will advise after checking you. Could you share your mobile number so the staff can confirm the time?'],
+     ['p','98765 43210.'],
+     ['a','Thank you. Ramesh Sharma, toothache, tomorrow around 6 PM: your request is noted. The clinic staff will call you to confirm the time. If there is swelling or high fever, tell me and I will flag it to the staff as urgent.'],
+     ['p','Okay, thanks.'],
+     ['a','Thank you. Take care.']]},
+   skin:{
+    hi:[
+     ['a','नमस्ते, '+nameHi+' में आपका स्वागत है। मैं आशा बोल रही हूँ, क्लिनिक की AI रिसेप्शनिस्ट। बताइए, मैं आपकी क्या मदद कर सकती हूँ?'],
+     ['p','नमस्ते। मेरे चेहरे पर काफ़ी पिंपल्स और दाग़ हो गए हैं। डॉक्टर से कंसल्ट करना है।'],
+     ['a','ज़रूर। मैं आपके लिए अपॉइंटमेंट की रिक्वेस्ट नोट कर देती हूँ। आपका नाम बताइए?'],
+     ['p','प्रिया वर्मा।'],
+     ['a','धन्यवाद प्रिया जी। आप किस दिन और किस समय आना चाहेंगी?'],
+     ['p','शनिवार सुबह ग्यारह बजे। और कोई क्रीम लगा लूँ क्या?'],
+     ['a','माफ़ कीजिए, क्रीम या दवा की सलाह मैं नहीं दे सकती, वो डॉक्टर देखकर ही बताएँगे। आपका मोबाइल नंबर बता दीजिए, ताकि स्टाफ़ टाइम कन्फ़र्म कर सके।'],
+     ['p','नौ आठ सात छह पाँच, चार तीन दो एक शून्य।'],
+     ['a','धन्यवाद। प्रिया वर्मा जी, पिंपल्स और दाग़ के कंसल्टेशन के लिए शनिवार सुबह लगभग ग्यारह बजे की रिक्वेस्ट नोट हो गई है। क्लिनिक का स्टाफ़ आपको कॉल करके टाइम कन्फ़र्म करेगा।'],
+     ['p','ठीक है, धन्यवाद।'],
+     ['a','धन्यवाद, आपका दिन अच्छा रहे।']],
+    en:[
+     ['a','Hello, welcome to '+name+'. I am Asha, the clinic\u2019s AI receptionist. How can I help you?'],
+     ['p','Hi. I have a lot of pimples and marks on my face. I want to consult the doctor.'],
+     ['a','Sure. I will note an appointment request for you. May I have your name?'],
+     ['p','Priya Verma.'],
+     ['a','Thank you, Priya ji. Which day and time would suit you?'],
+     ['p','Saturday, 11 in the morning. Should I apply some cream meanwhile?'],
+     ['a','Sorry, I can\u2019t suggest creams or medicines. The doctor will advise after seeing you. Could you share your mobile number so the staff can confirm the time?'],
+     ['p','98765 43210.'],
+     ['a','Thank you. Priya Verma, consultation for pimples and marks, Saturday around 11 AM: your request is noted. The clinic staff will call you to confirm the time.'],
+     ['p','Okay, thanks.'],
+     ['a','Thank you. Have a nice day.']]}
+  };
+  var lang='hi', chat=document.getElementById('chat');
+  function render(){
+    var L=S[t][lang]; chat.innerHTML='';
+    L.forEach(function(x,i){var d=document.createElement('div');d.className='msg '+x[0];d.id='m'+i;
+      var b=document.createElement('b');b.textContent=x[0]==='a'?'Asha (AI)':(lang==='hi'?'मरीज़ (sample)':'Patient (sample)');
+      d.appendChild(b);d.appendChild(document.createTextNode(x[1]));chat.appendChild(d)});
+  }
+  function setLang(l){stop();lang=l;document.getElementById('tab-hi').className=l==='hi'?'on':'';document.getElementById('tab-en').className=l==='en'?'on':'';render()}
+  document.getElementById('tab-hi').onclick=function(){setLang('hi')};
+  document.getElementById('tab-en').onclick=function(){setLang('en')};
+  render();
+
+  // --- speech (browser speechSynthesis; no audio files, nothing uploaded)
+  var syn=window.speechSynthesis, playing=false, warn=document.getElementById('warn');
+  function voicesFor(prefix){if(!syn)return[];return syn.getVoices().filter(function(v){return v.lang&&v.lang.replace('_','-').toLowerCase().indexOf(prefix)===0})}
+  function pick(l){
+    var vs=l==='hi'?voicesFor('hi'):voicesFor('en-in');
+    if(l==='en'&&!vs.length)vs=voicesFor('en');
+    var fem=vs.filter(function(v){return /female|swara|kalpana|heera|lekha|neerja|google/i.test(v.name)});
+    var a=fem[0]||vs[0]||null, p=vs.filter(function(v){return v!==a})[0]||a;
+    return {a:a,p:p,any:vs.length>0};
+  }
+  function stop(){playing=false;if(syn)syn.cancel();document.querySelectorAll('.msg.now').forEach(function(e){e.classList.remove('now')});document.getElementById('playbtn').textContent='▶ Play conversation'}
+  function play(){
+    if(!syn){warn.style.display='block';warn.textContent='Your browser cannot play voice. Please read the conversation above.';return}
+    stop(); var V=pick(lang); var L=S[t][lang];
+    if(!V.any){warn.style.display='block';warn.textContent=(lang==='hi'?'No Hindi voice was found on this phone, so it may sound wrong or stay silent. Try the English tab, or add Hindi in your phone\u2019s text-to-speech settings.':'No English voice was found on this browser.')}
+    else warn.style.display='none';
+    playing=true; document.getElementById('playbtn').textContent='▶ Playing…';
+    var i=0;
+    (function next(){
+      document.querySelectorAll('.msg.now').forEach(function(e){e.classList.remove('now')});
+      if(!playing||i>=L.length){stop();return}
+      var el=document.getElementById('m'+i); el.classList.add('now'); el.scrollIntoView({block:'nearest',behavior:'smooth'});
+      var u=new SpeechSynthesisUtterance(L[i][1]); var who=L[i][0];
+      var v=who==='a'?V.a:V.p; if(v)u.voice=v; u.lang=v?v.lang:(lang==='hi'?'hi-IN':'en-IN');
+      u.rate=lang==='hi'?0.95:1; u.pitch=who==='a'?1.15:(V.a===V.p?0.8:1);
+      u.onend=function(){i++;setTimeout(next,250)}; u.onerror=function(){i++;setTimeout(next,100)};
+      syn.speak(u);
+    })();
+  }
+  if(syn&&syn.onvoiceschanged!==undefined)syn.onvoiceschanged=function(){};
+  if(syn)syn.getVoices();
+  document.getElementById('playbtn').onclick=play;
+  document.getElementById('stopbtn').onclick=stop;
+
+  // --- missed-call calculator (all in the browser)
+  function n(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)&&v>0?v:0}
+  function inr(x){return '₹'+Math.round(x).toLocaleString('en-IN')}
+  function calc(){
+    var missed=n('calls')*Math.min(n('miss'),100)/100*n('days');
+    var pts=missed*Math.min(n('conv'),100)/100;
+    document.getElementById('outpat').textContent='≈ '+(pts<10?pts.toFixed(1):Math.round(pts))+' patients / month lost (estimate)';
+    document.getElementById('outrs').textContent='≈ '+inr(pts*n('val'))+' / month (estimate)';
+    document.getElementById('outcalls').textContent='From ≈ '+Math.round(missed)+' missed calls a month, using your inputs. Asha: ₹15,000 setup, then ₹4,000/month.';
+  }
+  ['calls','miss','conv','val','days'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
+  calc();
+
+  // --- WhatsApp Lalit (visitor presses send themselves)
+  document.getElementById('wabtn').href='https://wa.me/919491145032?text='+encodeURIComponent('Asha demo dekha, '+(clinic||'hamare clinic')+' ke liye baat karni hai');
+})();
+</script>
+</body>
+</html>
