@@ -2,7 +2,7 @@ name: sync-site
 on:
   push:
     branches: [main]
-    paths: [source_url.txt, files.txt, .github/workflows/sync.yml]
+    paths: [source_url.txt, files.txt, decode_cf.py, .github/workflows/sync.yml]
   workflow_dispatch:
 permissions:
   contents: write
@@ -21,8 +21,10 @@ jobs:
             [ -z "$f" ] && continue
             curl -fsSL --retry 3 "$SRC/$f" -o "/tmp/out/$f"
           done < files.txt
+          python3 decode_cf.py /tmp/out/*.html
           grep -q HaanJi /tmp/out/index.html
           grep -q UPI /tmp/out/pay.html
+          ! grep -l cdn-cgi /tmp/out/*.html
           cp /tmp/out/* .
           ls -la
       - name: Commit
