@@ -1,1 +1,2 @@
 https://serial-agencies-jazz-toddler.trycloudflare.com
+# sync-bump 2026-09-28T00:20 IST — address placeholders filled on terms/refund/about/contact/shipping
