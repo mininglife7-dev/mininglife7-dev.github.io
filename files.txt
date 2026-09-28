@@ -9,3 +9,4 @@ shipping.html
 terms.html
 pay-setup.png
 pay-monthly.png
+book.html
