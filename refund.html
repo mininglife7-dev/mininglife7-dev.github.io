@@ -1,241 +1,116 @@
 <!doctype html>
-<html lang="hi-IN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Asha by HaanJi: AI receptionist for dental &amp; skin clinics | हिंदी + English</title>
-<meta name="description" content="Asha is an AI receptionist for dental and skin clinics. It talks in Hindi, English and Hinglish, answers your clinic FAQs and takes appointment requests for your staff to confirm. Phone answering starts after our phone line setup (in progress). Setup fee fully refundable until go-live.">
+<title>Cancellation & Refund Policy | HaanJi</title>
+<meta name="description" content="HaanJi cancellation and refund policy: 14-day money-back on the setup fee from go-live, refunds in 5–7 working days, cancel monthly anytime.">
 <meta name="theme-color" content="#0f766e">
-<!-- DRAFT v2 (28 Sep 2026). Every claim is checked against sales/CLAIMS.md. Patterns used are listed in research/WORLD_BEST_BENCHMARK.md §2. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { sans: ['Inter','Noto Sans Devanagari','system-ui','sans-serif'], hi: ['Noto Sans Devanagari','Inter','sans-serif'] },
+  colors: { brand: { 50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a' }, saffron: { 400:'#fb923c', 500:'#f97316' } }
+}}}
+</script>
 <style>
-:root{--b:#0f766e;--bd:#115e59;--bl:#f0fdfa;--s:#f97316;--ink:#0f172a;--mut:#475569;--line:#e2e8f0;--amb:#fffbeb;--ambl:#fcd34d}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,"Noto Sans Devanagari",system-ui,sans-serif;color:var(--ink);line-height:1.55;background:#fff}
-.hi{font-family:"Noto Sans Devanagari",Inter,sans-serif}
-a{color:var(--b)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
-header{position:sticky;top:0;z-index:9;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-weight:800;font-size:20px;color:var(--bd);text-decoration:none;display:flex;gap:8px;align-items:center}
-.logo span.m{width:34px;height:34px;border-radius:10px;background:var(--b);color:#fff;display:grid;place-items:center;font-size:15px}
-nav a{margin-left:18px;color:var(--mut);text-decoration:none;font-size:14px}
-@media(max-width:760px){nav .opt{display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:12px;font-weight:700;text-decoration:none;font-size:16px}
-.btn-p{background:var(--b);color:#fff}.btn-p:hover{background:var(--bd)}
-.btn-w{background:#25d366;color:#fff}.btn-o{border:2px solid var(--line);color:var(--ink);background:#fff}
-.hero{background:linear-gradient(180deg,var(--bl),#fff);padding:48px 0 36px}
-.hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
-@media(max-width:860px){.hero .grid{grid-template-columns:1fr}}
-.pill{display:inline-block;background:#ccfbf1;color:var(--bd);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:99px}
-h1{font-size:40px;line-height:1.15;margin:14px 0 8px}
-@media(max-width:600px){h1{font-size:30px}}
-h1 .en{display:block;font-size:.62em;color:var(--mut);font-weight:600;margin-top:8px}
-.lead{font-size:18px;color:var(--mut);max-width:600px}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 10px}
-.guar{margin-top:14px;border:2px solid var(--b);background:#fff;border-radius:14px;padding:14px 16px;font-size:15px}
-.guar b{color:var(--bd)}
-.note{font-size:13px;color:var(--mut)}
-.status{background:var(--amb);border:1px solid var(--ambl);border-radius:12px;padding:10px 14px;font-size:14px;margin-top:12px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 50px rgba(15,118,110,.10);padding:18px}
-.bub{border-radius:16px;padding:9px 13px;margin:8px 0;max-width:88%;font-size:15px}
-.pt{background:#f1f5f9}.ai{background:var(--b);color:#fff;margin-left:auto}
-section{padding:56px 0}
-h2{font-size:30px;margin:0 0 6px;line-height:1.2}
-h2 .en{display:block;font-size:.6em;color:var(--mut);font-weight:600}
-.sub{color:var(--mut);margin:0 0 26px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:860px){.g3,.g4{grid-template-columns:1fr 1fr}}@media(max-width:560px){.g3,.g4{grid-template-columns:1fr}}
-.box{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
-.box h3{margin:6px 0 6px;font-size:17px}
-.num{width:34px;height:34px;border-radius:99px;background:var(--b);color:#fff;display:grid;place-items:center;font-weight:800}
-.alt{background:#f8fafc}
-.col-ok{border-top:5px solid #10b981}.col-ph{border-top:5px solid #f59e0b}.col-soon{border-top:5px solid #94a3b8}
-ul.clean{padding-left:0;list-style:none;margin:0}ul.clean li{padding:6px 0 6px 26px;position:relative;font-size:15px}
-ul.clean li:before{content:"✓";position:absolute;left:0;color:#10b981;font-weight:800}
-.col-ph ul.clean li:before{content:"☎";color:#d97706}.col-soon ul.clean li:before{content:"◷";color:#94a3b8}
-.price{max-width:640px;margin:0 auto;border:2px solid var(--b);border-radius:22px;padding:28px;background:#fff}
-.big{font-size:44px;font-weight:800}
-table.cmp{width:100%;border-collapse:collapse;font-size:15px;margin-top:10px}
-table.cmp td{border-bottom:1px solid var(--line);padding:9px 6px;vertical-align:top}
-.founder{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center}
-.avatar{width:120px;height:120px;border-radius:99px;background:#ccfbf1;display:grid;place-items:center;font-size:42px;font-weight:800;color:var(--bd)}
-@media(max-width:560px){.founder{grid-template-columns:1fr}}
-details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;background:#fff}
-summary{cursor:pointer;font-weight:700}
-label{display:block;font-size:14px;color:var(--mut)}input{width:100%;padding:9px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;margin-top:4px}
-.res{background:var(--bl);border:1px solid #99f6e4;border-radius:14px;padding:16px;margin-top:14px}
-footer{background:var(--ink);color:#cbd5e1;padding:32px 0;font-size:14px}footer a{color:#fff}
-.float{position:fixed;right:16px;bottom:16px;z-index:10;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+  .prose-legal h2 { font-size:1.25rem; font-weight:700; color:#0f172a; margin-top:2rem; margin-bottom:.5rem; }
+  .prose-legal h3 { font-size:1.05rem; font-weight:600; color:#0f172a; margin-top:1.25rem; margin-bottom:.25rem; }
+  .prose-legal p, .prose-legal li { color:#334155; line-height:1.7; }
+  .prose-legal p { margin-top:.5rem; }
+  .prose-legal ul { list-style:disc; padding-left:1.25rem; margin-top:.5rem; }
+  .prose-legal ol { list-style:decimal; padding-left:1.25rem; margin-top:.5rem; }
+  .prose-legal li { margin-top:.25rem; }
+  .prose-legal a { color:#0f766e; text-decoration:underline; }
+  .prose-legal table { width:100%; border-collapse:collapse; margin-top:.75rem; font-size:.95rem; }
+  .prose-legal th, .prose-legal td { border:1px solid #e2e8f0; padding:.5rem .75rem; text-align:left; vertical-align:top; }
+  .prose-legal th { background:#f0fdfa; color:#115e59; }
 </style>
 </head>
-<body>
-
-<header><div class="wrap">
-  <a class="logo" href="#"><span class="m hi">जी</span>HaanJi<span style="color:var(--s)">.</span> <span style="font-weight:600;color:var(--mut);font-size:14px">· Asha</span></a>
-  <nav><a class="opt" href="#today">What works today</a><a class="opt" href="#how">How it works</a><a class="opt" href="#price">Price</a><a class="opt" href="#faq">FAQ</a>
-  <a href="https://wa.me/918790061144?text=Namaste%20HaanJi%2C%20mujhe%20Asha%20ka%2010-min%20demo%20chahiye." style="color:var(--b);font-weight:700">WhatsApp</a></nav>
-</div></header>
-
-<!-- HERO: pattern = one clear demo CTA (Dialzara/Smith.ai), risk reversal in first screen (Smith.ai/Hellodesk), honest status (Practo-style) -->
-<section class="hero"><div class="wrap grid">
-  <div>
-    <span class="pill">Dental &amp; skin clinics · Tier-2 / Tier-3 India</span>
-    <h1 class="hi">जब staff फ़ोन नहीं उठा पाता, Asha बात करती है।
-      <span class="en">Asha: an AI receptionist that talks to your patients in Hindi, English &amp; Hinglish.</span></h1>
-    <p class="lead">Asha answers your clinic's common questions (timings, fees, address, doctors) and takes the appointment <b>request</b>: name, phone, day, time, reason. Your staff then confirm it. <span class="hi">आपकी receptionist वही रहती है।</span></p>
-    <div class="cta">
-      <a class="btn btn-p" href="https://mininglife7-dev.github.io/asha.html">▶ <span class="hi">Asha को सुनिए</span> · Hear the demo</a>
-      <a class="btn btn-w" href="https://wa.me/918790061144?text=Namaste%20HaanJi%2C%20mujhe%20Asha%20ka%2010-min%20demo%20chahiye.">WhatsApp: 10-min demo</a>
-    </div>
-    <p class="note">Demo = sample conversation on sample clinic data. The 10-min demo call is set up with your clinic's details where possible.</p>
-    <div class="guar">🛡️ <b class="hi">पूरा पैसा वापस: go-live से पहले कभी भी।</b> Full refund of the ₹15,000 setup fee anytime before go-live, <b>plus a 14-day no-questions money-back</b> counted from your go-live day.</div>
-    <div class="status"><b>Honest status:</b> Asha runs today as a demo. <b>Answering calls on your clinic number starts after our phone line setup (in progress)</b>. We target go-live within 7 days of your clinic details.</div>
+<body class="bg-white text-slate-800 font-sans antialiased">
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 font-extrabold text-xl text-brand-800">
+      <span class="w-9 h-9 rounded-xl bg-brand-700 text-white grid place-items-center text-lg font-hi">जी</span>
+      <span>HaanJi<span class="text-saffron-500">.</span></span>
+    </a>
+    <nav class="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+      <a href="index.html" class="hover:text-brand-700">Home</a>
+      <a href="pricing.html" class="hover:text-brand-700">Pricing</a>
+      <a href="contact.html" class="hover:text-brand-700">Contact</a>
+    </nav>
+    <a href="pay.html" class="text-sm font-semibold bg-brand-700 hover:bg-brand-800 text-white px-4 py-2 rounded-lg">Pay</a>
   </div>
-  <div>
-    <div class="card" aria-label="Example conversation (sample)">
-      <div style="display:flex;justify-content:space-between;align-items:center"><b>Example conversation</b><span class="note" style="background:#f1f5f9;padding:3px 9px;border-radius:99px">Sample</span></div>
-      <div class="bub pt hi">नमस्ते, RCT का charge कितना है? और कल शाम appointment मिलेगा?</div>
-      <div class="bub ai hi">नमस्ते! [Clinic's fee as you set it]. कल शाम किस time आना चाहेंगे? अपना नाम और नंबर बता दीजिए।</div>
-      <div class="bub pt">6 baje. Naam Priya, number 98xxxxxx21.</div>
-      <div class="bub ai hi">ठीक है Priya जी, आपकी appointment request clinic staff को दे दी है। Staff confirm करेगा।</div>
-      <p class="note" style="margin:10px 0 0">✎ Appointment request saved for staff · to be confirmed by the clinic. Illustrative example, not a real patient.</p>
-    </div>
+</header>
+<main class="bg-gradient-to-b from-brand-50 to-white">
+  <div class="max-w-3xl mx-auto px-4 pt-10 pb-4">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900">Cancellation & Refund Policy</h1>
+    <p class="mt-2 text-sm text-slate-500">Last updated: 27 September 2026 · HaanJi — operated by Lalit Kumar D (sole proprietor)</p>
   </div>
-</div></section>
+</main>
+<article class="prose-legal max-w-3xl mx-auto px-4 pb-16">
+<div class="mt-4 rounded-2xl border border-brand-200 bg-brand-50 p-5">
+  <p class="font-semibold text-brand-800">In short</p>
+  <ul>
+    <li>Setup fee (₹15,000): <strong>full refund if you ask within 14 days of your go-live day</strong>. No questions asked.</li>
+    <li>Monthly fee (₹4,000): <strong>cancel anytime</strong>, with effect from the next monthly cycle. No partial refunds for the current month.</li>
+    <li>Refunds go back to the <strong>original payment method</strong> within <strong>5–7 working days</strong>.</li>
+  </ul>
+</div>
 
-<!-- WHAT WORKS TODAY: honesty as a trust signal (Practo FAQ "Will Ray get me more patients? No.") -->
-<section id="today"><div class="wrap">
-  <h2 class="hi">आज क्या चलता है, और क्या बाद में <span class="en">What works today, what needs our phone line, what's coming</span></h2>
-  <p class="sub">No surprises. We'd rather tell you now.</p>
-  <div class="g3">
-    <div class="box col-ok"><h3>✅ Works today (demo)</h3><ul class="clean">
-      <li>Talks in Hindi, English &amp; Hinglish; male or female voice</li>
-      <li>Hands-free: patient can interrupt, Asha stops and listens</li>
-      <li>Answers your clinic FAQs from details you approve</li>
-      <li>Takes appointment requests for staff to confirm (with a calendar file)</li>
-      <li>Flags emergencies &amp; "talk to a human" requests for your staff</li>
-      <li>Instructed never to diagnose or give medical advice</li>
-    </ul></div>
-    <div class="box col-ph"><h3>☎ After our phone line setup (in progress)</h3><ul class="clean">
-      <li>Answers missed &amp; after-hours calls on your clinic number, 24×7</li>
-      <li>Keep your existing number (busy/no-answer calls forward to Asha)</li>
-      <li>Live transfer of urgent calls to a doctor/staff number</li>
-    </ul></div>
-    <div class="box col-soon"><h3>◷ Coming soon, not available yet</h3><ul class="clean">
-      <li>WhatsApp confirmation to patients</li>
-      <li>WhatsApp call summary to the clinic</li>
-      <li>Google Calendar sync</li>
-      <li>More Indian languages</li>
-    </ul></div>
+<h2>1. Setup fee: 14-day money-back guarantee</h2>
+<ul>
+  <li>The ₹15,000 setup fee is paid upfront.</li>
+  <li>If you are not happy for any reason, ask for a refund within <strong>14 days of your go-live day</strong> and we refund the <strong>full ₹15,000</strong>. You don't need to give a reason, and there are no forms.</li>
+  <li>Go-live day is the first day HaanJi answers your clinic's forwarded calls, as we confirm to you in writing. The 14 days are counted from go-live, not from the day you paid.</li>
+  <li><strong>Before go-live:</strong> you may cancel at any time and get a full refund of the setup fee.</li>
+  <li>After the 14-day window ends, the setup fee is non-refundable, because the setup work has been done and accepted.</li>
+</ul>
+
+<h2>2. Monthly subscription</h2>
+<ul>
+  <li>₹4,000 per month, paid in advance for each monthly cycle. The first cycle starts on day 15 after go-live. You pay nothing monthly during the first 14 days.</li>
+  <li><strong>Cancel anytime. There is no lock-in and no cancellation fee.</strong> A cancellation takes effect from the next billing cycle. The service continues until the end of the cycle you have already paid for, and nothing more is charged after that.</li>
+  <li>We do <strong>not</strong> give partial or pro-rata refunds for a monthly cycle that has already started.</li>
+  <li>If we end the service ourselves (see <a href="terms.html">Terms</a>), we refund any monthly fee you have paid for a period after the service ends.</li>
+</ul>
+
+<h2>3. Payment mistakes</h2>
+<p>If you pay twice by mistake or pay more than you owe, we refund the extra amount in full, whenever you tell us.</p>
+
+<h2>4. How to cancel or ask for a refund</h2>
+<ol>
+  <li>Send a WhatsApp message or call <a href="tel:+918790061144">+91 87900 61144</a>, or email mininglife7@gmail.com. A single message is enough, for example "Please cancel and refund my setup fee."</li>
+  <li>We confirm receipt, normally within 1 working day.</li>
+  <li>For a guarantee refund, what counts is the date you sent your request. A request sent on day 14 qualifies even if we reply later.</li>
+</ol>
+
+<h2>5. How and when refunds are paid</h2>
+<ul>
+  <li>Refunds go back to the <strong>original payment method</strong>. For UPI payments, that is the same UPI ID or bank account you paid from. For Razorpay payments (once available), that is the original card, UPI or bank account.</li>
+  <li>Refunds are processed within <strong>5–7 working days</strong> of your request. Your bank may take a little longer to show the credit.</li>
+  <li>We refund the full amount you paid. We do not deduct any processing fee.</li>
+</ul>
+
+<h2>6. Questions</h2>
+
+<ul>
+  <li><strong>Business:</strong> HaanJi — operated by Lalit Kumar D (sole proprietor)</li>
+  <li><strong>Phone / WhatsApp:</strong> <a href="tel:+918790061144">+91 87900 61144</a></li>
+  <li><strong>Email:</strong> mininglife7@gmail.com</li>
+  <li><strong>Address:</strong> NB-278, Writer Basthi, Post Office Court Road, Kothagudem, Telangana 507101</li>
+</ul>
+<p>See also our <a href="terms.html">Terms &amp; Conditions</a> and <a href="shipping.html">Service Delivery Policy</a>.</p>
+</article>
+<footer class="border-t border-slate-100 py-10 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 text-sm text-slate-500">
+    <nav class="flex flex-wrap gap-x-5 gap-y-2"><a href="index.html" class="hover:text-brand-700">Home</a> <a href="about.html" class="hover:text-brand-700">About us</a> <a href="pricing.html" class="hover:text-brand-700">Pricing</a> <a href="contact.html" class="hover:text-brand-700">Contact us</a> <a href="terms.html" class="hover:text-brand-700">Terms & Conditions</a> <a href="privacy.html" class="hover:text-brand-700">Privacy Policy</a> <a href="refund.html" class="hover:text-brand-700 font-semibold text-brand-800">Cancellation & Refunds</a> <a href="shipping.html" class="hover:text-brand-700">Service Delivery (Shipping)</a> <a href="pay.html" class="hover:text-brand-700">Pay</a></nav>
+    <p class="mt-5">HaanJi — operated by Lalit Kumar D (sole proprietor) · India · Phone/WhatsApp <a href="tel:+918790061144" class="hover:text-brand-700">+91 87900 61144</a> · Email mininglife7@gmail.com</p>
+    <p class="mt-1">© 2026 HaanJi. Last updated 27 September 2026.</p>
   </div>
-  <p class="note" style="margin-top:12px">Asha takes <b>requests</b>. It does not book, reschedule or cancel appointments by itself. Your staff stay in control.</p>
-</div></section>
-
-<!-- HOW IT WORKS: done-for-you + named person (NexHealth "Setup is on us"), test-before-live (Smith.ai Quality Studio) -->
-<section id="how" class="alt"><div class="wrap">
-  <h2 class="hi">Setup हम करते हैं <span class="en">Done-for-you. You don't write a single prompt.</span></h2>
-  <p class="sub">We collect your details, set Asha up, and keep timings/fees updated when they change.</p>
-  <div class="g4">
-    <div class="box"><div class="num">1</div><h3>20-min chat</h3><p class="hi">Timings, doctors, services, fees, emergency rules. WhatsApp पर या clinic आकर।</p></div>
-    <div class="box"><div class="num">2</div><h3>Only info you approve</h3><p>Asha is set up with only the clinic information you approve. Tell us anytime what to change.</p></div>
-    <div class="box"><div class="num">3</div><h3>Go-live</h3><p>Missed and after-hours calls go to Asha <i>(after our phone line setup, in progress; target within 7 days of your details)</i>.</p></div>
-    <div class="box"><div class="num">4</div><h3>Staff confirm</h3><p>Each request (name, phone, day, time, reason) is saved for your staff to call back and confirm.</p></div>
-  </div>
-</div></section>
-
-<!-- PRICE: full price on page + what you DON'T pay (Ruby), no lock-in vs incumbents' contracts -->
-<section id="price"><div class="wrap">
-  <h2 style="text-align:center" class="hi">एक plan, पूरी क़ीमत यहीं <span class="en">One plan. Full price on the page.</span></h2>
-  <div class="price" style="margin-top:22px">
-    <p class="big">₹4,000<span style="font-size:18px;color:var(--mut);font-weight:600"> / month</span></p>
-    <p style="margin:0 0 10px">+ <b>₹15,000 one-time setup</b>, paid upfront by UPI.</p>
-    <table class="cmp">
-      <tr><td>When does ₹4,000/month start?</td><td>From <b>day 15 after go-live</b>. Nothing monthly before that.</td></tr>
-      <tr><td>Lock-in?</td><td><b>No lock-in.</b></td></tr>
-      <tr><td>Before go-live</td><td><b>Full refund of the setup fee, anytime</b></td></tr>
-      <tr><td>After go-live</td><td><b>14-day no-questions money-back</b> on the setup fee, from go-live day. Refund to the same account within 5–7 working days.</td></tr>
-      <tr><td>Setup work</td><td>Done by us. We update timings/fees when they change.</td></tr>
-      <tr><td>Refer a clinic</td><td>1 month free for each referred clinic that pays</td></tr>
-    </table>
-    <div class="cta"><a class="btn btn-p" href="https://mininglife7-dev.github.io/asha.html">▶ Hear Asha first</a><a class="btn btn-w" href="https://wa.me/918790061144?text=Namaste%2C%20Asha%20ke%20price%20aur%20go-live%20ke%20baare%20mein%20baat%20karni%20hai.">Ask on WhatsApp</a></div>
-    <p class="note">Final terms are on your written quote &amp; receipt. Go-live depends on our phone line setup (in progress). If it slips, you can take the full refund before go-live.</p>
-  </div>
-</div></section>
-
-<!-- ROI: calculator on clinic's own numbers (Arini/Hellodesk), labelled assumptions -->
-<section class="alt"><div class="wrap" style="max-width:760px">
-  <h2 class="hi">अपना हिसाब खुद लगाइए <span class="en">Rough missed-call check: your numbers, not ours</span></h2>
-  <p class="sub">A pocket calculator, not a promise. HaanJi has not measured these rates for any clinic.</p>
-  <div class="box">
-    <div class="g4" style="grid-template-columns:1fr 1fr">
-      <label>Missed calls per week (count them!)<input id="m" type="number" min="0" value="15"></label>
-      <label>% of those who'd have come in (your guess)<input id="p" type="number" min="0" max="100" value="20"></label>
-      <label>Avg ₹ per new patient<input id="r" type="number" min="0" step="100" value="1500"></label>
-      <label>Asha monthly fee (₹)<input id="c" type="number" value="4000"></label>
-    </div>
-    <div class="res"><div>≈ <b id="o1">–</b> extra patients / month (assumption)</div><div>≈ <b id="o2">–</b> / month vs the ₹4,000 fee (assumption)</div></div>
-    <p class="note">Formula: missed/week × 4.3 × % × ₹ − fee. The ₹15,000 setup isn't in the monthly line. AI-receptionist vendors <i>report</i> clinics miss about 35–40% of calls (vendor figures, not independent: engageoagency.com, hellodesk.cc). Count your own for a week. One or two extra patients a month <i>can</i> cover the fee. That isn't a promise of patients.</p>
-  </div>
-</div></section>
-
-<!-- SAFETY NET positioning (Arini overflow; Smith.ai hybrid) + cost context labelled -->
-<section><div class="wrap">
-  <h2 class="hi">Receptionist की जगह नहीं, उसका साथी <span class="en">A safety net for your front desk, not a replacement</span></h2>
-  <div class="g3" style="margin-top:18px">
-    <div class="box"><h3>🦷 Busy OPD</h3><p>The receptionist is billing a patient and the phone rings again. Asha is built to pick up the calls that would otherwise be missed <i>(after phone line setup)</i>.</p></div>
-    <div class="box"><h3>🌙 Lunch, after 8 PM, Sundays</h3><p class="hi">जिस वक़्त desk खाली होता है, उसी वक़्त working लोग फ़ोन करते हैं।</p></div>
-    <div class="box"><h3>💸 Second receptionist?</h3><p>A full-time front-desk salary is ≈ ₹18,000–₹25,000/month <i>(vendor estimate, engageoagency.com)</i>. Asha is ₹4,000/month after setup.</p></div>
-  </div>
-</div></section>
-
-<!-- FOUNDER / named onboarding person (NexHealth), trust without fake testimonials -->
-<section class="alt"><div class="wrap">
-  <div class="founder box">
-    <div class="avatar hi">ल</div>
-    <div>
-      <h2 style="font-size:24px">Your setup person: Lalit Kumar, founder, HaanJi</h2>
-      <p class="hi" style="margin:4px 0">मैं खुद आपकी clinic का setup करता हूँ: WhatsApp पर या clinic आकर। कोई call center नहीं।</p>
-      <p style="margin:4px 0">We're new, and <b>we don't have customer testimonials yet</b>. That's why the guarantee exists: you hear Asha first, and you can get the full setup fee back anytime before go-live.</p>
-      <p class="note">Data: Asha collects only name, phone, date, time and reason, uses it only for your clinic and never sells it. Written in your service terms before you pay. <a href="https://mininglife7-dev.github.io/terms.html">Terms</a> · <a href="https://mininglife7-dev.github.io/refund.html">Refund policy</a> · <a href="https://mininglife7-dev.github.io/privacy.html">Privacy</a></p>
-      <a class="btn btn-w" href="https://wa.me/918790061144?text=Namaste%20Lalit%20ji%2C%20Asha%20ke%20baare%20mein%20baat%20karni%20hai.">WhatsApp Lalit</a>
-    </div>
-  </div>
-</div></section>
-
-<!-- FAQ bilingual -->
-<section id="faq"><div class="wrap" style="max-width:820px">
-  <h2 class="hi">सवाल-जवाब <span class="en">FAQ</span></h2>
-  <details><summary class="hi">क्या Asha अभी मेरे clinic का फ़ोन उठाएगी? / Will Asha answer my phone today?</summary><p>Not yet. Phone answering on your number starts after our phone line setup (in progress). Today you can hear the demo and book a 10-min demo call. If go-live slips, you can take the full setup refund before go-live.</p></details>
-  <details><summary>Does Asha book appointments?</summary><p>Asha takes appointment <b>requests</b> (name, phone, day, time, reason) and saves them for your staff to confirm. It doesn't book, reschedule or cancel by itself.</p></details>
-  <details><summary class="hi">क्या Asha medical advice देगी? / Will it give medical advice?</summary><p>Asha is instructed never to diagnose or give medical advice. It only shares clinic information you approve, and it flags emergencies and "talk to a human" requests for your staff.</p></details>
-  <details><summary>Which languages?</summary><p>Hindi, English and Hinglish today. More Indian languages are coming, but they aren't available yet.</p></details>
-  <details><summary>Can I keep my number?</summary><p>Yes, by design: busy/unanswered calls forward to Asha's line. This works after our phone line setup (in progress).</p></details>
-  <details><summary>WhatsApp confirmations?</summary><p>Coming soon, not available yet. Today, requests are saved for your staff.</p></details>
-  <details><summary class="hi">पैसा कैसे और कब? / How and when do I pay?</summary><p>₹15,000 setup upfront by UPI. Full refund anytime before go-live. After go-live, a 14-day no-questions money-back on the setup fee. ₹4,000/month from day 15 after go-live, no lock-in.</p></details>
-</div></section>
-
-<section style="background:var(--bd);color:#fff;text-align:center"><div class="wrap">
-  <h2 class="hi" style="color:#fff">पहले सुनिए, फिर तय कीजिए <span class="en" style="color:#ccfbf1">Hear Asha first. Decide after.</span></h2>
-  <div class="cta" style="justify-content:center"><a class="btn" style="background:#fff;color:var(--bd)" href="https://mininglife7-dev.github.io/asha.html">▶ Hear the demo</a><a class="btn btn-w" href="https://wa.me/918790061144?text=Namaste%20HaanJi%2C%20mujhe%20Asha%20ka%2010-min%20demo%20chahiye.">WhatsApp: 10-min demo</a></div>
-</div></section>
-
-<footer><div class="wrap">
-  <p><b>HaanJi</b> · Asha, AI receptionist for dental &amp; skin clinics · WhatsApp <a href="https://wa.me/918790061144">+91 87900 61144</a></p>
-  <p><a href="https://mininglife7-dev.github.io/terms.html">Terms</a> · <a href="https://mininglife7-dev.github.io/refund.html">Refund</a> · <a href="https://mininglife7-dev.github.io/privacy.html">Privacy</a> · <a href="https://mininglife7-dev.github.io/pay.html">Pay</a></p>
-  <p style="font-size:12px;color:#94a3b8">Demo conversations use sample clinic data. Market figures are labelled vendor-reported or estimates. No customer testimonials are shown because we don't have any yet.</p>
-</div><p style="text-align:center;margin:8px 0"><a href="book.html" style="color:#0f766e;font-weight:700">Book a free 10-min Asha demo →</a></p>
 </footer>
-
-<a class="btn btn-w float" href="https://wa.me/918790061144?text=Namaste%20HaanJi%2C%20mujhe%20Asha%20ka%2010-min%20demo%20chahiye." aria-label="WhatsApp">💬 WhatsApp</a>
-
-<script>
-function f(){const m=+q('m'),p=+q('p')/100,r=+q('r'),c=+q('c');const n=m*4.3*p,rev=n*r,net=rev-c;
-document.getElementById('o1').textContent=n.toFixed(1);
-document.getElementById('o2').textContent=(net>=0?'+':'−')+'₹'+Math.abs(Math.round(net)).toLocaleString('en-IN');}
-function q(i){return document.getElementById(i).value||0}
-['m','p','r','c'].forEach(i=>document.getElementById(i).addEventListener('input',f));f();
-</script>
 </body>
 </html>

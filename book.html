@@ -22,6 +22,7 @@ textarea{min-height:70px;resize:vertical}
 .slots button{border:1px solid #99f6e4;background:#f0fdfa;color:#115e59;border-radius:10px;padding:10px 8px;font-size:13px;font-weight:600;cursor:pointer}
 .slots button.on{background:#0f766e;color:#fff;border-color:#0f766e}
 .btn{display:block;width:100%;border:0;border-radius:12px;padding:14px;font-size:17px;font-weight:800;cursor:pointer;margin-top:14px;background:#25d366;color:#fff;text-decoration:none;text-align:center}
+.btn:disabled{opacity:.45;cursor:not-allowed}
 .note{font-size:12.5px;color:#64748b;margin:10px 0 0}
 .offer{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:10px 12px;font-size:14px;margin:10px 0}
 .offer b{color:#c2410c}
@@ -35,10 +36,12 @@ footer a{color:#0f766e}
 <div class="wrap">
   <span class="tag">FREE · 10-MINUTE DEMO CALL</span>
   <h1>Book a demo of Asha</h1>
-  <p class="sub">HaanJi AI receptionist for dental & skin clinics — Hindi + English. Pick a slot; WhatsApp opens with your request to Lalit (no auto-send).</p>
+  <p class="sub">HaanJi AI receptionist for dental &amp; skin clinics — Hindi + English. Pick a slot; WhatsApp opens with your request to Lalit (no auto-send).</p>
+
   <div class="offer">
     <b>Offer:</b> ₹15,000 setup (upfront) · <b>14-day money-back from go-live</b> · then ₹4,000/month · go-live within 7 days of clinic details (our phone line setup is in progress). <b>No free pilot</b> — this booking is a short demo call only.
   </div>
+
   <div class="card">
     <h2>1) Your clinic</h2>
     <label for="clinic">Clinic name *</label>
@@ -55,6 +58,7 @@ footer a{color:#0f766e}
     <textarea id="notes" placeholder="Best time, specialty, how many chairs…"></textarea>
     <div class="warn" id="warn"></div>
   </div>
+
   <div class="card">
     <h2>2) Preferred slot (IST)</h2>
     <p class="note" style="margin-top:0">Slots are <b>requests</b> — Lalit confirms on WhatsApp. Quiet clinic hours preferred.</p>
@@ -64,12 +68,14 @@ footer a{color:#0f766e}
     <label for="custom">Custom time (if not in list)</label>
     <input id="custom" placeholder="e.g. Wed 1 Oct · 14:00 IST">
   </div>
+
   <div class="card">
     <h2>3) Send request</h2>
-    <p class="note" style="margin-top:0">Opens WhatsApp to <b>+91 94911 45032</b> with a filled message. You tap Send. Nothing is stored on this page.</p>
+    <p class="note" style="margin-top:0">Opens WhatsApp to <b>+91 87900 61144</b> with a filled message. You tap Send. Nothing is stored on this page.</p>
     <a class="btn" id="go" href="#">WhatsApp demo request →</a>
-    <p class="note">Also try the <a href="asha.html">sample Asha conversation</a> · <a href="https://reasonable-emacs-sponsorship-plans.trycloudflare.com/v2">live voice demo</a> · <a href="pay.html">pay page</a> · <a href="index.html">home</a>.</p>
+    <p class="note">Also try the <a href="asha.html">sample Asha conversation</a> · <a href="https://finally-streets-univ-release.trycloudflare.com">live voice demo</a> · <a href="pay.html">pay page</a> · <a href="index.html">home</a>.</p>
   </div>
+
   <ul>
     <li>Demo is ~10 minutes on a browser call / WhatsApp voice — not a phone-number takeover today.</li>
     <li>Cold WhatsApp from our outreach number may be paused; this booking uses Lalit's line after <b>you</b> initiate.</li>
@@ -81,11 +87,12 @@ footer a{color:#0f766e}
 </div>
 <script>
 (function(){
-  var WA='919491145032';
+  var WA='918790061144';
   var slotBtns=document.getElementById('slots');
   var daySel=document.getElementById('day');
   var selected='';
   var times=['11:00','11:45','12:15','13:30','16:00','17:00','19:00','20:00'];
+  // next 7 days from "today" client clock (label IST)
   var days=[];
   var now=new Date();
   for(var i=0;i<7;i++){
