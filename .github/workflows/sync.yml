@@ -15,6 +15,9 @@ jobs:
       - name: Mirror site from origin
         run: |
           SRC=$(tr -d ' \r\n' < source_url.txt)
+          # 2026-10-07 fix: a "?v=..." cache-buster in source_url.txt made "$SRC/$f" a query on "/",
+          # so every page was mirrored as the home page (live since 29 Sep). Strip query/fragment + trailing slash.
+          SRC=${SRC%%\#*}; SRC=${SRC%%\?*}; SRC=${SRC%/}
           echo "SRC=$SRC" >> $GITHUB_ENV
           mkdir -p /tmp/out
           while read -r f; do
@@ -23,8 +26,15 @@ jobs:
           done < files.txt
           python3 decode_cf.py /tmp/out/*.html
           grep -q HaanJi /tmp/out/index.html
-          grep -q UPI /tmp/out/pay.html
           ! grep -l cdn-cgi /tmp/out/*.html
+          # each page must carry its own title (refuse to publish home-page copies)
+          check(){ grep -qi "<title>[^<]*$2" "/tmp/out/$1" || { echo "BAD $1: title lacks '$2'"; exit 1; }; }
+          check about.html About; check contact.html Contact; check pay.html Pay; check pricing.html Pricing
+          check privacy.html Privacy; check refund.html Refund; check shipping.html Shipping; check terms.html Terms
+          check book.html Book
+          grep -q UPI /tmp/out/pay.html
+          for f in /tmp/out/*.html; do [ "$f" = /tmp/out/index.html ] && continue
+            cmp -s "$f" /tmp/out/index.html && { echo "BAD $f identical to index.html"; exit 1; }; done
           cp /tmp/out/* .
           ls -la
       - name: Commit
