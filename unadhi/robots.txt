@@ -1,0 +1,4 @@
+# STAGING: when publishing, keep as below and confirm the sitemap URL
+User-agent: *
+Allow: /
+Sitemap: https://mininglife7-dev.github.io/unadhi/sitemap.xml
