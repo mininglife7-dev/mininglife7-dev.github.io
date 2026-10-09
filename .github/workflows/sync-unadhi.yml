@@ -1,0 +1,40 @@
+name: sync-unadhi
+# Mirrors the UNADHI staging site into /unadhi/ (https://mininglife7-dev.github.io/unadhi/).
+# Separate from sync-site (HaanJi pages): touches only the unadhi/ folder. Every file is checked
+# byte-for-byte against the sha256 list in unadhi_files.txt before it is committed.
+on:
+  push:
+    branches: [main]
+    paths: [unadhi_source_url.txt, unadhi_files.txt, .github/workflows/sync-unadhi.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: sync-site
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror and verify
+        run: |
+          SRC=$(tr -d ' \r\n' < unadhi_source_url.txt)
+          SRC=${SRC%%\#*}; SRC=${SRC%%\?*}; SRC=${SRC%/}
+          echo "SRC=$SRC" >> $GITHUB_ENV
+          rm -rf /tmp/u && mkdir -p /tmp/u
+          while read -r h f; do
+            [ -z "$f" ] && continue
+            case "$f" in /*|*..*) echo "BAD path $f"; exit 1;; esac
+            curl -fsSL --retry 3 --create-dirs "$SRC/$f" -o "/tmp/u/$f"
+          done < unadhi_files.txt
+          (cd /tmp/u && sha256sum -c --strict "$GITHUB_WORKSPACE/unadhi_files.txt")
+          ! grep -rlE '8790061144|9491145032' /tmp/u
+          rm -rf unadhi && mkdir unadhi && cp -a /tmp/u/. unadhi/
+          find unadhi -type f | sort
+      - name: Commit
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add -A unadhi
+          git diff --cached --quiet && { echo no changes; exit 0; }
+          git commit -qm "sync unadhi from $SRC"
+          git push
