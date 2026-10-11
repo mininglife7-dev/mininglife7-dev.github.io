@@ -1,0 +1,1357 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Unadhi//India Tax Deadlines Oct2026-Mar2027//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:India tax deadlines Oct 2026–Mar 2027 (Unadhi)
+X-WR-TIMEZONE:Asia/Kolkata
+X-WR-CALDESC:Free GST\, TDS/TCS\, advance-tax and ITR due dates\, verified 
+ against official sources on 11 Oct 2026. Not official\; check the portal f
+ or extensions. https://mininglife7-dev.github.io/guides/india-tax-deadline
+ -calendar-google-calendar.html
+BEGIN:VEVENT
+UID:fb235ac279b5d880@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261007
+DTEND;VALUE=DATE:20261008
+SUMMARY:TDS/TCS deposit (challan) due – TDS/TCS
+DESCRIPTION:Deposit TDS/TCS deducted or collected in Sep 2026\nWho: All ded
+ uctors/collectors other than government offices (government offices: same 
+ day without challan\, or within 7 days with challan)\nOfficial source: htt
+ ps://www.incometaxindia.gov.in/w/rule-218-1\nCheck official portal for ext
+ ensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publicatio
+ n\, not tax advice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: TDS/TCS deposit (challan) (Deposit TDS/TCS deducted 
+ or collected in Sep 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f8e5824cf91fabf6@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:GSTR-7 due – GST
+DESCRIPTION:GSTR-7 (GST TDS return) for Sep 2026\nWho: Persons required to 
+ deduct GST TDS (govt departments\, local authorities\, PSUs etc.)\nOfficia
+ l source: https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm\nChe
+ ck official portal for extensions.\nDates verified 11 Oct 2026 by Unadhi (
+ not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-7 (GSTR-7 (GST TDS return) for Sep 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7cf3e88ce7e6613b@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:GSTR-1 (monthly) due – GST
+DESCRIPTION:GSTR-1 for Sep 2026 (monthly filers)\nWho: Regular GST taxpayer
+ s filing GSTR-1 monthly\nOfficial source: https://tutorial.gst.gov.in/user
+ guide/returns/GSTR_1.htm\nCheck official portal for extensions.\nDates ver
+ ified 11 Oct 2026 by Unadhi (not an official publication\, not tax advice)
+ .
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-1 (monthly) (GSTR-1 for Sep 2026 (monthly filer
+ s))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c8b888cb6142e585@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+SUMMARY:GSTR-1 (quarterly\, QRMP) due – GST
+DESCRIPTION:GSTR-1 for Jul–Sep 2026 (QRMP quarterly filers)\nWho: QRMP ta
+ xpayers (aggregate turnover up to ₹5 crore)\nOfficial source: https://tu
+ torial.gst.gov.in/userguide/returns/GSTR_1.htm\nCheck official portal for 
+ extensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publica
+ tion\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-1 (quarterly\, QRMP) (GSTR-1 for Jul–Sep 2026
+  (QRMP quarterly filers))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:458547d36cb1bc78@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:CMP-08 due – GST
+DESCRIPTION:CMP-08 statement-cum-challan for Jul–Sep 2026\nWho: Compositi
+ on taxpayers\nOfficial source: https://tutorial.gst.gov.in/userguide/retur
+ ns/FAQs_CMP02.htm\nCheck official portal for extensions.\nDates verified 1
+ 1 Oct 2026 by Unadhi (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/FAQs_CMP02.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: CMP-08 (CMP-08 statement-cum-challan for Jul–Sep 2
+ 026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:473e391de6cd9d49@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:GSTR-3B (monthly) due – GST
+DESCRIPTION:GSTR-3B for Sep 2026 (monthly filers)\nWho: Regular GST taxpaye
+ rs filing GSTR-3B monthly\nOfficial source: https://tutorial.gst.gov.in/us
+ erguide/returns/GSTR3B.htm\nCheck official portal for extensions.\nDates v
+ erified 11 Oct 2026 by Unadhi (not an official publication\, not tax advic
+ e).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR3B.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (monthly) (GSTR-3B for Sep 2026 (monthly fil
+ ers))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0decfcedee1bbb4c@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Tax audit report (3CA/3CB-3CD) due – Income tax
+DESCRIPTION:Tax audit report for AY 2026-27 – EXTENDED from 30 Sep by CBD
+ T Circular 07/2026\nWho: Taxpayers whose accounts must be audited (not tra
+ nsfer-pricing s.92E cases)\nOfficial source: https://www.incometax.gov.in/
+ iec/foportal/sites/default/files/2026-09/Circular-7-2026.pdf\nCheck offici
+ al portal for extensions.\nDates verified 11 Oct 2026 by Unadhi (not an of
+ ficial publication\, not tax advice).
+URL:https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-09/C
+ ircular-7-2026.pdf
+CATEGORIES:Income tax
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Tax audit report (3CA/3CB-3CD) (Tax audit report for
+  AY 2026-27 – EXTENDED from 30 Sep by CBDT Circular 07/2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e4f3641e99cc485e@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261022
+DTEND;VALUE=DATE:20261023
+SUMMARY:GSTR-3B (quarterly\, QRMP) – 22nd group due – GST
+DESCRIPTION:GSTR-3B for Jul–Sep 2026 (QRMP quarterly) – 22nd-group stat
+ es\nWho: QRMP taxpayers whose principal place of business is in: Chhattisg
+ arh\, MP\, Gujarat\, Maharashtra\, Karnataka\, Goa\, Kerala\, Tamil Nadu\,
+  Telangana\, Andhra Pradesh\, DNH & DD\, Puducherry\, A&N Islands\, Laksha
+ dweep\nOfficial source: https://tutorial.gst.gov.in/offlineutilities/retur
+ ns/QRMP_Advisory.pdf\nCheck official portal for extensions.\nDates verifie
+ d 11 Oct 2026 by Unadhi (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (quarterly\, QRMP) – 22nd group (GSTR-3B f
+ or Jul–Sep 2026 (QRMP quarterly) – 22nd-group states)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fa65eeb9aedf70fd@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:GSTR-3B (quarterly\, QRMP) – 24th group due – GST
+DESCRIPTION:GSTR-3B for Jul–Sep 2026 (QRMP quarterly) – 24th-group stat
+ es\nWho: QRMP taxpayers whose principal place of business is in: HP\, Punj
+ ab\, Uttarakhand\, Haryana\, Rajasthan\, UP\, Bihar\, Sikkim\, Arunachal\,
+  Nagaland\, Manipur\, Mizoram\, Tripura\, Meghalaya\, Assam\, West Bengal\
+ , Jharkhand\, Odisha\, J&K\, Ladakh\, Chandigarh\, Delhi\nOfficial source:
+  https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf\nC
+ heck official portal for extensions.\nDates verified 11 Oct 2026 by Unadhi
+  (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (quarterly\, QRMP) – 24th group (GSTR-3B f
+ or Jul–Sep 2026 (QRMP quarterly) – 24th-group states)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ff0ca8efc481acd6@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:Form 141 (was 26QB/26QC/26QD/26QE) due – TDS/TCS
+DESCRIPTION:Form 141 challan-cum-statement: TDS deducted in Sep 2026 on pro
+ perty purchase\, rent\, contract/professional fees or VDA (Rule 218(3))\nW
+ ho: Individuals/HUFs deducting TDS under the Rule 218(3) cases without a T
+ AN (property buyers\, tenants\, etc.)\nOfficial source: https://www.income
+ taxindia.gov.in/w/rule-218-1\nCheck official portal for extensions.\nDates
+  verified 11 Oct 2026 by Unadhi (not an official publication\, not tax adv
+ ice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 141 (was 26QB/26QC/26QD/26QE) (Form 141 challan
+ -cum-statement: TDS deducted in Sep 2026 on property purchase\, rent\, con
+ tract/professional fees or VDA (Rule 218(3)))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20f08c9ca1217b7f@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Form 3CEB due – Income tax
+DESCRIPTION:Transfer-pricing report (Form 3CEB) for AY 2026-27 – not exte
+ nded\nWho: Taxpayers with international or specified domestic transactions
+  (s.92E)\nOfficial source: https://www.incometax.gov.in/iec/foportal/sites
+ /default/files/2026-09/Circular-7-2026.pdf\nCheck official portal for exte
+ nsions.\nDates verified 11 Oct 2026 by Unadhi (not an official publication
+ \, not tax advice).
+URL:https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-09/C
+ ircular-7-2026.pdf
+CATEGORIES:Income tax
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 3CEB (Transfer-pricing report (Form 3CEB) for A
+ Y 2026-27 – not extended)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eb0bfa1fca6e1b4b@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Forms 138/140/144/143 (was 24Q/26Q/27Q/27EQ) due – TDS/TCS
+DESCRIPTION:Quarterly TDS/TCS statements for Jul–Sep 2026 (Q2): Form 138 
+ (was 24Q)\, 140 (26Q)\, 144 (27Q)\, 143 TCS (27EQ)\nWho: All TDS deductors
+  and TCS collectors with a TAN\nOfficial source: https://www.incometaxindi
+ a.gov.in/documents/d/guest/form-140-faqs\nCheck official portal for extens
+ ions.\nDates verified 11 Oct 2026 by Unadhi (not an official publication\,
+  not tax advice).
+URL:https://www.incometaxindia.gov.in/documents/d/guest/form-140-faqs
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Forms 138/140/144/143 (was 24Q/26Q/27Q/27EQ) (Quarte
+ rly TDS/TCS statements for Jul–Sep 2026 (Q2): Form 138 (was 24Q)\, 140 (
+ 26Q)\, 144 (27Q)\, 143 TCS (27EQ))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9849176c661da9ee@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:TDS/TCS deposit (challan) due – TDS/TCS
+DESCRIPTION:Deposit TDS/TCS deducted or collected in Oct 2026\nWho: All ded
+ uctors/collectors other than government offices (government offices: same 
+ day without challan\, or within 7 days with challan)\nOfficial source: htt
+ ps://www.incometaxindia.gov.in/w/rule-218-1\nCheck official portal for ext
+ ensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publicatio
+ n\, not tax advice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: TDS/TCS deposit (challan) (Deposit TDS/TCS deducted 
+ or collected in Oct 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6c60ef611e8d069f@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:GSTR-7 due – GST
+DESCRIPTION:GSTR-7 (GST TDS return) for Oct 2026\nWho: Persons required to 
+ deduct GST TDS (govt departments\, local authorities\, PSUs etc.)\nOfficia
+ l source: https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm\nChe
+ ck official portal for extensions.\nDates verified 11 Oct 2026 by Unadhi (
+ not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-7 (GSTR-7 (GST TDS return) for Oct 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:13f2f0b454d4309e@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:GSTR-1 (monthly) due – GST
+DESCRIPTION:GSTR-1 for Oct 2026 (monthly filers)\nWho: Regular GST taxpayer
+ s filing GSTR-1 monthly\nOfficial source: https://tutorial.gst.gov.in/user
+ guide/returns/GSTR_1.htm\nCheck official portal for extensions.\nDates ver
+ ified 11 Oct 2026 by Unadhi (not an official publication\, not tax advice)
+ .
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-1 (monthly) (GSTR-1 for Oct 2026 (monthly filer
+ s))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:74d294a497c6520f@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:IFF (optional) due – GST
+DESCRIPTION:IFF (optional B2B invoice upload) for Oct 2026\nWho: QRMP taxpa
+ yers who want buyers to get ITC monthly (optional\, max ₹50 lakh)\nOffic
+ ial source: https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advi
+ sory.pdf\nCheck official portal for extensions.\nDates verified 11 Oct 202
+ 6 by Unadhi (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: IFF (optional) (IFF (optional B2B invoice upload) fo
+ r Oct 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f13e6fd93e2882e9@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Form 131 (was 16A) / Form 133 (was 27D) due – TDS/TCS
+DESCRIPTION:Issue TDS certificates in Form 131 (was 16A) and TCS certificat
+ es in Form 133 (was 27D) for Jul–Sep 2026\nWho: Deductors (non-salary TD
+ S) and TCS collectors\nOfficial source: https://www.incometaxindia.gov.in/
+ documents/d/guest/fn-130-131-132-133\nCheck official portal for extensions
+ .\nDates verified 11 Oct 2026 by Unadhi (not an official publication\, not
+  tax advice).
+URL:https://www.incometaxindia.gov.in/documents/d/guest/fn-130-131-132-133
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 131 (was 16A) / Form 133 (was 27D) (Issue TDS c
+ ertificates in Form 131 (was 16A) and TCS certificates in Form 133 (was 27
+ D) for Jul–Sep 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:09a86be066385863@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:GSTR-3B (monthly) due – GST
+DESCRIPTION:GSTR-3B for Oct 2026 (monthly filers)\nWho: Regular GST taxpaye
+ rs filing GSTR-3B monthly\nOfficial source: https://tutorial.gst.gov.in/us
+ erguide/returns/GSTR3B.htm\nCheck official portal for extensions.\nDates v
+ erified 11 Oct 2026 by Unadhi (not an official publication\, not tax advic
+ e).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR3B.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (monthly) (GSTR-3B for Oct 2026 (monthly fil
+ ers))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:4d9f5a4356887552@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:ITR (audit cases) due – Income tax
+DESCRIPTION:ITR for AY 2026-27\, audit cases – EXTENDED from 31 Oct by CB
+ DT Circular 07/2026\nWho: Companies\, businesses/professionals needing tax
+  audit\, working partners of audited firms (not s.92E cases)\nOfficial sou
+ rce: https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-09
+ /Circular-7-2026.pdf\nCheck official portal for extensions.\nDates verifie
+ d 11 Oct 2026 by Unadhi (not an official publication\, not tax advice).
+URL:https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-09/C
+ ircular-7-2026.pdf
+CATEGORIES:Income tax
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: ITR (audit cases) (ITR for AY 2026-27\, audit cases 
+ – EXTENDED from 31 Oct by CBDT Circular 07/2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bfdfbcaabf368b9e@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:PMT-06 due – GST
+DESCRIPTION:PMT-06 GST payment for Oct 2026\nWho: QRMP taxpayers (months 1 
+ and 2 of the quarter)\nOfficial source: https://tutorial.gst.gov.in/offlin
+ eutilities/returns/QRMP_Advisory.pdf\nCheck official portal for extensions
+ .\nDates verified 11 Oct 2026 by Unadhi (not an official publication\, not
+  tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: PMT-06 (PMT-06 GST payment for Oct 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:374aea955de3b862@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:ITR (transfer-pricing cases) due – Income tax
+DESCRIPTION:ITR for AY 2026-27\, transfer-pricing (s.92E) cases – not ext
+ ended by Circular 07/2026\nWho: Taxpayers required to furnish Form 3CEB\nO
+ fficial source: https://www.incometax.gov.in/iec/foportal/sites/default/fi
+ les/2026-09/Circular-7-2026.pdf\nCheck official portal for extensions.\nDa
+ tes verified 11 Oct 2026 by Unadhi (not an official publication\, not tax 
+ advice).
+URL:https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-09/C
+ ircular-7-2026.pdf
+CATEGORIES:Income tax
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: ITR (transfer-pricing cases) (ITR for AY 2026-27\, t
+ ransfer-pricing (s.92E) cases – not extended by Circular 07/2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d56e854858902a95@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:Form 141 (was 26QB/26QC/26QD/26QE) due – TDS/TCS
+DESCRIPTION:Form 141 challan-cum-statement: TDS deducted in Oct 2026 on pro
+ perty purchase\, rent\, contract/professional fees or VDA (Rule 218(3))\nW
+ ho: Individuals/HUFs deducting TDS under the Rule 218(3) cases without a T
+ AN (property buyers\, tenants\, etc.)\nOfficial source: https://www.income
+ taxindia.gov.in/w/rule-218-1\nCheck official portal for extensions.\nDates
+  verified 11 Oct 2026 by Unadhi (not an official publication\, not tax adv
+ ice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 141 (was 26QB/26QC/26QD/26QE) (Form 141 challan
+ -cum-statement: TDS deducted in Oct 2026 on property purchase\, rent\, con
+ tract/professional fees or VDA (Rule 218(3)))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a4c99e02f9a1333b@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261207
+DTEND;VALUE=DATE:20261208
+SUMMARY:TDS/TCS deposit (challan) due – TDS/TCS
+DESCRIPTION:Deposit TDS/TCS deducted or collected in Nov 2026\nWho: All ded
+ uctors/collectors other than government offices (government offices: same 
+ day without challan\, or within 7 days with challan)\nOfficial source: htt
+ ps://www.incometaxindia.gov.in/w/rule-218-1\nCheck official portal for ext
+ ensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publicatio
+ n\, not tax advice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: TDS/TCS deposit (challan) (Deposit TDS/TCS deducted 
+ or collected in Nov 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:73cdcc6133bab0fd@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261210
+DTEND;VALUE=DATE:20261211
+SUMMARY:GSTR-7 due – GST
+DESCRIPTION:GSTR-7 (GST TDS return) for Nov 2026\nWho: Persons required to 
+ deduct GST TDS (govt departments\, local authorities\, PSUs etc.)\nOfficia
+ l source: https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm\nChe
+ ck official portal for extensions.\nDates verified 11 Oct 2026 by Unadhi (
+ not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-7 (GSTR-7 (GST TDS return) for Nov 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:5c62cdfda5bbabc0@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+SUMMARY:GSTR-1 (monthly) due – GST
+DESCRIPTION:GSTR-1 for Nov 2026 (monthly filers)\nWho: Regular GST taxpayer
+ s filing GSTR-1 monthly\nOfficial source: https://tutorial.gst.gov.in/user
+ guide/returns/GSTR_1.htm\nCheck official portal for extensions.\nDates ver
+ ified 11 Oct 2026 by Unadhi (not an official publication\, not tax advice)
+ .
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-1 (monthly) (GSTR-1 for Nov 2026 (monthly filer
+ s))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a06896efcb31255f@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:IFF (optional) due – GST
+DESCRIPTION:IFF (optional B2B invoice upload) for Nov 2026\nWho: QRMP taxpa
+ yers who want buyers to get ITC monthly (optional\, max ₹50 lakh)\nOffic
+ ial source: https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advi
+ sory.pdf\nCheck official portal for extensions.\nDates verified 11 Oct 202
+ 6 by Unadhi (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: IFF (optional) (IFF (optional B2B invoice upload) fo
+ r Nov 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:15e0d485333c7813@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Advance tax – 3rd instalment due – Advance tax
+DESCRIPTION:Advance tax 3rd instalment for tax year 2026-27: at least 75% o
+ f estimated tax (cumulative)\nWho: Anyone whose tax for the year after TDS
+ /TCS is ₹10\,000 or more (presumptive s.58 cases pay all by 15 Mar)\nOff
+ icial source: https://www.incometax.gov.in/iec/foportal/help/all-topics/e-
+ filing-services/tax-payments\nCheck official portal for extensions.\nDates
+  verified 11 Oct 2026 by Unadhi (not an official publication\, not tax adv
+ ice).
+URL:https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-serv
+ ices/tax-payments
+CATEGORIES:Advance tax
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Advance tax – 3rd instalment (Advance tax 3rd inst
+ alment for tax year 2026-27: at least 75% of estimated tax (cumulative))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2ccece7fc59ba9bc@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:GSTR-3B (monthly) due – GST
+DESCRIPTION:GSTR-3B for Nov 2026 (monthly filers)\nWho: Regular GST taxpaye
+ rs filing GSTR-3B monthly\nOfficial source: https://tutorial.gst.gov.in/us
+ erguide/returns/GSTR3B.htm\nCheck official portal for extensions.\nDates v
+ erified 11 Oct 2026 by Unadhi (not an official publication\, not tax advic
+ e).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR3B.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (monthly) (GSTR-3B for Nov 2026 (monthly fil
+ ers))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:acd4faba177ec042@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
+SUMMARY:PMT-06 due – GST
+DESCRIPTION:PMT-06 GST payment for Nov 2026\nWho: QRMP taxpayers (months 1 
+ and 2 of the quarter)\nOfficial source: https://tutorial.gst.gov.in/offlin
+ eutilities/returns/QRMP_Advisory.pdf\nCheck official portal for extensions
+ .\nDates verified 11 Oct 2026 by Unadhi (not an official publication\, not
+  tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: PMT-06 (PMT-06 GST payment for Nov 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0fd7d427801aff5c@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261230
+DTEND;VALUE=DATE:20261231
+SUMMARY:Form 141 (was 26QB/26QC/26QD/26QE) due – TDS/TCS
+DESCRIPTION:Form 141 challan-cum-statement: TDS deducted in Nov 2026 on pro
+ perty purchase\, rent\, contract/professional fees or VDA (Rule 218(3))\nW
+ ho: Individuals/HUFs deducting TDS under the Rule 218(3) cases without a T
+ AN (property buyers\, tenants\, etc.)\nOfficial source: https://www.income
+ taxindia.gov.in/w/rule-218-1\nCheck official portal for extensions.\nDates
+  verified 11 Oct 2026 by Unadhi (not an official publication\, not tax adv
+ ice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 141 (was 26QB/26QC/26QD/26QE) (Form 141 challan
+ -cum-statement: TDS deducted in Nov 2026 on property purchase\, rent\, con
+ tract/professional fees or VDA (Rule 218(3)))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7b806e84737be087@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:GSTR-9 / GSTR-9C due – GST
+DESCRIPTION:GSTR-9 annual return (and GSTR-9C reconciliation) for FY 2025-2
+ 6\nWho: Regular GST taxpayers required to file the annual return (9C where
+  turnover exceeds ₹5 crore)\nOfficial source: https://tutorial.gst.gov.i
+ n/userguide/returns/FAQs_gstr9.htm\nCheck official portal for extensions.\
+ nDates verified 11 Oct 2026 by Unadhi (not an official publication\, not t
+ ax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/FAQs_gstr9.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-9 / GSTR-9C (GSTR-9 annual return (and GSTR-9C 
+ reconciliation) for FY 2025-26)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dca045ec2a4c3b9e@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Belated ITR / revised ITR without fee due – Income tax
+DESCRIPTION:Last date for a belated ITR for AY 2026-27 (FY 2025-26)\; last 
+ date to revise without the s.234-I fee\nWho: Anyone who missed the origina
+ l ITR due date\, or wants to revise without a fee\nOfficial source: https:
+ //www.incometaxindia.gov.in/w/return-of-income\nCheck official portal for 
+ extensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publica
+ tion\, not tax advice).
+URL:https://www.incometaxindia.gov.in/w/return-of-income
+CATEGORIES:Income tax
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Belated ITR / revised ITR without fee (Last date for
+  a belated ITR for AY 2026-27 (FY 2025-26)\; last date to revise without t
+ he s.234-I fee)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:57a7838b16d6e431@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270107
+DTEND;VALUE=DATE:20270108
+SUMMARY:TDS/TCS deposit (challan) due – TDS/TCS
+DESCRIPTION:Deposit TDS/TCS deducted or collected in Dec 2026\nWho: All ded
+ uctors/collectors other than government offices (government offices: same 
+ day without challan\, or within 7 days with challan)\nOfficial source: htt
+ ps://www.incometaxindia.gov.in/w/rule-218-1\nCheck official portal for ext
+ ensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publicatio
+ n\, not tax advice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: TDS/TCS deposit (challan) (Deposit TDS/TCS deducted 
+ or collected in Dec 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bec016644d668e59@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:GSTR-7 due – GST
+DESCRIPTION:GSTR-7 (GST TDS return) for Dec 2026\nWho: Persons required to 
+ deduct GST TDS (govt departments\, local authorities\, PSUs etc.)\nOfficia
+ l source: https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm\nChe
+ ck official portal for extensions.\nDates verified 11 Oct 2026 by Unadhi (
+ not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-7 (GSTR-7 (GST TDS return) for Dec 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:58016336c7544988@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270111
+DTEND;VALUE=DATE:20270112
+SUMMARY:GSTR-1 (monthly) due – GST
+DESCRIPTION:GSTR-1 for Dec 2026 (monthly filers)\nWho: Regular GST taxpayer
+ s filing GSTR-1 monthly\nOfficial source: https://tutorial.gst.gov.in/user
+ guide/returns/GSTR_1.htm\nCheck official portal for extensions.\nDates ver
+ ified 11 Oct 2026 by Unadhi (not an official publication\, not tax advice)
+ .
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-1 (monthly) (GSTR-1 for Dec 2026 (monthly filer
+ s))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:af566a28e54e7adf@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:GSTR-1 (quarterly\, QRMP) due – GST
+DESCRIPTION:GSTR-1 for Oct–Dec 2026 (QRMP quarterly filers)\nWho: QRMP ta
+ xpayers (aggregate turnover up to ₹5 crore)\nOfficial source: https://tu
+ torial.gst.gov.in/userguide/returns/GSTR_1.htm\nCheck official portal for 
+ extensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publica
+ tion\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-1 (quarterly\, QRMP) (GSTR-1 for Oct–Dec 2026
+  (QRMP quarterly filers))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:399a2677f4afe041@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270118
+DTEND;VALUE=DATE:20270119
+SUMMARY:CMP-08 due – GST
+DESCRIPTION:CMP-08 statement-cum-challan for Oct–Dec 2026\nWho: Compositi
+ on taxpayers\nOfficial source: https://tutorial.gst.gov.in/userguide/retur
+ ns/FAQs_CMP02.htm\nCheck official portal for extensions.\nDates verified 1
+ 1 Oct 2026 by Unadhi (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/FAQs_CMP02.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: CMP-08 (CMP-08 statement-cum-challan for Oct–Dec 2
+ 026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2a6f59a334dae7da@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:GSTR-3B (monthly) due – GST
+DESCRIPTION:GSTR-3B for Dec 2026 (monthly filers)\nWho: Regular GST taxpaye
+ rs filing GSTR-3B monthly\nOfficial source: https://tutorial.gst.gov.in/us
+ erguide/returns/GSTR3B.htm\nCheck official portal for extensions.\nDates v
+ erified 11 Oct 2026 by Unadhi (not an official publication\, not tax advic
+ e).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR3B.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (monthly) (GSTR-3B for Dec 2026 (monthly fil
+ ers))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aef6effac5b8b3c0@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:GSTR-3B (quarterly\, QRMP) – 22nd group due – GST
+DESCRIPTION:GSTR-3B for Oct–Dec 2026 (QRMP quarterly) – 22nd-group stat
+ es\nWho: QRMP taxpayers whose principal place of business is in: Chhattisg
+ arh\, MP\, Gujarat\, Maharashtra\, Karnataka\, Goa\, Kerala\, Tamil Nadu\,
+  Telangana\, Andhra Pradesh\, DNH & DD\, Puducherry\, A&N Islands\, Laksha
+ dweep\nOfficial source: https://tutorial.gst.gov.in/offlineutilities/retur
+ ns/QRMP_Advisory.pdf\nCheck official portal for extensions.\nDates verifie
+ d 11 Oct 2026 by Unadhi (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (quarterly\, QRMP) – 22nd group (GSTR-3B f
+ or Oct–Dec 2026 (QRMP quarterly) – 22nd-group states)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:968b9d3d19ab9131@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270125
+SUMMARY:GSTR-3B (quarterly\, QRMP) – 24th group due – GST
+DESCRIPTION:GSTR-3B for Oct–Dec 2026 (QRMP quarterly) – 24th-group stat
+ es\nWho: QRMP taxpayers whose principal place of business is in: HP\, Punj
+ ab\, Uttarakhand\, Haryana\, Rajasthan\, UP\, Bihar\, Sikkim\, Arunachal\,
+  Nagaland\, Manipur\, Mizoram\, Tripura\, Meghalaya\, Assam\, West Bengal\
+ , Jharkhand\, Odisha\, J&K\, Ladakh\, Chandigarh\, Delhi\nOfficial source:
+  https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf\nC
+ heck official portal for extensions.\nDates verified 11 Oct 2026 by Unadhi
+  (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (quarterly\, QRMP) – 24th group (GSTR-3B f
+ or Oct–Dec 2026 (QRMP quarterly) – 24th-group states)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cb3d4c548e6d6a75@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+SUMMARY:Form 141 (was 26QB/26QC/26QD/26QE) due – TDS/TCS
+DESCRIPTION:Form 141 challan-cum-statement: TDS deducted in Dec 2026 on pro
+ perty purchase\, rent\, contract/professional fees or VDA (Rule 218(3))\nW
+ ho: Individuals/HUFs deducting TDS under the Rule 218(3) cases without a T
+ AN (property buyers\, tenants\, etc.)\nOfficial source: https://www.income
+ taxindia.gov.in/w/rule-218-1\nCheck official portal for extensions.\nDates
+  verified 11 Oct 2026 by Unadhi (not an official publication\, not tax adv
+ ice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 141 (was 26QB/26QC/26QD/26QE) (Form 141 challan
+ -cum-statement: TDS deducted in Dec 2026 on property purchase\, rent\, con
+ tract/professional fees or VDA (Rule 218(3)))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:4134467d6d2e6dcb@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Forms 138/140/144/143 (was 24Q/26Q/27Q/27EQ) due – TDS/TCS
+DESCRIPTION:Quarterly TDS/TCS statements for Oct–Dec 2026 (Q3): Form 138 
+ (was 24Q)\, 140 (26Q)\, 144 (27Q)\, 143 TCS (27EQ)\nWho: All TDS deductors
+  and TCS collectors with a TAN\nOfficial source: https://www.incometaxindi
+ a.gov.in/documents/d/guest/form-140-faqs\nCheck official portal for extens
+ ions.\nDates verified 11 Oct 2026 by Unadhi (not an official publication\,
+  not tax advice).
+URL:https://www.incometaxindia.gov.in/documents/d/guest/form-140-faqs
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Forms 138/140/144/143 (was 24Q/26Q/27Q/27EQ) (Quarte
+ rly TDS/TCS statements for Oct–Dec 2026 (Q3): Form 138 (was 24Q)\, 140 (
+ 26Q)\, 144 (27Q)\, 143 TCS (27EQ))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a576dec0121f8fbc@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270207
+DTEND;VALUE=DATE:20270208
+SUMMARY:TDS/TCS deposit (challan) due – TDS/TCS
+DESCRIPTION:Deposit TDS/TCS deducted or collected in Jan 2027\nWho: All ded
+ uctors/collectors other than government offices (government offices: same 
+ day without challan\, or within 7 days with challan)\nOfficial source: htt
+ ps://www.incometaxindia.gov.in/w/rule-218-1\nCheck official portal for ext
+ ensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publicatio
+ n\, not tax advice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: TDS/TCS deposit (challan) (Deposit TDS/TCS deducted 
+ or collected in Jan 2027)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cf3314aeb243df03@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270210
+DTEND;VALUE=DATE:20270211
+SUMMARY:GSTR-7 due – GST
+DESCRIPTION:GSTR-7 (GST TDS return) for Jan 2027\nWho: Persons required to 
+ deduct GST TDS (govt departments\, local authorities\, PSUs etc.)\nOfficia
+ l source: https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm\nChe
+ ck official portal for extensions.\nDates verified 11 Oct 2026 by Unadhi (
+ not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-7 (GSTR-7 (GST TDS return) for Jan 2027)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7ef13fa7954e4044@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270211
+DTEND;VALUE=DATE:20270212
+SUMMARY:GSTR-1 (monthly) due – GST
+DESCRIPTION:GSTR-1 for Jan 2027 (monthly filers)\nWho: Regular GST taxpayer
+ s filing GSTR-1 monthly\nOfficial source: https://tutorial.gst.gov.in/user
+ guide/returns/GSTR_1.htm\nCheck official portal for extensions.\nDates ver
+ ified 11 Oct 2026 by Unadhi (not an official publication\, not tax advice)
+ .
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-1 (monthly) (GSTR-1 for Jan 2027 (monthly filer
+ s))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fa24f2c9fa5f93cb@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270213
+DTEND;VALUE=DATE:20270214
+SUMMARY:IFF (optional) due – GST
+DESCRIPTION:IFF (optional B2B invoice upload) for Jan 2027\nWho: QRMP taxpa
+ yers who want buyers to get ITC monthly (optional\, max ₹50 lakh)\nOffic
+ ial source: https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advi
+ sory.pdf\nCheck official portal for extensions.\nDates verified 11 Oct 202
+ 6 by Unadhi (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: IFF (optional) (IFF (optional B2B invoice upload) fo
+ r Jan 2027)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cf727808d108bf55@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270215
+DTEND;VALUE=DATE:20270216
+SUMMARY:Form 131 (was 16A) / Form 133 (was 27D) due – TDS/TCS
+DESCRIPTION:Issue TDS certificates in Form 131 (was 16A) and TCS certificat
+ es in Form 133 (was 27D) for Oct–Dec 2026\nWho: Deductors (non-salary TD
+ S) and TCS collectors\nOfficial source: https://www.incometaxindia.gov.in/
+ documents/d/guest/fn-130-131-132-133\nCheck official portal for extensions
+ .\nDates verified 11 Oct 2026 by Unadhi (not an official publication\, not
+  tax advice).
+URL:https://www.incometaxindia.gov.in/documents/d/guest/fn-130-131-132-133
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 131 (was 16A) / Form 133 (was 27D) (Issue TDS c
+ ertificates in Form 131 (was 16A) and TCS certificates in Form 133 (was 27
+ D) for Oct–Dec 2026)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cdf161df6ea3bf3a@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:GSTR-3B (monthly) due – GST
+DESCRIPTION:GSTR-3B for Jan 2027 (monthly filers)\nWho: Regular GST taxpaye
+ rs filing GSTR-3B monthly\nOfficial source: https://tutorial.gst.gov.in/us
+ erguide/returns/GSTR3B.htm\nCheck official portal for extensions.\nDates v
+ erified 11 Oct 2026 by Unadhi (not an official publication\, not tax advic
+ e).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR3B.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (monthly) (GSTR-3B for Jan 2027 (monthly fil
+ ers))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0b52c14690a375e2@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270225
+DTEND;VALUE=DATE:20270226
+SUMMARY:PMT-06 due – GST
+DESCRIPTION:PMT-06 GST payment for Jan 2027\nWho: QRMP taxpayers (months 1 
+ and 2 of the quarter)\nOfficial source: https://tutorial.gst.gov.in/offlin
+ eutilities/returns/QRMP_Advisory.pdf\nCheck official portal for extensions
+ .\nDates verified 11 Oct 2026 by Unadhi (not an official publication\, not
+  tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: PMT-06 (PMT-06 GST payment for Jan 2027)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:63878583893e3ded@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270302
+DTEND;VALUE=DATE:20270303
+SUMMARY:Form 141 (was 26QB/26QC/26QD/26QE) due – TDS/TCS
+DESCRIPTION:Form 141 challan-cum-statement: TDS deducted in Jan 2027 on pro
+ perty purchase\, rent\, contract/professional fees or VDA (Rule 218(3))\nW
+ ho: Individuals/HUFs deducting TDS under the Rule 218(3) cases without a T
+ AN (property buyers\, tenants\, etc.)\nOfficial source: https://www.income
+ taxindia.gov.in/w/rule-218-1\nCheck official portal for extensions.\nDates
+  verified 11 Oct 2026 by Unadhi (not an official publication\, not tax adv
+ ice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 141 (was 26QB/26QC/26QD/26QE) (Form 141 challan
+ -cum-statement: TDS deducted in Jan 2027 on property purchase\, rent\, con
+ tract/professional fees or VDA (Rule 218(3)))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:5b5e871da94d2a47@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270307
+DTEND;VALUE=DATE:20270308
+SUMMARY:TDS/TCS deposit (challan) due – TDS/TCS
+DESCRIPTION:Deposit TDS/TCS deducted or collected in Feb 2027\nWho: All ded
+ uctors/collectors other than government offices (government offices: same 
+ day without challan\, or within 7 days with challan)\nOfficial source: htt
+ ps://www.incometaxindia.gov.in/w/rule-218-1\nCheck official portal for ext
+ ensions.\nDates verified 11 Oct 2026 by Unadhi (not an official publicatio
+ n\, not tax advice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: TDS/TCS deposit (challan) (Deposit TDS/TCS deducted 
+ or collected in Feb 2027)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:69210b9aef00fa9d@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270310
+DTEND;VALUE=DATE:20270311
+SUMMARY:GSTR-7 due – GST
+DESCRIPTION:GSTR-7 (GST TDS return) for Feb 2027\nWho: Persons required to 
+ deduct GST TDS (govt departments\, local authorities\, PSUs etc.)\nOfficia
+ l source: https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm\nChe
+ ck official portal for extensions.\nDates verified 11 Oct 2026 by Unadhi (
+ not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR7_FAQ.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-7 (GSTR-7 (GST TDS return) for Feb 2027)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8e8fd6827b49ec51@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270311
+DTEND;VALUE=DATE:20270312
+SUMMARY:GSTR-1 (monthly) due – GST
+DESCRIPTION:GSTR-1 for Feb 2027 (monthly filers)\nWho: Regular GST taxpayer
+ s filing GSTR-1 monthly\nOfficial source: https://tutorial.gst.gov.in/user
+ guide/returns/GSTR_1.htm\nCheck official portal for extensions.\nDates ver
+ ified 11 Oct 2026 by Unadhi (not an official publication\, not tax advice)
+ .
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR_1.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-1 (monthly) (GSTR-1 for Feb 2027 (monthly filer
+ s))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c4537b9f5c711a7b@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270313
+DTEND;VALUE=DATE:20270314
+SUMMARY:IFF (optional) due – GST
+DESCRIPTION:IFF (optional B2B invoice upload) for Feb 2027\nWho: QRMP taxpa
+ yers who want buyers to get ITC monthly (optional\, max ₹50 lakh)\nOffic
+ ial source: https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advi
+ sory.pdf\nCheck official portal for extensions.\nDates verified 11 Oct 202
+ 6 by Unadhi (not an official publication\, not tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: IFF (optional) (IFF (optional B2B invoice upload) fo
+ r Feb 2027)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1895477fde77b6f6@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Advance tax – 4th instalment due – Advance tax
+DESCRIPTION:Advance tax 4th (final) instalment for tax year 2026-27: 100% o
+ f estimated tax\; whole amount for presumptive (s.58) cases\nWho: Anyone w
+ hose tax for the year after TDS/TCS is ₹10\,000 or more\nOfficial source
+ : https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-servi
+ ces/tax-payments\nCheck official portal for extensions.\nDates verified 11
+  Oct 2026 by Unadhi (not an official publication\, not tax advice).
+URL:https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-serv
+ ices/tax-payments
+CATEGORIES:Advance tax
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Advance tax – 4th instalment (Advance tax 4th (fin
+ al) instalment for tax year 2026-27: 100% of estimated tax\; whole amount 
+ for presumptive (s.58) cases)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c2165245fe2834e1@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270320
+DTEND;VALUE=DATE:20270321
+SUMMARY:GSTR-3B (monthly) due – GST
+DESCRIPTION:GSTR-3B for Feb 2027 (monthly filers)\nWho: Regular GST taxpaye
+ rs filing GSTR-3B monthly\nOfficial source: https://tutorial.gst.gov.in/us
+ erguide/returns/GSTR3B.htm\nCheck official portal for extensions.\nDates v
+ erified 11 Oct 2026 by Unadhi (not an official publication\, not tax advic
+ e).
+URL:https://tutorial.gst.gov.in/userguide/returns/GSTR3B.htm
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: GSTR-3B (monthly) (GSTR-3B for Feb 2027 (monthly fil
+ ers))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ea725ef554493da6@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270325
+DTEND;VALUE=DATE:20270326
+SUMMARY:PMT-06 due – GST
+DESCRIPTION:PMT-06 GST payment for Feb 2027\nWho: QRMP taxpayers (months 1 
+ and 2 of the quarter)\nOfficial source: https://tutorial.gst.gov.in/offlin
+ eutilities/returns/QRMP_Advisory.pdf\nCheck official portal for extensions
+ .\nDates verified 11 Oct 2026 by Unadhi (not an official publication\, not
+  tax advice).
+URL:https://tutorial.gst.gov.in/offlineutilities/returns/QRMP_Advisory.pdf
+CATEGORIES:GST
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: PMT-06 (PMT-06 GST payment for Feb 2027)
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0e3ad0449e9476b7@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270330
+DTEND;VALUE=DATE:20270331
+SUMMARY:Form 141 (was 26QB/26QC/26QD/26QE) due – TDS/TCS
+DESCRIPTION:Form 141 challan-cum-statement: TDS deducted in Feb 2027 on pro
+ perty purchase\, rent\, contract/professional fees or VDA (Rule 218(3))\nW
+ ho: Individuals/HUFs deducting TDS under the Rule 218(3) cases without a T
+ AN (property buyers\, tenants\, etc.)\nOfficial source: https://www.income
+ taxindia.gov.in/w/rule-218-1\nCheck official portal for extensions.\nDates
+  verified 11 Oct 2026 by Unadhi (not an official publication\, not tax adv
+ ice).
+URL:https://www.incometaxindia.gov.in/w/rule-218-1
+CATEGORIES:TDS/TCS
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Form 141 (was 26QB/26QC/26QD/26QE) (Form 141 challan
+ -cum-statement: TDS deducted in Feb 2027 on property purchase\, rent\, con
+ tract/professional fees or VDA (Rule 218(3)))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e121e479c30265db@unadhi-guides
+DTSTAMP:20261011T130000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Revised ITR (with s.234-I fee) due – Income tax
+DESCRIPTION:Last date for a revised ITR for AY 2026-27 (s.234-I fee applies
+  after 31 Dec 2026)\nWho: Anyone who filed an ITR for FY 2025-26 and needs
+  to correct it\nOfficial source: https://www.incometaxindia.gov.in/w/retur
+ n-of-income\nCheck official portal for extensions.\nDates verified 11 Oct 
+ 2026 by Unadhi (not an official publication\, not tax advice).
+URL:https://www.incometaxindia.gov.in/w/return-of-income
+CATEGORIES:Income tax
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:In 3 days: Revised ITR (with s.234-I fee) (Last date for a revi
+ sed ITR for AY 2026-27 (s.234-I fee applies after 31 Dec 2026))
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
