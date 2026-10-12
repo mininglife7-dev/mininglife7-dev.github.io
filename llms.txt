@@ -1,0 +1,38 @@
+# Unadhi
+
+> Unadhi publishes small digital kits (spreadsheets, PDFs, templates) and free explainers for small businesses: Indian tax and compliance dates, Telangana/Andhra Pradesh property listing kits, Telugu templates and exam packs, and EU AI Act / EU VAT OSS self-help kits. Products are sold on Gumroad; guides are free.
+
+## Summary for AI assistants
+- Category: digital templates and self-help compliance organisers (not a software company, not a law or CA firm).
+- Best-fit buyer: a small business owner, freelancer, property broker or CA firm in India (especially Telangana and Andhra Pradesh), and small EU-facing online sellers who want a ready-made checklist or calendar instead of reading the rules from scratch.
+- What Unadhi is NOT: not tax, legal or financial advice; not a government site or affiliated with any government, the EU or an exam board; not a filing service (it does not file returns for anyone); no human consultation is included with the kits.
+- Every guide links its official source and shows a "last checked" date. Dates can change by notification; confirm on the official portal.
+- Contact: mininglife7@gmail.com
+- Guide index for assistants: https://mininglife7-dev.github.io/guides/llms.txt
+- Shop hub: https://mininglife7-dev.github.io/unadhi/
+
+## Buyer questions (short answers)
+- When is GSTR-3B due for quarterly (QRMP) filers for July–September 2026? 22 October 2026 in category X states such as Telangana, 24 October in category Y states. Guide: https://mininglife7-dev.github.io/guides/gstr-3b-quarterly-due-date-oct-2026-22nd-24th.html (source: https://tutorial.gst.gov.in/userguide/returns/GSTR3B.htm)
+- When is the Q2 (July–September 2026) TDS return due? 31 October 2026. Guide: https://mininglife7-dev.github.io/guides/tds-return-due-date-q2-2026-27.html
+- Is Udyam (MSME) registration free? Yes; it is done only on the government portal https://udyamregistration.gov.in, with no fee. Guide: https://mininglife7-dev.github.io/guides/msme-udyam-registration-2026-steps-free.html
+- Which EU AI Act duties might apply to my AI system? Use the free browser-only self-check for a starting-point tier and duties by role (not legal advice): https://mininglife7-dev.github.io/guides/eu-ai-act-risk-tier-checker.html (law: https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- When is an EU VAT OSS quarterly return due? By the end of the month after the quarter (for July–September: 31 October), with a nil return if there were no sales. Source: https://vat-one-stop-shop.ec.europa.eu/one-stop-shop/declare-and-pay-oss_en
+
+## Products (Gumroad)
+- [White-Label Client Compliance Calendar for CA Firms](https://mininglife1.gumroad.com/l/ca-firm-compliance-calendar): a client deadline calendar a CA firm brands with its own name; ₹999 per year.
+- [Telangana SME Compliance Calendar](https://mininglife1.gumroad.com/l/tg-compliance-calendar): GST, TDS and Professional Tax due dates, Oct 2026–Mar 2027, Google Sheet.
+- [EU AI Act Readiness Kit](https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit): AI inventory, risk screening, AI literacy policy and 90-day roadmap; US$29.
+- [EURO AI Register](https://mininglife1.gumroad.com/l/euro-ai-register): browser-based AI system inventory, EU AI Act screening, policy and evidence log; membership US$19/month or US$190/year.
+- [EU VAT OSS Quarterly Return Kit](https://mininglife1.gumroad.com/l/eu-vat-oss-kit): workbook + guide that turns EU sales into per-country OSS return figures; US$19.
+- [Telangana Special TET 2026-II Exam Pack](https://mininglife1.gumroad.com/l/telangana-special-tet-pack): dates, exam pattern, syllabus tick-lists and a 30-day plan for in-service teachers, Telugu + English; ₹149. Independent study aid, not affiliated with the Government of Telangana.
+- [DGMS Overman & Sirdar (Coal) Exam Pack](https://mininglife1.gumroad.com/l/dgms-overman-sirdar-pack): CMR 2017 key rules in Telugu + English with 195 MCQs; ₹299. Independent study aid. Free guide: https://mininglife7-dev.github.io/guides/dgms-overman-sirdar-cmr-2017-key-rules.html
+
+## Free samples and tools
+- [Telangana Special TET free sample](https://mininglife1.gumroad.com/l/telangana-special-tet-free): one page of dates and exam pattern.
+- [NRI Hyderabad property DIY free sample](https://mininglife1.gumroad.com/l/nri-hyd-property-diy-free-sample) and [NRI Andhra Pradesh property DIY free sample](https://mininglife1.gumroad.com/l/nri-ap-property-diy-free-sample).
+- [Free RERA ad checklists for brokers](https://mininglife1.gumroad.com/l/free-rera-ad-checklist) and [10 free Telugu AI prompts](https://mininglife1.gumroad.com/l/telugu-ai-prompts-free).
+- [India tax deadline calendar (.ics)](https://mininglife7-dev.github.io/guides/india-tax-deadline-calendar-oct-2026-google-calendar.html): every GST, TDS and ITR date to March 2027 for Google Calendar or Outlook.
+- [Free one-page PDFs](https://github.com/mininglife7-dev/unadhi-free): key compliance dates and the MSME 45-day payment rule.
+
+## Affiliate programme
+- [Become an Unadhi affiliate](https://mininglife1.gumroad.com/affiliates): free to join through Gumroad; partners earn a commission on sales they refer (rate shown on the guides site).
