@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GSTR-3B Late Fee &amp; Interest Calculator (Section 47 caps + Section 50 @18%) | Unadhi</title>
+<meta name="description" content="Free GSTR-3B late fee and Section 50 interest calculator. Enter due date, filing date, nil/turnover band and cash liability to get days late, CGST/SGST late fee with caps, 18% interest and total.">
+<link rel="canonical" href="https://unadhi.com/tools/gstr3b-late-fee-calculator.html">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f6f7f9;color:#1b1f24;line-height:1.5}
+main{max-width:720px;margin:0 auto;padding:16px}h1{font-size:1.5rem;margin:.5em 0}.lead{background:#fff;border-left:4px solid #0a6;padding:12px;border-radius:6px}
+.card{background:#fff;border-radius:10px;padding:16px;margin:16px 0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+label{display:block;font-weight:600;margin-top:12px}input,select{width:100%;padding:10px;font-size:1rem;border:1px solid #bbb;border-radius:6px;margin-top:4px}
+button{margin-top:16px;width:100%;padding:12px;font-size:1rem;background:#0a6;color:#fff;border:0;border-radius:6px;cursor:pointer}
+table{width:100%;border-collapse:collapse}td{padding:6px;border-bottom:1px solid #eee}td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.total td{font-weight:700;font-size:1.1rem}.cta{display:block;margin-top:16px;padding:12px;background:#fff7e0;border:1px solid #e6c200;border-radius:6px;color:#1b1f24;text-decoration:none}
+.note{font-size:.85rem;color:#555}footer{text-align:center;font-size:.85rem;color:#555;padding:24px 16px}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the late fee for filing GSTR-3B late?","acceptedAnswer":{"@type":"Answer","text":"For tax periods from June 2021 onward: Rs 50 per day (Rs 25 CGST + Rs 25 SGST), or Rs 20 per day (Rs 10 + Rs 10) for a nil return, capped at Rs 500 total for nil returns, Rs 2,000 for turnover up to Rs 1.5 crore, Rs 5,000 for Rs 1.5–5 crore, and Rs 10,000 above Rs 5 crore (Notification 19/2021-CT and Section 47)."}},
+{"@type":"Question","name":"What interest applies on late GST payment?","acceptedAnswer":{"@type":"Answer","text":"Section 50(1) interest at 18% per annum on the net tax paid in cash, from the day after the due date until the date of payment (Notification 13/2017-CT)."}},
+{"@type":"Question","name":"Is interest charged on tax paid through input tax credit?","acceptedAnswer":{"@type":"Answer","text":"No. Under the proviso to Section 50(1), interest on delayed returns is charged only on the portion of tax paid by debiting the electronic cash ledger."}}
+]}
+</script>
+</head>
+<body>
+<main>
+<h1>GSTR-3B Late Fee &amp; Interest Calculator</h1>
+<p class="lead">A late GSTR-3B (for June 2021 onward) costs Rs 50 per day in late fee (Rs 25 CGST + Rs 25 SGST), or Rs 20 per day for a nil return. The fee is capped at Rs 500 for nil returns and Rs 2,000, Rs 5,000 or Rs 10,000 for everyone else, depending on last year's turnover. On top of that you pay 18% p.a. Section 50 interest on the tax you pay in cash, for each day after the due date.</p>
+
+<div class="card">
+<label for="due">Due date of the return (e.g. 20th of next month)</label><input type="date" id="due">
+<label for="filed">Actual filing / payment date</label><input type="date" id="filed">
+<label for="nil">Return type</label>
+<select id="nil"><option value="no">Has tax payable (not nil)</option><option value="yes">Nil return (no tax payable)</option></select>
+<label for="band">Aggregate turnover in preceding FY</label>
+<select id="band"><option value="upto1.5">Up to Rs 1.5 crore</option><option value="1.5to5">Rs 1.5 crore – Rs 5 crore</option><option value="above5">Above Rs 5 crore</option></select>
+<label for="cash">Net tax liability paid in cash (Rs, all heads)</label><input type="number" id="cash" min="0" step="1" value="0" inputmode="decimal">
+<button id="go" type="button">Calculate</button>
+</div>
+
+<div class="card" id="out" hidden>
+<table>
+<tr><td>Days late</td><td id="r-days"></td></tr>
+<tr><td>Late fee – CGST</td><td id="r-cgst"></td></tr>
+<tr><td>Late fee – SGST</td><td id="r-sgst"></td></tr>
+<tr><td>Late fee – total</td><td id="r-fee"></td></tr>
+<tr><td>Section 50 interest @18% p.a.</td><td id="r-int"></td></tr>
+<tr class="total"><td>Total</td><td id="r-total"></td></tr>
+</table>
+<p class="note" id="r-note"></p>
+<a class="cta" href="https://mininglife1.gumroad.com/l/tg-compliance-calendar">Track every Telangana GST/TDS/PT deadline: get a free sample sheet (reply to mininglife7@gmail.com) or the full calendar</a>
+</div>
+
+<div class="card note">
+<h2 style="font-size:1rem">Rules used and when we checked them</h2>
+<ul>
+<li><strong>Daily rates</strong>: Rs 25/day per Act, or Rs 10/day per Act for a nil return. Source: <a href="https://gstcouncil.gov.in/sites/default/files/2024-05/notfctn-76-central-tax-english-2018.pdf">Notification 76/2018-Central Tax</a> (gstcouncil.gov.in). <em>Checked 13 Oct 2026.</em></li>
+<li><strong>Caps</strong> for tax periods from June 2021: nil return Rs 250; turnover up to Rs 1.5 crore Rs 1,000; turnover over Rs 1.5 crore up to Rs 5 crore Rs 2,500 (per Act). Source: <a href="https://gstcouncil.gov.in/node/4305">Notification 19/2021-Central Tax</a> (<a href="https://gstcouncil.gov.in/sites/default/files/2024-05/notfctn-19-central-tax-english-2021.pdf">PDF</a>). <em>Checked 13 Oct 2026.</em></li>
+<li><strong>Above Rs 5 crore</strong>: Notification 19/2021 sets no separate cap for this band, so the statutory maximum applies. Section 47(1) sets Rs 100/day up to Rs 5,000 (per Act); the Rs 25/day reduced rate still applies. Source: <a href="https://taxinformation.cbic.gov.in/content/html/tax_repository/gst/acts/2017_CGST_act/active/chapter9/section47_v1.00.html">CGST Act s.47 (taxinformation.cbic.gov.in)</a>. <em>Checked 13 Oct 2026.</em></li>
+<li><strong>Interest rate</strong>: 18% p.a. under Section 50(1). Source: <a href="https://gstcouncil.gov.in/sites/default/files/2024-04/notfctn-13-central-tax-english.pdf">Notification 13/2017-Central Tax</a> (gstcouncil.gov.in). <em>Checked 13 Oct 2026.</em></li>
+<li><strong>Cash-only interest</strong>: interest is charged only on the part of the tax paid through the electronic cash ledger. This is the proviso to Section 50(1), substituted by s.112 of the Finance Act 2021 with effect from 1 July 2017. It does not apply if the return is filed after proceedings under s.73/74 have started. Source: <a href="https://indiacode.ecourtsindia.com/finance-act-2021/section/112/">Finance Act 2021 s.112</a> (secondary: eCourtsIndia mirror of India Code). <em>Checked 13 Oct 2026.</em> The date s.112 came into force (1 June 2021, S.O. 2129(E)) was confirmed on a secondary site (gstpress.com). Its number, Notification 16/2021-CT, comes from a secondary source only (consultease.com) and is <em>not re-verified</em> on an official site.</li>
+<li><strong>Later changes</strong>: the only later amendment we found is Notification 33/2021-CT, which extended the old amnesty filing window to 30 Nov 2021 and did not change the caps (secondary: finodha.in). <em>Checked 13 Oct 2026.</em> We found no 2022–2026 notification that changes these caps, but the search was not exhaustive, so this is <em>not re-verified</em> as complete.</li>
+</ul>
+<p><strong>Not covered:</strong> one-off waivers (for example for disasters or portal glitches), quarterly QRMP filers, tax periods before June 2021, and 24% interest under s.50(3). Interest is worked out as actual days ÷ 365 and assumes the cash was paid on the filing date. The amount on the GST portal is final.</p>
+</div>
+</main>
+<footer>Not tax or legal advice. Confirm on the GST portal.<br>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></footer>
+<script>
+function calcGstr3b(dueStr, filedStr, isNil, band, cash) {
+  var d = Date.parse(dueStr + "T00:00:00Z"), f = Date.parse(filedStr + "T00:00:00Z");
+  if (isNaN(d) || isNaN(f)) throw new Error("Invalid date");
+  var days = Math.max(0, Math.round((f - d) / 86400000));
+  var perDay = isNil ? 10 : 25;
+  var cap = isNil ? 250 : ({"upto1.5":1000, "1.5to5":2500, "above5":5000})[band];
+  if (cap === undefined) throw new Error("Invalid band");
+  var perAct = Math.min(days * perDay, cap);
+  var c = Math.max(0, Number(cash) || 0);
+  var interest = isNil ? 0 : Math.round(c * 0.18 * days / 365 * 100) / 100;
+  return {days:days, cgst:perAct, sgst:perAct, fee:perAct*2, interest:interest, total:Math.round((perAct*2 + interest)*100)/100, capped: days*perDay > cap};
+}
+if (typeof module !== "undefined") module.exports = { calcGstr3b: calcGstr3b };
+if (typeof document !== "undefined") {
+  var $ = function(id){return document.getElementById(id);};
+  var inr = function(n){return "Rs " + n.toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2});};
+  $("nil").addEventListener("change", function(){ if ($("nil").value==="yes") $("cash").value=0; });
+  $("go").addEventListener("click", function(){
+    try {
+      var r = calcGstr3b($("due").value, $("filed").value, $("nil").value==="yes", $("band").value, $("cash").value);
+      $("r-days").textContent = r.days; $("r-cgst").textContent = inr(r.cgst); $("r-sgst").textContent = inr(r.sgst);
+      $("r-fee").textContent = inr(r.fee); $("r-int").textContent = inr(r.interest); $("r-total").textContent = inr(r.total);
+      $("r-note").textContent = r.days===0 ? "Filed on time: no late fee or interest." : (r.capped ? "Late fee cap applied." : "Late fee below cap.");
+      $("out").hidden = false;
+    } catch(e) { alert("Please enter both dates."); }
+  });
+}
+</script>
+</body>
+</html>
