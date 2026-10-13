@@ -1,239 +1,116 @@
-<!doctype html>
-<html lang="hi-IN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Asha by HaanJi: AI receptionist for dental &amp; skin clinics | हिंदी + English</title>
-<meta name="description" content="Asha is an AI receptionist for dental and skin clinics. It talks in Hindi, English and Hinglish, answers your clinic FAQs and takes appointment requests for your staff to confirm. Phone answering starts after our phone line setup (in progress). No setup fee; ₹4,000/month.">
-<meta name="theme-color" content="#0f766e">
-<!-- DRAFT v2 (28 Sep 2026). Every claim is checked against sales/CLAIMS.md. Patterns used are listed in research/WORLD_BEST_BENCHMARK.md §2. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en-IN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unadhi · One mind | Practical digital kits and free tools for small businesses</title>
+<meta name="description" content="Unadhi makes plain, source-checked digital kits and free tools for small businesses in India and beyond: tax and compliance dates, property listing kits, Telugu templates and EU AI Act help. Sold on Gumroad.">
+<link rel="canonical" href="https://unadhi.com/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Unadhi">
+<meta property="og:title" content="Unadhi · One mind | Digital kits and free tools for small businesses"><meta property="og:description" content="Plain, source-checked digital kits and free tools for small businesses: tax dates, property kits, Telugu templates and EU AI Act help.">
+<meta property="og:url" content="https://unadhi.com/"><meta property="og:image" content="https://mininglife7-dev.github.io/unadhi/assets/img/og-image.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Unadhi · One mind | Digital kits and free tools for small businesses">
+<meta name="twitter:description" content="Plain, source-checked digital kits and free tools for small businesses: tax dates, property kits, Telugu templates and EU AI Act help."><meta name="twitter:image" content="https://mininglife7-dev.github.io/unadhi/assets/img/og-image.png">
+<meta name="theme-color" content="#0A3F3B">
+<link rel="icon" href="/unadhi/favicon.ico" sizes="any"><link rel="icon" href="/unadhi/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/unadhi/apple-touch-icon.png"><link rel="manifest" href="/unadhi/site.webmanifest">
+<link rel="preload" href="/unadhi/assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/unadhi/assets/style.css">
 <style>
-:root{--b:#0f766e;--bd:#115e59;--bl:#f0fdfa;--s:#f97316;--ink:#0f172a;--mut:#475569;--line:#e2e8f0;--amb:#fffbeb;--ambl:#fcd34d}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,"Noto Sans Devanagari",system-ui,sans-serif;color:var(--ink);line-height:1.55;background:#fff}
-.hi{font-family:"Noto Sans Devanagari",Inter,sans-serif}
-a{color:var(--b)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
-header{position:sticky;top:0;z-index:9;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-weight:800;font-size:20px;color:var(--bd);text-decoration:none;display:flex;gap:8px;align-items:center}
-.logo span.m{width:34px;height:34px;border-radius:10px;background:var(--b);color:#fff;display:grid;place-items:center;font-size:15px}
-nav a{margin-left:18px;color:var(--mut);text-decoration:none;font-size:14px}
-@media(max-width:760px){nav .opt{display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:12px;font-weight:700;text-decoration:none;font-size:16px}
-.btn-p{background:var(--b);color:#fff}.btn-p:hover{background:var(--bd)}
-.btn-w{background:#25d366;color:#fff}.btn-o{border:2px solid var(--line);color:var(--ink);background:#fff}
-.hero{background:linear-gradient(180deg,var(--bl),#fff);padding:48px 0 36px}
-.hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
-@media(max-width:860px){.hero .grid{grid-template-columns:1fr}}
-.pill{display:inline-block;background:#ccfbf1;color:var(--bd);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:99px}
-h1{font-size:40px;line-height:1.15;margin:14px 0 8px}
-@media(max-width:600px){h1{font-size:30px}}
-h1 .en{display:block;font-size:.62em;color:var(--mut);font-weight:600;margin-top:8px}
-.lead{font-size:18px;color:var(--mut);max-width:600px}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 10px}
-.guar{margin-top:14px;border:2px solid var(--b);background:#fff;border-radius:14px;padding:14px 16px;font-size:15px}
-.guar b{color:var(--bd)}
-.note{font-size:13px;color:var(--mut)}
-.status{background:var(--amb);border:1px solid var(--ambl);border-radius:12px;padding:10px 14px;font-size:14px;margin-top:12px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 50px rgba(15,118,110,.10);padding:18px}
-.bub{border-radius:16px;padding:9px 13px;margin:8px 0;max-width:88%;font-size:15px}
-.pt{background:#f1f5f9}.ai{background:var(--b);color:#fff;margin-left:auto}
-section{padding:56px 0}
-h2{font-size:30px;margin:0 0 6px;line-height:1.2}
-h2 .en{display:block;font-size:.6em;color:var(--mut);font-weight:600}
-.sub{color:var(--mut);margin:0 0 26px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:860px){.g3,.g4{grid-template-columns:1fr 1fr}}@media(max-width:560px){.g3,.g4{grid-template-columns:1fr}}
-.box{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
-.box h3{margin:6px 0 6px;font-size:17px}
-.num{width:34px;height:34px;border-radius:99px;background:var(--b);color:#fff;display:grid;place-items:center;font-weight:800}
-.alt{background:#f8fafc}
-.col-ok{border-top:5px solid #10b981}.col-ph{border-top:5px solid #f59e0b}.col-soon{border-top:5px solid #94a3b8}
-ul.clean{padding-left:0;list-style:none;margin:0}ul.clean li{padding:6px 0 6px 26px;position:relative;font-size:15px}
-ul.clean li:before{content:"✓";position:absolute;left:0;color:#10b981;font-weight:800}
-.col-ph ul.clean li:before{content:"☎";color:#d97706}.col-soon ul.clean li:before{content:"◷";color:#94a3b8}
-.price{max-width:640px;margin:0 auto;border:2px solid var(--b);border-radius:22px;padding:28px;background:#fff}
-.big{font-size:44px;font-weight:800}
-table.cmp{width:100%;border-collapse:collapse;font-size:15px;margin-top:10px}
-table.cmp td{border-bottom:1px solid var(--line);padding:9px 6px;vertical-align:top}
-.founder{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center}
-.avatar{width:120px;height:120px;border-radius:99px;background:#ccfbf1;display:grid;place-items:center;font-size:42px;font-weight:800;color:var(--bd)}
-@media(max-width:560px){.founder{grid-template-columns:1fr}}
-details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;background:#fff}
-summary{cursor:pointer;font-weight:700}
-label{display:block;font-size:14px;color:var(--mut)}input{width:100%;padding:9px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;margin-top:4px}
-.res{background:var(--bl);border:1px solid #99f6e4;border-radius:14px;padding:16px;margin-top:14px}
-footer{background:var(--ink);color:#cbd5e1;padding:32px 0;font-size:14px}footer a{color:#fff}
-.float{position:fixed;right:16px;bottom:16px;z-index:10;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.lockup{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lockup img{height:40px;width:auto;display:block}
+.lockup span{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:1.25rem;color:var(--teal);white-space:nowrap}
+.lockup span b{font-weight:600;color:var(--terra)}
+.hero .hero-logo{height:72px;width:auto;margin-bottom:18px}
+.hero .pair{font-family:Fraunces,Georgia,serif;color:var(--saffron);font-size:1.3rem;margin:0 0 .4em}
+.card .meta{font-size:.9rem;color:#4b605c;margin:.2em 0 .8em}
+.card .price{font-size:1.3rem}
+.card .btn{margin-top:4px}
+.group{margin-top:34px}.group:first-of-type{margin-top:8px}
+@media (max-width:420px){.lockup span{font-size:1.05rem}.lockup img{height:34px}}
 </style>
-</head>
-<body>
-
-<header><div class="wrap">
-  <a class="logo" href="#"><span class="m hi">जी</span>HaanJi<span style="color:var(--s)">.</span> <span style="font-weight:600;color:var(--mut);font-size:14px">· Asha</span></a>
-  <nav><a class="opt" href="#today">What works today</a><a class="opt" href="#how">How it works</a><a class="opt" href="#price">Price</a><a class="opt" href="#faq">FAQ</a>
-  <a href="https://wa.me/919182163868?text=Namaste%20HaanJi%2C%20mujhe%20Asha%20ka%2010-min%20demo%20chahiye." style="color:var(--b);font-weight:700">WhatsApp</a></nav>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Unadhi", "slogan": "Unadhi · One mind", "url": "https://unadhi.com/", "logo": "https://mininglife7-dev.github.io/unadhi/android-chrome-512x512.png", "email": "mininglife7@gmail.com", "sameAs": ["https://mininglife1.gumroad.com", "https://github.com/mininglife7-dev/unadhi-free"]}</script>
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+<a class="brand lockup" href="/" aria-label="Unadhi · One mind, home"><img src="/unadhi/assets/img/icon.svg" alt="" width="40" height="40"><span>Unadhi <b>·</b> One mind</span></a>
+<button class="menu-btn" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'))">Menu</button>
+<nav id="nav" aria-label="Main"><ul><li><a href="#free">Free tools</a></li><li><a href="#shop">Kits</a></li><li><a href="#how">How we work</a></li><li><a href="#contact">Contact</a></li><li><a href="https://mininglife1.gumroad.com">Shop on Gumroad</a></li></ul></nav>
 </div></header>
-
-<!-- HERO: pattern = one clear demo CTA (Dialzara/Smith.ai), risk reversal in first screen (Smith.ai/Hellodesk), honest status (Practo-style) -->
-<section class="hero"><div class="wrap grid">
-  <div>
-    <span class="pill">Dental &amp; skin clinics · Tier-2 / Tier-3 India</span>
-    <h1 class="hi">जब staff फ़ोन नहीं उठा पाता, Asha बात करती है।
-      <span class="en">Asha: an AI receptionist that talks to your patients in Hindi, English &amp; Hinglish.</span></h1>
-    <p class="lead">Asha answers your clinic's common questions (timings, fees, address, doctors) and takes the appointment <b>request</b>: name, phone, day, time, reason. Your staff then confirm it. <span class="hi">आपकी receptionist वही रहती है।</span></p>
-    <div class="cta">
-      <a class="btn btn-p" href="https://mininglife7-dev.github.io/asha.html">▶ <span class="hi">Asha को सुनिए</span> · Hear the demo</a>
-      <a class="btn btn-w" href="https://wa.me/919182163868?text=Namaste%20HaanJi%2C%20mujhe%20Asha%20ka%2010-min%20demo%20chahiye.">WhatsApp: 10-min demo</a>
-    </div>
-    <p class="note">Demo = sample conversation on sample clinic data. The 10-min demo call is set up with your clinic's details where possible.</p>
-    <div class="guar">🛡️ <b class="hi">कोई सेटअप शुल्क नहीं।</b> No setup fee. ₹4,000/month, cancel anytime with effect from the next cycle.</div>
-    <div class="status"><b>Honest status:</b> Asha runs today as a demo. <b>Answering calls on your clinic number starts after our phone line setup (in progress)</b>. We target go-live within 7 days of your clinic details.</div>
-  </div>
-  <div>
-    <div class="card" aria-label="Example conversation (sample)">
-      <div style="display:flex;justify-content:space-between;align-items:center"><b>Example conversation</b><span class="note" style="background:#f1f5f9;padding:3px 9px;border-radius:99px">Sample</span></div>
-      <div class="bub pt hi">नमस्ते, RCT का charge कितना है? और कल शाम appointment मिलेगा?</div>
-      <div class="bub ai hi">नमस्ते! [Clinic's fee as you set it]. कल शाम किस time आना चाहेंगे? अपना नाम और नंबर बता दीजिए।</div>
-      <div class="bub pt">6 baje. Naam Priya, number 98xxxxxx21.</div>
-      <div class="bub ai hi">ठीक है Priya जी, आपकी appointment request clinic staff को दे दी है। Staff confirm करेगा।</div>
-      <p class="note" style="margin:10px 0 0">✎ Appointment request saved for staff · to be confirmed by the clinic. Illustrative example, not a real patient.</p>
-    </div>
-  </div>
+<main id="main">
+<section class="hero"><div class="wrap">
+<img class="hero-logo" src="/unadhi/assets/img/logo-dark.svg" alt="UNADHI" width="290" height="72">
+<p class="pair">Unadhi · One mind</p>
+<h1>Plain answers for small businesses. Official sources. No surprises.</h1>
+<p class="lead">Unadhi makes small digital kits and free tools: tax and compliance dates for India, listing kits for Telangana and Andhra Pradesh property brokers, Telugu templates, and EU AI Act help. Each kit says what it covers, where its facts come from, and what it is not.</p>
+<a class="btn primary" href="#free">Start with the free tools</a><a class="btn ghost" href="https://mininglife1.gumroad.com">See the shop on Gumroad</a>
 </div></section>
 
-<!-- WHAT WORKS TODAY: honesty as a trust signal (Practo FAQ "Will Ray get me more patients? No.") -->
-<section id="today"><div class="wrap">
-  <h2 class="hi">आज क्या चलता है, और क्या बाद में <span class="en">What works today, what needs our phone line, what's coming</span></h2>
-  <p class="sub">No surprises. We'd rather tell you now.</p>
-  <div class="g3">
-    <div class="box col-ok"><h3>✅ Works today (demo)</h3><ul class="clean">
-      <li>Talks in Hindi, English &amp; Hinglish; male or female voice</li>
-      <li>Hands-free: patient can interrupt, Asha stops and listens</li>
-      <li>Answers your clinic FAQs from details you approve</li>
-      <li>Takes appointment requests for staff to confirm (with a calendar file)</li>
-      <li>Flags emergencies &amp; "talk to a human" requests for your staff</li>
-      <li>Instructed never to diagnose or give medical advice</li>
-    </ul></div>
-    <div class="box col-ph"><h3>☎ After our phone line setup (in progress)</h3><ul class="clean">
-      <li>Answers missed &amp; after-hours calls on your clinic number, 24×7</li>
-      <li>Keep your existing number (busy/no-answer calls forward to Asha)</li>
-      <li>Live transfer of urgent calls to a doctor/staff number</li>
-    </ul></div>
-    <div class="box col-soon"><h3>◷ Coming soon, not available yet</h3><ul class="clean">
-      <li>WhatsApp confirmation to patients</li>
-      <li>WhatsApp call summary to the clinic</li>
-      <li>Google Calendar sync</li>
-      <li>More Indian languages</li>
-    </ul></div>
-  </div>
-  <p class="note" style="margin-top:12px">Asha takes <b>requests</b>. It does not book, reschedule or cancel appointments by itself. Your staff stay in control.</p>
+<section class="block" id="start"><div class="wrap"><span class="eyebrow">Start here</span><h2>This week's deadlines, and a free gift</h2><div class="offer-box" style="margin:1.2em 0;padding:12px 16px;background:#fff7e0;border:1px solid #e6c200;border-radius:6px"><p><strong>Due this month:</strong> GSTR-3B for Sep 2026 on 20 Oct (monthly), the Jul–Sep QRMP GSTR-3B on 22 or 24 Oct by state, the tax audit report on 21 Oct, and Q2 TDS returns on 31 Oct. Confirm on the official portals: <a href="https://www.gst.gov.in" rel="nofollow noopener">gst.gov.in</a> and <a href="https://www.incometax.gov.in" rel="nofollow noopener">incometax.gov.in</a>.</p><p><strong>Free gift, no sign-up:</strong> the <a href="https://github.com/mininglife7-dev/unadhi-free/raw/main/O51_Free_Key_Dates_Oct-Nov_2026.pdf">one-page key dates PDF for Oct–Nov 2026</a>, or every date to March 2027 in your <a href="https://unadhi.com/guides/india-tax-deadline-calendar-oct-2026-google-calendar.html">Google Calendar</a>, free.</p><p><strong>Why us:</strong> a small independent team, not a big software suite. <a href="https://www.zoho.com/in/books/pricing/" rel="nofollow noopener">Zoho Books</a> starts at ₹749 per organisation a month (billed annually) for full accounting; our kits do one job each, from ₹99 once. Most kits come with a 7- or 14-day money-back guarantee, stated on each Gumroad page.</p><p><strong>Honest:</strong> every date links to its official source. Find a wrong one? Email mininglife7@gmail.com and we correct the file.</p><p><a href="https://github.com/mininglife7-dev/unadhi-free/raw/main/O51_Free_Key_Dates_Oct-Nov_2026.pdf" rel="noopener" style="display:inline-block;padding:8px 14px;background:#1a5d1a;color:#fff;border-radius:4px;text-decoration:none"><strong>Download the free key dates PDF →</strong></a></p></div></div></section>
+<section class="block" id="free"><div class="wrap"><span class="eyebrow">Free, no sign-up</span><h2>Free tools</h2>
+<div class="cards">
+<div class="card"><span class="tag live">Free</span><h3>India tax deadlines in your Google Calendar</h3><p class="meta">Oct 2026–Mar 2027 · 59 dates · .ics file</p><p>GST, TDS/TCS, advance tax and ITR dates as all-day events, each with a 3-day reminder and a link to the official source. Not tax advice.</p><a class="btn outline" href="https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2Fmininglife7-dev.github.io%2Fguides%2Funadhi-india-tax-deadlines-oct2026-mar2027.ics">Add to Google Calendar</a><a class="btn outline" href="https://mininglife7-dev.github.io/guides/unadhi-india-tax-deadlines-oct2026-mar2027.ics">Download .ics</a></div>
+<div class="card"><span class="tag live">Free PDF</span><h3>Telangana key compliance dates, Oct–Nov 2026</h3><p class="meta">One page · 25 dates</p><p>GST, TDS/TCS, income tax, Telangana Professional Tax, PF/ESI and MCA dates on one page. Not tax advice.</p><a class="btn outline" href="https://github.com/mininglife7-dev/unadhi-free/raw/main/O51_Free_Key_Dates_Oct-Nov_2026.pdf">Download the PDF</a></div>
+<div class="card"><span class="tag live">Free PDF</span><h3>MSME 45-day payment rule cheat sheet</h3><p class="meta">One page</p><p>Who is protected, the due date, interest, filing on the MSME ODR portal and a polite chasing sequence. Not legal advice.</p><a class="btn outline" href="https://github.com/mininglife7-dev/unadhi-free/raw/main/O06_Free_45-Day_Rule_Cheat_Sheet.pdf">Download the cheat sheet</a></div>
+<div class="card"><span class="tag live">Free</span><h3>Plain guides</h3><p class="meta">Indian tax dates, MSME payments, cashbooks and more</p><p>Short guides that point to the official source for every date and rule.</p><a class="btn outline" href="https://mininglife7-dev.github.io/guides/">Read the guides</a></div>
+<div class="card"><span class="tag live">Free</span><h3>EU AI Act risk-tier checker</h3><p class="meta">Runs in your browser · no sign-up</p><p>Answer fixed questions about one AI system and see a starting-point risk tier and the duties for your role, with article and start date. Not legal advice.</p><a class="btn outline" href="https://mininglife7-dev.github.io/guides/eu-ai-act-risk-tier-checker.html">Open the checker</a></div>
+<div class="card"><span class="tag live">Free</span><h3>Free samples and checklists</h3><p class="meta">On Gumroad · pay ₹0 or what you like</p><p><a href="https://mininglife1.gumroad.com/l/free-rera-ad-checklist">RERA ad checklists for brokers (TG + AP)</a><br><a href="https://mininglife1.gumroad.com/l/telugu-ai-prompts-free">10 free Telugu AI prompts</a><br><a href="https://mininglife1.gumroad.com/l/hyd-broker-kit-free-sample">Hyderabad broker kit sample</a><br><a href="https://mininglife1.gumroad.com/l/ap-broker-kit-free-sample">Andhra Pradesh broker kit sample</a><br><a href="https://mininglife1.gumroad.com/l/nri-hyd-property-diy-free-sample">NRI Hyderabad property DIY sample</a><br><a href="https://mininglife1.gumroad.com/l/nri-ap-property-diy-free-sample">NRI Andhra Pradesh property DIY sample</a><br><a href="https://mininglife1.gumroad.com/l/telangana-special-tet-free">Telangana Special TET free sample</a></p></div>
+</div></div></section>
+
+<section class="block alt" id="shop"><div class="wrap"><span class="eyebrow">Paid kits on Gumroad</span><h2>Kits</h2>
+<p class="note">Prices as listed on Gumroad on 12 Oct 2026; the Gumroad page shows the current price and is final. Gumroad may show prices in your local currency.</p>
+
+<div class="group"><h3>Tax, compliance and bookkeeping (India)</h3><div class="cards">
+<div class="card"><h3>Telangana SME Compliance Calendar</h3><p class="meta">GST, TDS and PT due dates, Oct 2026–Mar 2027 · Google Sheet</p><p class="price">₹299</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/tg-compliance-calendar">View on Gumroad</a></div>
+<div class="card"><h3>MSME Payment Chaser Kit</h3><p class="meta">45-day rule tracker, 5 letters, ODR filing guide</p><p class="price">₹249</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/msme-payment-chaser">View on Gumroad</a></div>
+<div class="card"><h3>Small Business Weekly Planner + Cashbook</h3><p class="meta">Google Sheets / Excel</p><p class="price">₹149</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/weekly-planner-cashbook">View on Gumroad</a></div>
+<div class="card"><h3>Telangana SME Back-Office Pack</h3><p class="meta">Compliance Calendar + MSME Payment Chaser + Weekly Cashbook</p><p class="price">₹499</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/tg-sme-back-office-pack">View on Gumroad</a></div>
+<div class="card"><h3>Rent Receipt Generator + HRA Helper</h3><p class="meta">Form 124, tax year 2026-27</p><p class="price">₹99</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/rent-receipts-hra">View on Gumroad</a></div>
+<div class="card"><h3>White-Label Client Compliance Calendar for CA Firms</h3><p class="meta">Your firm's name on it, every quarter</p><p class="price">₹999 / year</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/ca-firm-compliance-calendar">View on Gumroad</a></div>
+</div></div>
+
+<div class="group"><h3>Property: Telangana and Andhra Pradesh</h3><div class="cards">
+<div class="card"><h3>Hyderabad Broker Listing-Content Kit</h3><p class="meta">TG-RERA ad rules built in</p><p class="price">₹299</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/hyd-broker-kit">View on Gumroad</a></div>
+<div class="card"><h3>Andhra Pradesh Broker Listing-Content Kit</h3><p class="meta">Vizag, Vijayawada, Guntur, Tirupati</p><p class="price">₹299</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/ap-broker-kit">View on Gumroad</a></div>
+<div class="card"><h3>Property Pro bundle</h3><p class="meta">Hyderabad + Andhra Pradesh broker kits</p><p class="price">₹449</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/property-pro-bundle">View on Gumroad</a></div>
+<div class="card"><h3>NRI Hyderabad Property DIY Due-Diligence Pack</h3><p class="meta">For NRIs checking a Hyderabad property</p><p class="price">₹499</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/nri-hyd-property-diy">View on Gumroad</a></div>
+<div class="card"><h3>NRI Andhra Pradesh Property DIY Due-Diligence Pack</h3><p class="meta">For NRIs checking an Andhra Pradesh property</p><p class="price">₹499</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/nri-ap-property-diy">View on Gumroad</a></div>
+<div class="card"><h3>NRI Property bundle</h3><p class="meta">Hyderabad + Andhra Pradesh due-diligence packs</p><p class="price">₹799</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/nri-property-bundle">View on Gumroad</a></div>
+</div></div>
+
+<div class="group"><h3>Telugu</h3><div class="cards">
+<div class="card"><h3>100 Telugu AI Prompts for Small Businesses</h3><p class="meta">Kirana, tailors, tuition, salons, clinic front desks, brokers and more</p><p class="price">₹149</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/telugu-ai-prompts">View on Gumroad</a></div>
+<div class="card"><h3>Telugu Invitation Templates</h3><p class="meta">Wedding, Gruhapravesam, Barasala, Sankranti, Diwali, Birthday · editable PPTX / Google Slides</p><p class="price">₹249 per design</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/telugu-invitation-templates">View on Gumroad</a></div>
+<div class="card"><h3>Telangana Special TET 2026-II Exam Pack</h3><p class="meta">For in-service teachers · dates, pattern, syllabus tick-lists, 30-day plan · Telugu + English · independent study aid, not affiliated with the Government of Telangana</p><p class="price">₹149</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/telangana-special-tet-pack">View on Gumroad</a></div>
+</div></div>
+
+<div class="group"><h3>Clinics</h3><div class="cards">
+<div class="card"><h3>Dental Clinic Patient-Education Posts</h3><p class="meta">November 2026</p><p class="price">₹499</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/dental-posts-nov-2026">View on Gumroad</a></div>
+</div></div>
+
+<div class="group"><h3>Mining exams</h3><div class="cards">
+<div class="card"><h3>DGMS Overman &amp; Sirdar (Coal) Exam Pack</h3><p class="meta">CMR 2017 key rules · Telugu + English · 195 MCQs · independent study aid</p><p class="price">₹299</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/dgms-overman-sirdar-pack">View on Gumroad</a></div>
+</div></div>
+
+<div class="group"><h3>EU AI Act and AI tools</h3><div class="cards">
+<div class="card"><h3>EU AI Act Readiness Kit</h3><p class="meta">AI inventory, risk screening, AI literacy policy and 90-day roadmap · updated for the 2026 Digital Omnibus · not legal advice</p><p class="price">US$29</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit">View on Gumroad</a></div>
+<div class="card"><h3>EU VAT OSS Quarterly Return Kit</h3><p class="meta">One Stop Shop workbook + guide for small online sellers · not tax advice</p><p class="price">US$19</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/eu-vat-oss-kit">View on Gumroad</a></div>
+<div class="card"><h3>EURO AI Register</h3><p class="meta">AI system inventory, EU AI Act screening, policy and evidence log in your browser · membership</p><p class="price">US$19 / month</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/euro-ai-register">View on Gumroad</a></div>
+<div class="card"><h3>The Honest Solo AI-Agent Stack</h3><p class="meta">What it costs, what breaks, and the steps agents can't do</p><p class="price">US$5</p><a class="btn outline" href="https://mininglife1.gumroad.com/l/honest-agent-stack">View on Gumroad</a></div>
+</div></div>
 </div></section>
 
-<!-- HOW IT WORKS: done-for-you + named person (NexHealth "Setup is on us"), test-before-live (Smith.ai Quality Studio) -->
-<section id="how" class="alt"><div class="wrap">
-  <h2 class="hi">Setup हम करते हैं <span class="en">Done-for-you. You don't write a single prompt.</span></h2>
-  <p class="sub">We collect your details, set Asha up, and keep timings/fees updated when they change.</p>
-  <div class="g4">
-    <div class="box"><div class="num">1</div><h3>20-min chat</h3><p class="hi">Timings, doctors, services, fees, emergency rules. WhatsApp पर या clinic आकर।</p></div>
-    <div class="box"><div class="num">2</div><h3>Only info you approve</h3><p>Asha is set up with only the clinic information you approve. Tell us anytime what to change.</p></div>
-    <div class="box"><div class="num">3</div><h3>Go-live</h3><p>Missed and after-hours calls go to Asha <i>(after our phone line setup, in progress; target within 7 days of your details)</i>.</p></div>
-    <div class="box"><div class="num">4</div><h3>Staff confirm</h3><p>Each request (name, phone, day, time, reason) is saved for your staff to call back and confirm.</p></div>
-  </div>
-</div></section>
+<section class="block" id="how"><div class="wrap"><span class="eyebrow">How we work</span><h2>How Unadhi works with you</h2>
+<div class="cards">
+<div class="card"><h3>Official sources</h3><p>Dates and rules come from government portals, notifications and the law itself, and the kits say where.</p></div>
+<div class="card"><h3>Plain words</h3><p>Each kit says what it covers and what it is not. Our kits are organisers and templates, not tax, legal or medical advice.</p></div>
+<div class="card"><h3>Fixes, not excuses</h3><p>If you find a wrong date or rule, email us. We check it against the official source and, if we got it wrong, correct the file.</p></div>
+</div></div></section>
 
-<!-- PRICE: full price on page + what you DON'T pay (Ruby), no lock-in vs incumbents' contracts -->
-<section id="price"><div class="wrap">
-  <h2 style="text-align:center" class="hi">एक plan, पूरी क़ीमत यहीं <span class="en">One plan. Full price on the page.</span></h2>
-  <div class="price" style="margin-top:22px">
-    <p class="big">₹4,000<span style="font-size:18px;color:var(--mut);font-weight:600"> / month</span></p>
-    <p style="margin:0 0 10px">+ <b>No setup fee</b>.</p>
-    <table class="cmp">
-      <tr><td>When does ₹4,000/month start?</td><td>From <b>day 15 after go-live</b>. Nothing monthly before that.</td></tr>
-      <tr><td>Lock-in?</td><td><b>No lock-in.</b></td></tr>
-      <tr><td>Setup work</td><td>Done by us. We update timings/fees when they change.</td></tr>
-      <tr><td>Refer a clinic</td><td>1 month free for each referred clinic that pays</td></tr>
-    </table>
-    <div class="cta"><a class="btn btn-p" href="https://mininglife7-dev.github.io/asha.html">▶ Hear Asha first</a><a class="btn btn-w" href="https://wa.me/919182163868?text=Namaste%2C%20Asha%20ke%20price%20aur%20go-live%20ke%20baare%20mein%20baat%20karni%20hai.">Ask on WhatsApp</a></div>
-    <p class="note">Final terms are on your written quote &amp; receipt. Go-live depends on our phone line setup (in progress). If it slips, you can take the full refund before go-live.</p>
-  </div>
-</div></section>
-
-<!-- ROI: calculator on clinic's own numbers (Arini/Hellodesk), labelled assumptions -->
-<section class="alt"><div class="wrap" style="max-width:760px">
-  <h2 class="hi">अपना हिसाब खुद लगाइए <span class="en">Rough missed-call check: your numbers, not ours</span></h2>
-  <p class="sub">A pocket calculator, not a promise. HaanJi has not measured these rates for any clinic.</p>
-  <div class="box">
-    <div class="g4" style="grid-template-columns:1fr 1fr">
-      <label>Missed calls per week (count them!)<input id="m" type="number" min="0" value="15"></label>
-      <label>% of those who'd have come in (your guess)<input id="p" type="number" min="0" max="100" value="20"></label>
-      <label>Avg ₹ per new patient<input id="r" type="number" min="0" step="100" value="1500"></label>
-      <label>Asha monthly fee (₹)<input id="c" type="number" value="4000"></label>
-    </div>
-    <div class="res"><div>≈ <b id="o1">–</b> extra patients / month (assumption)</div><div>≈ <b id="o2">–</b> / month vs the ₹4,000 fee (assumption)</div></div>
-    <p class="note">Formula: missed/week × 4.3 × % × ₹ − fee. AI-receptionist vendors <i>report</i> clinics miss about 35–40% of calls (vendor figures, not independent: engageoagency.com, hellodesk.cc). Count your own for a week. One or two extra patients a month <i>can</i> cover the fee. That isn't a promise of patients.</p>
-  </div>
-</div></section>
-
-<!-- SAFETY NET positioning (Arini overflow; Smith.ai hybrid) + cost context labelled -->
-<section><div class="wrap">
-  <h2 class="hi">Receptionist की जगह नहीं, उसका साथी <span class="en">A safety net for your front desk, not a replacement</span></h2>
-  <div class="g3" style="margin-top:18px">
-    <div class="box"><h3>🦷 Busy OPD</h3><p>The receptionist is billing a patient and the phone rings again. Asha is built to pick up the calls that would otherwise be missed <i>(after phone line setup)</i>.</p></div>
-    <div class="box"><h3>🌙 Lunch, after 8 PM, Sundays</h3><p class="hi">जिस वक़्त desk खाली होता है, उसी वक़्त working लोग फ़ोन करते हैं।</p></div>
-    <div class="box"><h3>💸 Second receptionist?</h3><p>A full-time front-desk salary is ≈ ₹18,000–₹25,000/month <i>(vendor estimate, engageoagency.com)</i>. Asha is ₹4,000/month after setup.</p></div>
-  </div>
-</div></section>
-
-<!-- FOUNDER / named onboarding person (NexHealth), trust without fake testimonials -->
-<section class="alt"><div class="wrap">
-  <div class="founder box">
-    <div class="avatar hi">ह</div>
-    <div>
-      <h2 style="font-size:24px">Your setup person: HaanJi</h2>
-      <p class="hi" style="margin:4px 0">मैं खुद आपकी clinic का setup करता हूँ: WhatsApp पर या clinic आकर। कोई call center नहीं।</p>
-      <p style="margin:4px 0">We're new, and <b>we don't have customer testimonials yet</b>. That's why there is no setup fee: you hear Asha first, and you can cancel the monthly plan anytime.</p>
-      <p class="note">Data: Asha collects only name, phone, date, time and reason, uses it only for your clinic and never sells it. Written in your service terms before you pay. <a href="https://mininglife7-dev.github.io/terms.html">Terms</a> · <a href="https://mininglife7-dev.github.io/refund.html">Refund policy</a> · <a href="https://mininglife7-dev.github.io/privacy.html">Privacy</a></p>
-      <a class="btn btn-w" href="https://wa.me/919182163868?text=Namaste%20HaanJi%2C%20Asha%20ke%20baare%20mein%20baat%20karni%20hai.">WhatsApp HaanJi</a>
-    </div>
-  </div>
-</div></section>
-
-<!-- FAQ bilingual -->
-<section id="faq"><div class="wrap" style="max-width:820px">
-  <h2 class="hi">सवाल-जवाब <span class="en">FAQ</span></h2>
-  <details><summary class="hi">क्या Asha अभी मेरे clinic का फ़ोन उठाएगी? / Will Asha answer my phone today?</summary><p>Not yet. Phone answering on your number starts after our phone line setup (in progress). Today you can hear the demo and book a 10-min demo call. If go-live slips, you can take the full setup refund before go-live.</p></details>
-  <details><summary>Does Asha book appointments?</summary><p>Asha takes appointment <b>requests</b> (name, phone, day, time, reason) and saves them for your staff to confirm. It doesn't book, reschedule or cancel by itself.</p></details>
-  <details><summary class="hi">क्या Asha medical advice देगी? / Will it give medical advice?</summary><p>Asha is instructed never to diagnose or give medical advice. It only shares clinic information you approve, and it flags emergencies and "talk to a human" requests for your staff.</p></details>
-  <details><summary>Which languages?</summary><p>Hindi, English and Hinglish today. More Indian languages are coming, but they aren't available yet.</p></details>
-  <details><summary>Can I keep my number?</summary><p>Yes, by design: busy/unanswered calls forward to Asha's line. This works after our phone line setup (in progress).</p></details>
-  <details><summary>WhatsApp confirmations?</summary><p>Coming soon, not available yet. Today, requests are saved for your staff.</p></details>
-  <details><summary class="hi">पैसा कैसे और कब? / How and when do I pay?</summary><p>No setup fee. ₹4,000/month from day 15 after go-live, no lock-in.</p></details>
-</div></section>
-
-<section style="background:var(--bd);color:#fff;text-align:center"><div class="wrap">
-  <h2 class="hi" style="color:#fff">पहले सुनिए, फिर तय कीजिए <span class="en" style="color:#ccfbf1">Hear Asha first. Decide after.</span></h2>
-  <div class="cta" style="justify-content:center"><a class="btn" style="background:#fff;color:var(--bd)" href="https://mininglife7-dev.github.io/asha.html">▶ Hear the demo</a><a class="btn btn-w" href="https://wa.me/919182163868?text=Namaste%20HaanJi%2C%20mujhe%20Asha%20ka%2010-min%20demo%20chahiye.">WhatsApp: 10-min demo</a></div>
-</div></section>
-
-<footer><div class="wrap">
-  <p><b>HaanJi</b> · Asha, AI receptionist for dental &amp; skin clinics · WhatsApp <a href="https://wa.me/919182163868">+91 91821 63868</a></p>
-  <p><a href="https://mininglife7-dev.github.io/terms.html">Terms</a> · <a href="https://mininglife7-dev.github.io/refund.html">Refund</a> · <a href="https://mininglife7-dev.github.io/privacy.html">Privacy</a> · <a href="https://mininglife7-dev.github.io/pay.html">Pay</a></p>
-  <p style="font-size:12px;color:#94a3b8">Demo conversations use sample clinic data. Market figures are labelled vendor-reported or estimates. No customer testimonials are shown because we don't have any yet.</p>
-</div><p style="text-align:center;margin:8px 0"><a href="book.html" style="color:#0f766e;font-weight:700">Book a free 10-min Asha demo →</a></p>
-</footer>
-
-<a class="btn btn-w float" href="https://wa.me/919182163868?text=Namaste%20HaanJi%2C%20mujhe%20Asha%20ka%2010-min%20demo%20chahiye." aria-label="WhatsApp">💬 WhatsApp</a>
-
-<script>
-function f(){const m=+q('m'),p=+q('p')/100,r=+q('r'),c=+q('c');const n=m*4.3*p,rev=n*r,net=rev-c;
-document.getElementById('o1').textContent=n.toFixed(1);
-document.getElementById('o2').textContent=(net>=0?'+':'−')+'₹'+Math.abs(Math.round(net)).toLocaleString('en-IN');}
-function q(i){return document.getElementById(i).value||0}
-['m','p','r','c'].forEach(i=>document.getElementById(i).addEventListener('input',f));f();
-</script>
-</body>
-</html>
+<section class="block alt" id="contact"><div class="wrap"><span class="eyebrow">Contact</span><h2>Questions or a correction?</h2>
+<p>Email <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a>. Purchases, downloads and refunds are handled by Gumroad; see the product page for details.</p>
+<a class="btn outline" href="mailto:mininglife7@gmail.com">Email Unadhi</a>
+<p class="note">Kits are sold through Gumroad. Nothing on this page is tax, legal or medical advice.</p></div></section>
+</main>
+<footer class="site"><div class="wrap"><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></div></footer>
+</body></html>
