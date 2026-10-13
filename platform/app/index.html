@@ -368,7 +368,7 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
   $("lit-csv").addEventListener("click", function () {
     if (!S.lit.length) { msg("litmsg", "No entries yet.", true); return; }
     var rows = [["Person", "Role", "Training / measure", "Date", "Reviewer", "Sign-off date"]].concat(S.lit.map(function (r) { return [r.person, r.role, r.training, r.date, r.approver, r.signDate]; }));
-    rows.push(["Art. 4 Reg. (EU) 2024/1689: providers and deployers take measures to ensure a sufficient level of AI literacy of staff. " + NOTE]);
+    rows.push(["Art. 4(1) Reg. (EU) 2024/1689 as amended by Reg. (EU) 2026/1744: providers and deployers take measures to support the development of AI literacy of staff and others using AI on their behalf; no specific level is required. " + NOTE]);
     dl("art4-ai-literacy-record-" + today() + ".csv", C.toCSV(rows), "text/csv");
   });
   /* incident log */
