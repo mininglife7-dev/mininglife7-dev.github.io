@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to export a Shopify or WooCommerce store's product list to CSV (for price tracking)</title><meta name="description" content="Three ways to get any public Shopify or WooCommerce shop's products, prices and stock into a spreadsheet: the products.json URL, the WooCommerce Store API, or an Apify Actor that does both and exports CSV."><link rel="canonical" href="https://mininglife7-dev.github.io/guides/export-shopify-store-products-to-csv.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="How to export a Shopify or WooCommerce store's product list to CSV (for price tracking)"><meta property="og:description" content="Three ways to get any public Shopify or WooCommerce shop's products, prices and stock into a spreadsheet: the products.json URL, the WooCommerce Store API, or an Apify Actor that does both and exports CSV."><meta property="og:url" content="https://mininglife7-dev.github.io/guides/export-shopify-store-products-to-csv.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+.cards a{display:block;padding:10px 0;border-bottom:1px solid #e3e8e8;text-decoration:none}.cards span{display:block;color:#5b6b6b;font-size:.9rem}
+.signup{border:1px dashed #0a5c55;border-radius:8px;padding:10px 16px;background:#f4faf9;margin-top:1.4em}.signup p{margin:.3em 0}</style><style>pre{background:#f1f4f3;padding:10px;border-radius:6px;overflow-x:auto;font-size:.88rem}</style></head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>How to export a Shopify or WooCommerce store's product list to CSV (for price tracking)</h1><p class="meta">Updated 13 Oct 2026 · Disclosure: the Apify Actor mentioned in option 3 is built and published by Unadhi.</p>
+<div class="answer"><p><strong>Short answer:</strong> most Shopify shops publish their catalogue at <code>/products.json</code>, and most WooCommerce shops at <code>/wp-json/wc/store/v1/products</code>. Open that URL, or let a scraper read it for many shops at once and give you a CSV.</p></div>
+<h2>Who this is for</h2>
+<p>Sellers watching competitor prices, agencies auditing a client's catalogue before a migration, and anyone who needs a product list from a shop they don't own the admin login for. If it's your own shop, use the built-in export in your admin first; it's free and complete.</p>
+<h2>Option 1: Shopify's products.json (free, one shop)</h2>
+<ol><li>Take the shop's address, for example <code>https://example-shop.com</code>.</li>
+<li>Add <code>/products.json?limit=250</code> and open it in your browser.</li>
+<li>If you see JSON, the shop's public catalogue is readable. Add <code>&amp;page=2</code>, <code>&amp;page=3</code> and so on until a page comes back empty.</li>
+<li>Paste the JSON into a JSON-to-CSV converter, or load it in Google Sheets with a script.</li></ol>
+<p class="note">Some shops switch this endpoint off or put it behind a bot check. If you get an error page, respect that and stop.</p>
+<h2>Option 2: WooCommerce Store API (free, one shop)</h2>
+<p>Open <code>https://example-shop.com/wp-json/wc/store/v1/products?per_page=100</code>. Add <code>&amp;page=2</code> for the next page. Prices come back in the shop's minor units (for example paise or cents), so divide by 100 where needed.</p>
+<h2>Option 3: many shops at once, straight to CSV</h2>
+<p>Doing this by hand for 20 competitors every week gets old. Our <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&utm_medium=organic&utm_campaign=shopify_csv">E-commerce Product Scraper on Apify</a> tries Shopify <code>products.json</code>, then the WooCommerce Store API, then schema.org data on the page, and gives you one row per product: title, brand, price, currency, sale price, stock, SKU/GTIN, variants and images.</p>
+<pre><code class="language-json">{
+  "startUrls": [{ "url": "https://competitor-one.com" }, { "url": "https://competitor-two.com" }],
+  "maxProductsPerShop": 500
+}</code></pre>
+<p>When the run finishes, download the dataset as CSV or Excel from the run page, or by API:</p>
+<pre><code class="language-bash">curl "https://api.apify.com/v2/datasets/&lt;DATASET_ID&gt;/items?format=csv&amp;token=&lt;YOUR_APIFY_TOKEN&gt;" -o products.csv</code></pre>
+<p>To track prices, schedule the same input daily in Apify and compare the price column between runs. Current pricing is shown on the Store page; Apify's free monthly credit covers small test runs.</p>
+<h2>What it won't do</h2>
+<ul><li>It checks robots.txt and the shop's terms first, and skips shops that forbid scraping. A summary record tells you which shops were skipped and why.</li>
+<li>It never fetches marketplaces such as Amazon, eBay or Flipkart.</li>
+<li>It never logs in or gets around blocks.</li></ul>
+<h2>Related</h2>
+<p>Need the shop's contact email or WhatsApp too? The <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&utm_medium=organic&utm_campaign=shopify_csv">Contact Details Scraper</a> returns role emails, phones and social links per website. Inputs and code samples for both are in <a href="apify-contact-details-and-product-scraper-examples.html">this guide</a>.</p>
+<p><a href="./">← All guides</a></p><p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p></main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
