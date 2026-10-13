@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-kBfN1bDssM0cVKL1bxGH3MyxUexip6u0YS0tiC/JxQk=' 'sha256-abcrXm4KQ6p5zam7UmMh/jReBF7M3hxAAmLoe378ka0='; style-src 'sha256-1npCiAHICgh0vXzvHPFGiT88VkUy9jHU7qG8K+mesvM='; img-src 'none'; font-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-kBfN1bDssM0cVKL1bxGH3MyxUexip6u0YS0tiC/JxQk=' 'sha256-abcrXm4KQ6p5zam7UmMh/jReBF7M3hxAAmLoe378ka0=' 'sha256-oADsST4qVub6rg4sNHnAXbHqSUeses+r0rU1b8N0ReA='; style-src 'sha256-1npCiAHICgh0vXzvHPFGiT88VkUy9jHU7qG8K+mesvM='; img-src 'none'; font-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <title>Free EU AI Act Article 4 AI literacy course for staff (30 min, quiz, completion record) | Unadhi Academy</title>
 <meta name="description" content="Free 30-minute staff course on EU AI Act Article 4 AI literacy as amended by Regulation (EU) 2026/1744: what AI is, how it fails, safe use and GDPR, Article 50 transparency, roles. 12-question quiz, printable completion record and Art. 4 training record export.">
@@ -28,7 +28,8 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
 <h1>EU AI Act Article 4: AI literacy for staff</h1><p class="small">Free · about 30 minutes · version 1.0 · runs in your browser, nothing is uploaded</p></header>
 <main>
 <section id="intro"><p>7 short lessons and a 12-question quiz (pass mark 80%). When you pass, you get a printable completion record, and your organisation's Article 4 training record is updated on this device (CSV/JSON export, importable into the EURO AI Platform).</p>
-<ol><li>What AI is (3 min)</li><li>How AI fails: errors, bias and hallucination (5 min)</li><li>Using AI safely at work: data, confidentiality and GDPR (5 min)</li><li>Transparency duties (Article 50) (4 min)</li><li>What Article 4 requires (4 min)</li><li>Roles: provider, deployer and you (4 min)</li><li>Your everyday checklist (3 min)</li></ol><p><button type="button" id="start">Start the course</button><button type="button" class="ghost" id="skip">Go straight to the quiz</button></p></section>
+<ol><li>What AI is (3 min)</li><li>How AI fails: errors, bias and hallucination (5 min)</li><li>Using AI safely at work: data, confidentiality and GDPR (5 min)</li><li>Transparency duties (Article 50) (4 min)</li><li>What Article 4 requires (4 min)</li><li>Roles: provider, deployer and you (4 min)</li><li>Your everyday checklist (3 min)</li></ol><p class="small noprint"><label class="chk"><input type="checkbox" class="digest" data-course="EU AI Act Article 4: AI literacy for staff"> Optional: send me the weekly EURO AI digest (opens an e-mail to mininglife7@gmail.com; nothing is stored here; unsubscribe anytime). Not needed for the course or the completion record.</label></p>
+<p><button type="button" id="start">Start the course</button><button type="button" class="ghost" id="skip">Go straight to the quiz</button></p></section>
 <section id="lesson" hidden><p class="small" id="lesson-meta"></p><h2 id="lesson-title"></h2><div id="lesson-body"></div>
 <p><button type="button" class="ghost" id="prev">Previous</button><button type="button" id="next">Next lesson</button></p></section>
 <section id="quiz" hidden><h2>Quiz</h2><p id="quiz-intro"></p><form id="quiz-form"></form>
@@ -38,7 +39,8 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
 <label class="fld">Job role <input type="text" id="f-role" maxlength="80"></label>
 <label class="fld">Organisation (optional) <input type="text" id="f-org" maxlength="120" autocomplete="organization"></label>
 <p><button type="button" id="make">Create my completion record</button></p><p id="certmsg" class="msg"></p></div></section>
-<section id="done" hidden><div id="cert"></div><p class="noprint"><button type="button" id="print">Print or save as PDF</button></p>
+<section id="done" hidden><div id="cert"></div><p class="small noprint"><label class="chk"><input type="checkbox" class="digest" data-course="EU AI Act Article 4: AI literacy for staff"> Optional: send me the weekly EURO AI digest (opens an e-mail to mininglife7@gmail.com; nothing is stored here; unsubscribe anytime). Not needed for the course or the completion record.</label></p>
+<p class="noprint"><button type="button" id="print">Print or save as PDF</button></p>
 <div class="card noprint"><h3>Your organisation's Art. 4 training record</h3><p>Each completion on this device is added to a local training record (stored only in this browser). Export it for your files or import it into the EURO AI Platform (Art. 4 AI-literacy record, &quot;Import Academy record&quot;).</p><p id="rec-count"></p>
 <p><button type="button" id="csv">Download CSV</button><button type="button" id="json">Download JSON (for the Platform)</button><button type="button" class="ghost" id="clear">Clear this device's record</button></p><p id="recmsg" class="msg"></p></div></section>
 <div class="noprint"><div class="card"><h2>Track every staff member&#x27;s training in one place</h2><p>Use the free EURO AI Register or the EURO AI Platform to keep your AI inventory and Art. 4 records together. Team: $19/month or $190/year. Business: $9 per AI system per month or $90 per year, minimum 5 systems, invoice only.</p><p><a href="/register/">Open the EURO AI Register</a> · <a href="/platform/app/">Open the EURO AI Platform</a></p></div>
@@ -151,6 +153,19 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
   $("json").addEventListener("click", function () { dl("art4-training-record-" + today() + ".json", C.toJSON(load()), "application/json"); });
   $("clear").addEventListener("click", function () { save([]); renderRecord(); msg("recmsg", U.cleared); });
   renderRecord();
+})();
+</script>
+<script>/* Optional digest opt-in (MIT): an unticked checkbox that opens a mailto. Nothing is stored or sent by this page. */
+(function () {
+  "use strict";
+  Array.prototype.forEach.call(document.querySelectorAll("input.digest"), function (cb) {
+    cb.checked = false;
+    cb.addEventListener("change", function () {
+      if (!cb.checked) return;
+      var course = cb.getAttribute("data-course") || "Unadhi Academy";
+      window.location.href = "mailto:mininglife7@gmail.com?subject=" + encodeURIComponent("Subscribe EURO AI digest") + "&body=" + encodeURIComponent("Please send me the weekly EURO AI digest. Course: " + course + ". I can unsubscribe anytime.");
+    });
+  });
 })();
 </script>
 </main><footer><p class="small">© 2026 Unadhi Academy, part of the Unadhi group. No trackers, no cookies.</p></footer></body></html>
