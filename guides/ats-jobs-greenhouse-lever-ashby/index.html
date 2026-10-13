@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATS Jobs API: Greenhouse, Lever &amp; Ashby (Half Price) — How to run | Unadhi</title>
+<meta name="description" content="Fetch open roles from Greenhouse, Lever and Ashby job boards as clean JSON with salary and remote flags.">
+<link rel="canonical" href="https://unadhi.com/guides/ats-jobs-greenhouse-lever-ashby/">
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1a1a1a;line-height:1.55}
+main{max-width:800px;margin:0 auto;padding:24px}
+h1{font-size:1.75rem} .btn{display:inline-block;background:#0b5394;color:#fff;padding:12px 18px;border-radius:6px;text-decoration:none;font-weight:600}
+pre{background:#f4f4f4;padding:12px;overflow:auto;border-radius:6px;font-size:.9rem}
+.note{background:#fff8e1;border-left:4px solid #b45f06;padding:12px 16px}
+footer{font-size:.9rem;color:#444;border-top:1px solid #ccc;margin-top:40px;padding-top:16px}
+</style>
+</head>
+<body>
+<main>
+<h1>ATS Jobs API: Greenhouse, Lever &amp; Ashby (Half Price)</h1>
+<p>Fetch open roles from Greenhouse, Lever and Ashby job boards as clean JSON with salary and remote flags.</p>
+<p><a class="btn" href="https://apify.com/laudable_instrument/ats-jobs-greenhouse-lever-ashby">Open on Apify Store</a></p>
+
+<h2>How to run</h2>
+<ol>
+<li>Open <a href="https://apify.com/laudable_instrument/ats-jobs-greenhouse-lever-ashby">ats-jobs-greenhouse-lever-ashby</a> on Apify (free Apify account works for a trial run).</li>
+<li>Click <strong>Try for free</strong> / create a run.</li>
+<li>Keep or edit the sample input below, then Start.</li>
+<li>Download the dataset as JSON or CSV when the run succeeds.</li>
+</ol>
+
+<h2>Sample input</h2>
+<pre>{
+  &quot;boards&quot;: [
+    &quot;https://job-boards.greenhouse.io/discord&quot;,
+    &quot;https://jobs.lever.co/spotify&quot;,
+    &quot;https://jobs.ashbyhq.com/linear&quot;
+  ]
+}</pre>
+
+<h2>What you get</h2>
+<pre>{
+  &quot;boards&quot;: [&quot;https://jobs.lever.co/spotify&quot;, &quot;greenhouse:stripe&quot;, &quot;notion&quot;, &quot;https://linear.app/careers&quot;],
+  &quot;keywords&quot;: [&quot;engineer&quot;], &quot;locations&quot;: [&quot;London&quot;, &quot;Remote&quot;], &quot;postedWithinDays&quot;: 30
+}
+</pre>
+
+<h2>FAQ</h2>
+<p class="note">This guide describes Unadhi’s public Apify actor. Pricing on Apify is set in the Console Monetization tab; this page does not change prices or payouts. Never paste personal data you are not allowed to process.</p>
+<ul>
+<li><strong>Do I need proxies?</strong> Follow each actor README; our contact and jobs actors prefer official public APIs or polite HTTP without residential proxies where possible.</li>
+<li><strong>Is this legal advice?</strong> No. Accessibility and privacy tools do not certify compliance.</li>
+</ul>
+</main>
+<footer><div style="max-width:800px;margin:0 auto;padding:0 24px">Unadhi — clear tools small teams can afford. Guide for <code>ats-jobs-greenhouse-lever-ashby</code>.</div></footer>
+</body>
+</html>
