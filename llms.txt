@@ -39,7 +39,7 @@
 
 ## Apps (free way in, monthly pricing)
 - [Unadhi Suite](https://unadhi.com/suite/): all tools on one page, each with a free edition, sample or trial; self-serve, no sales call.
-- [EURO AI Register](https://unadhi.com/register/): browser-based EU AI Act AI-system inventory and evidence log. Free for up to 3 AI systems; membership US$19/month or US$190/year.
+- [EURO AI Register](https://unadhi.com/register/): browser-based EU AI Act AI-system inventory and evidence log. Free for 1 AI system plus the Art. 4 AI-literacy record; membership US$19/month or US$190/year.
 - [Apify: website contact details scraper](https://apify.com/laudable_instrument/contact-details-scraper-half-price): emails (MX-checked), phones and social profiles from a list of company websites; no actor fee during launch, users pay only their Apify platform usage.
 - [Apify: e-commerce product scraper](https://apify.com/laudable_instrument/ecommerce-product-data-half-price): products, prices, stock and variants from Shopify/WooCommerce/schema.org shops that allow scraping; no actor fee during launch.
 - [Done-for-you scraping and custom Apify actors](https://unadhi.com/apify/): free 25-row sample first; ₹2,499 setup (single site) and ₹999/month re-run.
