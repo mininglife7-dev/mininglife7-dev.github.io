@@ -1,0 +1,330 @@
+{
+ "lang": "es",
+ "course": {
+  "id": "ai-literacy",
+  "title": "Artículo 4 del Reglamento de IA de la UE: alfabetización en materia de IA para el personal",
+  "version": "1.0",
+  "versionDate": "2026-10-14",
+  "minutes": 30,
+  "passMark": 0.8
+ },
+ "ui": {
+  "start": "Empezar el curso",
+  "next": "Siguiente lección",
+  "prev": "Anterior",
+  "toQuiz": "Ir al cuestionario",
+  "lessonOf": "Lección {n} de {total}",
+  "minutes": "{m} min",
+  "quizTitle": "Cuestionario",
+  "quizIntro": "{total} preguntas. Aprueba con un {pct}% o más ({need} correctas). Puede repetirlo tantas veces como quiera.",
+  "submit": "Comprobar mis respuestas",
+  "retake": "Repetir el cuestionario",
+  "unanswered": "Responda a todas las preguntas (faltan {left}).",
+  "scorePass": "Ha obtenido {score} de {total} ({pct}%). Aprobado.",
+  "scoreFail": "Ha obtenido {score} de {total} ({pct}%). Necesita {need} correctas para aprobar. Repase las lecciones indicadas abajo y vuelva a intentarlo.",
+  "correct": "Correcto.",
+  "wrong": "No exactamente.",
+  "seeLesson": "Vea la lección {n}.",
+  "certForm": "Sus datos para el registro de finalización",
+  "name": "Nombre completo",
+  "role": "Puesto",
+  "org": "Organización (opcional)",
+  "makeCert": "Crear mi registro de finalización",
+  "needName": "Introduzca su nombre y su puesto.",
+  "certTitle": "Certificado de finalización",
+  "certIssued": "emitido por Unadhi Academy",
+  "certThis": "Se hace constar que",
+  "certCompleted": "ha completado el curso",
+  "certScore": "Puntuación del cuestionario",
+  "certDate": "Fecha",
+  "certVersion": "Versión del curso",
+  "certDuration": "Duración",
+  "certId": "ID de finalización",
+  "certContent": "Contenido",
+  "certNotice": "Este es un registro de finalización emitido por Unadhi Academy. No es una acreditación ni una cualificación oficial, y no lo emite la UE ni ninguna autoridad pública. El Reglamento de IA de la UE no exige un certificado: las preguntas y respuestas de la Comisión Europea sobre alfabetización en materia de IA indican que las organizaciones pueden llevar un registro interno de las formaciones y otras medidas.",
+  "print": "Imprimir o guardar como PDF",
+  "recordTitle": "Registro de formación del art. 4 de su organización",
+  "recordIntro": "Cada finalización en este dispositivo se añade a un registro de formación local (guardado solo en este navegador). Expórtelo para sus archivos o impórtelo en la EURO AI Platform (registro de alfabetización en IA del art. 4, \"Import Academy record\").",
+  "csv": "Descargar CSV",
+  "json": "Descargar JSON (para la Platform)",
+  "clear": "Borrar el registro de este dispositivo",
+  "cleared": "Registro borrado.",
+  "count": "{n} finalización(es) guardada(s) en este dispositivo.",
+  "cols": [
+   "Nombre del empleado",
+   "Puesto",
+   "Organización",
+   "Fecha",
+   "Curso",
+   "Versión",
+   "Contenido",
+   "Duración (min)",
+   "Puntuación",
+   "ID de finalización"
+  ]
+ },
+ "lessons": [
+  {
+   "title": "Qué es la IA",
+   "minutes": 3,
+   "body": [
+    "El Reglamento de IA de la UE (Reglamento (UE) 2024/1689) define un sistema de IA como un sistema basado en una máquina que funciona con cierto grado de autonomía e infiere, a partir de la información de entrada que recibe, cómo generar resultados de salida como predicciones, contenidos, recomendaciones o decisiones (artículo 3, punto 1).",
+    "En el trabajo diario esto incluye chatbots y asistentes de redacción, herramientas de traducción, transcripción de reuniones, criba de currículos, calificación crediticia, generadores de imágenes y funciones de IA integradas en el software de oficina y los CRM.",
+    "La mayoría de estas herramientas se entrenan con grandes cantidades de datos y producen la respuesta estadísticamente más probable. No entienden su situación ni comprueban los hechos como lo hace una persona."
+   ],
+   "points": [
+    "La IA suele estar integrada en herramientas que ya utiliza, no solo en aplicaciones separadas.",
+    "Un resultado de IA es una sugerencia generada a partir de patrones, no un hecho verificado."
+   ]
+  },
+  {
+   "title": "Cómo falla la IA: errores, sesgos y alucinaciones",
+   "minutes": 5,
+   "body": [
+    "Errores: las herramientas de IA pueden equivocarse con total seguridad, por ejemplo en cálculos, fechas, nombres, detalles jurídicos o médicos, o cuando la pregunta queda fuera de aquello para lo que se entrenó la herramienta.",
+    "Alucinación: la IA generativa puede inventar fuentes, citas, jurisprudencia, cifras o características de productos que no existen, y presentarlas de forma convincente.",
+    "Sesgo: si los datos de entrenamiento infrarrepresentan o tratan mal a algunos grupos, los resultados pueden ser injustos, por ejemplo en la contratación, la concesión de préstamos o la traducción de términos con género.",
+    "Información de entrada desactualizada o manipulada: una herramienta puede basarse en información antigua, y unas instrucciones ocultas en una página web o un documento (inyección de instrucciones) pueden dirigir su respuesta."
+   ],
+   "points": [
+    "Compruebe hechos, cifras y fuentes antes de utilizarlos.",
+    "Tenga especial cuidado cuando un resultado afecte a una persona (un candidato, un cliente, un paciente).",
+    "Comunique los resultados que parezcan erróneos o injustos a la persona responsable de la herramienta."
+   ]
+  },
+  {
+   "title": "Uso seguro de la IA en el trabajo: datos, confidencialidad y RGPD",
+   "minutes": 5,
+   "body": [
+    "Utilice solo herramientas de IA que su organización haya aprobado para la tarea. Las versiones gratuitas para consumidores pueden conservar lo que escribe y utilizarlo para mejorar sus modelos.",
+    "No introduzca datos personales (nombres, datos de contacto, salud, expedientes de RR. HH. o de clientes), contraseñas ni información empresarial confidencial salvo que su organización haya aprobado esa herramienta para esos datos, por ejemplo mediante un contrato de encargo del tratamiento (artículo 28 del RGPD).",
+    "El RGPD sigue aplicándose cuando interviene la IA. Las personas tienen derechos frente a decisiones basadas únicamente en el tratamiento automatizado que les afecten significativamente (artículo 22 del RGPD). Mantenga a una persona en el proceso para ese tipo de decisiones.",
+    "Anote qué herramienta de IA ayudó en cada trabajo cuando su organización lo solicite."
+   ],
+   "points": [
+    "Herramienta aprobada + datos aprobados = correcto. Si no, pregunte antes.",
+    "Elimine o anonimice los datos personales antes de pegar texto.",
+    "Una persona revisa las decisiones sobre personas apoyadas por IA."
+   ]
+  },
+  {
+   "title": "Obligaciones de transparencia (artículo 50)",
+   "minutes": 4,
+   "body": [
+    "El artículo 50 del Reglamento de IA se aplica desde el 2 de agosto de 2026.",
+    "Debe informarse a las personas de que están interactuando con un sistema de IA, como un chatbot, salvo que resulte evidente por el contexto (artículo 50, apartado 1, obligación de los proveedores).",
+    "Los proveedores de IA generativa deben marcar los resultados de salida sintéticos de audio, imagen, vídeo y texto en un formato legible por máquina (artículo 50, apartado 2). Para los sistemas ya introducidos en el mercado antes del 2 de agosto de 2026, esto se aplica desde el 2 de diciembre de 2026.",
+    "Los responsables del despliegue deben informar a las personas expuestas a un sistema de reconocimiento de emociones o de categorización biométrica (artículo 50, apartado 3), hacer público que una ultrasuplantación ha sido generada o manipulada artificialmente, y hacer público que un texto publicado con el fin de informar al público sobre asuntos de interés público ha sido generado por IA, salvo que haya sido revisado por una persona y alguien asuma la responsabilidad editorial (artículo 50, apartado 4)."
+   ],
+   "points": [
+    "¿Chatbot de cara al cliente? Asegúrese de que indica que es una IA.",
+    "¿Publica imágenes, vídeo o audio generados por IA que parecen reales? Etiquételos.",
+    "Pregunte al responsable de la herramienta si no está seguro de que exista una advertencia."
+   ]
+  },
+  {
+   "title": "Qué exige el artículo 4",
+   "minutes": 4,
+   "body": [
+    "El artículo 4 se aplica desde el 2 de febrero de 2025. Las autoridades nacionales lo supervisan y lo hacen cumplir desde agosto de 2026.",
+    "El Reglamento (UE) 2026/1744 (el Reglamento Ómnibus Digital sobre IA, en vigor desde el 27 de julio de 2026) sustituyó su redacción. El artículo 4, apartado 1, dice ahora: «Los proveedores y responsables del despliegue de sistemas de IA adoptarán medidas para apoyar la promoción de la alfabetización en materia de IA de su personal y demás personas que se encarguen en su nombre del funcionamiento y la utilización de sistemas de IA, teniendo en cuenta sus conocimientos técnicos, su experiencia, su educación y su formación, así como el contexto previsto de uso de los sistemas de IA y las personas o los colectivos de personas en que se van a utilizar dichos sistemas.»",
+    "Y añade: «Esta obligación no exige que los proveedores o los responsables del despliegue garanticen un nivel específico de alfabetización en materia de IA de ninguna persona en particular.» La Comisión y los Estados miembros deben apoyar estos esfuerzos, en particular de las pymes (artículo 4, apartado 2), y el Consejo de IA adopta recomendaciones (artículo 4, apartado 3).",
+    "No se exige ningún certificado ni examen. Las preguntas y respuestas de la Comisión sobre alfabetización en materia de IA indican que las organizaciones pueden llevar un registro interno de las formaciones y otras iniciativas de orientación. Un curso como este es una medida posible; su organización decide qué es adecuado."
+   ],
+   "points": [
+    "La obligación recae en la organización (proveedor o responsable del despliegue), que debe adoptar medidas adecuadas.",
+    "No hay un nivel fijo ni un certificado obligatorio.",
+    "Un registro sencillo de quién hizo qué formación y cuándo es una prueba sensata."
+   ]
+  },
+  {
+   "title": "Funciones: proveedor, responsable del despliegue y usted",
+   "minutes": 4,
+   "body": [
+    "Proveedor: desarrolla un sistema de IA, o lo encarga, y lo introduce en el mercado o lo pone en servicio con su propio nombre (artículo 3, punto 3).",
+    "Responsable del despliegue: utiliza un sistema de IA bajo su propia autoridad en una actividad profesional (artículo 3, punto 4). Una empresa que utiliza un chatbot, una herramienta de traducción o un asistente de redacción con IA en el trabajo es responsable del despliegue.",
+    "Los importadores y distribuidores tienen sus propias obligaciones cuando introducen sistemas de IA en el mercado de la UE. El uso puramente personal y no profesional queda fuera de la función de responsable del despliegue.",
+    "Usted: como empleado o colaborador que trabaja en nombre de la organización, es una de las personas a las que se refiere el artículo 4. Su organización apoya su alfabetización en materia de IA; usted la aplica en su trabajo diario."
+   ],
+   "points": [
+    "La mayoría de las empresas son responsables del despliegue de las herramientas de IA que compran.",
+    "Una empresa que integra IA en su propio producto también puede ser proveedor.",
+    "Sepa quién es el responsable de cada herramienta de IA en su organización."
+   ]
+  },
+  {
+   "title": "Su lista de comprobación diaria",
+   "minutes": 3,
+   "body": [
+    "Antes: ¿está aprobada esta herramienta para esta tarea y estos datos?",
+    "Durante: no pegue datos personales ni confidenciales salvo que esté aprobado; dé instrucciones claras; tenga presente el contexto.",
+    "Después: compruebe hechos, fuentes e imparcialidad; añada una advertencia cuando sea necesaria; una persona decide cuando el resultado afecta a alguien.",
+    "Fechas posteriores que conviene conocer: las normas sobre alto riesgo se aplican desde el 2 de diciembre de 2027 para los usos del anexo III, como la contratación y la calificación crediticia, y desde el 2 de agosto de 2028 para la IA en productos regulados (anexo I), según el Reglamento (UE) 2026/1744."
+   ],
+   "points": [
+    "Aprobado, con cuidado, comprobado, advertido y decidido por una persona.",
+    "En caso de duda, pregunte al responsable de la herramienta o a su superior."
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Según el Reglamento de IA, ¿qué descripción se ajusta mejor a un sistema de IA?",
+   "o": [
+    "Cualquier software con una base de datos",
+    "Un sistema basado en una máquina que infiere, a partir de la información de entrada, cómo generar resultados como predicciones, contenidos o decisiones",
+    "Solo los robots",
+    "Solo las herramientas vendidas como \"IA\""
+   ],
+   "a": 1,
+   "lesson": 1
+  },
+  {
+   "q": "Una herramienta de IA generativa le da una referencia de una sentencia que no encuentra en ningún sitio. ¿Cuál es la explicación más probable?",
+   "o": [
+    "Es una fuente secreta",
+    "Puede ser una alucinación: una referencia inventada",
+    "Los buscadores se equivocan",
+    "La herramienta siempre tiene razón"
+   ],
+   "a": 1,
+   "lesson": 2
+  },
+  {
+   "q": "¿Dónde es más perjudicial el sesgo de la IA?",
+   "o": [
+    "Al elegir una fuente tipográfica",
+    "En decisiones sobre personas, como la contratación o los préstamos",
+    "En la corrección ortográfica",
+    "Al ordenar archivos por fecha"
+   ],
+   "a": 1,
+   "lesson": 2
+  },
+  {
+   "q": "Quiere resumir la reclamación de un cliente que contiene su nombre y dirección. ¿Qué debe hacer?",
+   "o": [
+    "Pegarla en cualquier chatbot gratuito",
+    "Usar solo una herramienta aprobada para esos datos, o eliminar antes los datos personales",
+    "Enviarla por correo a un amigo para que la resuma",
+    "Publicarla para recibir opiniones"
+   ],
+   "a": 1,
+   "lesson": 3
+  },
+  {
+   "q": "¿Qué artículo del RGPD da a las personas derechos frente a decisiones basadas únicamente en el tratamiento automatizado que les afecten significativamente?",
+   "o": [
+    "Artículo 5",
+    "Artículo 22",
+    "Artículo 50",
+    "Artículo 99"
+   ],
+   "a": 1,
+   "lesson": 3
+  },
+  {
+   "q": "¿Desde cuándo se aplican las obligaciones de transparencia del artículo 50?",
+   "o": [
+    "2 de febrero de 2025",
+    "2 de agosto de 2026",
+    "2 de diciembre de 2027",
+    "2 de agosto de 2028"
+   ],
+   "a": 1,
+   "lesson": 4
+  },
+  {
+   "q": "El chatbot de su web responde a clientes. ¿Qué exige el artículo 50, apartado 1?",
+   "o": [
+    "Nada",
+    "Que se informe a las personas de que interactúan con un sistema de IA, salvo que sea evidente",
+    "Que el chatbot se apague por la noche",
+    "Un certificado en la web"
+   ],
+   "a": 1,
+   "lesson": 4
+  },
+  {
+   "q": "Desde el 27 de julio de 2026, ¿qué exige el artículo 4, apartado 1, a proveedores y responsables del despliegue?",
+   "o": [
+    "Garantizar un nivel determinado de alfabetización en materia de IA de cada persona",
+    "Adoptar medidas para apoyar la promoción de la alfabetización en materia de IA de su personal y de otras personas que actúen en su nombre",
+    "Nada; el artículo 4 se suprimió",
+    "Enviar a cada empleado a un examen de la UE"
+   ],
+   "a": 1,
+   "lesson": 5
+  },
+  {
+   "q": "¿Exige el Reglamento de IA que el personal tenga un certificado de alfabetización en materia de IA?",
+   "o": [
+    "Sí, un certificado de la UE",
+    "Sí, de una autoridad nacional",
+    "No; un registro interno de formaciones y otras medidas es un enfoque sensato",
+    "Solo para directivos"
+   ],
+   "a": 2,
+   "lesson": 5
+  },
+  {
+   "q": "¿Desde cuándo se aplica el artículo 4?",
+   "o": [
+    "2 de febrero de 2025",
+    "1 de enero de 2024",
+    "2 de diciembre de 2027",
+    "Todavía no se aplica"
+   ],
+   "a": 0,
+   "lesson": 5
+  },
+  {
+   "q": "Una tienda utiliza en su web un chatbot de IA de un tercero. ¿Qué función tiene la tienda?",
+   "o": [
+    "Proveedor",
+    "Responsable del despliegue",
+    "Organismo notificado",
+    "Ninguna"
+   ],
+   "a": 1,
+   "lesson": 6
+  },
+  {
+   "q": "Según el Reglamento (UE) 2026/1744, ¿desde cuándo se aplican las normas sobre alto riesgo a los usos del anexo III, como la contratación?",
+   "o": [
+    "2 de agosto de 2026",
+    "2 de diciembre de 2027",
+    "2 de agosto de 2025",
+    "Nunca"
+   ],
+   "a": 1,
+   "lesson": 7
+  }
+ ],
+ "upsell": {
+  "title": "Registre la formación de todo su personal en un solo lugar",
+  "body": "Utilice el EURO AI Register gratuito o la EURO AI Platform para mantener juntos su inventario de IA y sus registros del art. 4. Team: 19 $/mes o 190 $/año. Business: 9 $ por sistema de IA al mes o 90 $ al año, mínimo 5 sistemas, solo con factura.",
+  "register": "Abrir el EURO AI Register",
+  "platform": "Abrir la EURO AI Platform"
+ },
+ "sources": {
+  "title": "Fuentes primarias",
+  "items": [
+   {
+    "t": "Reglamento (UE) 2026/1744 (Ómnibus Digital sobre IA), EUR-Lex (ES)",
+    "u": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/spa"
+   },
+   {
+    "t": "Reglamento (UE) 2024/1689 (Reglamento de IA), EUR-Lex (ES)",
+    "u": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa"
+   },
+   {
+    "t": "Comisión Europea: Alfabetización en IA - Preguntas y respuestas",
+    "u": "https://digital-strategy.ec.europa.eu/es/faqs/ai-literacy-questions-answers"
+   }
+  ],
+  "checked": "Datos comprobados por última vez el 14 de octubre de 2026."
+ },
+ "disclaimer": "Material de formación gratuito de Unadhi Academy (parte del grupo Unadhi). Traducción asistida por máquina (machine-assisted translation) del original en inglés; la versión inglesa prevalece. No es asesoramiento jurídico. Completarlo no significa por sí solo que una organización cumpla el Reglamento de IA; su organización decide qué medidas son adecuadas.",
+ "machineAssisted": true
+}
