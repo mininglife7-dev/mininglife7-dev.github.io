@@ -39,6 +39,7 @@
 
 ## Apps (free way in, monthly pricing)
 - [Unadhi Suite](https://unadhi.com/suite/): all tools on one page, each with a free edition, sample or trial; self-serve, no sales call.
+- [Unadhi Academy: EU AI Act Article 4 AI literacy course](https://unadhi.com/academy/ai-literacy/): free 30-minute browser-only staff course (7 lessons, 12-question quiz, 80% pass), printable completion record (not an accreditation; the AI Act requires no certificate) and Art. 4 training-record export (CSV/JSON).
 - [EURO AI Register](https://unadhi.com/register/): browser-based EU AI Act AI-system inventory and evidence log. Free for 1 AI system plus the Art. 4 AI-literacy record; membership US$19/month or US$190/year.
 - [Apify: website contact details scraper](https://apify.com/laudable_instrument/contact-details-scraper-half-price): emails (MX-checked), phones and social profiles from a list of company websites; no actor fee during launch, users pay only their Apify platform usage.
 - [Apify: e-commerce product scraper](https://apify.com/laudable_instrument/ecommerce-product-data-half-price): products, prices, stock and variants from Shopify/WooCommerce/schema.org shops that allow scraping; no actor fee during launch.

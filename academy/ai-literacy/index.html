@@ -1,0 +1,156 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-kBfN1bDssM0cVKL1bxGH3MyxUexip6u0YS0tiC/JxQk=' 'sha256-abcrXm4KQ6p5zam7UmMh/jReBF7M3hxAAmLoe378ka0='; style-src 'sha256-1npCiAHICgh0vXzvHPFGiT88VkUy9jHU7qG8K+mesvM='; img-src 'none'; font-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Free EU AI Act Article 4 AI literacy course for staff (30 min, quiz, completion record) | Unadhi Academy</title>
+<meta name="description" content="Free 30-minute staff course on EU AI Act Article 4 AI literacy as amended by Regulation (EU) 2026/1744: what AI is, how it fails, safe use and GDPR, Article 50 transparency, roles. 12-question quiz, printable completion record and Art. 4 training record export.">
+<link rel="canonical" href="https://unadhi.com/academy/ai-literacy/"><link rel="alternate" hreflang="en" href="https://unadhi.com/academy/ai-literacy/">
+<style>:root{--ink:#14213d;--mut:#5a6275;--acc:#1d4ed8;--bg:#f7f8fb;--bad:#b91c1c}
+*{box-sizing:border-box}body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+main,header,footer{max-width:960px;margin:0 auto;padding:0 18px}header{padding-top:22px}
+h1{font-size:1.8rem;margin:.2em 0}h2{margin-top:1.6em;border-top:1px solid #dde;padding-top:1em}
+a{color:var(--acc)}.small{font-size:.88rem;color:var(--mut)}.note{background:#fff7e6;border:1px solid #f2d39b;padding:10px 14px;border-radius:8px}
+button{font:inherit;background:var(--acc);color:#fff;border:0;border-radius:6px;padding:7px 14px;margin:4px 6px 4px 0;cursor:pointer}button.ghost{background:#e5e7eb;color:var(--ink)}
+textarea{width:100%;min-height:120px;font:14px monospace}input[type=text],input[type=date],select{font:inherit;padding:4px 6px}
+table{border-collapse:collapse;width:100%;background:#fff}td,th{border:1px solid #dde;padding:6px;text-align:left;vertical-align:top;font-size:.92rem}
+details.sys{background:#fff;border:1px solid #dde;border-radius:8px;padding:8px 12px;margin:10px 0}summary{font-weight:600;cursor:pointer}
+fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display:block;margin:3px 0}label.fld{display:block;margin:6px 0}.cite{color:var(--mut);font-size:.85rem}
+.result{background:#eef4ff;border-radius:6px;padding:4px 12px;margin:8px 0}.msg{min-height:1.2em;color:#166534}.msg.bad{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.card{background:#fff;border:1px solid #dde;border-radius:8px;padding:12px}
+#printout{display:none}@media print{body *{visibility:hidden}#printout,#printout *{visibility:visible}#printout{display:block;position:absolute;top:0;left:0}}
+.points{background:#eef4ff;border-radius:6px;padding:8px 12px 8px 30px}.fb.ok{color:#166534}.fb.bad{color:var(--bad)}legend{font-weight:600}
+#cert{background:#fff;border:3px double var(--ink);border-radius:8px;padding:24px;text-align:center;margin:12px 0}#cert table{text-align:left;margin:12px 0}
+#cert .brand{font-weight:700;letter-spacing:.08em;text-transform:uppercase}#cert .who{font-size:1.6rem;font-weight:700;margin:.2em 0}#cert .what{font-size:1.15rem;font-weight:600}
+#cert .notice{font-size:.85rem;background:#fff7e6;border:1px solid #f2d39b;padding:8px;border-radius:6px;text-align:left}
+.card{background:#fff;border:1px solid #dde;border-radius:8px;padding:12px}
+@media print{header,footer,.noprint,#intro,#lesson,#quiz{display:none!important}body{background:#fff}#cert{border-color:#000}}
+</style></head><body>
+<header class="noprint"><p class="small"><a href="/academy/">Unadhi Academy</a> · <a href="/eu/">EU AI Act hub</a> · <a href="/register/">EURO AI Register</a> · <a href="/platform/">EURO AI Platform</a></p>
+<h1>EU AI Act Article 4: AI literacy for staff</h1><p class="small">Free · about 30 minutes · version 1.0 · runs in your browser, nothing is uploaded</p></header>
+<main>
+<section id="intro"><p>7 short lessons and a 12-question quiz (pass mark 80%). When you pass, you get a printable completion record, and your organisation's Article 4 training record is updated on this device (CSV/JSON export, importable into the EURO AI Platform).</p>
+<ol><li>What AI is (3 min)</li><li>How AI fails: errors, bias and hallucination (5 min)</li><li>Using AI safely at work: data, confidentiality and GDPR (5 min)</li><li>Transparency duties (Article 50) (4 min)</li><li>What Article 4 requires (4 min)</li><li>Roles: provider, deployer and you (4 min)</li><li>Your everyday checklist (3 min)</li></ol><p><button type="button" id="start">Start the course</button><button type="button" class="ghost" id="skip">Go straight to the quiz</button></p></section>
+<section id="lesson" hidden><p class="small" id="lesson-meta"></p><h2 id="lesson-title"></h2><div id="lesson-body"></div>
+<p><button type="button" class="ghost" id="prev">Previous</button><button type="button" id="next">Next lesson</button></p></section>
+<section id="quiz" hidden><h2>Quiz</h2><p id="quiz-intro"></p><form id="quiz-form"></form>
+<p><button type="button" id="submit">Check my answers</button><button type="button" class="ghost" id="retake">Retake the quiz</button></p><p id="quiz-result" class="msg"></p>
+<div id="cert-form" hidden class="card"><h3>Your details for the completion record</h3>
+<label class="fld">Full name <input type="text" id="f-name" maxlength="80" autocomplete="name"></label>
+<label class="fld">Job role <input type="text" id="f-role" maxlength="80"></label>
+<label class="fld">Organisation (optional) <input type="text" id="f-org" maxlength="120" autocomplete="organization"></label>
+<p><button type="button" id="make">Create my completion record</button></p><p id="certmsg" class="msg"></p></div></section>
+<section id="done" hidden><div id="cert"></div><p class="noprint"><button type="button" id="print">Print or save as PDF</button></p>
+<div class="card noprint"><h3>Your organisation's Art. 4 training record</h3><p>Each completion on this device is added to a local training record (stored only in this browser). Export it for your files or import it into the EURO AI Platform (Art. 4 AI-literacy record, &quot;Import Academy record&quot;).</p><p id="rec-count"></p>
+<p><button type="button" id="csv">Download CSV</button><button type="button" id="json">Download JSON (for the Platform)</button><button type="button" class="ghost" id="clear">Clear this device's record</button></p><p id="recmsg" class="msg"></p></div></section>
+<div class="noprint"><div class="card"><h2>Track every staff member&#x27;s training in one place</h2><p>Use the free EURO AI Register or the EURO AI Platform to keep your AI inventory and Art. 4 records together. Team: $19/month or $190/year. Business: $9 per AI system per month or $90 per year, minimum 5 systems, invoice only.</p><p><a href="/register/">Open the EURO AI Register</a> · <a href="/platform/app/">Open the EURO AI Platform</a></p></div>
+<div class="note" data-authority><p><strong>Primary sources:</strong> <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj">Regulation (EU) 2026/1744 (Digital Omnibus on AI), EUR-Lex</a>, <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">Regulation (EU) 2024/1689 (AI Act), EUR-Lex</a>, <a href="https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers">European Commission: AI literacy questions and answers</a>. Facts last checked 14 Oct 2026.</p></div>
+<p class="small">Free training material from Unadhi Academy (part of the Unadhi group). Not legal advice. Completing it does not by itself mean an organisation meets the AI Act; your organisation decides which measures fit. Code MIT-licensed, no third-party libraries. Text: <a href="/academy/ai-literacy/i18n/en.json">en.json</a>.</p></div>
+<script type="application/json" id="i18n">{"lang":"en","course":{"id":"ai-literacy","title":"EU AI Act Article 4: AI literacy for staff","version":"1.0","versionDate":"2026-10-14","minutes":30,"passMark":0.8},"ui":{"start":"Start the course","next":"Next lesson","prev":"Previous","toQuiz":"Go to the quiz","lessonOf":"Lesson {n} of {total}","minutes":"{m} min","quizTitle":"Quiz","quizIntro":"{total} questions. You pass with {pct}% or more ({need} correct). You can retake it as often as you like.","submit":"Check my answers","retake":"Retake the quiz","unanswered":"Please answer every question ({left} left).","scorePass":"You scored {score} of {total} ({pct}%). Passed.","scoreFail":"You scored {score} of {total} ({pct}%). You need {need} correct to pass. Review the lessons marked below and try again.","correct":"Correct.","wrong":"Not quite.","seeLesson":"See lesson {n}.","certForm":"Your details for the completion record","name":"Full name","role":"Job role","org":"Organisation (optional)","makeCert":"Create my completion record","needName":"Please enter your name and role.","certTitle":"Certificate of completion","certIssued":"issued by Unadhi Academy","certThis":"This records that","certCompleted":"completed the course","certScore":"Quiz score","certDate":"Date","certVersion":"Course version","certDuration":"Duration","certId":"Completion ID","certContent":"Content","certNotice":"This is a completion record issued by Unadhi Academy. It is not an official accreditation or qualification, and it is not issued by the EU or any public authority. The EU AI Act does not require a certificate: the European Commission's AI literacy Q&A says organisations can keep an internal record of trainings and other measures.","print":"Print or save as PDF","recordTitle":"Your organisation's Art. 4 training record","recordIntro":"Each completion on this device is added to a local training record (stored only in this browser). Export it for your files or import it into the EURO AI Platform (Art. 4 AI-literacy record, \"Import Academy record\").","csv":"Download CSV","json":"Download JSON (for the Platform)","clear":"Clear this device's record","cleared":"Record cleared.","count":"{n} completion(s) stored on this device.","cols":["Staff name","Role","Organisation","Date","Course","Version","Content","Duration (min)","Quiz score","Completion ID"]},"lessons":[{"title":"What AI is","minutes":3,"body":["The EU AI Act (Regulation (EU) 2024/1689) defines an AI system as a machine-based system that works with some autonomy and infers from the input it receives how to generate outputs such as predictions, content, recommendations or decisions (Article 3(1)).","In everyday work this covers chatbots and writing assistants, translation tools, meeting transcription, CV screening, credit scoring, image generators and AI features built into office software and CRMs.","Most of these tools are trained on large amounts of data and produce the statistically likely answer. They do not understand your situation or check facts the way a person does."],"points":["AI is often built into tools you already use, not only separate apps.","An AI output is a suggestion produced from patterns, not a verified fact."]},{"title":"How AI fails: errors, bias and hallucination","minutes":5,"body":["Errors: AI tools can be wrong with full confidence, for example in sums, dates, names, legal or medical details, or when the question is outside what the tool was trained on.","Hallucination: generative AI can invent sources, quotes, case law, figures or product features that do not exist, and present them convincingly.","Bias: if training data under-represents or mistreats some groups, outputs can be unfair, for example in hiring, lending or translation of gendered terms.","Outdated or manipulated input: a tool may rely on old information, and hidden instructions in a web page or document (prompt injection) can steer its answer."],"points":["Check facts, figures and sources before you use them.","Be extra careful where an output affects a person (a candidate, a customer, a patient).","Report outputs that look wrong or unfair to the person responsible for the tool."]},{"title":"Using AI safely at work: data, confidentiality and GDPR","minutes":5,"body":["Only use AI tools your organisation has approved for the task. Free consumer versions may keep what you type and use it to improve their models.","Do not enter personal data (names, contact details, health, HR or customer records), passwords or confidential business information unless your organisation has approved that tool for that data, for example under a data processing agreement (GDPR Article 28).","The GDPR still applies when AI is involved. People have rights about decisions based solely on automated processing that significantly affect them (GDPR Article 22). Keep a human in the loop for such decisions.","Keep a note of which AI tool helped with which piece of work when your organisation asks for it."],"points":["Approved tool + approved data = OK. Otherwise ask first.","Remove or anonymise personal data before you paste text.","A person reviews AI-supported decisions about people."]},{"title":"Transparency duties (Article 50)","minutes":4,"body":["Article 50 of the AI Act applies from 2 August 2026.","People must be told when they are interacting with an AI system such as a chatbot, unless that is obvious from the context (Article 50(1), a duty on providers).","Providers of generative AI must mark synthetic audio, image, video and text outputs in a machine-readable way (Article 50(2)). For systems already on the market before 2 August 2026 this applies from 2 December 2026.","Deployers must tell people when they are exposed to emotion recognition or biometric categorisation (Article 50(3)), disclose deepfakes, and disclose AI-generated text published to inform the public on matters of public interest unless a person has reviewed it and an editor takes responsibility (Article 50(4))."],"points":["Customer-facing chatbot? Make sure it says it is an AI.","Publishing AI-generated images, video or audio that look real? Label them.","Ask the tool owner if you are unsure whether a disclosure is in place."]},{"title":"What Article 4 requires","minutes":4,"body":["Article 4 has applied since 2 February 2025. National authorities supervise and enforce it from August 2026.","Regulation (EU) 2026/1744 (the Digital Omnibus on AI, in force since 27 July 2026) replaced the wording. Article 4(1) now says that providers and deployers of AI systems shall take measures to support the development of AI literacy of their staff and other persons dealing with the operation and use of AI systems on their behalf, taking into account their technical knowledge, experience, education and training, the context of use, and the people the systems are used on.","It adds: this obligation does not require providers or deployers to guarantee any specific level of AI literacy of any individual. The Commission and the Member States must support these efforts, in particular for SMEs (Article 4(2)), and the AI Board adopts recommendations (Article 4(3)).","No certificate or exam is required. The Commission's AI literacy Q&A says organisations can keep an internal record of trainings and other guiding initiatives. A course like this one is one possible measure; your organisation decides what fits."],"points":["The duty is on the organisation (provider or deployer), to take measures that fit.","There is no fixed level and no mandatory certificate.","A simple record of who did what training, and when, is sensible evidence."]},{"title":"Roles: provider, deployer and you","minutes":4,"body":["Provider: develops an AI system, or has one developed, and places it on the market or puts it into service under its own name (Article 3(3)).","Deployer: uses an AI system under its authority in a professional activity (Article 3(4)). A business that uses a chatbot, a translation tool or an AI writing assistant at work is a deployer.","Importers and distributors have their own duties when they bring AI systems onto the EU market. Purely personal, non-professional use falls outside the deployer role.","You: as staff or a contractor working on the organisation's behalf, you are one of the people Article 4 is about. Your organisation supports your AI literacy; you apply it in daily work."],"points":["Most businesses are deployers of the AI tools they buy.","A business that builds AI into its own product can also be a provider.","Know who in your organisation owns each AI tool."]},{"title":"Your everyday checklist","minutes":3,"body":["Before: is this tool approved for this task and this data?","During: do not paste personal or confidential data unless approved; give clear instructions; keep the context in mind.","After: check facts, sources and fairness; add a disclosure where one is needed; a person decides when the output affects someone.","Later dates to know: high-risk rules apply from 2 December 2027 for Annex III uses such as recruitment and credit scoring, and from 2 August 2028 for AI in regulated products (Annex I), as set by Regulation (EU) 2026/1744."],"points":["Approved, careful, checked, disclosed, human-decided.","When in doubt, ask the tool owner or your manager."]}],"quiz":[{"q":"Under the AI Act, which description best fits an AI system?","o":["Any software with a database","A machine-based system that infers from input how to generate outputs such as predictions, content or decisions","Only robots","Only tools sold as \"AI\""],"a":1,"lesson":1},{"q":"A generative AI tool gives you a case reference that you cannot find anywhere. What is the most likely explanation?","o":["It is a secret source","It may be a hallucination: an invented reference","Search engines are wrong","The tool is always right"],"a":1,"lesson":2},{"q":"Where is AI bias most harmful?","o":["Choosing a font","Decisions about people, such as hiring or lending","Spell-checking","Sorting files by date"],"a":1,"lesson":2},{"q":"You want to summarise a customer complaint that contains the customer's name and address. What should you do?","o":["Paste it into any free chatbot","Use only a tool approved for that data, or remove the personal data first","E-mail it to a friend to summarise","Post it publicly for feedback"],"a":1,"lesson":3},{"q":"Which GDPR article gives people rights about decisions based solely on automated processing that significantly affect them?","o":["Article 5","Article 22","Article 50","Article 99"],"a":1,"lesson":3},{"q":"From when do the Article 50 transparency duties apply?","o":["2 February 2025","2 August 2026","2 December 2027","2 August 2028"],"a":1,"lesson":4},{"q":"Your website chatbot answers customers. What does Article 50(1) require?","o":["Nothing","People are told they are interacting with an AI system, unless that is obvious","The chatbot must be switched off at night","A certificate on the website"],"a":1,"lesson":4},{"q":"Since 27 July 2026, what does Article 4(1) require of providers and deployers?","o":["To guarantee a set level of AI literacy for each person","To take measures to support the development of AI literacy of their staff and others acting on their behalf","Nothing; Article 4 was deleted","To send every employee to an EU exam"],"a":1,"lesson":5},{"q":"Does the AI Act require staff to hold an AI literacy certificate?","o":["Yes, an EU certificate","Yes, from a national authority","No; an internal record of trainings and other measures is a sensible approach","Only for managers"],"a":2,"lesson":5},{"q":"Since when has Article 4 applied?","o":["2 February 2025","1 January 2024","2 December 2027","It does not apply yet"],"a":0,"lesson":5},{"q":"A shop uses a third-party AI chatbot on its website. What is the shop's role?","o":["Provider","Deployer","Notified body","None"],"a":1,"lesson":6},{"q":"According to Regulation (EU) 2026/1744, from when do high-risk rules apply to Annex III uses such as recruitment?","o":["2 August 2026","2 December 2027","2 August 2025","Never"],"a":1,"lesson":7}],"upsell":{"title":"Track every staff member's training in one place","body":"Use the free EURO AI Register or the EURO AI Platform to keep your AI inventory and Art. 4 records together. Team: $19/month or $190/year. Business: $9 per AI system per month or $90 per year, minimum 5 systems, invoice only.","register":"Open the EURO AI Register","platform":"Open the EURO AI Platform"},"sources":{"title":"Primary sources","items":[{"t":"Regulation (EU) 2026/1744 (Digital Omnibus on AI), EUR-Lex","u":"https://eur-lex.europa.eu/eli/reg/2026/1744/oj"},{"t":"Regulation (EU) 2024/1689 (AI Act), EUR-Lex","u":"https://eur-lex.europa.eu/eli/reg/2024/1689/oj"},{"t":"European Commission: AI literacy questions and answers","u":"https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers"}],"checked":"Facts last checked 14 Oct 2026."},"disclaimer":"Free training material from Unadhi Academy (part of the Unadhi group). Not legal advice. Completing it does not by itself mean an organisation meets the AI Act; your organisation decides which measures fit."}</script>
+<script>/* Unadhi Academy course core (MIT). Pure functions, no network. */
+(function (root, factory) { if (typeof module === "object" && module.exports) module.exports = factory(); else root.AcademyCore = factory(); })(this, function () {
+  "use strict";
+  function fmt(s, v) { return String(s).replace(/\{(\w+)\}/g, function (m, k) { return v && v[k] !== undefined ? String(v[k]) : m; }); }
+  function need(total, mark) { return Math.ceil(total * mark - 1e-9); }
+  function grade(quiz, answers, mark) {
+    var score = 0, wrong = [];
+    quiz.forEach(function (q, i) { if (answers[i] === q.a) score++; else wrong.push(i); });
+    var total = quiz.length, pct = total ? Math.round(score * 100 / total) : 0;
+    return { score: score, total: total, pct: pct, need: need(total, mark), passed: total > 0 && score >= need(total, mark), wrong: wrong };
+  }
+  function newId(rand) {
+    var b = new Uint8Array(8); rand(b);
+    var h = Array.prototype.map.call(b, function (x) { return ("0" + x.toString(16)).slice(-2); }).join("").toUpperCase();
+    return "UA-" + h.slice(0, 4) + "-" + h.slice(4, 8) + "-" + h.slice(8, 12) + "-" + h.slice(12, 16);
+  }
+  function clean(s, n) { return String(s == null ? "" : s).replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n || 120); }
+  function makeRecord(d, course, lessons, res, id) {
+    return { staffName: clean(d.name, 80), role: clean(d.role, 80), organisation: clean(d.org, 120), date: d.date,
+      course: course.title, version: course.version, content: lessons.map(function (l) { return l.title; }).join("; "),
+      durationMin: course.minutes, score: res.score + "/" + res.total, completionId: id };
+  }
+  var KEYS = ["staffName", "role", "organisation", "date", "course", "version", "content", "durationMin", "score", "completionId"];
+  function csvCell(v) { var s = String(v == null ? "" : v); if (/^[=+\-@\t\r]/.test(s)) s = "'" + s; return /[",\n;]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+  function toCSV(records, header) { return [header].concat(records.map(function (r) { return KEYS.map(function (k) { return r[k]; }); })).map(function (row) { return row.map(csvCell).join(","); }).join("\r\n") + "\r\n"; }
+  function toJSON(records) { return JSON.stringify({ schema: "unadhi-academy-record", schemaVersion: 1, note: "Art. 4 AI literacy training record. Completion records, not an official accreditation.", records: records }, null, 1); }
+  /* For the EURO AI Platform: map to its Art. 4 literacy entries */
+  function toPlatformLit(obj) {
+    if (!obj || obj.schema !== "unadhi-academy-record" || !Array.isArray(obj.records)) return { ok: false, msg: "Not an Unadhi Academy record file (schema missing)." };
+    var out = obj.records.filter(function (r) { return r && r.staffName && /^\d{4}-\d{2}-\d{2}$/.test(r.date || ""); }).map(function (r) {
+      return { person: clean(r.staffName, 80), role: clean(r.role, 80), training: clean("Unadhi Academy: " + r.course + " v" + r.version + " (" + r.durationMin + " min; quiz " + r.score + "; ID " + r.completionId + ")", 300), date: r.date, approver: "", signDate: "", academyId: clean(r.completionId, 40) };
+    });
+    return { ok: true, lit: out };
+  }
+  return { fmt: fmt, need: need, grade: grade, newId: newId, makeRecord: makeRecord, toCSV: toCSV, toJSON: toJSON, toPlatformLit: toPlatformLit, KEYS: KEYS };
+});
+</script>
+<script>/* Unadhi Academy course UI (MIT). Runs in the browser only; data stays in localStorage. */
+(function () {
+  "use strict";
+  var C = window.AcademyCore, T = JSON.parse(document.getElementById("i18n").textContent), U = T.ui, RKEY = "unadhi-academy-records-v1";
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, txt, cls) { var e = document.createElement(tag); if (txt != null) e.textContent = txt; if (cls) e.className = cls; return e; }
+  function load() { try { return JSON.parse(localStorage.getItem(RKEY)) || []; } catch (e) { return []; } }
+  function save(r) { localStorage.setItem(RKEY, JSON.stringify(r)); }
+  function dl(name, text, type) { var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: type })); a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
+  function today() { var d = new Date(); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function msg(id, t, bad) { $(id).textContent = t; $(id).className = "msg" + (bad ? " bad" : ""); }
+  var L = T.lessons, cur = 0, result = null;
+  function show(sec) { ["intro", "lesson", "quiz", "done"].forEach(function (s) { $(s).hidden = s !== sec; }); window.scrollTo(0, 0); }
+  function renderLesson() {
+    var l = L[cur], box = $("lesson-body"); box.textContent = "";
+    $("lesson-meta").textContent = C.fmt(U.lessonOf, { n: cur + 1, total: L.length }) + " · " + C.fmt(U.minutes, { m: l.minutes });
+    $("lesson-title").textContent = l.title;
+    l.body.forEach(function (p) { box.appendChild(el("p", p)); });
+    var ul = el("ul", null, "points"); l.points.forEach(function (p) { ul.appendChild(el("li", p)); }); box.appendChild(ul);
+    $("prev").hidden = cur === 0; $("next").textContent = cur === L.length - 1 ? U.toQuiz : U.next;
+    show("lesson");
+  }
+  function renderQuiz() {
+    var f = $("quiz-form"); f.textContent = "";
+    $("quiz-intro").textContent = C.fmt(U.quizIntro, { total: T.quiz.length, pct: Math.round(T.course.passMark * 100), need: C.need(T.quiz.length, T.course.passMark) });
+    T.quiz.forEach(function (q, i) {
+      var fs = el("fieldset"); fs.id = "q" + i; fs.appendChild(el("legend", (i + 1) + ". " + q.q));
+      q.o.forEach(function (o, j) { var lb = el("label", null, "chk"), inp = document.createElement("input"); inp.type = "radio"; inp.name = "q" + i; inp.value = j; lb.appendChild(inp); lb.appendChild(document.createTextNode(" " + o)); fs.appendChild(lb); });
+      fs.appendChild(el("p", "", "fb")); f.appendChild(fs);
+    });
+    $("quiz-result").textContent = ""; $("cert-form").hidden = true; show("quiz");
+  }
+  function check() {
+    var ans = T.quiz.map(function (q, i) { var c = document.querySelector('input[name="q' + i + '"]:checked'); return c ? +c.value : null; });
+    var left = ans.filter(function (a) { return a === null; }).length;
+    if (left) { msg("quiz-result", C.fmt(U.unanswered, { left: left }), true); return; }
+    result = C.grade(T.quiz, ans, T.course.passMark);
+    T.quiz.forEach(function (q, i) { var fb = document.querySelector("#q" + i + " .fb"), ok = result.wrong.indexOf(i) < 0; fb.textContent = ok ? U.correct : U.wrong + " " + C.fmt(U.seeLesson, { n: q.lesson }); fb.className = "fb " + (ok ? "ok" : "bad"); });
+    msg("quiz-result", C.fmt(result.passed ? U.scorePass : U.scoreFail, result), !result.passed);
+    $("cert-form").hidden = !result.passed;
+  }
+  function renderCert(r) {
+    var c = $("cert"); c.textContent = "";
+    c.appendChild(el("p", "Unadhi Academy", "brand")); c.appendChild(el("h2", U.certTitle)); c.appendChild(el("p", U.certIssued, "small"));
+    c.appendChild(el("p", U.certThis)); c.appendChild(el("p", r.staffName, "who")); c.appendChild(el("p", r.role + (r.organisation ? " · " + r.organisation : ""), "small"));
+    c.appendChild(el("p", U.certCompleted)); c.appendChild(el("p", r.course, "what"));
+    var t = el("table"); [[U.certDate, r.date], [U.certVersion, r.version + " (" + T.course.versionDate + ")"], [U.certDuration, C.fmt(U.minutes, { m: r.durationMin })], [U.certScore, r.score], [U.certContent, r.content], [U.certId, r.completionId]].forEach(function (x) { var tr = el("tr"); tr.appendChild(el("th", x[0])); tr.appendChild(el("td", x[1])); t.appendChild(tr); });
+    c.appendChild(t); c.appendChild(el("p", U.certNotice, "notice"));
+    c.appendChild(el("p", "Source: https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers", "small"));
+  }
+  function renderRecord() { $("rec-count").textContent = C.fmt(U.count, { n: load().length }); }
+  $("start").addEventListener("click", function () { cur = 0; renderLesson(); });
+  $("prev").addEventListener("click", function () { if (cur > 0) { cur--; renderLesson(); } });
+  $("next").addEventListener("click", function () { if (cur < L.length - 1) { cur++; renderLesson(); } else renderQuiz(); });
+  $("skip").addEventListener("click", renderQuiz);
+  $("submit").addEventListener("click", check);
+  $("retake").addEventListener("click", renderQuiz);
+  $("make").addEventListener("click", function () {
+    if (!result || !result.passed) return;
+    var d = { name: $("f-name").value, role: $("f-role").value, org: $("f-org").value, date: today() };
+    if (!d.name.trim() || !d.role.trim()) { msg("certmsg", U.needName, true); return; }
+    var r = C.makeRecord(d, T.course, L, result, C.newId(function (b) { crypto.getRandomValues(b); }));
+    var all = load(); all.push(r); save(all); renderCert(r); renderRecord(); show("done");
+  });
+  $("print").addEventListener("click", function () { window.print(); });
+  $("csv").addEventListener("click", function () { dl("art4-training-record-" + today() + ".csv", C.toCSV(load(), U.cols), "text/csv"); });
+  $("json").addEventListener("click", function () { dl("art4-training-record-" + today() + ".json", C.toJSON(load()), "application/json"); });
+  $("clear").addEventListener("click", function () { save([]); renderRecord(); msg("recmsg", U.cleared); });
+  renderRecord();
+})();
+</script>
+</main><footer><p class="small">© 2026 Unadhi Academy, part of the Unadhi group. No trackers, no cookies.</p></footer></body></html>

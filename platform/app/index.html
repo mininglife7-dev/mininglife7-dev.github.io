@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-FzqNmivqovgykA4tLeQBre2EmdRX1w93i08QHhBZcLo=' 'sha256-gwyS4GkEj2LFDvj9p9iDzSvcDUgkIbUa1lrT/xJpv44='; style-src 'sha256-nBMj7gDXmrrs6bD84gpBJf5TKE9JJb87UN83XjBu/KU='; img-src 'none'; font-src 'none'; connect-src https://api.gumroad.com; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-FzqNmivqovgykA4tLeQBre2EmdRX1w93i08QHhBZcLo=' 'sha256-q6+iIIXE/K0Ch3VaJ9uVkIi7QJpRLkI3/Bq/DQM/nDw='; style-src 'sha256-nBMj7gDXmrrs6bD84gpBJf5TKE9JJb87UN83XjBu/KU='; img-src 'none'; font-src 'none'; connect-src https://api.gumroad.com; form-action 'none'; base-uri 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <title>EURO AI Governance Platform app (free, browser-only)</title>
 <meta name="description" content="Free browser-only app: paste your tool list, find AI vendors, get EU AI Act tier suggestions with article citations, sign off and export inventory, Art. 4 record, Annex IV skeleton.">
@@ -32,6 +32,7 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
 <h3>Art. 4 AI-literacy record</h3>
 <p><label class="fld">Person <input type="text" id="lit-p" maxlength="80"></label><label class="fld">Role <input type="text" id="lit-r" maxlength="80"></label><label class="fld">Training / measure <input type="text" id="lit-t" maxlength="200"></label><label class="fld">Date <input type="date" id="lit-d"></label><label class="fld">Reviewer name <input type="text" id="lit-a" maxlength="80"></label><label class="fld">Sign-off date <input type="date" id="lit-s"></label>
 <button type="button" id="lit-add">Add entry</button><button type="button" id="lit-csv">Export record (CSV)</button></p><p id="litmsg" class="msg"></p>
+<p>Staff took the free <a href="/academy/ai-literacy/">Unadhi Academy AI literacy course</a>? Import its training record (JSON): <input type="file" id="acad-file" accept="application/json,.json"></p><p id="acadmsg" class="msg"></p>
 <h3>Incident log (local, append-only)</h3>
 <p><label class="fld">System <input type="text" id="inc-sys" maxlength="120"></label><label class="fld">Severity <select id="inc-sev"><option>low</option><option>medium</option><option>high</option><option>serious</option></select></label><label class="fld">What happened <input type="text" id="inc-txt" maxlength="500"></label><label class="fld">Logged by <input type="text" id="inc-by" maxlength="80"></label>
 <button type="button" id="inc-add">Append entry</button><button type="button" id="inc-csv">Export CSV</button><button type="button" id="inc-json">Export JSON</button></p><p id="inc-state" class="small"></p><p id="incmsg" class="msg"></p>
@@ -406,6 +407,21 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
     }).catch(function () { msg("licmsg", "Could not reach Gumroad. Check your connection and try again.", true); });
   });
   $("lic-clear").addEventListener("click", function () { localStorage.removeItem(LKEY); showLic(); render(); msg("licmsg", "Licence removed from this browser."); });
+  /* Unadhi Academy training-record import (schema "unadhi-academy-record") */
+  $("acad-file").addEventListener("change", function (ev) {
+    var f = ev.target.files[0]; if (!f) return;
+    var rd = new FileReader(); rd.onload = function () {
+      var o; try { o = JSON.parse(rd.result); } catch (e) { msg("acadmsg", "That file is not valid JSON.", true); return; }
+      if (!o || o.schema !== "unadhi-academy-record" || !Array.isArray(o.records)) { msg("acadmsg", "Not an Unadhi Academy record file (schema missing).", true); return; }
+      var cl = function (s, n) { return String(s == null ? "" : s).replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n); }, n = 0;
+      o.records.forEach(function (r) {
+        if (!r || !r.staffName || !/^\d{4}-\d{2}-\d{2}$/.test(r.date || "")) return;
+        var id = cl(r.completionId, 40); if (id && S.lit.some(function (x) { return x.academyId === id; })) return;
+        S.lit.push({ person: cl(r.staffName, 80), role: cl(r.role, 80), training: cl("Unadhi Academy: " + r.course + " v" + r.version + " (" + r.durationMin + " min; quiz " + r.score + "; ID " + id + ")", 300), date: r.date, approver: "", signDate: "", academyId: id }); n++;
+      });
+      save(); msg("acadmsg", n + " training entr" + (n === 1 ? "y" : "ies") + " imported into the Art. 4 record. " + S.lit.length + " stored. Add a reviewer before export if your process needs one.");
+    }; rd.readAsText(f); ev.target.value = "";
+  });
   /* Register import */
   $("reg-file").addEventListener("change", function (ev) {
     var f = ev.target.files[0]; if (!f) return;
