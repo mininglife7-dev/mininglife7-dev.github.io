@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free CA Client Due-Date Calendar Generator (.ics + CSV) | Unadhi</title>
+<meta name="description" content="Free in-browser tool for CA firms: enter your firm name and client list, pick GST/TDS/PF-ESI/ITR/ROC, and download a 12-month due-date calendar as .ics (Google/Outlook) or CSV. No login, nothing uploaded.">
+<link rel="canonical" href="https://unadhi.com/tools/ca-due-date-calendar.html">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f6f7f9;color:#1b1f24;line-height:1.5}
+main{max-width:760px;margin:0 auto;padding:16px}h1{font-size:1.5rem;margin:.5em 0}.lead{background:#fff;border-left:4px solid #0a6;padding:12px;border-radius:6px}
+.card{background:#fff;border-radius:10px;padding:16px;margin:16px 0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+label{display:block;font-weight:600;margin-top:12px}input[type=text],input[type=month],textarea{width:100%;padding:10px;font-size:1rem;border:1px solid #bbb;border-radius:6px;margin-top:4px}
+.chk label{font-weight:400;margin-top:6px}button{margin-top:12px;padding:12px 16px;font-size:1rem;background:#0a6;color:#fff;border:0;border-radius:6px;cursor:pointer;margin-right:8px}
+button.alt{background:#246}table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{padding:5px;border-bottom:1px solid #eee;text-align:left}
+.cta{display:block;margin-top:16px;padding:14px;background:#fff7e0;border:1px solid #e6c200;border-radius:6px;color:#1b1f24;text-decoration:none}
+.note{font-size:.85rem;color:#555}footer{text-align:center;font-size:.85rem;color:#555;padding:24px 16px}
+</style>
+</head>
+<body>
+<main>
+<p><a href="/">Unadhi</a> › <a href="/ca-calendar/">CA calendar</a> › Free generator</p>
+<h1>Free CA client due-date calendar generator</h1>
+<p class="lead">Type your firm name and your clients, tick the compliances that apply, and download a 12-month calendar. The .ics file imports into Google Calendar, Outlook or Apple Calendar, and the CSV opens in Excel. <b>No login. Everything runs in your browser and nothing is uploaded.</b></p>
+
+<div class="card">
+<label>Firm name (shown in every event)<input type="text" id="firm" placeholder="e.g. ABC &amp; Associates"></label>
+<label>Clients (one per line; leave empty for a firm-wide calendar)<textarea id="clients" rows="5" placeholder="Client A Pvt Ltd&#10;Client B (QRMP)"></textarea></label>
+<label>Start month<input type="month" id="start"></label>
+<div class="chk"><b>Compliances</b>
+<label><input type="checkbox" id="c_gstm" checked> GST monthly: GSTR-1 (11th), GSTR-3B (20th)</label>
+<label><input type="checkbox" id="c_gstq"> GST QRMP: IFF (13th, months 1–2), GSTR-1 (13th) and GSTR-3B (22nd) after the quarter</label>
+<label><input type="checkbox" id="c_tds" checked> TDS/TCS deposit (7th; March deducted: 30 April) and quarterly TDS returns</label>
+<label><input type="checkbox" id="c_pf" checked> PF and ESI (15th)</label>
+<label><input type="checkbox" id="c_adv" checked> Advance tax (15 Jun, 15 Sep, 15 Dec, 15 Mar)</label>
+<label><input type="checkbox" id="c_itr" checked> Income tax: ITR non-audit (31 Jul), tax audit report (30 Sep), ITR audit (31 Oct)</label>
+<label><input type="checkbox" id="c_gst9"> GSTR-9/9C annual return (31 Dec)</label>
+<label><input type="checkbox" id="c_roc"> ROC: AOC-4 (30 Oct) and MGT-7 (29 Nov), assuming AGM on 30 Sep</label>
+<label><input type="checkbox" id="c_rem" checked> Add a reminder 3 days before each date</label>
+</div>
+<button id="ics">Download .ics</button><button class="alt" id="csv">Download CSV</button>
+<p class="note" id="count"></p>
+</div>
+
+<div class="card"><b>Preview (first 15 dates)</b><table id="prev"><tr><th>Date</th><th>Compliance</th><th>Client</th></tr></table></div>
+
+<a class="cta" href="https://mininglife1.gumroad.com">Want it done for you? The paid Unadhi CA calendar (₹999/year) comes ready-made and is updated when due dates are extended. <b>Get it on Gumroad →</b></a>
+
+<div class="card note">
+<b>Please check before relying on it.</b> These are the usual statutory due dates. Government extensions, state Professional Tax, and dates that fall on holidays are <b>not</b> applied, so confirm on the GST portal, the Income Tax portal and the MCA portal. This is a free planning aid, not professional advice.<br><br>
+<b>How it is built:</b> one HTML file with plain JavaScript and no third-party code. The .ics output follows RFC 5545 (iCalendar). Its approach is similar to the MIT/ISC-licensed <a href="https://github.com/sebbo2002/ical-generator">ical-generator</a> and <a href="https://github.com/adamgibbons/ics">ics</a> libraries, but no code from them is bundled.
+</div>
+</main>
+<footer>© Unadhi · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/changelog/">Changelog</a></footer>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const d0=new Date();$('start').value=d0.getFullYear()+'-'+String(d0.getMonth()+1).padStart(2,'0');
+function D(y,m,d){return new Date(Date.UTC(y,m,d));}
+function fyEnd(y,m){return m>=3?y+1:y;} // FY ending March of year
+function build(){
+ const [sy,sm]=$('start').value.split('-').map(Number); const s=D(sy,sm-1,1), e=D(sy,sm-1+12,1);
+ const ev=[]; const add=(dt,t,n)=>{if(dt>=s&&dt<e)ev.push({dt,t,n});};
+ for(let i=-3;i<15;i++){const b=D(sy,sm-1+i,1),y=b.getUTCFullYear(),m=b.getUTCMonth(); // events in month m
+  const pm=D(y,m-1,1),pl=pm.toLocaleString('en-IN',{month:'short',timeZone:'UTC'})+' '+pm.getUTCFullYear();
+  if($('c_gstm').checked){add(D(y,m,11),'GSTR-1 for '+pl,'');add(D(y,m,20),'GSTR-3B for '+pl,'');}
+  if($('c_gstq').checked){ // quarter months Apr-Jun etc; m index of following month
+   const q=[[6,'Apr–Jun'],[9,'Jul–Sep'],[0,'Oct–Dec'],[3,'Jan–Mar']].find(x=>x[0]===m);
+   if(q){add(D(y,m,13),'GSTR-1 (QRMP) for '+q[1],'');add(D(y,m,22),'GSTR-3B (QRMP) for '+q[1]+' (22nd; 24th in some states)','');}
+   else if([5,8,11,2].indexOf(m)<0) add(D(y,m,13),'IFF (QRMP, optional) for '+pl,'');
+   if([4,5,7,8,10,11,1,2].indexOf(m)>=0) add(D(y,m,25),'PMT-06 (QRMP) tax payment for '+pl,'');
+  }
+  if($('c_tds').checked){ if(m===3) add(D(y,m,30),'TDS/TCS deposit for March','' ); else add(D(y,m,7),'TDS/TCS deposit for '+pl,'');
+   if(m===6)add(D(y,6,31),'TDS return Q1 (24Q/26Q)','');if(m===9)add(D(y,9,31),'TDS return Q2 (24Q/26Q)','');
+   if(m===0)add(D(y,0,31),'TDS return Q3 (24Q/26Q)','');if(m===4)add(D(y,4,31),'TDS return Q4 (24Q/26Q)','');}
+  if($('c_pf').checked){add(D(y,m,15),'PF deposit and ECR for '+pl,'');add(D(y,m,15),'ESI contribution for '+pl,'');}
+  if($('c_adv').checked){const p={5:'1st (15%)',8:'2nd (45%)',11:'3rd (75%)',2:'4th (100%)'}[m];if(p)add(D(y,m,15),'Advance tax '+p+' instalment','');}
+  const ay=(y)=>'FY '+(y-1)+'-'+String(y).slice(2);
+  if($('c_itr').checked){if(m===6)add(D(y,6,31),'ITR (non-audit) '+ay(y),'');if(m===8)add(D(y,8,30),'Tax audit report 3CA/3CB-3CD '+ay(y),'');if(m===9)add(D(y,9,31),'ITR (audit cases) '+ay(y),'');}
+  if($('c_gst9').checked&&m===11)add(D(y,11,31),'GSTR-9/9C annual return '+ay(y),'');
+  if($('c_roc').checked){if(m===9)add(D(y,9,30),'AOC-4 financial statements '+ay(y),'');if(m===10)add(D(y,10,29),'MGT-7/7A annual return '+ay(y),'');}
+ }
+ ev.sort((a,b)=>a.dt-b.dt);
+ const cl=$('clients').value.split('\n').map(x=>x.trim()).filter(Boolean);const list=cl.length?cl:[''];
+ const out=[];ev.forEach(x=>list.forEach(c=>out.push({dt:x.dt,t:x.t,c})));
+ return out;
+}
+const f8=d=>d.toISOString().slice(0,10).replace(/-/g,'');
+const esc=s=>s.replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n');
+function fold(l){let o='';while(l.length>74){o+=l.slice(0,74)+'\r\n ';l=l.slice(74);}return o+l;}
+function dl(name,data,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;document.body.appendChild(a);a.click();a.remove();}
+function firm(){return $('firm').value.trim()||'My CA firm';}
+function slug(){return firm().replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'').toLowerCase()||'firm';}
+function preview(){const r=build();$('count').textContent=r.length+' calendar entries over 12 months.';
+ const t=$('prev');t.innerHTML='<tr><th>Date</th><th>Compliance</th><th>Client</th></tr>';
+ r.slice(0,15).forEach(x=>{const tr=t.insertRow();tr.insertCell().textContent=x.dt.toISOString().slice(0,10);tr.insertCell().textContent=x.t;tr.insertCell().textContent=x.c||'(firm)';});}
+$('ics').onclick=()=>{const r=build(),now=new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z',F=firm(),rem=$('c_rem').checked;
+ let L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Unadhi//CA Due-Date Calendar//EN','CALSCALE:GREGORIAN','X-WR-CALNAME:'+esc(F+' due dates')];
+ r.forEach((x,i)=>{const n=new Date(x.dt.getTime()+864e5);L.push('BEGIN:VEVENT','UID:'+f8(x.dt)+'-'+i+'-'+slug()+'@unadhi.com','DTSTAMP:'+now,'DTSTART;VALUE=DATE:'+f8(x.dt),'DTEND;VALUE=DATE:'+f8(n),
+  'SUMMARY:'+esc((x.c?x.c+': ':'')+x.t),'DESCRIPTION:'+esc(F+' | Statutory default date; check portals for extensions. Generated free at unadhi.com/tools/ca-due-date-calendar.html'),'TRANSP:TRANSPARENT');
+  if(rem)L.push('BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+esc(x.t),'TRIGGER:-P3D','END:VALARM');L.push('END:VEVENT');});
+ L.push('END:VCALENDAR');dl(slug()+'-due-dates.ics',L.map(fold).join('\r\n')+'\r\n','text/calendar');};
+$('csv').onclick=()=>{const q=s=>'"'+String(s).replace(/"/g,'""')+'"';const r=build();
+ const rows=[['Date','Compliance','Client','Firm','Status']].concat(r.map(x=>[x.dt.toISOString().slice(0,10),x.t,x.c,firm(),'Pending']));
+ dl(slug()+'-due-dates.csv','\ufeff'+rows.map(a=>a.map(q).join(',')).join('\r\n'),'text/csv');};
+document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',preview));preview();
+})();
+</script>
+</body>
+</html>
