@@ -1,0 +1,250 @@
+{
+ "name": "EURO AI open AI-vendor catalogue",
+ "version": "0.1",
+ "checked": "2026-10-13",
+ "licence": "CC0-1.0 (data); each entry cites the vendor's own page",
+ "note": "Entries list AI features as described on the vendor's own page on the checked date. Inclusion says nothing about any vendor's legal status under any law.",
+ "vendors": [
+  {
+   "id": "google-workspace",
+   "name": "Google Workspace (Gemini)",
+   "aliases": [
+    "google workspace",
+    "gsuite",
+    "g suite",
+    "gmail",
+    "google docs",
+    "gemini"
+   ],
+   "ai": "Generative AI assistant (Gemini) in Gmail, Docs, Sheets, Meet",
+   "hint": "art50",
+   "src": "https://workspace.google.com/solutions/ai/"
+  },
+  {
+   "id": "notion",
+   "name": "Notion AI",
+   "aliases": [
+    "notion"
+   ],
+   "ai": "AI writing, Q&A and search across workspace content",
+   "hint": "minimal",
+   "src": "https://www.notion.com/product/ai"
+  },
+  {
+   "id": "slack",
+   "name": "Slack AI",
+   "aliases": [
+    "slack"
+   ],
+   "ai": "AI summaries of channels/threads, AI search",
+   "hint": "minimal",
+   "src": "https://slack.com/features/ai"
+  },
+  {
+   "id": "salesforce",
+   "name": "Salesforce (Agentforce / Einstein)",
+   "aliases": [
+    "salesforce",
+    "sfdc",
+    "agentforce",
+    "einstein"
+   ],
+   "ai": "AI agents and predictive/generative CRM features",
+   "hint": "art50",
+   "src": "https://www.salesforce.com/artificial-intelligence/"
+  },
+  {
+   "id": "hubspot",
+   "name": "HubSpot (Breeze AI)",
+   "aliases": [
+    "hubspot",
+    "breeze"
+   ],
+   "ai": "AI agents, content generation, chat assistant",
+   "hint": "art50",
+   "src": "https://www.hubspot.com/artificial-intelligence"
+  },
+  {
+   "id": "zendesk",
+   "name": "Zendesk AI",
+   "aliases": [
+    "zendesk"
+   ],
+   "ai": "AI agents answering customers, agent copilot",
+   "hint": "art50",
+   "src": "https://www.zendesk.com/service/ai/"
+  },
+  {
+   "id": "intercom",
+   "name": "Intercom Fin",
+   "aliases": [
+    "intercom",
+    "fin"
+   ],
+   "ai": "AI customer-service agent that chats with customers",
+   "hint": "art50",
+   "src": "https://www.intercom.com/fin"
+  },
+  {
+   "id": "grammarly",
+   "name": "Grammarly",
+   "aliases": [
+    "grammarly"
+   ],
+   "ai": "Generative AI writing assistance",
+   "hint": "minimal",
+   "src": "https://www.grammarly.com/ai"
+  },
+  {
+   "id": "canva",
+   "name": "Canva (AI image generator)",
+   "aliases": [
+    "canva"
+   ],
+   "ai": "Text-to-image generation and AI design tools",
+   "hint": "art50",
+   "src": "https://www.canva.com/ai-image-generator/"
+  },
+  {
+   "id": "atlassian",
+   "name": "Atlassian (Rovo / Atlassian Intelligence)",
+   "aliases": [
+    "atlassian",
+    "jira",
+    "confluence",
+    "rovo",
+    "trello"
+   ],
+   "ai": "AI search, agents and summaries in Jira/Confluence",
+   "hint": "minimal",
+   "src": "https://www.atlassian.com/platform/artificial-intelligence"
+  },
+  {
+   "id": "github-copilot",
+   "name": "GitHub Copilot",
+   "aliases": [
+    "github",
+    "copilot github",
+    "github copilot"
+   ],
+   "ai": "AI code completion and chat",
+   "hint": "minimal",
+   "src": "https://github.com/features/copilot"
+  },
+  {
+   "id": "zoom",
+   "name": "Zoom AI Companion",
+   "aliases": [
+    "zoom"
+   ],
+   "ai": "Meeting summaries, transcripts, AI assistant",
+   "hint": "minimal",
+   "src": "https://zoom.com/en/products/ai-assistant/"
+  },
+  {
+   "id": "deepl",
+   "name": "DeepL",
+   "aliases": [
+    "deepl"
+   ],
+   "ai": "AI machine translation",
+   "hint": "minimal",
+   "src": "https://www.deepl.com/en/translator"
+  },
+  {
+   "id": "claude",
+   "name": "Anthropic Claude",
+   "aliases": [
+    "claude",
+    "anthropic"
+   ],
+   "ai": "General-purpose AI assistant / LLM",
+   "hint": "art50",
+   "src": "https://www.anthropic.com/claude"
+  },
+  {
+   "id": "workday",
+   "name": "Workday AI",
+   "aliases": [
+    "workday"
+   ],
+   "ai": "AI across HR and finance, including recruiting features",
+   "hint": "annex3-check",
+   "src": "https://workday.com/en-us/artificial-intelligence.html"
+  },
+  {
+   "id": "otter",
+   "name": "Otter.ai",
+   "aliases": [
+    "otter",
+    "otter.ai"
+   ],
+   "ai": "AI meeting transcription and notes",
+   "hint": "minimal",
+   "src": "https://www.otter.ai/"
+  },
+  {
+   "id": "figma",
+   "name": "Figma AI",
+   "aliases": [
+    "figma"
+   ],
+   "ai": "AI design generation and editing tools",
+   "hint": "minimal",
+   "src": "https://www.figma.com/ai/"
+  },
+  {
+   "id": "monday",
+   "name": "monday.com AI",
+   "aliases": [
+    "monday",
+    "monday.com"
+   ],
+   "ai": "AI blocks, agents and automations in work management",
+   "hint": "minimal",
+   "src": "https://www.monday.com/w/ai"
+  },
+  {
+   "id": "dropbox-dash",
+   "name": "Dropbox Dash",
+   "aliases": [
+    "dropbox",
+    "dash"
+   ],
+   "ai": "AI universal search and answers across work apps",
+   "hint": "minimal",
+   "src": "https://www.dropbox.com/dash"
+  },
+  {
+   "id": "mistral",
+   "name": "Mistral Le Chat",
+   "aliases": [
+    "mistral",
+    "le chat"
+   ],
+   "ai": "General-purpose AI assistant / LLM",
+   "hint": "art50",
+   "src": "https://mistral.ai/products/le-chat"
+  },
+  {
+   "id": "jasper",
+   "name": "Jasper",
+   "aliases": [
+    "jasper"
+   ],
+   "ai": "AI marketing content generation",
+   "hint": "art50",
+   "src": "https://www.jasper.ai/"
+  },
+  {
+   "id": "miro",
+   "name": "Miro AI",
+   "aliases": [
+    "miro"
+   ],
+   "ai": "AI on the collaborative whiteboard (summaries, generation)",
+   "hint": "minimal",
+   "src": "https://www.miro.com/ai/"
+  }
+ ]
+}
