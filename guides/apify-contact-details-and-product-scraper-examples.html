@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact details and e-commerce product scrapers on Apify: copy-paste inputs and API examples</title><meta name="description" content="Ready-to-run inputs, Python and curl snippets for two ToS-aware Apify Actors: a contact details scraper (role emails, phones, WhatsApp, socials) and a Shopify/WooCommerce product scraper."><link rel="canonical" href="https://mininglife7-dev.github.io/guides/apify-contact-details-and-product-scraper-examples.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Contact details and e-commerce product scrapers on Apify: copy-paste inputs and API examples"><meta property="og:description" content="Ready-to-run inputs, Python and curl snippets for two ToS-aware Apify Actors: a contact details scraper (role emails, phones, WhatsApp, socials) and a Shopify/WooCommerce product scraper."><meta property="og:url" content="https://mininglife7-dev.github.io/guides/apify-contact-details-and-product-scraper-examples.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+.cards a{display:block;padding:10px 0;border-bottom:1px solid #e3e8e8;text-decoration:none}.cards span{display:block;color:#5b6b6b;font-size:.9rem}
+.signup{border:1px dashed #0a5c55;border-radius:8px;padding:10px 16px;background:#f4faf9;margin-top:1.4em}.signup p{margin:.3em 0}</style><style>pre{background:#f1f4f3;padding:10px;border-radius:6px;overflow-x:auto;font-size:.88rem}</style></head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Contact details and e-commerce product scrapers on Apify: copy-paste inputs and API examples</h1><p class="meta">Updated 13 Oct 2026 · Disclosure: both Actors are built and published by Unadhi.</p>
+<p>Two polite, ToS-aware Apify Actors from Unadhi, with ready-to-run inputs and API snippets.</p>
+<table>
+<thead>
+<tr>
+<th>Actor</th>
+<th>What you give it</th>
+<th>What you get</th>
+<th>Store page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Contact Details Scraper: Emails, Phones, Socials</strong></td>
+<td>Company websites, a domain list, or the dataset ID of a Google Maps run</td>
+<td>One de-duplicated row per website: role emails (MX-checked), E.164 phones, WhatsApp/Telegram links and social profiles, each with the page it was found on</td>
+<td><a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&utm_medium=organic&utm_campaign=apify_examples">apify.com/laudable_instrument/contact-details-scraper-half-price</a></td>
+</tr>
+<tr>
+<td><strong>E-commerce Product Scraper: Shopify & Woo</strong></td>
+<td>Shop homepages, category pages or product URLs</td>
+<td>One row per product: title, brand, price, currency, sale price, stock, SKU/GTIN, variants, images</td>
+<td><a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&utm_medium=organic&utm_campaign=apify_examples">apify.com/laudable_instrument/ecommerce-product-data-half-price</a></td>
+</tr>
+</tbody>
+</table>
+<p>Current pricing is shown on each Store page.</p>
+<h2>1. Contact Details Scraper</h2>
+<h3>Enrich a Google Maps scrape</h3>
+<p>Run any Google Maps Actor first, then pass its dataset ID. Branches that share a website are crawled once.</p>
+<pre><code class="language-json">{ "datasetId": "<dataset ID of your Google Maps run>", "maxPagesPerSite": 4, "defaultCountry": "IN" }
+</code></pre>
+<h3>Or give it a list of sites</h3>
+<pre><code class="language-json">{
+  "urls": ["kimshospitals.com", "https://www.fmsdental.com"],
+  "startUrls": [{ "url": "https://www.zoho.com" }],
+  "maxPagesPerSite": 4,
+  "checkEmailMx": true,
+  "defaultCountry": "IN"
+}
+</code></pre>
+<h3>Output (one row per site, shortened)</h3>
+<pre><code class="language-json">{
+  "domain": "tanishq.co.in",
+  "status": "ok",
+  "pagesScraped": 4,
+  "phones": [{ "phone": "+918147349242", "source": "text", "whatsapp": "https://wa.me/918147349242" }],
+  "counts": { "emails": 0, "phones": 3, "socialProfiles": 4, "whatsapp": 1 }
+}
+</code></pre>
+<p><code>status</code> is one of <code>ok</code>, <code>blocked-by-robots</code>, <code>blocked-by-terms</code>, <code>blocked-by-tos-list</code>, <code>blocked-by-site</code>, <code>rate-limited</code> or <code>failed</code>.</p>
+<p><strong>Privacy default:</strong> only shared role mailboxes (info@, sales@, support@) are returned. Addresses that identify one person are dropped and counted unless you turn them on with <code>includePersonalEmails</code>. Personal contact data falls under India's DPDP Act and the EU/UK GDPR, so only switch that on with a lawful basis. This is general information, not legal advice.</p>
+<h2>2. E-commerce Product Scraper (Shopify, WooCommerce, any shop)</h2>
+<pre><code class="language-json">{
+  "startUrls": [{ "url": "https://scrapeme.live/shop/" }, { "url": "https://nomadgoods.com" }],
+  "maxProductsPerShop": 100,
+  "maxListingPages": 10,
+  "includeDescription": true
+}
+</code></pre>
+<p>Sources, best first: Shopify <code>products.json</code>, the WooCommerce Store API, schema.org JSON-LD, microdata, OpenGraph. Before fetching a shop it checks robots.txt and scans the shop's terms of service, and skips the shop if they forbid scraping. Marketplaces such as Amazon, eBay and Flipkart are never fetched. A <code>SHOPS_SUMMARY</code> record lists every shop and why it was or wasn't scraped.</p>
+<h2>Run either one from code</h2>
+<h3>Python (<code>pip install apify-client</code>)</h3>
+<pre><code class="language-python">from apify_client import ApifyClient
+
+client = ApifyClient("<YOUR_APIFY_TOKEN>")
+run = client.actor("laudable_instrument/contact-details-scraper-half-price").call(
+    run_input={"urls": ["zoho.com", "basecamp.com"], "maxPagesPerSite": 4}
+)
+for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+    print(item["domain"], item["counts"])
+</code></pre>
+<h3>curl (synchronous run, returns the dataset items)</h3>
+<pre><code class="language-bash">curl -X POST \
+  "https://api.apify.com/v2/acts/laudable_instrument~ecommerce-product-data-half-price/run-sync-get-dataset-items?token=<YOUR_APIFY_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"startUrls":[{"url":"https://scrapeme.live/shop/"}],"maxProductsPerShop":20}'
+</code></pre>
+<h2>What our own tests showed (29 Sep 2026)</h2>
+<ul>
+<li>Contact Details, 20 real company websites: 14 returned data, which was every site that allowed crawling. The other 6 (robots.txt or HTTP 403) were reported and skipped. 3.8 pages per site on average.</li>
+<li>E-commerce, 32 shop URLs: 536 products from 11 shops. On a re-check of 88 products, title and price matched the page on all 88.</li>
+</ul>
+<p>These are one-off measurements on our test lists, not guarantees for your sites.</p>
+<h2>Responsible use</h2>
+<p>Both Actors read only public pages, use an honest bot User-Agent, follow robots.txt, never log in and never get around blocks. You are responsible for how you use the data.</p>
+<p><a href="./">← All guides</a></p><p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p></main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
