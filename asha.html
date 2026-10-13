@@ -91,7 +91,7 @@ footer a{color:#0f766e}
       <li>Flags emergencies and "talk to a human" requests for your staff</li>
       <li>Picks up your missed and after-hours calls <b>after our phone line setup (in progress)</b>. Your receptionist stays.</li>
     </ul>
-    <p style="margin:10px 0 0;font-size:15px"><b>₹15,000 setup, then ₹4,000/month</b> from day 15 after go-live. Go-live within 7 days of your clinic details (our phone line setup is in progress). 14-day no-questions money-back from your go-live day, and a full setup refund anytime before go-live.</p>
+    <p style="margin:10px 0 0;font-size:15px"><b>No setup fee. ₹4,000/month</b>, with the first monthly cycle starting on day 15 after go-live, so you pay nothing for the first 14 days. Go-live within 7 days of your clinic details (our phone line setup is in progress). Cancel anytime; see our <a href="/refund.html">refund policy</a>.</p>
   </div>
 
   <footer>HaanJi · <a href="https://mininglife7-dev.github.io/">mininglife7-dev.github.io</a> · <a href="privacy.html">Privacy</a> · <a href="refund.html">Refund</a><br>Demo page. Clinic name comes from the link only. Nothing you type here is sent anywhere.</footer>
@@ -218,7 +218,7 @@ footer a{color:#0f766e}
     var pts=missed*Math.min(n('conv'),100)/100;
     document.getElementById('outpat').textContent='≈ '+(pts<10?pts.toFixed(1):Math.round(pts))+' patients / month lost (estimate)';
     document.getElementById('outrs').textContent='≈ '+inr(pts*n('val'))+' / month (estimate)';
-    document.getElementById('outcalls').textContent='From ≈ '+Math.round(missed)+' missed calls a month, using your inputs. Asha: ₹15,000 setup, then ₹4,000/month.';
+    document.getElementById('outcalls').textContent='From ≈ '+Math.round(missed)+' missed calls a month, using your inputs. Asha: no setup fee, ₹4,000/month.';
   }
   ['calls','miss','conv','val','days'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
   calc();
