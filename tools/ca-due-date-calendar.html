@@ -33,7 +33,7 @@ button.alt{background:#246}table{width:100%;border-collapse:collapse;font-size:.
 <label><input type="checkbox" id="c_tds" checked> TDS/TCS deposit (7th; March deducted: 30 April) and quarterly TDS returns</label>
 <label><input type="checkbox" id="c_pf" checked> PF and ESI (15th)</label>
 <label><input type="checkbox" id="c_adv" checked> Advance tax (15 Jun, 15 Sep, 15 Dec, 15 Mar)</label>
-<label><input type="checkbox" id="c_itr" checked> Income tax: ITR non-audit (31 Jul), tax audit report (30 Sep), ITR audit (31 Oct)</label>
+<label><input type="checkbox" id="c_itr" checked> Income tax: ITR non-audit (31 Jul), tax audit report (30 Sep; <b>21 Oct 2026</b> for AY 2026-27), ITR audit (31 Oct; <b>21 Nov 2026</b> for AY 2026-27)</label>
 <label><input type="checkbox" id="c_gst9"> GSTR-9/9C annual return (31 Dec)</label>
 <label><input type="checkbox" id="c_roc"> ROC: AOC-4 (30 Oct) and MGT-7 (29 Nov), assuming AGM on 30 Sep</label>
 <label><input type="checkbox" id="c_rem" checked> Add a reminder 3 days before each date</label>
@@ -47,6 +47,7 @@ button.alt{background:#246}table{width:100%;border-collapse:collapse;font-size:.
 <a class="cta" href="https://mininglife1.gumroad.com">Want it done for you? The paid Unadhi CA calendar (₹999/year) comes ready-made and is updated when due dates are extended. <b>Get it on Gumroad →</b></a>
 
 <div class="card note">
+<b>AY 2026-27 extension:</b> CBDT Circular No. 07/2026 (28 Sep 2026) extended the tax audit report (3CA/3CB-3CD) due date from 30 Sep 2026 to <b>21 Oct 2026</b>, and the ITR due date for audit cases from 31 Oct 2026 to <b>21 Nov 2026</b> (persons at Sl. No. 2 of Explanation 2 to s.139(1); not s.92E transfer-pricing cases). Source: <a href="https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-09/Circular-7-2026.pdf">incometax.gov.in – Circular 7/2026</a>. The .ics and CSV downloads use these dates. For later years, check the latest CBDT notice.<br><br>
 <b>Please check before relying on it.</b> These are the usual statutory due dates. Government extensions, state Professional Tax, and dates that fall on holidays are <b>not</b> applied, so confirm on the GST portal, the Income Tax portal and the MCA portal. This is a free planning aid, not professional advice.<br><br>
 <b>How it is built:</b> one HTML file with plain JavaScript and no third-party code. The .ics output follows RFC 5545 (iCalendar). Its approach is similar to the MIT/ISC-licensed <a href="https://github.com/sebbo2002/ical-generator">ical-generator</a> and <a href="https://github.com/adamgibbons/ics">ics</a> libraries, but no code from them is bundled.
 </div>
@@ -76,7 +77,7 @@ function build(){
   if($('c_pf').checked){add(D(y,m,15),'PF deposit and ECR for '+pl,'');add(D(y,m,15),'ESI contribution for '+pl,'');}
   if($('c_adv').checked){const p={5:'1st (15%)',8:'2nd (45%)',11:'3rd (75%)',2:'4th (100%)'}[m];if(p)add(D(y,m,15),'Advance tax '+p+' instalment','');}
   const ay=(y)=>'FY '+(y-1)+'-'+String(y).slice(2);
-  if($('c_itr').checked){if(m===6)add(D(y,6,31),'ITR (non-audit) '+ay(y),'');if(m===8)add(D(y,8,30),'Tax audit report 3CA/3CB-3CD '+ay(y),'');if(m===9)add(D(y,9,31),'ITR (audit cases) '+ay(y),'');}
+  if($('c_itr').checked){if(m===6)add(D(y,6,31),'ITR (non-audit) '+ay(y),'');const x26=(y===2026),xn=' (extended by CBDT Circular 07/2026; Sl. No. 2 of Expl. 2 to s.139(1), not s.92E cases)';if(x26){if(m===9)add(D(y,9,21),'Tax audit report 3CA/3CB-3CD '+ay(y)+xn,'');if(m===10)add(D(y,10,21),'ITR (audit cases) '+ay(y)+xn,'');}else{if(m===8)add(D(y,8,30),'Tax audit report 3CA/3CB-3CD '+ay(y)+' (check latest CBDT notice)','');if(m===9)add(D(y,9,31),'ITR (audit cases) '+ay(y)+' (check latest CBDT notice)','');}}
   if($('c_gst9').checked&&m===11)add(D(y,11,31),'GSTR-9/9C annual return '+ay(y),'');
   if($('c_roc').checked){if(m===9)add(D(y,9,30),'AOC-4 financial statements '+ay(y),'');if(m===10)add(D(y,10,29),'MGT-7/7A annual return '+ay(y),'');}
  }
