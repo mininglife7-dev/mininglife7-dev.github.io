@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI after-hours receptionist vs hiring: cost calculator | HaanJi</title>
+<meta name="description" content="Compare the cost of Asha, HaanJi's AI after-hours clinic receptionist (₹4,000/month), with what you pay a person for the same hours. Enter your own numbers.">
+<style>body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1d2433;background:#f7f8fa;line-height:1.55}
+.w{max-width:760px;margin:0 auto;padding:24px 18px}header{background:#14324f;color:#fff}h1{margin:.2em 0;font-size:1.7rem}
+.card{background:#fff;border:1px solid #dde2ea;border-radius:10px;padding:18px;margin:16px 0}label{display:block;margin:.6em 0 .2em;font-weight:600}
+input{width:100%;max-width:260px;padding:8px;font-size:1rem;border:1px solid #c5ccd8;border-radius:6px}.out{font-size:1.2rem;font-weight:700;color:#14324f}
+a{color:#0b5cad}.btn{display:inline-block;background:#0b5cad;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600}
+footer{color:#667;font-size:.85rem;padding:30px 0}</style></head><body>
+<header><div class="w"><div>HaanJi</div><h1>An after-hours clinic receptionist, priced against payroll</h1>
+<p>Asha is built to answer your clinic's missed and after-hours calls in Hindi and English, for ₹4,000 a month. (Our phone-line connection is still being set up; the <a style="color:#fff" href="/asha.html">demo</a> works today.) Your day receptionist stays; Asha covers the hours nobody is at the desk.</p></div></header>
+<main class="w">
+<p><b>Short answer:</b> Asha costs ₹4,000 per month (₹48,000 a year). To compare, enter what you would pay a person to cover the same evening and night hours. We do not guess your salary numbers; the calculator only uses what you type.</p>
+<div class="card">
+<label for="sal">Monthly pay for a person covering after-hours calls (₹)</label><input id="sal" type="number" min="0" step="500" placeholder="your number">
+<label for="extra">Other monthly costs for that person (phone, travel, cover for leave) (₹)</label><input id="extra" type="number" min="0" step="100" value="0">
+<p>Person: <span class="out" id="p">–</span> / month &nbsp;·&nbsp; Asha: <span class="out">₹4,000</span> / month</p>
+<p id="diff"></p>
+</div>
+<h2>What Asha does and does not do</h2>
+<ul><li>Answers calls, gives your timings, services, location and FAQs that you approved.</li>
+<li>Takes appointment requests; your staff confirm them before anything is sent to the patient.</li>
+<li>Flags emergencies and "talk to a human" requests for your staff.</li>
+<li>Does <b>not</b> give medical advice and does not replace your doctors or day staff.</li></ul>
+<p>Current setup, billing and refund terms: <a href="/pricing.html">Pricing</a> · <a href="/refund.html">Refund policy</a> · <a href="/asha.html">Try the demo</a></p>
+<p><a class="btn" href="mailto:mininglife7@gmail.com?subject=Asha%20for%20my%20clinic">Ask about Asha for your clinic</a></p>
+</main><footer class="w">© 2026 Team Unadhi · HaanJi · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+<script>
+function f(n){return '₹'+Math.round(n).toLocaleString('en-IN')}
+function u(){var s=+document.getElementById('sal').value||0,e=+document.getElementById('extra').value||0,t=s+e;
+document.getElementById('p').textContent=t?f(t):'–';var d=document.getElementById('diff');
+if(!t){d.textContent='';return}var x=t-4000;d.textContent=x>0?('Asha costs '+f(x)+' less per month ('+f(x*12)+' a year) than the numbers you entered.'):('With your numbers, a person costs '+f(-x)+' less per month than Asha.');}
+document.getElementById('sal').oninput=u;document.getElementById('extra').oninput=u;
+</script></body></html>
