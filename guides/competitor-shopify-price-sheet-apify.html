@@ -1,0 +1,113 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build a weekly competitor price sheet from Shopify stores (Apify, no code)</title><meta name="description" content="A step-by-step, no-code way to track competitor prices weekly: pick 3-10 Shopify or WooCommerce stores, run a product scraper on Apify, export CSV and keep a simple week-on-week price sheet."><link rel="canonical" href="https://unadhi.com/guides/competitor-shopify-price-sheet-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Build a weekly competitor price sheet from Shopify stores (Apify, no code)"><meta property="og:description" content="Pick 3-10 competitor stores, run a product scraper on Apify, export CSV and keep a simple week-on-week price sheet. No code."><meta property="og:url" content="https://unadhi.com/guides/competitor-shopify-price-sheet-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Build a weekly competitor price sheet from Shopify stores (Apify, no code)","dateModified":"2026-10-14","datePublished":"2026-10-14","inLanguage":"en","author":{"@type":"Organization","name":"Unadhi"},"publisher":{"@type":"Organization","name":"Unadhi"},"mainEntityOfPage":"https://unadhi.com/guides/competitor-shopify-price-sheet-apify.html","step":[{"@type":"HowToStep","name":"Pick 3 to 10 competitor stores","text":"List the shop homepages or the category pages that match your own range."},{"@type":"HowToStep","name":"Run a product scraper on Apify","text":"Paste the URLs into an e-commerce product scraper, cap products per shop and start the run."},{"@type":"HowToStep","name":"Export CSV","text":"Download the dataset as CSV and check the shops summary for any store that was skipped."},{"@type":"HowToStep","name":"Paste into a weekly sheet","text":"Keep one raw tab per week and a compare tab that looks up last week's price by product URL or SKU."},{"@type":"HowToStep","name":"Repeat weekly","text":"Re-run the same saved input once a week, manually or with an Apify schedule."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Do I need to code to track competitor Shopify prices?","acceptedAnswer":{"@type":"Answer","text":"No. You paste store URLs into an Apify Actor in the browser, download the results as CSV and paste them into Google Sheets or Excel. A few lookup formulas do the week-on-week comparison."}},
+{"@type":"Question","name":"Is it legal to scrape competitor prices?","acceptedAnswer":{"@type":"Answer","text":"Prices on public product pages are generally visible to anyone, but each shop's terms of service and robots.txt still apply, and rules differ by country. Use a tool that respects robots.txt and terms, skip any shop that forbids scraping, and get your own legal advice if you are unsure. This guide is general information, not legal advice."}},
+{"@type":"Question","name":"Will this work on Amazon or Flipkart?","acceptedAnswer":{"@type":"Answer","text":"Not with the scraper used in this guide. It never fetches marketplaces such as Amazon, eBay or Flipkart. It is meant for independent Shopify, WooCommerce and other brand-owned shops."}},
+{"@type":"Question","name":"How many stores should I track?","acceptedAnswer":{"@type":"Answer","text":"Start with 3 to 10 direct competitors and cap products per shop. A small sheet you actually read every week is more useful than a huge one nobody opens."}}
+]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Build a weekly competitor price sheet from Shopify stores (Apify, no code)</h1>
+<p class="meta">Updated 14 Oct 2026 · Disclosure: the E-commerce Product Scraper and Contact Details Scraper linked below are Unadhi products on the Apify Store. This guide is free and the method works with any product scraper.</p>
+<div class="answer"><p><strong>Short answer:</strong> list 3–10 competitor Shopify or WooCommerce stores, run a product scraper on Apify with those URLs, download the result as CSV, and paste it into a new tab of one spreadsheet each week. A compare tab looks up last week's price for the same product URL or SKU and flags anything that moved. Setup takes under an hour; the weekly refresh takes about ten minutes.</p></div>
+
+<h2>What you end up with</h2>
+<table><thead><tr><th>Store</th><th>Product</th><th>SKU</th><th>Last week</th><th>This week</th><th>Change</th><th>On sale?</th><th>In stock?</th></tr></thead><tbody>
+<tr><td>competitor-a.com</td><td>Cotton tee, black</td><td>TEE-BLK</td><td>₹799</td><td>₹699</td><td>−12.5%</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>competitor-b.in</td><td>Canvas tote</td><td>TOTE-01</td><td>₹1,199</td><td>₹1,199</td><td>0%</td><td>No</td><td>No</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real shop data.</p>
+
+<h2>Step 1: pick 3–10 competitor stores</h2>
+<ul>
+<li>Choose shops that sell what you sell, to the same buyers. Three good competitors beat thirty random ones.</li>
+<li>Use the <strong>category page</strong> that matches your range (for example <code>/collections/t-shirts</code>) rather than the homepage if the shop is large. You get fewer, more relevant rows.</li>
+<li>Write the list in a note. You will reuse exactly the same list every week so the comparison stays fair.</li>
+<li>Skip marketplaces (Amazon, Flipkart, eBay). The scraper below does not fetch them, and their sellers change too often for a weekly sheet anyway.</li>
+</ul>
+
+<h2>Step 2: run the product scraper on Apify</h2>
+<ol>
+<li>Create a free Apify account (no card needed for the free plan; check <a href="https://apify.com/pricing">apify.com/pricing</a> for the current monthly free usage).</li>
+<li>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_price_sheet">E-commerce Product Scraper: Shopify &amp; Woo</a> and click <strong>Try for free</strong>. Current pricing is shown on that Store page.</li>
+<li>In the input form, paste your store or category URLs and set a cap. In JSON view the input looks like this:</li>
+</ol>
+<pre>{
+  "startUrls": [
+    { "url": "https://competitor-a.com/collections/t-shirts" },
+    { "url": "https://competitor-b.in" }
+  ],
+  "maxProductsPerShop": 100,
+  "maxListingPages": 10,
+  "includeDescription": false
+}</pre>
+<p>Turn <code>includeDescription</code> off for a price sheet; descriptions make the CSV wide and you do not need them. Click <strong>Save &amp; Start</strong>.</p>
+<p>How it reads each shop, best source first: Shopify <code>products.json</code>, the WooCommerce Store API, then schema.org JSON-LD, microdata and OpenGraph tags. Each row has the product title, brand, price, currency, sale price, stock, SKU/GTIN, variants and images.</p>
+
+<h2>Step 3: export CSV and check what was skipped</h2>
+<ul>
+<li>When the run finishes, open the <strong>Output</strong> or <strong>Storage → Dataset</strong> tab and choose <strong>Export → CSV</strong>.</li>
+<li>Look for the <code>SHOPS_SUMMARY</code> record. It lists every shop and why it was or wasn't scraped. Before fetching a shop the Actor checks robots.txt and scans the shop's terms of service, and skips the shop if they forbid scraping. Respect that: drop the shop from your list rather than trying another tool to get round it.</li>
+<li>Column names can differ slightly from the table above. Map them once (title, price, sale price, currency, stock, SKU, product URL) and keep that mapping.</li>
+</ul>
+
+<h2>Step 4: make the weekly sheet</h2>
+<p>Use one Google Sheet (or Excel workbook) with these tabs:</p>
+<ul class="check">
+<li><strong>raw_2026-10-14</strong> — paste this week's CSV as-is. Add a new tab each week (<code>raw_2026-10-21</code>, …). Never edit raw tabs.</li>
+<li><strong>compare</strong> — one row per product you care about, with a key column (product URL is safest; SKU works if every shop fills it).</li>
+<li><strong>notes</strong> — what you did about a change (matched, ignored, flagged to the team).</li>
+</ul>
+<p>In <strong>compare</strong>, with the key in column A, pull prices from the two latest raw tabs. If the raw tab has the product URL in column A and price in column D:</p>
+<pre>This week:  =IFERROR(VLOOKUP($A2,'raw_2026-10-21'!$A:$Z,4,FALSE),"")
+Last week:  =IFERROR(VLOOKUP($A2,'raw_2026-10-14'!$A:$Z,4,FALSE),"")
+Change %:   =IF(AND(ISNUMBER(C2),ISNUMBER(D2),C2&lt;&gt;0),(D2-C2)/C2,"")</pre>
+<p>Format the change column as a percentage and add conditional formatting: red when below −5%, green when above +5%. Sort by change so the biggest moves are at the top. A blank "this week" cell usually means the product was removed or renamed; check the shop before you act on it.</p>
+
+<h2>Step 5: repeat every week</h2>
+<ul>
+<li>On Apify, open your last run and click <strong>Resurrect</strong> or start a new run from the saved task with the same input, so the store list never drifts.</li>
+<li>If you want it hands-free, create an Apify <strong>Schedule</strong> (Console → Schedules) for the same day and time each week, then just download the CSV.</li>
+<li>Same day each week matters: many shops run weekend sales, so a Monday sheet compared with a Saturday sheet will mislead you.</li>
+</ul>
+
+<h2>Reading the sheet without over-reacting</h2>
+<ul>
+<li>A one-week drop is often a sale. Check the sale-price column before you cut your own price.</li>
+<li>Out-of-stock competitors are an opportunity, not a price signal.</li>
+<li>Compare like with like: same size, same pack, same currency. Convert currency in a separate column if you track shops abroad.</li>
+</ul>
+
+<h2>Optional: find a shop's public contact inbox</h2>
+<p>If a competitor is also a possible wholesale partner, the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_price_sheet">Contact Details Scraper: Emails, Phones, Socials</a> (also an Unadhi product) reads the shop's public pages and returns shared role inboxes such as sales@ or support@, plus phone and social links. Personal addresses are dropped by default. Use it for genuine one-to-one enquiries only, not bulk cold email.</p>
+
+<div class="next"><p><strong>Our own test numbers (29 Sep 2026):</strong> on 32 shop URLs the E-commerce Product Scraper returned 536 products from 11 shops; on a re-check of 88 products, title and price matched the page on all 88. Those are one-off measurements on our test list, not a guarantee for your stores. You can follow this guide with any product scraper without buying anything from us.</p></div>
+
+<div class="note"><p>This guide is general information, not legal advice. Both Actors read only public pages, use an honest bot User-Agent, follow robots.txt, never log in and never get around blocks. You are responsible for how you use the data and for following each shop's terms and your local law.</p></div>
+
+<h2>Related guides</h2>
+<ul class="src">
+<li><a href="export-shopify-store-products-to-csv.html">Export Shopify store products to CSV</a></li>
+<li><a href="ecommerce-product-data-half-price/">E-commerce Product Scraper: what it does and when to use it</a></li>
+<li><a href="apify-contact-details-and-product-scraper-examples.html">Copy-paste inputs for the Contact Details and Product scrapers</a></li>
+<li><a href="enrich-google-maps-apify-emails-phones.html">Enrich a Google Maps Apify dataset with emails and phones</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
