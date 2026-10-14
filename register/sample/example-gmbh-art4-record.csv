@@ -1,0 +1,12 @@
+"# Example GmbH - invented sample data (fictional company, no real people)"
+section,ID,AI system and purpose,Type,Owner (role),Our role,Starting-point tier,Notes / measures
+ai_use,S1,Chat assistant for drafting e-mails and offers,General-purpose chatbot (business plan),Office manager,Deployer,Minimal risk; Art. 50 not triggered (internal use),Approved for drafts without customer personal data
+ai_use,S2,Website chatbot answering product questions,Chatbot built into the shop software,Sales lead,Deployer,Limited risk: Art. 50(1) AI disclosure shown in chat window,Disclosure text checked 2026-09-15
+ai_use,S3,Machine translation of product pages,Online translation tool,Marketing,Deployer,Minimal risk,Human review before publishing
+ai_use,S4,Meeting transcription,Transcription feature in video-call software,Managing director,Deployer,Minimal risk; participants informed,Off for HR meetings
+section,Person (role only),AI systems used,AI-literacy measure,Date,Recorded by
+ai_literacy,Employee A (office),"S1, S3","Internal 45-min briefing: what AI is, errors and hallucination, no customer data in prompts",2026-03-10,Managing director
+ai_literacy,Employee B (sales),"S1, S2",Same briefing + Art. 50 chatbot disclosure walkthrough,2026-03-10,Managing director
+ai_literacy,Employee C (marketing),S3,Unadhi Academy free course 'EU AI Act Article 4: AI literacy for staff' (quiz 11/12),2026-10-14,Office manager
+ai_literacy,External web agency (contractor),S2,Written AI-use guidance sent and acknowledged,2026-04-02,Sales lead
+ai_literacy,Managing director,S1-S4,Same briefing; owns the AI-use policy,2026-03-10,Office manager
