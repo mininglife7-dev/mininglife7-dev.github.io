@@ -1,0 +1,117 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get the WhatsApp number and social links a business publishes on its own website</title><meta name="description" content="Where businesses put their click-to-chat WhatsApp link, Instagram, LinkedIn company page and other profiles, how to check them by hand, and how to collect them for a list of websites with a contact scraper on Apify. Published links only, robots.txt respected."><link rel="canonical" href="https://unadhi.com/guides/business-website-whatsapp-social-links-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Get the WhatsApp number and social links a business publishes on its own website"><meta property="og:description" content="Find the WhatsApp click-to-chat link and social profiles a business links from its own site. Manual checklist plus a no-code Apify method for a list of websites."><meta property="og:url" content="https://unadhi.com/guides/business-website-whatsapp-social-links-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Get the WhatsApp number and social links a business publishes on its own website","dateModified":"2026-10-14","datePublished":"2026-10-14","inLanguage":"en","author":{"@type":"Organization","name":"Unadhi"},"publisher":{"@type":"Organization","name":"Unadhi"},"mainEntityOfPage":"https://unadhi.com/guides/business-website-whatsapp-social-links-apify.html","step":[{"@type":"HowToStep","name":"Look where businesses link their profiles","text":"Check the header, footer, contact page, floating chat button and the page source for wa.me, instagram.com and linkedin.com/company links."},{"@type":"HowToStep","name":"Read the WhatsApp number from the link","text":"A click-to-chat link such as wa.me/919800000000 contains the full international number after wa.me/."},{"@type":"HowToStep","name":"Record only what the business published","text":"Write down the link exactly and the page it was found on. Skip personal profiles."},{"@type":"HowToStep","name":"For a list of sites, run a contact scraper","text":"Paste the homepages into a contact-details Actor on Apify with personal profiles off and robots.txt on, then export the socials and WhatsApp columns."},{"@type":"HowToStep","name":"Use it the way the business invited","text":"Message one business at a time about something relevant. No broadcast lists or bulk WhatsApp messages."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I read a WhatsApp number from a wa.me link?","acceptedAnswer":{"@type":"Answer","text":"WhatsApp click-to-chat links put the full international number, without the plus sign, spaces or leading zero, right after wa.me/ or after phone= in api.whatsapp.com/send links. So wa.me/919800000000 is +91 98000 00000. Links like wa.link/abc123 are short links and only show the number after they redirect."}},
+{"@type":"Question","name":"Why check the website instead of searching Instagram or Facebook directly?","acceptedAnswer":{"@type":"Answer","text":"A profile linked from the business's own website is almost certainly the real one, while a name search on a social network can return look-alikes, fan pages or old accounts. Social networks also usually forbid automated scraping in their terms, while reading the business's own public pages politely is a different thing."}},
+{"@type":"Question","name":"Can I add these WhatsApp numbers to a broadcast or bulk message tool?","acceptedAnswer":{"@type":"Answer","text":"No. WhatsApp's business messaging rules require that people opt in before a business messages them, and bulk unsolicited messages get numbers banned. A published click-to-chat link invites a one-to-one chat about the business's own products or services, nothing more."}},
+{"@type":"Question","name":"Do I need a paid tool for this?","acceptedAnswer":{"@type":"Answer","text":"No. For a few businesses, opening the site and checking the footer and contact page is enough. A contact scraper only saves time when you have tens or hundreds of websites, and any reputable one that respects robots.txt will do."}}
+]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Get the WhatsApp number and social links a business publishes on its own website</h1>
+<p class="meta">Updated 14 Oct 2026 · Disclosure: the Contact Details Scraper linked below is an Unadhi product on the Apify Store. This guide is free, the manual method needs no tool at all, and the Apify method works with any contact scraper that reads social links.</p>
+<div class="answer"><p><strong>Short answer:</strong> most small businesses link their WhatsApp and social profiles from their own site: a floating chat button, the header or footer icons, or the contact page. Open the site, hover over those icons, and copy the link. A WhatsApp click-to-chat link such as <code>wa.me/919800000000</code> already contains the full international number. For tens or hundreds of websites, paste the homepages into a contact scraper on Apify with personal profiles off and robots.txt respected, and export the WhatsApp and social columns with the page each link was found on.</p></div>
+
+<h2>Why start from the business's own website</h2>
+<ul>
+<li><strong>It is the real account.</strong> A profile the business links from its own domain is the one it wants you to use. A name search on Instagram or Facebook can return look-alike, fan or abandoned pages.</li>
+<li><strong>It is the channel they chose.</strong> Many shops, clinics, coaches and service businesses (especially in India, the Gulf, Latin America and Africa) answer WhatsApp faster than email. If they put a chat button on the site, that is an invitation to message them.</li>
+<li><strong>It avoids scraping social networks.</strong> Facebook, Instagram and LinkedIn generally forbid automated collection in their terms. Reading a business's own public pages politely, and following its robots.txt, is a different and much safer job.</li>
+</ul>
+
+<h2>Step 1: check the places businesses link their profiles</h2>
+<ul class="check">
+<li><strong>Floating chat button</strong>, usually a green WhatsApp icon in a bottom corner. Hover or long-press to see the <code>wa.me</code> or <code>api.whatsapp.com</code> link behind it.</li>
+<li><strong>Header and footer icons</strong>: Instagram, Facebook, LinkedIn, YouTube, X, TikTok and so on.</li>
+<li><strong>Contact page</strong> (<code>/contact</code>, <code>/contact-us</code>, <code>/kontakt</code>): often lists the WhatsApp number in text and links the same number.</li>
+<li><strong>About and team pages</strong>: LinkedIn company pages and YouTube channels often live here.</li>
+<li><strong>Page source</strong>: press <kbd>Ctrl</kbd>+<kbd>U</kbd> and search for <code>wa.me</code>, <code>instagram.com</code> or <code>sameAs</code>. Many sites list all their profiles in structured data (a JSON-LD <code>sameAs</code> list) even when the icons are hidden on mobile.</li>
+</ul>
+
+<h2>Step 2: read the WhatsApp number from the link</h2>
+<table><thead><tr><th>Link format you see</th><th>What it means</th></tr></thead><tbody>
+<tr><td><code>https://wa.me/919800000000</code></td><td>Click-to-chat. The digits after <code>wa.me/</code> are the full international number without the plus: +91 98000 00000.</td></tr>
+<tr><td><code>https://api.whatsapp.com/send?phone=971500000000</code></td><td>Older click-to-chat format. The number follows <code>phone=</code>: +971 50 000 0000.</td></tr>
+<tr><td><code>https://wa.link/abc123</code></td><td>A short link from a third-party link maker. The number appears only after it redirects.</td></tr>
+<tr><td><code>https://chat.whatsapp.com/AbCdEf…</code></td><td>A group invite, not a business chat. Do not treat it as a contact number.</td></tr>
+<tr><td><code>https://whatsapp.com/channel/…</code></td><td>A WhatsApp Channel (one-way broadcast you can follow), not a chat.</td></tr>
+</tbody></table>
+<p class="meta">Example numbers only, to show the format. Not real businesses.</p>
+
+<h2>Step 3: write down only what is published</h2>
+<table><thead><tr><th>Website</th><th>WhatsApp</th><th>Instagram</th><th>LinkedIn company</th><th>Found on</th><th>Checked</th></tr></thead><tbody>
+<tr><td>example-bakery.in</td><td>+91 98000 00000</td><td>instagram.com/examplebakery</td><td>none</td><td>example-bakery.in (footer)</td><td>14 Oct 2026</td></tr>
+<tr><td>example-clinic.ae</td><td>+971 50 000 0000</td><td>none</td><td>linkedin.com/company/example-clinic</td><td>example-clinic.ae/contact</td><td>14 Oct 2026</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real company data.</p>
+<p>Keep the "found on" column: it is your proof the business published the link, and it lets you re-check later. Leave out personal profiles such as a founder's <code>linkedin.com/in/…</code> page. They identify a person, so they need a separate, lawful reason.</p>
+
+<h2>Step 4: for a list of websites, run a contact scraper on Apify</h2>
+<p>Checking five sites by hand takes a few minutes. For a hundred, a contact-details Actor visits each homepage plus its most contact-like pages and reads the links for you, including links hidden in the page source.</p>
+<ol>
+<li>Create a free Apify account (no card needed for the free plan; see <a href="https://apify.com/pricing">apify.com/pricing</a> for the current monthly free usage).</li>
+<li>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_whatsapp_socials">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> and click <strong>Try for free</strong>. Current pricing is shown on that Store page.</li>
+<li>Paste your homepages. In JSON view a privacy-safe input looks like this:</li>
+</ol>
+<pre>{
+  "urls": ["example-bakery.in", "example-clinic.ae"],
+  "maxPagesPerSite": 4,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false,
+  "respectRobotsTxt": true,
+  "respectTermsOfService": true,
+  "defaultCountry": "IN"
+}</pre>
+<ul>
+<li><code>includePersonProfiles: false</code> (the default) drops personal LinkedIn <code>/in/</code> profiles; company pages are always kept.</li>
+<li><code>maxPagesPerSite: 4</code> reads the homepage plus the most contact-like pages (contact, about, impressum, support). Profile links are almost always on these.</li>
+<li><code>respectRobotsTxt</code> and <code>respectTermsOfService</code> skip pages a site disallows for bots and sites whose terms forbid automated access. Social networks and marketplaces are skipped by design. Leave both on.</li>
+<li>Set <code>defaultCountry</code> to the country most of your sites are in, so local-format phone numbers in the page text are read correctly.</li>
+</ul>
+<p>Click <strong>Save &amp; Start</strong>. Each output row is one website, with a <code>socials</code> object holding the links found for each network (LinkedIn, Instagram, Facebook, YouTube, X, TikTok, WhatsApp, Telegram and others), each with the page it was found on. WhatsApp click-to-chat numbers are also turned into international-format phone numbers in the <code>phones</code> list, with a ready <code>wa.me</code> link. Sites that blocked crawling come back as <code>blocked-by-robots</code> or <code>blocked-by-terms</code>: respect that and check them by hand instead.</p>
+<p>Starting from a Google Maps dataset on Apify? Pass its dataset ID instead of URLs; see <a href="enrich-google-maps-apify-emails-phones.html">enrich a Google Maps Apify dataset with emails and phones</a>.</p>
+
+<h2>Step 5: check the result and use it the way it was offered</h2>
+<ul>
+<li>Export as CSV or Excel and keep the "found on" page for every link.</li>
+<li>Open a sample of rows: make sure the Instagram or LinkedIn link really belongs to that business (some sites link their web designer in the footer).</li>
+<li>Message one business at a time, about something relevant to what they sell. A click-to-chat button is not consent to be added to a broadcast list, a group or a bulk sender. WhatsApp's business rules require opt-in, and bulk unsolicited messages get numbers banned.</li>
+</ul>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Treating a <code>chat.whatsapp.com</code> group invite as the business's number.</li>
+<li>Copying the web agency's links from a "Website by…" footer credit.</li>
+<li>Scraping Instagram or Facebook directly for phone numbers. Their terms forbid it; start from the business's own site.</li>
+<li>Keeping a list for months. Numbers and handles change; re-check the "found on" page before you write.</li>
+</ul>
+
+<div class="next"><p><strong>You do not need to buy anything.</strong> For a handful of businesses, Steps 1 to 3 and a browser are enough. For a long list, any reputable contact scraper that reads social links and respects robots.txt will do. The Actor linked here is ours, which is why we used it in the example.</p></div>
+
+<div class="note"><p>This guide is general information, not legal advice. Rules on contacting businesses (for example GDPR and ePrivacy in the EU, the UK's PECR, India's DPDP Act and WhatsApp's own Business Messaging Policy) differ by country and purpose. The Actor reads only public pages, uses an honest bot User-Agent, follows robots.txt, never logs in and never gets around blocks. You are responsible for how you use the data and for following each site's terms and your local law.</p></div>
+
+<h2>Related guides</h2>
+<ul class="src">
+<li><a href="find-public-role-emails-company-website-apify.html">Find public role emails (sales@, press@, support@) on a company website</a></li>
+<li><a href="enrich-google-maps-apify-emails-phones.html">Enrich a Google Maps Apify dataset with emails and phones</a></li>
+<li><a href="apify-contact-details-and-product-scraper-examples.html">Copy-paste inputs for the Contact Details and Product scrapers</a></li>
+<li><a href="competitor-shopify-price-sheet-apify.html">Build a weekly competitor price sheet from Shopify stores</a> (uses our <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_whatsapp_socials">E-commerce Product Scraper</a>)</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
