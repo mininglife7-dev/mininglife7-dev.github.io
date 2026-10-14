@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-hMBRVdt5t/Ux0fHmiXqxR27AInMSXDu59ffTIL6zNcc=' 'sha256-QlwVDJv5lVYiV4n6wAkOWKq/nBQBNHjDss2iJ2Zqhjk='; style-src 'sha256-+TgmMvQz1Ihns/H91SjcY9KK7yKfnybqdRXOlfuFkB0='; img-src 'none'; font-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://unadhi.com/register/classify.html">
+<meta name="description" content="Free EU AI Act risk classifier: answer a few questions and get an indicative category (prohibited, high-risk Annex III or Annex I, Article 50 transparency, or minimal) with the dates that apply after Regulation (EU) 2026/1744. No signup, runs in your browser. Not legal advice.">
+<title>Free EU AI Act risk classifier (no signup) | EURO AI Register</title>
+<style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:760px;margin:0 auto;padding:1rem;line-height:1.5;color:#111}a{color:#0b4f9c}.brand a{font-weight:700;text-decoration:none}.warn{background:#fff4e5;border-left:4px solid #e08a00;padding:.6em .8em}.src{font-size:.9rem}fieldset{border:1px solid #ccd;margin:1em 0;padding:.6em .8em}legend{font-weight:600}.opt{display:flex;gap:.5em;align-items:flex-start;margin:.3em 0}.opt input{margin-top:.3em}button,.button{background:#0b4f9c;color:#fff;border:0;padding:.6em 1.1em;border-radius:6px;font-size:1rem;text-decoration:none;display:inline-block;cursor:pointer}#result{border:2px solid #0b4f9c;padding:.8em 1em;margin:1em 0;border-radius:6px}.tier{font-size:1.2rem;font-weight:700}.cta{background:#eef4fb;padding:.8em 1em;border-radius:6px;margin-top:1.5em}footer{font-size:.85rem;margin-top:2em;color:#444}@media(max-width:480px){body{padding:.6rem}}
+</style>
+</head>
+<body>
+<header><p class="brand"><a href="./">EURO AI Register</a></p></header>
+<main id="main">
+<h1>Free EU AI Act risk classifier</h1>
+<p class="lead">Answer a few questions about one AI system and get an <strong>indicative</strong> EU AI Act category and the dates that apply. No signup. Your answers stay in this browser: nothing is sent or stored.</p>
+<p class="warn"><strong>Not legal advice.</strong> This is an indicative starting point based only on your answers. It is not a legal classification, an audit or a certification. For a real decision, read the official text and, where needed, get qualified legal advice.</p>
+<h2>Key dates (Regulation (EU) 2024/1689 as amended by Regulation (EU) 2026/1744)</h2>
+<ul>
+<li><strong>2 February 2025:</strong> prohibited practices (Art. 5) and AI literacy (Art. 4) apply.</li>
+<li><strong>2 August 2026:</strong> Article 50 transparency duties apply (chatbot disclosure, marking AI-generated content, deepfake labelling, emotion recognition notice).</li>
+<li><strong>2 December 2027:</strong> high-risk rules for Annex III use cases apply.</li>
+<li><strong>2 August 2028:</strong> high-risk rules for AI in Annex I regulated products apply.</li>
+</ul>
+<p class="src">Official sources: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener" target="_blank">Regulation (EU) 2024/1689 on EUR-Lex</a> · <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj" rel="noopener" target="_blank">Regulation (EU) 2026/1744 on EUR-Lex</a>. Dates checked on 11 Oct 2026.</p>
+<noscript><p class="warn">This classifier needs JavaScript. You can still read the dates above and the official text on EUR-Lex.</p></noscript>
+<form id="q" novalidate></form>
+<section id="result" aria-live="polite" hidden></section>
+<section class="cta" id="cta">
+<h2>Next step: keep a record</h2>
+<p>The free <a href="./">EURO AI Register</a> keeps up to 10 AI systems in your browser with screening, duties by role, an Article 50 check per system, evidence and a printable report. No account needed.</p>
+<p><a class="button" href="./?utm_source=classifier&amp;utm_medium=cta">Open the free Register</a></p>
+</section>
+</main>
+<footer><p>An independent Unadhi tool, not affiliated with the European Union. Indicative only, not legal advice. <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></p></footer>
+<script>/*
+ * EU AI Act risk-tier checker: rules and evaluation (deterministic, no I/O).
+ * Legal basis: Regulation (EU) 2024/1689 as amended by Regulation (EU) 2026/1744
+ * (Digital Omnibus on AI, in force 27 July 2026). Dates checked on EUR-Lex and the
+ * European Commission's AI Act page on 11 Oct 2026. Starting point only, not legal advice.
+ * MIT licence. See README.md for how to propose changes.
+ */
+(function (root, factory) {
+  if (typeof module === "object" && module.exports) { module.exports = factory(); }
+  else { root.EUAIRules = factory(); }
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  var SOURCES = {
+    act: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+    omnibus: "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
+    commission: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+  };
+
+  // Verified dates (see PLAN_14D.md "Verified legal dates" table).
+  var DATES = {
+    entryIntoForce: "2024-08-01",
+    prohibitionsAndLiteracy: "2025-02-02",
+    gpai: "2025-08-02",
+    generalApplication: "2026-08-02",
+    newBans: "2026-12-02",
+    markingLegacy: "2026-12-02",
+    annex3: "2027-12-02",
+    annex1: "2028-08-02",
+    omnibusInForce: "2026-07-27"
+  };
+
+  var ROLES = [
+    { id: "provider", label: "Provider: we develop it (or have it developed) and put it on the market or into service under our own name" },
+    { id: "deployer", label: "Deployer: we use it under our authority in our work (for example a tool we bought)" },
+    { id: "both", label: "Both: we build it and also use it ourselves" },
+    { id: "importer_distributor", label: "Importer or distributor: we resell or import someone else's AI system into the EU" },
+    { id: "unsure", label: "Not sure" }
+  ];
+
+  var PROHIBITED = [
+    { id: "a", ref: "Art. 5(1)(a)", from: DATES.prohibitionsAndLiteracy, label: "Uses subliminal, purposefully manipulative or deceptive techniques that materially distort people's behaviour and cause, or are reasonably likely to cause, significant harm" },
+    { id: "b", ref: "Art. 5(1)(b)", from: DATES.prohibitionsAndLiteracy, label: "Exploits vulnerabilities due to age, disability or a specific social or economic situation, materially distorting behaviour and causing, or reasonably likely to cause, significant harm" },
+    { id: "c", ref: "Art. 5(1)(c)", from: DATES.prohibitionsAndLiteracy, label: "Social scoring: rates people over time on social behaviour or personal traits, leading to unjustified or unrelated detrimental treatment" },
+    { id: "d", ref: "Art. 5(1)(d)", from: DATES.prohibitionsAndLiteracy, label: "Predicts the risk that a person will commit a crime based solely on profiling or personality traits" },
+    { id: "e", ref: "Art. 5(1)(e)", from: DATES.prohibitionsAndLiteracy, label: "Builds or expands facial recognition databases by untargeted scraping of face images from the internet or CCTV" },
+    { id: "f", ref: "Art. 5(1)(f)", from: DATES.prohibitionsAndLiteracy, label: "Infers emotions of people at the workplace or in education (except for medical or safety reasons)" },
+    { id: "g", ref: "Art. 5(1)(g)", from: DATES.prohibitionsAndLiteracy, label: "Biometric categorisation that deduces race, political opinions, trade union membership, religious or philosophical beliefs, sex life or sexual orientation" },
+    { id: "h", ref: "Art. 5(1)(h)", from: DATES.prohibitionsAndLiteracy, label: "Real-time remote biometric identification in publicly accessible spaces for law enforcement (narrow exceptions)" },
+    { id: "ba", ref: "Art. 5(1)(ba)", from: DATES.newBans, label: "Generates or manipulates realistic intimate or sexually explicit images, video or audio of an identifiable person without their explicit consent" },
+    { id: "bb", ref: "Art. 5(1)(bb)", from: DATES.newBans, label: "Generates or manipulates child sexual abuse material" }
+  ];
+
+  var ANNEX3 = [
+    { id: "1", ref: "Annex III, point 1", label: "Biometrics: remote biometric identification (not simple identity verification), biometric categorisation by sensitive attributes, or emotion recognition" },
+    { id: "2", ref: "Annex III, point 2", label: "Critical infrastructure: safety component in critical digital infrastructure, road traffic, or water, gas, heating or electricity supply" },
+    { id: "3", ref: "Annex III, point 3", label: "Education and vocational training: admission or assignment, evaluating learning outcomes, deciding the level of education, or proctoring tests" },
+    { id: "4", ref: "Annex III, point 4", label: "Employment and workers' management: recruiting, filtering CVs, evaluating candidates, promotion or termination decisions, task allocation by behaviour or traits, or monitoring performance" },
+    { id: "5", ref: "Annex III, point 5", label: "Essential services: public benefits eligibility, creditworthiness or credit scoring (not fraud detection), life or health insurance risk and pricing, or emergency call triage and dispatch" },
+    { id: "6", ref: "Annex III, point 6", label: "Law enforcement uses (for or on behalf of law enforcement authorities)" },
+    { id: "7", ref: "Annex III, point 7", label: "Migration, asylum and border control management" },
+    { id: "8", ref: "Annex III, point 8", label: "Administration of justice and democratic processes (including influencing elections or referendums)" }
+  ];
+
+  var DEROGATION = [
+    { id: "a", ref: "Art. 6(3)(a)", label: "It only performs a narrow procedural task" },
+    { id: "b", ref: "Art. 6(3)(b)", label: "It only improves the result of a previously completed human activity" },
+    { id: "c", ref: "Art. 6(3)(c)", label: "It only detects decision-making patterns or deviations, without replacing or influencing the completed human assessment without proper human review" },
+    { id: "d", ref: "Art. 6(3)(d)", label: "It only performs a preparatory task to an assessment relevant to the Annex III use" }
+  ];
+
+  var ART50 = [
+    { id: "chat", ref: "Art. 50(1)", who: "provider", label: "It interacts directly with people (for example a chatbot or voice assistant)",
+      duty: "Design it so people are told they are interacting with an AI system, unless that is obvious from the context." },
+    { id: "synthetic", ref: "Art. 50(2)", who: "provider", label: "It generates synthetic audio, images, video or text",
+      duty: "Mark the outputs in a machine-readable format and make them detectable as artificially generated or manipulated. Transition period for systems already on the market before 2 Aug 2026: until 2 Dec 2026 (check the official text)." },
+    { id: "emotion", ref: "Art. 50(3)", who: "deployer", label: "We use it for emotion recognition or biometric categorisation (where that use is allowed)",
+      duty: "Inform the people exposed to it, and process personal data under the GDPR." },
+    { id: "deepfake", ref: "Art. 50(4)", who: "deployer", label: "We use it to create deep fakes (realistic image, audio or video of real people, places or events)",
+      duty: "Disclose that the content is artificially generated or manipulated (limited form for evidently artistic, satirical or fictional works)." },
+    { id: "publictext", ref: "Art. 50(4)", who: "deployer", label: "We publish AI-generated or AI-manipulated text to inform the public on matters of public interest",
+      duty: "Disclose that the text is AI-generated, unless it went through human review or editorial control and someone holds editorial responsibility." }
+  ];
+
+  var TIERS = {
+    prohibited: { order: 1, label: "Prohibited practice", short: "Prohibited" },
+    high_risk_annex3: { order: 2, label: "Possible high-risk (Annex III use case)", short: "Possible high-risk: Annex III" },
+    high_risk_annex1: { order: 3, label: "Possible high-risk (Annex I product safety component)", short: "Possible high-risk: Annex I" },
+    transparency: { order: 4, label: "Transparency duties (Article 50)", short: "Transparency duties" },
+    minimal: { order: 5, label: "Likely minimal risk", short: "Likely minimal" }
+  };
+
+  function has(list, id) { return Array.isArray(list) && list.indexOf(id) !== -1; }
+  function byId(list, id) { for (var i = 0; i < list.length; i++) { if (list[i].id === id) return list[i]; } return null; }
+  function isProviderSide(role) { return role === "provider" || role === "both" || role === "unsure" || !role; }
+  function isDeployerSide(role) { return role === "deployer" || role === "both" || role === "unsure" || !role; }
+  function status(dateIso, todayIso) { return todayIso >= dateIso ? "applies" : "upcoming"; }
+  function fmt(dateIso) {
+    var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var p = dateIso.split("-");
+    return parseInt(p[2], 10) + " " + m[parseInt(p[1], 10) - 1] + " " + p[0];
+  }
+
+  /**
+   * evaluate(answers, todayIso) -> result
+   * answers: {
+   *   role: "provider"|"deployer"|"both"|"importer_distributor"|"unsure",
+   *   prohibited: [ids from PROHIBITED], prohibitedUnsure: bool,
+   *   annex3: [ids from ANNEX3], annex3Unsure: bool,
+   *   derogation: [ids from DEROGATION], profiling: "yes"|"no"|"unsure",
+   *   annex1: "yes"|"no"|"unsure", annex1ThirdParty: "yes"|"no"|"unsure",
+   *   annex1NonSafetyOnly: "yes"|"no"|"unsure",
+   *   art50: [ids from ART50]
+   * }
+   */
+  function evaluate(answers, todayIso) {
+    var a = answers || {};
+    var today = todayIso || new Date().toISOString().slice(0, 10);
+    var role = a.role || "unsure";
+    var flags = [];
+    var duties = [];
+    var notes = [];
+
+    function duty(text, ref, date, who) {
+      duties.push({ text: text, ref: ref, date: date, dateLabel: fmt(date), status: status(date, today), who: who || "all" });
+    }
+
+    // 1. Prohibited practices (Art. 5)
+    var proh = (a.prohibited || []).map(function (id) { return byId(PROHIBITED, id); }).filter(Boolean);
+    if (proh.length) {
+      flags.push("prohibited");
+      proh.forEach(function (p) {
+        duty("Do not place on the market, put into service or use a system for this practice: " + p.label + ".", p.ref, p.from, "all");
+      });
+      notes.push("Fines for prohibited practices: up to EUR 35 million or 7% of worldwide annual turnover, whichever is higher; for SMEs, whichever is lower (Art. 99(3), 99(6)). Stop and get legal advice.");
+    }
+    if (a.prohibitedUnsure) {
+      notes.push("You were unsure about the prohibited-practice screen. Resolve this first with legal advice: banned practices have applied since " + fmt(DATES.prohibitionsAndLiteracy) + " (Art. 5).");
+    }
+
+    // 2. Annex III (Art. 6(2)) with the Art. 6(3) derogation note
+    var a3 = (a.annex3 || []).map(function (id) { return byId(ANNEX3, id); }).filter(Boolean);
+    var derogation = { status: "not_relevant", conditions: [] };
+    if (a3.length) {
+      flags.push("high_risk_annex3");
+      var refs = a3.map(function (x) { return x.ref; }).join(", ");
+      var conds = (a.derogation || []).map(function (id) { return byId(DEROGATION, id); }).filter(Boolean);
+      if (a.profiling === "yes") {
+        derogation = { status: "unavailable_profiling", conditions: conds.map(function (c) { return c.ref; }) };
+        notes.push("Because the system profiles natural persons, it is always high-risk under Annex III; the Art. 6(3) derogation cannot be used (Art. 6(3), last subparagraph).");
+      } else if (conds.length) {
+        derogation = { status: "may_apply", conditions: conds.map(function (c) { return c.ref; }) };
+        notes.push("Art. 6(3) derogation may apply (" + derogation.conditions.join(", ") + "): an Annex III system is not high-risk if it does not pose a significant risk of harm and does not materially influence decisions. A provider relying on this must document the assessment before placing it on the market (Art. 6(4)) and register it in the EU database (Art. 49(2)). Treat it as possible high-risk until that assessment is done." + (a.profiling === "unsure" ? " Check first whether it profiles people: if it does, the derogation is not available." : ""));
+      } else {
+        derogation = { status: "not_claimed", conditions: [] };
+        notes.push("No Art. 6(3) condition selected. If the system only does a narrow procedural or preparatory task, improves completed human work, or detects patterns without replacing human assessment, read Art. 6(3); otherwise plan for the high-risk rules.");
+      }
+      if (isProviderSide(role)) {
+        duty("Provider duties for high-risk systems: risk management, data governance, technical documentation, logging, transparency to deployers, human oversight, accuracy and robustness (Art. 8 to 15), quality management system (Art. 17), conformity assessment (Art. 43), EU declaration of conformity, CE marking and registration (Art. 47 to 49) [" + refs + "].", "Art. 6(2), 8 to 17, 43, 49", DATES.annex3, "provider");
+      }
+      if (isDeployerSide(role)) {
+        duty("Deployer duties for high-risk systems: use it according to the instructions, assign competent human oversight, check input data you control, monitor it, keep the logs under your control for at least six months, and inform workers' representatives and affected workers before workplace use (Art. 26) [" + refs + "].", "Art. 26", DATES.annex3, "deployer");
+        if (has(a.annex3, "5")) {
+          notes.push("Deployers of credit-scoring or life and health insurance pricing systems (Annex III, 5(b) and (c)), and public bodies or private entities providing public services, must also carry out a fundamental rights impact assessment before use (Art. 27).");
+        }
+      }
+      if (role === "importer_distributor") {
+        duty("Importer or distributor duties for high-risk systems: check the conformity assessment, CE marking, documentation and instructions before making the system available, and do not supply a system you believe does not conform (Art. 23 and 24) [" + refs + "].", "Art. 23, 24", DATES.annex3, "importer_distributor");
+      }
+    }
+    if (a.annex3Unsure) {
+      notes.push("You were unsure whether an Annex III use applies. Read Annex III with the system's intended purpose in mind; the Commission's guidance on high-risk classification (Art. 6(5)) gives practical examples.");
+    }
+
+    // 3. Annex I (Art. 6(1)) with Art. 6(1a)/(1b) as amended by Reg. (EU) 2026/1744
+    var a1 = false;
+    if (a.annex1 === "yes") {
+      if (a.annex1NonSafetyOnly === "yes") {
+        notes.push("You said the AI only handles non-safety aspects (user assistance, performance optimisation, efficiency, automation, convenience or quality control) and its failure would not endanger health or safety. Then it is not a safety component (Art. 6(1a), inserted by Reg. (EU) 2026/1744). If its failure could endanger health or safety, it is a safety component (Art. 6(1b)).");
+      } else if (a.annex1ThirdParty === "no") {
+        notes.push("Annex I product, but no third-party conformity assessment is required for it: the Art. 6(1) high-risk route needs both conditions, so this is likely not high-risk under Annex I. Check the sector law.");
+      } else {
+        a1 = true;
+        flags.push("high_risk_annex1");
+        if (a.annex1ThirdParty === "unsure") {
+          notes.push("Check whether the product needs a third-party conformity assessment (notified body) under its sector law; Annex I high-risk status needs both a safety-component role and that requirement (Art. 6(1)).");
+        }
+        if (a.annex1NonSafetyOnly === "unsure") {
+          notes.push("Check whether the AI only handles non-safety aspects: if so, and its failure would not endanger health or safety, it is not a safety component (Art. 6(1a) and (1b)).");
+        }
+        notes.push("Products under Annex I Section B (for example vehicles, aviation, marine, rail and, since Reg. (EU) 2026/1744, machinery) follow their own sector law, which takes the AI Act requirements into account; check the sector rules.");
+        if (isProviderSide(role)) {
+          duty("Provider duties for high-risk AI in regulated products: the Art. 8 to 15 requirements and quality management, assessed through the product's existing conformity assessment procedure (Art. 6(1), 43(3)).", "Art. 6(1), 8 to 17, 43", DATES.annex1, "provider");
+        }
+        if (isDeployerSide(role)) {
+          duty("Deployer duties for high-risk systems (Art. 26), as above.", "Art. 26", DATES.annex1, "deployer");
+        }
+        if (role === "importer_distributor") {
+          duty("Importer or distributor duties for high-risk systems (Art. 23 and 24).", "Art. 23, 24", DATES.annex1, "importer_distributor");
+        }
+      }
+    } else if (a.annex1 === "unsure") {
+      notes.push("You were unsure whether the system is (or is a safety component of) a product under Annex I, such as a medical device, toy, lift, radio equipment, machinery or vehicle. Check the product's EU sector law.");
+    }
+
+    // 4. Article 50 transparency
+    var t50 = (a.art50 || []).map(function (id) { return byId(ART50, id); }).filter(Boolean);
+    var t50Relevant = t50.filter(function (x) {
+      if (x.who === "provider") return isProviderSide(role);
+      if (x.who === "deployer") return isDeployerSide(role);
+      return true;
+    });
+    if (t50.length) {
+      flags.push("transparency");
+      t50Relevant.forEach(function (x) { duty(x.duty, x.ref, DATES.generalApplication, x.who); });
+      if (t50Relevant.length < t50.length) {
+        notes.push("Some transparency duties you ticked fall on a different role (provider or deployer) than the one you chose. Check who must act; for a bought-in chatbot, the provider designs the disclosure and you, as deployer, should not remove it.");
+      }
+    }
+
+    // 5. Always: AI literacy (Art. 4), for providers and deployers
+    if (role !== "importer_distributor") {
+      duty("Take measures to support the AI literacy of staff and others who operate or use AI on your behalf (Art. 4, reworded by Reg. (EU) 2026/1744; no specific level or certificate is required).", "Art. 4", DATES.prohibitionsAndLiteracy, "all");
+    } else {
+      notes.push("AI literacy (Art. 4) applies to providers and deployers. If you also use AI systems in your own work, you are a deployer for those systems.");
+    }
+
+    // General notes
+    notes.push("Scope: the Act can apply to companies outside the EU that place AI on the EU market, or whose AI output is used in the EU (Art. 2).");
+    notes.push("This checker covers AI systems. If you develop a general-purpose AI model, separate obligations have applied since " + fmt(DATES.gpai) + " (Chapter V).");
+
+    // Primary tier
+    var tier = "minimal";
+    ["prohibited", "high_risk_annex3", "high_risk_annex1", "transparency"].some(function (t) {
+      if (flags.indexOf(t) !== -1) { tier = t; return true; } return false;
+    });
+    if (tier === "minimal") {
+      notes.push("No prohibited practice, high-risk use or transparency trigger was selected: likely minimal risk. AI literacy still applies, and voluntary codes of conduct are encouraged (Art. 95).");
+    }
+
+    duties.sort(function (x, y) { return x.date < y.date ? -1 : x.date > y.date ? 1 : 0; });
+    return {
+      tier: tier,
+      tierLabel: TIERS[tier].label,
+      flags: flags,
+      role: role,
+      derogation: derogation,
+      annex1HighRisk: a1,
+      duties: duties,
+      notes: notes,
+      today: today,
+      checkedOn: "2026-10-11",
+      sources: SOURCES
+    };
+  }
+
+  return {
+    VERSION: "1.0.0",
+    CHECKED_ON: "2026-10-11",
+    SOURCES: SOURCES, DATES: DATES, ROLES: ROLES, PROHIBITED: PROHIBITED,
+    ANNEX3: ANNEX3, DEROGATION: DEROGATION, ART50: ART50, TIERS: TIERS,
+    evaluate: evaluate, formatDate: fmt
+  };
+});
+</script>
+<script>/* Free EU AI Act risk classifier: browser-only, no storage, no network. Indicative, not legal advice. MIT licence. */
+(function () {
+  "use strict";
+  var R = window.EUAIRules, f = document.getElementById("q"), out = document.getElementById("result");
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) { if (k === "text") e.textContent = attrs[k]; else e.setAttribute(k, attrs[k]); });
+    (kids || []).forEach(function (k) { e.appendChild(typeof k === "string" ? document.createTextNode(k) : k); });
+    return e;
+  }
+  function group(legend, type, name, items) {
+    var fs = el("fieldset", {}, [el("legend", { text: legend })]);
+    items.forEach(function (it, i) {
+      var id = "c-" + name + "-" + i;
+      fs.appendChild(el("div", { "class": "opt" }, [el("input", { type: type, name: name, value: it.id, id: id }), el("label", { "for": id, text: it.label + (it.ref ? " (" + it.ref + ")" : "") })]));
+    });
+    return fs;
+  }
+  var YN = [{ id: "yes", label: "Yes" }, { id: "no", label: "No" }, { id: "unsure", label: "Not sure" }];
+  f.appendChild(group("1. Your role for this AI system", "radio", "role", R.ROLES));
+  f.appendChild(group("2. Does it do any of these? (Article 5 prohibited practices; tick all that apply)", "checkbox", "prohibited", R.PROHIBITED));
+  f.appendChild(group("3. Is it intended for any of these uses? (Annex III; tick all that apply)", "checkbox", "annex3", R.ANNEX3));
+  f.appendChild(group("3a. If you ticked an Annex III use: is its only role one of these? (Article 6(3))", "checkbox", "derogation", R.DEROGATION));
+  f.appendChild(group("3b. Does it profile natural persons?", "radio", "profiling", YN));
+  f.appendChild(group("4. Is it a product, or a safety component of a product, covered by Annex I EU product law (e.g. machinery, medical devices, toys)?", "radio", "annex1", YN));
+  f.appendChild(group("4a. If yes: does that product need a third-party (notified body) conformity assessment?", "radio", "annex1ThirdParty", YN));
+  f.appendChild(group("5. Transparency triggers (Article 50; tick all that apply)", "checkbox", "art50", R.ART50));
+  f.appendChild(el("p", {}, [el("button", { type: "submit", text: "Show my indicative category" })]));
+  function vals(n) { return Array.prototype.map.call(f.querySelectorAll('input[name="' + n + '"]:checked'), function (i) { return i.value; }); }
+  function today() { var d = new Date(); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var r = R.evaluate({ role: vals("role")[0] || "unsure", prohibited: vals("prohibited"), annex3: vals("annex3"), derogation: vals("derogation"),
+      profiling: vals("profiling")[0] || "", annex1: vals("annex1")[0] || "", annex1ThirdParty: vals("annex1ThirdParty")[0] || "", annex1NonSafetyOnly: "", art50: vals("art50") }, today());
+    out.textContent = "";
+    out.appendChild(el("h2", { text: "Indicative category" }));
+    out.appendChild(el("p", { "class": "tier", id: "tier", "data-tier": r.tier, text: r.tierLabel }));
+    if (r.flags.length > 1) out.appendChild(el("p", { text: "Also flagged: " + r.flags.filter(function (x) { return x !== r.tier; }).map(function (x) { return R.TIERS[x].label; }).join("; ") }));
+    var ul = el("ul");
+    r.duties.forEach(function (d) { ul.appendChild(el("li", { text: d.dateLabel + " (" + (d.status === "applies" ? "applies now" : "coming") + ") · " + d.ref + ": " + d.text })); });
+    if (r.duties.length) { out.appendChild(el("h3", { text: "What applies and when" })); out.appendChild(ul); }
+    r.notes.forEach(function (n) { out.appendChild(el("p", { text: n })); });
+    out.appendChild(el("p", { "class": "warn", text: "Indicative only, based on your answers. Not legal advice and not a legal classification. Check the official text on EUR-Lex." }));
+    out.hidden = false; out.scrollIntoView({ behavior: "smooth" });
+  });
+})();
+</script>
+</body>
+</html>
