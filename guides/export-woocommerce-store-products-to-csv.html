@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Export a WooCommerce store's products to CSV without a plugin (titles, prices, stock)</title><meta name="description" content="How to pull titles, prices and stock from a public WooCommerce shop into a spreadsheet without a plugin: Store API, product pages and sitemap patterns, then a no-code Apify option for many stores."><link rel="canonical" href="https://unadhi.com/guides/export-woocommerce-store-products-to-csv.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Export a WooCommerce store's products to CSV without a plugin (titles, prices, stock)"><meta property="og:description" content="Pull titles, prices and stock from a public WooCommerce shop into CSV without a plugin. Manual Store API and page patterns first; Apify for many stores."><meta property="og:url" content="https://unadhi.com/guides/export-woocommerce-store-products-to-csv.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Export a WooCommerce store's products to CSV without a plugin (titles, prices, stock)","dateModified":"2026-10-14","datePublished":"2026-10-14","inLanguage":"en","author":{"@type":"Organization","name":"Unadhi"},"publisher":{"@type":"Organization","name":"Unadhi"},"mainEntityOfPage":"https://unadhi.com/guides/export-woocommerce-store-products-to-csv.html","step":[{"@type":"HowToStep","name":"Confirm it is a WooCommerce shop","text":"Look for /product/ URLs, ?add-to-cart= links, woocommerce CSS classes or /wp-json/wc/store/ on the storefront."},{"@type":"HowToStep","name":"Try the public Store API","text":"Open /wp-json/wc/store/v1/products?per_page=100 and page through until empty; convert JSON to CSV."},{"@type":"HowToStep","name":"If the API is closed, read product pages","text":"Collect product URLs from the shop or /product-sitemap.xml, then copy title, price and stock from each page or from JSON-LD Product markup."},{"@type":"HowToStep","name":"Paste into a spreadsheet","text":"One row per product: URL, title, regular price, sale price, currency, stock, SKU."},{"@type":"HowToStep","name":"For many stores, use a product scraper","text":"Paste shop URLs into an e-commerce product Actor on Apify, run it, and download one CSV."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Can I export another WooCommerce shop's products without a plugin?","acceptedAnswer":{"@type":"Answer","text":"Yes for public data. Many shops expose the WooCommerce Store API at /wp-json/wc/store/v1/products without login. If that is closed, you can still read public product pages and Product JSON-LD by hand. Always follow robots.txt and the shop's terms."}},
+{"@type":"Question","name":"How is this different from Shopify products.json?","acceptedAnswer":{"@type":"Answer","text":"Shopify shops often publish /products.json. WooCommerce shops more often use /wp-json/wc/store/v1/products, WordPress-style /product/ permalinks, ?add-to-cart= links and woocommerce CSS classes. Some also publish /product-sitemap.xml. The patterns in this guide are for WooCommerce storefronts."}},
+{"@type":"Question","name":"Do I need an Apify account for one shop?","acceptedAnswer":{"@type":"Answer","text":"No. For a single shop the Store API or a short list of product pages is enough and costs nothing. Use a scraper when you have many shops or want a repeatable weekly CSV."}},
+{"@type":"Question","name":"Will this work on Amazon or Flipkart?","acceptedAnswer":{"@type":"Answer","text":"No. Those are marketplaces. This guide and the product scraper linked below are for brand-owned WooCommerce (and similar) shops, not Amazon, Flipkart or eBay."}}
+]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Export a WooCommerce store's products to CSV without a plugin (titles, prices, stock)</h1>
+<p class="meta">Updated 14 Oct 2026 · Disclosure: the E-commerce Product Scraper linked below is an Unadhi product on the Apify Store. This guide is free. The manual method needs no tool. Current Apify pricing is only on the Store page.</p>
+<div class="answer"><p><strong>Short answer:</strong> many public WooCommerce shops expose products at <code>/wp-json/wc/store/v1/products</code>. Open that URL, page through, and convert the JSON to CSV. If the API is closed, collect <code>/product/…</code> URLs (often listed in <code>/product-sitemap.xml</code>) and copy title, price and stock from each page or from schema.org Product JSON-LD. For many shops at once, paste the storefront URLs into a product scraper on Apify and download one CSV. If it is <em>your</em> shop, use WooCommerce → Products → Export in wp-admin first; that is free and complete.</p></div>
+
+<h2>Who this is for</h2>
+<ul>
+<li>Sellers building a competitor price sheet from WooCommerce shops.</li>
+<li>Agencies auditing a client's catalogue before a migration or redesign.</li>
+<li>Anyone who needs titles, prices and stock from a shop they do not admin.</li>
+</ul>
+<p>This guide is <strong>WooCommerce-specific</strong>. For Shopify's <code>/products.json</code> path, see the related Shopify export guide below. Do not use these methods on marketplaces (Amazon, Flipkart, eBay).</p>
+
+<h2>Step 1: confirm it is a WooCommerce storefront</h2>
+<p>Before you spend time on the API, check a few public signals:</p>
+<ul class="check">
+<li>Product URLs look like <code>/product/cotton-tee/</code> or <code>/product/cotton-tee/?attribute_pa_size=m</code>.</li>
+<li>Add-to-cart links include <code>?add-to-cart=123</code> or a form that posts to <code>?add-to-cart=</code>.</li>
+<li>Page HTML has classes such as <code>woocommerce</code>, <code>woocommerce-page</code>, <code>product</code>, <code>woocommerce-Price-amount</code>, <code>stock in-stock</code> / <code>out-of-stock</code>.</li>
+<li>The site answers at <code>/wp-json/</code> (WordPress REST) and sometimes at <code>/wp-json/wc/store/</code>.</li>
+<li>A product sitemap may exist at <code>/product-sitemap.xml</code> or under Yoast/Rank Math sitemaps (<code>/product-sitemap1.xml</code>, …).</li>
+</ul>
+<p class="note">None of these alone proves WooCommerce, but together they usually do. If you only see <code>/collections/</code> and <code>/products/…</code> without WordPress paths, you are probably on Shopify — use the Shopify guide instead.</p>
+
+<h2>Step 2: try the public WooCommerce Store API (free, one shop)</h2>
+<ol>
+<li>Take the shop homepage, for example <code>https://example-woo-shop.com</code>.</li>
+<li>Open <code>https://example-woo-shop.com/wp-json/wc/store/v1/products?per_page=100</code> in your browser.</li>
+<li>If you get a JSON array of products, you are done for the data side. Add <code>&amp;page=2</code>, <code>&amp;page=3</code> until a page returns <code>[]</code>.</li>
+<li>Paste the JSON into a JSON-to-CSV converter, or import it in Google Sheets / Excel / a small script. Keep at least: <code>id</code>, <code>name</code>, <code>permalink</code>, <code>prices</code> (regular / sale / currency), <code>is_in_stock</code>, <code>sku</code>.</li>
+</ol>
+<p>Prices in the Store API are often in the shop's <strong>minor units</strong> (paise, cents). Divide by 100 (or the currency's minor-unit factor) when you build the sheet. Currency code is usually in the same <code>prices</code> object.</p>
+<p class="note">Some shops disable the Store API, put it behind a firewall, or rate-limit it. If you get 401, 403, 404 or an HTML error page, stop forcing it. Move to Step 3 or drop the shop. Respect <code>robots.txt</code> and the shop's terms of service.</p>
+
+<h3>Useful Store API query tips</h3>
+<ul>
+<li><code>per_page=100</code> is a common upper bound; if the server rejects it, try <code>per_page=50</code>.</li>
+<li><code>orderby=id&amp;order=asc</code> keeps paging stable.</li>
+<li>Category filter (when you only care about one range): <code>&amp;category=12</code> if you know the category id from <code>/wp-json/wc/store/v1/products/categories</code>.</li>
+</ul>
+
+<h2>Step 3: if the API is closed — product pages and sitemap</h2>
+<p>You can still build a CSV from public HTML when the API is off.</p>
+<ol>
+<li><strong>Collect product URLs.</strong> Browse the shop or category pages and copy links that match <code>/product/…</code>. Or open <code>/product-sitemap.xml</code> (or the Yoast/Rank Math product sitemap) and copy the <code>&lt;loc&gt;</code> URLs. Skip cart, checkout, account and <code>?add-to-cart=</code> action links — those are not product pages.</li>
+<li><strong>Open each product page.</strong> Copy the title (usually <code>h1.product_title</code>), the price block (<code>.woocommerce-Price-amount</code> or <code>.price</code>), and the stock line (<code>.stock</code>).</li>
+<li><strong>Prefer structured data when present.</strong> View page source and search for <code>"@type":"Product"</code>. Many Woo themes output schema.org JSON-LD with <code>name</code>, <code>sku</code>, <code>offers.price</code>, <code>offers.priceCurrency</code> and sometimes <code>offers.availability</code>. That is cleaner than scraping CSS classes by hand.</li>
+<li><strong>Record one row per product</strong> in your sheet (see the example table below).</li>
+</ol>
+<p>This is slow for hundreds of SKUs — that is when Step 5 (Apify) saves time. For five to twenty products it is fine and needs no account.</p>
+
+<h2>Step 4: the CSV layout (fake example data only)</h2>
+<table><thead><tr><th>product_url</th><th>title</th><th>sku</th><th>regular_price</th><th>sale_price</th><th>currency</th><th>in_stock</th></tr></thead><tbody>
+<tr><td>https://example-woo-shop.com/product/cotton-tee-black/</td><td>Cotton tee, black</td><td>TEE-BLK-M</td><td>799</td><td>699</td><td>INR</td><td>yes</td></tr>
+<tr><td>https://example-woo-shop.com/product/canvas-tote/</td><td>Canvas tote</td><td>TOTE-01</td><td>1199</td><td></td><td>INR</td><td>no</td></tr>
+<tr><td>https://example-woo-shop.com/product/linen-shirt-blue/</td><td>Linen shirt, blue</td><td>SHIRT-BLU</td><td>1899</td><td>1899</td><td>INR</td><td>yes</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real shop data.</p>
+<ul class="check">
+<li>Keep the <strong>product URL</strong> as the stable key for week-on-week compares.</li>
+<li>Leave sale price blank when there is no sale, rather than copying the regular price twice unless you want that for formulas.</li>
+<li>Never edit a "raw" weekly tab after you paste it; add a new tab next week.</li>
+</ul>
+
+<h2>Step 5: many WooCommerce stores at once (Apify, no code)</h2>
+<p>Doing Steps 2–4 by hand for 10–50 competitor shops every week gets old. The no-code path:</p>
+<ol>
+<li>Create a free Apify account (no card needed for the free plan; see <a href="https://apify.com/pricing">apify.com/pricing</a> for current free monthly usage).</li>
+<li>Open <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_woo_csv">Shopify &amp; WooCommerce Product + Price Tracker</a> (Unadhi's E-commerce Product Scraper on the Apify Store) and click <strong>Try for free</strong>. Current pricing is shown only on that Store page.</li>
+<li>Paste WooCommerce storefront or category URLs. Example input:</li>
+</ol>
+<pre>{
+  "startUrls": [
+    { "url": "https://example-woo-shop.com" },
+    { "url": "https://another-woo.example/product-category/tees/" }
+  ],
+  "maxProductsPerShop": 200,
+  "maxListingPages": 15,
+  "includeDescription": false
+}</pre>
+<p>Click <strong>Save &amp; Start</strong>. When the run finishes, open Output / Dataset → <strong>Export → CSV</strong>.</p>
+<p>How the Actor prefers sources (best first): Shopify <code>products.json</code> when present, then the WooCommerce Store API, then schema.org JSON-LD / microdata / OpenGraph on product pages. It checks robots.txt and scans public terms before fetching, and skips shops that forbid scraping — a <code>SHOPS_SUMMARY</code> row explains skips. It never logs in, never fetches Amazon/Flipkart/eBay, and never gets around blocks.</p>
+
+<h2>What not to do</h2>
+<ul>
+<li>Do not hammer a shop with rapid page requests. Space manual checks; use a polite tool with delays if you automate.</li>
+<li>Do not ignore robots.txt or a terms page that forbids scraping. Drop that shop from your list.</li>
+<li>Do not treat this as legal advice. Public pages are generally visible, but rules differ by country and by each shop's contract with visitors.</li>
+<li>Do not use add-to-cart or checkout URLs as product rows.</li>
+</ul>
+
+<div class="note"><p>This guide is general information, not legal advice. You are responsible for how you use the data and for following each shop's terms and your local law. The Apify Actors mentioned read only public pages, use an honest bot User-Agent, follow robots.txt, never log in and never get around blocks.</p></div>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="export-shopify-store-products-to-csv.html">Export Shopify (or Woo) products to CSV — Shopify-first guide</a></li>
+<li><a href="competitor-shopify-price-sheet-apify.html">Build a weekly competitor price sheet (Apify, no code)</a></li>
+<li><a href="octoparse-alternative-shopify-woocommerce-product-scraper.html">Octoparse alternative for Shopify / WooCommerce product data</a></li>
+<li>Need a shop's public sales@ or support@ inbox? Related only: <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_woo_csv">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> (also an Unadhi Apify product). Use for genuine one-to-one enquiries, not bulk cold email.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
