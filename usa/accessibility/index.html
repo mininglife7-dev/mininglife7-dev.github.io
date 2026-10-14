@@ -1,0 +1,55 @@
+<!doctype html><html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free website accessibility checker (WCAG 2.1 AA) - paste HTML, see issues | Unadhi</title>
+<meta name="description" content="Free, in-browser accessibility check: paste your page's HTML and see common WCAG 2.1 A/AA issues with plain-English fixes. Runs on your device. Finds common WCAG issues; not legal advice.">
+<link rel="canonical" href="https://unadhi.com/usa/accessibility/"><meta name="robots" content="index,follow">
+<style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1d2a2a;background:#fbfaf7}
+header,main,footer{max-width:820px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}a{color:#0a5c55}
+h1{font-size:1.6rem;line-height:1.25}textarea{width:100%;min-height:200px;font:14px/1.4 monospace;padding:10px;border:1px solid #8a9a9a;border-radius:6px}
+button{background:#0a5c55;color:#fff;border:0;border-radius:6px;padding:12px 20px;font-size:1rem;cursor:pointer;margin:8px 8px 0 0}button:focus{outline:3px solid #c98a00}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.93rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+.critical{color:#a00000;font-weight:700}.serious{color:#8a3b00;font-weight:700}iframe#sandbox{width:1px;height:1px;border:0;position:absolute;left:-9999px}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}label{font-weight:600}</style></head>
+<body><header><a href="https://unadhi.com/">Unadhi</a> · US guides</header><main>
+<h1>Free website accessibility checker: paste HTML, see common WCAG issues</h1>
+<section class="answer" aria-labelledby="ref"><h2 id="ref">Join free and earn by referring</h2><p>Know a business whose website needs an accessibility check? Join our reseller programme for free and earn up to 50% of net revenue received from customers you refer, via Gumroad affiliates. Terms on request: use the contact link on <a href="https://unadhi.com/">unadhi.com</a>.</p></section>
+<p class="answer"><strong>What it does:</strong> runs the open-source axe-core engine <em>in your browser</em> on HTML you paste (or on this page) and lists common WCAG 2.1 A/AA issues with a plain-English fix. Nothing is uploaded. <strong>Finds common WCAG issues; not legal advice.</strong> It does not make a site "ADA compliant".</p>
+<p><label for="src">1. On your site, right-click › "View page source", copy everything, and paste it here:</label></p>
+<textarea id="src" placeholder="<!doctype html> ..."></textarea>
+<button id="run">Check pasted HTML</button><button id="self">Check this page instead</button>
+<p id="status" role="status" aria-live="polite"></p>
+<div id="out"></div>
+<p class="note"><strong>Limits:</strong> pasted HTML loses your CSS and scripts, so colour-contrast and script-built content may not be checked; use "full page scan" below for a real-browser check. Automated tools catch only part of WCAG, so keyboard and screen-reader testing is still needed.</p>
+<h2>Then, if you want more: plans</h2>
+<ul><li><strong>Free:</strong> a real-browser scan of 1 page. Send the URL via the contact link on <a href="https://unadhi.com/">unadhi.com</a>.</li>
+<li><strong>10-page monitor:</strong> $19/mo or $190/yr, with a monthly re-scan and a dated scan history.</li>
+<li><strong>Developer fix list:</strong> $24/mo, listing each issue with its element, WCAG rule and a plain fix.</li>
+<li><strong>Fixed 5-page audit:</strong> $149, delivered within 72 hours.</li></ul>
+<p>The scanner will also be on the Apify Store (listing coming soon). Every result finds common WCAG issues; it is not legal advice.</p>
+<h2>Why this matters in the US</h2>
+<ul><li>3,117 website-accessibility lawsuits were filed in US federal courts in 2025, up 27% from 2024 (<a href="https://www.adatitleiii.com/2026/03/federal-court-website-accessibility-lawsuit-filings-bounce-back-in-2025/">Seyfarth Shaw</a>).</li>
+<li>State and local governments must meet WCAG 2.1 AA by 26 Apr 2027 (population 50,000+) or 26 Apr 2028 (<a href="https://www.ada.gov/resources/2024-03-08-web-rule/">ADA.gov</a>).</li>
+<li>The FTC fined an AI-overlay vendor $1M for claiming its widget made any site WCAG-compliant (<a href="https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million">FTC, Apr 2025</a>). Fixing the real issues beats a widget.</li></ul>
+<p><em>Why Unadhi exists:</em> small teams deserve clear, affordable compliance tools.</p>
+<iframe id="sandbox" title="scan sandbox" sandbox="allow-same-origin allow-scripts"></iframe>
+</main><footer>Unadhi Guides. Engine: axe-core 4.10.3 (Deque Systems, MPL-2.0, <a href="axe-core-LICENSE.txt">license</a>). Finds common WCAG issues; not legal advice; does not certify ADA or WCAG compliance.</footer>
+<script src="axe.min.js"></script>
+<script>
+const FIX={"color-contrast":"Raise text/background contrast to 4.5:1 (3:1 large text).","image-alt":"Add alt text to meaningful images; alt=\"\" for decorative.","link-name":"Give every link text or an aria-label.","button-name":"Give every button text or an aria-label.","label":"Connect each form field to a <label>.","html-has-lang":"Add lang=\"en\" to <html>.","document-title":"Add a descriptive <title>.","heading-order":"Use headings in order without skipping levels.","meta-viewport":"Don't disable zoom.","frame-title":"Add a title to each iframe."};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const opts={runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']},resultTypes:['violations']};
+function render(r){const order={critical:0,serious:1,moderate:2,minor:3};const v=r.violations.sort((a,b)=>order[a.impact]-order[b.impact]);
+ const c={critical:0,serious:0,moderate:0,minor:0};v.forEach(x=>c[x.impact]++);const score=Math.max(0,100-10*c.critical-6*c.serious-3*c.moderate-c.minor);
+ let h=`<h2>Result: score ${score}/100, ${v.length} rule(s) failed</h2><p>${c.critical} critical · ${c.serious} serious · ${c.moderate} moderate · ${c.minor} minor</p>`;
+ if(!v.length)h+='<p>No automatically detectable issues found in this input. Manual checks are still needed.</p>';
+ else h+='<table><tr><th>Impact</th><th>Issue</th><th>Elements</th><th>How to fix</th></tr>'+v.map(x=>`<tr><td class="${x.impact}">${x.impact}</td><td>${esc(x.help)}<br><small>${esc(x.id)} · <a href="${esc(x.helpUrl)}">details</a></small></td><td>${x.nodes.length}<br><small>${esc((x.nodes[0]&&x.nodes[0].target||[]).join(' '))}</small></td><td>${esc(FIX[x.id]||x.help)}</td></tr>`).join('')+'</table>';
+ h+='<p><small>Finds common WCAG issues; not legal advice.</small></p>';document.getElementById('out').innerHTML=h;document.getElementById('status').textContent='Done.';}
+document.getElementById('self').onclick=async()=>{document.getElementById('status').textContent='Checking this page…';render(await axe.run(document,opts));};
+document.getElementById('run').onclick=()=>{const html=document.getElementById('src').value.trim();if(!html){document.getElementById('status').textContent='Paste some HTML first.';return;}
+ document.getElementById('status').textContent='Checking…';const f=document.getElementById('sandbox');
+ const clean=html.replace(/<script\b[\s\S]*?<\/script>/gi,'');
+ f.onload=async()=>{const d=f.contentDocument;const s=d.createElement('script');s.textContent=window.__axeSrc;
+  try{f.contentWindow.eval(window.__axeSrc);const r=await f.contentWindow.axe.run(d,opts);render(r);}catch(e){document.getElementById('status').textContent='Could not check: '+e.message;}};
+ f.srcdoc=clean;};
+fetch('axe.min.js').then(r=>r.text()).then(t=>window.__axeSrc=t);
+</script></body></html>
