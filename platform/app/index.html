@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-FzqNmivqovgykA4tLeQBre2EmdRX1w93i08QHhBZcLo=' 'sha256-q6+iIIXE/K0Ch3VaJ9uVkIi7QJpRLkI3/Bq/DQM/nDw='; style-src 'sha256-nBMj7gDXmrrs6bD84gpBJf5TKE9JJb87UN83XjBu/KU='; img-src 'none'; font-src 'none'; connect-src https://api.gumroad.com; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-JgV4VIjrVMNy3Qt+XruN5sINGgO0VHv8kmmROZZ/MCc=' 'sha256-TUpRerKnL9XLkODwX4dfAqywzqFJJSZdyBASMwBez7I='; style-src 'sha256-nBMj7gDXmrrs6bD84gpBJf5TKE9JJb87UN83XjBu/KU='; img-src 'none'; font-src 'none'; connect-src https://api.gumroad.com; form-action 'none'; base-uri 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <title>EURO AI Governance Platform app (free, browser-only)</title>
 <meta name="description" content="Free browser-only app: paste your tool list, find AI vendors, get EU AI Act tier suggestions with article citations, sign off and export inventory, Art. 4 record, Annex IV skeleton.">
@@ -45,6 +45,7 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
 <p><input type="text" id="lic-key" maxlength="100" placeholder="Licence key" autocomplete="off"> <button type="button" id="lic-check">Check licence</button><button type="button" class="ghost" id="lic-clear">Remove</button></p><p id="licstate" class="small"></p><p id="licmsg" class="msg"></p>
 <div class="note" data-authority><p>Primary sources: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng">Regulation (EU) 2024/1689 on EUR-Lex</a>, <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng">Regulation (EU) 2026/1744 on EUR-Lex</a> and the European Commission's <a href="https://ai-act-service-desk.ec.europa.eu/en">AI Act Service Desk</a>. Facts last checked 13 Oct 2026. National enforcement bodies differ per Member State; where one is not yet designated, check your national government site.</p></div>
 <p class="small">This tool gives suggestions to support your own review. It is not legal advice, and using it does not make any organisation meet the AI Act. A named person in your organisation reviews and signs off each record.</p>
+<p class="small" data-legal><a href="/register/terms.html">Terms</a> · <a href="/register/refund.html">Refund and cancellation</a> · <a href="/register/contact.html">Contact</a> · <a href="/register/privacy.html">Privacy</a></p>
 
 <div id="printout"></div>
 </main>
@@ -129,6 +130,7 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
     return { tier: "minimal", why: why };
   }
   function signed(r) { return !!(r && r.approver && String(r.approver).trim().length >= 2 && /^\d{4}-\d{2}-\d{2}$/.test(r.signDate || "")); }
+  var FREE_LIMIT = 10; // same free tier as the EURO AI Register (BOSS AGI, 14 Oct 2026)
   function exportable(records, freeLimit) {
     var uns = records.filter(function (r) { return !signed(r); });
     if (uns.length) return { ok: false, msg: "Sign-off missing for: " + uns.map(function (r) { return r.name; }).join(", ") + ". Add approver name and date first." };
@@ -213,14 +215,14 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
     });
     return { ok: true, systems: out };
   }
-  var api = { ART5: ART5, ANNEX3: ANNEX3, ART50: ART50, TIERS: TIERS, DEADLINES: DEADLINES, parseList: parseList, match: match, discover: discover, classify: classify, signed: signed, exportable: exportable, toCSV: toCSV, ics: ics, logAppend: logAppend, logVerify: logVerify, decideLicense: decideLicense, licensed: licensed, verifyLicense: verifyLicense, fromRegister: fromRegister };
+  var api = { ART5: ART5, ANNEX3: ANNEX3, ART50: ART50, TIERS: TIERS, DEADLINES: DEADLINES, parseList: parseList, match: match, discover: discover, classify: classify, signed: signed, exportable: exportable, FREE_LIMIT: FREE_LIMIT, toCSV: toCSV, ics: ics, logAppend: logAppend, logVerify: logVerify, decideLicense: decideLicense, licensed: licensed, verifyLicense: verifyLicense, fromRegister: fromRegister };
   if (typeof module !== "undefined" && module.exports) module.exports = api; else root.EAICore = api;
 })(this);
 </script><script>/* EURO AI Governance Platform UI (MIT). Data stays in this browser (localStorage). */
 (function () {
   "use strict";
   var C = window.EAICore, CAT = JSON.parse(document.getElementById("catalogue").textContent);
-  var FREE = 1, KEY = "euroai.platform.v1", LKEY = "euroai.platform.licence.v1";
+  var FREE = C.FREE_LIMIT || 10, KEY = "euroai.platform.v1", LKEY = "euroai.platform.licence.v1";
   function lic() { try { return JSON.parse(localStorage.getItem(LKEY)); } catch (e) { return null; } }
   function isTeam() { return C.licensed(lic(), Date.now()); }
   var S = load(), OPEN = {};
@@ -280,7 +282,7 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
   }
   function render() {
     var box = $("systems"); box.textContent = "";
-    $("count").textContent = S.systems.length + " system(s) in this browser. " + (isTeam() ? "Team licence active: unlimited exports." : "Free tier exports 1 system.");
+    $("count").textContent = S.systems.length + " system(s) in this browser. " + (isTeam() ? "Team licence active: unlimited exports." : "Free tier exports up to " + FREE + " systems.");
     S.systems.forEach(function (sys) {
       var d63 = el("input", { type: "checkbox" }); d63.checked = !!sys.answers.art63;
       d63.addEventListener("change", function () { sys.answers.art63 = d63.checked; sys.result = null; save(); });
@@ -326,7 +328,7 @@ fieldset{border:1px solid #dde;border-radius:6px;margin:10px 0}label.chk{display
     if (unc.length) { msg(id, "Classify first: " + unc.map(function (s) { return s.name; }).join(", "), true); return null; }
     var g = C.exportable(S.systems, isTeam() ? 0 : FREE);
     if (!g.ok) { msg(id, g.msg, true); return null; }
-    msg(id, g.capped ? "Free tier: exported the first system only. Enter a Team licence key below for unlimited systems." : "Exported.");
+    msg(id, g.capped ? "Free tier: exported the first " + FREE + " systems only. Enter a Team licence key below for unlimited systems." : "Exported.");
     return g.records;
   }
   var NOTE = "Generated by EURO AI Governance Platform (free tier) on " + today() + ". Suggestions need human review; this is not legal advice.";
