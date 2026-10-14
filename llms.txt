@@ -28,6 +28,7 @@
 - [DGMS Overman & Sirdar (Coal) Exam Pack](https://mininglife1.gumroad.com/l/dgms-overman-sirdar-pack): CMR 2017 key rules in Telugu + English with 195 MCQs; ₹299. Independent study aid. Free guide: https://mininglife7-dev.github.io/guides/dgms-overman-sirdar-cmr-2017-key-rules.html
 
 ## Free samples and tools
+- [Article 50 transparency notice generator](https://unadhi.com/eu/tools/art50-notice/): free, browser-only EU AI Act Article 50 notice text (chatbot, AI-generated content, deepfakes, AI-written public-interest text, emotion recognition, biometric categorisation) in English, German and French; Article 50 applies from 2 August 2026; not legal advice. Law: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
 - [Telangana Special TET free sample](https://mininglife1.gumroad.com/l/telangana-special-tet-free): one page of dates and exam pattern.
 - [NRI Hyderabad property DIY free sample](https://mininglife1.gumroad.com/l/nri-hyd-property-diy-free-sample) and [NRI Andhra Pradesh property DIY free sample](https://mininglife1.gumroad.com/l/nri-ap-property-diy-free-sample).
 - [Free RERA ad checklists for brokers](https://mininglife1.gumroad.com/l/free-rera-ad-checklist) and [10 free Telugu AI prompts](https://mininglife1.gumroad.com/l/telugu-ai-prompts-free).
