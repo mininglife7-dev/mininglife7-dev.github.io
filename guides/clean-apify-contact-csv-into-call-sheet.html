@@ -1,0 +1,154 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clean an Apify contact scrape into a call sheet: one row per business, best email and phone first</title><meta name="description" content="Turn a website contact scrape CSV into a Google Sheet or Excel call sheet: one row per company with best email, best phone, WhatsApp, website, source URL and a simple score."><link rel="canonical" href="https://unadhi.com/guides/clean-apify-contact-csv-into-call-sheet.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Clean an Apify contact scrape into a call sheet"><meta property="og:description" content="One row per business, best email and phone first, with WhatsApp, source URL and a simple score. Google Sheets or Excel, no code."><meta property="og:url" content="https://unadhi.com/guides/clean-apify-contact-csv-into-call-sheet.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Clean an Apify contact scrape into a call sheet: one row per business, best email and phone first","dateModified":"2026-10-14","datePublished":"2026-10-14","inLanguage":"en","author":{"@type":"Organization","name":"Unadhi"},"publisher":{"@type":"Organization","name":"Unadhi"},"mainEntityOfPage":"https://unadhi.com/guides/clean-apify-contact-csv-into-call-sheet.html","step":[{"@type":"HowToStep","name":"Get one contact CSV","text":"Export the dataset of a website contact scrape (or your own hand-built list) as CSV."},{"@type":"HowToStep","name":"Import it as text into a raw tab","text":"Import into a tab called raw without converting text to numbers, so phone numbers keep their + and leading zeros."},{"@type":"HowToStep","name":"Add a COL helper","text":"Create a named function COL that returns a column of the raw tab by its header name."},{"@type":"HowToStep","name":"Build the rows tab","text":"Pull domain, status, best email, best phone (tel: links first), WhatsApp, website and source URL, then score each row 3, 2, 1 or 0."},{"@type":"HowToStep","name":"Keep one row per business","text":"Sort by score, number repeat domains with COUNTIFS and FILTER to the first, best-scored row for each domain."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Why does my contact scrape CSV have columns like emails/0/email and emails/1/email?","acceptedAnswer":{"@type":"Answer","text":"Apify flattens lists when it exports a dataset to CSV. Each email, phone and social link becomes its own numbered column: emails/0/email is the first email, emails/1/email the second, and so on. A call sheet only needs the first one or two of each."}},
+{"@type":"Question","name":"Why did my phone numbers lose the + sign in Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Sheets turned them into numbers. Import the CSV with File, Import and untick 'Convert text to numbers, dates, and formulas', or in Excel use Data, From Text/CSV and set the phone columns to Text."}},
+{"@type":"Question","name":"How do I keep only one row per company?","acceptedAnswer":{"@type":"Answer","text":"Sort the rows by score, best first, then number each repeat of the same domain with a running COUNTIFS and keep only the rows numbered 1. That leaves the best-scored row for every company."}},
+{"@type":"Question","name":"Which phone number should I call first?","acceptedAnswer":{"@type":"Answer","text":"Prefer a number the business put in a clickable tel: link, because it published that number to be called. In the Unadhi contact scraper these have source tel-link; numbers read from page text have source text."}}
+]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Clean an Apify contact scrape into a call sheet: one row per business, best email and phone first</h1>
+<p class="meta">Updated 14 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or a list you build by hand. Current Apify pricing is only on the Store page.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet (or Excel workbook) called a <strong>call sheet</strong>: <strong>one row per company</strong>, with the best email, the best phone, a WhatsApp link if the business publishes one, the website, the page where the contact was found, and a simple score so the most reachable businesses sit at the top. You paste a raw contact CSV into one tab; formulas do the rest. Setup is about 30 minutes, and every later CSV takes two minutes.</p></div>
+
+<h2>The finished call sheet</h2>
+<table><thead><tr><th>Score</th><th>Business</th><th>Best email</th><th>Best phone</th><th>WhatsApp</th><th>Website</th><th>Found on</th></tr></thead><tbody>
+<tr><td>3</td><td>example-clinic.in</td><td>appointments@example-clinic.in</td><td>+914000000001</td><td>wa.me/914000000001</td><td>https://example-clinic.in</td><td>…/contact-us</td></tr>
+<tr><td>2</td><td>example-studio.com</td><td>hello@example-studio.com</td><td></td><td></td><td>https://example-studio.com</td><td>…/about</td></tr>
+<tr><td>1</td><td>example-traders.co.in</td><td></td><td>+914000000002</td><td></td><td>https://example-traders.co.in</td><td>…/</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real business data.</p>
+<p><strong>Score:</strong> 3 = email and phone, 2 = email only, 1 = phone only, 0 = nothing usable (kept on a separate "check by hand" list).</p>
+
+<h2>Why a raw scrape is not a call sheet yet</h2>
+<ul>
+<li><strong>Too many columns.</strong> When Apify exports a dataset to CSV it flattens every list, so you get <code>emails/0/email</code>, <code>emails/1/email</code>, <code>phones/0/phone</code>, <code>phones/0/source</code>, <code>socials/whatsapp/0/url</code> and dozens more. You need about eight of them.</li>
+<li><strong>Repeats.</strong> If you merge two runs, or your list had both <code>www.</code> and bare domains, the same company appears twice. You want one row, the better one.</li>
+<li><strong>The first phone is not always the best one.</strong> Numbers are listed in number order, not by quality. A number in a clickable <code>tel:</code> link is the one the business wants you to call.</li>
+<li><strong>Blocked and failed sites</strong> have no contacts at all and only clutter the list.</li>
+</ul>
+
+<h2>Step 1: get one contact CSV</h2>
+<h3>Free, a few businesses</h3>
+<p>Open each company's contact or about page and type what it publishes into a sheet with the same column names used below (<code>domain</code>, <code>status</code>, <code>emails/0/email</code>, <code>phones/0/phone</code>, <code>startUrl</code>). For ten or twenty businesses that is quicker than any tool. If you already have a CSV from another contact tool, rename its columns to these names and skip to Step 2.</p>
+
+<h3>No code, hundreds of websites (Apify)</h3>
+<ol>
+<li>Create a free Apify account (no card needed for the free plan; see <a href="https://apify.com/pricing">apify.com/pricing</a> for current free monthly usage).</li>
+<li>Open <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_call_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> and click <strong>Try for free</strong>.</li>
+<li>Paste your websites. In JSON view:</li>
+</ol>
+<pre>{
+  "urls": ["example-clinic.in", "example-studio.com", "example-traders.co.in"],
+  "maxPagesPerSite": 4,
+  "includePersonalEmails": false,
+  "respectRobotsTxt": true,
+  "respectTermsOfService": true,
+  "checkEmailMx": true,
+  "defaultCountry": "IN"
+}</pre>
+<p>Set <code>defaultCountry</code> to the country most of the businesses are in, so local numbers without a country code are read correctly. Leave <code>includePersonalEmails</code> off: the call sheet is built on shared role inboxes such as info@, sales@ and appointments@. Already have a Google Maps dataset? Pass its dataset ID instead; see <a href="enrich-google-maps-apify-emails-phones.html">enrich a Google Maps Apify dataset with emails and phones</a>, and the business name then comes through as <code>sourceItems/0/title</code>.</p>
+<p>When the run finishes, open the dataset, choose <strong>Export → CSV</strong> and download it.</p>
+
+<h2>Step 2: import it as text into a tab called <code>raw</code></h2>
+<ul class="check">
+<li><strong>Google Sheets:</strong> new sheet, rename the first tab to <code>raw</code>, then <strong>File → Import → Upload</strong>, choose <em>Replace current sheet</em> and <strong>untick "Convert text to numbers, dates, and formulas"</strong>. Without that, <code>+914000000001</code> becomes the number 914000000001.</li>
+<li><strong>Excel:</strong> <strong>Data → From Text/CSV</strong>, then <em>Transform Data</em> and set every <code>phones/…/phone</code> column to Text before you load it into a sheet named <code>raw</code>.</li>
+<li>Never edit the <code>raw</code> tab. Next time, import the new CSV over it and the call sheet refreshes.</li>
+</ul>
+
+<h2>Step 3: add a COL helper (one-time)</h2>
+<p>The column order of a CSV can change between runs, so pick columns by their header name, not their letter.</p>
+<ul>
+<li><strong>Google Sheets:</strong> <strong>Data → Named functions → Add new function</strong>. Name: <code>COL</code>. Argument: <code>h</code>. Definition:</li>
+</ul>
+<pre>=IFERROR(XLOOKUP(h, raw!$1:$1, raw!$2:$5000), "")</pre>
+<ul>
+<li><strong>Excel 365:</strong> <strong>Formulas → Name Manager → New</strong>. Name: <code>COL</code>. Refers to:</li>
+</ul>
+<pre>=LAMBDA(h, IFERROR(XLOOKUP(h, raw!$1:$1, raw!$2:$5000), ""))</pre>
+<p><code>COL("domain")</code> now returns the whole domain column. If a header is missing (for example no site in the run had a second email, so there is no <code>emails/1/email</code>), it returns blank instead of an error.</p>
+
+<h2>Step 4: build the <code>rows</code> tab</h2>
+<p>Add a tab called <code>rows</code>. Type these headers in row 1 and each formula in row 2 of its column. In Google Sheets the formulas already spill down; in Excel 365 they spill without <code>ARRAYFORMULA</code> (you can leave it out).</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula in row 2</th></tr></thead><tbody>
+<tr><td>A</td><td>business</td><td><code>=COL("domain")</code></td></tr>
+<tr><td>B</td><td>status</td><td><code>=COL("status")</code></td></tr>
+<tr><td>C</td><td>name</td><td><code>=COL("sourceItems/0/title")</code> (blank unless you started from a Maps dataset)</td></tr>
+<tr><td>D</td><td>best email</td><td><code>=COL("emails/0/email")</code></td></tr>
+<tr><td>E</td><td>backup email</td><td><code>=COL("emails/1/email")</code></td></tr>
+<tr><td>F</td><td>best phone</td><td>see below</td></tr>
+<tr><td>G</td><td>WhatsApp</td><td><code>=COL("socials/whatsapp/0/url")</code></td></tr>
+<tr><td>H</td><td>website</td><td><code>=COL("startUrl")</code></td></tr>
+<tr><td>I</td><td>found on</td><td>see below</td></tr>
+<tr><td>J</td><td>score</td><td>see below</td></tr>
+</tbody></table>
+
+<h3>F: best phone (a tel: link first, otherwise the first number)</h3>
+<pre>=ARRAYFORMULA(IF(COL("phones/0/source")="tel-link", COL("phones/0/phone"),
+  IF(COL("phones/1/source")="tel-link", COL("phones/1/phone"), COL("phones/0/phone"))))</pre>
+
+<h3>I: found on (the page where the email, or else the phone, was published)</h3>
+<pre>=ARRAYFORMULA(IF(COL("emails/0/foundOn")&lt;&gt;"", COL("emails/0/foundOn"), COL("phones/0/foundOn")))</pre>
+
+<h3>J: score (3 email + phone, 2 email only, 1 phone only, 0 none)</h3>
+<pre>=ARRAYFORMULA(IF(A2:A="", "", IF((D2:D&lt;&gt;"")*(F2:F&lt;&gt;""), 3, IF(D2:D&lt;&gt;"", 2, IF(F2:F&lt;&gt;"", 1, 0)))))</pre>
+<p>The scraper lists same-domain emails first, so <code>emails/0/email</code> is normally the company's own inbox. Want WhatsApp to break ties? Change the 3 to <code>3+(G2:G&lt;&gt;"")*0.5</code>.</p>
+
+<h2>Step 5: one row per business (the <code>call_sheet</code> tab)</h2>
+<p>Add a tab called <code>sorted</code>. In <code>A2</code>, sort the usable rows best score first, then by business name:</p>
+<pre>=SORT(FILTER(rows!A2:J, rows!A2:A&lt;&gt;"", rows!B2:B="ok", rows!J2:J&gt;0), 10, FALSE, 1, TRUE)</pre>
+<p>In <code>K2</code> of the same tab, number each repeat of a business (1 = its best row):</p>
+<pre>=ARRAYFORMULA(IF(A2:A="", "", COUNTIFS(A2:A, A2:A, ROW(A2:A), "&lt;="&amp;ROW(A2:A))))</pre>
+<p>Finally add the <code>call_sheet</code> tab, copy the headers from <code>rows</code> into row 1, and in <code>A2</code>:</p>
+<pre>=FILTER(sorted!A2:J, sorted!K2:K=1)</pre>
+<p>That is your call sheet: one row per company, most reachable first. For the "check by hand" list (blocked, failed or empty sites), add one more tab with <code>=FILTER(rows!A2:J, rows!A2:A&lt;&gt;"", (rows!B2:B&lt;&gt;"ok")+(rows!J2:J=0))</code>.</p>
+<p><strong>Excel 365:</strong> <code>SORT</code> and <code>FILTER</code> work the same. For the de-duplication, put <code>=UNIQUE(sorted!A2:A1000)</code> in <code>call_sheet!A2</code> and fill each other column with <code>=XLOOKUP($A2#, sorted!$A$2:$A$1000, sorted!D$2:D$1000)</code> (change the last range per column). <code>XLOOKUP</code> returns the first match, which is the best-scored row.</p>
+
+<h2>Step 6: check before you call</h2>
+<ul>
+<li><strong>Email on another domain?</strong> If the best email's domain differs from the website, open the "found on" page. It can be the web designer's or a booking service's inbox, not the business.</li>
+<li><strong>Toll-free and switchboard numbers</strong> are fine for a first call, but ask for the right person rather than guessing direct lines.</li>
+<li><strong><code>mxValid</code> FALSE</strong> on an email (column <code>emails/0/mxValid</code> in <code>raw</code>) means its domain cannot receive mail. Use the backup email or the phone.</li>
+<li><strong>Blocked by robots or terms</strong> (status <code>blocked-by-robots</code> or <code>blocked-by-terms</code>) means the site asked bots not to read it. Visit it yourself or leave it out.</li>
+</ul>
+
+<h2>What not to do</h2>
+<ul>
+<li>Do not guess personal addresses such as firstname@company. Use what the business publishes.</li>
+<li>Do not load the sheet into a bulk cold-email tool. Make genuine one-to-one calls and messages, and follow your local rules on calls and marketing (for example India's DND/TRAI rules, the EU's GDPR and ePrivacy rules, or the US TCPA).</li>
+<li>Do not message a WhatsApp number in bulk. Only use it where the business invites chat and your first message is a real, relevant enquiry.</li>
+</ul>
+
+<div class="note"><p>This guide is general information, not legal advice. You are responsible for how you use the data and for following each site's terms and your local law. The Apify Actor mentioned reads only public pages, uses an honest bot User-Agent, follows robots.txt, never logs in and never gets around blocks.</p></div>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="enrich-google-maps-apify-emails-phones.html">Enrich a Google Maps Apify dataset with emails and phones</a></li>
+<li><a href="find-public-role-emails-company-website-apify.html">Find public role emails (sales@, press@, support@) on a company website</a></li>
+<li><a href="business-website-whatsapp-social-links-apify.html">Find a business website's WhatsApp and social links</a></li>
+<li><a href="apify-contact-details-and-product-scraper-examples.html">Copy-paste inputs for the Contact Details and Product scrapers</a></li>
+<li>Selling to online shops? Related only: <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_call_sheet">Shopify &amp; WooCommerce Product + Price Tracker</a> (also an Unadhi Apify product) lists a shop's public products and prices, so you can open the call knowing their range.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
