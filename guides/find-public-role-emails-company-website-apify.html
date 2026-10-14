@@ -1,0 +1,126 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find public role emails (sales@, press@, support@) on a company website without guessing</title><meta name="description" content="Where companies publish their shared inboxes (contact, about, impressum, privacy policy, security.txt), how to check them by hand, and how to collect them for a list of sites with a contact scraper on Apify. Role inboxes only, robots.txt respected."><link rel="canonical" href="https://unadhi.com/guides/find-public-role-emails-company-website-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Find public role emails (sales@, press@, support@) on a company website without guessing"><meta property="og:description" content="Find the shared inbox a company actually publishes instead of guessing sales@ or info@. Manual checklist plus a no-code Apify method for a list of sites."><meta property="og:url" content="https://unadhi.com/guides/find-public-role-emails-company-website-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Find public role emails (sales@, press@, support@) on a company website without guessing","dateModified":"2026-10-14","datePublished":"2026-10-14","inLanguage":"en","author":{"@type":"Organization","name":"Unadhi"},"publisher":{"@type":"Organization","name":"Unadhi"},"mainEntityOfPage":"https://unadhi.com/guides/find-public-role-emails-company-website-apify.html","step":[{"@type":"HowToStep","name":"Decide which inbox you need","text":"Match your reason for writing to one shared inbox: sales, press, partnerships, support, privacy or security."},{"@type":"HowToStep","name":"Check the pages where companies publish inboxes","text":"Look at the footer, contact, about, impressum or legal notice, press, privacy policy and /.well-known/security.txt."},{"@type":"HowToStep","name":"Keep only role inboxes that are actually published","text":"Write down the address exactly as shown and the page URL where you found it. Do not guess patterns."},{"@type":"HowToStep","name":"For a list of sites, run a contact scraper","text":"Paste the homepages into a contact-details Actor on Apify with personal emails off and robots.txt on, then export CSV."},{"@type":"HowToStep","name":"Check and use it one to one","text":"Confirm the domain accepts mail, pick the inbox that fits your message and write a single relevant message, not a bulk campaign."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Why not just guess sales@ or info@?","acceptedAnswer":{"@type":"Answer","text":"A guessed address may not exist, may bounce, or may go to an inbox nobody reads. Bounces also hurt your own sender reputation. Companies usually publish the inbox they want you to use, so finding it is faster and more reliable than guessing."}},
+{"@type":"Question","name":"Where do companies usually publish their role emails?","acceptedAnswer":{"@type":"Answer","text":"In the site footer, on the contact, about, press or careers pages, in the impressum or legal notice (common for German and Austrian companies), in the privacy policy (often a privacy@ or data protection contact), and in /.well-known/security.txt for security reports."}},
+{"@type":"Question","name":"Is a role email like sales@ personal data?","acceptedAnswer":{"@type":"Answer","text":"A shared inbox such as sales@ or support@ usually does not identify one person, while an address like firstname.lastname@ does. Rules on contacting businesses by email still differ by country, so check your local law. This is general information, not legal advice."}},
+{"@type":"Question","name":"Can I use the list for a bulk cold email campaign?","acceptedAnswer":{"@type":"Answer","text":"This guide is not for that. Use a published role inbox for a genuine one-to-one message that matches its purpose, such as a wholesale enquiry to sales@ or a story pitch to press@. Bulk unsolicited email can break anti-spam law and the email provider's rules."}},
+{"@type":"Question","name":"Do I need to buy a tool for this?","acceptedAnswer":{"@type":"Answer","text":"No. For a few companies the manual checklist in this guide is enough. A contact scraper only saves time when you have tens or hundreds of websites, and any reputable contact scraper that respects robots.txt will do."}}
+]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Find public role emails (sales@, press@, support@) on a company website without guessing</h1>
+<p class="meta">Updated 14 Oct 2026 · Disclosure: the Contact Details Scraper linked below is an Unadhi product on the Apify Store. This guide is free, the manual method needs no tool at all, and the Apify method works with any contact scraper.</p>
+<div class="answer"><p><strong>Short answer:</strong> do not guess <code>sales@company.com</code>. Companies publish the shared inbox they want you to use, usually in the footer, the contact, about or press page, the impressum or legal notice, the privacy policy, or <code>/.well-known/security.txt</code>. Check those pages, copy the address exactly as shown, and note the page you found it on. For tens or hundreds of sites, paste the homepages into a contact scraper on Apify with personal emails switched off and robots.txt respected, then export the role inboxes to CSV. Use them for one-to-one messages that fit the inbox, not bulk cold email.</p></div>
+
+<h2>Why guessing is a bad idea</h2>
+<ul>
+<li><strong>It bounces.</strong> Many companies have no <code>sales@</code>, or route it to a ticket system with a different address. Bounced mail hurts your own sender reputation.</li>
+<li><strong>It lands in the wrong place.</strong> A press question sent to <code>support@</code> gets a ticket number, not a reply.</li>
+<li><strong>It is unnecessary.</strong> If a company wants to hear from buyers, journalists or partners, it says where. Your job is to find that, not to invent it.</li>
+</ul>
+
+<h2>Step 1: decide which inbox you actually need</h2>
+<table><thead><tr><th>Your reason for writing</th><th>Inbox names companies often use</th><th>Where it is usually published</th></tr></thead><tbody>
+<tr><td>Buy, wholesale, quote</td><td>sales@, orders@, b2b@, wholesale@</td><td>Contact page, footer, "For business" page</td></tr>
+<tr><td>Story, interview, media kit</td><td>press@, media@, pr@</td><td>Press or newsroom page, about page</td></tr>
+<tr><td>Partnership, reseller, integration</td><td>partners@, partnerships@, bd@</td><td>Partners page, about page</td></tr>
+<tr><td>Problem with an order or product</td><td>support@, help@, care@</td><td>Help centre, contact page, order emails</td></tr>
+<tr><td>Data protection request</td><td>privacy@, dpo@, dataprotection@</td><td>Privacy policy</td></tr>
+<tr><td>Security vulnerability</td><td>security@</td><td><code>/.well-known/security.txt</code>, security page</td></tr>
+<tr><td>General enquiry</td><td>info@, hello@, contact@</td><td>Footer, contact page, impressum</td></tr>
+</tbody></table>
+<p class="meta">These are common naming habits, not rules. A company may use none of them. Only use an address you have actually seen published.</p>
+
+<h2>Step 2: check the pages where companies publish inboxes</h2>
+<ul class="check">
+<li><strong>Footer</strong> of the homepage: many small companies list one general inbox there.</li>
+<li><strong>Contact</strong> page (<code>/contact</code>, <code>/contact-us</code>, <code>/kontakt</code>): often split by department.</li>
+<li><strong>About</strong> and <strong>press</strong> pages: press and partnership inboxes usually live here.</li>
+<li><strong>Impressum or legal notice</strong> (<code>/impressum</code>, <code>/legal</code>, <code>/mentions-legales</code>): companies in Germany and Austria, for example, are generally required to publish an electronic contact address here.</li>
+<li><strong>Privacy policy</strong>: under GDPR the controller's contact details must be given, so a privacy or data protection inbox often appears here.</li>
+<li><strong><code>/.well-known/security.txt</code></strong>: a small text file (standard RFC 9116) with a <code>Contact:</code> line for security reports. Use it only for security issues.</li>
+<li><strong>Careers</strong> page: a jobs@ or careers@ inbox, only for applications.</li>
+</ul>
+<p>Two quick tricks: press <kbd>Ctrl</kbd>+<kbd>F</kbd> and search for <code>@</code> on each page, and hover over "Email us" buttons to see the <code>mailto:</code> address behind them. Some sites show a form only; in that case the form <em>is</em> the published channel, so use it.</p>
+
+<h2>Step 3: write down only what is published</h2>
+<p>Keep a small sheet with one row per company:</p>
+<table><thead><tr><th>Company site</th><th>Role inbox</th><th>Purpose</th><th>Found on</th><th>Checked</th></tr></thead><tbody>
+<tr><td>example-brand.com</td><td>sales@example-brand.com</td><td>Wholesale</td><td>example-brand.com/contact</td><td>14 Oct 2026</td></tr>
+<tr><td>example-saas.io</td><td>press@example-saas.io</td><td>Media</td><td>example-saas.io/press</td><td>14 Oct 2026</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real company data.</p>
+<p>The "found on" column matters: it is your proof that the company published the address, and it lets you re-check later if the page changes. If the only address you can find is a person's name (for example <code>firstname.lastname@</code>), leave it out of this sheet. That is personal data and needs a separate, lawful reason.</p>
+
+<h2>Step 4: for a list of sites, run a contact scraper on Apify</h2>
+<p>Checking by hand is fine for five companies. For fifty, a contact-details Actor visits each homepage plus a few contact-like pages and collects the published addresses for you.</p>
+<ol>
+<li>Create a free Apify account (no card needed for the free plan; see <a href="https://apify.com/pricing">apify.com/pricing</a> for the current monthly free usage).</li>
+<li>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_role_emails">Contact Details Scraper: Emails, Phones, Socials</a> and click <strong>Try for free</strong>. Current pricing is shown on that Store page.</li>
+<li>Paste your company homepages. In JSON view a privacy-safe input looks like this:</li>
+</ol>
+<pre>{
+  "urls": ["example-brand.com", "example-saas.io"],
+  "maxPagesPerSite": 4,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false,
+  "respectRobotsTxt": true,
+  "respectTermsOfService": true,
+  "checkEmailMx": true,
+  "defaultCountry": "IN"
+}</pre>
+<ul>
+<li><code>includePersonalEmails: false</code> (the default) keeps only shared role mailboxes such as info@, sales@ and support@. Addresses that identify one person are dropped and only counted.</li>
+<li><code>maxPagesPerSite: 4</code> reads the homepage plus the most contact-like pages (contact, about, impressum, support). That is where role inboxes live, so more pages rarely add much.</li>
+<li><code>respectRobotsTxt</code> and <code>respectTermsOfService</code> make the Actor skip pages a site disallows for bots and sites whose terms forbid automated access. Leave both on.</li>
+<li><code>checkEmailMx</code> runs a free DNS check that the email's domain can receive mail.</li>
+<li>Set <code>defaultCountry</code> to your own country code so local phone numbers are read correctly.</li>
+</ul>
+<p>Click <strong>Save &amp; Start</strong>. You get one row per website with the emails found, the page each was found on, phones, social links and a status. Sites that blocked crawling come back as <code>blocked-by-robots</code> or <code>blocked-by-terms</code>: respect that and use the manual checklist or the site's contact form instead of trying another tool to get round it.</p>
+<p>Already have a Google Maps or other business dataset on Apify? Pass its dataset ID instead of URLs; see <a href="enrich-google-maps-apify-emails-phones.html">enrich a Google Maps Apify dataset with emails and phones</a>.</p>
+
+<h2>Step 5: check the result and use it one to one</h2>
+<ul>
+<li>Export the dataset as CSV and open it next to your sheet from Step 3. Keep the page URL for every address.</li>
+<li>Drop anything that failed the MX check, and anything that looks like a person rather than a team.</li>
+<li>Pick <strong>one</strong> inbox per company that matches your reason for writing (Step 1). Do not send the same message to info@, sales@ and support@ at once.</li>
+<li>Write a short, specific, one-to-one message. A role inbox is not permission to add a company to a newsletter or a bulk sequence.</li>
+</ul>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Treating the privacy@ or security@ inbox as a sales channel. Those exist for data requests and vulnerability reports only.</li>
+<li>Scraping marketplaces or social networks for seller contacts. Their terms usually forbid it; the Actor above skips them by design.</li>
+<li>Keeping an old list for months. Inboxes change; re-check the "found on" page before you write.</li>
+</ul>
+
+<div class="next"><p><strong>You do not need to buy anything.</strong> For a handful of companies, Steps 1–3 and a browser are enough. For a long list, any reputable contact scraper that respects robots.txt will do the same job. The Actor linked here is ours, which is why we used it in the example.</p></div>
+
+<div class="note"><p>This guide is general information, not legal advice. Rules on contacting businesses by email (for example GDPR and ePrivacy rules in the EU, the UK's PECR, CAN-SPAM in the US and India's DPDP Act) differ by country and by purpose. The Actor reads only public pages, uses an honest bot User-Agent, follows robots.txt, never logs in and never gets around blocks. You are responsible for how you use the data and for following each site's terms and your local law.</p></div>
+
+<h2>Related guides</h2>
+<ul class="src">
+<li><a href="enrich-google-maps-apify-emails-phones.html">Enrich a Google Maps Apify dataset with emails and phones</a></li>
+<li><a href="contact-details-scraper-half-price/">Contact Details Scraper: what it does and when to use it</a></li>
+<li><a href="apify-contact-details-and-product-scraper-examples.html">Copy-paste inputs for the Contact Details and Product scrapers</a></li>
+<li><a href="competitor-shopify-price-sheet-apify.html">Build a weekly competitor price sheet from Shopify stores</a> (uses our <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_role_emails">E-commerce Product Scraper</a>)</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
