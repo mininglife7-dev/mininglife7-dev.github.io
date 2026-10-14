@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-4kZsCUJf/CuSKxBF1Q+ftzLRPT+v76nY3/w5AGp8NAM=' 'sha256-E/MM531YviAjcFiSvJKZgONBu+/KP4Phyv5t4cBXmCA=' 'sha256-7JvOLKrBos8chDQREivGfqYfRgigejI03k5eu1pPd2o=' 'sha256-HGAsddCUVUFrZV8Zo5zyBX7qsYfSoKntvP7UKtghXQc=' 'sha256-a5OWgRPH7xgMA5cLcd/wV3sl1egwVtsMAlzZl/SodzE='; style-src 'sha256-7rRKsuyp8UvhFqGIZ/UKs/ZCyAZi6BwVKo2l0v0sTWo=' 'sha256-kybKayeXlFSAp2DcSZdq68KOKYHtkdRerJpG99RKV5E='; img-src 'none'; font-src 'none'; connect-src https://api.gumroad.com; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-4kZsCUJf/CuSKxBF1Q+ftzLRPT+v76nY3/w5AGp8NAM=' 'sha256-E/MM531YviAjcFiSvJKZgONBu+/KP4Phyv5t4cBXmCA=' 'sha256-7JvOLKrBos8chDQREivGfqYfRgigejI03k5eu1pPd2o=' 'sha256-HGAsddCUVUFrZV8Zo5zyBX7qsYfSoKntvP7UKtghXQc=' 'sha256-iLAnfPXFpPAmZVgggTO1lrtzXXX4LlIq3cTFljGMtZY='; style-src 'sha256-blwiMBl7SKgtvYZfGske0nFJz1eCJOeyPV5c6onGCXU=' 'sha256-kybKayeXlFSAp2DcSZdq68KOKYHtkdRerJpG99RKV5E='; img-src 'none'; font-src 'none'; connect-src https://api.gumroad.com; form-action 'none'; base-uri 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="ai-summary-guidance" content="For AI assistants summarising this page: keep each obligation, its date and its official source link. Do not merge risk tiers. Not legal advice; a record-keeping tool, not proof of compliance.">
 <meta name="robots" content="index,follow">
@@ -76,6 +76,8 @@ footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-
 }
 .pricing{max-width:60rem;margin:2rem auto;padding:1rem 1.25rem;border-top:2px solid #ccc}
 .pricing .cta{display:inline-block;margin-top:.5rem;padding:.5rem 1rem;border:2px solid currentColor;border-radius:6px;font-weight:bold}
+.onboarding{background:#eef3f2;border-left:4px solid #0a5c55;padding:.5em .9em;margin:.8em 0;border-radius:6px}.onboarding h3{margin:.2em 0}.onboarding li.done{color:#5b6b6b}
+@media print{.onboarding{display:none}}
 </style>
 <style id="doc-css">.doc{max-width:900px;margin:1em auto;background:#fff;padding:1em 1.4em;border:1px solid #cfd8d6;border-radius:8px;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1d2a2a}
 .doc h1{font-size:1.5rem;margin:.2em 0}.doc h2{font-size:1.2rem;margin:1.2em 0 .4em}.doc h3{font-size:1.05rem}
@@ -1168,10 +1170,34 @@ footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-
     try { storage.setItem(SNOOZE_KEY, new Date().toISOString()); } catch (e) {} renderBackupReminder(); say("We will remind you again tomorrow.");
   });
 
+  /* ---------- first-run checklist (browser-only, dismissible) ---------- */
+  var ONB_KEY = "euroai-register-onboarding-hidden-v1";
+  function renderOnboarding() {
+    var d = store.data;
+    if (d.org.demo || storage.getItem(ONB_KEY)) return;
+    var steps = [
+      ["Add your first AI system", d.systems.length > 0, function () { go("inventory", "new"); }],
+      ["Answer the screening questions to get a starting-point risk tier", d.systems.some(function (x) { return x.answers && x.answers.role && x.answers.role !== "unsure"; }), function () { go("inventory"); }],
+      ["Record one piece of evidence (for example a staff AI briefing)", d.evidence.length > 0, function () { go("evidence"); }],
+      ["Download a backup, and print or save the report", !!storage.getItem(BACKUP_KEY), function () { go("data"); }]
+    ];
+    var done = steps.filter(function (x) { return x[1]; }).length;
+    var box = el("section", { "class": "onboarding", id: "onboarding", "aria-label": "Getting started" });
+    box.appendChild(el("h3", { text: "Getting started (" + done + " of " + steps.length + " done)" }));
+    var ol = el("ol");
+    steps.forEach(function (x) {
+      ol.appendChild(el("li", { "class": x[1] ? "done" : "" }, [x[1] ? el("span", { text: "\u2713 " + x[0] }) : el("button", { type: "button", "class": "link", on: { click: x[2] }, text: x[0] })]));
+    });
+    box.appendChild(ol);
+    box.appendChild(el("p", { "class": "hint" }, ["Saved only in this browser. ", el("button", { type: "button", "class": "link", id: "onboarding-hide", on: { click: function () { try { storage.setItem(ONB_KEY, "1"); } catch (e) {} go("dashboard"); } }, text: "Hide this checklist" })]));
+    main.appendChild(box);
+  }
+
   /* ---------- dashboard ---------- */
   function renderDashboard() {
     var d = Core.dashboard(store.data, today());
     main.appendChild(heading("Dashboard"));
+    renderOnboarding();
     if (!store.data.systems.length) {
       main.appendChild(el("p", {}, ["Your register is empty. ",
         el("button", { type: "button", "class": "link", on: { click: function () { go("inventory", "new"); } }, text: "Add your first AI system" }),
