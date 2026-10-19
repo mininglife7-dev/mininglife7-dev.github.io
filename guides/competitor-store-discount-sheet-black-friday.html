@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Competitor discount sheet: which products a Shopify or WooCommerce store has on sale, and by how much</title><meta name="description" content="Build a Google Sheet or Excel file that lists every discounted product in competitor stores, its discount %, and the share of each store's catalogue on sale. Ready before Black Friday (27 Nov 2026)."><link rel="canonical" href="https://unadhi.com/guides/competitor-store-discount-sheet-black-friday.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Competitor discount sheet: what is on sale, and by how much"><meta property="og:description" content="Every discounted product in your competitors' Shopify or WooCommerce stores, its discount %, and each store's share of catalogue on sale. Google Sheets or Excel, no code."><meta property="og:url" content="https://unadhi.com/guides/competitor-store-discount-sheet-black-friday.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Competitor discount sheet: which products a Shopify or WooCommerce store has on sale, and by how much", "dateModified": "2026-10-19", "datePublished": "2026-10-19", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/competitor-store-discount-sheet-black-friday.html", "step": [{"@type": "HowToStep", "name": "Pick the stores and get one product CSV", "text": "List 3 to 10 competitor stores and export their full public product lists (title, URL, price, compare-at price, stock) as one CSV."}, {"@type": "HowToStep", "name": "Import it into a raw tab", "text": "Paste or import the CSV into a tab called raw and never edit it."}, {"@type": "HowToStep", "name": "Work out each product's discount", "text": "In a rows tab, pull shop, title, price and compare-at price by header name and compute discount % as 1 minus price divided by compare-at price."}, {"@type": "HowToStep", "name": "List the sale products and summarise each store", "text": "Filter to products with a discount, sort biggest first, then count products, products on sale, share on sale, median and largest discount per store."}, {"@type": "HowToStep", "name": "Save a weekly snapshot", "text": "Copy the store summary as values into a history tab with the date, so you can see when a store starts or deepens its sale."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How can I tell which products a Shopify store has on sale?", "acceptedAnswer": {"@type": "Answer", "text": "A Shopify product is shown as on sale when its compare-at price is higher than its price. Both are public in the store's product data, for example at /products.json, where each variant has price and compare_at_price. Discount % is 1 minus price divided by compare-at price."}}, {"@type": "Question", "name": "Does WooCommerce show sale prices in its public data?", "acceptedAnswer": {"@type": "Answer", "text": "Many WooCommerce shops answer at /wp-json/wc/store/v1/products. Each product has an on_sale flag and a prices object with regular_price, sale_price and price, given in the currency's minor unit (for example cents or paise), so divide by 100 for most currencies."}}, {"@type": "Question", "name": "Is a compare-at price the real old price?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. The store sets it, and it can be a list price the product never sold at. Keep weekly snapshots of the store's actual prices and judge a discount against what the product really cost last week or last month."}}, {"@type": "Question", "name": "What does share of catalogue on sale tell me?", "acceptedAnswer": {"@type": "Answer", "text": "It shows how broad a store's sale is: a few products marked down, or most of the range. Watching it week by week before Black Friday shows when a competitor starts its sale and how deep it goes."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Competitor discount sheet: which products a Shopify or WooCommerce store has on sale, and by how much</h1>
+<p class="meta">Updated 19 Oct 2026 · Disclosure: the product tracker linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or one you build by hand. Current Apify pricing is only on the Store page.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet (or Excel workbook) called a <strong>discount sheet</strong> with three tabs you actually read: <strong>on_sale</strong> (every discounted product in your competitors' stores, biggest discount first, with price, compare-at price, discount % and stock), <strong>stores</strong> (per store: products, products on sale, share of the catalogue on sale, median and largest discount) and <strong>history</strong> (one row per store per week, so you see the day a sale starts). You paste one product CSV into a raw tab; formulas do the rest. Setup is about 30 minutes; each later week takes about five.</p></div>
+
+<h2>The finished discount sheet</h2>
+<h3>on_sale tab</h3>
+<table><thead><tr><th>Store</th><th>Product</th><th>Price</th><th>Compare-at</th><th>Discount</th><th>In stock</th></tr></thead><tbody>
+<tr><td>competitor-a.example</td><td>Linen shirt, sand</td><td>1,499</td><td>2,499</td><td>40%</td><td>TRUE</td></tr>
+<tr><td>competitor-b.example</td><td>Canvas tote</td><td>899</td><td>1,199</td><td>25%</td><td>TRUE</td></tr>
+<tr><td>competitor-a.example</td><td>Cotton kurta, navy</td><td>1,799</td><td>1,999</td><td>10%</td><td>FALSE</td></tr>
+</tbody></table>
+<h3>stores tab</h3>
+<table><thead><tr><th>Store</th><th>Products</th><th>On sale</th><th>Share on sale</th><th>Median discount</th><th>Largest discount</th></tr></thead><tbody>
+<tr><td>competitor-a.example</td><td>240</td><td>36</td><td>15%</td><td>20%</td><td>40%</td></tr>
+<tr><td>competitor-b.example</td><td>85</td><td>4</td><td>5%</td><td>25%</td><td>25%</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real store data.</p>
+
+<h2>Why bother before Black Friday</h2>
+<p>Black Friday 2026 is Friday 27 November and Cyber Monday is 30 November. Many stores mark products down days or weeks earlier, and festive sales in other markets run on their own calendars. A weekly discount sheet answers three practical questions without guessing:</p>
+<ul>
+<li><strong>Has a competitor started its sale yet,</strong> and on which products?</li>
+<li><strong>How deep is it:</strong> a handful of clearance items, or a large share of the range?</li>
+<li><strong>What are they discounting that you also sell,</strong> so you can decide whether to match, bundle or hold your price?</li>
+</ul>
+
+<h2>How "on sale" works in store data</h2>
+<ul>
+<li><strong>Shopify:</strong> a product shows a sale when its <em>compare-at price</em> is higher than its price. In the public <code>/products.json</code> feed each variant carries <code>price</code> and <code>compare_at_price</code>.</li>
+<li><strong>WooCommerce:</strong> the public Store API (<code>/wp-json/wc/store/v1/products</code>) gives each product an <code>on_sale</code> flag and a <code>prices</code> object with <code>regular_price</code>, <code>sale_price</code> and <code>price</code>, in the currency's minor unit (cents, paise), so divide by 100 for most currencies.</li>
+<li><strong>Discount %</strong> in this sheet is always <code>1 − price ÷ compare-at price</code>. It is the store's own claimed discount; see Step 6 before you trust it.</li>
+</ul>
+
+<h2>Step 1: pick the stores and get one product CSV</h2>
+<p>Pick 3 to 10 stores your customers really compare you with. Use each store's <strong>homepage</strong> (the whole catalogue), not just its sale page, or you cannot work out the share on sale.</p>
+<h3>Free, one or two stores</h3>
+<p>Open <code>/products.json?limit=250&amp;page=1</code> on a Shopify store, or <code>/wp-json/wc/store/v1/products?per_page=100</code> on a WooCommerce store, and copy title, URL, price and compare-at (or regular) price into a sheet with the column names used below. Step-by-step: <a href="export-shopify-store-products-to-csv.html">export a Shopify store's products to CSV</a> and <a href="export-woocommerce-store-products-to-csv.html">export a WooCommerce store's products to CSV</a>. If a store returns 401, 403 or 404 there, or its robots.txt or terms forbid scraping, leave it out.</p>
+<h3>No code, several stores at once (Apify)</h3>
+<ol>
+<li>Create a free Apify account (no card needed for the free plan; see <a href="https://apify.com/pricing">apify.com/pricing</a> for current free monthly usage).</li>
+<li>Open <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_discount_sheet">Shopify &amp; WooCommerce Product + Price Tracker</a> and click <strong>Try for free</strong>.</li>
+<li>Paste your store list. In JSON view:</li>
+</ol>
+<pre>{
+  "startUrls": [
+    { "url": "https://competitor-a.example" },
+    { "url": "https://competitor-b.example" }
+  ],
+  "maxProductsPerShop": 2000,
+  "maxListingPages": 20,
+  "includeDescription": false
+}</pre>
+<p>Set <code>maxProductsPerShop</code> above each store's real catalogue size, otherwise the share on sale is worked out on part of the range. Turn descriptions off; this sheet does not need them. When the run finishes, open the dataset and choose <strong>Export → CSV</strong>. The columns used here are <code>shop</code>, <code>title</code>, <code>url</code>, <code>price</code>, <code>compareAtPrice</code>, <code>onSale</code>, <code>currency</code> and <code>inStock</code>. Also open the run's <strong>SHOPS_SUMMARY</strong> record: it says which stores were read and which were skipped (for example because robots.txt or the store's terms forbid scraping). Skipped stores are simply missing from the sheet.</p>
+<p>To run the same store list every week, save the input as an Apify <strong>Task</strong> and, if you like, add a weekly <strong>Schedule</strong> for it; then you only download the CSV.</p>
+
+<h2>Step 2: import it into a tab called <code>raw</code></h2>
+<ul class="check">
+<li><strong>Google Sheets:</strong> new sheet, rename the first tab to <code>raw</code>, then <strong>File → Import → Upload</strong> and choose <em>Replace current sheet</em>. Leave "Convert text to numbers" on here, so prices arrive as numbers.</li>
+<li><strong>Excel:</strong> <strong>Data → From Text/CSV</strong> and load it into a sheet named <code>raw</code>. Check that <code>price</code> and <code>compareAtPrice</code> came in as numbers, not text.</li>
+<li>Never edit <code>raw</code>. Next week, import the new CSV over it and every other tab refreshes.</li>
+</ul>
+
+<h2>Step 3: add a COL helper (one-time)</h2>
+<p>CSV column order can change between exports, so pick columns by header name. Same helper as in the <a href="clean-apify-contact-csv-into-call-sheet.html">call sheet guide</a>:</p>
+<ul>
+<li><strong>Google Sheets:</strong> <strong>Data → Named functions → Add new function</strong>. Name <code>COL</code>, argument <code>h</code>, definition:</li>
+</ul>
+<pre>=IFERROR(XLOOKUP(h, raw!$1:$1, raw!$2:$5000), "")</pre>
+<ul>
+<li><strong>Excel 365:</strong> <strong>Formulas → Name Manager → New</strong>. Name <code>COL</code>, refers to:</li>
+</ul>
+<pre>=LAMBDA(h, IFERROR(XLOOKUP(h, raw!$1:$1, raw!$2:$5000), ""))</pre>
+<p>Raise <code>5000</code> if your stores together list more products than that.</p>
+
+<h2>Step 4: work out each discount (the <code>rows</code> tab)</h2>
+<p>Add a tab called <code>rows</code>, type these headers in row 1 and each formula in row 2. In Excel 365 the formulas spill on their own; leave out <code>ARRAYFORMULA</code>.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula in row 2</th></tr></thead><tbody>
+<tr><td>A</td><td>store</td><td><code>=COL("shop")</code></td></tr>
+<tr><td>B</td><td>product</td><td><code>=COL("title")</code></td></tr>
+<tr><td>C</td><td>price</td><td><code>=COL("price")</code></td></tr>
+<tr><td>D</td><td>compare-at</td><td><code>=COL("compareAtPrice")</code></td></tr>
+<tr><td>E</td><td>discount</td><td>see below</td></tr>
+<tr><td>F</td><td>in stock</td><td><code>=COL("inStock")</code></td></tr>
+<tr><td>G</td><td>currency</td><td><code>=COL("currency")</code></td></tr>
+<tr><td>H</td><td>link</td><td><code>=COL("url")</code></td></tr>
+</tbody></table>
+<h3>E: discount (blank when there is no real markdown)</h3>
+<pre>=ARRAYFORMULA(IF(A2:A="", "", IF((C2:C&gt;0)*(D2:D&gt;C2:C), 1-C2:C/D2:D, 0)))</pre>
+<p>Format column E as a percentage. A product only counts as discounted when it has a price and a compare-at price higher than that price; everything else gets 0. The tracker's own <code>onSale</code> column should agree; if a row has <code>onSale</code> TRUE but no compare-at price, open the product page and check.</p>
+
+<h2>Step 5: the <code>on_sale</code> and <code>stores</code> tabs</h2>
+<h3>on_sale: every discounted product, biggest first</h3>
+<p>Copy the headers from <code>rows</code> into row 1 of a new tab <code>on_sale</code>, then in <code>A2</code>:</p>
+<pre>=SORT(FILTER(rows!A2:H, rows!A2:A&lt;&gt;"", rows!E2:E&gt;0), 5, FALSE)</pre>
+<p>Want only discounts of 20% or more? Change <code>rows!E2:E&gt;0</code> to <code>rows!E2:E&gt;=0.2</code>. Want only products still in stock? Add <code>, rows!F2:F=TRUE</code> inside the <code>FILTER</code>.</p>
+<h3>stores: one row per store</h3>
+<p>New tab <code>stores</code>, headers <em>Store, Products, On sale, Share on sale, Median discount, Largest discount</em>. Then:</p>
+<table><thead><tr><th>Cell</th><th>Formula (fill B2:F2 down as far as the store list goes)</th></tr></thead><tbody>
+<tr><td>A2</td><td><code>=SORT(UNIQUE(FILTER(rows!A2:A, rows!A2:A&lt;&gt;"")))</code></td></tr>
+<tr><td>B2</td><td><code>=IF(A2="", "", COUNTIF(rows!A:A, A2))</code></td></tr>
+<tr><td>C2</td><td><code>=IF(A2="", "", COUNTIFS(rows!A:A, A2, rows!E:E, "&gt;0"))</code></td></tr>
+<tr><td>D2</td><td><code>=IF(A2="", "", C2/B2)</code></td></tr>
+<tr><td>E2</td><td><code>=IF(OR(A2="", C2=0), "", MEDIAN(FILTER(rows!E2:E, rows!A2:A=A2, rows!E2:E&gt;0)))</code></td></tr>
+<tr><td>F2</td><td><code>=IF(OR(A2="", C2=0), "", MAX(FILTER(rows!E2:E, rows!A2:A=A2)))</code></td></tr>
+</tbody></table>
+<p>Format D, E and F as percentages. Mixed currencies do not matter here: every figure is a ratio inside one store.</p>
+<h3>history: a weekly snapshot (two minutes)</h3>
+<p>Add a tab <code>history</code> with headers <em>Date, Store, Products, On sale, Share on sale, Median discount, Largest discount</em>. Each week after the import, select <code>stores!A2:F</code>, copy, and in the first empty row of <code>history</code> use <strong>Paste special → Values only</strong> starting in column B, then type the date in column A for those rows. Over four or five weeks this shows exactly when each store started its sale and whether it is getting deeper. A line chart of <em>Share on sale</em> per store makes it obvious at a glance.</p>
+
+<h2>Step 6: optional, products you both sell</h2>
+<p>If you stock the same branded products, add a tab <code>mine</code> with your own SKU or GTIN in column A and your price in column B. The tracker exports <code>gtin</code> and <code>sku</code> when the store publishes them. In <code>rows</code> add column I <code>=COL("gtin")</code> and column J:</p>
+<pre>=ARRAYFORMULA(IF(I2:I="", "", IFERROR(VLOOKUP(I2:I, mine!A:B, 2, FALSE), "")))</pre>
+<p>Column J then shows your price next to every competitor product with the same barcode, so you can filter for "they are cheaper than us and on sale". If GTINs are blank, match by eye on title; never assume two products are identical from a similar name.</p>
+
+<h2>Step 7: read it carefully before you react</h2>
+<ul>
+<li><strong>A compare-at price is a claim, not history.</strong> Stores set it themselves, and it can be a list price the product rarely sold at. Judge a discount against the price in last week's or last month's snapshot.</li>
+<li><strong>Variants.</strong> Some products have sizes or colours at different prices. If a row looks odd, open the link and check the variant you care about.</li>
+<li><strong>Selling in the EU?</strong> When you announce a price reduction yourself, EU rules (Article 6a of Directive 98/6/EC) require showing the lowest price of the previous 30 days as the "before" price. Do not copy a competitor's "was" price without checking your own price history.</li>
+<li><strong>Do not race to the bottom.</strong> A competitor's sale on items they are clearing is not a reason to cut your margin on items you sell well. Use the sheet to choose a few products to match or bundle, not to discount everything.</li>
+</ul>
+
+<h2>What not to do</h2>
+<ul>
+<li>Do not scrape marketplaces (Amazon, Flipkart, eBay, Etsy and similar) or stores whose robots.txt or terms forbid it. The tracker refuses them; do the same by hand.</li>
+<li>Do not hammer a store with frequent runs. Once a week is enough for this sheet, with a daily check only in Black Friday week.</li>
+<li>Do not republish a competitor's product photos or descriptions. This sheet is for your own pricing decisions.</li>
+</ul>
+
+<div class="note"><p>This guide is general information, not legal advice. You are responsible for how you use the data and for following each site's terms and your local law. The Apify Actor mentioned reads only public product pages, uses an honest bot User-Agent, follows robots.txt, checks each store's terms, never logs in and never gets around blocks.</p></div>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="competitor-shopify-price-sheet-apify.html">Build a weekly competitor price sheet from Shopify stores</a></li>
+<li><a href="competitor-store-out-of-stock-new-products-weekly.html">Spot out-of-stock and newly added products on competitor stores each week</a></li>
+<li><a href="export-shopify-store-products-to-csv.html">Export a Shopify or WooCommerce store's product list to CSV</a></li>
+<li><a href="apify-contact-details-and-product-scraper-examples.html">Copy-paste inputs for the Contact Details and Product scrapers</a></li>
+<li>Want to reach a store's buyer or owner? Related only: <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_discount_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> (also an Unadhi Apify product) finds the public contact inbox and phone a business lists on its own site.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
