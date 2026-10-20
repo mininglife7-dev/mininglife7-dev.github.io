@@ -1,0 +1,176 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Repricing sheet for retailers: see when the brands you stock change their online prices, with your new shelf price and margin</title><meta name="description" content="A weekly Google Sheet for shops that stock D2C brands: each brand's current online price next to last week's, your shelf price, your margin, the price that hits your target margin and flags for price rises, cuts, sales, stock-outs and products the brand dropped."><link rel="canonical" href="https://unadhi.com/guides/retailer-brand-price-change-repricing-sheet-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Repricing sheet for retailers: brand price changes, your shelf price and margin"><meta property="og:description" content="One weekly sheet: each brand's online price now and last week, your price, your margin, the price for your target margin, and flags for rises, cuts, sales and stock-outs."><meta property="og:url" content="https://unadhi.com/guides/retailer-brand-price-change-repricing-sheet-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Repricing sheet for retailers: see when the brands you stock change their online prices, with your new shelf price and margin", "dateModified": "2026-10-20", "datePublished": "2026-10-20", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/retailer-brand-price-change-repricing-sheet-apify.html", "step": [{"@type": "HowToStep", "name": "List what you stock", "text": "One row per product you stock: your SKU, name, your cost, your shelf price and, in India, the MRP printed on your stock."}, {"@type": "HowToStep", "name": "Run the product tracker on the brands' own shops", "text": "Paste the brands' Shopify or WooCommerce shop addresses into startUrls, turn descriptions off, run and export the dataset as CSV."}, {"@type": "HowToStep", "name": "Import the CSV as this week's tab", "text": "Import the CSV into a new tab named with the date and type that name into settings."}, {"@type": "HowToStep", "name": "Map each product once", "text": "Copy the brand's url for each product you stock from the CSV into your list, plus the variant number if you stock a size that is not the cheapest."}, {"@type": "HowToStep", "name": "Read the flags", "text": "Price columns, margin, target price and flags fill in by formula; act on the flagged rows."}, {"@type": "HowToStep", "name": "Check new products", "text": "A second tab lists products in the brands' shops this week that were not there last week."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the brand's online price my cost price?", "acceptedAnswer": {"@type": "Answer", "text": "No. The public shop shows the brand's own retail price. Your cost comes from the brand's or distributor's trade price list or your purchase invoices. The sheet uses the online price as a signal that prices moved, and your own cost for the margin."}}, {"@type": "Question", "name": "Can I raise my price as soon as the brand raises its online price?", "acceptedAnswer": {"@type": "Answer", "text": "In India, not above the MRP printed on the pack you already hold: rule 18(2) of the Legal Metrology (Packaged Commodities) Rules, 2011 bars selling a packaged commodity above its retail sale price. The sheet flags rows where your target price is above the MRP on your stock. Elsewhere you normally set your own price; in the EU a supplier may recommend or cap your resale price but may not fix it or set a minimum (Regulation (EU) 2022/720, Article 4(a))."}}, {"@type": "Question", "name": "Why does a product show as missing from the brand shop?", "acceptedAnswer": {"@type": "Answer", "text": "Its url is not in this week's export. The brand may have removed or renamed the product, the run may have stopped at the product cap, or the shop may have been skipped (check SHOPS_SUMMARY). Open the brand's shop before you change anything."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Repricing sheet for retailers: see when the brands you stock change their online prices, with your new shelf price and margin</h1>
+<p class="meta">Updated 20 Oct 2026 · Disclosure: the product tracker linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or the free manual method in step 2. Current Apify pricing is only on the Store page.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for a shop that stocks other brands' products (online, offline or both). Once a week it shows, for <strong>every product you stock</strong>, the brand's <strong>online price last week and now</strong>, the change in %, your shelf price, your <strong>margin</strong>, the <strong>price that hits your target margin</strong>, and flags: <strong>brand raised price</strong>, <strong>brand cut price</strong>, <strong>brand on sale</strong>, <strong>brand out of stock</strong>, <strong>not in brand shop this week</strong>, <strong>margin below target</strong> and, in India, <strong>target price above MRP</strong>. A second tab lists the products that appeared in your brands' shops since last week. You build it from your own product list, one weekly CSV of the brands' public shops and copy-down formulas.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>mine tab (with the formula columns)</h3>
+<table><thead><tr><th>Product</th><th>Brand last week</th><th>Brand now</th><th>Change</th><th>Your price</th><th>Margin</th><th>Target price</th><th>Flag</th></tr></thead><tbody>
+<tr><td>Cold brew coffee 200 g</td><td>₹450</td><td>₹495</td><td>+10%</td><td>₹450</td><td>24%</td><td>₹489</td><td>Brand raised price · Margin below target</td></tr>
+<tr><td>Hair oil 100 ml</td><td>₹299</td><td>₹249</td><td>−17%</td><td>₹299</td><td>33%</td><td>₹286</td><td>Brand cut price · Brand on sale · You are above brand price</td></tr>
+<tr><td>Body lotion 250 ml</td><td>₹399</td><td>missing</td><td></td><td>₹399</td><td>35%</td><td>₹371</td><td>Not in brand shop this week</td></tr>
+</tbody></table>
+<h3>new_from_brands tab</h3>
+<table><thead><tr><th>Shop</th><th>Title</th><th>Price</th><th>In stock</th></tr></thead><tbody>
+<tr><td>brand-a.in</td><td>Cold brew coffee 500 g</td><td>1150</td><td>TRUE</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real brands or prices. Target price uses a 30% target margin.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Concept stores, gift shops and online resellers</strong> that stock 5 to 50 direct-to-consumer brands which also sell on their own Shopify or WooCommerce shop.</li>
+<li><strong>Marketplace and Instagram sellers</strong> who resell brand products and lose margin when they miss a brand's price change.</li>
+<li><strong>Buyers at small chains</strong> who want one weekly list of what changed instead of checking every brand's site.</li>
+</ul>
+<p>Watching your competitors instead? Use the <a href="competitor-shopify-price-sheet-apify.html">weekly competitor price sheet</a>. Are you the brand, watching what your stockists charge? Use the <a href="brand-stockist-price-stock-check-sheet-apify.html">stockist price check</a>.</p>
+
+<h2>Step 1: your product list (tab <code>mine</code>)</h2>
+<p>Format columns A and C as Plain text first (Format → Number → Plain text). One row per product you stock:</p>
+<table><thead><tr><th>Column</th><th>What goes in</th></tr></thead><tbody>
+<tr><td>A your SKU</td><td>your own code</td></tr>
+<tr><td>B product</td><td>name and size</td></tr>
+<tr><td>C brand url</td><td>filled in step 4</td></tr>
+<tr><td>D variant no.</td><td>blank, or a number from step 4</td></tr>
+<tr><td>E your cost</td><td>from the trade price list or your last purchase invoice</td></tr>
+<tr><td>F your price</td><td>your current shelf or listing price</td></tr>
+<tr><td>G MRP on your stock</td><td>India only: the MRP printed on the packs you hold; otherwise blank</td></tr>
+</tbody></table>
+<p>Enter cost and price on the same tax basis (both including GST or VAT, or both excluding it), or the margin is wrong. Tab <code>settings</code>: B1 this week's raw tab name, B2 last week's raw tab name (the same as B1 in week one), B3 your target margin (for example 30%), B4 the change that counts as a price move (for example 3%), B5 how far above the brand's price you accept being (for example 5%).</p>
+
+<h2>Step 2: get this week's CSV of the brands' shops</h2>
+<h3>Free, one or two brands</h3>
+<ul>
+<li>Shopify: many shops answer at <code>/products.json?limit=250&amp;page=1</code>. Step by step: <a href="export-shopify-store-products-to-csv.html">Export a Shopify store's products to CSV</a>.</li>
+<li>WooCommerce: many shops answer at <code>/wp-json/wc/store/v1/products?per_page=100</code>. Step by step: <a href="export-woocommerce-store-products-to-csv.html">Export a WooCommerce store's products to CSV</a>.</li>
+</ul>
+<h3>No code, all brands in one run (Apify)</h3>
+<ol>
+<li>Open <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_retailer_reprice">Shopify &amp; WooCommerce Product + Price Tracker</a> and click <strong>Try for free</strong>.</li>
+<li>Paste each brand's own shop address. In JSON view:</li>
+</ol>
+<pre><code>{
+  "startUrls": [
+    { "url": "https://brand-a.in" },
+    { "url": "https://brand-b.com" }
+  ],
+  "maxProductsPerShop": 500,
+  "maxListingPages": 20,
+  "includeDescription": false
+}</code></pre>
+<p>Use the brand's shop homepage, so every product is exported and the new-products tab works. Set <code>maxProductsPerShop</code> above the size of the biggest brand's range (the default is 100); if the cap cuts a shop short, products past the cap look "missing" and come back as "new" next week. Keep the same input every week: save it as an Apify Task and add a weekly Schedule if you like.</p>
+<p>When the run finishes, open the dataset, choose <strong>Export → CSV</strong> and import it into a new tab named with the date, for example <code>raw_2026-10-26</code> (File → Import → Upload → Insert new sheet). Do not rename headers. Then open the run's <strong>Storage → Key-value store → SHOPS_SUMMARY</strong>: every brand whose status is not <code>ok</code> (for example <code>blocked-by-terms</code>, <code>blocked-by-robots</code>, <code>no-products-found</code>) was skipped; check that brand by hand this week. The tracker reads robots.txt and each shop's terms first and skips shops that forbid scraping.</p>
+
+<h2>Step 3: what the columns mean</h2>
+<ul>
+<li><code>url</code> is the product's address in the brand's shop. For Shopify it is always written as <code>shop/products/handle</code>, so copy it from the CSV rather than from your browser bar, where it may include a collection path.</li>
+<li><code>price</code>, <code>compareAtPrice</code> (the struck-through "was" price, if any), <code>currency</code>, <code>onSale</code> and <code>inStock</code> are per product. For a Shopify product with several sizes, the row's <code>price</code> and <code>compareAtPrice</code> are those of the <strong>cheapest variant</strong>, and <code>inStock</code> is TRUE if any variant is available.</li>
+<li>Each size has its own columns: <code>variants/0/sku</code>, <code>variants/0/title</code>, <code>variants/0/price</code>, <code>variants/0/compareAtPrice</code>, <code>variants/0/available</code>, then <code>variants/1/…</code> and so on.</li>
+<li>Only compare rows whose <code>currency</code> is your currency.</li>
+</ul>
+
+<h2>Step 4: map each product once</h2>
+<p>In this week's raw tab, find each product you stock (Ctrl+F on the title) and copy its <code>url</code> into column C of <code>mine</code>. If you stock a size that is not the cheapest, find the <code>variants/N/title</code> column showing your size and type that N into column D (for example 1). A product's url and variant order rarely change, so this is done once; re-check D if a brand adds sizes.</p>
+
+<h2>Step 5: the formula columns</h2>
+<p>Put these in row 2 of <code>mine</code> and copy them down. H2, brand price last week:</p>
+<pre><code>=IF($C2="","",LET(R, INDIRECT("'"&amp;settings!$B$2&amp;"'!A:ZZ"), H, INDEX(R, 1, 0),
+  r, MATCH($C2, INDEX(R, 0, MATCH("url", H, 0)), 0),
+  IFERROR(INDEX(R, r, MATCH(IF($D2="", "price", "variants/"&amp;$D2&amp;"/price"), H, 0)), "missing")))</code></pre>
+<p>I2, brand price now: the same formula with <code>settings!$B$1</code>. For the next two columns, use the I2 formula and change only the header in quotes:</p>
+<table><thead><tr><th>Column</th><th>Header when D is blank</th><th>Header when D has a number</th></tr></thead><tbody>
+<tr><td>J brand in stock</td><td><code>inStock</code></td><td><code>"variants/"&amp;$D2&amp;"/available"</code></td></tr>
+<tr><td>K brand "was" price</td><td><code>compareAtPrice</code></td><td><code>"variants/"&amp;$D2&amp;"/compareAtPrice"</code></td></tr>
+</tbody></table>
+<p>Then:</p>
+<pre><code>L2 change:        =IF(AND(ISNUMBER(H2), ISNUMBER(I2)), I2/H2-1, "")
+M2 you vs brand:  =IF(AND(ISNUMBER(I2), ISNUMBER(F2)), F2/I2-1, "")
+N2 margin:        =IF(AND(ISNUMBER(E2), ISNUMBER(F2)), (F2-E2)/F2, "")
+O2 target price:  =IF(ISNUMBER(E2), ROUND(E2/(1-settings!$B$3), 0), "")</code></pre>
+<p>P2, the flag:</p>
+<pre><code>=IF($C2="","",LET(f, TEXTJOIN(" · ", TRUE,
+  IF(I2="missing", "Not in brand shop this week", ""),
+  IF(ISNUMBER(L2), IF(L2&gt;=settings!$B$4, "Brand raised price", IF(L2&lt;=-settings!$B$4, "Brand cut price", "")), ""),
+  IF(AND(ISNUMBER(K2), ISNUMBER(I2)), IF(K2&gt;I2, "Brand on sale", ""), ""),
+  IF(OR(J2=FALSE, J2="FALSE"), "Brand out of stock", ""),
+  IF(ISNUMBER(M2), IF(M2&gt;settings!$B$5, "You are above brand price", ""), ""),
+  IF(ISNUMBER(N2), IF(N2&lt;settings!$B$3, "Margin below target", ""), ""),
+  IF(AND(ISNUMBER(G2), ISNUMBER(O2)), IF(O2&gt;G2, "Target price above MRP", ""), "")),
+  IF(f="", "OK", f)))</code></pre>
+<p>Format L, M and N as percentages and filter column P for anything that is not OK. Each week: import the new CSV, put last week's tab name in B2 and the new one in B1. Nothing else changes.</p>
+
+<h2>Step 6: the new_from_brands tab</h2>
+<p>Cell A1 of a tab named <code>new_from_brands</code>:</p>
+<pre><code>=LET(N, INDIRECT("'"&amp;settings!B1&amp;"'!A1:ZZ"), O, INDIRECT("'"&amp;settings!B2&amp;"'!A1:ZZ"),
+  H, CHOOSEROWS(N, 1), D, DROP(N, 1), col, LAMBDA(n, CHOOSECOLS(D, MATCH(n, H, 0))),
+  old, CHOOSECOLS(O, MATCH("url", CHOOSEROWS(O, 1), 0)), url, col("url"),
+  VSTACK({"shop", "title", "price", "currency", "in stock", "url"},
+    IFERROR(FILTER(HSTACK(col("shop"), col("title"), col("price"), col("currency"), col("inStock"), url),
+      url&lt;&gt;"", ISNA(MATCH(url, old, 0))), "")))</code></pre>
+<p>It lists products in this week's export whose url was not in last week's. In week one (B1 = B2) it is empty. Ask the brand for the trade price before you list anything from it.</p>
+
+<h2>What to do with each flag</h2>
+<table><thead><tr><th>Flag</th><th>Usually means</th><th>What to do</th></tr></thead><tbody>
+<tr><td>Brand raised price</td><td>a list price change, often followed by a new trade price</td><td>Ask the brand or distributor for the new trade price list before your next order; review your shelf price (see MRP below)</td></tr>
+<tr><td>Brand cut price</td><td>a permanent cut or a sale without a "was" price</td><td>Ask if the trade price changes too; decide whether to match</td></tr>
+<tr><td>Brand on sale</td><td>a temporary promotion on the brand's own shop</td><td>Expect slower sales for its duration; usually no permanent change</td></tr>
+<tr><td>Brand out of stock</td><td>supply problem or end of line</td><td>Check your reorder; ask the brand for a date</td></tr>
+<tr><td>Not in brand shop this week</td><td>removed, renamed or the run was capped or skipped</td><td>Open the brand's shop before you reorder; renamed products need a new url in column C</td></tr>
+<tr><td>Margin below target</td><td>your cost rose or your price is low</td><td>Use the target price column as a starting point</td></tr>
+<tr><td>Target price above MRP</td><td>India: you cannot charge the target price on your current stock</td><td>Sell at or below the MRP printed on the pack; use the new price only for new stock with the new MRP</td></tr>
+</tbody></table>
+
+<h2>Rules on your selling price</h2>
+<ul>
+<li><strong>India, packaged goods:</strong> rule 18(2) of the Legal Metrology (Packaged Commodities) Rules, 2011 says no retail dealer or other person shall sell a commodity in packed form at a price above its retail sale price (the MRP printed on the pack). A brand raising its price online does not change the MRP on the packs you already hold.</li>
+<li><strong>EU:</strong> a supplier may recommend a resale price or set a maximum, but may not fix your resale price or impose a minimum (Regulation (EU) 2022/720, Article 4(a)). The brand's online price is a reference, not an instruction.</li>
+<li>Elsewhere, check your local rules and the terms of your supply agreement.</li>
+</ul>
+<p class="meta">General information, not legal advice.</p>
+
+<h2>Check before you act</h2>
+<ul class="check">
+<li>Every brand was <code>ok</code> in SHOPS_SUMMARY, or you checked it by hand.</li>
+<li>The currency column matches your currency for the rows you act on.</li>
+<li>Rows with a variant number show the price of your size, not the cheapest one (spot-check three on the brand's site).</li>
+<li>Cost and price are on the same tax basis.</li>
+<li>Before raising a price in India, the MRP on the pack allows it.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Product tracker input fields (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>maxListingPages</code>, <code>includeDescription</code>) and output fields (<code>url</code>, <code>shop</code>, <code>title</code>, <code>price</code>, <code>compareAtPrice</code>, <code>currency</code>, <code>onSale</code>, <code>inStock</code>, <code>variants</code> with <code>sku</code>, <code>title</code>, <code>price</code>, <code>compareAtPrice</code>, <code>available</code>; SHOPS_SUMMARY statuses): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_retailer_reprice">Apify Store page</a> (input schema and README of build 0.1.3)</li>
+<li>Legal Metrology (Packaged Commodities) Rules, 2011, rule 18(2), and the Department of Consumer Affairs FAQ "Whether the packaged commodities can be sold at a price higher than MRP?": <a href="https://consumeraffairs.nic.in/sites/default/files/file-uploads/latestnews/LM_FAQs.pdf">consumeraffairs.nic.in (PDF)</a></li>
+<li>Commission Regulation (EU) 2022/720 (vertical agreements), Article 4(a): <a href="https://eur-lex.europa.eu/eli/reg/2022/720/oj/eng">EUR-Lex</a></li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="competitor-store-out-of-stock-new-products-weekly.html">Competitor out-of-stock and new products, weekly</a></li>
+<li><a href="competitor-store-discount-sheet-black-friday.html">Competitor discount sheet for Black Friday</a></li>
+<li><a href="export-shopify-store-products-to-csv.html">Export a Shopify store's products to CSV</a></li>
+<li>Looking for new brands to stock? Related only: <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_retailer_reprice">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> (also an Unadhi Apify product) finds the shared trade inbox (sales@, wholesale@) a brand publishes on its own website.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
