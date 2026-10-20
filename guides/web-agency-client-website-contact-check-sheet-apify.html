@@ -1,0 +1,141 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Client website contact check for web agencies: one sheet that flags dead inboxes, broken phone links and missing WhatsApp on every client site</title><meta name="description" content="A Google Sheet for web agencies and freelancers: one row per client website with the email, phone and WhatsApp details the public sees, checked against your records, with flags for inboxes that cannot receive mail, invalid phone links and missing contact details."><link rel="canonical" href="https://unadhi.com/guides/web-agency-client-website-contact-check-sheet-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Client website contact check sheet for web agencies"><meta property="og:description" content="One row per client site: the email, phone and WhatsApp details the public sees, checked against your records, with flags for dead inboxes and broken phone links."><meta property="og:url" content="https://unadhi.com/guides/web-agency-client-website-contact-check-sheet-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Client website contact check for web agencies: one sheet that flags dead inboxes, broken phone links and missing WhatsApp on every client site", "dateModified": "2026-10-20", "datePublished": "2026-10-20", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/web-agency-client-website-contact-check-sheet-apify.html", "step": [{"@type": "HowToStep", "name": "List your client websites", "text": "Paste the client domains, one per line, into the contact scraper's website list."}, {"@type": "HowToStep", "name": "Run the scraper on those sites", "text": "Keep the mail-server check on, set your clients' country and use 5 pages per site so the contact and about pages are read."}, {"@type": "HowToStep", "name": "Import the results as a tab named scrape", "text": "Export the run as CSV and import it into the sheet as a new tab called scrape, without renaming headers."}, {"@type": "HowToStep", "name": "Add your records", "text": "In the check tab, type the email and phone number each client wants on their site."}, {"@type": "HowToStep", "name": "Fix the flagged sites", "text": "Each row shows a flag such as Email domain cannot receive mail or Your phone record is not on the site; fix those before the client notices."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I check that the email on a client's website can receive mail?", "acceptedAnswer": {"@type": "Answer", "text": "The contact scraper runs a free DNS check on each email's domain and adds mxValid to every address. FALSE means the domain has no mail server, so mail to that inbox cannot be delivered. It does not prove the mailbox itself exists, so send one test email to any inbox that matters."}}, {"@type": "Question", "name": "Why does a client site show blocked-by-robots or blocked-by-terms?", "acceptedAnswer": {"@type": "Answer", "text": "The scraper skips pages a site's robots.txt disallows and sites whose terms forbid scraping, and charges nothing for them. On a client's own site this usually means a robots.txt rule or a terms page you set up. Check those sites by hand, or change the rule if the client agrees."}}, {"@type": "Question", "name": "Will the sheet catch a client's old phone number?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you type the number the client wants in your records column. The sheet compares the digits against every phone number found on the site and flags the row when your number is missing, and it counts the numbers found so a site that still lists an old number next to the new one stands out."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Client website contact check for web agencies: one sheet that flags dead inboxes, broken phone links and missing WhatsApp on every client site</h1>
+<p class="meta">Updated 20 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free. Current Apify pricing is only on the Store page.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet with <strong>one row per client website</strong> you look after. It shows the <strong>email, phone numbers and WhatsApp links the public actually sees</strong> on each site, checks them against <strong>the email and phone the client wants listed</strong>, and flags the problems clients only hear about from lost customers: <strong>email domain cannot receive mail</strong>, <strong>email not on the client's own domain</strong>, <strong>a phone link that is not a valid number</strong>, <strong>your phone or email record is not on the site</strong>, <strong>no WhatsApp link</strong> and <strong>site not checked</strong>. Run it monthly, or before you send each client a care-plan report.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>check tab</h3>
+<table><thead><tr><th>Site</th><th>Emails</th><th>First email</th><th>Mail ok</th><th>Phones</th><th>WhatsApp</th><th>Your phone</th><th>Flag</th></tr></thead><tbody>
+<tr><td>example-dental.in</td><td>1</td><td>info@example-dental.in</td><td>TRUE</td><td>2</td><td>1</td><td>+91 90000 00001</td><td>Your phone record is not on the site</td></tr>
+<tr><td>example-bakery.co.uk</td><td>1</td><td>examplebakery@gmail.com</td><td>TRUE</td><td>1</td><td>0</td><td>+44 20 0000 0002</td><td>Email is not on the client's own domain · No WhatsApp link</td></tr>
+<tr><td>example-hotel.com</td><td>1</td><td>sales@example-hotel.com</td><td>FALSE</td><td>1</td><td>1</td><td>+1 555 000 0003</td><td>Email domain cannot receive mail</td></tr>
+<tr><td>example-clinic.de</td><td></td><td></td><td></td><td></td><td></td><td></td><td>Not checked: blocked-by-robots (check by hand)</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real businesses, addresses or numbers. In row one the site still lists two numbers and neither is the one the client asked for.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Web agencies and freelancers</strong> with 10 to 500 client sites on a maintenance or care plan.</li>
+<li><strong>Franchise and multi-branch businesses</strong> that run one site per location and need every branch to show the right number.</li>
+<li><strong>Hosting and domain resellers</strong> who want to spot clients whose site email stopped working after a domain or mail move.</li>
+</ul>
+<p>Building a prospect list instead of checking your own clients? Use <a href="clean-apify-contact-csv-into-call-sheet.html">the call sheet guide</a> or <a href="find-public-role-emails-company-website-apify.html">find a company's public role emails</a>.</p>
+
+<h2>Step 1: run the contact scraper on your client sites</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_agency_contact_check">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> on the Apify Store and use this input, with your own client domains:</p>
+<pre><code>{
+  "urls": ["example-dental.in", "example-bakery.co.uk", "example-hotel.com"],
+  "maxPagesPerSite": 5,
+  "checkEmailMx": true,
+  "defaultCountry": "IN"
+}</code></pre>
+<ul>
+<li><code>urls</code>: one client domain per line. Repeats of the same domain are merged, so you never pay twice.</li>
+<li><code>maxPagesPerSite</code>: the homepage plus the most contact-like pages (contact, about, impressum, support). The default is 4; 5 catches footer-only details on most small sites.</li>
+<li><code>checkEmailMx</code>: keep it on. It is a free DNS check that adds <code>mxValid</code> to each email.</li>
+<li><code>defaultCountry</code>: the country used to read local-format phone numbers when the domain does not imply one (IN, GB, US and so on).</li>
+<li>By default only shared role inboxes (info@, sales@, support@) are returned. For sites you manage, you can switch on <code>includePersonalEmails</code> if the client's contact page uses a named inbox.</li>
+</ul>
+<p>The scraper follows robots.txt and each site's terms, uses no proxies or logins, and does not charge for sites it skips.</p>
+
+<h2>Step 2: import the results</h2>
+<p>In the run, export the dataset as <strong>CSV</strong>. In your Google Sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Do not rename headers. Apify flattens lists into numbered columns, so you will see <code>domain</code>, <code>status</code>, <code>counts/emails</code>, <code>counts/phones</code>, <code>counts/whatsapp</code>, <code>emails/0/email</code>, <code>emails/0/sameDomain</code>, <code>emails/0/mxValid</code>, <code>phones/0/phone</code>, <code>phones/0/valid</code> and many more. Emails are sorted so that addresses on the site's own domain come first, which is why the sheet reads <code>emails/0</code>.</p>
+
+<h2>Step 3: build the check tab</h2>
+<p>Add a tab named <code>check</code>. Row 1 holds these headers; row 2 holds the formulas, which you copy down one row per row of <code>scrape</code>. Columns J and K are yours to type.</p>
+<table><thead><tr><th>Column</th><th>Header</th><th>Row 2 formula or entry</th></tr></thead><tbody>
+<tr><td>A</td><td>site</td><td><code>domain</code> (pattern below)</td></tr>
+<tr><td>B</td><td>status</td><td><code>status</code></td></tr>
+<tr><td>C</td><td>emails found</td><td><code>counts/emails</code></td></tr>
+<tr><td>D</td><td>first email</td><td><code>emails/0/email</code></td></tr>
+<tr><td>E</td><td>on own domain</td><td><code>emails/0/sameDomain</code></td></tr>
+<tr><td>F</td><td>mail ok</td><td><code>emails/0/mxValid</code></td></tr>
+<tr><td>G</td><td>phones found</td><td><code>counts/phones</code></td></tr>
+<tr><td>H</td><td>invalid phone links</td><td>formula below</td></tr>
+<tr><td>I</td><td>WhatsApp links</td><td><code>counts/whatsapp</code></td></tr>
+<tr><td>J</td><td>your email record</td><td>typed: the inbox the client wants listed</td></tr>
+<tr><td>K</td><td>your phone record</td><td>typed: the number the client wants listed, any format</td></tr>
+<tr><td>L</td><td>flag</td><td>formula below</td></tr>
+</tbody></table>
+<p>A2 to G2 and I2 all use the same pattern; only the header name in quotes changes. A2:</p>
+<pre><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("domain", scrape!$A$1:$ZZ$1, 0)), "")</code></pre>
+<p>H2, phone links on the site that are not valid numbers (the scraper keeps those only when they come from a <code>tel:</code> link, so a typo in a click-to-call button shows up here):</p>
+<pre><code>=SUMPRODUCT(REGEXMATCH(scrape!$A$1:$ZZ$1&amp;"", "^phones/\d+/valid$")
+  * (UPPER(scrape!$A2:$ZZ2&amp;"")="FALSE"))</code></pre>
+<p>L2, the flag:</p>
+<pre><code>=IF(A2="", "", IF(B2&lt;&gt;"ok", "Not checked: "&amp;B2&amp;" (check by hand)",
+ LET(H, scrape!$A$1:$ZZ$1, R, scrape!$A2:$ZZ2,
+  em, SUMPRODUCT(REGEXMATCH(H&amp;"", "^emails/\d+/email$") * (LOWER(R&amp;"")=LOWER(TRIM(J2)))),
+  ph, SUMPRODUCT(REGEXMATCH(H&amp;"", "^phones/\d+/phone$")
+       * (REGEXREPLACE(R&amp;"", "[^0-9]", "")=REGEXREPLACE(K2&amp;"", "[^0-9]", ""))),
+  f, TEXTJOIN(" · ", TRUE,
+   IF(N(C2)=0, "No email on the site", ""),
+   IF(UPPER(TO_TEXT(E2))="FALSE", "Email is not on the client's own domain", ""),
+   IF(UPPER(TO_TEXT(F2))="FALSE", "Email domain cannot receive mail", ""),
+   IF(N(G2)=0, "No phone number on the site", ""),
+   IF(H2&gt;0, "Phone link that is not a valid number", ""),
+   IF(N(I2)=0, "No WhatsApp link", ""),
+   IF(AND(J2&lt;&gt;"", em=0), "Your email record is not on the site", ""),
+   IF(AND(K2&lt;&gt;"", ph=0), "Your phone record is not on the site", "")),
+  IF(f="", "OK", f))))</code></pre>
+<p>For the phone check, type your record with the country code (+91, +44 and so on), because the scraper writes numbers in international E.164 form such as <code>+919848022338</code>. Spaces and dashes are ignored. If a client does not use WhatsApp, delete that line of the formula for their row or ignore the flag.</p>
+
+<h2>What to do with each flag</h2>
+<table><thead><tr><th>Flag</th><th>What to do</th></tr></thead><tbody>
+<tr><td>Email domain cannot receive mail</td><td>The domain has no mail server (MX record). Usually the mail plan lapsed or DNS was changed in a move. Fix the MX records or replace the address on the site today.</td></tr>
+<tr><td>Email is not on the client's own domain</td><td>The site lists a Gmail, Yahoo or old agency address. Offer a matching inbox on the client's domain, or confirm the client wants it.</td></tr>
+<tr><td>Phone link that is not a valid number</td><td>A click-to-call button points to a number that cannot exist (a missing digit, a wrong country code). Correct the <code>tel:</code> link.</td></tr>
+<tr><td>Your phone record is not on the site</td><td>The number the client asked for is missing. Look at <code>phones/0/phone</code> onwards in <code>scrape</code> for the old number and replace it everywhere, including the footer and contact page.</td></tr>
+<tr><td>Your email record is not on the site</td><td>Same check for the inbox. If the site hides email behind a form, this flag is expected.</td></tr>
+<tr><td>No email, no phone number or no WhatsApp link</td><td>Confirm with the client whether that is on purpose. A missing phone number on a local business site is usually a mistake.</td></tr>
+<tr><td>Not checked</td><td><code>blocked-by-robots</code> or <code>blocked-by-terms</code> means the site's own robots.txt or terms page asks bots not to read it; <code>blocked-by-site</code>, <code>rate-limited</code> or <code>failed</code> means the site refused or did not answer. Check by hand; a site that does not answer may itself be down.</td></tr>
+</tbody></table>
+
+<h2>Monthly routine</h2>
+<ul class="check">
+<li>Run the scraper on the same domain list (save the input as a task in Apify so it is one click).</li>
+<li>Import the new CSV over the <code>scrape</code> tab, keeping the same row order as your client list.</li>
+<li>Send one test email to every inbox with "Mail ok" TRUE that a client relies on for leads: the MX check proves the domain takes mail, not that the mailbox exists.</li>
+<li>Fix every flag, then put the check tab (or a screenshot of it) in the client's care-plan report.</li>
+</ul>
+<p class="meta">Keep the <code>check</code> rows in the same order as the <code>scrape</code> rows: each check row reads the scrape row with the same number.</p>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper input fields (<code>urls</code>, <code>maxPagesPerSite</code> default 4, <code>checkEmailMx</code>, <code>defaultCountry</code>, <code>includePersonalEmails</code>) and output fields (<code>domain</code>, <code>status</code>, <code>emails</code> with <code>mxValid</code> and <code>sameDomain</code>, <code>phones</code> in E.164 with <code>valid</code>, <code>socials</code>, <code>counts</code>): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_agency_contact_check">Apify Store page</a></li>
+<li>E.164, the international phone number format: <a href="https://www.itu.int/rec/T-REC-E.164/en">ITU-T Recommendation E.164</a></li>
+<li>MX records, the DNS entries that say which servers receive mail for a domain: <a href="https://www.rfc-editor.org/rfc/rfc5321#section-5.1">RFC 5321, section 5.1</a></li>
+<li>robots.txt rules the scraper follows: <a href="https://www.rfc-editor.org/rfc/rfc9309">RFC 9309</a></li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="business-website-whatsapp-social-links-apify.html">Find the WhatsApp and social links on business websites</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean an Apify contact CSV into a call sheet</a></li>
+<li><a href="apify-contact-scrape-to-hubspot-pipedrive-import-csv.html">Import a contact scrape into HubSpot or Pipedrive</a></li>
+<li>Related only: <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_agency_contact_check">the Unadhi product tracker for Shopify and WooCommerce</a> (also an Unadhi Apify product) exports a shop's products and prices to CSV, useful for shop clients.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
