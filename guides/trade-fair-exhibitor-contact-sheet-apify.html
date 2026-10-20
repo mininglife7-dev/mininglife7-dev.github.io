@@ -1,0 +1,151 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trade fair exhibitor contact sheet: one row per exhibitor with booth, website, public inbox and phone, ready before the fair</title><meta name="description" content="A Google Sheet for anyone visiting or exhibiting at a trade fair: each exhibitor's hall and booth next to the shared inbox, phone, WhatsApp link and company LinkedIn page published on its own website, plus a visit-the-booth list for the rest."><link rel="canonical" href="https://unadhi.com/guides/trade-fair-exhibitor-contact-sheet-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Trade fair exhibitor contact sheet: booth, inbox and phone per exhibitor"><meta property="og:description" content="One Google Sheet per fair: hall and booth next to each exhibitor's published shared inbox, phone and WhatsApp link, plus a visit-the-booth list."><meta property="og:url" content="https://unadhi.com/guides/trade-fair-exhibitor-contact-sheet-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Trade fair exhibitor contact sheet: one row per exhibitor with booth, website, public inbox and phone, ready before the fair", "dateModified": "2026-10-20", "datePublished": "2026-10-20", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/trade-fair-exhibitor-contact-sheet-apify.html", "step": [{"@type": "HowToStep", "name": "Copy the exhibitor list", "text": "Copy company name, hall/booth, country and website from the organiser's exhibitor list or official export into the exhibitors tab."}, {"@type": "HowToStep", "name": "Turn websites into domains", "text": "Use one REGEXREPLACE formula so each website becomes a bare domain such as example.com."}, {"@type": "HowToStep", "name": "Run the contact scraper on the exhibitors' own websites", "text": "Paste the domains into the urls field, keep personal emails off, set defaultCountry, run, and export the dataset as CSV."}, {"@type": "HowToStep", "name": "Import the CSV", "text": "Import the CSV into a scrape tab without changing headers."}, {"@type": "HowToStep", "name": "Join by domain", "text": "Look up status, first role email, mxValid, first phone, WhatsApp and LinkedIn by domain with header-name INDEX/MATCH formulas."}, {"@type": "HowToStep", "name": "Sort into contact before or visit the booth", "text": "Flag rows with no usable contact or a non-ok status as visit the booth."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I scrape the trade fair's exhibitor directory itself?", "acceptedAnswer": {"@type": "Answer", "text": "Check the organiser's terms first; many directories do not allow automated collection. Copy the list by hand or use an official export, and run the contact scraper only on the exhibitors' own company websites."}}, {"@type": "Question", "name": "Why does an exhibitor show no email?", "acceptedAnswer": {"@type": "Answer", "text": "With personal emails off (the default) only shared role inboxes such as info@ or sales@ are kept. Some sites publish only a form or a personal address, block bots in robots.txt, or forbid scraping in their terms; those rows go on the visit-the-booth list."}}, {"@type": "Question", "name": "Can I email every exhibitor on the sheet?", "acceptedAnswer": {"@type": "Answer", "text": "Not automatically. Rules on unsolicited business email differ by country. In Germany, for example, UWG section 7(2) no. 2 treats advertising by email without prior express consent as an unreasonable nuisance, also towards businesses. Write one relevant message per company, identify yourself and offer an opt-out, or meet them at the booth."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Trade fair exhibitor contact sheet: one row per exhibitor with booth, website, public inbox and phone, ready before the fair</h1>
+<p class="meta">Updated 20 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or by copying contacts by hand. Current Apify pricing is only on the Store page.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet per trade fair with <strong>one row per exhibitor</strong>: company, hall and booth, website, the <strong>shared inbox</strong> (info@, sales@, export@...) and <strong>phone</strong> published on the exhibitor's own website, a ready <strong>wa.me link</strong> where the site has one, the company LinkedIn page, and a flag that says <strong>contact before the fair</strong> or <strong>visit the booth</strong>. A second tab is your walking list: the exhibitors with no usable contact online, sorted by hall. You build it from the exhibitor list, one scraper run on the exhibitors' websites and a handful of formulas.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>sheet tab</h3>
+<table><thead><tr><th>Company</th><th>Hall / booth</th><th>Domain</th><th>Inbox</th><th>Phone</th><th>WhatsApp</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Example Spices Pvt Ltd</td><td>H3 / C14</td><td>example-spices.in</td><td>export@example-spices.in</td><td>+914000000001</td><td>wa.me link</td><td>Contact before the fair</td></tr>
+<tr><td>Sample Packaging GmbH</td><td>H5 / A02</td><td>sample-pack.de</td><td>(none, form only)</td><td>+493000000002</td><td></td><td>Visit the booth (DE: no cold email)</td></tr>
+<tr><td>Demo Textiles</td><td>H1 / F30</td><td>demo-textiles.com</td><td></td><td></td><td></td><td>Visit the booth (blocked-by-robots)</td></tr>
+</tbody></table>
+<h3>walk tab (sorted by hall)</h3>
+<table><thead><tr><th>Hall / booth</th><th>Company</th><th>Why</th></tr></thead><tbody>
+<tr><td>H1 / F30</td><td>Demo Textiles</td><td>Site asks bots not to crawl</td></tr>
+<tr><td>H5 / A02</td><td>Sample Packaging GmbH</td><td>No shared inbox published</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real companies or numbers.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Visitors and buyers</strong> who want meetings booked before day one instead of walking every aisle.</li>
+<li><strong>Exhibitors</strong> who want to know their neighbours, suppliers and possible partners at the same fair.</li>
+<li><strong>Export promotion staff, agents and consultants</strong> who prepare a delegation and need one clean list for the group.</li>
+</ul>
+
+<h2>Step 1: copy the exhibitor list (tab <code>exhibitors</code>)</h2>
+<p>Columns: <code>A company</code>, <code>B hall/booth</code>, <code>C country</code>, <code>D website</code>. Take them from the organiser's exhibitor list, the fair app's export or the PDF catalogue.</p>
+<div class="note"><p><strong>Do not point a scraper at the organiser's directory.</strong> Check the fair's terms first; many exhibitor directories do not allow automated collection. Copy by hand or use an official export. The scraper in step 3 only visits <strong>each exhibitor's own company website</strong>, and it skips sites whose terms forbid scraping and pages that robots.txt disallows.</p></div>
+
+<h2>Step 2: websites to domains</h2>
+<p>In <code>E2</code> of the exhibitors tab:</p>
+<pre><code>=ARRAYFORMULA(IF(D2:D="",,LOWER(REGEXREPLACE(REGEXREPLACE(TRIM(D2:D),"^(https?://)?(www\.)?",""),"[/?#].*$",""))))</code></pre>
+<p>That turns <code>https://www.Example-Spices.in/en/</code> into <code>example-spices.in</code>. The scraper writes its <code>domain</code> field the same way (host name in lower case, without <code>www.</code>), so this is the key you join on in step 5. Rows with no website go straight to the walk tab.</p>
+
+<h2>Step 3: run the contact scraper on those domains</h2>
+<ol>
+<li>Open <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_trade_fair_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> and click <strong>Try for free</strong>.</li>
+<li>Paste column E into <strong>Websites or domains (plain list)</strong> (<code>urls</code>), one per line. Duplicates of the same domain are removed, so two exhibitors sharing one website are visited once.</li>
+<li>Use this input (JSON tab):</li>
+</ol>
+<pre><code>{
+  "urls": ["example-spices.in", "sample-pack.de", "demo-textiles.com"],
+  "maxPagesPerSite": 4,
+  "defaultCountry": "IN",
+  "checkEmailMx": true,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false
+}</code></pre>
+<p>Set <code>defaultCountry</code> to the country most exhibitors are from, so local numbers without a country code are read correctly. Keep <code>includePersonalEmails</code> and <code>includePersonProfiles</code> <strong>off</strong>: addresses and LinkedIn profiles that identify one person are dropped and only counted. Four pages per site (homepage plus the most contact-like pages such as contact, about, impressum) is the default and is usually enough. You pay only Apify platform usage for pages actually fetched; blocked and failed sites are not charged.</p>
+<p>When the run finishes, open the dataset, choose <strong>Export → CSV</strong> and download it.</p>
+
+<h2>Step 4: import the CSV (tab <code>scrape</code>)</h2>
+<p><strong>File → Import → Upload</strong>, "Insert new sheet", name it <code>scrape</code>. Do not rename headers. Apify flattens lists into numbered columns, so you will see <code>domain</code>, <code>status</code>, <code>emails/0/email</code>, <code>emails/0/mxValid</code>, <code>phones/0/phone</code>, <code>socials/whatsapp/0/url</code>, <code>socials/linkedin/0/url</code> and many more. Column order can change between runs; the formulas below find columns by header name.</p>
+
+<h2>Step 5: the sheet tab</h2>
+<p>A2 to C2 come from the exhibitors tab (<code>=exhibitors!A2</code>, <code>=exhibitors!B2</code>, <code>=exhibitors!E2</code>). For the other columns use this one formula pattern, changing only the header in quotes:</p>
+<pre><code>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH($C2, INDEX(scrape!$A:$ZZ, 0, MATCH("domain", scrape!$1:$1, 0)), 0),
+  MATCH("emails/0/email", scrape!$1:$1, 0)), "")</code></pre>
+<table><thead><tr><th>Column</th><th>Header in quotes</th><th>What it shows</th></tr></thead><tbody>
+<tr><td>D status</td><td><code>status</code></td><td><code>ok</code>, or why the site was skipped</td></tr>
+<tr><td>E inbox</td><td><code>emails/0/email</code></td><td>first shared inbox found</td></tr>
+<tr><td>F mail domain ok</td><td><code>emails/0/mxValid</code></td><td>TRUE if the email's domain can receive mail (free MX check)</td></tr>
+<tr><td>G second inbox</td><td><code>emails/1/email</code></td><td>often sales@ next to info@</td></tr>
+<tr><td>H phone</td><td><code>phones/0/phone</code></td><td>E.164 format, for example +9140...</td></tr>
+<tr><td>I WhatsApp</td><td><code>socials/whatsapp/0/url</code></td><td>the click-to-chat link the site publishes</td></tr>
+<tr><td>J LinkedIn</td><td><code>socials/linkedin/0/url</code></td><td>company page (staff profiles are dropped)</td></tr>
+</tbody></table>
+<p>If a header does not exist in your CSV (no site had a second email, say), the formula shows blank. Next step in K2:</p>
+<pre><code>=IF(C2="","Visit the booth (no website)",
+ IF(D2&lt;&gt;"ok","Visit the booth ("&amp;D2&amp;")",
+ IF(AND(E2="",H2=""),"Visit the booth (no inbox or phone)",
+ IF(OR(F2=FALSE,F2="false"),"Check the address first","Contact before the fair"))))</code></pre>
+
+<h2>Step 6: the walk tab</h2>
+<pre><code>=SORT(FILTER({sheet!B2:B, sheet!A2:A, sheet!K2:K}, LEFT(sheet!K2:K,5)="Visit", sheet!A2:A&lt;&gt;""), 1, TRUE)</code></pre>
+<p>Sorted by hall and booth, this is the list you print or keep on your phone for day one.</p>
+
+<h2>What the status values mean</h2>
+<table><thead><tr><th>status</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>ok</code></td><td>Site read</td><td>Use the contacts found</td></tr>
+<tr><td><code>blocked-by-robots</code></td><td>The site asks bots not to crawl</td><td>Visit the booth or open the contact page yourself</td></tr>
+<tr><td><code>blocked-by-terms</code></td><td>The site's terms forbid scraping (clause quoted in <code>error</code>)</td><td>Same</td></tr>
+<tr><td><code>blocked-by-tos-list</code></td><td>The "website" is a platform page such as Facebook</td><td>Ask the exhibitor for its own site at the booth</td></tr>
+<tr><td><code>blocked-by-site</code>, <code>rate-limited</code>, <code>failed</code></td><td>HTTP 401/403/429, too many requests, or unreachable</td><td>Retry later or visit the booth</td></tr>
+</tbody></table>
+
+<h2>Before you write to anyone</h2>
+<ul>
+<li><strong>One message per company, about the fair.</strong> Name the booth, say who you are and why this exhibitor, and ask for a time slot. Include a way to opt out.</li>
+<li><strong>Rules differ by country.</strong> In Germany, for example, UWG section 7(2) no. 2 treats advertising by email without the addressee's prior express consent as an unreasonable nuisance, and that applies to businesses as well as consumers. For German exhibitors the safer route is the booth, or a phone call where their consent can at least be presumed (section 7(2) no. 1). Elsewhere, check the local rules.</li>
+<li><strong>Shared inboxes can still reach a person.</strong> Work emails and numbers of identifiable people are personal data under the GDPR and India's DPDP Act 2023. Keep the sheet to what you need for the fair and delete it afterwards, or document why you keep it.</li>
+<li>In India, unsolicited commercial calls and SMS are restricted under TRAI rules; WhatsApp has its own business messaging policies.</li>
+</ul>
+<p class="meta">General information, not legal advice.</p>
+
+<h2>What not to do</h2>
+<ul>
+<li>Do not bulk-mail the whole list. A fair list is a reason for one relevant conversation, not a mailing list.</li>
+<li>Do not turn on personal emails "to get more rows". The sheet is built on shared inboxes on purpose.</li>
+<li>Do not paste the organiser's directory URL into the scraper.</li>
+</ul>
+
+<h2>Check before you act</h2>
+<ul class="check">
+<li>Domains in column C match the exhibitors' real websites (spot-check five).</li>
+<li>Every "Contact before the fair" row has status <code>ok</code> and an inbox or phone.</li>
+<li>German (and other consent-first) exhibitors are on the booth or phone route, not email.</li>
+<li>Your message names the booth and has an opt-out.</li>
+<li>Delete or archive the sheet after the fair.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper input and output fields (<code>urls</code>, <code>maxPagesPerSite</code>, <code>defaultCountry</code>, <code>checkEmailMx</code>, <code>includePersonalEmails</code>, <code>includePersonProfiles</code>; <code>domain</code>, <code>status</code>, <code>emails</code>, <code>phones</code>, <code>socials</code>): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_trade_fair_sheet">Apify Store page</a> (input schema and README of build 0.1.3)</li>
+<li>Gesetz gegen den unlauteren Wettbewerb (UWG), section 7: <a href="https://www.gesetze-im-internet.de/uwg_2004/__7.html">gesetze-im-internet.de/uwg_2004/__7.html</a></li>
+<li>Digital Personal Data Protection Act, 2023 (India): <a href="https://www.meity.gov.in/data-protection-framework">meity.gov.in</a></li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean an Apify contact scrape into a call sheet</a></li>
+<li><a href="find-public-role-emails-company-website-apify.html">Find the public role emails on a company website</a></li>
+<li><a href="business-website-whatsapp-social-links-apify.html">Get a business website's WhatsApp and social links</a></li>
+<li>Visiting as a retail buyer? Related only: <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_trade_fair_sheet">Shopify &amp; WooCommerce Product + Price Tracker</a> (also an Unadhi Apify product) exports an exhibitor's public online shop to one row per product with price and stock, so you arrive knowing their range.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
