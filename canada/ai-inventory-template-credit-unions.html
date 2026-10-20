@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI inventory template for credit unions (Canada, 2026) | Unadhi</title><meta name="description" content="A free AI inventory template for Canadian credit unions and caisses: the fields to record, which regulator expects what, and a filled fictional example."><link rel="canonical" href="https://unadhi.com/canada/ai-inventory-template-credit-unions.html"><style>body{margin:0;font:17px/1.6 system-ui,sans-serif;color:#1d2a2a;background:#fbfaf7}main{max-width:760px;margin:0 auto;padding:0 18px}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{border:1px solid #d6dede;padding:6px 8px}a{color:#0a5c55}</style></head><body><main><p><a href="https://unadhi.com/">Unadhi</a> · Canada</p>
+<h1>AI inventory template for credit unions: what to record, and who expects it</h1>
+<p>Most credit unions already use AI somewhere: a fraud model inside the card processor, a chatbot on the website, a writing assistant in Microsoft 365, a scorecard in the lending system. The first job of any AI governance programme is the same everywhere: <strong>write down what you have</strong>. This page gives you a free template, a filled example, and the official sources that make an inventory worth doing now.</p>
+<h2>Which expectations apply to your credit union?</h2>
+<p>It depends on who supervises you. Check with your own regulator; this is a summary, not legal advice.</p>
+<table>
+<thead>
+<tr>
+<th>You are</th>
+<th>Main source</th>
+<th>What it says about AI / models</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A <strong>federal</strong> credit union (supervised by OSFI)</td>
+<td>OSFI Guideline E-23, Model Risk Management (2027)</td>
+<td>Covers AI/ML and vendor models; expects a model inventory and risk ratings. It is supervisory guidance, applied in proportion to size and risk. See our <a href="/canada/osfi-e-23-ai-model-inventory/">E-23 inventory page</a>.</td>
+<td>Takes effect <strong>1 May 2027</strong> (<a href="https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/guideline-e-23-model-risk-management-2027">OSFI</a>)</td>
+</tr>
+<tr>
+<td>A <strong>Quebec</strong> deposit institution or financial services cooperative (supervised by the AMF)</td>
+<td>AMF <em>Ligne directrice sur l'utilisation de l'intelligence artificielle</em> (April 2026)</td>
+<td>Governance and risk management across the institution, <strong>risk-based classification of AI systems</strong>, lifecycle expectations, fair treatment of clients; applies on top of the AMF model-risk guideline</td>
+<td>Takes effect <strong>1 May 2027</strong> (<a href="https://lautorite.qc.ca/professionnels/institutions-de-depots-et-societes-de-fiducie/lignes-directrices/utilisation-des-modeles/ld-utilisation-de-lintelligence-artificielle">AMF</a>)</td>
+</tr>
+<tr>
+<td>An <strong>Ontario</strong> credit union (supervised by FSRA)</td>
+<td>FSRA Operational Risk and Resilience Guidance</td>
+<td>For credit unions using advanced analytics "such as artificial intelligence", FSRA "will assess the extent to which appropriate mechanisms are in place to ensure robust data governance and mitigate the risks of harm and bias in their models"</td>
+<td>Effective 1 Mar 2024 (<a href="https://www.fsrao.ca/industry/credit-unions-and-caisses-populaires/regulatory-framework/guidance-credit-unions-and-caisses-populaires/operational-risk-and-resilience">FSRA</a>)</td>
+</tr>
+<tr>
+<td>A credit union in another province</td>
+<td>Your provincial regulator</td>
+<td>We found no AI-specific credit union guidance to cite for other provinces as of 20 Oct 2026; many institutions use E-23 as a benchmark</td>
+<td>Check with your regulator</td>
+</tr>
+</tbody>
+</table>
+<p>Also relevant to every credit union:
+- <strong>Quebec members:</strong> if a decision about a person is based <em>exclusively</em> on automated processing, Law 25 (s.12.1 of the private-sector Act) requires you to tell them and, on request, explain the main factors and let them be heard by a staff member who can review it. In force since 22 Sep 2023 (<a href="https://legisquebec.gouv.qc.ca/en/showdoc/cs/p-39.1">LégisQuébec P-39.1</a>). See our <a href="/canada/fr/loi-25-decision-automatisee/">Loi 25 s.12.1 page</a>.
+- <strong>Ontario job postings:</strong> employers with 25+ employees must say in publicly advertised postings if AI is used to screen, assess or select applicants, from 1 Jan 2026 (<a href="https://www.ontario.ca/document/your-guide-employment-standards-act-0/requirements-related-publicly-advertised-job">Ontario ESA guide</a>). See our <a href="/canada/ontario-ai-job-posting-disclosure/">Ontario page</a>.
+- <strong>Federal privacy bill C-36 (not law):</strong> Bill C-36 (45th Parliament, 1st session) would enact the Protecting Privacy and Consumer Data Act. Its first-reading text would require organizations to give "a general account of the organization's use of any automated decision system to make predictions, recommendations or decisions about individuals that could have a legal or similarly significant effect on them" (proposed s.62(2)(c)), and, on request, an explanation of such a decision with the type and source of personal information and the reasons or principal factors, plus a chance to make written representations to an employee who can review it (proposed s.63(4)–(6)) (<a href="https://www.parl.ca/DocumentViewer/en/45-1/bill/C-36/first-reading">first-reading text</a>). It is a bill, not law: <a href="https://www.parl.ca/legisinfo/en/bill/45-1/c-36">LEGISinfo</a> records it "At second reading in the House of Commons", after introduction and first reading on 15 June 2026, with no second-reading activity yet (last checked 20 Oct 2026).
+- <strong>AIDA is not law.</strong> It was Part 3 of Bill C-27, which ended when Parliament was prorogued on 6 Jan 2025 (<a href="https://www.parl.ca/legisinfo/en/bill/44-1/c-27">LEGISinfo C-27</a>). See <a href="/canada/is-aida-law/">Is AIDA law in 2026?</a></p>
+<p>An inventory that records the fields below would help you answer all of these with one list.</p>
+<h2>The template: 14 fields</h2>
+<ol>
+<li><strong>ID and name</strong> (e.g. AI-007, "Card fraud alerts")</li>
+<li><strong>Type:</strong> rules-based, statistical, machine learning, generative AI, or vendor/embedded AI</li>
+<li><strong>Internal or third-party</strong> (vendor name and contract owner)</li>
+<li><strong>Business owner</strong> (a role, not a person's name) and <strong>technical owner</strong></li>
+<li><strong>Purpose / decision supported</strong></li>
+<li><strong>Members affected?</strong> Does it make or support a decision about a member or applicant?</li>
+<li><strong>Exclusively automated?</strong> Yes / no (drives Law 25 s.12.1 for Quebec members)</li>
+<li><strong>Personal information used</strong> and where it is processed (inside/outside Quebec, outside Canada)</li>
+<li><strong>Risk tier</strong> and the criteria you used (e.g. materiality × complexity × reliance × member impact)</li>
+<li><strong>Validation:</strong> last independent review, next due</li>
+<li><strong>Monitoring:</strong> metrics and thresholds (drift, bias, override rate, complaint count)</li>
+<li><strong>Known limitations</strong></li>
+<li><strong>Staff trained</strong> to use or oversee it (dated record)</li>
+<li><strong>Change log and decommission date</strong></li>
+</ol>
+<h2>Filled example (fictional: for illustration only)</h2>
+<blockquote>
+<p><strong>"Prairie Lakes Community Credit Union"</strong> is invented. These rows show the format, not anyone's real systems.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>System</th>
+<th>Type</th>
+<th>Vendor?</th>
+<th>Member decision?</th>
+<th>Exclusively automated?</th>
+<th>Risk tier</th>
+<th>Owner (role)</th>
+<th>Next review</th>
+<th>Monitoring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI-001</td>
+<td>Card fraud alerts</td>
+<td>ML</td>
+<td>Yes (card processor)</td>
+<td>Yes: holds a transaction</td>
+<td>No: member services can release</td>
+<td>High</td>
+<td>Fraud operations lead</td>
+<td>Vendor report due [date]</td>
+<td>Alert precision, false-positive complaints</td>
+</tr>
+<tr>
+<td>AI-002</td>
+<td>Small-business loan scorecard</td>
+<td>Statistical</td>
+<td>No</td>
+<td>Yes: credit decision support</td>
+<td>No: lender signs off</td>
+<td>High</td>
+<td>Credit risk manager</td>
+<td>Validation [date]</td>
+<td>Population stability, override rate</td>
+</tr>
+<tr>
+<td>AI-003</td>
+<td>Website chatbot (answers FAQs)</td>
+<td>Generative AI</td>
+<td>Yes</td>
+<td>No</td>
+<td>n/a</td>
+<td>Medium</td>
+<td>Digital channels manager</td>
+<td>Quarterly</td>
+<td>Sampled answer review, escalation rate</td>
+</tr>
+<tr>
+<td>AI-004</td>
+<td>Writing assistant in office suite</td>
+<td>Generative AI</td>
+<td>Yes</td>
+<td>No</td>
+<td>n/a</td>
+<td>Low</td>
+<td>IT manager</td>
+<td>Annual</td>
+<td>Acceptable-use policy sign-off; staff trained [date]</td>
+</tr>
+<tr>
+<td>AI-005</td>
+<td>Résumé screening in applicant system</td>
+<td>ML</td>
+<td>Yes (HR software)</td>
+<td>Yes: job applicants</td>
+<td><strong>Check</strong>: if rejections are automatic, s.12.1 applies to Quebec applicants</td>
+<td>High</td>
+<td>HR manager</td>
+<td>[date]</td>
+<td>Pass-through rates; disclosure line in Ontario job postings</td>
+</tr>
+</tbody>
+</table>
+<p>What the example shows in two minutes: two high-risk vendor models with no in-house validation yet (AI-001, AI-005), one place where an automated rejection may trigger a Quebec notice (AI-005), and a training record that exists for only one tool (AI-004).</p>
+<h2>Keep it somewhere that lasts</h2>
+<p>A spreadsheet works on day one. The problems start at month three: versions multiply, nobody knows which copy is current, and the training record lives in someone's inbox.</p>
+<p><strong>Free first:</strong> the <a href="https://unadhi.com/register/">EURO AI Register</a> keeps an AI inventory, risk tier, evidence links and a dated staff-training record in your browser, free for up to 10 AI systems. There is no account and no Unadhi server; you export and import your own file. It was built for EU AI Act records, so it is a light first inventory, not a full model-risk management system, and we say that plainly.</p>
+<p><strong>Work with an adviser?</strong> Accountants, privacy consultants and IT providers who look after credit unions: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">Partner programme opening soon: join the free waitlist.</a> Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+<h2>Price (only if useful)</h2>
+<p>After the free tier: membership $19/month or $190/year at <a href="https://unadhi.com/register/">unadhi.com/register</a>. If you also serve members or clients in the EU, the EU AI Act readiness kit is USD 29: <a href="https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit.">https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit.</a> We have no paid E-23-specific or Law 25-specific product, and we will not pretend otherwise.</p>
+<h2>Sources (official first)</h2>
+<ul>
+<li>OSFI, Guideline E-23 Model Risk Management (2027): <a href="https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/guideline-e-23-model-risk-management-2027">https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/guideline-e-23-model-risk-management-2027</a></li>
+<li>AMF, Ligne directrice sur l'utilisation de l'intelligence artificielle (prise d'effet 1 mai 2027): <a href="https://lautorite.qc.ca/professionnels/institutions-de-depots-et-societes-de-fiducie/lignes-directrices/utilisation-des-modeles/ld-utilisation-de-lintelligence-artificielle">https://lautorite.qc.ca/professionnels/institutions-de-depots-et-societes-de-fiducie/lignes-directrices/utilisation-des-modeles/ld-utilisation-de-lintelligence-artificielle</a></li>
+<li>FSRA, Operational Risk and Resilience Guidance (effective 1 Mar 2024): <a href="https://www.fsrao.ca/industry/credit-unions-and-caisses-populaires/regulatory-framework/guidance-credit-unions-and-caisses-populaires/operational-risk-and-resilience">https://www.fsrao.ca/industry/credit-unions-and-caisses-populaires/regulatory-framework/guidance-credit-unions-and-caisses-populaires/operational-risk-and-resilience</a></li>
+<li>Quebec, Act respecting the protection of personal information in the private sector (CQLR c P-39.1), s.12.1: <a href="https://legisquebec.gouv.qc.ca/en/showdoc/cs/p-39.1">https://legisquebec.gouv.qc.ca/en/showdoc/cs/p-39.1</a></li>
+<li>Ontario, Employment Standards Act guide, publicly advertised job postings: <a href="https://www.ontario.ca/document/your-guide-employment-standards-act-0/requirements-related-publicly-advertised-job">https://www.ontario.ca/document/your-guide-employment-standards-act-0/requirements-related-publicly-advertised-job</a></li>
+<li>Parliament of Canada, Bill C-36 (45-1), first-reading text: <a href="https://www.parl.ca/DocumentViewer/en/45-1/bill/C-36/first-reading">https://www.parl.ca/DocumentViewer/en/45-1/bill/C-36/first-reading</a> · LEGISinfo: <a href="https://www.parl.ca/legisinfo/en/bill/45-1/c-36">https://www.parl.ca/legisinfo/en/bill/45-1/c-36</a></li>
+<li>Parliament of Canada, LEGISinfo Bill C-27 (44-1): <a href="https://www.parl.ca/legisinfo/en/bill/44-1/c-27">https://www.parl.ca/legisinfo/en/bill/44-1/c-27</a></li>
+</ul>
+<p><em>Not legal advice. Official sources checked 20 Oct 2026 (IST). If something has changed, tell us and we will fix it the same day.</em></p>
+</main><div class="mt-foot" style="max-width:760px;margin:2em auto;padding:10px 18px;font:14px system-ui;border-top:1px solid #ddd">More <a href="https://unadhi.com/canada/">Unadhi Canada guides</a> · <a href="https://unadhi.com/register/">EURO AI Register (free for up to 10 AI systems)</a> · Paid membership checkout: <a href="https://mininglife1.gumroad.com/l/euro-ai-register">EURO AI Register on Gumroad</a></div></body></html>
