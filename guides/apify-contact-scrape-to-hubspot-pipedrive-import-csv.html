@@ -1,0 +1,176 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Turn a website contact scrape into a HubSpot or Pipedrive import file: one company per website, its inboxes linked</title><meta name="description" content="Build a CRM import CSV from a website contact scrape: one company per domain, each public role inbox as a linked contact, with phone, LinkedIn page and the page each email was found on. Google Sheets or Excel, no code."><link rel="canonical" href="https://unadhi.com/guides/apify-contact-scrape-to-hubspot-pipedrive-import-csv.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Website contact scrape to HubSpot or Pipedrive import file"><meta property="og:description" content="One company per website, each public inbox linked as a contact, with phone, LinkedIn page and where each email was found. Google Sheets or Excel, no code."><meta property="og:url" content="https://unadhi.com/guides/apify-contact-scrape-to-hubspot-pipedrive-import-csv.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Turn a website contact scrape into a HubSpot or Pipedrive import file: one company per website, its inboxes linked", "dateModified": "2026-10-20", "datePublished": "2026-10-20", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/apify-contact-scrape-to-hubspot-pipedrive-import-csv.html", "step": [{"@type": "HowToStep", "name": "Get one contact CSV", "text": "Export the dataset of a website contact scrape as CSV, or build the same columns by hand."}, {"@type": "HowToStep", "name": "Import it as text into a raw tab", "text": "Import without converting text to numbers so phone numbers keep their + sign, and add the COL helper that picks a column by header name."}, {"@type": "HowToStep", "name": "Build one tab per email slot", "text": "Tab e0 holds each site's first email with company name, domain, website, phone and LinkedIn page; tab e1 the second email."}, {"@type": "HowToStep", "name": "Stack, check and de-duplicate", "text": "Stack both tabs, keep rows with an email on the company's own domain that passed the MX check, and remove repeats with UNIQUE."}, {"@type": "HowToStep", "name": "Download the CSV and import", "text": "Download the crm_import tab as CSV and import it into HubSpot (Contacts and Companies, single file) or Pipedrive (People and Organizations)."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which columns does HubSpot need to import contacts and companies from one file?", "acceptedAnswer": {"@type": "Answer", "text": "Contacts need Email. Companies need Name or Company domain name. To avoid duplicates, map Email as the contact's unique identifier and Company domain name as the company's. HubSpot's Company domain name only keeps the domain up to the top-level domain, so use example.com rather than a full URL."}}, {"@type": "Question", "name": "Which columns does Pipedrive need to import people and organizations?", "acceptedAnswer": {"@type": "Answer", "text": "Every person needs a name and every organization needs a name. Rows missing them are skipped. Put the person and the organization in the same row and Pipedrive links them."}}, {"@type": "Question", "name": "Can I import info@ or sales@ addresses as contacts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. HubSpot only needs the email. Pipedrive also needs a person name, so this guide fills it with a plain label such as Sales inbox, which keeps it honest that the contact is a shared company inbox, not a named person."}}, {"@type": "Question", "name": "Why keep a Found on column?", "acceptedAnswer": {"@type": "Answer", "text": "It records the public page where each address was published. That helps you check it before you write, and answer anyone who asks where you got their address."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Turn a website contact scrape into a HubSpot or Pipedrive import file: one company per website, its inboxes linked</h1>
+<p class="meta">Updated 20 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or a list you build by hand. Current Apify pricing is only on the Store page. HubSpot and Pipedrive steps follow their own help pages, linked at the end; menus can move, so check there if a button has a new name.</p>
+<div class="answer"><p><strong>What you get:</strong> one <strong>CRM import file</strong> (a CSV made in Google Sheets or Excel) that HubSpot or Pipedrive can read in one go: <strong>one company per website</strong>, each public inbox on that company's own domain (info@, sales@, bookings@) as a <strong>contact linked to its company</strong>, plus the company phone, LinkedIn page, website and the page where each email was found. Emails on another domain, failed sites and addresses that cannot receive mail go to a separate <strong>check_first</strong> tab instead of your CRM. Setup is about 30 minutes; every later scrape takes two minutes.</p></div>
+
+<h2>The finished import file</h2>
+<table><thead><tr><th>Company name</th><th>Company domain name</th><th>Website URL</th><th>Company phone</th><th>LinkedIn company page</th><th>Email</th><th>Found on</th><th>Contact name</th></tr></thead><tbody>
+<tr><td>example-clinic.in</td><td>example-clinic.in</td><td>https://example-clinic.in</td><td>+914000000001</td><td></td><td>appointments@example-clinic.in</td><td>…/contact-us</td><td>Appointments inbox</td></tr>
+<tr><td>example-clinic.in</td><td>example-clinic.in</td><td>https://example-clinic.in</td><td>+914000000001</td><td></td><td>info@example-clinic.in</td><td>…/</td><td>Info inbox</td></tr>
+<tr><td>Example Studio</td><td>example-studio.com</td><td>https://example-studio.com</td><td></td><td>linkedin.com/company/example-studio</td><td>hello@example-studio.com</td><td>…/about</td><td>Hello inbox</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real business data.</p>
+<p>Two rows with the same domain become <strong>one company with two contacts</strong> in the CRM. That is what you want: the company record holds the phone and LinkedIn page, and each inbox sits under it.</p>
+
+<h2>Why you cannot import the raw scrape directly</h2>
+<ul>
+<li><strong>One row per website, several emails across the row.</strong> A CRM wants one contact per row. Apify's CSV export flattens lists into numbered columns (<code>emails/0/email</code>, <code>emails/1/email</code> …), so the second inbox would be lost or land in the wrong field.</li>
+<li><strong>Not every email belongs to the company.</strong> A site can show its web designer's or booking service's address. The Unadhi scraper marks each email with <code>sameDomain</code> (true when it is on the site's own domain) and lists those first.</li>
+<li><strong>Dead mailboxes.</strong> With <code>checkEmailMx</code> on, each email gets <code>mxValid</code>; false means its domain cannot receive mail. Importing it only creates a bounce later.</li>
+<li><strong>Failed and blocked sites</strong> (status other than <code>ok</code>) have nothing to import.</li>
+</ul>
+
+<h2>Step 1: get one contact CSV</h2>
+<h3>Free, a few businesses</h3>
+<p>For ten or twenty companies, open each contact page and type what it publishes into a sheet with these column names: <code>startUrl</code>, <code>domain</code>, <code>status</code> (type <code>ok</code>), <code>emails/0/email</code>, <code>emails/0/foundOn</code>, <code>emails/0/sameDomain</code> (TRUE), <code>phones/0/phone</code>. Already have a CSV from another tool? Rename its columns to these names and go to Step 2.</p>
+<h3>No code, hundreds of websites (Apify)</h3>
+<ol>
+<li>Create a free Apify account (no card needed for the free plan; see <a href="https://apify.com/pricing">apify.com/pricing</a> for current free monthly usage).</li>
+<li>Open <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_crm_import">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> and click <strong>Try for free</strong>.</li>
+<li>Paste your websites. In JSON view:</li>
+</ol>
+<pre>{
+  "urls": ["example-clinic.in", "example-studio.com"],
+  "maxPagesPerSite": 4,
+  "includePersonalEmails": false,
+  "checkEmailMx": true,
+  "respectRobotsTxt": true,
+  "respectTermsOfService": true,
+  "defaultCountry": "IN"
+}</pre>
+<p>Keep <code>includePersonalEmails</code> off: a shared role inbox is the right first contact for a company, and it keeps named people's addresses out of your CRM. Keep <code>checkEmailMx</code> on, because Step 4 uses <code>mxValid</code>. Set <code>defaultCountry</code> to where most of the businesses are, so local phone numbers are read correctly. Starting from a Google Maps dataset? Pass its ID in <code>datasetId</code> (see <a href="enrich-google-maps-apify-emails-phones.html">enrich a Google Maps Apify dataset</a>); the business name then arrives as <code>sourceItems/0/title</code> and becomes the company name.</p>
+<p>When the run finishes, open the dataset, choose <strong>Export → CSV</strong> and download it.</p>
+
+<h2>Step 2: import it as text into a tab called <code>raw</code>, and add COL</h2>
+<ul class="check">
+<li><strong>Google Sheets:</strong> rename the first tab to <code>raw</code>, then <strong>File → Import → Upload</strong>, <em>Replace current sheet</em>, and <strong>untick "Convert text to numbers, dates, and formulas"</strong> so <code>+914000000001</code> keeps its plus sign.</li>
+<li><strong>Excel:</strong> <strong>Data → From Text/CSV → Transform Data</strong>, set the <code>phones/…/phone</code> columns to Text, and load into a sheet named <code>raw</code>.</li>
+</ul>
+<p>Then add a helper that picks a column by its header name (column order can change between runs). <strong>Google Sheets:</strong> <strong>Data → Named functions → Add new function</strong>, name <code>COL</code>, argument <code>h</code>, definition:</p>
+<pre>=IFERROR(XLOOKUP(h, raw!$1:$1, raw!$2:$5000), "")</pre>
+<p><strong>Excel 365:</strong> <strong>Formulas → Name Manager → New</strong>, name <code>COL</code>, refers to:</p>
+<pre>=LAMBDA(h, IFERROR(XLOOKUP(h, raw!$1:$1, raw!$2:$5000), ""))</pre>
+<p>Already built the <a href="clean-apify-contact-csv-into-call-sheet.html">call sheet</a>? It uses the same <code>raw</code> tab and <code>COL</code>, so add the tabs below to that file.</p>
+
+<h2>Step 3: one tab per email slot (<code>e0</code> and <code>e1</code>)</h2>
+<p>Add a tab called <code>e0</code>. Type the headers in row 1 and each formula in row 2. In Excel 365 you can leave out <code>ARRAYFORMULA</code>; the results spill on their own.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula in row 2</th></tr></thead><tbody>
+<tr><td>A</td><td>company</td><td><code>=ARRAYFORMULA(IF(COL("sourceItems/0/title")&lt;&gt;"", COL("sourceItems/0/title"), COL("domain")))</code></td></tr>
+<tr><td>B</td><td>domain</td><td><code>=COL("domain")</code></td></tr>
+<tr><td>C</td><td>website</td><td><code>=COL("startUrl")</code></td></tr>
+<tr><td>D</td><td>phone</td><td>see below</td></tr>
+<tr><td>E</td><td>linkedin</td><td><code>=COL("socials/linkedin/0/url")</code></td></tr>
+<tr><td>F</td><td>email</td><td><code>=COL("emails/0/email")</code></td></tr>
+<tr><td>G</td><td>found on</td><td><code>=COL("emails/0/foundOn")</code></td></tr>
+<tr><td>H</td><td>status</td><td><code>=COL("status")</code></td></tr>
+<tr><td>I</td><td>mx</td><td><code>=ARRAYFORMULA(UPPER(COL("emails/0/mxValid")&amp;""))</code></td></tr>
+<tr><td>J</td><td>same domain</td><td><code>=ARRAYFORMULA(UPPER(COL("emails/0/sameDomain")&amp;""))</code></td></tr>
+</tbody></table>
+<h3>D: company phone (a clickable tel: link first, otherwise the first number)</h3>
+<pre>=ARRAYFORMULA(IF(COL("phones/0/source")="tel-link", COL("phones/0/phone"),
+  IF(COL("phones/1/source")="tel-link", COL("phones/1/phone"), COL("phones/0/phone"))))</pre>
+<p>Now <strong>duplicate the tab</strong>, rename the copy <code>e1</code>, and change <code>emails/0/</code> to <code>emails/1/</code> in columns F, G, I and J. That picks up each site's second inbox. Sites often publish more; repeat with <code>e2</code> and <code>emails/2/</code> if your scrape has those columns.</p>
+<p><code>UPPER(…&amp;"")</code> makes the true/false columns read the same whether your sheet imported them as text or as TRUE/FALSE. If a column does not exist in this run (say no site had a second email), <code>COL</code> returns a blank and the tab simply stays empty.</p>
+
+<h2>Step 4: the <code>crm_import</code> tab (stack, check, de-duplicate)</h2>
+<p>Add a tab called <code>crm_import</code>. Type these headers in row 1, A to H: <code>Company name</code>, <code>Company domain name</code>, <code>Website URL</code>, <code>Company phone</code>, <code>LinkedIn company page</code>, <code>Email</code>, <code>Found on</code>, <code>Contact name</code>. In <code>A2</code>:</p>
+<pre>=ARRAYFORMULA(LET(all, VSTACK(e0!A2:J5000, e1!A2:J5000),
+  keep, (CHOOSECOLS(all,6)&lt;&gt;"") * (CHOOSECOLS(all,8)="ok")
+      * (CHOOSECOLS(all,9)&lt;&gt;"FALSE") * (CHOOSECOLS(all,10)="TRUE"),
+  UNIQUE(CHOOSECOLS(FILTER(all, keep), 1, 2, 3, 4, 5, 6, 7))))</pre>
+<p>It keeps a row only when there is an email, the site was read normally, the email's domain can receive mail (blank counts as "not checked" and is kept), and the email is on the company's own domain. <code>UNIQUE</code> drops exact repeats, for example when you merged two runs. Added an <code>e2</code> tab? Add <code>e2!A2:J5000</code> inside <code>VSTACK</code>.</p>
+<p>In <code>H2</code>, give each inbox a plain contact name (Pipedrive needs a name for every person):</p>
+<pre>=ARRAYFORMULA(IF(F2:F="", "", PROPER(LEFT(F2:F, FIND("@", F2:F) - 1)) &amp; " inbox"))</pre>
+<p>That turns <code>sales@example.com</code> into "Sales inbox". It says what the contact really is: a shared company mailbox, not a named person. When you later learn who reads it, rename the contact in the CRM.</p>
+<p>Last check: in any empty cell, <code>=ROWS(F2:F) - COUNTBLANK(F2:F) - COUNTUNIQUE(F2:F)</code> (Excel: <code>=ROWS(A2#) - ROWS(UNIQUE(CHOOSECOLS(A2#, 6)))</code>) should be 0. Anything else means one email appears under two companies; look it up and keep the right row.</p>
+
+<h3>The <code>check_first</code> tab</h3>
+<p>Everything left out of the import, with the reason visible in columns H to J:</p>
+<pre>=ARRAYFORMULA(LET(all, VSTACK(e0!A2:J5000, e1!A2:J5000),
+  FILTER(all, (CHOOSECOLS(all,6)&lt;&gt;"") * ((CHOOSECOLS(all,8)&lt;&gt;"ok")
+    + (CHOOSECOLS(all,9)="FALSE") + (CHOOSECOLS(all,10)&lt;&gt;"TRUE")))))</pre>
+<p>Open the "found on" page for each one. An email on another domain can be the right address (some firms use a group domain or a free mailbox), or it can be an agency's. Add it by hand only once you are sure.</p>
+
+<h2>Step 5: download the CSV</h2>
+<ul class="check">
+<li><strong>Google Sheets:</strong> open the <code>crm_import</code> tab, then <strong>File → Download → Comma-separated values (.csv)</strong>. Only the current tab is downloaded.</li>
+<li><strong>Excel:</strong> copy the <code>crm_import</code> tab, <strong>Paste Values</strong> into a new workbook, then <strong>File → Save As → CSV UTF-8</strong>.</li>
+</ul>
+
+<h2>Step 6a: import into HubSpot (contacts and companies, one file)</h2>
+<ol>
+<li>Go to <strong>Data Management → Data Integration</strong> (or click <strong>Import</strong> on the Contacts page), then <strong>Import data → Advanced imports (all objects)</strong>.</li>
+<li>Select <strong>Contacts</strong> and <strong>Companies</strong>, then <strong>Single file</strong>. For each, choose <strong>Create and update</strong>.</li>
+<li>Upload the CSV and map the columns:</li>
+</ol>
+<table><thead><tr><th>Your column</th><th>HubSpot object</th><th>HubSpot property</th></tr></thead><tbody>
+<tr><td>Email</td><td>Contact</td><td>Email (unique identifier, key icon)</td></tr>
+<tr><td>Company domain name</td><td>Company</td><td>Company domain name (unique identifier)</td></tr>
+<tr><td>Company name</td><td>Company</td><td>Company name</td></tr>
+<tr><td>Website URL</td><td>Company</td><td>Website URL</td></tr>
+<tr><td>Company phone</td><td>Company</td><td>Phone number</td></tr>
+<tr><td>LinkedIn company page</td><td>Company</td><td>LinkedIn company page</td></tr>
+<tr><td>Contact name</td><td>Contact</td><td>First name</td></tr>
+<tr><td>Found on</td><td>Contact</td><td>a single-line text property you create first (for example "Found on"), or don't import</td></tr>
+</tbody></table>
+<p>HubSpot needs Email to create a contact and Name or Company domain name to create a company. Using Email and Company domain name as identifiers means a second import updates the same records instead of creating duplicates. Rows that share a domain become one company with several contacts. Company domain name only keeps the part up to the top-level domain, which is why the file uses the bare <code>domain</code> column, not the full URL.</p>
+<p>If the import asks whether to set the new contacts as marketing contacts, leave that off unless you have a lawful basis to send them marketing email.</p>
+
+<h2>Step 6b: import into Pipedrive (people and organizations)</h2>
+<ol>
+<li>Pipedrive accepts CSV, XLS or XLSX with a header row (one tab per import, up to 200,000 rows and 50 MB). Start an import from a spreadsheet and, at the <strong>File info</strong> step, select <strong>People</strong> and <strong>Organizations</strong> as the data types.</li>
+<li>Map <strong>Contact name → Person name</strong>, <strong>Email → Person email</strong>, <strong>Company name → Organization name</strong>. Map the phone, website and LinkedIn columns to matching fields, or create custom fields first under <strong>Personal preferences → Data fields</strong>.</li>
+<li>Every person needs a name and every organization needs a name; rows without them land in the skip file. People and the organization in the same row are linked.</li>
+</ol>
+<p>If you let Pipedrive merge duplicates, it matches people by name and email, and organizations by name and address. Because the file has no address, two different companies that share a name (two "City Dental" clinics) could merge; when that happens, use the domain as the organization name for one of them.</p>
+<p>Other CRMs with a CSV import, such as Zoho CRM, work the same way: map Company name to the account or company, Email to the contact, and use the domain as the de-duplication key if the CRM offers one.</p>
+
+<h2>What not to do</h2>
+<ul>
+<li>Do not guess personal addresses such as firstname@company. Import what the business published.</li>
+<li>Do not add these contacts to a bulk newsletter or sequence. Write genuine, relevant one-to-one emails, and follow your local rules on direct marketing (for example the EU's GDPR and ePrivacy rules, the UK's PECR, India's DPDP Act, or the US CAN-SPAM Act).</li>
+<li>Keep the Found on column. It shows where each address was published, so you can answer anyone who asks where you got it, and delete the record promptly if they ask you to.</li>
+</ul>
+
+<div class="note"><p>This guide is general information, not legal advice. You are responsible for how you use the data and for following each site's terms and your local law. The Apify Actor mentioned reads only public pages, uses an honest bot User-Agent, follows robots.txt, never logs in and never gets around blocks.</p></div>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>HubSpot Knowledge Base: <a href="https://knowledge.hubspot.com/import-and-export/import-objects">Import records for multiple objects</a> and <a href="https://knowledge.hubspot.com/import-and-export/set-up-your-import-file">Format import files</a> (required properties, unique identifiers, Company domain name format).</li>
+<li>Pipedrive Knowledge Base: <a href="https://support.pipedrive.com/en/article/importing-data-into-pipedrive-with-spreadsheets">Importing data with spreadsheets</a> and <a href="https://support.pipedrive.com/en/article/importing-mandatory-fields">Importing: mandatory fields</a>.</li>
+<li>Field names (<code>emails/N/email</code>, <code>mxValid</code>, <code>sameDomain</code>, <code>foundOn</code>, <code>phones/N/source</code>, <code>sourceItems</code>) are from the Website Contact Scraper's published input schema and output, 20 Oct 2026.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean an Apify contact scrape into a call sheet</a> (same raw tab; for phone-first outreach)</li>
+<li><a href="find-public-role-emails-company-website-apify.html">Find public role emails (sales@, press@, support@) on a company website</a></li>
+<li><a href="enrich-google-maps-apify-emails-phones.html">Enrich a Google Maps Apify dataset with emails and phones</a></li>
+<li><a href="apify-contact-details-and-product-scraper-examples.html">Copy-paste inputs for the Contact Details and Product scrapers</a></li>
+<li>Selling to online shops? Related only: <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_crm_import">Shopify &amp; WooCommerce Product + Price Tracker</a> (also an Unadhi Apify product) lists a shop's public products and prices, so your CRM note can say what they sell.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
