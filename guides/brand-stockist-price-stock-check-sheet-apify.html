@@ -1,0 +1,177 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stockist price check for brands: one sheet showing what each online reseller charges for your products</title><meta name="description" content="A weekly Google Sheet for brands and distributors: each stockist's online price next to your RRP, the gap in %, stock and sale flags, plus a per-stockist list of your products they do not list. Built from a Shopify/WooCommerce product CSV."><link rel="canonical" href="https://unadhi.com/guides/brand-stockist-price-stock-check-sheet-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Stockist price check for brands: each reseller's price vs your RRP"><meta property="og:description" content="A weekly Google Sheet: each stockist's online price next to your RRP, gap %, stock and sale flags, and the products each stockist does not list."><meta property="og:url" content="https://unadhi.com/guides/brand-stockist-price-stock-check-sheet-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Stockist price check for brands: one sheet showing what each online reseller charges for your products", "dateModified": "2026-10-20", "datePublished": "2026-10-20", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/brand-stockist-price-stock-check-sheet-apify.html", "step": [{"@type": "HowToStep", "name": "Write your RRP list", "text": "One row per product: your SKU, GTIN/barcode, name, RRP and currency."}, {"@type": "HowToStep", "name": "Export your stockists' product lists", "text": "Run a product scraper (or the free products.json / Store API method) on your stockists' own web shops and download one CSV."}, {"@type": "HowToStep", "name": "Map each stockist URL to your SKU once", "text": "Accept the GTIN/SKU matches the sheet suggests, then map the rest by hand. The product URL is the key from then on."}, {"@type": "HowToStep", "name": "Read the check tab", "text": "Each matched row shows their price, your RRP, the gap in %, and flags for below RRP, above RRP, out of stock and on sale."}, {"@type": "HowToStep", "name": "Pull the not-listed list per stockist", "text": "Your products a stockist does not list this week: a reorder or range conversation for your sales rep."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I see what my stockists charge online for my products?", "acceptedAnswer": {"@type": "Answer", "text": "Export each stockist's public product list to CSV (Shopify products.json, WooCommerce Store API, or a product scraper), map each stockist product URL to your own SKU once, and look up your RRP next to their price in a Google Sheet. Refresh weekly on the same day."}}, {"@type": "Question", "name": "Why is the GTIN column empty for many Shopify shops?", "acceptedAnswer": {"@type": "Answer", "text": "Shopify's public products.json does not include variant barcodes, so a row read from it usually has no GTIN. Rows read from a product page's schema.org data often do carry one. That is why the sheet uses a one-time URL-to-SKU map instead of relying on barcodes."}}, {"@type": "Question", "name": "Can I make stockists stop selling below my RRP?", "acceptedAnswer": {"@type": "Answer", "text": "Be careful. Under the EU vertical block exemption (Regulation (EU) 2022/720, Article 4(a)) a supplier may recommend a resale price or set a maximum, but not turn it into a fixed or minimum price through pressure or incentives. In India, resale price maintenance is listed in Section 3(4)(e) of the Competition Act, 2002. Use the sheet to find errors, stale prices and stock gaps, and take legal advice before acting on low prices."}}, {"@type": "Question", "name": "Does a product missing from a stockist's list mean they stopped selling it?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. It may sit outside the category you scanned, be hidden, be cut off by the run's product cap, or the shop may have been skipped because its robots.txt or terms forbid scraping. Check the shop before you call the stockist."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Stockist price check for brands: one sheet showing what each online reseller charges for your products</h1>
+<p class="meta">Updated 20 Oct 2026 · Disclosure: the product scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or the free manual method. Current Apify pricing is only on the Store page.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for a brand or distributor that, every week, shows <strong>each stockist's online price for each of your products next to your RRP</strong>, the gap in %, and flags for <strong>below RRP</strong>, <strong>above RRP</strong>, <strong>out of stock</strong> and <strong>on sale</strong>. A second tab lists, per stockist, <strong>your products they do not list</strong>, ready for your sales rep's next call. You build it from your stockists' public product lists (CSV), a one-time URL-to-SKU map and three formulas. Setup takes an afternoon for 5–20 stockists; the weekly refresh is about fifteen minutes.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>check tab</h3>
+<table><thead><tr><th>Stockist</th><th>Product</th><th>Your SKU</th><th>Their price</th><th>Your RRP</th><th>Gap</th><th>Flag</th></tr></thead><tbody>
+<tr><td>stockist-a.in</td><td>Cold-pressed hair oil 200 ml</td><td>HO-200</td><td>₹449</td><td>₹499</td><td>−10%</td><td>Below RRP · on sale</td></tr>
+<tr><td>stockist-b.com</td><td>Cold-pressed hair oil 200 ml</td><td>HO-200</td><td>₹499</td><td>₹499</td><td>0%</td><td>OK · out of stock</td></tr>
+<tr><td>stockist-b.com</td><td>Herbal shampoo 300 ml</td><td>SH-300</td><td>₹420</td><td>₹349</td><td>+20%</td><td>Above RRP</td></tr>
+</tbody></table>
+<h3>not_listed tab (stockist-a.in)</h3>
+<table><thead><tr><th>Your SKU</th><th>Product</th><th>RRP</th></tr></thead><tbody>
+<tr><td>SH-300</td><td>Herbal shampoo 300 ml</td><td>₹349</td></tr>
+<tr><td>HO-100</td><td>Cold-pressed hair oil 100 ml</td><td>₹279</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real shop data.</p>
+
+<h2>Why a brand wants this sheet</h2>
+<ul>
+<li><strong>Out of stock at a stockist</strong> is a lost sale for you as well. It is the most useful flag here: a reason to call that stockist about a reorder this week.</li>
+<li><strong>Not listed</strong> shows range gaps per stockist. "You sell our 200 ml oil but not the shampoo" is a concrete sell-in conversation.</li>
+<li><strong>Above RRP</strong> often means an old price, a wrong pack size mapped, or a shop adding its own margin. Worth a friendly check.</li>
+<li><strong>Below RRP</strong> often means a typo, a stale price after your own price change, a clearance of old stock, or a different pack size. Read the section on what you may and may not do with this flag before you act.</li>
+</ul>
+<p>Watching competitors rather than your own stockists? Use the <a href="competitor-shopify-price-sheet-apify.html">weekly competitor price sheet</a> or the <a href="competitor-store-out-of-stock-new-products-weekly.html">competitor out-of-stock and new products</a> guide instead.</p>
+
+<h2>Step 1: write your RRP list (tab <code>rrp</code>)</h2>
+<p>One row per sellable product. Format columns A and B as <strong>Plain text</strong> first (Format → Number → Plain text), so codes keep their leading zeros.</p>
+<table><thead><tr><th>A: your SKU</th><th>B: GTIN / barcode</th><th>C: product name</th><th>D: RRP</th><th>E: currency</th></tr></thead><tbody>
+<tr><td>HO-200</td><td>0890000000000</td><td>Cold-pressed hair oil 200 ml</td><td>499</td><td>INR</td></tr>
+</tbody></table>
+<p>Use the RRP as shoppers see it in that market (normally including tax). One currency per sheet keeps the gap column honest; make a second sheet for another country.</p>
+
+<h2>Step 2: list your stockists' web shops and pick a day</h2>
+<ul class="check">
+<li>List the stockists that sell your products on their <strong>own</strong> Shopify or WooCommerce shop. Use the shop homepage, or a brand page such as <code>/collections/your-brand</code> to keep runs small.</li>
+<li>Pick one day and time each week, for example Monday 10:00.</li>
+<li>Skip marketplaces (Amazon, Flipkart, eBay and similar). Their terms forbid scraping and this method is not for them.</li>
+<li>Keep a <code>stockists</code> tab: shop host, stockist name, your contact there.</li>
+</ul>
+
+<h2>Step 3: get this week's product CSV</h2>
+<h3>Free, one or two shops</h3>
+<ul>
+<li><strong>Shopify:</strong> many shops answer at <code>/products.json?limit=250&amp;page=1</code>. Each variant carries <code>sku</code>, <code>price</code>, <code>compare_at_price</code> and <code>available</code>, but <strong>no barcode</strong>. Step-by-step: <a href="export-shopify-store-products-to-csv.html">Export a Shopify store's products to CSV</a>.</li>
+<li><strong>WooCommerce:</strong> many shops answer at <code>/wp-json/wc/store/v1/products?per_page=100</code>, with <code>sku</code>, prices and <code>is_in_stock</code>. Step-by-step: <a href="export-woocommerce-store-products-to-csv.html">Export a WooCommerce store's products to CSV</a>.</li>
+</ul>
+<p>If a shop returns 401, 403 or 404 there, or its robots.txt or terms forbid scraping, drop it from the list and check that stockist by hand.</p>
+
+<h3>No code, many shops (Apify)</h3>
+<ol>
+<li>Create a free Apify account (no card needed for the free plan; see <a href="https://apify.com/pricing">apify.com/pricing</a> for current free monthly usage).</li>
+<li>Open <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_stockist_check">Shopify &amp; WooCommerce Product + Price Tracker</a> and click <strong>Try for free</strong>.</li>
+<li>Paste your stockist list. In JSON view:</li>
+</ol>
+<pre>{
+  "startUrls": [
+    { "url": "https://stockist-a.in/collections/your-brand" },
+    { "url": "https://stockist-b.com" }
+  ],
+  "maxProductsPerShop": 500,
+  "maxListingPages": 20,
+  "includeDescription": false
+}</pre>
+<p>Set <code>maxProductsPerShop</code> above the number of products you scan per shop; if the cap cuts a shop short, your products past the cap will look "not listed". Turn descriptions off.</p>
+<p>When the run finishes, open the dataset and choose <strong>Export → CSV</strong>. Paste it as-is into a new tab named like <strong>raw_2026-10-26</strong>. The columns this sheet uses are <code>url</code>, <code>shop</code>, <code>title</code>, <code>sku</code>, <code>gtin</code>, <code>price</code>, <code>currency</code>, <code>onSale</code> and <code>inStock</code>. Then open the run's <strong>Storage → Key-value store → SHOPS_SUMMARY</strong>: it lists every shop with its status (<code>ok</code>, <code>blocked-by-terms</code>, <code>blocked-by-robots</code>, <code>no-products-found</code> and so on). Every stockist that is not <code>ok</code> goes on your by-hand list for the week.</p>
+<p>Save the input as an Apify <strong>Task</strong> so the list stays the same each week, and add a weekly <strong>Schedule</strong> if you like.</p>
+<div class="note"><p><strong>Two things to know about the columns.</strong> (1) For a Shopify product with several sizes, the row's <code>price</code>, <code>sku</code> and <code>compareAtPrice</code> are those of the <strong>cheapest variant</strong>; each variant's own <code>sku</code>, <code>price</code> and <code>available</code> sit in the <code>variants/0/…</code>, <code>variants/1/…</code> columns. If you sell several pack sizes, map each size's row or read those columns. (2) <code>gtin</code> is filled only when the shop publishes a barcode, mostly in the product page's schema.org data. Expect it to be empty for many Shopify rows, and empty for rows from the WooCommerce Store API.</p></div>
+
+<h2>Step 4: map each stockist URL to your SKU (tab <code>map</code>, once)</h2>
+<p>Tab <code>map</code> has two columns: A stockist product URL, B your SKU (format both as Plain text). A stockist's product URL rarely changes, so once a URL is mapped it stays mapped. Tab <code>settings</code>: cell <code>B1</code> holds this week's raw tab name, <code>B2</code> the "below RRP" threshold (for example <code>10%</code>), <code>B3</code> the "above RRP" threshold (for example <code>5%</code>), <code>B4</code> the stockist host for the not-listed tab.</p>
+<p>Put this in cell A1 of a tab called <code>to_map</code>. It lists every product in this week's CSV whose URL is not yet in <code>map</code>, with a suggested SKU when the barcode or the SKU matches your <code>rrp</code> list:</p>
+<pre>=LET(R, INDIRECT("'"&amp;settings!B1&amp;"'!A1:ZZ"), H, CHOOSEROWS(R, 1), D, DROP(R, 1),
+  col, LAMBDA(n, CHOOSECOLS(D, MATCH(n, H, 0))),
+  url, col("url"), title, col("title"), sku, TO_TEXT(col("sku")), gtin, TO_TEXT(col("gtin")),
+  g14, ARRAYFORMULA(RIGHT(REPT("0", 14) &amp; gtin, 14)),
+  rg14, ARRAYFORMULA(RIGHT(REPT("0", 14) &amp; TO_TEXT(rrp!B2:B), 14)),
+  byG, ARRAYFORMULA(IF(gtin = "", "", IFERROR(VLOOKUP(g14, {rg14, rrp!A2:A}, 2, FALSE), ""))),
+  byS, ARRAYFORMULA(IF(sku = "", "", IFERROR(VLOOKUP(sku, rrp!A2:A, 1, FALSE), ""))),
+  sug, ARRAYFORMULA(IF(byG &lt;&gt; "", byG, byS)),
+  VSTACK({"url", "title", "their sku", "gtin", "suggested SKU"},
+    FILTER(HSTACK(url, title, sku, gtin, sug), url &lt;&gt; "", ISNA(MATCH(url, map!A2:A, 0)))))</pre>
+<p>Padding every barcode to 14 digits lets a 12-digit UPC and the same code written as a 13-digit EAN with a leading zero match each other. Copy the rows you accept into <code>map</code> as values (Paste special → Values only). For the rest, search the title for your product names and type your SKU by hand. Rows that are not your products (a stockist's whole shop) you simply leave unmapped; the check tab ignores them.</p>
+
+<h2>Step 5: the check tab</h2>
+<p>Cell A1 of tab <code>check</code>:</p>
+<pre>=LET(R, INDIRECT("'"&amp;settings!B1&amp;"'!A1:ZZ"), H, CHOOSEROWS(R, 1), D, DROP(R, 1),
+  col, LAMBDA(n, CHOOSECOLS(D, MATCH(n, H, 0))),
+  url, col("url"), shop, col("shop"), title, col("title"), price, col("price"),
+  cur, col("currency"), stock, TO_TEXT(col("inStock")), sale, TO_TEXT(col("onSale")),
+  key, ARRAYFORMULA(IF(url = "", "", IFERROR(VLOOKUP(url, map!A2:B, 2, FALSE), ""))),
+  rrpP, ARRAYFORMULA(IF(key = "", "", IFERROR(VLOOKUP(key, rrp!A2:D, 4, FALSE), ""))),
+  gap, ARRAYFORMULA(IF((rrpP = "") + (price = ""), "", price / rrpP - 1)),
+  flag, ARRAYFORMULA(IF(gap = "", "",
+    IF(gap &lt;= -settings!B2, "Below RRP", IF(gap &gt;= settings!B3, "Above RRP", "OK"))
+    &amp; IF(stock = "FALSE", " · out of stock", "") &amp; IF(sale = "TRUE", " · on sale", ""))),
+  VSTACK({"Stockist", "Product", "Your SKU", "Their price", "Currency", "Your RRP", "Gap", "Flag", "URL"},
+    FILTER(HSTACK(shop, title, key, price, cur, rrpP, gap, flag, url), key &lt;&gt; "")))</pre>
+<p>Format column G as a percentage. Sort or filter by the Flag column. If a row's currency differs from your RRP currency, ignore its gap; the shop is selling in another market.</p>
+
+<h2>Step 6: the not-listed tab</h2>
+<p>Type a stockist host (exactly as in the <code>shop</code> column, for example <code>stockist-a.in</code>) into <code>settings!B4</code>. Cell A1 of tab <code>not_listed</code>:</p>
+<pre>=LET(have, FILTER(check!C2:C, check!A2:A = settings!B4),
+  VSTACK({"Your SKU", "Product", "RRP"},
+    FILTER({rrp!A2:A, rrp!C2:C, rrp!D2:D}, rrp!A2:A &lt;&gt; "", ISNA(MATCH(rrp!A2:A, have, 0)))))</pre>
+<p>That is your list of products this stockist does not list this week. Change <code>B4</code> to see the next stockist. Before your rep calls, confirm the shop was <code>ok</code> in SHOPS_SUMMARY and that you scanned the right page; a skipped shop or a narrow category page makes everything look "not listed".</p>
+<p>In Excel, the same logic works with <code>LET</code>, <code>XLOOKUP</code>, <code>FILTER</code> and <code>VSTACK</code> on direct sheet references instead of <code>INDIRECT</code> and <code>ARRAYFORMULA</code>.</p>
+
+<h2>Step 7: check before you act</h2>
+<ul>
+<li><strong>Open the product page</strong> for every flagged row. Confirm the pack size, the price shown and whether it includes tax; a shop may show prices with or without tax.</li>
+<li><strong>Blank stock means unknown,</strong> not out of stock. Some shops do not publish availability. In the Unadhi scraper, <code>inStock</code> at product level is true when any variant is available, so one sold-out size does not flip it.</li>
+<li><strong>One week is noise.</strong> A price two weeks running, or stock out two weeks running, is a pattern; a single reading may be a flash sale or a restock in transit.</li>
+<li><strong>Re-check the map</strong> when you add products or change pack sizes.</li>
+</ul>
+
+<h2>What you may and may not do with "below RRP"</h2>
+<p>This sheet shows prices. What you do about a low price is regulated in many countries:</p>
+<ul>
+<li><strong>EU:</strong> under the vertical block exemption, a supplier may recommend a resale price or impose a maximum, but must not turn it into a fixed or minimum resale price "as a result of pressure from, or incentives offered by, any of the parties" (Regulation (EU) 2022/720, Article 4(a)). Restricting the buyer's ability to set its own sale price is a hardcore restriction.</li>
+<li><strong>India:</strong> resale price maintenance is listed in Section 3(4)(e) of the Competition Act, 2002, and is defined to include any direct or indirect restriction that resale prices must be the seller's prices, unless it is clearly stated that lower prices may be charged. It is unlawful where it causes or is likely to cause an appreciable adverse effect on competition in India.</li>
+<li><strong>Elsewhere:</strong> rules differ. Ask a competition lawyer before you link a stockist's price to supply, discounts or terms.</li>
+</ul>
+<p>Safe, useful uses of the flag: spotting a typo or a stale price after your own price change, a wrong pack size, a product you thought was discontinued, and stock that is about to run out.</p>
+
+<h2>What not to do</h2>
+<ul>
+<li>Do not run it daily "just in case". Weekly is enough and keeps your load on each shop light.</li>
+<li>Do not ignore robots.txt or terms that forbid scraping. Check that stockist by hand instead.</li>
+<li>Do not place test orders or fill carts to probe stock. Use only what the shop publishes.</li>
+</ul>
+
+<div class="note"><p>This guide is general information, not legal advice. You are responsible for how you use the data and for following each shop's terms and your local law. The Apify Actor mentioned reads only public pages, uses an honest bot User-Agent, follows robots.txt, scans each shop's terms and skips shops whose terms forbid scraping, never logs in and never gets around blocks.</p></div>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Commission Regulation (EU) 2022/720 (vertical block exemption), Article 4(a): <a href="https://eur-lex.europa.eu/eli/reg/2022/720/oj/eng">eur-lex.europa.eu/eli/reg/2022/720/oj/eng</a></li>
+<li>The Competition Act, 2002 (India), Section 3(4)(e) and Explanation (e), as amended by Act 9 of 2023: <a href="https://www.indiacode.nic.in/bitstream/123456789/2010/7/A2003-12.pdf">indiacode.nic.in</a></li>
+<li>GS1, Global Trade Item Number (GTIN): <a href="https://www.gs1.org/standards/id-keys/gtin">gs1.org/standards/id-keys/gtin</a></li>
+<li>Product scraper input and output fields: <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_stockist_check">Apify Store page</a> (input schema and README of build 0.1.3)</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="competitor-shopify-price-sheet-apify.html">Build a weekly competitor price sheet</a></li>
+<li><a href="competitor-store-out-of-stock-new-products-weekly.html">Spot out-of-stock and newly added products on competitor stores each week</a></li>
+<li><a href="export-shopify-store-products-to-csv.html">Export a Shopify store's products to CSV</a></li>
+<li><a href="export-woocommerce-store-products-to-csv.html">Export a WooCommerce store's products to CSV without a plugin</a></li>
+<li>Looking for new stockists rather than checking existing ones? Related only: <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_stockist_check">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> (also an Unadhi Apify product) finds a shop's published role inboxes such as sales@ or wholesale@. Use it for genuine one-to-one enquiries, not bulk cold email.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
