@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>30-day lowest price log for your Black Friday sale: the 'was' price the EU rule needs, for every product in your Shopify or WooCommerce shop</title><meta name="description" content="A Google Sheet for EU online shops: a daily log of your own prices, the lowest price of the last 30 days per product, the real % off your planned sale price, and flags for fake reductions before Black Friday on 27 November 2026."><link rel="canonical" href="https://unadhi.com/guides/eu-30-day-lowest-price-log-black-friday-shopify-woocommerce.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="30-day lowest price log for your Black Friday sale (EU rule)"><meta property="og:description" content="One sheet: your own daily prices, the lowest price of the last 30 days per product, the real % off your planned sale price, and flags for fake reductions."><meta property="og:url" content="https://unadhi.com/guides/eu-30-day-lowest-price-log-black-friday-shopify-woocommerce.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "30-day lowest price log for your Black Friday sale: the 'was' price the EU rule needs, for every product in your Shopify or WooCommerce shop", "dateModified": "2026-10-20", "datePublished": "2026-10-20", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/eu-30-day-lowest-price-log-black-friday-shopify-woocommerce.html", "step": [{"@type": "HowToStep", "name": "Start the daily log now", "text": "For a sale that starts on Friday 27 November 2026 you need your prices from Wednesday 28 October at the latest; for a Black Week from Monday 23 November, from Saturday 24 October."}, {"@type": "HowToStep", "name": "Export your own shop's prices once a day", "text": "Run the product tracker on your own shop address (or use your shop's own product export) and import each day's CSV as a tab named with the date."}, {"@type": "HowToStep", "name": "List the tab names in settings", "text": "Add each day's tab name under settings!A2 so the formulas read every day."}, {"@type": "HowToStep", "name": "List the products in the sale", "text": "One row per product: its url from the CSV, the variant number if needed and your planned sale price."}, {"@type": "HowToStep", "name": "Read the was price and the flags", "text": "The sheet shows the lowest price you charged in the log, the real % off and a flag if the sale price is not a real reduction or the log is shorter than 30 days."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which price must I show as the 'was' price in an EU sale?", "acceptedAnswer": {"@type": "Answer", "text": "The prior price: the lowest price you applied during a period of not less than 30 days before the reduction (Article 6a(2) of Directive 98/6/EC). Any earlier reduced price in those 30 days counts, so a sale price you ran two weeks ago can be your prior price."}}, {"@type": "Question", "name": "Can I raise the price in early November and then cut it for Black Friday?", "acceptedAnswer": {"@type": "Answer", "text": "The raised price does not become your prior price unless it is the lowest price of the 30 days before the sale. The Commission's guidance says the 30-day period is there to stop exactly this, and the Court of Justice held in case C-330/23 (Aldi Sued, 26 September 2024) that an announced percentage or reduction must be calculated from the prior price."}}, {"@type": "Question", "name": "Can I use a lower price from more than 30 days ago?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Commission's guidance says it is not contrary to Article 6a if the prior price you show is lower than the lowest price of the last 30 days. That is why the sheet takes the lowest price across your whole log, even if it is longer than 30 days."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>30-day lowest price log for your Black Friday sale: the 'was' price the EU rule needs, for every product in your Shopify or WooCommerce shop</h1>
+<p class="meta">Updated 20 Oct 2026 · Disclosure: the product tracker linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works with your shop's own product export (step 2). Current Apify pricing is only on the Store page.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for a shop that sells to consumers in the EU. It keeps a <strong>daily log of your own shop's prices</strong> and shows, for <strong>every product in your sale</strong>, the <strong>lowest price you charged in the log</strong> (the "was" price Article 6a of the EU Price Indication Directive asks for), your planned sale price, the <strong>real % off</strong>, how many days the log covers, and flags: <strong>not a reduction</strong>, <strong>fewer than 30 days logged</strong>, <strong>no data for this product</strong> and <strong>your "was" price is above the 30-day lowest</strong>. Start today: for Black Friday on <strong>Friday 27 November 2026</strong> the log has to begin by <strong>Wednesday 28 October</strong>.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>sale tab (with the formula columns)</h3>
+<table><thead><tr><th>Product</th><th>Days logged</th><th>Lowest in log</th><th>Shop price now</th><th>Sale price</th><th>Real % off</th><th>Flag</th></tr></thead><tbody>
+<tr><td>Wool scarf, grey</td><td>31</td><td>€39.00</td><td>€49.00</td><td>€29.00</td><td>26%</td><td>OK: show €39.00 as the was price · Your shop's was price is above the 30-day lowest</td></tr>
+<tr><td>Ceramic mug set</td><td>31</td><td>€24.00</td><td>€24.00</td><td>€24.00</td><td>0%</td><td>Not a reduction</td></tr>
+<tr><td>Candle, large</td><td>12</td><td>€18.00</td><td>€18.00</td><td>€14.00</td><td>22%</td><td>Fewer than 30 days logged</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real products or prices. In row one the shop raised the price from €39 to €49 in the last weeks, so €49 cannot be the was price.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Shopify and WooCommerce shops</strong> that sell to consumers in an EU country and plan a Black Friday, Black Week or Cyber Monday sale.</li>
+<li><strong>Agencies and freelancers</strong> who run sales for several shops and want one check per shop before the banners go live.</li>
+<li><strong>Shops outside the EU</strong> that sell to EU consumers and show "was" prices or "% off": check whether the rule applies to you.</li>
+</ul>
+<p>Checking competitors' discounts instead? Use the <a href="competitor-store-discount-sheet-black-friday.html">competitor discount sheet for Black Friday</a>.</p>
+
+<h2>The rule in one paragraph</h2>
+<p>Under Article 6a of Directive 98/6/EC (added by Directive (EU) 2019/2161), any announcement of a price reduction must show the <strong>prior price</strong>: the lowest price you applied during a period of not less than 30 days before the reduction. Earlier sale prices in those 30 days count. The Court of Justice held in case C-330/23 (26 September 2024) that a "% off" or a claim such as "price highlight" must be calculated from that prior price, so the sale price can never be equal to or above it. Countries may set different rules for goods that go off quickly, products on the market for less than 30 days, and reductions that increase step by step; check your country's law for those cases.</p>
+
+<h2>Dates for Black Friday 2026</h2>
+<table><thead><tr><th>Your sale starts</th><th>Log your prices from</th></tr></thead><tbody>
+<tr><td>Monday 23 November (Black Week)</td><td>Saturday 24 October</td></tr>
+<tr><td>Friday 27 November (Black Friday)</td><td>Wednesday 28 October</td></tr>
+<tr><td>Monday 30 November (Cyber Monday)</td><td>Saturday 31 October</td></tr>
+</tbody></table>
+<p>Starting earlier does no harm: the sheet uses the lowest price in the whole log, and the Commission's guidance says a prior price lower than the 30-day lowest is not contrary to Article 6a.</p>
+
+<h2>Step 1: settings</h2>
+<p>Tab <code>settings</code>: from cell A2 down, the name of each daily tab, one per line (for example <code>d_2026-10-28</code>, <code>d_2026-10-29</code>, …). Put the newest at the bottom. B1: the number of days you need (30).</p>
+
+<h2>Step 2: one CSV of your own prices per day</h2>
+<h3>No code (Apify)</h3>
+<ol>
+<li>Open <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_eu_30day_price">Shopify &amp; WooCommerce Product + Price Tracker</a> and click <strong>Try for free</strong>.</li>
+<li>Enter your own shop address. In JSON view:</li>
+</ol>
+<pre><code>{
+  "startUrls": [ { "url": "https://your-shop.eu" } ],
+  "maxProductsPerShop": 1000,
+  "maxListingPages": 50,
+  "includeDescription": false
+}</code></pre>
+<p>Set <code>maxProductsPerShop</code> above your number of products (the default is 100). Save the input as an Apify Task and add a daily Schedule, so it runs at the same time every day. After each run, open the dataset, choose <strong>Export → CSV</strong> and import it into a new tab named with the date (File → Import → Upload → Insert new sheet). Do not rename headers. Run datasets are deleted after a retention period that depends on your Apify plan, so import at least every few days. Check the run's <strong>Storage → Key-value store → SHOPS_SUMMARY</strong> once: your shop should show <code>ok</code>.</p>
+<h3>Free, from your own shop admin</h3>
+<ul>
+<li>Shopify: the admin product export (Products → Export) gives one row per variant with the columns <code>Handle</code>, <code>Variant Price</code> and <code>Variant Compare At Price</code>.</li>
+<li>WooCommerce: the built-in product CSV exporter (Products → Export) gives <code>Regular price</code> and <code>Sale price</code>.</li>
+</ul>
+<p>The formulas below look columns up by header name. With an admin export, change <code>"url"</code> to your product key column (<code>Handle</code> or <code>SKU</code>) and <code>"price"</code> to the price column; for WooCommerce, log the sale price when one is set, because it is the price customers paid that day.</p>
+
+<h2>Step 3: what the tracker columns mean</h2>
+<ul>
+<li><code>url</code> is the product's address in your shop. For Shopify it is always written as <code>shop/products/handle</code>, so copy it from the CSV.</li>
+<li><code>price</code> is the price shown that day; <code>compareAtPrice</code> is the struck-through "was" price your shop shows, if any. For a Shopify product with several sizes, the row's <code>price</code> is the <strong>cheapest variant</strong>.</li>
+<li>Each size has its own columns: <code>variants/0/title</code>, <code>variants/0/price</code>, <code>variants/0/compareAtPrice</code>, then <code>variants/1/…</code>. <code>scrapedAt</code> is the time of the run in UTC.</li>
+</ul>
+
+<h2>Step 4: the sale tab</h2>
+<p>Format column A as Plain text. One row per product in your sale: A url (from the CSV), B variant no. (blank for the row price, or the N of the <code>variants/N/title</code> column showing your size), C product name, D your planned sale price, E any lower price you ran that the daily log could not see (for example a flash sale between two runs; otherwise blank).</p>
+
+<h2>Step 5: the formula columns</h2>
+<p>Put the formulas below in row 2 and copy them down. F2, days logged:</p>
+<pre><code>=IF($A2="","",LET(tabs, FILTER(settings!$A$2:$A, settings!$A$2:$A&lt;&gt;""),
+  p, MAP(tabs, LAMBDA(t, LET(R, INDIRECT("'"&amp;t&amp;"'!A:ZZ"), H, INDEX(R, 1, 0),
+    r, MATCH($A2, INDEX(R, 0, MATCH("url", H, 0)), 0),
+    IFERROR(N(INDEX(R, r, MATCH(IF($B2="", "price", "variants/"&amp;$B2&amp;"/price"), H, 0))), 0)))),
+  SUM(--(p&gt;0))))</code></pre>
+<p>G2, lowest price in the log: the same formula with the last line changed to</p>
+<pre><code>  IFERROR(MIN(FILTER(p, p&gt;0), IF(ISNUMBER($E2), $E2, 9E+99)), "no data")))</code></pre>
+<p>H2, shop price now: the same formula with the last line changed to</p>
+<pre><code>  LET(x, INDEX(p, ROWS(p)), IF(x&gt;0, x, "missing"))))</code></pre>
+<p>I2, your shop's current "was" price: the H2 formula with <code>"price"</code> changed to <code>"compareAtPrice"</code> and <code>"/price"</code> changed to <code>"/compareAtPrice"</code>. Then:</p>
+<pre><code>J2 real % off:  =IF(AND(ISNUMBER(G2), ISNUMBER(D2)), 1-D2/G2, "")
+K2 flag:
+=IF($A2="","",LET(f, TEXTJOIN(" · ", TRUE,
+  IF(NOT(ISNUMBER(G2)), "No data for this product", ""),
+  IF(AND(ISNUMBER(F2), F2&lt;settings!$B$1), "Fewer than "&amp;settings!$B$1&amp;" days logged", ""),
+  IF(AND(ISNUMBER(G2), ISNUMBER(D2)), IF(D2&gt;=G2, "Not a reduction", ""), ""),
+  IF(AND(ISNUMBER(I2), I2&gt;0, ISNUMBER(G2)), IF(I2&gt;G2, "Your shop's was price is above the 30-day lowest", ""), "")),
+  IF(OR(f="", f="Your shop's was price is above the 30-day lowest"), "OK: show "&amp;TEXT(G2, "0.00")&amp;" as the was price"&amp;IF(f="", "", " · "&amp;f), f)))</code></pre>
+<p>Format J as a percentage. Each day: import the new CSV and add its tab name at the bottom of settings column A. Nothing else changes. A product that is missing on a day (sold out and hidden, or renamed) simply has no price for that day.</p>
+
+<h2>What to do with each flag</h2>
+<table><thead><tr><th>Flag</th><th>What to do</th></tr></thead><tbody>
+<tr><td>OK: show X as the was price</td><td>Use X as the struck-through or "before" price, and calculate any "% off" from X.</td></tr>
+<tr><td>Not a reduction</td><td>Your sale price is not below the lowest price of the period. Lower the sale price, or sell it at that price without a reduction claim.</td></tr>
+<tr><td>Fewer than 30 days logged</td><td>You cannot yet prove the 30-day lowest from this log. Wait, or use another record of your prices (orders, price change history). If the product has been on sale for less than 30 days, check whether your country allows a shorter period.</td></tr>
+<tr><td>No data for this product</td><td>Check the url in column A and the variant number; the product may have been hidden on every run.</td></tr>
+<tr><td>Your shop's was price is above the 30-day lowest</td><td>Before the sale, change the product's compare-at or regular price to the lowest price in column G, so the banner does not show a higher "was" price.</td></tr>
+</tbody></table>
+
+<h2>Check before the banners go live</h2>
+<ul class="check">
+<li>The log covers at least 30 days before the first day of the sale for every product in it.</li>
+<li>Prices in the log are in the currency and tax basis your customers see (EU consumer prices include VAT).</li>
+<li>Rows with a variant number show the price of the right size (spot-check three in your shop).</li>
+<li>Any flash sale, discount you ran in the period and the log missed is entered in column E.</li>
+<li>Every "% off" in banners, emails and ads is calculated from column G, not from your usual price.</li>
+</ul>
+<p class="meta">General information, not legal advice. National rules (for example on perishable goods, new products or loyalty prices) and the UK's own rules are not covered here.</p>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Directive 98/6/EC, Article 6a (consolidated text of 28 May 2022): <a href="https://eur-lex.europa.eu/eli/dir/1998/6/2022-05-28/eng">EUR-Lex</a></li>
+<li>Commission Notice on the interpretation and application of Article 6a of Directive 98/6/EC (2021/C 526/02), section 2.1: <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A52021XC1229%2806%29">EUR-Lex</a></li>
+<li>Court of Justice, case C-330/23 Aldi Sued, judgment of 26 September 2024, paragraphs 27 and 29: <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A62023CJ0330">EUR-Lex</a></li>
+<li>Product tracker input fields (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>maxListingPages</code>, <code>includeDescription</code>) and output fields (<code>url</code>, <code>price</code>, <code>compareAtPrice</code>, <code>currency</code>, <code>variants</code>, <code>scrapedAt</code>; SHOPS_SUMMARY): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_eu_30day_price">Apify Store page</a></li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="competitor-store-discount-sheet-black-friday.html">Competitor discount sheet for Black Friday</a></li>
+<li><a href="export-shopify-store-products-to-csv.html">Export a Shopify store's products to CSV</a></li>
+<li><a href="export-woocommerce-store-products-to-csv.html">Export a WooCommerce store's products to CSV</a></li>
+<li><a href="eu-vat-sme-scheme-cross-border-100000-euro-ex-number.html">EU VAT SME scheme for cross-border sellers</a></li>
+<li>Related only: <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_eu_30day_price">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> (also an Unadhi Apify product) finds the contact details businesses publish on their own websites.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
