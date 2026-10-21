@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Press list sheet for a product launch or Black Friday pitch: the press and media inboxes each publication publishes, in one Google Sheet with a pitch and follow-up tracker</title><meta name="description" content="A free Google Sheet for small brands, shops and PR freelancers: one row per magazine, blog or newsletter, with the press@ or media@ inbox from its own website, a fallback inbox, a next step when none is found, a UK sole-trader consent flag (ICO guidance), one follow-up date and a do-not-contact column."><link rel="canonical" href="https://unadhi.com/guides/press-list-sheet-product-launch-black-friday-media-inboxes-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Press list sheet: press inboxes, next step, UK consent flag and a follow-up tracker"><meta property="og:description" content="One row per publication: press inbox, fallback, next step, UK sole-trader flag, pitched on, follow-up date and do-not-contact. Formulas included."><meta property="og:url" content="https://unadhi.com/guides/press-list-sheet-product-launch-black-friday-media-inboxes-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Press list sheet for a product launch or Black Friday pitch: the press and media inboxes each publication publishes, in one Google Sheet with a pitch and follow-up tracker", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/press-list-sheet-product-launch-black-friday-media-inboxes-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I email a press pitch to a publication I have never contacted?", "acceptedAnswer": {"@type": "Answer", "text": "In the UK, the ICO's electronic mail marketing guidance (read 21 Oct 2026, under review after the Data (Use and Access) Act) says you can send marketing emails to companies and other corporate bodies, should keep a do-not-email list of any that object, must not hide who you are and must give an opt-out address. Sole traders and some partnerships are treated as individuals and need consent first. Rules differ in other countries; check the official source."}}, {"@type": "Question", "name": "Why did the contact scraper not return editor@ or newsdesk@?", "acceptedAnswer": {"@type": "Answer", "text": "With the default setting the Unadhi website contact scraper returns only shared role inboxes such as press@, media@, pr@, hello@ and info@. Addresses not on its role list, including editor@, news@ and tips@ in the current version, are dropped and counted in personalEmailsDropped. The sheet turns that count into a 'read its contact page' step."}}, {"@type": "Question", "name": "How many follow-ups should I send?", "acceptedAnswer": {"@type": "Answer", "text": "The sheet schedules one follow-up five working days after the pitch and stops there. Anyone who says no or asks you to stop goes into the do-not-contact column and is never emailed again."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Press list sheet for a product launch or Black Friday pitch: the press and media inboxes each publication publishes, in one Google Sheet with a pitch and follow-up tracker</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the website contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works if you copy inboxes from contact pages by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet with <strong>one row per publication</strong> you want to pitch (magazines, blogs, newsletters, gift-guide sites), showing the <strong>press or media inbox</strong> the publication publishes on its own website, a <strong>general inbox</strong> as a fallback, a <strong>next-step</strong> column that tells you what to do when no press inbox was found, a <strong>UK sole-trader flag</strong> (they need consent before a marketing email), and a <strong>pitch tracker</strong> with one follow-up date and a do-not-contact column. Built for small brands, Shopify and WooCommerce shops and PR freelancers pitching a product launch, a Black Friday offer or a Christmas gift guide.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>press tab (example rows are made up)</h3>
+<table><thead><tr><th>Domain</th><th>Status</th><th>Press inbox</th><th>Fallback</th><th>Named inboxes dropped</th><th>Next step</th><th>Type</th><th>Pitched on</th><th>Follow up on</th><th>Send?</th></tr></thead><tbody>
+<tr><td>giftmag.example</td><td>ok</td><td>press@giftmag.example</td><td></td><td>0</td><td>Pitch press inbox</td><td>Corporate</td><td>2 Nov 2026</td><td>9 Nov 2026</td><td>Wait</td></tr>
+<tr><td>homeblog.example</td><td>ok</td><td></td><td>hello@homeblog.example</td><td>0</td><td>Use general inbox and ask who covers gifts</td><td>Corporate</td><td></td><td></td><td>Ready</td></tr>
+<tr><td>citynews.example</td><td>ok</td><td></td><td></td><td>3</td><td>Site lists named inboxes: read its contact page</td><td>Corporate</td><td></td><td></td><td>Ready</td></tr>
+<tr><td>bigdaily.example</td><td>blocked-by-terms</td><td></td><td></td><td></td><td>Skipped: open the site's contact page yourself</td><td>Corporate</td><td></td><td></td><td>Ready</td></tr>
+<tr><td>janewrites.example</td><td>ok</td><td></td><td>hello@janewrites.example</td><td>0</td><td>Use general inbox and ask who covers gifts</td><td>Sole trader</td><td></td><td></td><td>NO: UK sole trader, consent first</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li>Small brands and shop owners who want 20 to 100 publications to hear about one product, offer or launch, and want the inbox each publication itself publishes, not a guessed <code>firstname@</code>.</li>
+<li>PR freelancers and small agencies building a fresh media list for a client before Black Friday (Friday 27 November 2026) and Christmas.</li>
+<li>Anyone who already has a list of publication websites and wants the contact column filled in one run.</li>
+</ul>
+
+<h2>Step 1: list the publications in a tab named sites</h2>
+<table><thead><tr><th>Column</th><th>What to put</th></tr></thead><tbody>
+<tr><td>A Publication</td><td>Name, for example "Gift Mag"</td></tr>
+<tr><td>B Website</td><td>The homepage, for example <code>https://www.giftmag.example</code></td></tr>
+<tr><td>C Beat</td><td>Gifts, home, tech, food, local news...</td></tr>
+<tr><td>D Type</td><td><code>Corporate</code> (a company or other corporate body) or <code>Sole trader</code> (a one-person blog or newsletter run by an individual). This decides Step 4.</td></tr>
+</tbody></table>
+<p>Pick publications that really cover your kind of product. A short list of relevant titles gets more replies than a long list of random ones, and it keeps you inside the "relevant, one to one" rule in Step 4.</p>
+
+<h2>Step 2: run the contact scraper on the websites</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_press_list_sheet">website contact scraper</a> on the Apify Store and paste column B into <code>urls</code> (one per line) or <code>startUrls</code>. What it does with the default settings, as written in the Actor's input schema and README on 21 October 2026:</p>
+<ul>
+<li>Reads the homepage plus the most contact-like pages (contact, about, impressum, support): <code>maxPagesPerSite</code> is 4 by default. Publications often put the press inbox on a deeper page, so try 6 to 8 if many rows come back empty.</li>
+<li>Returns only <strong>shared role inboxes</strong>. <code>press@</code>, <code>media@</code>, <code>pr@</code>, <code>marketing@</code>, <code>hello@</code>, <code>info@</code> and <code>contact@</code> are on its role list. Addresses that identify one person are dropped and only counted in <code>personalEmailsDropped</code> (<code>includePersonalEmails</code> is off).</li>
+<li>Checks each inbox's domain can receive mail (<code>mxValid</code>) and records the page it was found on (<code>foundOn</code>).</li>
+<li>Follows robots.txt and reads each site's terms. A site whose terms forbid scraping comes back as <code>blocked-by-terms</code>, and blocked rows are not charged. Expect this on some large news sites; you look those up by hand.</li>
+</ul>
+<div class="note"><p><strong>Honest limit:</strong> in the current version, newsroom-style addresses such as <code>editor@</code>, <code>editorial@</code>, <code>news@</code>, <code>newsdesk@</code> or <code>tips@</code> are <em>not</em> on the role list, so with the default setting they are dropped and counted, not shown. The sheet turns that count into a "read its contact page" step instead of hiding it. Only switch on <code>includePersonalEmails</code> if you have a lawful basis and will honour opt-outs.</p></div>
+<p>When the run finishes, export the dataset as <strong>CSV</strong>, then in your sheet use File, Import, Insert new sheet, and rename it <code>scrape</code>. Nested fields become headers like <code>emails/0/email</code>, <code>emails/1/email</code> and <code>emails/0/mxValid</code>, so the formulas below find columns by header name, not by position.</p>
+
+<h2>Step 3: build the press tab</h2>
+<p>Create a tab named <code>press</code>, put these formulas in row 2, and fill down as many rows as <code>scrape</code> has.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Domain</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("domain", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>B</td><td>Status</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("status", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>C</td><td>All inboxes</td><td><code>=IFERROR(TEXTJOIN(", ", TRUE, FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^emails/\d+/email$"))), "")</code></td></tr>
+<tr><td>D</td><td>Press inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:press|media|pr|socialmedia)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>E</td><td>Fallback</td><td><code>=IF(D2&lt;&gt;"", "", IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:hello|contact|info|marketing|partnerships)(?:[.\-_][a-z0-9]+)?@[^,]+)"), ""))</code></td></tr>
+<tr><td>F</td><td>Named inboxes dropped</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("personalEmailsDropped", scrape!$A$1:$ZZ$1, 0)), 0)</code></td></tr>
+<tr><td>G</td><td>Next step</td><td><code>=IFS(B2&lt;&gt;"ok", "Skipped ("&amp;B2&amp;"): open the site's contact page yourself", D2&lt;&gt;"", "Pitch press inbox", N(F2)&gt;0, "Site lists named inboxes: read its contact page", E2&lt;&gt;"", "Use general inbox and ask who covers "&amp;IFERROR(INDEX(sites!$C:$C, MATCH("*"&amp;A2&amp;"*", sites!$B:$B, 0)), "your beat"), TRUE, "No inbox found: use the site's contact form")</code></td></tr>
+<tr><td>H</td><td>Type</td><td><code>=IFERROR(INDEX(sites!$D:$D, MATCH("*"&amp;A2&amp;"*", sites!$B:$B, 0)), "")</code></td></tr>
+<tr><td>I</td><td>Bad MX</td><td><code>=IFERROR(SUMPRODUCT(--(UPPER(TO_TEXT(FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^emails/\d+/mxValid$"))))="FALSE")), 0)</code> (above 0: one of the inboxes has no mail server; do not use it)</td></tr>
+<tr><td>J</td><td>Pitched on</td><td>Type the date you sent the pitch</td></tr>
+<tr><td>K</td><td>Follow up on</td><td><code>=IF(J2="", "", WORKDAY(J2, 5))</code></td></tr>
+<tr><td>L</td><td>Reply</td><td>Type: Interested / Not now / No</td></tr>
+<tr><td>M</td><td>Do not contact</td><td>Type <code>Y</code> the moment anyone asks you to stop or replies "No"</td></tr>
+<tr><td>N</td><td>Send?</td><td><code>=IFS(M2="Y", "NO: do not contact", H2="Sole trader", "NO: UK sole trader, consent first", J2="", "Ready", AND(L2="", TODAY()&gt;=K2), "Send one follow-up", TRUE, "Wait")</code></td></tr>
+</tbody></table>
+<p>Add a filter on column N and work only the rows that say <strong>Ready</strong> or <strong>Send one follow-up</strong>. One follow-up is enough; after that, mark the row and move on.</p>
+
+<h2>Step 4: the rules your pitch must follow (UK example)</h2>
+<p>This is a summary of the UK ICO's electronic mail marketing guidance as read on 21 October 2026, not legal advice. The ICO notes this guidance is under review after the Data (Use and Access) Act, so check the official source before you send.</p>
+<ul>
+<li><strong>Companies and other corporate bodies:</strong> the ICO says you can send marketing emails to them, and it is good practice to keep a "do not email" list of any that object. That is column M.</li>
+<li><strong>Sole traders and some partnerships</strong> are treated as individuals: you need their specific consent (or the existing-customer "soft opt-in"). That is why column N says NO for them. Many one-person blogs and newsletters fall here.</li>
+<li><strong>Every message:</strong> do not hide who you are, and give a valid address to opt out.</li>
+<li><strong>Named addresses at a company</strong> (for example a person's own work email) also bring data protection rules into play, which is why the scraper drops them by default.</li>
+</ul>
+<p>In the EU, the ePrivacy Directive's consent rule for marketing email covers individuals, and each country decides how far it also protects companies, so the rules differ by country. Check your national regulator's guidance. Elsewhere, check the official source for your country.</p>
+
+<h2>Step 5: a short pitch that fits the sheet</h2>
+<pre>Subject: Gift idea under 25: [product] for your [beat] coverage
+
+Hi [Publication] team,
+
+I run [brand], a small [country] shop. Our [product] is [one line on
+what it is and why your readers would care]. Price: [price]; stock is
+confirmed until [date].
+
+Photos and details: [link]. I can send a sample to whoever covers
+[beat]. Is there a deadline for your gift guides this year?
+
+[Your name], [brand], [website]
+If you'd rather not hear from us, reply "no" and we won't email again.</pre>
+<p>Send each pitch one at a time from your normal inbox, change the first two lines for each publication, and fill in column J the same day. If the publication says it was given a free product, it may need to disclose that to its readers; that is their call, but say clearly in your pitch whether a sample or a paid placement is involved.</p>
+
+<h2>Timeline to Black Friday and Christmas</h2>
+<ul class="check">
+<li>This week (to 31 October): build the sites tab, run the scraper, fill the press tab, write your pitch.</li>
+<li>2 to 6 November: send the Ready rows. Ask each publication for its gift-guide deadline; deadlines differ, so do not assume one.</li>
+<li>From 9 November: send one follow-up to rows that say "Send one follow-up"; mark every "No" as do-not-contact.</li>
+<li>Friday 27 November (Black Friday) and Monday 30 November (Cyber Monday): tell anyone who featured you if a price or stock level changed.</li>
+<li>December: reuse the sheet for Christmas; filter out every row with M = Y first.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Corporate bodies vs sole traders, soft opt-in, do-not-email list, identity and opt-out address, guidance under review after the Data (Use and Access) Act: <a href="https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guide-to-pecr/electronic-and-telephone-marketing/electronic-mail-marketing/">ICO, Electronic mail marketing</a> (read 21 Oct 2026)</li>
+<li>EU rule on unsolicited communications: Directive 2002/58/EC (ePrivacy), Article 13, on EUR-Lex. Check the official source and your national regulator.</li>
+<li>Contact scraper inputs and outputs (<code>urls</code>, <code>startUrls</code>, <code>maxPagesPerSite</code> default 4, <code>includePersonalEmails</code> off, <code>personalEmailsDropped</code>, <code>mxValid</code>, <code>foundOn</code>, statuses such as <code>blocked-by-terms</code>, blocked sites not charged): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_press_list_sheet">Apify Store page</a> (Actor input schema and source read 21 Oct 2026)</li>
+<li>Black Friday 2026 is Friday 27 November (the day after US Thanksgiving, Thursday 26 November); Cyber Monday is 30 November.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="find-public-role-emails-company-website-apify.html">Find public role emails (sales@, press@, support@) on a company website without guessing</a></li>
+<li><a href="gift-guide-product-shortlist-sheet-black-friday-christmas-apify.html">Gift guide shortlist sheet for Black Friday and Christmas (the publisher's side)</a></li>
+<li><a href="trade-fair-exhibitor-contact-sheet-apify.html">Trade fair exhibitor contact sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean an Apify contact CSV into a call sheet</a></li>
+<li><a href="competitor-store-discount-sheet-black-friday.html">Competitor store discount sheet for Black Friday</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
