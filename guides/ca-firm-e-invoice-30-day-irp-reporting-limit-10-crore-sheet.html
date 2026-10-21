@@ -1,0 +1,83 @@
+<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E-invoice 30-day reporting sheet for CA firms: which client invoices and credit notes the IRP will refuse, and the last day for each</title><meta name="description" content="A Google Sheet layout for CA firms with clients at ₹10 crore+ turnover: list every invoice, credit note and debit note without an IRN, compute the last day the e-invoice portal accepts it under GSTN's 30-day limit, and flag what to report today, with a daily routine and three client messages."><link rel="canonical" href="https://unadhi.com/guides/ca-firm-e-invoice-30-day-irp-reporting-limit-10-crore-sheet.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="E-invoice 30-day reporting sheet for CA firms: which client invoices and credit notes the IRP will refuse, and the last day for each"><meta property="og:description" content="Since 1 April 2025 the IRP refuses e-invoices more than 30 days old for taxpayers at ₹10 crore+ AATO. One sheet to catch every open document before its window closes."><meta property="og:url" content="https://unadhi.com/guides/ca-firm-e-invoice-30-day-irp-reporting-limit-10-crore-sheet.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+.signup{border:1px dashed #0a5c55;border-radius:8px;padding:10px 16px;background:#f4faf9;margin-top:1.4em}.signup p{margin:.3em 0}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "E-invoice 30-day reporting sheet for CA firms: which client invoices and credit notes the IRP will refuse, and the last day for each", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en-IN", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/ca-firm-e-invoice-30-day-irp-reporting-limit-10-crore-sheet.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who is covered by the 30-day e-invoice reporting limit?", "acceptedAnswer": {"@type": "Answer", "text": "From 1 April 2025, taxpayers with aggregate annual turnover of ₹10 crore or more (GSTN advisory). Below ₹10 crore there is no reporting time limit as of now."}}, {"@type": "Question", "name": "Which documents does the 30-day limit apply to?", "acceptedAnswer": {"@type": "Answer", "text": "All document types for which an IRN is generated: invoices, credit notes and debit notes."}}, {"@type": "Question", "name": "What is the last day to report?", "acceptedAnswer": {"@type": "Answer", "text": "GSTN's example: a document dated 1 April cannot be reported after 30 April, so the last day is the document date plus 29 days. After that the IRP blocks IRN generation."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>E-invoice 30-day reporting sheet for CA firms: which client invoices and credit notes the IRP will refuse, and the last day for each</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the white-label calendar linked below is an Unadhi product (₹999/year).</p>
+<p><strong>What you get:</strong> a ready-to-copy Google Sheet layout that shows, for every client with aggregate turnover of ₹10 crore or more, which invoices, credit notes and debit notes still have no IRN and the last day each one can be reported on the e-invoice portal (IRP). Plus a daily routine and three client messages. Free, no sign-up.</p>
+<p><strong>Short answer (checked 21 Oct 2026):</strong> from 1 April 2025, a taxpayer with aggregate annual turnover (AATO) of ₹10 crore or more cannot report an e-invoice on the IRP more than 30 days after the document date. It covers invoices, credit notes and debit notes, and the IRP blocks IRN generation once the window closes. GSTN's own example: a document dated 1 April cannot be reported after 30 April. Below ₹10 crore there is no such limit "as of now". Sources: GSTN's advisory <a href="https://einvoice1.gst.gov.in/Documents/advisory270325.pdf">Time limit for reporting e-invoice on the IRP portal</a> (threshold lowered from ₹100 crore, which applied from the advisory of 13 September 2023) and the <a href="https://einvoice6.gst.gov.in/content/kb/other-actions-for-e-invoicing/">IRIS IRP release note of 31 March 2025</a>. Check <a href="https://einvoice1.gst.gov.in">einvoice1.gst.gov.in</a> for later changes before you act. This is a starting point, not tax advice.</p>
+
+<h2>Why October is the month it bites</h2>
+<p>Festive-season billing, a credit note issued late for a return, an export or SEZ invoice someone billed from the old software: these are the documents that sit unreported. A credit note dated 25 September 2026 has its last reporting day on 25 October 2026, a Sunday. Once the window closes the portal will not take it, and the client is left with a B2B document that has no IRN.</p>
+
+<h2>Tab "clients": who is inside the 30-day rule</h2>
+<table>
+<tr><th>Column</th><th>What goes in it</th></tr>
+<tr><td>A Client</td><td>Name</td></tr>
+<tr><td>B GSTIN(s)</td><td>Every registration on the PAN</td></tr>
+<tr><td>C Highest AATO since FY 2017-18 (₹)</td><td>PAN-wide aggregate turnover, the same figure that decides whether e-invoicing applies at all</td></tr>
+<tr><td>D Rule</td><td>Formula below</td></tr>
+<tr><td>E Who generates IRN</td><td>Client's ERP / accountant / your office</td></tr>
+</table>
+<pre>D2: =IF(C2&gt;=100000000,"30-day limit",IF(C2&gt;50000000,"E-invoice, no time limit","Check e-invoice threshold"))</pre>
+
+<h2>Tab "documents": one row per B2B, export or SEZ document without an IRN yet</h2>
+<table>
+<tr><th>Column</th><th>What goes in it</th></tr>
+<tr><td>A Client</td><td>Same name as the clients tab</td></tr>
+<tr><td>B Type</td><td>Invoice / Credit note / Debit note</td></tr>
+<tr><td>C Document no.</td><td>As in the books</td></tr>
+<tr><td>D Document date</td><td>Date printed on the document</td></tr>
+<tr><td>E Recipient GSTIN</td><td>Or "Export" / "SEZ"</td></tr>
+<tr><td>F Value (₹)</td><td>Taxable value</td></tr>
+<tr><td>G IRN on</td><td>Date the IRN came back</td></tr>
+<tr><td>H Last IRP day</td><td>Formula below</td></tr>
+<tr><td>I Flag</td><td>Formula below</td></tr>
+</table>
+<pre>H2: =IF(VLOOKUP(A2,clients!A:D,4,FALSE)="30-day limit",D2+29,"")
+I2: =IF(G2&lt;&gt;"","Done",IF(H2="","No time limit",IF(H2&lt;TODAY(),"Window closed: talk to client",IF(H2-TODAY()&lt;=3,"Report today","Open, "&amp;(H2-TODAY())&amp;" days left"))))</pre>
+<p>Column H uses document date + 29 days, which matches GSTN's example (dated 1 April, last day 30 April). Sort the documents tab by column H so the oldest open item is on top every morning.</p>
+
+<h2>Daily routine (ten minutes)</h2>
+<table>
+<tr><th>When</th><th>What</th></tr>
+<tr><td>Every morning</td><td>Paste yesterday's B2B, export and SEZ documents from each 30-day client; mark the ones whose IRN already came back.</td></tr>
+<tr><td>Any "Report today" row</td><td>Send message 1 and generate the IRN yourself if you hold the login.</td></tr>
+<tr><td>Before GSTR-1</td><td>Filter "Window closed" rows and agree with the client what happens to each before the return is filed (message 2).</td></tr>
+<tr><td>Once a month</td><td>Re-check column C for any client crossing ₹10 crore; they move into the 30-day rule.</td></tr>
+</table>
+
+<h2>Three client messages</h2>
+<p><strong>1. Report now:</strong> "[Document no.] dated [date] still has no IRN. Your turnover puts you under the 30-day e-invoice limit, so the portal will refuse it after [last day]. Please generate it today, or send me the details and we will."</p>
+<p><strong>2. Window closed:</strong> "[Document no.] dated [date] was not reported within 30 days, and the e-invoice portal no longer accepts it. Let's decide today how to deal with this document before your GSTR-1 is filed; please do not issue it to the customer as it is."</p>
+<p><strong>3. Newly in the rule:</strong> "Your aggregate turnover has crossed ₹10 crore, so every B2B invoice, credit note and debit note must now get its IRN within 30 days of its date. Can your billing team send us a daily list of documents without an IRN?"</p>
+
+<h2>Related guides</h2>
+<ul>
+<li><a href="e-invoice-applicability-threshold-5-crore-2026.html">Who must e-invoice: the ₹5 crore threshold</a></li>
+<li><a href="ca-firm-gst-ims-invoice-action-sheet-october-2026-gstr-2b.html">IMS invoice action sheet for October 2026</a></li>
+<li><a href="ca-firm-gstr1-chase-before-11th.html">GSTR-1 chase list before the 11th</a></li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<div class="next"><p>The <a href="https://mininglife1.gumroad.com/l/ca-firm-compliance-calendar?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=ca_einvoice_30day_sheet">White-Label Client Compliance Calendar for CA Firms</a> (₹999/year) sends four quarterly packs with your firm name on the DOCX, PDF and WhatsApp image, plus national .ics/.xlsx and extension notes. Files are made after checkout (not instant). 14-day refund from when you receive the first pack. Disclosure: that is an Unadhi product. You can use this e-invoice sheet without buying anything.</p></div>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
