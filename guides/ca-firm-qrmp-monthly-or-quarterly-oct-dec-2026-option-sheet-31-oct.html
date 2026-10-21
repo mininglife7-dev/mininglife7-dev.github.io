@@ -1,0 +1,107 @@
+<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QRMP or monthly for October–December 2026? A one-row-per-client sheet for CA firms to settle every GSTIN before the window shuts on Saturday 31 October</title><meta name="description" content="The GST option for the October–December 2026 quarter (QRMP quarterly or monthly) can be changed only until 31 October 2026, and only by the taxpayer, not the GST practitioner. A one-row-per-GSTIN option sheet with Google Sheets formulas, the three blockers that stop a switch, the dates on each path and three client messages."><link rel="canonical" href="https://unadhi.com/guides/ca-firm-qrmp-monthly-or-quarterly-oct-dec-2026-option-sheet-31-oct.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="QRMP or monthly for October–December 2026? A one-row-per-client sheet for CA firms to settle every GSTIN before the window shuts on Saturday 31 October"><meta property="og:description" content="Window for the Oct–Dec 2026 quarter: 1 August to 31 October 2026. The client must switch from their own login. One sheet to decide and track every GSTIN, plus the blockers and the dates on each path."><meta property="og:url" content="https://unadhi.com/guides/ca-firm-qrmp-monthly-or-quarterly-oct-dec-2026-option-sheet-31-oct.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+.signup{border:1px dashed #0a5c55;border-radius:8px;padding:10px 16px;background:#f4faf9;margin-top:1.4em}.signup p{margin:.3em 0}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "QRMP or monthly for October–December 2026? A one-row-per-client sheet for CA firms to settle every GSTIN before the window shuts on Saturday 31 October", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en-IN", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/ca-firm-qrmp-monthly-or-quarterly-oct-dec-2026-option-sheet-31-oct.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the last date to opt in or opt out of QRMP for October–December 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Per the GST portal FAQ, the option for the October–December quarter can be exercised from 1 August to 31 October. For the October–December 2026 quarter that is Saturday 31 October 2026. The path is Services > Returns > Opt-in for Quarterly Return, and the same screen is used to opt out."}}, {"@type": "Question", "name": "Can a GST practitioner opt in or opt out of QRMP for a client?", "acceptedAnswer": {"@type": "Answer", "text": "No. The GST portal FAQ says a GST practitioner cannot opt in or opt out of the QRMP scheme on behalf of the taxpayer and can only view the details. The client has to do it from their own login."}}, {"@type": "Question", "name": "Do I have to choose QRMP again every quarter?", "acceptedAnswer": {"@type": "Answer", "text": "No. Once exercised, the option continues for later quarters unless the taxpayer changes it or the aggregate turnover goes above Rs 5 crore. If nothing is done by 31 October 2026, the current option simply carries on into October–December 2026."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>QRMP or monthly for October–December 2026? A one-row-per-client sheet for CA firms to settle every GSTIN before the window shuts on Saturday 31 October</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the white-label calendar linked below is an Unadhi product (₹999/year).</p>
+<p id="short-answer"><strong>Short answer (checked 21 Oct 2026):</strong> the choice between <strong>quarterly returns under QRMP</strong> and <strong>monthly GSTR-1 and GSTR-3B</strong> for the <strong>October–December 2026</strong> quarter can be made or changed only from 1 August to <strong>31 October</strong> (GST portal QRMP FAQ). That is <strong>Saturday 31 October 2026</strong>, so aim for <strong>Friday 30 October</strong>. Three things make this a CA-firm problem: a <strong>GST practitioner cannot switch for the client</strong> (the client must do it from their own login), the switch is <strong>refused</strong> if the client's last due GSTR-3B is unfiled or GSTR-1 data is already saved for the quarter, and if nobody does anything the <strong>current option carries on</strong> for the whole quarter. Eligibility is aggregate turnover (PAN level) up to <strong>₹5 crore</strong> in the current and preceding financial year. This is a starting point, not tax advice. Check the GST portal before you tell a client a date.</p>
+<div class="answer"><p><strong>What you get from this guide:</strong> a finished <strong>QRMP option sheet</strong> for your firm: one row per client GSTIN with the current option, turnover test, the two blockers, a suggested option and the action, all by Google Sheets formula, so a filter shows exactly which clients must log in before 31 October. It comes with the dates each path leads to for October–December 2026, the blockers explained, and three client messages. Nothing here needs software.</p></div>
+
+<h2>The rules you need for this decision</h2>
+<table><thead><tr><th>Point</th><th>What the GST portal says</th></tr></thead><tbody>
+<tr><td>Window for Oct–Dec quarter</td><td>1 August to 31 October. Next window (January–March 2027): 1 November 2026 to 31 January 2027.</td></tr>
+<tr><td>Where</td><td>Services &gt; Returns &gt; Opt-in for Quarterly Return (the same option is used to opt out).</td></tr>
+<tr><td>Who can do it</td><td>The taxpayer. A GST practitioner can only view the details.</td></tr>
+<tr><td>Eligible</td><td>Aggregate annual turnover (PAN based) up to ₹5 crore in the current FY and the preceding FY; normal taxpayers, SEZ units/developers, those who opted out of composition. Goes away if turnover crosses ₹5 crore.</td></tr>
+<tr><td>Blocker 1</td><td>The last GSTR-3B whose due date is over must be filed. On 30–31 October 2026 that is September 2026 (monthly filers, due 20 October) or July–September 2026 (quarterly filers, due 22 or 24 October).</td></tr>
+<tr><td>Blocker 2</td><td>You cannot opt in for a quarter if any GSTR-1 data is <em>saved</em> for that quarter. Delete the saved records (RESET) first.</td></tr>
+<tr><td>Carries on</td><td>Once chosen, the option continues for later quarters; no yearly renewal, no reminder. One quarter can be changed at a time.</td></tr>
+<tr><td>Multiple GSTINs on one PAN</td><td>Each GSTIN can have its own option. Eligibility is still tested on PAN-level turnover.</td></tr>
+<tr><td>IFF (quarterly filers)</td><td>Optional; B2B invoices and notes for months 1 and 2, by the 13th of the next month, so buyers get credit monthly. The portal refuses an IFF whose value is above the limit (shown on the portal as ₹50 lakh); move the rest to the next period.</td></tr>
+<tr><td>Monthly payment (quarterly filers)</td><td>PMT-06 by the 25th for months 1 and 2: fixed sum ("35% challan") or self-assessment.</td></tr>
+</tbody></table>
+
+<h2>Where each choice leads for October–December 2026</h2>
+<table><thead><tr><th>Month</th><th>Monthly filer</th><th>Quarterly filer (QRMP)</th></tr></thead><tbody>
+<tr><td>October 2026</td><td>GSTR-1 by Wed 11 Nov · GSTR-3B by Fri 20 Nov</td><td>IFF (optional) by Fri 13 Nov · PMT-06 by Wed 25 Nov</td></tr>
+<tr><td>November 2026</td><td>GSTR-1 by Fri 11 Dec · GSTR-3B by Sun 20 Dec</td><td>IFF (optional) by Sun 13 Dec · PMT-06 by Fri 25 Dec</td></tr>
+<tr><td>December 2026 / the quarter</td><td>GSTR-1 by Mon 11 Jan 2027 · GSTR-3B by Wed 20 Jan 2027</td><td>GSTR-1 for the quarter by Wed 13 Jan 2027 · GSTR-3B for the quarter by Fri 22 or Sun 24 Jan 2027 (by state group)</td></tr>
+</tbody></table>
+<p>Weekend dates: do not plan on a date moving. Aim for the working day before.</p>
+<p><strong>One extra reason to check this year:</strong> the last date to take FY 2025-26 input tax credit is <strong>30 November 2026</strong> (CGST Act s.16(4), earlier if the annual return is filed first). A monthly filer's October GSTR-3B (due 20 November) can carry missed FY 2025-26 credit. A quarterly filer's next GSTR-3B after July–September comes only in January 2027. If a QRMP client still has FY 2025-26 credit to claim, look at it now, while filing the July–September return this week; check the official source and the client's own position before you advise.</p>
+
+<h2>The QRMP option sheet</h2>
+<p>Make one Google Sheet. Row 1 is the header; one row per client GSTIN. Turnover in ₹ lakh (₹5 crore = 500).</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>What goes in it</th></tr></thead><tbody>
+<tr><td>A</td><td>Client</td><td>Name as in your client list</td></tr>
+<tr><td>B</td><td>GSTIN</td><td>15 characters</td></tr>
+<tr><td>C</td><td>Current option</td><td>Monthly / Quarterly (as shown in the client's portal profile)</td></tr>
+<tr><td>D</td><td>Turnover FY 2025-26 (₹ lakh)</td><td>PAN-level aggregate turnover</td></tr>
+<tr><td>E</td><td>Turnover FY 2026-27 so far (₹ lakh)</td><td>PAN-level, April to September plus expected</td></tr>
+<tr><td>F</td><td>Last due GSTR-3B filed?</td><td>Y / N</td></tr>
+<tr><td>G</td><td>GSTR-1 data saved for Oct–Dec?</td><td>Y / N</td></tr>
+<tr><td>H</td><td>B2B buyers who want credit every month?</td><td>Y / N</td></tr>
+<tr><td>I</td><td>Typical B2B invoices per month (₹ lakh)</td><td>For the IFF limit check</td></tr>
+<tr><td>J</td><td>Firm's preferred option</td><td>Monthly / Quarterly (your judgement: cash flow, workload, buyers, credit to claim)</td></tr>
+<tr><td>K</td><td>Eligible for QRMP</td><td><code>=IF(AND(D2&lt;=500,E2&lt;=500),"Eligible","Not eligible: monthly")</code></td></tr>
+<tr><td>L</td><td>Suggested option</td><td><code>=IF(K2&lt;&gt;"Eligible","Monthly",IF(AND(H2="Y",I2&gt;50),"Monthly",J2))</code></td></tr>
+<tr><td>M</td><td>Action before 31 Oct</td><td><code>=IF(L2=C2,"No change",IF(F2="N","File last GSTR-3B first, then client switches",IF(AND(L2="Quarterly",G2="Y"),"Reset saved Oct-Dec GSTR-1, then client switches","Client switches by Fri 30 Oct")))</code></td></tr>
+<tr><td>N</td><td>Done on</td><td>Date the client confirmed, with a screenshot of the portal confirmation</td></tr>
+<tr><td>O</td><td>Owner in your firm</td><td>Article or staff name</td></tr>
+</tbody></table>
+<p>Filter column M for anything other than "No change": that is your chase list. Add conditional formatting so M is red while N is empty. Column L is a rule of thumb, not advice: the firm decides column J client by client. A client that crosses ₹5 crore during the year leaves QRMP anyway; keep column E up to date.</p>
+<p><strong>Example rows (made up, not real clients or GSTINs):</strong></p>
+<table><thead><tr><th>A Client</th><th>B GSTIN</th><th>C Now</th><th>D / E (₹ lakh)</th><th>F 3B filed</th><th>G GSTR-1 saved</th><th>H / I</th><th>J Firm prefers</th><th>L Suggested</th><th>M Action</th></tr></thead><tbody>
+<tr><td>Example Traders</td><td>36XXXXX0000X1ZX</td><td>Monthly</td><td>180 / 95</td><td>Y</td><td>Y</td><td>N / 4</td><td>Quarterly</td><td>Quarterly</td><td>Reset saved Oct-Dec GSTR-1, then client switches</td></tr>
+<tr><td>Sample Components</td><td>27XXXXX0000X1ZX</td><td>Quarterly</td><td>420 / 260</td><td>Y</td><td>N</td><td>Y / 65</td><td>Quarterly</td><td>Monthly</td><td>Client switches by Fri 30 Oct</td></tr>
+<tr><td>Demo Services LLP</td><td>29XXXXX0000X1ZX</td><td>Monthly</td><td>60 / 35</td><td>N</td><td>N</td><td>N / 2</td><td>Quarterly</td><td>Quarterly</td><td>File last GSTR-3B first, then client switches</td></tr>
+<tr><td>Test Pharma</td><td>33XXXXX0000X1ZX</td><td>Monthly</td><td>610 / 330</td><td>Y</td><td>Y</td><td>Y / 40</td><td>Monthly</td><td>Monthly</td><td>No change</td></tr>
+</tbody></table>
+
+<h2>Week plan to 31 October</h2>
+<ul class="check">
+<li>Wed 21 – Thu 22 Oct: fill columns A–J from the portal (the practitioner view shows the profile) and your records.</li>
+<li>Thu 22 – Sat 24 Oct: file the July–September GSTR-3B for quarterly clients and any late September GSTR-3B, so blocker 1 is gone.</li>
+<li>Mon 26 – Wed 28 Oct: send message 1 or 2 below to every client whose column M is not "No change"; reset saved GSTR-1 data where needed.</li>
+<li>Thu 29 – Fri 30 Oct: collect the confirmation screenshot from each client into column N. Phone anyone still open.</li>
+</ul>
+
+<h2>Three client messages</h2>
+<p><strong>1. Client should move to quarterly:</strong> "From October 2026 you can file GST returns once a quarter and pay tax monthly by challan. Only you can choose this, from your own GST login: Services &gt; Returns &gt; Opt-in for Quarterly Return, select quarterly for October–December 2026. Please do it by Friday 30 October and send us a screenshot of the confirmation. The option closes on 31 October."</p>
+<p><strong>2. Client should go back to monthly:</strong> "Your buyers want GST credit every month and your monthly B2B sales are above what the quarterly invoice facility takes. Please log in to the GST portal, go to Services &gt; Returns &gt; Opt-in for Quarterly Return and select monthly for October–December 2026, by Friday 30 October, and send us the screenshot. Your October GSTR-1 will then be due on 11 November."</p>
+<p><strong>3. No change:</strong> "No action needed: you stay on [monthly / quarterly] filing for October–December 2026. Your next GST dates are [dates]."</p>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Want the dates sent to your clients every quarter?</h2>
+<div class="next"><p>The <a href="https://mininglife1.gumroad.com/l/ca-firm-compliance-calendar?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=ca_qrmp_option_sheet_oct_dec_2026">White-Label Client Compliance Calendar for CA Firms</a> (₹999/year) sends four quarterly packs with your firm name on the DOCX, PDF and WhatsApp image, plus national .ics/.xlsx and extension notes. Files are made after checkout (not instant). 14-day refund from when you receive the first pack. Disclosure: that is an Unadhi product. You can use this QRMP option sheet without buying anything.</p></div>
+
+<div class="note"><p>This guide is general information, not legal advice and not an official government publication. Due dates, limits and portal behaviour can change by notification or advisory. Check the GST portal (gst.gov.in), its advisories and the CBIC notifications before you file or tell a client a date. Your firm stays responsible for advice to your clients.</p></div>
+
+<h2>Sources to re-check</h2>
+<ul class="src">
+<li>GST portal, FAQs on the form to change profile for the QRMP scheme (eligibility up to ₹5 crore PAN-level turnover; Services &gt; Returns &gt; Opt-in for Quarterly Return; windows per quarter incl. Q3 1 August to 31 October; GST practitioner can only view; different option per GSTIN; saved GSTR-1 data blocks opting in; option continues), fetched 21 Oct 2026: <a href="https://tutorial.gst.gov.in/userguide/returns/FAQs_change_profile.htm">tutorial.gst.gov.in</a></li>
+<li>GST portal, "Frequently asked questions on QRMP scheme" PDF (last due GSTR-3B must be filed; IFF optional, expires after the 13th; PMT-06 fixed sum / self-assessment by the 25th; table of windows with last dates 31 January, 30 April, 31 July, 31 October; Notification 82/2020 and 85/2020 – Central Tax, Circular 143/13/2020-GST), fetched 21 Oct 2026: <a href="https://tutorial.gst.gov.in/downloads/news/faq_on_qrmp_iff.pdf">tutorial.gst.gov.in (PDF)</a></li>
+<li>GST portal, FAQs on IFF (tables covered, 13th of next month, value limit shown as ₹50 lakh, RESET of saved records), fetched 21 Oct 2026: <a href="https://tutorial.gst.gov.in/userguide/returns/FAQs_IFF.htm">tutorial.gst.gov.in</a></li>
+<li>CGST Rules, rule 61A (option window) and CGST Act s.16(4) (30 November time limit): check the official source at <a href="https://taxinformation.cbic.gov.in/">taxinformation.cbic.gov.in</a></li>
+<li>Related guides: <a href="gstr-1-quarterly-iff-qrmp-due-date-oct-2026.html">GSTR-1 quarterly / IFF due dates</a> · <a href="gstr-3b-quarterly-due-date-oct-2026-22nd-24th.html">GSTR-3B quarterly due date (22nd/24th)</a> · <a href="gst-itc-time-limit-section-16-4-30-november-gstr-2b.html">ITC time limit 30 November</a> · <a href="ca-firm-november-2026-due-date-client-chase-list.html">November 2026 chase list</a> · <a href="ca-firm-gst-returns-three-year-bar-sheet-unbarring-2026.html">GST three-year bar sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
