@@ -1,0 +1,101 @@
+<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IMS action sheet for CA firms: accept, reject or keep pending every supplier invoice before the October 2026 GSTR-3B (draft GSTR-2B 14 Nov, 3B 20 Nov, FY 2025-26 credit after 30 Nov)</title><meta name="description" content="A Google Sheet for the GST Invoice Management System: one row per supplier document, three checks against the purchase register, a formula that suggests Accept, Pending or Reject, and deadline flags for FY 2025-26 invoices and credit notes. With the October 2026 dates, the rules from the GST portal's IMS FAQs and three client messages."><link rel="canonical" href="https://unadhi.com/guides/ca-firm-gst-ims-invoice-action-sheet-october-2026-gstr-2b.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="IMS action sheet for CA firms: accept, reject or keep pending every supplier invoice before the October 2026 GSTR-3B (draft GSTR-2B 14 Nov, 3B 20 Nov, FY 2025-26 credit after 30 Nov)"><meta property="og:description" content="No action in IMS = deemed accepted on the 14th. October 2026: GSTR-1 11 Nov, draft GSTR-2B 14 Nov, GSTR-3B 20 Nov, FY 2025-26 pending invoices leave IMS after 30 Nov. One sheet to decide every record."><meta property="og:url" content="https://unadhi.com/guides/ca-firm-gst-ims-invoice-action-sheet-october-2026-gstr-2b.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+.signup{border:1px dashed #0a5c55;border-radius:8px;padding:10px 16px;background:#f4faf9;margin-top:1.4em}.signup p{margin:.3em 0}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "IMS action sheet for CA firms: accept, reject or keep pending every supplier invoice before the October 2026 GSTR-3B (draft GSTR-2B 14 Nov, 3B 20 Nov, FY 2025-26 credit after 30 Nov)", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en-IN", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/ca-firm-gst-ims-invoice-action-sheet-october-2026-gstr-2b.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What happens if no action is taken on an invoice in IMS?", "acceptedAnswer": {"@type": "Answer", "text": "Per the GST portal's IMS FAQs, records with no action are deemed accepted when the draft GSTR-2B is generated on the 14th of the following month, and their ITC flows to GSTR-3B."}}, {"@type": "Question", "name": "Can I change an IMS action after the draft GSTR-2B is generated?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Actions can be changed until GSTR-3B for that period is filed. If anything changes after the 14th, GSTR-2B must be recomputed from the IMS dashboard before filing GSTR-3B. Actions freeze when GSTR-3B is filed."}}, {"@type": "Question", "name": "How long can an invoice or credit note stay pending in IMS?", "acceptedAnswer": {"@type": "Answer", "text": "An invoice can stay pending until the section 16(4) time limit, after which it is removed from IMS; for FY 2025-26 that is 30 November 2026 (or the annual return date if earlier). From the October 2025 tax period, credit notes and some amendments can be kept pending for one tax period only. Check the GST portal for the current rules."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>IMS action sheet for CA firms: accept, reject or keep pending every supplier invoice before the October 2026 GSTR-3B (draft GSTR-2B 14 Nov, 3B 20 Nov, FY 2025-26 credit after 30 Nov)</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the white-label calendar linked below is an Unadhi product (₹999/year).</p>
+<p id="short-answer"><strong>Short answer (checked 21 Oct 2026):</strong> every purchase invoice, debit note and credit note your client's suppliers report in GSTR-1, GSTR-1A or IFF lands in the client's <strong>Invoice Management System (IMS)</strong> on the GST portal. The client (or you) can <strong>Accept</strong>, <strong>Reject</strong> or keep it <strong>Pending</strong>. Anything left with <strong>no action is deemed accepted</strong> when the draft GSTR-2B is made on the <strong>14th</strong>, and the action freezes when GSTR-3B is filed. For the <strong>October 2026</strong> cycle that means: suppliers' GSTR-1 by <strong>Wed 11 Nov</strong>, draft GSTR-2B on <strong>Sat 14 Nov</strong>, GSTR-3B by <strong>Fri 20 Nov</strong>. Invoices of <strong>FY 2025-26</strong> still kept pending drop out of IMS once the section 16(4) time limit passes (<strong>Mon 30 Nov 2026</strong>), so decide them in the October return. This is a starting point, not legal advice. Check the GST portal before you act for a client.</p>
+<div class="answer"><p><strong>What you get from this guide:</strong> a finished <strong>IMS action sheet</strong> for your firm: one row per supplier document per client, three yes/no checks (in the purchase register, amount matches, goods or services received), and a Google Sheets formula that suggests <em>Accept</em>, <em>Pending</em> or <em>Reject</em> and flags the records with a deadline (FY 2025-26 invoices, credit notes). It comes with the October 2026 dates, a day-by-day plan to 20 November, the rules from the GST portal's own IMS FAQs, and three client messages. Nothing here needs software.</p></div>
+
+<h2>The October 2026 IMS dates</h2>
+<table><thead><tr><th>Date</th><th>What happens</th><th>What your firm does</th></tr></thead><tbody>
+<tr><td>Now to Sat 31 Oct</td><td>October invoices appear in IMS as soon as suppliers <em>save</em> them in GSTR-1/1A/IFF</td><td>Download each client's IMS to Excel (the portal offers an Excel download) and start the sheet; list every FY 2025-26 record still pending</td></tr>
+<tr><td>Wed 11 Nov</td><td>Monthly GSTR-1 for October due (Deepavali is Sun 8 Nov, so expect suppliers to file late in the window)</td><td>Chase key suppliers whose invoices are missing</td></tr>
+<tr><td>Fri 13 Nov</td><td>IFF for October due for suppliers in QRMP (optional for them)</td><td>Second download of IMS; refresh the sheet</td></tr>
+<tr><td><strong>Sat 14 Nov</strong></td><td><strong>Draft GSTR-2B for October</strong> generated; every record with no action is treated as accepted</td><td>Finish your Accept / Reject / Pending pass before this if you can</td></tr>
+<tr><td>Sun 15 to Thu 19 Nov</td><td>You can still change actions until GSTR-3B is filed</td><td>If you changed anything after the 14th, <strong>recompute GSTR-2B</strong> from the IMS dashboard (mandatory; no limit on recomputes before filing)</td></tr>
+<tr><td><strong>Fri 20 Nov</strong></td><td>GSTR-3B for October due (monthly filers); actions freeze on filing</td><td>Aim to file by Wed 18 Nov</td></tr>
+<tr><td><strong>Mon 30 Nov</strong></td><td>Section 16(4) time limit for FY 2025-26 ITC (30 November, or the annual return date if earlier)</td><td>Any FY 2025-26 invoice still pending after this leaves IMS; the October return is the last normal chance to accept it</td></tr>
+<tr><td>Sun 20 Dec</td><td>Last day a credit note in the October 2026 GSTR-2B can stay pending for a monthly recipient (due date of the November 2026 GSTR-3B)</td><td>Accept or reject it in the November return</td></tr>
+<tr><td>Thu 14 Jan 2027</td><td>Quarterly GSTR-2BQ for October–December 2026 (QRMP recipients); GSTR-3BQ due 22 or 24 Jan 2027</td><td>Same pass, once a quarter</td></tr>
+</tbody></table>
+<p>If a client has not filed the September 2026 GSTR-3B, the portal will not make the October draft GSTR-2B on the 14th; it can be generated from the IMS dashboard after the September return is filed. Fix that first.</p>
+
+<h2>The IMS action sheet</h2>
+<p>Make one Google Sheet per client (or one tab per GSTIN). Row 1 is the header; one row per supplier document. Paste from the IMS Excel download, then add your three checks from the client's purchase register.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>What goes in it</th></tr></thead><tbody>
+<tr><td>A</td><td>Supplier GSTIN</td><td>From the IMS download</td></tr>
+<tr><td>B</td><td>Supplier name</td><td>From the IMS download</td></tr>
+<tr><td>C</td><td>Document type</td><td>Invoice / Debit note / Credit note / Amendment</td></tr>
+<tr><td>D</td><td>Document no. and date</td><td>From the IMS download</td></tr>
+<tr><td>E</td><td>FY of document</td><td>2025-26 or 2026-27</td></tr>
+<tr><td>F</td><td>Tax amount (₹)</td><td>IGST + CGST + SGST + cess</td></tr>
+<tr><td>G</td><td>In purchase register?</td><td>Y / N</td></tr>
+<tr><td>H</td><td>Amount matches?</td><td>Y / N (tax and taxable value, within ₹1)</td></tr>
+<tr><td>I</td><td>Received?</td><td>Y / N / In transit (goods or services actually received, as section 16(2)(b) requires for ITC)</td></tr>
+<tr><td>J</td><td>Suggested action</td><td><code>=IF(AND(G2="Y",H2="Y",I2="Y"),"Accept",IF(I2="In transit","Pending: not yet received",IF(G2="N","Ask client: not ours = Reject, still checking = Pending",IF(H2="N","Pending or Reject: ask supplier to correct","Check"))))</code></td></tr>
+<tr><td>K</td><td>Deadline flag</td><td><code>=IF(J2="Accept","",IF(C2="Credit note","Credit note: Pending allowed for one tax period only",IF(E2="2025-26","Decide in October return: FY 2025-26 leaves IMS after 30 Nov 2026","")))</code></td></tr>
+<tr><td>L</td><td>Action taken on portal</td><td>Accept / Reject / Pending / No action (deemed accepted)</td></tr>
+<tr><td>M</td><td>Remark to supplier</td><td>Short reason for Reject or Pending (GSTN announced an optional remark for these actions in Sep 2025; use it if the portal shows it, otherwise email the supplier)</td></tr>
+<tr><td>N</td><td>Done by / date</td><td>Staff name</td></tr>
+</tbody></table>
+<p>Filter column J for anything other than "Accept" and column K for any flag. Those rows are the work; the rest can stay as "no action", because no action is treated as accepted at GSTR-2B generation. The formula is a suggestion: the client and your firm decide each action.</p>
+<p><strong>Example rows (made up, not real suppliers, GSTINs or amounts):</strong></p>
+<table><thead><tr><th>B Supplier</th><th>C Type</th><th>E FY</th><th>F Tax</th><th>G</th><th>H</th><th>I</th><th>J Suggested</th><th>K Flag</th></tr></thead><tbody>
+<tr><td>Example Steel Traders (36XXXXX0000X1ZX)</td><td>Invoice</td><td>2026-27</td><td>18,000</td><td>Y</td><td>Y</td><td>Y</td><td>Accept</td><td></td></tr>
+<tr><td>Sample Logistics</td><td>Invoice</td><td>2025-26</td><td>4,500</td><td>Y</td><td>N</td><td>Y</td><td>Pending or Reject: ask supplier to correct</td><td>Decide in October return: FY 2025-26 leaves IMS after 30 Nov 2026</td></tr>
+<tr><td>Demo Packaging</td><td>Credit note</td><td>2026-27</td><td>2,700</td><td>Y</td><td>Y</td><td>Y</td><td>Accept</td><td></td></tr>
+<tr><td>Test Electricals</td><td>Invoice</td><td>2026-27</td><td>9,000</td><td>N</td><td>N</td><td>N</td><td>Ask client: not ours = Reject, still checking = Pending</td><td></td></tr>
+</tbody></table>
+
+<h2>What each action does (from the GST portal's IMS FAQs)</h2>
+<ul>
+<li><strong>Accept:</strong> the record goes to "ITC Available" in GSTR-2B and its ITC auto-fills in GSTR-3B.</li>
+<li><strong>Reject:</strong> the record goes to "ITC Rejected" in GSTR-2B and does not flow to GSTR-3B. If the supplier has already filed GSTR-1, the supplier has to correct it through GSTR-1A or a later GSTR-1/IFF; the corrected record comes back to IMS for a fresh action.</li>
+<li><strong>Pending:</strong> the record stays out of this month's GSTR-2B and GSTR-3B and waits in IMS. For invoices it can wait until the section 16(4) time limit, after which it is removed from IMS.</li>
+<li><strong>No action:</strong> deemed accepted at GSTR-2B generation.</li>
+<li><strong>Credit notes (from the October 2025 tax period):</strong> a credit note, an upward amendment of a credit note and some downward amendments can be kept pending for <strong>one tax period only</strong> (one month for a monthly recipient, one quarter for a quarterly one); after that the pending option is switched off and you must accept or reject. On accepting, the recipient can declare the amount of ITC to be reduced when the ITC was never taken or was taken only in part. If a credit note is rejected, the amount is added back to the supplier's liability in their next GSTR-3B. Check the official source for what happens to a record left without action after the pending period.</li>
+<li><strong>Not in IMS at all:</strong> reverse-charge records, documents from GSTR-5 and GSTR-6, records where ITC is not available because of place-of-supply rules or section 16(4), and rule 37A reversals. These go straight to GSTR-2B.</li>
+<li>You can change an action as many times as you like before GSTR-3B is filed; the latest one counts and it freezes on filing. If a supplier edits a saved record before filing GSTR-1, your action on it is reset.</li>
+</ul>
+
+<h2>Three client messages</h2>
+<p><strong>1. Purchase register for October (send now):</strong> "Please send your October purchase register and the bills you received by 10 November. From 14 November the GST portal treats every supplier bill we have not checked as accepted, so we want to check them against your books before then."</p>
+<p><strong>2. Bill you may not recognise:</strong> "A supplier, [name], has reported a bill of ₹[amount] dated [date] against your GSTIN. We cannot find it in your books. Is this your purchase? If not, we will reject it on the portal with a remark so the supplier corrects it."</p>
+<p><strong>3. Last year's bills still on hold:</strong> "These bills from 2025-26 are still on hold on the GST portal: [list]. The last date to claim credit for 2025-26 is 30 November 2026, so we need to decide on them in the October return due 20 November. Please confirm by 13 November whether each one was received and is correct."</p>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Want the dates sent to your clients every quarter?</h2>
+<div class="next"><p>The <a href="https://mininglife1.gumroad.com/l/ca-firm-compliance-calendar?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=ca_gst_ims_action_sheet">White-Label Client Compliance Calendar for CA Firms</a> (₹999/year) sends four quarterly packs with your firm name on the DOCX, PDF and WhatsApp image, plus national .ics/.xlsx and extension notes. Files are made after checkout (not instant). 14-day refund from when you receive the first pack. Disclosure: that is an Unadhi product. You can use this IMS action sheet without buying anything.</p></div>
+
+<div class="note"><p>This guide is general information, not legal advice and not an official government publication. Due dates, IMS rules and portal behaviour can change by notification or advisory. Check the GST portal (gst.gov.in), its advisories and the CBIC notifications before you act or tell a client a date. Your firm stays responsible for advice to your clients.</p></div>
+
+<h2>Sources to re-check</h2>
+<ul class="src">
+<li>GST portal, FAQs on Invoice Management System (actions, deemed acceptance, draft GSTR-2B on the 14th, recompute, pending until section 16(4), records not in IMS, quarterly GSTR-2BQ, Excel download), fetched 21 Oct 2026: <a href="https://tutorial.gst.gov.in/userguide/returns/FAQ_IMS_Dashboard.htm">tutorial.gst.gov.in</a></li>
+<li>GSTN, revised advisory on IMS (sequential GSTR-2B, recompute after the 14th, no action after GSTR-3B): <a href="https://tutorial.gst.gov.in/downloads/news/revised_advisory_on_ims.pdf">tutorial.gst.gov.in (PDF)</a></li>
+<li>GSTN advisory "New Changes in Invoice Management System (IMS)", 23 Sep 2025 (pending for credit notes for one tax period, ITC reduction amount, remarks; from October 2025 tax period), copy checked 21 Oct 2026: <a href="https://www.gstindiaonline.com/pages/gstlegislation/GSTN%20Guides/GSTN_Guides_Pdf/2025/Advisory%20New%20Changes%20in%20Invoice%20Management%20System%20(IMS).pdf">gstindiaonline.com (PDF)</a>; GSTN FAQ on the October 2025 IMS changes (pending date formula and examples): <a href="https://tutorial.gst.gov.in/downloads/news/creative_faq_on_gstr9_for_24_25_dt_15_oct_25_v6_final.pdf">tutorial.gst.gov.in (PDF)</a>; check the official source at <a href="https://services.gst.gov.in/services/advisory/advisoryandreleases">services.gst.gov.in</a></li>
+<li>GST portal, FAQs on GSTR-2B (generated on the 14th; cut-off dates): <a href="https://tutorial.gst.gov.in/userguide/returns/FAQ_gstr2b.htm">tutorial.gst.gov.in</a></li>
+<li>CGST Act, 2017, sections 16(2)(b) and 16(4): <a href="https://taxinformation.cbic.gov.in/">taxinformation.cbic.gov.in</a> (check the official source)</li>
+<li>Related guides: <a href="gst-itc-time-limit-section-16-4-30-november-gstr-2b.html">ITC time limit: 30 November</a> · <a href="ca-firm-gstr1-chase-before-11th.html">GSTR-1 chase before the 11th</a> · <a href="ca-firm-gstr3b-chase-list-before-20th.html">GSTR-3B chase list before the 20th</a> · <a href="ca-firm-november-2026-due-date-client-chase-list.html">November 2026 chase list</a> · <a href="ca-firm-gst-returns-three-year-bar-sheet-unbarring-2026.html">GST three-year bar sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
