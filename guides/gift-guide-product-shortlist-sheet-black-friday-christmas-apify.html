@@ -1,0 +1,154 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gift guide shortlist sheet for Black Friday and Christmas: every product from the shops you feature, sorted into price bands, with stock, discount and a price re-check before you publish</title><meta name="description" content="A free Google Sheet for bloggers, newsletter writers, editors and creator or PR agencies who publish gift guides: one row per product from the shops you feature, with price band (under 25, 25 to 50, 50 to 100), in stock, % off, image and link, a publish-day price re-check, and the disclosure line each link needs (FTC and UK ASA guidance)."><link rel="canonical" href="https://unadhi.com/guides/gift-guide-product-shortlist-sheet-black-friday-christmas-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Gift guide shortlist sheet: price bands, stock, % off and a publish-day price re-check"><meta property="og:description" content="One row per product from the shops you feature, sorted into under 25 / 25 to 50 / 50 to 100, with stock, % off, image, link, a re-check before you publish and the disclosure line each link needs."><meta property="og:url" content="https://unadhi.com/guides/gift-guide-product-shortlist-sheet-black-friday-christmas-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Gift guide shortlist sheet for Black Friday and Christmas: every product from the shops you feature, sorted into price bands, with stock, discount and a price re-check before you publish", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/gift-guide-product-shortlist-sheet-black-friday-christmas-apify.html", "step": [{"@type": "HowToStep", "name": "Pull the products", "text": "Run the product tracker on the shops you want to feature, or ask each brand for its own product export, and import the CSV as a tab named scrape."}, {"@type": "HowToStep", "name": "Build the shortlist tab", "text": "Add the shortlist tab with the formulas from this guide: price band, % off, and a Shortlist or Skip verdict for every product."}, {"@type": "HowToStep", "name": "Pick and confirm", "text": "Filter by price band, pick your products, and confirm price, stock and images with each brand's public inbox."}, {"@type": "HowToStep", "name": "Re-check before you publish", "text": "Run the tracker again on publishing day, import it as scrape2, and let the re-check column flag every price change or removed product."}, {"@type": "HowToStep", "name": "Label every link", "text": "Write the disclosure line for each paid, affiliate or gifted product next to the product, not only at the bottom of the page."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I have to disclose affiliate links in a gift guide?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you earn a commission or got the product for free. The US FTC's Endorsement Guides FAQ says the disclosure should be clear and close to the recommendation, suggests wording like 'I get commissions for purchases made through links in this post', says 'paid link' right next to the link should be adequate, and says 'affiliate link' alone or a single home-page disclosure is not enough. In the UK, the ASA's affiliate marketing advice says a guide made up wholly of affiliate links should carry 'Ad' in its title, and that a disclaimer only at the bottom or one saying you 'may' earn a commission is unlikely to be enough."}}, {"@type": "Question", "name": "When should I re-check prices in a Black Friday gift guide?", "acceptedAnswer": {"@type": "Answer", "text": "On the day you publish and again on the morning of Black Friday (Friday 27 November 2026) and Cyber Monday (30 November 2026), because shops change prices and sell out during sale week. The sheet in this guide compares a second product export with your shortlist and flags every price change, sold-out item and removed product."}}, {"@type": "Question", "name": "What if a shop does not allow its products to be collected automatically?", "acceptedAnswer": {"@type": "Answer", "text": "The product tracker reads each shop's robots.txt and terms page and skips any shop that forbids automated access, without charge. For those shops, ask the brand for its own product export (Shopify: Products, Export) or add the rows by hand. The sheet reads columns by header name, so it works with either."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Gift guide shortlist sheet for Black Friday and Christmas: every product from the shops you feature, sorted into price bands, with stock, discount and a price re-check before you publish</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the product tracker and the contact scraper linked below are Unadhi products on the Apify Store. This guide is free, and the sheet also works with product exports that brands send you. Current Apify pricing is only on the Store pages. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet with <strong>one row per product</strong> from the shops you want to feature, already sorted into <strong>price bands</strong> (under 25, 25 to 50, 50 to 100, over 100 in the shop's currency), with <strong>in stock</strong>, <strong>% off</strong> (from the shop's own compare-at price), <strong>main image</strong>, <strong>product link</strong> and a <strong>Shortlist / Skip</strong> verdict. A second tab <strong>re-checks every chosen product on publishing day</strong> and flags price changes, sold-out items and removed products, and a last column holds the <strong>disclosure line</strong> each paid, affiliate or gifted link needs. Built for gift guides going live before Black Friday (Friday 27 November 2026), Cyber Monday (30 November) and Christmas.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>shortlist tab</h3>
+<table><thead><tr><th>Product</th><th>Brand / shop</th><th>Price</th><th>Band</th><th>% off</th><th>In stock</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>Example Enamel Camping Mug</td><td>Example Outdoor Co</td><td>18.00</td><td>Under 25</td><td></td><td>true</td><td>Shortlist</td></tr>
+<tr><td>Example Merino Scarf</td><td>Example Knitwear</td><td>42.00</td><td>25 to 50</td><td>16</td><td>true</td><td>Shortlist</td></tr>
+<tr><td>Example Ceramic Pour-Over Set</td><td>Example Studio</td><td>64.00</td><td>50 to 100</td><td></td><td>false</td><td>Skip: out of stock</td></tr>
+<tr><td>Example Leather Card Holder</td><td>Example Goods</td><td>29.00</td><td>25 to 50</td><td></td><td>true</td><td>Skip: no image</td></tr>
+</tbody></table>
+<h3>recheck tab (publishing day)</h3>
+<table><thead><tr><th>Product</th><th>Price in guide</th><th>Price today</th><th>In stock today</th><th>Re-check</th></tr></thead><tbody>
+<tr><td>Example Enamel Camping Mug</td><td>18.00</td><td>18.00</td><td>true</td><td>OK</td></tr>
+<tr><td>Example Merino Scarf</td><td>42.00</td><td>36.00</td><td>true</td><td>Price changed: update the guide</td></tr>
+<tr><td>Example Wool Socks, 3 pack</td><td>22.00</td><td>gone</td><td></td><td>Removed from the shop: replace it</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real products, brands or shops.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Bloggers, newsletter writers and editors</strong> who publish "gifts under 25" or "gifts for him / her" guides and keep losing time to sold-out products and wrong prices.</li>
+<li><strong>Creator and influencer agencies</strong> building gift lists for several creators at once.</li>
+<li><strong>PR agencies</strong> pitching their brand clients' products to gift-guide editors: run it on your own clients' shops and send editors a clean list with prices, images and links.</li>
+</ul>
+
+<h2>Step 1: get the products into a tab named scrape</h2>
+<h3>With the product tracker</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_gift_guide_sheet">E-commerce Product Data Scraper (Shopify, WooCommerce, any shop)</a> on the Apify Store and list the shops (homepages or a single collection page, for example a shop's "gifts" collection):</p>
+<pre><code>{
+  "startUrls": [
+    { "url": "https://brand-one.example/collections/gifts" },
+    { "url": "https://brand-two.example" }
+  ],
+  "maxProductsPerShop": 200,
+  "includeDescription": false
+}</code></pre>
+<ul>
+<li><code>maxProductsPerShop</code>: the default is 100. You pay only for products delivered, so a collection page keeps the run small.</li>
+<li><code>includeDescription</code>: switch it off for a shortlist; you write your own copy anyway.</li>
+<li>Marketplaces whose terms forbid scraping (Amazon, Etsy, eBay and others) are refused, and the tracker reads each shop's robots.txt and terms page. A shop whose terms forbid automated access is skipped and not charged. Many Shopify shops keep Shopify's default terms, which do. Check the run's <strong>Storage → Key-value store → SHOPS_SUMMARY</strong>: <code>ok</code> means products were collected; <code>blocked-by-terms</code>, <code>blocked-by-robots</code> or <code>skipped-terms-unverifiable</code> means use the brand's own export below.</li>
+</ul>
+<p>Export the run's dataset as <strong>CSV</strong>. In your Google Sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Do not rename the headers. You get one row per product with columns such as <code>title</code>, <code>brand</code>, <code>shop</code>, <code>url</code>, <code>price</code>, <code>compareAtPrice</code>, <code>currency</code>, <code>inStock</code>, <code>category</code> and <code>images/0</code>. For Shopify shops, <code>price</code> and <code>compareAtPrice</code> come from the cheapest variant (so write "from 42.00" if sizes cost more), <code>brand</code> is the product's vendor and <code>inStock</code> is true if any variant is available. WooCommerce rows have no <code>brand</code>, so the sheet shows the shop name instead.</p>
+<h3>From the brand's own export</h3>
+<p>Brands that want to be in your guide will usually send a product file. From Shopify it is <strong>Products → Export</strong> (one row per variant, columns such as Title, Vendor, Variant Price, Variant Compare At Price, Variant Inventory Qty and Image Src). Paste it into <code>scrape</code> and change the header names in quotes in the formulas below. Rows with an empty Title are extra variants of the product above; filter them out.</p>
+
+<h2>Step 2: build the shortlist tab</h2>
+<p>Add a tab named <code>shortlist</code>. Each column reads one <code>scrape</code> column by its header name, so the sheet does not break if the column order changes. Put this in A2 and copy it across to H2, changing the header in quotes, then copy row 2 down:</p>
+<pre><code>=INDEX(scrape!$A:$ZZ, ROW(), MATCH("title", scrape!$1:$1, 0))</code></pre>
+<table><thead><tr><th>Column</th><th>Header</th><th>Reads <code>scrape</code> column</th></tr></thead><tbody>
+<tr><td>A</td><td>product</td><td><code>title</code></td></tr>
+<tr><td>B</td><td>brand / shop</td><td><code>brand</code>, or <code>shop</code> when brand is empty: <code>=IF(INDEX(scrape!$A:$ZZ,ROW(),MATCH("brand",scrape!$1:$1,0))="", INDEX(scrape!$A:$ZZ,ROW(),MATCH("shop",scrape!$1:$1,0)), INDEX(scrape!$A:$ZZ,ROW(),MATCH("brand",scrape!$1:$1,0)))</code></td></tr>
+<tr><td>C</td><td>url</td><td><code>url</code></td></tr>
+<tr><td>D</td><td>price</td><td><code>price</code></td></tr>
+<tr><td>E</td><td>compare-at</td><td><code>compareAtPrice</code></td></tr>
+<tr><td>F</td><td>currency</td><td><code>currency</code></td></tr>
+<tr><td>G</td><td>in stock</td><td><code>inStock</code></td></tr>
+<tr><td>H</td><td>image</td><td><code>images/0</code></td></tr>
+</tbody></table>
+<p>Then the three working columns:</p>
+<pre><code>I2  band:     =IF(D2="", "", IF(D2&lt;=25, "Under 25", IF(D2&lt;=50, "25 to 50", IF(D2&lt;=100, "50 to 100", "Over 100"))))
+J2  % off:    =IF(AND(ISNUMBER(D2), ISNUMBER(E2), E2&gt;D2), ROUND((E2-D2)/E2*100), "")
+K2  verdict:  =IF(LOWER(TO_TEXT(G2))&lt;&gt;"true", "Skip: out of stock",
+                IF(H2="", "Skip: no image",
+                IF(D2="", "Skip: no price", "Shortlist")))</code></pre>
+<p>Add a filter on row 1, filter column K to <em>Shortlist</em> and column I to the band you are writing, and sort by brand. Add four columns of your own: <strong>L picked</strong> (yes / no), <strong>M link type</strong> (plain / affiliate / gifted / paid placement), <strong>N disclosure line</strong> and <strong>O confirmed with brand</strong> (date). Mix currencies with care: the bands compare numbers only, so keep one tab per currency if you feature shops in more than one.</p>
+<p>A "% off" only shows a struck-through compare-at price that the shop itself set. It does not prove the price was ever charged. For EU shops, see the 30-day lowest price log linked below before you call anything a deal.</p>
+
+<h2>Step 3: confirm with each brand</h2>
+<p>Before you publish, confirm price, stock for the sale week, and image use with each picked brand. Put the brands' websites into the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_gift_guide_sheet">website contact scraper</a> (also an Unadhi product on the Apify Store) as <code>startUrls</code>. By default it returns only role inboxes such as <code>press@</code>, <code>hello@</code> or <code>info@</code> (<code>includePersonalEmails</code> is off), checks that each inbox's domain can receive mail (<code>mxValid</code>), and lists the page it was found on. Add each inbox in a column P (brand inbox) and send one short message per brand, for example:</p>
+<pre><code>Subject: Your [product] in our gift guide (publishing [date])
+
+Hello [brand] team,
+We plan to include your [product] at [price] in our "[guide name]" on [date].
+Could you confirm by [date]:
+1. The price and any Black Friday price, and that it will be in stock that week.
+2. That we may use the main product image from your site.
+We link to your product page[ through an affiliate programme / no payment involved].
+Thank you</code></pre>
+
+<h2>Step 4: re-check on publishing day</h2>
+<p>Run the tracker again on the morning you publish, and again on the morning of Black Friday and Cyber Monday if the guide stays up. Import it as a tab named <code>scrape2</code>. In a tab named <code>recheck</code>, put the picked products' URL in A and the guide price in B, then:</p>
+<pre><code>C2 price today: =IFERROR(INDEX(INDEX(scrape2!$A:$ZZ, 0, MATCH("price", scrape2!$1:$1, 0)),
+                  MATCH(A2, INDEX(scrape2!$A:$ZZ, 0, MATCH("url", scrape2!$1:$1, 0)), 0)), "gone")
+D2 in stock:    =IFERROR(INDEX(INDEX(scrape2!$A:$ZZ, 0, MATCH("inStock", scrape2!$1:$1, 0)),
+                  MATCH(A2, INDEX(scrape2!$A:$ZZ, 0, MATCH("url", scrape2!$1:$1, 0)), 0)), "")
+E2 re-check:    =IF(C2="gone", "Removed from the shop: replace it",
+                 IF(LOWER(TO_TEXT(D2))&lt;&gt;"true", "Sold out: replace or mark it",
+                 IF(C2&lt;&gt;B2, "Price changed: update the guide", "OK")))</code></pre>
+<p>Fix every row that is not OK before the guide goes live. A wrong price in a gift guide is the fastest way to lose a reader's trust.</p>
+
+<h2>Step 5: the disclosure line for each link</h2>
+<p>Write column N from the link type in column M. This is a summary of official guidance read on 21 October 2026, not legal advice; check the official source for your country.</p>
+<table><thead><tr><th>Link type</th><th>What the guidance says</th><th>Example line next to the product</th></tr></thead><tbody>
+<tr><td>Plain link, no payment</td><td>FTC: if you are not paid for a link, there is no connection to disclose.</td><td>(none needed)</td></tr>
+<tr><td>Affiliate link (US readers)</td><td>FTC Endorsement Guides FAQ: disclose clearly and close to the recommendation, for example "I get commissions for purchases made through links in this post"; "paid link" right next to the link should be adequate; "affiliate link" alone, a "buy now" button or one disclosure on your home page is not enough.</td><td>"Paid link: we earn a commission if you buy through it."</td></tr>
+<tr><td>Affiliate links (UK readers)</td><td>ASA affiliate marketing advice: a guide made up wholly of affiliate links should have "Ad" in its title so readers know before they click; if only some links are affiliate links, label those. A note only at the bottom, a bare "*affiliate" label, or "may earn a commission" is unlikely to be enough.</td><td>Title: "Ad: 20 gifts under £25". Or "(Ad)" before each affiliate product.</td></tr>
+<tr><td>Gifted product</td><td>FTC: "Gifted" alone is ambiguous; "Gifted by [brand]" should be enough when a free product is all you got. Say "paid" if you were also paid.</td><td>"Gifted by [brand]."</td></tr>
+<tr><td>Paid placement</td><td>FTC: simple wording such as "This is an ad for [brand]" or "[brand] paid me to tell you about it".</td><td>"Ad: [brand] paid for this placement."</td></tr>
+</tbody></table>
+<p>In the EU, presenting paid promotion as editorial content without making it clear is on the Unfair Commercial Practices Directive's blacklist (Annex I, point 11); national rules and authorities set the detail, so check your country's consumer authority.</p>
+
+<h2>Timeline to Black Friday</h2>
+<ul class="check">
+<li>This week (to 31 October): run the tracker on your shop list, build the shortlist, pick products.</li>
+<li>By 6 November: send the confirm message to every picked brand; swap any brand that does not answer.</li>
+<li>Week of 9 November: write the guide, add column N's disclosure next to each product, run the re-check, publish.</li>
+<li>Friday 27 November and Monday 30 November, morning: run the re-check again and update prices and sold-out items.</li>
+<li>Early December: reuse the same sheet for the Christmas guide; most rows only need a re-check.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Affiliate link and gifted product disclosures ("I get commissions for purchases made through links in this post", "paid link", "affiliate link" alone not adequate, "Gifted by XYZ", no single home-page disclosure): <a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides">FTC, FTC's Endorsement Guides: What People Are Asking</a> (read 21 Oct 2026)</li>
+<li>"Ad" in the title for wholly affiliate content, bottom-of-page and "may earn" disclaimers, the "*affiliate" label: <a href="https://www.asa.org.uk/advice-online/affiliate-marketing.html">ASA / CAP, Online Affiliate Marketing</a> (read 21 Oct 2026)</li>
+<li>EU blacklist of unfair commercial practices, Annex I point 11 (advertorials): Directive 2005/29/EC on EUR-Lex. Check the official source.</li>
+<li>Product tracker input fields (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>includeDescription</code>), output fields (<code>title</code>, <code>brand</code>, <code>shop</code>, <code>price</code>, <code>compareAtPrice</code>, <code>currency</code>, <code>inStock</code>, <code>images</code>) and SHOPS_SUMMARY statuses: <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_gift_guide_sheet">Apify Store page</a></li>
+<li>Contact scraper fields (<code>startUrls</code>, <code>includePersonalEmails</code> off by default, <code>mxValid</code>): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_gift_guide_sheet">Apify Store page</a></li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="eu-30-day-lowest-price-log-black-friday-shopify-woocommerce.html">30-day lowest price log for your Black Friday sale (EU)</a></li>
+<li><a href="competitor-store-discount-sheet-black-friday.html">Competitor store discount sheet for Black Friday</a></li>
+<li><a href="google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html">Google Shopping listing check before Black Friday</a></li>
+<li><a href="export-shopify-store-products-to-csv.html">Export a Shopify store's products to CSV</a></li>
+<li><a href="find-public-role-emails-company-website-apify.html">Find the public role emails on a company website</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
