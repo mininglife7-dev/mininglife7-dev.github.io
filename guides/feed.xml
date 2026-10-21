@@ -6,8 +6,78 @@
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
   <link href="https://mininglife7-dev.github.io/guides/"/>
   <id>https://mininglife7-dev.github.io/guides/</id>
-  <updated>2026-10-20T12:00:00+05:30</updated>
+  <updated>2026-10-21T12:00:00+05:30</updated>
   <author><name>Unadhi</name></author>
+  <entry>
+    <title>GST reverse charge on commercial rent from an unregistered landlord: who pays 18%, self-invoice and ITC</title>
+    <link href="https://unadhi.com/guides/gst-rcm-commercial-property-rent-unregistered-landlord.html"/>
+    <id>https://unadhi.com/guides/gst-rcm-commercial-property-rent-unregistered-landlord.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>Since 10 Oct 2024 a GST-registered tenant pays 18% GST under reverse charge on rent of commercial property from an unregistered landlord. Who is covered, the composition exception, Rule 47A self-invoice and ITC.</summary>
+  </entry>
+  <entry>
+    <title>GST ITC time limit: claim FY 2025-26 credit by 30 November 2026 (section 16(4), GSTR-2B, 180 days)</title>
+    <link href="https://unadhi.com/guides/gst-itc-time-limit-section-16-4-30-november-gstr-2b.html"/>
+    <id>https://unadhi.com/guides/gst-itc-time-limit-section-16-4-30-november-gstr-2b.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>Section 16(4): ITC on FY 2025-26 invoices must be claimed in a return filed by 30 Nov 2026 or the annual return, whichever is earlier. Plus GSTR-2B, the 180-day payment rule and receipt of goods.</summary>
+  </entry>
+  <entry>
+    <title>GST blocked credit under section 17(5): cars, food, gifts and building works where ITC is not allowed</title>
+    <link href="https://unadhi.com/guides/gst-blocked-credit-section-17-5-motor-vehicles-food-gifts.html"/>
+    <id>https://unadhi.com/guides/gst-blocked-credit-section-17-5-motor-vehicles-food-gifts.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>The list of purchases where GST input tax credit is blocked under section 17(5) of the CGST Act, the exceptions (e.g. vehicles for goods transport), and simple examples for SMEs.</summary>
+  </entry>
+  <entry>
+    <title>ADT-1 auditor appointment: first auditor in 30 days, 5-year term and 15-day filing (Companies Act s.139)</title>
+    <link href="https://unadhi.com/guides/adt-1-auditor-appointment-first-auditor-30-days-15-days-filing.html"/>
+    <id>https://unadhi.com/guides/adt-1-auditor-appointment-first-auditor-30-days-15-days-filing.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>Section 139 of the Companies Act 2013: board appoints the first auditor within 30 days of incorporation, members appoint for 5 years at the first AGM, and Form ADT-1 is filed within 15 days. Resignation needs ADT-3.</summary>
+  </entry>
+  <entry>
+    <title>DPT-3 return of deposits: due 30 June, director loans, and which companies must file</title>
+    <link href="https://unadhi.com/guides/dpt-3-return-of-deposits-30-june-director-loans.html"/>
+    <id>https://unadhi.com/guides/dpt-3-return-of-deposits-30-june-director-loans.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>Rule 16 of the Companies (Acceptance of Deposits) Rules 2014: companies other than government companies file DPT-3 by 30 June with figures as on 31 March, including money received that is not a deposit (e.g. director loans).</summary>
+  </entry>
+  <entry>
+    <title>EU VAT reverse charge on B2B services: invoice wording, the 15th-of-month rule and EC Sales List</title>
+    <link href="https://unadhi.com/guides/eu-vat-reverse-charge-b2b-services-invoice-wording.html"/>
+    <id>https://unadhi.com/guides/eu-vat-reverse-charge-b2b-services-invoice-wording.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>VAT Directive Articles 44, 196, 222, 226 and 262: when a business customer in another EU country self-accounts for VAT, what the invoice must say (&#x27;Reverse charge&#x27;), when to issue it and the recapitulative statement.</summary>
+  </entry>
+  <entry>
+    <title>VIES VAT number check: how to verify an EU customer and keep proof for zero-rated B2B sales</title>
+    <link href="https://unadhi.com/guides/eu-vies-vat-number-check-proof-for-zero-rated-b2b.html"/>
+    <id>https://unadhi.com/guides/eu-vies-vat-number-check-proof-for-zero-rated-b2b.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>How to validate a customer&#x27;s EU VAT number on the European Commission&#x27;s VIES service, why it matters for reverse charge and zero-rated intra-EU supplies (Article 138), and the proof to keep.</summary>
+  </entry>
+  <entry>
+    <title>EU AI Act Article 25: when a business using AI becomes the provider of a high-risk AI system</title>
+    <link href="https://unadhi.com/guides/eu-ai-act-article-25-when-deployer-becomes-provider.html"/>
+    <id>https://unadhi.com/guides/eu-ai-act-article-25-when-deployer-becomes-provider.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>Under Article 25 of the AI Act a distributor, importer or deployer becomes the provider of a high-risk AI system if it puts its own name on it, substantially modifies it, or changes its intended purpose so it becomes high-risk.</summary>
+  </entry>
+  <entry>
+    <title>DGMS circulars: how mine managers and exam candidates find, track and file them</title>
+    <link href="https://unadhi.com/guides/dgms-circulars-how-to-find-track-mine-managers.html"/>
+    <id>https://unadhi.com/guides/dgms-circulars-how-to-find-track-mine-managers.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>A practical method for mine managers, safety officers and DGMS exam candidates to find DGMS technical and legislation circulars, track new ones each month, and keep a simple compliance register.</summary>
+  </entry>
+  <entry>
+    <title>GST registration amendment (REG-14): core vs non-core fields, the 15-day rule and when a new GSTIN is needed</title>
+    <link href="https://unadhi.com/guides/gst-registration-amendment-reg-14-core-non-core-fields.html"/>
+    <id>https://unadhi.com/guides/gst-registration-amendment-reg-14-core-non-core-fields.html</id>
+    <updated>2026-10-21T12:00:00+05:30</updated>
+    <summary>Rule 19 of the CGST Rules: apply in REG-14 within 15 days of a change. Core fields (legal or trade name, principal place, partners/directors) need officer approval; non-core changes go through directly. PAN change needs new registration.</summary>
+  </entry>
   <entry>
     <title>E-way bill rules 2026: the ₹50,000 limit, validity by distance, Part B and extension</title>
     <link href="https://unadhi.com/guides/e-way-bill-50000-rule-validity-distance-2026.html"/>
