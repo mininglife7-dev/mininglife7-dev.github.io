@@ -1,0 +1,100 @@
+<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GST returns barred after three years: a sheet for CA firms to catch every unfiled GSTR-1, GSTR-3B and GSTR-9 before the portal locks it (next: July–September 2023 GSTR-3BQ this week)</title><meta name="description" content="From 1 October 2023 a GST return cannot be filed three years after its due date (CGST Act s.37(5), 39(11), 44(2), 52(15)). A three-year bar sheet with Google Sheets formula, the periods that reach three years from October 2026 to January 2027 (incl. FY 2022-23 GSTR-9 on 31 December 2026), the portal's unbarring steps and three client messages."><link rel="canonical" href="https://unadhi.com/guides/ca-firm-gst-returns-three-year-bar-sheet-unbarring-2026.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="GST returns barred after three years: a sheet for CA firms to catch every unfiled GSTR-1, GSTR-3B and GSTR-9 before the portal locks it (next: July–September 2023 GSTR-3BQ this week)"><meta property="og:description" content="July–September 2023 GSTR-3BQ hits three years on 22 or 24 October 2026; October 2023 returns in November; FY 2022-23 GSTR-9/9C on 31 December 2026. One sheet to catch every unfiled return, plus the unbarring route."><meta property="og:url" content="https://unadhi.com/guides/ca-firm-gst-returns-three-year-bar-sheet-unbarring-2026.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+.signup{border:1px dashed #0a5c55;border-radius:8px;padding:10px 16px;background:#f4faf9;margin-top:1.4em}.signup p{margin:.3em 0}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "GST returns barred after three years: a sheet for CA firms to catch every unfiled GSTR-1, GSTR-3B and GSTR-9 before the portal locks it (next: July–September 2023 GSTR-3BQ this week)", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en-IN", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/ca-firm-gst-returns-three-year-bar-sheet-unbarring-2026.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can a GST return be filed after three years?", "acceptedAnswer": {"@type": "Answer", "text": "No. Sections 37(5), 39(11), 44(2) and 52(15) of the CGST Act, inserted by the Finance Act, 2023 and in force from 1 October 2023, bar filing of GSTR-1, GSTR-3B, GSTR-4, GSTR-5, GSTR-6, GSTR-7, GSTR-8 and GSTR-9/9C after three years from the due date. The GST portal locks the return; the taxpayer can apply to the tax officer for unbarring."}}, {"@type": "Question", "name": "How does unbarring of GST returns work?", "acceptedAnswer": {"@type": "Answer", "text": "Per the GST portal FAQ, apply under Services > Returns > Application for Unbarring Returns, explaining the reason. If the officer approves, all barred returns must be filed within 30 days of approval, or they are barred again. A rejected application can be re-applied only twice with the same ARN."}}, {"@type": "Question", "name": "When is the FY 2022-23 GSTR-9 barred?", "acceptedAnswer": {"@type": "Answer", "text": "GSTR-9 and GSTR-9C for FY 2022-23 were due on 31 December 2023 (10 January 2024 for specified Tamil Nadu districts), so three years end on 31 December 2026 (10 January 2027 for those districts). Check the due date shown on the GST portal for each GSTIN."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>GST returns barred after three years: a sheet for CA firms to catch every unfiled GSTR-1, GSTR-3B and GSTR-9 before the portal locks it (next: July–September 2023 GSTR-3BQ this week)</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the white-label calendar linked below is an Unadhi product (₹999/year).</p>
+<p id="short-answer"><strong>Short answer (checked 21 Oct 2026):</strong> a GST return cannot be filed <strong>after three years from its due date</strong> (sections 37(5), 39(11), 44(2) and 52(15) of the CGST Act, inserted by the Finance Act, 2023 and in force from 1 October 2023). It covers GSTR-1, IFF, GSTR-1A, GSTR-1Q, GSTR-3B, GSTR-3BQ, GSTR-4, GSTR-5, GSTR-6, GSTR-7, GSTR-8 and GSTR-9/9C. Once a period is barred, the GST portal locks the tile; the only route left is an <strong>application for unbarring</strong> to the tax officer, and if it is approved you get <strong>30 days</strong> to file. For your clients this means: the <strong>quarterly GSTR-3BQ for July–September 2023</strong> (due 22 or 24 October 2023) reaches three years this week, on <strong>Thursday 22 or Saturday 24 October 2026</strong>, and the <strong>October 2023</strong> monthly returns follow in November. The <strong>FY 2022-23 GSTR-9/9C</strong> (due 31 December 2023) reaches three years on <strong>31 December 2026</strong>. This is a starting point, not legal advice. Check the GST portal before you tell a client a date.</p>
+<div class="answer"><p><strong>What you get from this guide:</strong> a finished <strong>three-year bar sheet</strong> for your firm: one row per client GSTIN per unfiled return, with the due date, the last day before the bar, days left and a flag that says <em>File this month</em>, <em>Plan</em> or <em>Barred: unbarring application</em>, all by Google Sheets formula. It comes with the list of periods that reach three years between now and January 2027, the unbarring steps from the GST portal's own FAQ, and three client messages. Nothing here needs software.</p></div>
+
+<h2>Which returns reach three years next</h2>
+<p>Three years counted from each return's normal due date. Example dates for clients with no special extension; a client whose district had an extension (for example the December 2023 Tamil Nadu cyclone extensions) counts from the extended date. Take the due date shown on the portal for that GSTIN.</p>
+<table><thead><tr><th>Return and period</th><th>Normal due date</th><th>Three years end on</th><th>Action now</th></tr></thead><tbody>
+<tr><td>GSTR-1 / IFF, September 2023 · GSTR-1Q, July–September 2023</td><td>11 Oct 2023 · 13 Oct 2023</td><td>11 Oct 2026 · 13 Oct 2026 (passed)</td><td>If still unfiled: unbarring application</td></tr>
+<tr><td>GSTR-3B, September 2023</td><td>20 Oct 2023</td><td>Tue 20 Oct 2026 (passed)</td><td>If still unfiled: try today; if the tile is locked, unbarring application</td></tr>
+<tr><td><strong>GSTR-3BQ, July–September 2023</strong> (QRMP)</td><td>22 Oct 2023 or 24 Oct 2023, by state group</td><td><strong>Thu 22 Oct 2026 or Sat 24 Oct 2026</strong></td><td><strong>File this week</strong></td></tr>
+<tr><td>GSTR-7 and GSTR-8, October 2023</td><td>10 Nov 2023</td><td>Tue 10 Nov 2026</td><td>File in early November</td></tr>
+<tr><td>GSTR-1 / IFF, October 2023</td><td>11 Nov 2023</td><td>Wed 11 Nov 2026</td><td>File in early November</td></tr>
+<tr><td>GSTR-6 (ISD), October 2023</td><td>13 Nov 2023</td><td>Fri 13 Nov 2026</td><td>File in early November</td></tr>
+<tr><td>GSTR-3B, October 2023</td><td>20 Nov 2023</td><td>Fri 20 Nov 2026</td><td>File by mid-November</td></tr>
+<tr><td>GSTR-1, November 2023 · GSTR-3B, November 2023</td><td>11 Dec 2023 · 20 Dec 2023</td><td>Fri 11 Dec 2026 · Sun 20 Dec 2026</td><td>Plan for early December</td></tr>
+<tr><td><strong>GSTR-9 and GSTR-9C, FY 2022-23</strong></td><td>31 Dec 2023 (10 Jan 2024 for specified Tamil Nadu districts)</td><td><strong>Thu 31 Dec 2026</strong> (10 Jan 2027 for those districts)</td><td>Start reconciliation in November</td></tr>
+<tr><td>GSTR-1 December 2023 · GSTR-1Q October–December 2023 · GSTR-3B December 2023 · GSTR-3BQ October–December 2023</td><td>11 Jan · 13 Jan · 20 Jan · 22/24 Jan 2024</td><td>11 Jan · 13 Jan · 20 Jan · 22/24 Jan 2027</td><td>Plan for early January</td></tr>
+<tr><td>GSTR-4, FY 2023-24 (composition)</td><td>30 Apr 2024</td><td>Fri 30 Apr 2027</td><td>Plan</td></tr>
+</tbody></table>
+<p><strong>The portal may lock a few days later, but do not count on it.</strong> When GSTN switched the lock on, it barred returns in a batch: its advisory of 29 October 2025 listed October 2022 monthly returns, July–September 2022 quarterly returns, FY 2021-22 GSTR-4 and FY 2020-21 GSTR-9/9C as barred <em>with effect from 1 December 2025</em>. The law counts from the due date, not from the portal lock. Treat the "three years end on" column as the deadline and aim to file a week earlier.</p>
+<p><strong>Who is caught:</strong> GSTR-9 was optional for FY 2022-23 if aggregate turnover was up to ₹2 crore, and GSTR-9C was needed only above ₹5 crore (as reported for Notification 32/2023 – Central Tax; check the official source). Nil returns count too: a client with no business still has a GSTR-3B to file for every period while registered.</p>
+
+<h2>The three-year bar sheet</h2>
+<p>Make one Google Sheet. Row 1 is the header; one row per unfiled return per GSTIN. Pull the list from each client's return dashboard on the portal (tiles shown as "Not filed").</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>What goes in it</th></tr></thead><tbody>
+<tr><td>A</td><td>Client</td><td>Name as in your client list</td></tr>
+<tr><td>B</td><td>GSTIN</td><td>15 characters</td></tr>
+<tr><td>C</td><td>Return</td><td>GSTR-1, GSTR-3B, GSTR-3BQ, GSTR-9, GSTR-9C, GSTR-4 …</td></tr>
+<tr><td>D</td><td>Tax period</td><td>Sep 2023, Jul–Sep 2023, FY 2022-23 …</td></tr>
+<tr><td>E</td><td>Due date</td><td>The due date for that GSTIN, including any district extension (date format)</td></tr>
+<tr><td>F</td><td>Three years end on</td><td><code>=EDATE(E2,36)</code></td></tr>
+<tr><td>G</td><td>Days left</td><td><code>=F2-TODAY()</code></td></tr>
+<tr><td>H</td><td>Status</td><td>Pending / Data asked / Filed / Barred</td></tr>
+<tr><td>I</td><td>Flag</td><td><code>=IF(H2="Filed","OK",IF(G2&lt;0,"Barred: unbarring application",IF(G2&lt;=30,"File this month","Plan")))</code></td></tr>
+<tr><td>J</td><td>Owner in your firm</td><td>Article or staff name</td></tr>
+<tr><td>K</td><td>Note</td><td>Data missing, client not responding, ARN of unbarring application</td></tr>
+</tbody></table>
+<p>Sort by column G, smallest first. Add conditional formatting: red when G is below 0, amber when G is 0 to 30. Review it every Monday until every row is "OK".</p>
+<p><strong>Example rows (made up, not real clients or GSTINs):</strong></p>
+<table><thead><tr><th>A Client</th><th>B GSTIN</th><th>C Return</th><th>D Period</th><th>E Due</th><th>F Ends</th><th>H Status</th><th>I Flag (on 21 Oct 2026)</th></tr></thead><tbody>
+<tr><td>Example Traders</td><td>36XXXXX0000X1ZX</td><td>GSTR-3BQ</td><td>Jul–Sep 2023</td><td>24-10-2023</td><td>24-10-2026</td><td>Pending</td><td>File this month (3 days left)</td></tr>
+<tr><td>Sample Textiles</td><td>33XXXXX0000X1ZX</td><td>GSTR-9</td><td>FY 2022-23</td><td>31-12-2023</td><td>31-12-2026</td><td>Data asked</td><td>Plan (71 days left)</td></tr>
+<tr><td>Demo Services LLP</td><td>29XXXXX0000X1ZX</td><td>GSTR-3B</td><td>Sep 2023</td><td>20-10-2023</td><td>20-10-2026</td><td>Pending</td><td>Barred: unbarring application</td></tr>
+</tbody></table>
+
+<h2>If a return is already barred: the unbarring steps</h2>
+<p>From the GST portal's FAQ on barring and unbarring of returns (fetched 21 Oct 2026):</p>
+<ol>
+<li>Open <strong>Services &gt; Returns &gt; Application for Unbarring Returns</strong> (or <strong>Quick Links &gt; Application for Unbarring Returns</strong>).</li>
+<li>Explain the reason for the delay to the concerned tax officer. Keep the reason factual and keep proof (illness, records with a former accountant, portal error tickets).</li>
+<li>You get an email and SMS when the officer approves or rejects, and the order shows on the taxpayer's dashboard.</li>
+<li>If approved, <strong>all the barred returns must be filed within 30 days</strong> from the date of approval. Anything not filed in those 30 days is barred again.</li>
+<li>If rejected, you can reapply only <strong>twice</strong> with the same ARN. Only one request can be open at a time, and you cannot raise a new one after approval until all unbarred returns are filed.</li>
+</ol>
+<p>Before you apply, have every barred return ready to file, because the 30 days start on approval. Start with the oldest period: the portal usually expects returns in period order. Being unable to file a return does not by itself settle the tax, interest or any notice for that period; talk to the client about that separately and check the official source.</p>
+
+<h2>Three client messages</h2>
+<p><strong>1. GSTR-3BQ July–September 2023 still open (send today):</strong> "Your GST return for July–September 2023 is still not filed. After 24 October 2026 the GST portal will not accept it, three years after its due date. Please send the sales and purchase details for that quarter today so we can file it this week."</p>
+<p><strong>2. FY 2022-23 annual return:</strong> "Your GST annual return (GSTR-9) for 2022-23 must be filed by 31 December 2026. After that the portal will not take it. We need your books for 2022-23 by 30 November to reconcile and file in time."</p>
+<p><strong>3. Already barred:</strong> "The portal has locked your return for [period] because three years have passed since its due date. We can ask the tax officer to unlock it. If the officer agrees we get 30 days to file, so we will prepare the return first and apply once it is ready. Please send [documents] by [date]."</p>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Want the dates sent to your clients every quarter?</h2>
+<div class="next"><p>The <a href="https://mininglife1.gumroad.com/l/ca-firm-compliance-calendar?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=ca_gst_three_year_bar_sheet">White-Label Client Compliance Calendar for CA Firms</a> (₹999/year) sends four quarterly packs with your firm name on the DOCX, PDF and WhatsApp image, plus national .ics/.xlsx and extension notes. Files are made after checkout (not instant). 14-day refund from when you receive the first pack. Disclosure: that is an Unadhi product. You can use this three-year bar sheet without buying anything.</p></div>
+
+<div class="note"><p>This guide is general information, not legal advice and not an official government publication. Due dates, extensions and portal behaviour can change by notification or advisory. Check the GST portal (gst.gov.in), its advisories and the CBIC notifications before you file or tell a client a date. Your firm stays responsible for advice to your clients.</p></div>
+
+<h2>Sources to re-check</h2>
+<ul class="src">
+<li>GST portal, FAQs on Barring/Unbarring of Returns for Taxpayers (forms covered, tile lock, application route, 30 days after approval, two reapplications per ARN, email/SMS on decision), fetched 21 Oct 2026: <a href="https://tutorial.gst.gov.in/userguide/returns/FAQs_application_Unbarring.htm">tutorial.gst.gov.in</a></li>
+<li>GSTN advisory "Advisory to file pending returns before expiry of three years", 29 Oct 2025 (Finance Act, 2023, in force 1 Oct 2023 by Notification No. 28/2023 – Central Tax dated 31 Jul 2023; batch barred with effect from 1 Dec 2025), copy checked 21 Oct 2026: <a href="https://www.gstindiaonline.com/pages/gstlegislation/GSTN%20Guides/GSTN_Guides_Pdf/2025/Advisory%20to%20file%20pending%20returns%20before%20expiry%20of%20three%20years_oct%2029.pdf">gstindiaonline.com (PDF)</a>; GSTN advisory of 7 Jun 2025, "Barring of GST Return on expiry of three years": <a href="https://www.caalley.com/gst25/gst_adv0607a.pdf">caalley.com (PDF)</a>; check the official source at <a href="https://services.gst.gov.in/services/advisory/advisoryandreleases">services.gst.gov.in</a></li>
+<li>CGST Act, 2017, sections 37(5), 39(11), 44(2), 52(15): <a href="https://taxinformation.cbic.gov.in/">taxinformation.cbic.gov.in</a> (did not load from our checker on 21 Oct 2026; check the official source)</li>
+<li>GSTR-9 / 9C for FY 2022-23 due 31 Dec 2023 (rule 80); extended to 10 Jan 2024 only for Chennai, Tiruvallur, Chengalpattu, Kancheepuram, Tirunelveli, Tenkasi, Kanyakumari, Thoothukudi and Virudhunagar by Notification No. 02/2024 – Central Tax, 5 Jan 2024, as reproduced at <a href="https://gstindia.biz/notification/1375/extension-of-due-dates-for-filing-form-gstr-9-and-form-gstr-9c-for-fy-2022-23-for-registered-persons-in-specified-districts-of-tamil-nadu">gstindia.biz</a>; check the official source at <a href="https://cbic-gst.gov.in/">cbic-gst.gov.in</a></li>
+<li>Related guides: <a href="ca-firm-gstr9-9c-fy-2025-26-client-chase-list.html">GSTR-9/9C FY 2025-26 chase list</a> · <a href="ca-firm-gstr3b-chase-list-before-20th.html">GSTR-3B chase list before the 20th</a> · <a href="gstr-3b-quarterly-due-date-oct-2026-22nd-24th.html">GSTR-3B quarterly due date (22nd/24th)</a> · <a href="ca-firm-november-2026-due-date-client-chase-list.html">November 2026 chase list</a> · <a href="ca-firm-december-2026-due-date-client-chase-list.html">December 2026 chase list</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
