@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Shopping listing check before Black Friday: one sheet that flags every product Google may reject or hide in your Shopify or WooCommerce shop</title><meta name="description" content="A free Google Sheet for shop owners and the agencies that run their Google Shopping: one row per product with flags for a missing image or description, a price of 0, titles over 150 characters or in capitals, promotional text, a wrong barcode (GTIN) check digit and out-of-stock items, checked against Google Merchant Center's product data rules."><link rel="canonical" href="https://unadhi.com/guides/google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Google Shopping listing check sheet for Shopify and WooCommerce shops"><meta property="og:description" content="One row per product with a flag for each Google Merchant Center problem: no image, no description, price 0, title too long, wrong barcode check digit, out of stock. Fix them before Black Friday."><meta property="og:url" content="https://unadhi.com/guides/google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Google Shopping listing check before Black Friday: one sheet that flags every product Google may reject or hide in your Shopify or WooCommerce shop", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html", "step": [{"@type": "HowToStep", "name": "Export your shop's products", "text": "Run the product tracker on your own shop address, or use your shop admin's own product export, and import the CSV as a tab named scrape."}, {"@type": "HowToStep", "name": "Build the check tab", "text": "Add the check tab with the column lookups and the flag formula from this guide, one row per product."}, {"@type": "HowToStep", "name": "Read the summary", "text": "Count each flag so you know how many products need a new image, a description, a price or a barcode fix."}, {"@type": "HowToStep", "name": "Fix in order", "text": "Fix price, image and description first, because Google lists them as required, then barcodes and titles."}, {"@type": "HowToStep", "name": "Run it again", "text": "Run the check again after your fixes and once more in the week before your sale starts."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which product details does Google Merchant Center require?", "acceptedAnswer": {"@type": "Answer", "text": "Google's product data specification lists id, title, description, link, image link, availability and price as required, and brand as required for new products (except movies, books and music). Without a required attribute a product cannot serve in ads or free listings. Titles can be up to 150 characters and descriptions up to 5,000, and a price of 0 is not allowed except for some contract and subscription products."}}, {"@type": "Question", "name": "How do I check that a product barcode (GTIN) is valid?", "acceptedAnswer": {"@type": "Answer", "text": "Pad the number with zeros to 14 digits, multiply the first 13 digits alternately by 3 and 1, add them up, and subtract the total from the next multiple of ten. The result must equal the last digit. Google disapproves products with an incorrect GTIN and also rejects restricted prefixes (02, 04, 2) and coupon prefixes (98, 99). The sheet in this guide does this check for every product."}}, {"@type": "Question", "name": "Can I set a product to out of stock to pause it on Google Shopping?", "acceptedAnswer": {"@type": "Answer", "text": "No. Google's specification says not to set availability to out_of_stock to pause products; use the pause attribute (up to 14 days) or excluded destination instead. For a product that really is out of stock, the price must still be clearly visible on the product page."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Google Shopping listing check before Black Friday: one sheet that flags every product Google may reject or hide in your Shopify or WooCommerce shop</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the product tracker linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works with your shop admin's own product export. Current Apify pricing is only on the Store page. We are not affiliated with Google.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet with <strong>one row per product in your shop</strong> and a plain-English flag on every product Google Merchant Center is likely to reject or show less: <strong>no image</strong>, <strong>no description</strong>, <strong>price is 0 or missing</strong>, <strong>title over 150 characters</strong>, <strong>title in capital letters</strong>, <strong>promotional text in the title</strong>, <strong>no brand</strong>, <strong>barcode (GTIN) check digit is wrong</strong>, <strong>barcode in a restricted or coupon range</strong>, <strong>compare-at price below the price</strong> and <strong>out of stock</strong>. A summary tab counts each flag, so you know before Black Friday (Friday 27 November 2026) how many products need a fix and which ones.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>check tab</h3>
+<table><thead><tr><th>Product</th><th>Price</th><th>Barcode</th><th>Image</th><th>Description length</th><th>Flag</th></tr></thead><tbody>
+<tr><td>Example Wool Beanie, Grey</td><td>24.00</td><td>6291041500213</td><td>yes</td><td>412</td><td>OK</td></tr>
+<tr><td>EXAMPLE CERAMIC MUG FREE SHIPPING</td><td>18.00</td><td>6291041500214</td><td>yes</td><td>0</td><td>Title in capital letters · Promotional text in title · No description · Barcode check digit is wrong</td></tr>
+<tr><td>Example Gift Card</td><td>0</td><td></td><td>no</td><td>95</td><td>Price is 0 or missing · No image · No barcode</td></tr>
+<tr><td>Example Linen Apron</td><td>32.00</td><td>2000000000008</td><td>yes</td><td>260</td><td>Barcode in a restricted or coupon range · Out of stock</td></tr>
+</tbody></table>
+<p class="meta">Example rows only, to show the layout. Not real products or shops. 6291041500213 is the worked example from GS1's own check-digit page; the other barcodes are made up to show the flags.</p>
+<h3>summary tab</h3>
+<table><thead><tr><th>Flag</th><th>Products</th></tr></thead><tbody>
+<tr><td>Price is 0 or missing</td><td><code>=COUNTIF(check!$K:$K, "*"&amp;A2&amp;"*")</code></td></tr>
+<tr><td>No image</td><td>same formula, copied down</td></tr>
+<tr><td>No description</td><td>…</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Shopify and WooCommerce shop owners</strong> who show products on Google Shopping (ads or free listings) and want a clean catalogue before the November sales.</li>
+<li><strong>Agencies and freelancers</strong> who run Google Shopping for client shops and want a quick catalogue check before they take on, or report on, a client.</li>
+</ul>
+<p>This sheet checks the product details your shop itself shows. It does not replace the diagnostics in your Merchant Center account, which show Google's actual verdict per product. Use it to find and fix problems in bulk, then confirm in Merchant Center.</p>
+
+<h2>Step 1: get your products into a tab named scrape</h2>
+<h3>With the product tracker</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_google_shopping_check">E-commerce Product Data Scraper (Shopify, WooCommerce, any shop)</a> on the Apify Store and use this input with your own shop address:</p>
+<pre><code>{
+  "startUrls": [{ "url": "https://your-shop.example" }],
+  "maxProductsPerShop": 2000,
+  "includeDescription": true
+}</code></pre>
+<ul>
+<li><code>maxProductsPerShop</code>: set it above your number of products (the default is 100). You pay only for products delivered.</li>
+<li><code>includeDescription</code>: keep it on (the default); the sheet needs it to flag empty descriptions. The tracker keeps up to 5,000 characters, which is also Google's limit, so it cannot flag descriptions that are too long.</li>
+<li>The tracker follows robots.txt and reads your shop's terms page. If your own terms forbid automated access (Shopify's default terms do), it skips the shop and charges nothing. Check the run's <strong>Storage → Key-value store → SHOPS_SUMMARY</strong>: your shop should show <code>ok</code>. If it shows <code>blocked-by-terms</code>, use your admin export below.</li>
+</ul>
+<p>In the run, export the dataset as <strong>CSV</strong>. In your Google Sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Do not rename headers. You get one row per product with columns such as <code>title</code>, <code>url</code>, <code>source</code>, <code>price</code>, <code>compareAtPrice</code>, <code>availability</code>, <code>gtin</code>, <code>brand</code>, <code>description</code> and <code>images/0</code>. For Shopify shops, <code>price</code>, <code>compareAtPrice</code> and <code>gtin</code> come from the cheapest variant, and <code>brand</code> is the product's vendor.</p>
+<h3>Free, from your own shop admin</h3>
+<ul>
+<li>Shopify: <strong>Products → Export</strong> gives one row per variant with the columns Title, Body (HTML), Vendor, Variant Price, Variant Compare At Price, Variant Barcode and Image Src. Extra variant rows have an empty Title, so the sheet checks the first variant of each product.</li>
+<li>WooCommerce: the built-in product CSV exporter (<strong>Products → Export</strong>) gives the name, description, price, stock and image columns.</li>
+</ul>
+<p>The formulas below look columns up by header name, so with an admin export you only change the header names in quotes (for Shopify: "Title", "Variant Price", "Variant Compare At Price", "Variant Barcode", "Vendor", "Image Src", "Body (HTML)").</p>
+
+<h2>Step 2: build the check tab</h2>
+<p>Add a tab named <code>check</code>. Row 1 holds these headers; row 2 holds the formulas, which you copy down one row per row of <code>scrape</code>.</p>
+<table><thead><tr><th>Column</th><th>Header</th><th>Reads <code>scrape</code> column</th></tr></thead><tbody>
+<tr><td>A</td><td>product</td><td><code>title</code></td></tr>
+<tr><td>B</td><td>url</td><td><code>url</code></td></tr>
+<tr><td>C</td><td>source</td><td><code>source</code> (shopify-json, woocommerce-store-api, json-ld and so on)</td></tr>
+<tr><td>D</td><td>price</td><td><code>price</code></td></tr>
+<tr><td>E</td><td>compare-at price</td><td><code>compareAtPrice</code></td></tr>
+<tr><td>F</td><td>availability</td><td><code>availability</code></td></tr>
+<tr><td>G</td><td>barcode</td><td><code>gtin</code></td></tr>
+<tr><td>H</td><td>brand</td><td><code>brand</code></td></tr>
+<tr><td>I</td><td>image</td><td><code>images/0</code></td></tr>
+<tr><td>J</td><td>description length</td><td>length of <code>description</code> (formula below)</td></tr>
+<tr><td>K</td><td>flag</td><td>formula below</td></tr>
+</tbody></table>
+<p>A2 to I2 all use the same pattern; only the header name in quotes changes. A2:</p>
+<pre><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("title", scrape!$A$1:$ZZ$1, 0)), "")</code></pre>
+<p>J2:</p>
+<pre><code>=LEN(IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("description", scrape!$A$1:$ZZ$1, 0)), ""))</code></pre>
+<p>K2, the flag. It also does the GS1 check-digit sum on the barcode (pad to 14 digits, weights 3 and 1 on the first 13 digits):</p>
+<pre><code>=IF(A2="", "", LET(
+  g, REGEXREPLACE(G2&amp;"", "[^0-9]", ""),
+  p, RIGHT("00000000000000"&amp;g, 14),
+  lenok, OR(LEN(g)=8, LEN(g)=12, LEN(g)=13, LEN(g)=14),
+  chk, IF(lenok, MOD(10 - MOD(SUMPRODUCT(VALUE(MID(p, SEQUENCE(13), 1)),
+        {3;1;3;1;3;1;3;1;3;1;3;1;3}), 10), 10) = VALUE(RIGHT(p, 1)), FALSE),
+  woo, C2="woocommerce-store-api",
+  f, TEXTJOIN(" · ", TRUE,
+   IF(LEN(A2)&gt;150, "Title over 150 characters", ""),
+   IF(AND(EXACT(A2, UPPER(A2)), REGEXMATCH(A2, "[A-Z]{3}")), "Title in capital letters", ""),
+   IF(REGEXMATCH(LOWER(A2), "free (shipping|delivery)|% off|\bsale\b|best price|buy now"), "Promotional text in title", ""),
+   IF(N(D2)&lt;=0, "Price is 0 or missing", ""),
+   IF(AND(N(E2)&gt;0, N(E2)&lt;N(D2)), "Compare-at price is below the price", ""),
+   IF(I2="", "No image", ""),
+   IF(J2=0, "No description", ""),
+   IF(AND(NOT(woo), H2=""), "No brand", ""),
+   IF(AND(g&lt;&gt;"", NOT(lenok)), "Barcode is not 8, 12, 13 or 14 digits", ""),
+   IF(AND(lenok, NOT(chk)), "Barcode check digit is wrong", ""),
+   IF(AND(LEN(g)&gt;=12, lenok, OR(MID(p,2,1)="2", MID(p,2,2)="02", MID(p,2,2)="04",
+      MID(p,2,2)="98", MID(p,2,2)="99")), "Barcode in a restricted or coupon range", ""),
+   IF(AND(NOT(woo), g=""), "No barcode", ""),
+   IF(F2="OutOfStock", "Out of stock", "")),
+  IF(f="", "OK", f) &amp; IF(woo, " · Brand and barcode: check in Merchant Center", "")))</code></pre>
+<p>WooCommerce's public store data does not include brand or barcode, so for WooCommerce rows (<code>source</code> = <code>woocommerce-store-api</code>) the sheet skips those two checks and tells you to look in Merchant Center instead. If your barcodes import as numbers, leading zeros are lost; the padding to 14 digits puts them back for the check.</p>
+<p>In the summary tab, list the flag names in column A from A2 down and put the COUNTIF formula shown above in B2, copied down. Add a filter to the check tab to see the products behind each count.</p>
+
+<h2>What to do with each flag</h2>
+<table><thead><tr><th>Flag</th><th>Why it matters (Google's product data specification)</th><th>What to do</th></tr></thead><tbody>
+<tr><td>Price is 0 or missing</td><td>Price is required, and a price of 0 is not allowed (except mobile devices on contract and physical goods sold with a subscription).</td><td>Set the real price. For gift cards and free samples, decide whether they belong in your Google feed at all.</td></tr>
+<tr><td>No image</td><td>The main image link is required. Google is also introducing a minimum of 500 × 500 pixels for all product images, enforced from 31 January 2027.</td><td>Add a real product photo, not a placeholder, logo or image with promotional text. Check sizes now while you are adding images.</td></tr>
+<tr><td>No description</td><td>Description is required (plain text, up to 5,000 characters) and should match your product page.</td><td>Write what the product is, its material, size and use. No links, shipping offers or competitor names.</td></tr>
+<tr><td>Title over 150 characters</td><td>The title limit is 150 characters.</td><td>Keep brand, product type and the distinguishing feature (colour, size) and cut the rest.</td></tr>
+<tr><td>Title in capital letters / Promotional text in title</td><td>Google asks for no promotional text such as "free shipping" and no all-capital titles.</td><td>Rewrite in normal case and move offers to your promotions, not the title.</td></tr>
+<tr><td>No brand</td><td>Brand is required for new products (except movies, books and music). For truly unbranded products, leave it empty; do not write "N/A" or "Generic".</td><td>Fill in the maker's brand, or your own brand for products you make.</td></tr>
+<tr><td>Barcode check digit is wrong / not 8, 12, 13 or 14 digits</td><td>Google disapproves products with an incorrect GTIN.</td><td>Copy the barcode from the packaging or the supplier again. If you are not sure it is correct, leave it out rather than guess.</td></tr>
+<tr><td>Barcode in a restricted or coupon range</td><td>Google does not accept GS1 restricted prefixes (02, 04, 2) or coupon prefixes (98, 99). These are often in-store codes, not the maker's GTIN.</td><td>Replace with the manufacturer's GTIN, or remove it and use brand plus MPN where Google asks for them.</td></tr>
+<tr><td>No barcode</td><td>GTIN is "strongly recommended if available"; products that have one but are submitted without it may be shown less. Products with no GTIN need the identifier rules (brand plus MPN, or identifier exists set to no).</td><td>Add the maker's GTIN where one exists. For your own handmade or private-label products without a GTIN, this flag is expected.</td></tr>
+<tr><td>Compare-at price is below the price</td><td>A struck-through price lower than the selling price is not a reduction, and it will look wrong next to your price.</td><td>Correct or remove the compare-at price. For an EU sale, see the 30-day lowest price log linked below.</td></tr>
+<tr><td>Out of stock</td><td>If an item is out of stock, its price must still be visible on the page. Google says not to set out_of_stock to pause products; use the pause attribute (up to 14 days) or excluded destination.</td><td>Restock, or keep it out of your Black Friday ads; do not fake stock status to switch ads on or off.</td></tr>
+</tbody></table>
+
+<h2>Before your sale</h2>
+<ul class="check">
+<li>This week: run the check, fix every <strong>Price</strong>, <strong>No image</strong> and <strong>No description</strong> flag.</li>
+<li>Next week: fix barcode flags with your suppliers, then titles.</li>
+<li>Week of 16 November: run it again and confirm in Merchant Center's diagnostics that the products you will promote are approved.</li>
+<li>Keep the sale price on your product page, your feed and checkout the same: Google asks for the price to match on all three.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Required attributes, title (max 150 characters) and description (max 5,000) limits, price of 0, image rules and the 500 × 500 pixel requirement from 31 January 2027, brand, GTIN (incorrect GTIN disapproved; restricted prefixes 02, 04, 2; coupon prefixes 98, 99), availability and the pause attribute: <a href="https://support.google.com/merchants/answer/7052112?hl=en">Google Merchant Center Help, Product data specification</a> (read 21 Oct 2026)</li>
+<li>GTIN check digit (weights 3 and 1, subtract from the next multiple of ten): <a href="https://www.gs1.org/services/how-calculate-check-digit-manually">GS1, How to calculate a check digit manually</a></li>
+<li>Product tracker input fields (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>includeDescription</code>) and output fields (<code>title</code>, <code>source</code>, <code>price</code>, <code>compareAtPrice</code>, <code>availability</code>, <code>gtin</code>, <code>brand</code>, <code>description</code>, <code>images</code>), and the SHOPS_SUMMARY record: <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_google_shopping_check">Apify Store page</a></li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="eu-30-day-lowest-price-log-black-friday-shopify-woocommerce.html">30-day lowest price log for your Black Friday sale (EU)</a></li>
+<li><a href="export-shopify-store-products-to-csv.html">Export a Shopify store's products to CSV</a></li>
+<li><a href="export-woocommerce-store-products-to-csv.html">Export a WooCommerce store's products to CSV</a></li>
+<li><a href="competitor-store-discount-sheet-black-friday.html">Competitor store discount sheet for Black Friday</a></li>
+<li>Related only: <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_google_shopping_check">the Unadhi website contact scraper</a> (also an Unadhi Apify product) checks the email, phone and WhatsApp details on a website, useful for agencies checking client shops.</li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
