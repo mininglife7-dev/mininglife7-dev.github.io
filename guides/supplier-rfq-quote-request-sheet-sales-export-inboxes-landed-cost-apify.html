@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Supplier quote request (RFQ) sheet: the sales or export inbox each supplier publishes, a chase tracker and a landed-cost comparison in one Google Sheet</title><meta name="description" content="A free Google Sheet for small brands and buyers: one row per supplier with the sales@, export@ or orders@ inbox from its own website, a next step when none is found, a chase date, then a quotes tab that turns each reply into landed cost per unit, checks MOQ, ranks suppliers and gives an order-by date."><link rel="canonical" href="https://unadhi.com/guides/supplier-rfq-quote-request-sheet-sales-export-inboxes-landed-cost-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Supplier RFQ sheet: quote inboxes, chase tracker and landed cost per unit"><meta property="og:description" content="One row per supplier: quote inbox, fallback, next step, chase date. Then landed cost per unit, MOQ check, rank and order-by date. Formulas included."><meta property="og:url" content="https://unadhi.com/guides/supplier-rfq-quote-request-sheet-sales-export-inboxes-landed-cost-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Supplier quote request (RFQ) sheet: the sales or export inbox each supplier publishes, a chase tracker and a landed-cost comparison in one Google Sheet", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/supplier-rfq-quote-request-sheet-sales-export-inboxes-landed-cost-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which supplier inboxes does the contact scraper return?", "acceptedAnswer": {"@type": "Answer", "text": "With the default setting the Unadhi website contact scraper returns only shared role inboxes such as sales@, export@, exports@, orders@, enquiries@, info@ and contact@. Addresses that identify one person are dropped and counted in personalEmailsDropped. In the current version wholesale@, trade@ and b2b@ are not on its role list, so they are dropped too; the sheet turns that count into a read-its-contact-page step."}}, {"@type": "Question", "name": "Why compare landed cost per unit instead of unit price?", "acceptedAnswer": {"@type": "Answer", "text": "The lowest unit price can lose once shipping, duty and currency are added, or may not qualify because your order is below the supplier's minimum order quantity. The quotes tab adds shipping, applies your duty figure and exchange rate, divides by your order quantity, and ranks only suppliers whose MOQ you meet."}}, {"@type": "Question", "name": "Where do I get the duty rate?", "acceptedAnswer": {"@type": "Answer", "text": "From your own country's customs authority for your product code. The guide gives no duty figures, and its formula is a comparison estimate, not a final import cost."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Supplier quote request (RFQ) sheet: the sales or export inbox each supplier publishes, a chase tracker and a landed-cost comparison in one Google Sheet</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the website contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works if you copy inboxes from supplier websites by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet with two working tabs. The <strong>rfq tab</strong> has <strong>one row per supplier</strong> you want a quote from (manufacturers, wholesalers, packaging or print suppliers). It shows the <strong>sales, export or orders inbox</strong> the supplier publishes on its own website, a general inbox as a fallback, a <strong>next step</strong> when none is found, the date you asked, a chase date and a do-not-contact column. The <strong>quotes tab</strong> turns every reply into a <strong>landed cost per unit</strong> in your own currency, checks the minimum order quantity (MOQ), ranks the suppliers that qualify and gives an order-by date. Formulas are below. The example rows use made-up <code>.example</code> suppliers and made-up numbers.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>rfq tab (example rows are made up)</h3>
+<table><thead><tr><th>Domain</th><th>Status</th><th>Quote inbox</th><th>Fallback</th><th>Named inboxes dropped</th><th>Next step</th><th>Asked on</th><th>Chase on</th><th>Quote in?</th><th>Send?</th></tr></thead><tbody>
+<tr><td>alpha-moulds.example</td><td>ok</td><td>export@alpha-moulds.example</td><td></td><td>0</td><td>Send RFQ to quote inbox</td><td>26 Oct 2026</td><td>29 Oct 2026</td><td>Yes</td><td>Done</td></tr>
+<tr><td>beta-plastics.example</td><td>ok</td><td>sales@beta-plastics.example</td><td></td><td>1</td><td>Send RFQ to quote inbox</td><td>26 Oct 2026</td><td>29 Oct 2026</td><td>Yes</td><td>Done</td></tr>
+<tr><td>gamma-pack.example</td><td>ok</td><td></td><td>info@gamma-pack.example</td><td>0</td><td>Use general inbox and ask who handles quotes</td><td>26 Oct 2026</td><td>29 Oct 2026</td><td>Yes</td><td>Done</td></tr>
+<tr><td>delta-print.example</td><td>ok</td><td></td><td></td><td>2</td><td>Site lists named inboxes: read its contact page</td><td></td><td></td><td></td><td>Ready</td></tr>
+<tr><td>epsilon-tex.example</td><td>blocked-by-terms</td><td></td><td></td><td></td><td>Skipped: use the site's contact or quote form</td><td></td><td></td><td></td><td>Ready</td></tr>
+</tbody></table>
+<h3>quotes tab (example rows are made up; your order is 500 units, your currency INR)</h3>
+<table><thead><tr><th>Supplier</th><th>Cur.</th><th>Unit price</th><th>MOQ</th><th>Order qty</th><th>Shipping for the order</th><th>Duty % (your figure)</th><th>FX to INR</th><th>Lead time (days)</th><th>Landed per unit (INR)</th><th>MOQ ok?</th><th>Rank</th><th>Order by</th></tr></thead><tbody>
+<tr><td>alpha-moulds.example</td><td>USD</td><td>2.10</td><td>500</td><td>500</td><td>180</td><td>10%</td><td>84</td><td>35</td><td>227.30</td><td>Yes</td><td>2</td><td>16 Oct 2026 (too late)</td></tr>
+<tr><td>beta-plastics.example</td><td>USD</td><td>1.95</td><td>1000</td><td>500</td><td>150</td><td>10%</td><td>84</td><td>30</td><td>207.90</td><td>No: order 1000+</td><td></td><td>21 Oct 2026</td></tr>
+<tr><td>gamma-pack.example</td><td>INR</td><td>205</td><td>300</td><td>500</td><td>2500</td><td>0%</td><td>1</td><td>12</td><td>210.00</td><td>Yes</td><td>1</td><td>8 Nov 2026</td></tr>
+</tbody></table>
+<p>Read it like this: the lowest unit price (beta-plastics) does not qualify at your quantity, and once shipping and duty are added the local supplier (gamma-pack) beats the import quote and is the only qualifying supplier that can still deliver by 20 November. That is the decision the sheet is built to show in one glance.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li>Small brands and online shops sourcing a product, packaging, labels or print run from 10 to 50 possible suppliers, and wanting the inbox each supplier itself publishes for sales or export enquiries.</li>
+<li>Buyers and procurement staff at small firms who must show three or more comparable quotes before ordering.</li>
+<li>Anyone who already has a list of supplier websites (from a trade directory, a trade fair or a search) and wants the contact column filled in one run, then a fair like-for-like comparison.</li>
+</ul>
+
+<h2>Step 1: list the suppliers in a tab named sites</h2>
+<table><thead><tr><th>Column</th><th>What to put</th></tr></thead><tbody>
+<tr><td>A Supplier</td><td>Name, for example "Alpha Moulds"</td></tr>
+<tr><td>B Website</td><td>The homepage, for example <code>https://www.alpha-moulds.example</code></td></tr>
+<tr><td>C Country</td><td>Where it ships from. You need this for shipping, duty and currency in Step 5.</td></tr>
+<tr><td>D Item</td><td>What you want quoted, in the same words for every supplier, so the quotes compare like for like.</td></tr>
+</tbody></table>
+
+<h2>Step 2: run the contact scraper on the websites</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_supplier_rfq_sheet">website contact scraper</a> on the Apify Store and paste column B into <code>urls</code> (one per line) or <code>startUrls</code>. Set <code>defaultCountry</code> to the country most suppliers are in, so local phone numbers are read correctly. What it does with the default settings, as written in the Actor's input schema and source:</p>
+<ul>
+<li>Reads the homepage plus the most contact-like pages (contact, about, impressum, support): <code>maxPagesPerSite</code> is 4 by default. Many manufacturers put the export inbox on an "Export" or "Contact" page deeper in the site, so try 6 if many rows come back empty.</li>
+<li>Returns only <strong>shared role inboxes</strong>. <code>sales@</code>, <code>export@</code>, <code>exports@</code>, <code>orders@</code>, <code>enquiry@</code>, <code>enquiries@</code>, <code>info@</code>, <code>contact@</code> and <code>hello@</code> are on its role list, and so is a role word plus a country or city tag such as <code>sales.uk@</code>. Addresses that identify one person (for example <code>sales.ravi@</code>) are dropped and only counted in <code>personalEmailsDropped</code> (<code>includePersonalEmails</code> is off).</li>
+<li>Checks each inbox's domain can receive mail (<code>mxValid</code>), and returns phone numbers and company social profiles, including WhatsApp links the site publishes.</li>
+<li>Follows robots.txt and reads each site's terms. A site whose terms forbid scraping comes back as <code>blocked-by-terms</code>; other statuses include <code>blocked-by-robots</code>, <code>blocked-by-site</code>, <code>rate-limited</code> and <code>failed</code>. None of the non-<code>ok</code> rows are charged.</li>
+</ul>
+<div class="note"><p><strong>Honest limit:</strong> in the current version, <code>wholesale@</code>, <code>trade@</code> and <code>b2b@</code> are <em>not</em> on the role list, so with the default setting they are dropped and counted, not shown. The sheet turns that count into a "read its contact page" step instead of hiding it.</p></div>
+<p>When the run finishes, export the dataset as <strong>CSV</strong>, then in your sheet use File, Import, Insert new sheet, and rename it <code>scrape</code>. Nested fields become headers like <code>emails/0/email</code> and <code>emails/0/mxValid</code>, so the formulas below find columns by header name, not by position.</p>
+
+<h2>Step 3: build the rfq tab</h2>
+<p>Create a tab named <code>rfq</code>, put these formulas in row 2 and fill down as many rows as <code>scrape</code> has.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Domain</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("domain", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>B</td><td>Status</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("status", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>C</td><td>All inboxes</td><td><code>=IFERROR(TEXTJOIN(", ", TRUE, FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^emails/\d+/email$"))), "")</code></td></tr>
+<tr><td>D</td><td>Quote inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:export|exports|sales|orders|enquiry|enquiries)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>E</td><td>Fallback</td><td><code>=IF(D2&lt;&gt;"", "", IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:info|contact|hello|office)(?:[.\-_][a-z0-9]+)?@[^,]+)"), ""))</code></td></tr>
+<tr><td>F</td><td>Named inboxes dropped</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("personalEmailsDropped", scrape!$A$1:$ZZ$1, 0)), 0)</code></td></tr>
+<tr><td>G</td><td>Next step</td><td><code>=IFS(B2&lt;&gt;"ok", "Skipped ("&amp;B2&amp;"): use the site's contact or quote form", D2&lt;&gt;"", "Send RFQ to quote inbox", N(F2)&gt;0, "Site lists named inboxes: read its contact page", E2&lt;&gt;"", "Use general inbox and ask who handles quotes", TRUE, "No inbox found: use the contact or quote form")</code></td></tr>
+<tr><td>H</td><td>Bad MX</td><td><code>=IFERROR(SUMPRODUCT(--(UPPER(TO_TEXT(FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^emails/\d+/mxValid$"))))="FALSE")), 0)</code> (above 0: one inbox has no mail server; do not use it)</td></tr>
+<tr><td>I</td><td>Asked on</td><td>Type the date you sent the RFQ</td></tr>
+<tr><td>J</td><td>Chase on</td><td><code>=IF(I2="", "", WORKDAY(I2, 3))</code></td></tr>
+<tr><td>K</td><td>Quote in?</td><td>Type <code>Yes</code> when the quote arrives, then copy it to the quotes tab</td></tr>
+<tr><td>L</td><td>Do not contact</td><td>Type <code>Y</code> if the supplier declines or asks you not to write again</td></tr>
+<tr><td>M</td><td>Send?</td><td><code>=IFS(L2="Y", "NO: do not contact", K2="Yes", "Done", I2="", "Ready", TODAY()&gt;=J2, "Chase once", TRUE, "Wait")</code></td></tr>
+</tbody></table>
+<p>Filter column M and work only the rows that say <strong>Ready</strong> or <strong>Chase once</strong>. Write to each supplier one at a time from your normal inbox; one chase is enough.</p>
+
+<h2>Step 4: the RFQ email (same questions for everyone)</h2>
+<p>Asking every supplier the same questions is what makes the quotes comparable. Change only the first line.</p>
+<pre>Subject: Quote request: [item], [quantity] units, delivery to [city, country]
+
+Hello [Supplier] sales team,
+
+I am [your name] from [your company], [website]. We are comparing
+suppliers for [item: material, size, finish, packing].
+
+Please quote:
+1. Unit price at [quantity] units, and your price breaks
+2. Minimum order quantity (MOQ)
+3. Currency, and whether the price includes tax
+4. Delivery terms and shipping cost to [city, country]
+5. Lead time from order and sample to dispatch
+6. Payment terms
+
+We plan to decide by [date]. If quotes are handled by someone else,
+please let me know who.
+
+[Your name], [company], [phone]
+If you would rather not receive requests from us, reply "no".</pre>
+
+<h2>Step 5: build the quotes tab</h2>
+<p>Create a tab named <code>quotes</code> with one row per quote received. Type columns A to I from the supplier's reply. Duty and shipping are <strong>your own figures</strong>: take the duty rate from your country's customs authority for your product code, and the shipping cost from the quote or your forwarder. Put the date you need stock by in cell <code>P1</code> (for example <code>20/11/2026</code>, a week before Black Friday on Friday 27 November 2026).</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula or entry (row 2)</th></tr></thead><tbody>
+<tr><td>A to I</td><td>Supplier, Currency, Unit price, MOQ, Order qty, Shipping for the order (in the quote currency), Duty % (as 10%), FX to your currency, Lead time (days)</td><td>Typed from the quote</td></tr>
+<tr><td>J</td><td>Landed per unit</td><td><code>=IF(OR(C2="", E2=""), "", ROUND((C2*E2 + F2) * (1 + G2) * H2 / E2, 2))</code></td></tr>
+<tr><td>K</td><td>MOQ ok?</td><td><code>=IF(C2="", "", IF(E2&gt;=D2, "Yes", "No: order "&amp;D2&amp;"+"))</code></td></tr>
+<tr><td>L</td><td>Rank</td><td><code>=IF(K2="Yes", COUNTIFS($K$2:$K, "Yes", $J$2:$J, "&lt;"&amp;J2) + 1, "")</code></td></tr>
+<tr><td>M</td><td>Order by</td><td><code>=IF(I2="", "", IF($P$1 - I2 &lt; TODAY(), TEXT($P$1 - I2, "d mmm yyyy")&amp;" (too late)", TEXT($P$1 - I2, "d mmm yyyy")))</code></td></tr>
+</tbody></table>
+<p>The duty formula above is a simple estimate that applies the rate to goods plus shipping. Your customs authority's rules on the value duty is charged on, and any other import taxes, decide the real figure, so treat column J as a comparison number, not a final cost.</p>
+
+<h2>A two-day plan</h2>
+<ul class="check">
+<li>Day 1 morning: build the sites tab, run the scraper, fill the rfq tab.</li>
+<li>Day 1 afternoon: send the Ready rows with the same RFQ email; handle the "read its contact page" and form rows by hand.</li>
+<li>Day 1 + 3 working days: chase once where column M says so; mark any "no" as do-not-contact.</li>
+<li>As quotes arrive: copy them to the quotes tab and ask for a sample from the top two ranked suppliers before you order.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper inputs and outputs (<code>urls</code>, <code>startUrls</code>, <code>defaultCountry</code>, <code>maxPagesPerSite</code> default 4, <code>includePersonalEmails</code> off, <code>personalEmailsDropped</code>, <code>mxValid</code>, the role-inbox list, statuses such as <code>blocked-by-terms</code>, non-<code>ok</code> rows not charged): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_supplier_rfq_sheet">Apify Store page</a> (Actor input schema, README and source read 21 Oct 2026)</li>
+<li>Black Friday 2026 is Friday 27 November (the day after US Thanksgiving, Thursday 26 November).</li>
+<li>Duty rates and customs valuation: your own country's customs authority. This guide gives no duty figures.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="find-public-role-emails-company-website-apify.html">Find public role emails (sales@, press@, support@) on a company website without guessing</a></li>
+<li><a href="trade-fair-exhibitor-contact-sheet-apify.html">Trade fair exhibitor contact sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean an Apify contact CSV into a call sheet</a></li>
+<li><a href="apify-contact-scrape-to-hubspot-pipedrive-import-csv.html">Turn a contact scrape into a HubSpot or Pipedrive import CSV</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
