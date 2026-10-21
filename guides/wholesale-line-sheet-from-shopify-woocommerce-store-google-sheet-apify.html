@@ -1,0 +1,125 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wholesale line sheet from your own Shopify or WooCommerce store: photo, SKU, RRP, wholesale price and an order column for each product, in one Google Sheet</title><meta name="description" content="A free Google Sheet for small brands selling to shops: one row per product from your own web store with photo, SKU, options, stock, RRP (sale prices ignored), wholesale price before VAT from one setting, retailer margin, case pack, order quantity and line total, ready to send as a PDF."><link rel="canonical" href="https://unadhi.com/guides/wholesale-line-sheet-from-shopify-woocommerce-store-google-sheet-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Wholesale line sheet from your own Shopify or WooCommerce store"><meta property="og:description" content="One row per product from your own shop: photo, SKU, RRP, wholesale price ex VAT, margin, case pack and an order column. Formulas included."><meta property="og:url" content="https://unadhi.com/guides/wholesale-line-sheet-from-shopify-woocommerce-store-google-sheet-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Wholesale line sheet from your own Shopify or WooCommerce store: photo, SKU, RRP, wholesale price and an order column for each product, in one Google Sheet", "dateModified": "2026-10-21", "datePublished": "2026-10-21", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/wholesale-line-sheet-from-shopify-woocommerce-store-google-sheet-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a wholesale line sheet?", "acceptedAnswer": {"@type": "Answer", "text": "A document a brand sends to shop buyers listing each product it sells wholesale, with photo, name, SKU, options, wholesale price, suggested retail price (RRP) and minimum quantities, so the buyer can place an order. This guide builds one in Google Sheets from your own web shop's product data."}}, {"@type": "Question", "name": "Why does the sheet use the compare-at price as RRP?", "acceptedAnswer": {"@type": "Answer", "text": "If a product is on sale in your shop, its current price is lower than its normal price. The sheet takes the larger of price and compare-at price, so a running sale does not lower your wholesale prices. Make sure the compare-at price in your shop is your real normal price."}}, {"@type": "Question", "name": "What if the scraper skips my own shop?", "acceptedAnswer": {"@type": "Answer", "text": "The Unadhi product data scraper reads each shop's robots.txt and terms page and skips shops whose terms forbid automated access, including shops on Shopify's default terms, without charging. In that case use the free product export in your Shopify or WooCommerce admin; the formulas look columns up by header name, so you only change the header names."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Wholesale line sheet from your own Shopify or WooCommerce store: photo, SKU, RRP, wholesale price and an order column for each product, in one Google Sheet</h1>
+<p class="meta">Updated 21 Oct 2026 · Disclosure: the product data scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works with the free product export from your own Shopify or WooCommerce admin. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> a wholesale <strong>line sheet</strong> in one Google Sheet, built from your own web shop. It has <strong>one row per product</strong>: photo, product name, SKU, category, sizes or colours, in stock, <strong>RRP</strong> (your normal shop price, even if a sale is running), a <strong>wholesale price</strong> worked out from one setting, the retailer's margin, a case pack and an <strong>order quantity column</strong> the shop buyer fills in, with a line total. Hide the rows you don't offer wholesale, download it as a PDF, and send it to the gift shops, boutiques and stockists you pitch for Christmas. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>linesheet tab (example rows are made up; settings: wholesale = 50% of RRP ex VAT, shop prices include 20% VAT)</h3>
+<table><thead><tr><th>Photo</th><th>Product</th><th>SKU</th><th>Category</th><th>Options</th><th>In stock</th><th>RRP</th><th>Wholesale ex VAT</th><th>Retailer margin</th><th>Case pack</th><th>Order qty</th><th>Line total</th></tr></thead><tbody>
+<tr><td>(image)</td><td>Hand-poured soy candle, fig</td><td>CAN-FIG-200</td><td>Candles</td><td>200 g, 400 g</td><td>Yes</td><td>24.00</td><td>10.00</td><td>50%</td><td>6</td><td>12</td><td>120.00</td></tr>
+<tr><td>(image)</td><td>Linen tea towel, sage</td><td>TT-SAGE</td><td>Kitchen</td><td></td><td>Yes</td><td>18.00</td><td>7.50</td><td>50%</td><td>6</td><td>8</td><td>Order in multiples of 6</td></tr>
+<tr><td>(image)</td><td>Ceramic mug, speckled</td><td>MUG-SPK</td><td>Kitchen</td><td>Blue, Sand</td><td>No</td><td>21.60</td><td>9.00</td><td>50%</td><td>4</td><td></td><td></td></tr>
+</tbody></table>
+<p>The mug row shows why RRP is not simply "price": if the mug is on sale at 16.00 in your shop with a compare-at price of 21.60, the sheet uses 21.60, so a pre-Black-Friday sale does not cut your wholesale prices.</p>
+
+<h2>Who this is for</h2>
+<p>Small brands that already sell online (candles, ceramics, prints, cards, skincare, clothing, food gifts) and want to sell to independent shops too. Shop buyers usually ask for a line sheet or wholesale price list before they order. Building it by hand means copying every product, photo and price from your shop; this sheet reads them from one product file and updates when you re-import.</p>
+
+<h2>Step 1: get your products into a tab named scrape</h2>
+<h3>With the product data scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_wholesale_line_sheet">E-commerce Product Data Scraper (Shopify, WooCommerce, any shop)</a> on the Apify Store and use this input with your own shop address:</p>
+<pre>{
+  "startUrls": [{ "url": "https://your-shop.example" }],
+  "maxProductsPerShop": 2000,
+  "includeDescription": false
+}</pre>
+<ul>
+<li><code>maxProductsPerShop</code>: set it above your number of products (the default is 100). You pay only for products delivered.</li>
+<li><code>includeDescription</code>: a line sheet does not need the long description, so you can switch it off to keep the file small.</li>
+<li>The scraper follows robots.txt and reads your shop's terms page. If your own terms forbid automated access (Shopify's default terms do), it skips the shop and charges nothing. Check the run's Storage → Key-value store → <code>SHOPS_SUMMARY</code>: your shop should show <code>ok</code>. If it shows <code>blocked-by-terms</code>, use your admin export below.</li>
+</ul>
+<p>In the run, export the dataset as CSV. In your Google Sheet use File → Import → Upload, "Insert new sheet", and name the tab <code>scrape</code>. Do not rename headers. You get one row per product with columns such as <code>title</code>, <code>sku</code>, <code>category</code>, <code>price</code>, <code>compareAtPrice</code>, <code>inStock</code>, <code>currency</code> and <code>images/0</code>, and for Shopify shops <code>variants/0/title</code>, <code>variants/1/title</code> and so on. For Shopify shops, <code>price</code>, <code>compareAtPrice</code> and <code>sku</code> come from the cheapest variant, and <code>category</code> is the product type. For WooCommerce shops, <code>category</code> is the product's categories joined by commas, <code>compareAtPrice</code> is the regular price, and there are no variant columns.</p>
+<h3>Free, from your own shop admin</h3>
+<ul>
+<li><strong>Shopify:</strong> Products → Export gives one row per variant with columns such as Title, Type, Variant SKU, Variant Price, Variant Compare At Price and Image Src. Extra variant rows have an empty Title.</li>
+<li><strong>WooCommerce:</strong> the built-in product CSV exporter (Products → Export) gives name, SKU, categories, regular price, sale price, stock and image columns.</li>
+</ul>
+<p>The formulas below look columns up by header name, so with an admin export you change only the header names in quotes.</p>
+
+<h2>Step 2: the settings tab</h2>
+<p>Add a tab named <code>settings</code>:</p>
+<table><thead><tr><th>Cell</th><th>What to type</th><th>Example</th></tr></thead><tbody>
+<tr><td>B1</td><td>Wholesale price as a share of RRP before VAT</td><td><code>50%</code></td></tr>
+<tr><td>B2</td><td>VAT or sales tax included in your shop prices (type <code>0%</code> if your shop prices exclude tax)</td><td><code>20%</code> (UK standard rate)</td></tr>
+<tr><td>B3</td><td>Default case pack (minimum per product)</td><td><code>6</code></td></tr>
+<tr><td>B4</td><td>Minimum first order value</td><td><code>150</code></td></tr>
+</tbody></table>
+<p>50% is only an example. Many shops price at about double their cost, but the right figure depends on your sector, your costs and what your stockists expect, so check your own numbers before you send the sheet. Wholesale prices to businesses are normally quoted before VAT; that is why the sheet takes VAT out of your shop price first.</p>
+
+<h2>Step 3: build the linesheet tab</h2>
+<p>Add a tab named <code>linesheet</code>. Row 1 holds the headers below; row 2 holds the formulas, which you copy down one row per row of <code>scrape</code>. Set the row height to about 100 pixels so the photos show.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>B</td><td>Product</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("title", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>C</td><td>SKU</td><td>same pattern with <code>"sku"</code></td></tr>
+<tr><td>D</td><td>Category</td><td>same pattern with <code>"category"</code></td></tr>
+<tr><td>N</td><td>Image link (hide this column)</td><td>same pattern with <code>"images/0"</code></td></tr>
+<tr><td>A</td><td>Photo</td><td><code>=IF(N2="", "", IMAGE(N2))</code></td></tr>
+<tr><td>E</td><td>Options</td><td><code>=IFERROR(REGEXREPLACE(TEXTJOIN(", ", TRUE, FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^variants/\d+/title$"))), "^Default Title$", ""), "")</code></td></tr>
+<tr><td>F</td><td>In stock</td><td><code>=IFERROR(IF(INDEX(scrape!$A2:$ZZ2, MATCH("inStock", scrape!$A$1:$ZZ$1, 0))&amp;""="", "Check", IF(UPPER(INDEX(scrape!$A2:$ZZ2, MATCH("inStock", scrape!$A$1:$ZZ$1, 0))&amp;"")="TRUE", "Yes", "No")), "Check")</code></td></tr>
+<tr><td>G</td><td>RRP</td><td><code>=IF(B2="", "", LET(p, N(IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("price", scrape!$A$1:$ZZ$1, 0)))), c, N(IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("compareAtPrice", scrape!$A$1:$ZZ$1, 0)))), MAX(p, c)))</code></td></tr>
+<tr><td>H</td><td>Wholesale ex VAT</td><td><code>=IF(N(G2)=0, "", ROUND(G2 / (1 + settings!$B$2) * settings!$B$1, 2))</code></td></tr>
+<tr><td>I</td><td>Retailer margin</td><td><code>=IF(H2="", "", 1 - H2 / (G2 / (1 + settings!$B$2)))</code> (format as %)</td></tr>
+<tr><td>J</td><td>Case pack</td><td><code>=settings!$B$3</code>, then type over it for products sold in other packs</td></tr>
+<tr><td>K</td><td>Order qty</td><td>left empty for the shop buyer</td></tr>
+<tr><td>L</td><td>Line total</td><td><code>=IF(N(K2)=0, "", IF(MOD(K2, J2)&lt;&gt;0, "Order in multiples of "&amp;J2, K2 * H2))</code></td></tr>
+<tr><td>M</td><td>Offer wholesale?</td><td>you type Y or N</td></tr>
+</tbody></table>
+<p>Notes on the formulas:</p>
+<ul>
+<li><strong>Photo:</strong> Google Sheets' <code>IMAGE</code> function needs a full web address starting with <code>http</code> and does not accept images hosted on drive.google.com or SVG files. Shop image links from Shopify and WooCommerce are normally ordinary https links.</li>
+<li><strong>Options:</strong> Shopify calls the only variant of a single-variant product "Default Title"; the formula blanks that. WooCommerce rows stay empty here, so type sizes or colours by hand if you need them.</li>
+<li><strong>RRP:</strong> the larger of price and compare-at price, so sale prices are ignored. If you set a compare-at price that is not your real normal price, fix it in your shop first.</li>
+<li><strong>Prices with an admin export:</strong> for Shopify use "Variant Price" and "Variant Compare At Price"; for WooCommerce use "Regular price".</li>
+</ul>
+<p>Under the table, add the order summary:</p>
+<pre>Order total ex VAT:  =SUM(L2:L)
+Minimum first order: =IF(SUM(L2:L) &gt;= settings!B4, "Met", "Add "&amp;TEXT(settings!B4 - SUM(L2:L), "0.00")&amp;" more")</pre>
+<p><code>SUM</code> skips the "Order in multiples of" text, so a line with a wrong quantity is not counted until it is fixed.</p>
+
+<h2>Step 4: send it</h2>
+<ul class="check">
+<li>Add a filter (Data → Create a filter) and untick <strong>N</strong> in column M and <strong>No</strong> in column F, so only products you offer and have in stock show. Hide columns M and N.</li>
+<li>Put your brand name, wholesale contact email, payment terms and delivery terms in the rows above the header (insert rows at the top first).</li>
+<li>File → Download → PDF. Check the print preview: set the layout to landscape and "Fit to width", and confirm only the filtered rows and the photos appear.</li>
+<li>Send the PDF to shop buyers, or share a copy of the sheet with "Make a copy" access so they fill in column K themselves.</li>
+<li>Before each new season, re-import the scrape tab: prices, stock and new products update and your settings stay.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Product data scraper inputs and outputs (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>includeDescription</code>, <code>SHOPS_SUMMARY</code> statuses, Shopify price, compare-at price and SKU from the cheapest variant, product type as category, WooCommerce regular price and categories, skipped shops not charged): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_wholesale_line_sheet">Apify Store page</a> (Actor input schema, README and source read 21 Oct 2026)</li>
+<li>Google Sheets <code>IMAGE</code> function: <a href="https://support.google.com/docs/answer/3093333?hl=en">Google Docs Editors Help</a> (read 21 Oct 2026).</li>
+<li>VAT rates and how to quote business prices: check your own tax authority. 20% is the UK standard VAT rate; other countries differ.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="brand-stockist-price-stock-check-sheet-apify.html">Brand stockist price and stock check sheet</a></li>
+<li><a href="google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html">Google Shopping product listing check sheet</a></li>
+<li><a href="export-shopify-store-products-to-csv.html">Export Shopify store products to CSV</a></li>
+<li><a href="export-woocommerce-store-products-to-csv.html">Export WooCommerce store products to CSV</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
