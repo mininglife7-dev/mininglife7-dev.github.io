@@ -1,0 +1,173 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Local sponsor and raffle prize ask sheet: a Google Sheet of nearby businesses' public inboxes and phones, with who asked, what for and when to follow up</title><meta name="description" content="A free Google Sheet for school fairs, charity runs and club events: one row per local business with its published shared inbox and phone, the ask (cash sponsor, raffle prize, in-kind), the volunteer asking, a Next step column and a totals tab against your target."><link rel="canonical" href="https://unadhi.com/guides/local-business-sponsor-raffle-prize-ask-sheet-school-fair-charity-event-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Local sponsor and raffle prize ask sheet"><meta property="og:description" content="One row per local business: public inbox and phone, what you are asking for, who asked, when to follow up, and a totals tab that shows how far you are from the target."><meta property="og:url" content="https://unadhi.com/guides/local-business-sponsor-raffle-prize-ask-sheet-school-fair-charity-event-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Local sponsor and raffle prize ask sheet: a Google Sheet of nearby businesses' public inboxes and phones, with who asked, what for and when to follow up", "dateModified": "2026-10-22", "datePublished": "2026-10-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/local-business-sponsor-raffle-prize-ask-sheet-school-fair-charity-event-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many times should I follow up a sponsor ask?", "acceptedAnswer": {"@type": "Answer", "text": "The sheet suggests one polite reminder seven days after the first ask. Two reminders is the most; if a business says no or does not answer, mark the row and do not ask again for this event."}}, {"@type": "Question", "name": "Can I use the scraper on a business directory or Facebook pages?", "acceptedAnswer": {"@type": "Answer", "text": "No. Point it only at each business's own website. It skips platform pages such as Facebook and Instagram, pages robots.txt disallows and sites whose terms forbid scraping, and those are not charged."}}, {"@type": "Question", "name": "Do I need the scraper at all?", "acceptedAnswer": {"@type": "Answer", "text": "No. For a short list, open each business's contact page and type the inbox and phone into the scrape tab by hand. The formulas work the same way."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Local sponsor and raffle prize ask sheet: a Google Sheet of nearby businesses' public inboxes and phones, with who asked, what for and when to follow up</h1>
+<p class="meta">Updated 22 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or by copying contacts by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for your school fair, charity run, Christmas market or club event with <strong>one row per local business</strong> you might ask for help: its website, the <strong>shared inbox</strong> (info@, hello@, events@...) and <strong>phone</strong> it publishes on its own site, a ready <strong>wa.me link</strong> where it has one, <strong>what you are asking for</strong> (cash sponsor, raffle prize, in-kind), who is asking, the date you asked, a <strong>Next step</strong> column (ask now / call or visit / follow up today / thank them / done) and the date to follow up. A <strong>totals</strong> tab adds up what has been promised so the committee sees in one look how far you are from the target. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>asks tab (example rows are made up)</h3>
+<table><thead><tr><th>Business</th><th>Domain</th><th>Inbox</th><th>Phone</th><th>Ask</th><th>Asked by</th><th>Asked on</th><th>Answer</th><th>Promised</th><th>Next step</th><th>Follow up</th></tr></thead><tbody>
+<tr><td>Example Bakery</td><td>example-bakery.co.uk</td><td>hello@example-bakery.co.uk</td><td>+440000000001</td><td>raffle prize</td><td>Anna</td><td>2026-10-20</td><td></td><td></td><td>wait</td><td>2026-10-27</td></tr>
+<tr><td>Sample Garage</td><td>sample-garage.co.uk</td><td>info@sample-garage.co.uk</td><td>+440000000002</td><td>cash sponsor</td><td>Raj</td><td>2026-10-12</td><td></td><td></td><td>follow up today</td><td>2026-10-19</td></tr>
+<tr><td>Demo Toy Shop</td><td>demo-toys.co.uk</td><td></td><td>+440000000003</td><td>raffle prize</td><td></td><td></td><td></td><td></td><td>call or visit</td><td></td></tr>
+<tr><td>Test Florist</td><td>test-florist.co.uk</td><td>shop@test-florist.co.uk</td><td></td><td>in-kind</td><td>Anna</td><td>2026-10-10</td><td>yes</td><td>40</td><td>thank them</td><td></td></tr>
+</tbody></table>
+<h3>totals tab</h3>
+<table><thead><tr><th>Ask</th><th>Asked</th><th>Yes</th><th>Promised</th><th>Target</th><th>Still needed</th></tr></thead><tbody>
+<tr><td>cash sponsor</td><td>6</td><td>2</td><td>250</td><td>500</td><td>250</td></tr>
+<tr><td>raffle prize</td><td>14</td><td>5</td><td>180</td><td>300</td><td>120</td></tr>
+<tr><td>in-kind</td><td>3</td><td>1</td><td>40</td><td>100</td><td>60</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Parent-teacher associations and school fair committees</strong> asking local shops for raffle and tombola prizes.</li>
+<li><strong>Charity run, sports club and community event organisers</strong> looking for a few local sponsors.</li>
+<li><strong>Volunteers who share the asking</strong> and keep asking the same business twice, or forget to say thank you.</li>
+</ul>
+<p>The hard part is rarely the list of names; it is finding how each business wants to be contacted, splitting the asks between volunteers and remembering who to chase. This sheet keeps all of that in one place.</p>
+
+<h2>Step 1: list the businesses (tab <code>list</code>)</h2>
+<p>Columns: <code>A business</code>, <code>B website</code>, <code>C ask</code> (cash sponsor, raffle prize or in-kind), <code>D asked by</code>. Start with places your families and members already use: the shops on the high street, the café by the school gate, last year's sponsors. A short list of businesses with a real link to your event gets more yes answers than a long list of strangers.</p>
+<p>In <code>E2</code>, turn the websites into domains:</p>
+<pre>=ARRAYFORMULA(IF(B2:B="",,LOWER(REGEXREPLACE(REGEXREPLACE(TRIM(B2:B),"^(https?://)?(www\.)?",""),"[/?#].*$",""))))</pre>
+<p>That turns <code>https://www.Example-Bakery.co.uk/about</code> into <code>example-bakery.co.uk</code>, the same form the scraper writes in its <code>domain</code> field, so it is the key the formulas join on. Businesses with no website go straight to <strong>call or visit</strong>.</p>
+
+<h2>Step 2: get each business's public inbox and phone (tab <code>scrape</code>)</h2>
+<h3>With the contact scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_local_sponsor_ask_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> on the Apify Store, paste column E into <strong>Websites or domains (plain list)</strong> and use this input (JSON tab):</p>
+<pre>{
+  "urls": ["example-bakery.co.uk", "sample-garage.co.uk", "demo-toys.co.uk"],
+  "maxPagesPerSite": 4,
+  "defaultCountry": "GB",
+  "checkEmailMx": true,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false
+}</pre>
+<ul>
+<li>Set <code>defaultCountry</code> to your own country (GB, IN, US, DE...) so local phone numbers without a country code are read correctly.</li>
+<li>Keep <code>includePersonalEmails</code> and <code>includePersonProfiles</code> <strong>off</strong>. Addresses that identify one person are dropped and only counted; for a sponsor ask the shop's shared inbox or phone is the right door anyway.</li>
+<li>Four pages per site (homepage plus the most contact-like pages) is the default and is usually enough. You pay only for pages actually fetched; sites skipped because of robots.txt or their terms are not charged.</li>
+<li>Already have the businesses from a Google Maps scrape on Apify? Put that run's dataset ID in <strong>Enrich an Apify dataset</strong> (<code>datasetId</code>) instead of the plain list. The scraper reads each item's website, visits each site once and copies the business name and address into <code>sourceItems</code>.</li>
+</ul>
+<p>When the run finishes, export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Do not rename the headers. Apify flattens lists into numbered columns such as <code>emails/0/email</code>, <code>emails/0/mxValid</code>, <code>phones/0/phone</code> and <code>socials/whatsapp/0/url</code>; the formulas find them by header name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code>, <code>emails/0/email</code>, <code>phones/0/phone</code> and <code>socials/whatsapp/0/url</code>, open each business's contact page and type what you see, with <code>ok</code> in status. Slower, but the same formulas work.</p>
+
+<h2>Step 3: the asks tab</h2>
+<p>A2 and B2 come from the list tab (<code>=list!A2</code>, <code>=list!E2</code>); E2 and F2 too (<code>=list!C2</code>, <code>=list!D2</code>). For the contact columns use this one pattern, changing only the header in quotes:</p>
+<pre>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH($B2, INDEX(scrape!$A:$ZZ, 0, MATCH("domain", scrape!$1:$1, 0)), 0),
+  MATCH("emails/0/email", scrape!$1:$1, 0)), "")</pre>
+<table><thead><tr><th>Column</th><th>Header in quotes</th><th>What it shows</th></tr></thead><tbody>
+<tr><td>C Inbox</td><td><code>emails/0/email</code></td><td>first shared inbox found on the site</td></tr>
+<tr><td>D Phone</td><td><code>phones/0/phone</code></td><td>in international format, for example +44...</td></tr>
+<tr><td>L WhatsApp (optional)</td><td><code>socials/whatsapp/0/url</code></td><td>the click-to-chat link the business publishes</td></tr>
+<tr><td>M Status (optional)</td><td><code>status</code></td><td><code>ok</code>, or why the site was skipped</td></tr>
+</tbody></table>
+<p>Columns G to I are typed by the volunteer: <strong>Asked on</strong> (a date), <strong>Answer</strong> (yes, no or blank) and <strong>Promised</strong> (the cash amount, or your estimate of the prize's value, as a number).</p>
+<p><strong>Next step</strong> in J2:</p>
+<pre>=IF(A2="","",
+ IF(H2="yes", IF(N2="", "thank them", "done"),
+ IF(H2="no", "done",
+ IF(G2="", IF(AND(C2="", D2=""), "call or visit", "ask now"),
+ IF(TODAY()-G2&gt;=7, "follow up today", "wait")))))</pre>
+<p><strong>Follow up</strong> in K2: <code>=IF(OR(G2="", H2&lt;&gt;""), "", G2+7)</code>. Add column N <strong>Thanked on</strong> and type the date when you send the thank-you; the row then shows <strong>done</strong>. Seven days is a starting point: small shops are busy, so one polite reminder after a week is usually enough, and two is the most.</p>
+<p>To give each volunteer their own list, use a filter view on column F (Asked by), or in a new tab: <code>=FILTER(asks!A2:K, asks!F2:F="Anna", asks!J2:J&lt;&gt;"done")</code>.</p>
+
+<h2>Step 4: the totals tab</h2>
+<ul>
+<li>A2 to A4: <code>cash sponsor</code>, <code>raffle prize</code>, <code>in-kind</code></li>
+<li>B2 Asked: <code>=COUNTIFS(asks!E:E, A2, asks!G:G, "&lt;&gt;")</code></li>
+<li>C2 Yes: <code>=COUNTIFS(asks!E:E, A2, asks!H:H, "yes")</code></li>
+<li>D2 Promised: <code>=SUMIFS(asks!I:I, asks!E:E, A2, asks!H:H, "yes")</code></li>
+<li>E2 Target: type your committee's goal</li>
+<li>F2 Still needed: <code>=MAX(0, E2-D2)</code></li>
+</ul>
+
+<h2>What the status values mean</h2>
+<table><thead><tr><th>status</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>ok</code></td><td>Site read</td><td>Use the inbox or phone found</td></tr>
+<tr><td><code>blocked-by-robots</code></td><td>The site asks bots not to crawl</td><td>Open its contact page yourself, or call or visit</td></tr>
+<tr><td><code>blocked-by-terms</code></td><td>The site's terms forbid scraping (clause quoted in <code>error</code>)</td><td>Same</td></tr>
+<tr><td><code>blocked-by-tos-list</code></td><td>The "website" is a platform page such as Facebook</td><td>Visit the shop or use the platform's own message button</td></tr>
+<tr><td><code>blocked-by-site</code>, <code>rate-limited</code>, <code>failed</code></td><td>HTTP 401/403/429, too many requests, or unreachable</td><td>Retry later, or call or visit</td></tr>
+</tbody></table>
+
+<h2>The ask that gets a yes</h2>
+<p>One short, personal message per business, from a named volunteer, about one event. For example:</p>
+<pre>Subject: Raffle prize for the Greenfield School winter fair, Sat 5 Dec
+
+Hello,
+
+I'm Anna, a parent at Greenfield School and on the fair committee.
+Our winter fair raises money for new library books, and many of our
+families shop with you. Would you donate a raffle prize? Any size helps,
+and we will thank you by name on the prize table, in the fair programme
+and in the newsletter to families.
+
+If yes, I can collect it any day before 3 Dec. If now is not a good
+time, just reply "no" and I won't write again.
+
+Thank you,
+Anna (Greenfield School PTA), 07xxx xxxxxx</pre>
+<ul>
+<li>Say what the money is for, what you offer back (thanks by name, a logo on the banner) and a collection date. Only offer what you will really do.</li>
+<li>Give a plain way to say no, and honour it: mark the row <strong>no</strong> so nobody asks again.</li>
+<li>For a business with no inbox, a short visit at a quiet time works better than a cold call.</li>
+<li>Thank everyone who says yes after the event, with the total raised. That is what makes next year's ask easy.</li>
+</ul>
+
+<h2>Before you write to anyone</h2>
+<ul>
+<li><strong>Rules differ by country.</strong> In Germany, for example, UWG section 7(2) no. 2 treats advertising by email without the addressee's prior express consent as an unreasonable nuisance, and that applies to businesses as well as consumers. Whether a sponsor request counts as advertising depends on the case, so in consent-first countries the safer route is a visit or a phone call. Elsewhere, check the local rules.</li>
+<li><strong>Shared inboxes can still reach a person.</strong> Work emails and numbers of identifiable people are personal data under the GDPR and India's DPDP Act 2023. Keep the sheet to what the event needs, share it only with the committee, and delete it or archive it after the event.</li>
+<li>In India, unsolicited commercial calls and SMS are restricted under TRAI rules; WhatsApp has its own business messaging policies.</li>
+</ul>
+<p>General information, not legal advice.</p>
+
+<h2>Check before you send</h2>
+<ul class="check">
+<li>Every business on the list has a real link to your event or your families.</li>
+<li>Each row has one volunteer in Asked by, so nobody gets two asks.</li>
+<li>Domains in column B match the businesses' real websites (spot-check five).</li>
+<li>Your message names the event, the date, the cause and a way to say no.</li>
+<li>Rows marked no stay no.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper input and output fields (<code>urls</code>, <code>datasetId</code>, <code>maxPagesPerSite</code>, <code>defaultCountry</code>, <code>checkEmailMx</code>, <code>includePersonalEmails</code>, <code>includePersonProfiles</code>; <code>domain</code>, <code>status</code>, <code>emails</code>, <code>phones</code>, <code>socials</code>, <code>sourceItems</code>): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_local_sponsor_ask_sheet">Apify Store page</a> (input schema and README)</li>
+<li>Gesetz gegen den unlauteren Wettbewerb (UWG), section 7: <a href="https://www.gesetze-im-internet.de/uwg_2004/__7.html">gesetze-im-internet.de/uwg_2004/__7.html</a></li>
+<li>Digital Personal Data Protection Act, 2023 (India): <a href="https://www.meity.gov.in/data-protection-framework">meity.gov.in</a></li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="trade-fair-exhibitor-contact-sheet-apify.html">Trade fair exhibitor contact sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean an Apify contact scrape into a call sheet</a></li>
+<li><a href="business-website-whatsapp-social-links-apify.html">Get a business website's WhatsApp and social links</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
