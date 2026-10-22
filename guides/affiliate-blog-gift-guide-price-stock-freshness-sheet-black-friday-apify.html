@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Are the prices in your buying guides still right? A Google Sheet that checks every recommended product's price and stock before Black Friday</title><meta name="description" content="A free Google Sheet for bloggers and gift-guide writers: one row per recommended product, with the price you wrote, today's price and stock from the shop, and a Fix column (update price, sold out: swap pick, on sale now, not found) plus a per-article count of fixes."><link rel="canonical" href="https://unadhi.com/guides/affiliate-blog-gift-guide-price-stock-freshness-sheet-black-friday-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Gift guide price and stock check sheet"><meta property="og:description" content="One row per product you recommend: price you wrote, price today, stock, and what to fix, counted per article so you edit the worst posts first."><meta property="og:url" content="https://unadhi.com/guides/affiliate-blog-gift-guide-price-stock-freshness-sheet-black-friday-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Are the prices in your buying guides still right? A Google Sheet that checks every recommended product's price and stock before Black Friday", "dateModified": "2026-10-22", "datePublished": "2026-10-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/affiliate-blog-gift-guide-price-stock-freshness-sheet-black-friday-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How often should I check the prices in my gift guides?", "acceptedAnswer": {"@type": "Answer", "text": "Before you publish, about a week before Black Friday, and on the day itself, because shops change prices and stock most in November. Each run of the sheet takes the new scrape and updates every row."}}, {"@type": "Question", "name": "Can the sheet check Amazon or Etsy links?", "acceptedAnswer": {"@type": "Answer", "text": "Not with the scraper: it refuses marketplaces whose terms forbid scraping, such as Amazon, eBay and Etsy, and skips any shop whose robots.txt or terms forbid it. Type those prices in by hand or use the marketplace's own tools."}}, {"@type": "Question", "name": "What does 'not found: check link' mean?", "acceptedAnswer": {"@type": "Answer", "text": "The scrape returned no product for that address. The product may be removed, the shop may have changed the address, or the shop was skipped; the run's SHOPS_SUMMARY shows which."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Are the prices in your buying guides still right? A Google Sheet that checks every recommended product's price and stock before Black Friday</h1>
+<p class="meta">Updated 22 Oct 2026 · Disclosure: the product data scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works without it if you type current prices in by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet that tells you, before Black Friday, which product picks in your buying guides and gift guides are out of date. The <strong>links</strong> tab has <strong>one row per product you recommend</strong>: the article it sits in, the product page, the price you wrote, the price on the shop today, how far it moved, whether it is in stock, and a <strong>Fix</strong> column that says exactly what to do: <strong>ok</strong>, <strong>update price</strong>, <strong>sold out: swap pick</strong>, <strong>not found: check link</strong> or <strong>on sale now: mention it</strong>. The <strong>articles</strong> tab counts the fixes per article, so you edit the posts with the most problems first. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>links tab (example rows are made up)</h3>
+<table><thead><tr><th>Article</th><th>Product page</th><th>Price in article</th><th>Price today</th><th>Was (compare-at)</th><th>Change</th><th>In stock</th><th>Fix</th></tr></thead><tbody>
+<tr><td>Best oak chopping boards</td><td>https://shop-a.example/products/oak-board-large</td><td>45.00</td><td>45.00</td><td></td><td>0%</td><td>TRUE</td><td>ok</td></tr>
+<tr><td>Best oak chopping boards</td><td>https://shop-b.example/product/end-grain-board/</td><td>60.00</td><td>72.00</td><td></td><td>20%</td><td>TRUE</td><td>update price</td></tr>
+<tr><td>Gifts for home cooks</td><td>https://shop-c.example/products/linen-apron</td><td>28.00</td><td>21.00</td><td>28.00</td><td>-25%</td><td>TRUE</td><td>on sale now: mention it</td></tr>
+<tr><td>Gifts for home cooks</td><td>https://shop-a.example/products/knife-roll</td><td>55.00</td><td>55.00</td><td></td><td>0%</td><td>FALSE</td><td>sold out: swap pick</td></tr>
+<tr><td>Gifts for home cooks</td><td>https://shop-d.example/products/salt-cellar</td><td>18.00</td><td></td><td></td><td></td><td></td><td>not found: check link</td></tr>
+</tbody></table>
+<h3>articles tab</h3>
+<table><thead><tr><th>Article</th><th>Picks</th><th>Fixes</th><th>Edit first?</th></tr></thead><tbody>
+<tr><td>Gifts for home cooks</td><td>3</td><td>3</td><td>yes</td></tr>
+<tr><td>Best oak chopping boards</td><td>2</td><td>1</td><td></td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<p>Bloggers, newsletter writers and small review sites that recommend products from independent shops: "best of" lists, gift guides and comparison posts. Prices and stock change all year, and most of all in November. A reader who clicks a pick at the price you quoted and finds a higher price or a sold-out page stops trusting the rest of the guide. Checking every link by hand takes hours; this sheet does it in one run.</p>
+
+<h2>Step 1: list your picks in a tab named links</h2>
+<p>Put one row per recommended product, with these headers in row 1: <code>Article</code> (A), <code>Product page</code> (B), <code>Price in article</code> (C). Use the plain product page address, without tracking parameters, so it matches what the scraper returns. If you write the same product into two articles, give it two rows.</p>
+
+<h2>Step 2: get today's price and stock into a tab named scrape</h2>
+<h3>With the product data scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_affiliate_price_freshness">E-commerce Product Data Scraper (Shopify, WooCommerce, any shop)</a> on the Apify Store and paste the product pages from column B as start URLs. Single product pages are fine, and so are mixed shops:</p>
+<pre>{
+  "startUrls": [
+    { "url": "https://shop-a.example/products/oak-board-large" },
+    { "url": "https://shop-b.example/product/end-grain-board/" }
+  ],
+  "maxProductsPerShop": 100,
+  "includeDescription": false
+}</pre>
+<ul>
+<li>You pay only for products delivered. <code>includeDescription</code> is off because the sheet needs only price, compare-at price and stock.</li>
+<li>The scraper follows each shop's robots.txt and reads its terms page. Shops whose terms forbid automated access are skipped and not charged, and big marketplaces such as Amazon, eBay and Etsy are refused. Check prices on those by hand or with the marketplace's own tools. The run's Storage → Key-value store → <code>SHOPS_SUMMARY</code> shows each shop's status.</li>
+</ul>
+<p>Export the dataset as CSV, then in your sheet use File → Import → Upload, "Insert new sheet", and name the tab <code>scrape</code>. Keep the headers; the formulas find <code>url</code>, <code>price</code>, <code>compareAtPrice</code> and <code>inStock</code> by name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make a <code>scrape</code> tab with the headers <code>url</code>, <code>price</code>, <code>compareAtPrice</code> and <code>inStock</code> (TRUE or FALSE), open each product page and type what you see. Slower, but the same formulas work.</p>
+
+<h2>Step 3: the formulas in the links tab</h2>
+<p>Put these in row 2 and fill down.</p>
+<table><thead><tr><th>Column</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>D Price today</td><td><code>=IFERROR(INDEX(FILTER(scrape!A:Z, scrape!1:1="price"), MATCH(B2, INDEX(FILTER(scrape!A:Z, scrape!1:1="url")), 0)), "")</code></td></tr>
+<tr><td>E Was (compare-at)</td><td><code>=IFERROR(INDEX(FILTER(scrape!A:Z, scrape!1:1="compareAtPrice"), MATCH(B2, INDEX(FILTER(scrape!A:Z, scrape!1:1="url")), 0)), "")</code></td></tr>
+<tr><td>F Change</td><td><code>=IF(OR(D2="", C2=""), "", D2/C2-1)</code> (format as %)</td></tr>
+<tr><td>G In stock</td><td><code>=IFERROR(INDEX(FILTER(scrape!A:Z, scrape!1:1="inStock"), MATCH(B2, INDEX(FILTER(scrape!A:Z, scrape!1:1="url")), 0)), "")</code></td></tr>
+<tr><td>H Fix</td><td><code>=IF(B2="", "", IF(D2="", "not found: check link", IF(G2=FALSE, "sold out: swap pick", IF(AND(E2&lt;&gt;"", E2&gt;D2), "on sale now: mention it", IF(ABS(F2)&gt;=0.05, "update price", "ok")))))</code></td></tr>
+</tbody></table>
+<p>The 5% in the Fix formula is a starting point: change it to whatever gap you think readers would notice. "not found" means the scraper returned no product for that address. Open the link: the product may be gone, the shop may have changed its address, or the shop was skipped (see <code>SHOPS_SUMMARY</code>). A price in a different currency from the one you wrote also shows up as a big change, so compare like with like.</p>
+
+<h2>Step 4: the articles tab</h2>
+<ul>
+<li>A2: <code>=UNIQUE(FILTER(links!A2:A, links!A2:A&lt;&gt;""))</code></li>
+<li>B2 Picks: <code>=COUNTIF(links!A:A, A2)</code></li>
+<li>C2 Fixes: <code>=COUNTIFS(links!A:A, A2, links!H:H, "&lt;&gt;ok")</code></li>
+<li>D2 Edit first?: <code>=IF(C2&gt;=2, "yes", "")</code></li>
+</ul>
+<p>Sort by Fixes, largest first, and work down the list.</p>
+
+<h2>What to do with each fix</h2>
+<ul>
+<li><strong>update price</strong>: change the number in the article, or write "around" and the date you checked.</li>
+<li><strong>sold out: swap pick</strong>: replace it with your runner-up, or say it is sold out and when you last saw it in stock.</li>
+<li><strong>on sale now: mention it</strong>: say the sale price and that sales end; do not promise a date the shop has not published.</li>
+<li><strong>not found: check link</strong>: fix or remove the link so readers do not land on an error page.</li>
+</ul>
+<p>Run it again a week before Black Friday and once more on the day. Each run replaces the scrape tab, and the links tab updates by itself.</p>
+
+<h2>Partner programme</h2>
+<p>Partner programme opening soon: join the free waitlist. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received. <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">Join the partner waitlist</a>.</p>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
