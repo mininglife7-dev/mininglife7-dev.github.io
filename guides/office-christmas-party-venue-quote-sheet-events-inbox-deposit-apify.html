@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Office Christmas party venue sheet: nearby restaurants' and venues' events inboxes and phones, with quote per head, deposit and the date they hold it until</title><meta name="description" content="A free Google Sheet for booking a team Christmas party: one row per venue with its published events inbox and phone, quote per head, minimum spend, deposit, hold-until date, a Next step column and a compare tab that ranks quotes inside your budget."><link rel="canonical" href="https://unadhi.com/guides/office-christmas-party-venue-quote-sheet-events-inbox-deposit-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Office Christmas party venue quote sheet"><meta property="og:description" content="One row per venue: events inbox and phone, per-head quote, minimum spend, deposit and hold date, and a compare tab that ranks the quotes inside your budget."><meta property="og:url" content="https://unadhi.com/guides/office-christmas-party-venue-quote-sheet-events-inbox-deposit-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Office Christmas party venue sheet: nearby restaurants' and venues' events inboxes and phones, with quote per head, deposit and the date they hold it until", "dateModified": "2026-10-22", "datePublished": "2026-10-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/office-christmas-party-venue-quote-sheet-events-inbox-deposit-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many venues should I ask for a Christmas party quote?", "acceptedAnswer": {"@type": "Answer", "text": "Ask ten to twenty venues that can seat your group and aim for at least three full quotes. Compare them on the total for your headcount, including minimum spend and service charge, not on price per head alone."}}, {"@type": "Question", "name": "Can I use the scraper on Facebook pages or booking sites?", "acceptedAnswer": {"@type": "Answer", "text": "No. Point it only at each venue's own website. It skips platform pages such as Facebook, pages robots.txt disallows and sites whose terms forbid scraping, and those are not charged."}}, {"@type": "Question", "name": "Do I need the scraper at all?", "acceptedAnswer": {"@type": "Answer", "text": "No. For a short list, open each venue's events page and type the inbox and phone into the scrape tab by hand. The formulas work the same way."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Office Christmas party venue sheet: nearby restaurants' and venues' events inboxes and phones, with quote per head, deposit and the date they hold it until</h1>
+<p class="meta">Updated 22 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or by copying contacts by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for booking your team's Christmas or year-end party with <strong>one row per venue</strong> you might book (restaurants, pubs, hotels, function rooms): its website, the <strong>events or bookings inbox</strong> and <strong>phone</strong> it publishes on its own site, a ready <strong>wa.me link</strong> where it has one, the date you asked, the <strong>quote per head</strong>, the <strong>total for your headcount</strong>, the <strong>deposit</strong> and the date the venue needs an answer by. A <strong>Next step</strong> column (ask now / call / chase today / decide by ... / booked / no) and a <strong>compare</strong> tab that ranks the quotes inside your budget. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>venues tab (example rows are made up)</h3>
+<table><thead><tr><th>Venue</th><th>Domain</th><th>Inbox</th><th>Phone</th><th>Asked on</th><th>Per head</th><th>Min spend</th><th>Total</th><th>Deposit</th><th>Hold until</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Example Brasserie</td><td>example-brasserie.co.uk</td><td>events@example-brasserie.co.uk</td><td>+440000000001</td><td>2026-10-20</td><td>45</td><td>1000</td><td>1350</td><td>300</td><td>2026-10-30</td><td>decide by 2026-10-30</td></tr>
+<tr><td>Sample Arms</td><td>sample-arms.co.uk</td><td>info@sample-arms.co.uk</td><td>+440000000002</td><td>2026-10-15</td><td></td><td></td><td></td><td></td><td></td><td>chase today</td></tr>
+<tr><td>Demo Hotel</td><td>demo-hotel.co.uk</td><td></td><td>+440000000003</td><td></td><td></td><td></td><td></td><td></td><td></td><td>call</td></tr>
+<tr><td>Test Kitchen</td><td>test-kitchen.co.uk</td><td>book@test-kitchen.co.uk</td><td></td><td>2026-10-21</td><td>38</td><td>1500</td><td>1500</td><td>500</td><td>2026-11-02</td><td>decide by 2026-11-02</td></tr>
+</tbody></table>
+<p>Headcount 30 in these rows. Test Kitchen's total is its minimum spend, because 30 × 38 = 1,140 is below it.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Office managers, HR and team leads</strong> booking a December party or team dinner for 15 to 100 people.</li>
+<li><strong>Small business owners</strong> who want three real quotes before paying a deposit.</li>
+<li><strong>Party committees</strong> where several people ring venues and nobody knows who has already asked.</li>
+</ul>
+<p>Popular December dates go early, and most venues send their party menus to an events inbox rather than the general one. The slow part is finding that inbox for every venue and then comparing quotes that are written in different ways (per head, minimum spend, deposit, service charge). This sheet does both.</p>
+
+<h2>Step 1: list the venues (tab <code>list</code>)</h2>
+<p>Columns: <code>A venue</code>, <code>B website</code>. Start with ten to twenty places within easy travel of the office that can seat your group. In <code>C2</code>, turn the websites into domains:</p>
+<pre>=ARRAYFORMULA(IF(B2:B="",,LOWER(REGEXREPLACE(REGEXREPLACE(TRIM(B2:B),"^(https?://)?(www\.)?",""),"[/?#].*$",""))))</pre>
+<p>That turns <code>https://www.Example-Brasserie.co.uk/christmas</code> into <code>example-brasserie.co.uk</code>, the same form the scraper writes in its <code>domain</code> field, so it is the key the formulas join on. Venues with no website go straight to <strong>call</strong>.</p>
+
+<h2>Step 2: get each venue's public inbox and phone (tab <code>scrape</code>)</h2>
+<h3>With the contact scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_party_venue_quote_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> on the Apify Store, paste column C into <strong>Websites or domains (plain list)</strong> and use this input (JSON tab):</p>
+<pre>{
+  "urls": ["example-brasserie.co.uk", "sample-arms.co.uk", "demo-hotel.co.uk"],
+  "maxPagesPerSite": 4,
+  "defaultCountry": "GB",
+  "checkEmailMx": true,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false
+}</pre>
+<ul>
+<li>Set <code>defaultCountry</code> to your own country (GB, IN, US, DE...) so local phone numbers without a country code are read correctly.</li>
+<li>Keep <code>includePersonalEmails</code> and <code>includePersonProfiles</code> <strong>off</strong>. You want the venue's shared events or bookings inbox, not a named person.</li>
+<li>Four pages per site (homepage plus the most contact-like pages) is the default and usually finds the events page. You pay only for pages actually fetched; sites skipped because of robots.txt or their terms are not charged.</li>
+<li>Found the venues with a Google Maps scrape on Apify? Put that run's dataset ID in <strong>Enrich an Apify dataset</strong> (<code>datasetId</code>) instead of the plain list. The scraper reads each item's website and copies fields such as the venue name and address into <code>sourceItems</code>.</li>
+</ul>
+<p>When the run finishes, export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Keep the headers. Apify flattens lists into numbered columns such as <code>emails/0/email</code>, <code>emails/1/email</code>, <code>phones/0/phone</code> and <code>socials/whatsapp/0/url</code>; the formulas find them by header name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code>, <code>emails/0/email</code>, <code>emails/1/email</code>, <code>phones/0/phone</code> and <code>socials/whatsapp/0/url</code>, open each venue's contact or events page and type what you see, with <code>ok</code> in status. Slower, but the same formulas work.</p>
+
+<h2>Step 3: pick the events inbox, not the general one</h2>
+<p>A venue site often shows two or three addresses. Put the first two found in hidden helper columns <code>M</code> and <code>N</code> with this lookup (change only the header in quotes):</p>
+<pre>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH($B2, INDEX(scrape!$A:$ZZ, 0, MATCH("domain", scrape!$1:$1, 0)), 0),
+  MATCH("emails/0/email", scrape!$1:$1, 0)), "")</pre>
+<p>with <code>emails/1/email</code> in N. Then the Inbox in C2 prefers an address that looks like an events or bookings inbox:</p>
+<pre>=IF(REGEXMATCH(N2, "(?i)^(events?|party|parties|functions?|private|groups?|bookings?|reservations?)@"), N2, M2)</pre>
+<p>Phone in D2 uses the same lookup with <code>phones/0/phone</code>. For WhatsApp, look up <code>socials/whatsapp/0/url</code> in a column O. If C and D are both empty, check <code>status</code> in the table below.</p>
+
+<h2>Step 4: the quote columns</h2>
+<p>Type what each venue sends you: <strong>Asked on</strong> (E), <strong>Per head</strong> (F), <strong>Min spend</strong> (G, blank if none), <strong>Deposit</strong> (I) and <strong>Hold until</strong> (J, the date the venue holds the date for you). Put your headcount in a cell called <code>Headcount</code> (Data → Named ranges) and your budget in <code>Budget</code>.</p>
+<p><strong>Total</strong> in H2, the higher of per-head cost and minimum spend:</p>
+<pre>=IF(F2="", "", MAX(F2*Headcount, N(G2)))</pre>
+<p>If a venue adds a service charge, add a column P <strong>Service %</strong> and use <code>=IF(F2="", "", MAX(F2*Headcount, N(G2))*(1+N(P2)))</code> so quotes are compared like for like.</p>
+<p><strong>Next step</strong> in K2 (add column L <strong>Answer</strong>: booked, no or blank):</p>
+<pre>=IF(A2="", "",
+ IF(L2="booked", "booked", IF(L2="no", "no",
+ IF(E2="", IF(AND(C2="", D2=""), "call", "ask now"),
+ IF(F2="", IF(TODAY()-E2&gt;=3, "chase today", "wait"),
+ IF(J2="", "ask how long they hold the date",
+ IF(J2&lt;TODAY(), "hold expired: ask again", "decide by " &amp; TEXT(J2, "yyyy-mm-dd"))))))))</pre>
+<p>Three days is the chase point because December dates move fast; change it to suit.</p>
+
+<h2>Step 5: the compare tab</h2>
+<p>One formula lists every quoted venue inside budget, cheapest first:</p>
+<pre>=SORT(FILTER({venues!A2:A, venues!H2:H, venues!I2:I, venues!J2:J},
+  venues!H2:H&lt;&gt;"", venues!H2:H&lt;=Budget, venues!L2:L&lt;&gt;"no"), 2, TRUE)</pre>
+<p>Add <code>=COUNTIF(venues!E2:E, "&lt;&gt;")</code> for venues asked and <code>=COUNT(venues!F2:F)</code> for quotes received, so you can see when you have the three quotes you need to decide.</p>
+
+<h2>What the status values mean</h2>
+<table><thead><tr><th>status</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>ok</code></td><td>Site read</td><td>Use the inbox or phone found</td></tr>
+<tr><td><code>blocked-by-robots</code></td><td>The site asks bots not to crawl</td><td>Open its events page yourself, or call</td></tr>
+<tr><td><code>blocked-by-terms</code></td><td>The site's terms forbid scraping (clause quoted in <code>error</code>)</td><td>Same</td></tr>
+<tr><td><code>blocked-by-tos-list</code></td><td>The "website" is a platform page such as Facebook</td><td>Use the platform's own message button, or call</td></tr>
+<tr><td><code>blocked-by-site</code>, <code>rate-limited</code>, <code>failed</code></td><td>HTTP 401/403/429, too many requests, or unreachable</td><td>Retry later, or call</td></tr>
+</tbody></table>
+
+<h2>The enquiry that gets a full quote back</h2>
+<p>Ask for everything you need to compare in one message, so the venue answers once:</p>
+<pre>Subject: Christmas party enquiry: 30 people, Fri 11 Dec or Thu 17 Dec
+
+Hello,
+
+We're looking for a venue for our team Christmas party: about 30 people,
+evening, Friday 11 December or Thursday 17 December (either works).
+Could you send:
+
+1. Your party menu and price per head
+2. Any minimum spend, room hire or service charge
+3. The deposit, and when the balance and final numbers are due
+4. Your cancellation terms
+5. How long you can hold the date for us
+
+Thank you,
+[Name], [Company], [phone]</pre>
+<ul>
+<li>Give two dates. Venues that are full on one often have the other.</li>
+<li>Ask how long they will hold the date. That is the date in <strong>Hold until</strong>, and it keeps you from losing a good quote while you wait for others.</li>
+<li>Read the cancellation terms before paying a deposit, and check the deposit policy if headcount might drop.</li>
+<li>When you book, tell the venues you did not choose. It frees their date and is good manners for next year.</li>
+</ul>
+<p>This is a customer asking for a quote, not marketing, so it is fine to email a venue's published bookings inbox. Keep the sheet to what the booking needs and share it only with the people organising.</p>
+
+<h2>Check before you book</h2>
+<ul class="check">
+<li>You have at least three quotes, compared on Total (with minimum spend and service charge), not per head alone.</li>
+<li>The chosen venue's hold date has not passed.</li>
+<li>Deposit, balance due date, final numbers date and cancellation terms are written in the row.</li>
+<li>Dietary needs and access needs for your group have been sent to the venue.</li>
+<li>Venues you did not choose have been told.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper input and output fields (<code>urls</code>, <code>datasetId</code>, <code>maxPagesPerSite</code>, <code>defaultCountry</code>, <code>checkEmailMx</code>, <code>includePersonalEmails</code>, <code>includePersonProfiles</code>; <code>domain</code>, <code>status</code>, <code>emails</code>, <code>phones</code>, <code>socials</code>, <code>sourceItems</code>): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_party_venue_quote_sheet">Apify Store page</a> (input schema and README)</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="local-business-sponsor-raffle-prize-ask-sheet-school-fair-charity-event-apify.html">Local sponsor and raffle prize ask sheet</a></li>
+<li><a href="enrich-google-maps-apify-emails-phones.html">Add emails and phones to a Google Maps scrape</a></li>
+<li><a href="business-website-whatsapp-social-links-apify.html">Get a business website's WhatsApp and social links</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
