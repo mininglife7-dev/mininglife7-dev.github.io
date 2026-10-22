@@ -1,0 +1,146 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Facebook and Instagram shop catalogue feed from your own Shopify or WooCommerce store: one Google Sheet Meta Commerce Manager reads on a schedule, with a check for rows Meta will drop</title><meta name="description" content="A free Google Sheet for small brands: one row per product from your own web shop with the exact Meta catalogue columns (id, title, description, availability, condition, price, sale_price, link, image_link, brand, gtin, google_product_category), plus a checks tab that flags duplicate ids, non-JPEG/PNG images, missing descriptions, long titles and missing categories."><link rel="canonical" href="https://unadhi.com/guides/facebook-instagram-shop-catalog-feed-google-sheet-shopify-woocommerce-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Facebook and Instagram shop catalogue feed from your own shop, in one Google Sheet"><meta property="og:description" content="One row per product with the exact Meta catalogue columns, a checks tab for rows Meta will drop, and steps to connect the sheet as a scheduled feed. Formulas included."><meta property="og:url" content="https://unadhi.com/guides/facebook-instagram-shop-catalog-feed-google-sheet-shopify-woocommerce-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Facebook and Instagram shop catalogue feed from your own Shopify or WooCommerce store: one Google Sheet Meta Commerce Manager reads on a schedule, with a check for rows Meta will drop", "dateModified": "2026-10-22", "datePublished": "2026-10-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/facebook-instagram-shop-catalog-feed-google-sheet-shopify-woocommerce-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can Meta Commerce Manager read a Google Sheet as a product feed?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Meta lists Google Sheets as a supported format for scheduled data feeds, fetched hourly, daily or weekly. The sheet's link sharing must be set to Anyone with the link, not Restricted."}}, {"@type": "Question", "name": "Which columns does a Meta catalogue feed need?", "acceptedAnswer": {"@type": "Answer", "text": "Products may not upload if id, title, description, availability, condition, price, link or image_link is missing or wrongly formatted, and each product also needs at least one of brand, gtin or mpn. Meta also asks for google_product_category or fb_product_category."}}, {"@type": "Question", "name": "Why did some of my products disappear from the catalogue?", "acceptedAnswer": {"@type": "Answer", "text": "One common cause is a duplicate id: Meta says that if the same content ID appears more than once, it ignores every instance. The checks tab in this guide flags duplicate ids, images that are not JPEG or PNG, missing descriptions and missing prices."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Facebook and Instagram shop catalogue feed from your own Shopify or WooCommerce store: one Google Sheet Meta Commerce Manager reads on a schedule, with a check for rows Meta will drop</h1>
+<p class="meta">Updated 22 Oct 2026 · Disclosure: the product data scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works with the free product export from your own Shopify or WooCommerce admin. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. Unadhi is not connected to Meta.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet that Meta Commerce Manager can read as a <strong>scheduled catalogue feed</strong> for your Facebook and Instagram shop and catalogue ads. The <strong>feed</strong> tab has <strong>one row per product</strong> from your own web shop with the exact column names Meta asks for: <code>id</code>, <code>title</code>, <code>description</code>, <code>availability</code>, <code>condition</code>, <code>price</code>, <code>sale_price</code>, <code>link</code>, <code>image_link</code>, <code>brand</code>, <code>gtin</code> and <code>google_product_category</code>. A separate <strong>checks</strong> tab flags, in plain English, the rows Meta is likely to drop or show badly: <strong>duplicate id</strong> (Meta ignores every copy), <strong>no image</strong> or an image that is not JPEG or PNG, <strong>no description</strong>, <strong>description same as title</strong>, <strong>title over 65 characters</strong>, <strong>price missing</strong>, and <strong>no category</strong>. Re-import your products before Black Friday and the feed updates on Meta's next scheduled fetch. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>feed tab (example rows are made up; shop currency GBP)</h3>
+<table><thead><tr><th>id</th><th>title</th><th>availability</th><th>condition</th><th>price</th><th>sale_price</th><th>link</th><th>image_link</th><th>brand</th></tr></thead><tbody>
+<tr><td>CAN-FIG-200</td><td>Hand-poured soy candle, fig</td><td>in stock</td><td>new</td><td>24.00 GBP</td><td>19.20 GBP</td><td>https://your-shop.example/products/fig-candle</td><td>https://cdn.your-shop.example/fig.jpg</td><td>Your Brand</td></tr>
+<tr><td>TT-SAGE</td><td>Linen tea towel, sage</td><td>in stock</td><td>new</td><td>18.00 GBP</td><td></td><td>https://your-shop.example/products/sage-tea-towel</td><td>https://cdn.your-shop.example/sage.webp</td><td>Your Brand</td></tr>
+<tr><td>MUG-SPK</td><td>Ceramic mug, speckled</td><td>out of stock</td><td>new</td><td>21.60 GBP</td><td></td><td>https://your-shop.example/products/speckled-mug</td><td></td><td>Your Brand</td></tr>
+</tbody></table>
+<h3>checks tab for the same rows</h3>
+<table><thead><tr><th>id</th><th>Problems</th><th>Ready?</th></tr></thead><tbody>
+<tr><td>CAN-FIG-200</td><td></td><td>Yes</td></tr>
+<tr><td>TT-SAGE</td><td>Image not JPEG or PNG</td><td>Fix</td></tr>
+<tr><td>MUG-SPK</td><td>No image · No category</td><td>Fix</td></tr>
+</tbody></table>
+<p>The candle row shows how a sale is handled: the shop sells it at 19.20 with a compare-at (normal) price of 24.00, so <code>price</code> is the normal price and <code>sale_price</code> the lower one, which is how Meta expects a discount to be sent.</p>
+
+<h2>Who this is for, and when you need it</h2>
+<p>Small brands selling on their own Shopify or WooCommerce shop who want their products in a Meta catalogue for an Instagram or Facebook shop or for catalogue ads. Shopify's Facebook &amp; Instagram sales channel and the Facebook for WooCommerce plugin can sync products for you, and if that sync works for you, use it. This sheet is for when it doesn't: the plugin keeps failing, you want to choose exactly which products go in, you want to fix titles and categories for Meta without changing your shop, or you sell from a shop the plugins don't cover. Only use it for your own products: Meta requires each <code>link</code> to be a product page on your business's own website.</p>
+
+<h2>Step 1: get your products into a tab named scrape</h2>
+<h3>With the product data scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_meta_catalog_feed_sheet">E-commerce Product Data Scraper (Shopify, WooCommerce, any shop)</a> on the Apify Store and use this input with your own shop address:</p>
+<pre>{
+  "startUrls": [{ "url": "https://your-shop.example" }],
+  "maxProductsPerShop": 2000,
+  "includeDescription": true
+}</pre>
+<ul>
+<li><code>maxProductsPerShop</code>: set it above your number of products (the default is 100). You pay only for products delivered.</li>
+<li><code>includeDescription</code>: keep it on. Meta requires a description, and the scraper gives it as plain text, which is what Meta's <code>description</code> field wants.</li>
+<li>The scraper follows robots.txt and reads your shop's terms page. If your own terms forbid automated access (Shopify's default terms do), it skips the shop and charges nothing. Check the run's Storage → Key-value store → <code>SHOPS_SUMMARY</code>: your shop should show <code>ok</code>. If it shows <code>blocked-by-terms</code>, use your admin export below.</li>
+</ul>
+<p>In the run, export the dataset as CSV. In your Google Sheet use File → Import → Upload, "Insert new sheet", and name the tab <code>scrape</code>. Do not rename headers. You get one row per product with columns such as <code>url</code>, <code>productId</code>, <code>sku</code>, <code>gtin</code>, <code>title</code>, <code>brand</code>, <code>description</code>, <code>price</code>, <code>compareAtPrice</code>, <code>currency</code>, <code>inStock</code>, <code>category</code> and <code>images/0</code>. For Shopify shops, <code>brand</code> is the product's vendor, <code>category</code> is the product type, and <code>price</code>, <code>compareAtPrice</code>, <code>sku</code> and <code>gtin</code> (the barcode) come from the cheapest variant. For WooCommerce shops, <code>compareAtPrice</code> is the regular price, <code>category</code> is the product's categories joined by commas, and <code>brand</code> is usually empty, so the sheet uses the brand you type in settings.</p>
+<h3>Free, from your own shop admin</h3>
+<ul>
+<li><strong>Shopify:</strong> Products → Export gives one row per variant with columns such as Handle, Title, Body (HTML), Vendor, Type, Variant SKU, Variant Price, Variant Compare At Price, Variant Barcode and Image Src. Build the link yourself as your shop address + <code>/products/</code> + Handle. Body (HTML) contains HTML; Meta wants plain text in <code>description</code>.</li>
+<li><strong>WooCommerce:</strong> the built-in product CSV exporter (Products → Export) gives name, SKU, description, categories, regular price, sale price, stock and image columns.</li>
+</ul>
+<p>The formulas below look columns up by header name, so with an admin export you change only the header names in quotes.</p>
+
+<h2>Step 2: the settings tab</h2>
+<table><thead><tr><th>Cell</th><th>What to type</th><th>Example</th></tr></thead><tbody>
+<tr><td>B1</td><td>Brand name, used when a product has none</td><td><code>Your Brand</code></td></tr>
+<tr><td>B2</td><td>Shop currency as a 3-letter ISO code, used when a row has none</td><td><code>GBP</code></td></tr>
+<tr><td>B3</td><td>Condition for all products</td><td><code>new</code></td></tr>
+</tbody></table>
+<p>Then add a tab named <code>categories</code> with your shop categories in column A (one per row, as they appear in the <code>category</code> column) and, in column B, the matching <a href="https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt">Google product category</a> name or ID number, for example <code>Home &amp; Garden &gt; Decor &gt; Home Fragrances &gt; Candles</code>. Meta asks for either <code>google_product_category</code> or <code>fb_product_category</code>; you map each shop category once and every product in it gets it.</p>
+
+<h2>Step 3: build the feed tab</h2>
+<p>Add a tab named <code>feed</code> and drag it to be the <strong>first tab</strong>, so it is what opens when Meta fetches the link. Row 1 holds the header names exactly as shown (lower case, US English); row 2 holds the formulas, which you copy down one row per row of <code>scrape</code>. Every formula uses the same lookup, shown in full for <code>title</code>:</p>
+<pre>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("title", scrape!$A$1:$ZZ$1, 0))&amp;"", "")</pre>
+<p>Below, <code>S("name")</code> is short for that formula with <code>"name"</code> in place of <code>"title"</code>; type the full formula in the sheet.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>id</td><td><code>=IF(S("title")="", "", IF(S("sku")&lt;&gt;"", S("sku"), S("productId")))</code></td></tr>
+<tr><td>B</td><td>title</td><td><code>=LEFT(S("title"), 200)</code></td></tr>
+<tr><td>C</td><td>description</td><td><code>=LEFT(S("description"), 9999)</code></td></tr>
+<tr><td>D</td><td>availability</td><td><code>=IF(A2="", "", IF(UPPER(S("inStock"))="TRUE", "in stock", "out of stock"))</code></td></tr>
+<tr><td>E</td><td>condition</td><td><code>=IF(A2="", "", settings!$B$3)</code></td></tr>
+<tr><td>F</td><td>price</td><td><code>=IF(A2="", "", LET(p, N(VALUE("0"&amp;S("price"))), c, N(VALUE("0"&amp;S("compareAtPrice"))), cur, IF(S("currency")="", settings!$B$2, S("currency")), IF(MAX(p, c)=0, "", TEXT(MAX(p, c), "0.00")&amp;" "&amp;cur)))</code></td></tr>
+<tr><td>G</td><td>sale_price</td><td><code>=IF(A2="", "", LET(p, N(VALUE("0"&amp;S("price"))), c, N(VALUE("0"&amp;S("compareAtPrice"))), cur, IF(S("currency")="", settings!$B$2, S("currency")), IF(AND(p&gt;0, c&gt;p), TEXT(p, "0.00")&amp;" "&amp;cur, "")))</code></td></tr>
+<tr><td>H</td><td>link</td><td><code>=S("url")</code></td></tr>
+<tr><td>I</td><td>image_link</td><td><code>=S("images/0")</code></td></tr>
+<tr><td>J</td><td>brand</td><td><code>=IF(A2="", "", IF(S("brand")="", settings!$B$1, LEFT(S("brand"), 100)))</code></td></tr>
+<tr><td>K</td><td>gtin</td><td><code>=REGEXREPLACE(S("gtin"), "[^0-9]", "")</code></td></tr>
+<tr><td>L</td><td>google_product_category</td><td><code>=IFERROR(VLOOKUP(S("category"), categories!$A:$B, 2, FALSE), "")</code></td></tr>
+</tbody></table>
+<p>Notes on the formulas:</p>
+<ul>
+<li><strong>id:</strong> Meta asks for a unique content ID and suggests the SKU. Products without a SKU fall back to the shop's product ID. If you run a Meta Pixel with catalogue ads, the id must match the content ID your pixel sends, so check which one your shop's pixel uses before you switch feeds.</li>
+<li><strong>price and sale_price:</strong> Meta wants a number with a full stop as the decimal point, a space, then the ISO currency code, with no currency symbol, for example <code>24.00 GBP</code>. <code>price</code> takes the larger of price and compare-at price; <code>sale_price</code> is filled only when the product is really on sale, because Meta requires the sale price to be lower than the full price. If your sale ends, re-import the scrape tab so the sale price disappears.</li>
+<li><strong>Products with variants:</strong> the scraper gives one row per product, priced at its cheapest variant. If your sizes or colours have different prices, or your shop sells clothing or shoes (Meta asks for <code>size</code>, <code>color</code> and <code>item_group_id</code> there), build the feed from your admin export instead, one row per variant, with the parent product's handle in an extra <code>item_group_id</code> column.</li>
+<li><strong>gtin:</strong> Meta asks you to send a GTIN only if you are sure it is correct, with no dashes or spaces. Leave the column empty if your barcodes are your own internal codes.</li>
+<li><strong>Keep the feed tab clean:</strong> only the Meta columns go on it. Notes, checks and helper columns go on other tabs.</li>
+</ul>
+
+<h2>Step 4: the checks tab</h2>
+<p>Add a tab named <code>checks</code>. In A2 put <code>=feed!A2</code>; in B2 the problem list; in C2 the verdict. Copy both down as far as the feed goes.</p>
+<pre>B2: =IF(A2="", "", TEXTJOIN(" · ", TRUE,
+  IF(COUNTIF(feed!$A:$A, A2)&gt;1, "Duplicate id", ""),
+  IF(feed!I2="", "No image", IF(REGEXMATCH(LOWER(feed!I2), "\.(jpe?g|png)(\?|$)"), "", "Image not JPEG or PNG")),
+  IF(feed!C2="", "No description", IF(LOWER(TRIM(feed!C2))=LOWER(TRIM(feed!B2)), "Description same as title", "")),
+  IF(EXACT(feed!B2, UPPER(feed!B2))*REGEXMATCH(feed!B2, "[A-Z]"), "Title in capital letters", ""),
+  IF(LEN(feed!B2)&gt;65, "Title over 65 characters", ""),
+  IF(feed!F2="", "Price missing", ""),
+  IF(feed!L2="", "No category", "")))
+C2: =IF(A2="", "", IF(B2="", "Yes", IF(B2="Title over 65 characters", "OK (title may be cut)", "Fix")))</pre>
+<ul>
+<li><strong>Duplicate id:</strong> Meta says that if the same ID appears more than once, it ignores every instance, so both products vanish. Give one of them its own SKU in your shop.</li>
+<li><strong>Image not JPEG or PNG:</strong> Meta's image rules ask for JPEG or PNG, at least 500 × 500 pixels. Many shop themes serve WebP; upload a JPEG or PNG as the product's first image. The check reads only the file ending, so also open one image per product type to confirm the size.</li>
+<li><strong>Title over 65 characters:</strong> allowed (the limit is 200), but Meta recommends 65 or fewer so the title is not cut off.</li>
+<li><strong>No category:</strong> add the shop category to the categories tab.</li>
+</ul>
+<p>Fix problems in your shop (or in the scrape tab, if you don't want to change your shop), then re-import. Add a filter on the checks tab and work through every "Fix" row before the first upload.</p>
+
+<h2>Step 5: connect the sheet to Commerce Manager</h2>
+<ul class="check">
+<li>In Google Sheets, Share → General access → <strong>Anyone with the link</strong> (Viewer). Meta's help says the link must not be set to Restricted. Anyone with the link can see your product data, so keep cost prices and private notes out of this spreadsheet.</li>
+<li>In Commerce Manager, open your catalogue → Catalogue → Data sources → Add items → Data feed, choose Google Sheets and paste the sheet's link.</li>
+<li>Choose a schedule (hourly, daily or weekly). The default <strong>replace</strong> setting deletes from the catalogue any product you removed from the sheet; <strong>update</strong> only adds and changes products.</li>
+<li>After the first fetch, open the data source's issues list and compare it with your checks tab. Meta's own diagnostics are the final word.</li>
+<li>Before each sale or season, re-import the scrape tab. The feed and checks recalculate and Meta picks up the change on the next scheduled fetch.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Meta catalogue fields (required <code>id</code>, <code>title</code>, <code>description</code>, <code>availability</code>, <code>condition</code>, <code>price</code>, <code>link</code>, <code>image_link</code>, plus one of <code>brand</code>, <code>gtin</code> or <code>mpn</code>; duplicate IDs ignored; title limit 200, 65 recommended; price format; sale price lower than price; JPEG or PNG images of at least 500 × 500; Google or Facebook product category; Google Sheets as a feed format): <a href="https://developers.facebook.com/documentation/ads-commerce/catalog/reference">Meta for Developers, Catalog reference</a> (page updated 5 Oct 2026, read 22 Oct 2026).</li>
+<li>Scheduled feeds (hourly, daily or weekly; Google Sheets supported; link sharing set to Anyone with the link, not Restricted; replace and update settings): <a href="https://www.facebook.com/business/help/2284463181837648">Meta Business Help Centre, About scheduled data feed uploads for catalogues</a> (read 22 Oct 2026).</li>
+<li>Product data scraper inputs and outputs (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>includeDescription</code> plain text, <code>SHOPS_SUMMARY</code> statuses, Shopify vendor as brand, product type as category, price, compare-at price, SKU and barcode from the cheapest variant, WooCommerce regular price and categories, skipped shops not charged): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_meta_catalog_feed_sheet">Apify Store page</a> (Actor input schema, README and source read 22 Oct 2026).</li>
+<li>Menu names in Commerce Manager, Shopify and WooCommerce change from time to time; if a step looks different, search the help centre of that service for "data feed" or "export products".</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html">Google Shopping product listing check sheet</a></li>
+<li><a href="wholesale-line-sheet-from-shopify-woocommerce-store-google-sheet-apify.html">Wholesale line sheet from your own Shopify or WooCommerce store</a></li>
+<li><a href="export-shopify-store-products-to-csv.html">Export Shopify store products to CSV</a></li>
+<li><a href="export-woocommerce-store-products-to-csv.html">Export WooCommerce store products to CSV</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
