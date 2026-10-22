@@ -1,0 +1,549 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "Unadhi Guides",
+ "home_page_url": "https://unadhi.com/guides/",
+ "feed_url": "https://unadhi.com/guides/feed.json",
+ "description": "Free, sourced explainers for small businesses, CA firms, property buyers and exam candidates. Unadhi · One mind.",
+ "language": "en",
+ "authors": [
+  {
+   "name": "Unadhi"
+  }
+ ],
+ "hubs": [
+  {
+   "type": "WebSub",
+   "url": "https://pubsubhubbub.appspot.com/"
+  }
+ ],
+ "items": [
+  {
+   "id": "https://unadhi.com/guides/opc-registration-mca-v3-spice-plus-8-mistakes-resubmission.html",
+   "url": "https://unadhi.com/guides/opc-registration-mca-v3-spice-plus-8-mistakes-resubmission.html",
+   "title": "OPC registration on MCA V3: 8 mistakes that cause resubmission (SPICe+, nominee INC-3, address proof)",
+   "summary": "Who can form an OPC (Rule 3, Incorporation Rules), the nominee consent in INC-3, the SPICe+ linked forms, and the 8 avoidable errors that most often lead to a resubmission remark.",
+   "content_text": "Who can form an OPC (Rule 3, Incorporation Rules), the nominee consent in INC-3, the SPICe+ linked forms, and the 8 avoidable errors that most often lead to a resubmission remark.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/llp-form-8-due-30-october-statement-of-account-solvency.html",
+   "url": "https://unadhi.com/guides/llp-form-8-due-30-october-statement-of-account-solvency.html",
+   "title": "LLP Form 8 due 30 October 2026: statement of account and solvency, audit limits and ₹100/day additional fee",
+   "summary": "Rule 24 of the LLP Rules 2009: every LLP files its Statement of Account and Solvency in Form 8 within 30 days from the end of six months of the financial year, i.e. by 30 October. Form 11 is due 30 May.",
+   "content_text": "Rule 24 of the LLP Rules 2009: every LLP files its Statement of Account and Solvency in Form 8 within 30 days from the end of six months of the financial year, i.e. by 30 October. Form 11 is due 30 May.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/board-meeting-rules-section-173-first-meeting-30-days-120-day-gap.html",
+   "url": "https://unadhi.com/guides/board-meeting-rules-section-173-first-meeting-30-days-120-day-gap.html",
+   "title": "Board meeting rules (section 173): first meeting in 30 days, 4 a year, 120-day gap, small company and OPC relief",
+   "summary": "Section 173 of the Companies Act 2013: first board meeting within 30 days of incorporation, at least four a year with no more than 120 days between two, 7 days' written notice, and the one-per-half-year rule for OPCs, small and dormant companies.",
+   "content_text": "Section 173 of the Companies Act 2013: first board meeting within 30 days of incorporation, at least four a year with no more than 120 days between two, 7 days' written notice, and the one-per-half-year rule for OPCs, small and dormant companies.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/registered-office-change-inc-22-section-12-30-days.html",
+   "url": "https://unadhi.com/guides/registered-office-change-inc-22-section-12-30-days.html",
+   "title": "Changing a company's registered office: INC-22 within 30 days, same city vs other city vs other state",
+   "summary": "Section 12 and 13 of the Companies Act 2013: a board resolution for a move within the same city, a special resolution for another city under the same ROC, Regional Director approval for another ROC or state, and INC-22 within 30 days.",
+   "content_text": "Section 12 and 13 of the Companies Act 2013: a board resolution for a move within the same city, a special resolution for another city under the same ROC, Regional Director approval for another ROC or state, and INC-22 within 30 days.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/director-appointment-resignation-dir-12-30-days-dir-11.html",
+   "url": "https://unadhi.com/guides/director-appointment-resignation-dir-12-30-days-dir-11.html",
+   "title": "Director appointment or resignation: DIR-12 within 30 days, DIR-2 consent and the optional DIR-11",
+   "summary": "Sections 152, 168 and 170 of the Companies Act 2013: the director's consent in DIR-2, the company's DIR-12 within 30 days of appointment or resignation, and the director's own DIR-11 on resignation.",
+   "content_text": "Sections 152, 168 and 170 of the Companies Act 2013: the director's consent in DIR-2, the company's DIR-12 within 30 days of appointment or resignation, and the director's own DIR-11 on resignation.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/gst-credit-note-time-limit-section-34-30-november.html",
+   "url": "https://unadhi.com/guides/gst-credit-note-time-limit-section-34-30-november.html",
+   "title": "GST credit note time limit (section 34): declare by 30 November or the annual return date",
+   "summary": "Section 34 of the CGST Act: credit notes for a financial year's supplies must be declared in a return by 30 November of the next year or the annual return date, whichever is earlier. When you can reduce tax and the buyer's ITC side.",
+   "content_text": "Section 34 of the CGST Act: credit notes for a financial year's supplies must be declared in a return by 30 November of the next year or the annual return date, whichever is earlier. When you can reduce tax and the buyer's ITC side.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/gst-tax-invoice-rule-46-mandatory-fields-16-character-serial.html",
+   "url": "https://unadhi.com/guides/gst-tax-invoice-rule-46-mandatory-fields-16-character-serial.html",
+   "title": "GST tax invoice format: Rule 46 mandatory fields, the 16-character serial number and the 30-day rule for services",
+   "summary": "Rule 46 of the CGST Rules lists the fields every tax invoice must carry, including a unique serial of up to 16 characters per financial year, recipient details, HSN, place of supply and reverse-charge flag. Plus Rule 47 timing and Rule 48 copies.",
+   "content_text": "Rule 46 of the CGST Rules lists the fields every tax invoice must carry, including a unique serial of up to 16 characters per financial year, recipient details, HSN, place of supply and reverse-charge flag. Plus Rule 47 timing and Rule 48 copies.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/telangana-property-document-registration-4-months-section-23-17.html",
+   "url": "https://unadhi.com/guides/telangana-property-document-registration-4-months-section-23-17.html",
+   "title": "Telangana property documents: what must be registered and the 4-month rule (Registration Act s.17, s.23, s.22-A)",
+   "summary": "Under the Registration Act 1908, sale deeds and other documents in section 17 must be registered, presented within 4 months of execution (s.23). How to check the prohibited property list (s.22-A) and encumbrance on the Telangana registration portal.",
+   "content_text": "Under the Registration Act 1908, sale deeds and other documents in section 17 must be registered, presented within 4 months of execution (s.23). How to check the prohibited property list (s.22-A) and encumbrance on the Telangana registration portal.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-vat-oss-10000-euro-threshold-b2c-distance-sales.html",
+   "url": "https://unadhi.com/guides/eu-vat-oss-10000-euro-threshold-b2c-distance-sales.html",
+   "title": "EU VAT One Stop Shop: the €10,000 threshold for cross-border B2C sales and quarterly OSS returns",
+   "summary": "Since 1 July 2021, an EU-established business whose cross-border B2C sales of goods and telecom, broadcasting and electronic services exceed €10,000 a year charges the customer's country VAT, and can declare it through the OSS in one quarterly return.",
+   "content_text": "Since 1 July 2021, an EU-established business whose cross-border B2C sales of goods and telecom, broadcasting and electronic services exceed €10,000 a year charges the customer's country VAT, and can declare it through the OSS in one quarterly return.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-ai-act-article-4-ai-literacy-sme-staff-training.html",
+   "url": "https://unadhi.com/guides/eu-ai-act-article-4-ai-literacy-sme-staff-training.html",
+   "title": "EU AI Act Article 4 AI literacy: what an SME must do for staff using AI (applies since 2 February 2025)",
+   "summary": "Article 4 of the AI Act has applied since 2 February 2025: providers and deployers take measures to ensure a sufficient level of AI literacy among staff and others using AI on their behalf. A proportionate SME plan and records.",
+   "content_text": "Article 4 of the AI Act has applied since 2 February 2025: providers and deployers take measures to ensure a sufficient level of AI literacy among staff and others using AI on their behalf. A proportionate SME plan and records.",
+   "date_modified": "2026-10-22T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/gst-rcm-commercial-property-rent-unregistered-landlord.html",
+   "url": "https://unadhi.com/guides/gst-rcm-commercial-property-rent-unregistered-landlord.html",
+   "title": "GST reverse charge on commercial rent from an unregistered landlord: who pays 18%, self-invoice and ITC",
+   "summary": "Since 10 Oct 2024 a GST-registered tenant pays 18% GST under reverse charge on rent of commercial property from an unregistered landlord. Who is covered, the composition exception, Rule 47A self-invoice and ITC.",
+   "content_text": "Since 10 Oct 2024 a GST-registered tenant pays 18% GST under reverse charge on rent of commercial property from an unregistered landlord. Who is covered, the composition exception, Rule 47A self-invoice and ITC.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/gst-itc-time-limit-section-16-4-30-november-gstr-2b.html",
+   "url": "https://unadhi.com/guides/gst-itc-time-limit-section-16-4-30-november-gstr-2b.html",
+   "title": "GST ITC time limit: claim FY 2025-26 credit by 30 November 2026 (section 16(4), GSTR-2B, 180 days)",
+   "summary": "Section 16(4): ITC on FY 2025-26 invoices must be claimed in a return filed by 30 Nov 2026 or the annual return, whichever is earlier. Plus GSTR-2B, the 180-day payment rule and receipt of goods.",
+   "content_text": "Section 16(4): ITC on FY 2025-26 invoices must be claimed in a return filed by 30 Nov 2026 or the annual return, whichever is earlier. Plus GSTR-2B, the 180-day payment rule and receipt of goods.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/gst-blocked-credit-section-17-5-motor-vehicles-food-gifts.html",
+   "url": "https://unadhi.com/guides/gst-blocked-credit-section-17-5-motor-vehicles-food-gifts.html",
+   "title": "GST blocked credit under section 17(5): cars, food, gifts and building works where ITC is not allowed",
+   "summary": "The list of purchases where GST input tax credit is blocked under section 17(5) of the CGST Act, the exceptions (e.g. vehicles for goods transport), and simple examples for SMEs.",
+   "content_text": "The list of purchases where GST input tax credit is blocked under section 17(5) of the CGST Act, the exceptions (e.g. vehicles for goods transport), and simple examples for SMEs.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/adt-1-auditor-appointment-first-auditor-30-days-15-days-filing.html",
+   "url": "https://unadhi.com/guides/adt-1-auditor-appointment-first-auditor-30-days-15-days-filing.html",
+   "title": "ADT-1 auditor appointment: first auditor in 30 days, 5-year term and 15-day filing (Companies Act s.139)",
+   "summary": "Section 139 of the Companies Act 2013: board appoints the first auditor within 30 days of incorporation, members appoint for 5 years at the first AGM, and Form ADT-1 is filed within 15 days. Resignation needs ADT-3.",
+   "content_text": "Section 139 of the Companies Act 2013: board appoints the first auditor within 30 days of incorporation, members appoint for 5 years at the first AGM, and Form ADT-1 is filed within 15 days. Resignation needs ADT-3.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/dpt-3-return-of-deposits-30-june-director-loans.html",
+   "url": "https://unadhi.com/guides/dpt-3-return-of-deposits-30-june-director-loans.html",
+   "title": "DPT-3 return of deposits: due 30 June, director loans, and which companies must file",
+   "summary": "Rule 16 of the Companies (Acceptance of Deposits) Rules 2014: companies other than government companies file DPT-3 by 30 June with figures as on 31 March, including money received that is not a deposit (e.g. director loans).",
+   "content_text": "Rule 16 of the Companies (Acceptance of Deposits) Rules 2014: companies other than government companies file DPT-3 by 30 June with figures as on 31 March, including money received that is not a deposit (e.g. director loans).",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-vat-reverse-charge-b2b-services-invoice-wording.html",
+   "url": "https://unadhi.com/guides/eu-vat-reverse-charge-b2b-services-invoice-wording.html",
+   "title": "EU VAT reverse charge on B2B services: invoice wording, the 15th-of-month rule and EC Sales List",
+   "summary": "VAT Directive Articles 44, 196, 222, 226 and 262: when a business customer in another EU country self-accounts for VAT, what the invoice must say ('Reverse charge'), when to issue it and the recapitulative statement.",
+   "content_text": "VAT Directive Articles 44, 196, 222, 226 and 262: when a business customer in another EU country self-accounts for VAT, what the invoice must say ('Reverse charge'), when to issue it and the recapitulative statement.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-vies-vat-number-check-proof-for-zero-rated-b2b.html",
+   "url": "https://unadhi.com/guides/eu-vies-vat-number-check-proof-for-zero-rated-b2b.html",
+   "title": "VIES VAT number check: how to verify an EU customer and keep proof for zero-rated B2B sales",
+   "summary": "How to validate a customer's EU VAT number on the European Commission's VIES service, why it matters for reverse charge and zero-rated intra-EU supplies (Article 138), and the proof to keep.",
+   "content_text": "How to validate a customer's EU VAT number on the European Commission's VIES service, why it matters for reverse charge and zero-rated intra-EU supplies (Article 138), and the proof to keep.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-ai-act-article-25-when-deployer-becomes-provider.html",
+   "url": "https://unadhi.com/guides/eu-ai-act-article-25-when-deployer-becomes-provider.html",
+   "title": "EU AI Act Article 25: when a business using AI becomes the provider of a high-risk AI system",
+   "summary": "Under Article 25 of the AI Act a distributor, importer or deployer becomes the provider of a high-risk AI system if it puts its own name on it, substantially modifies it, or changes its intended purpose so it becomes high-risk.",
+   "content_text": "Under Article 25 of the AI Act a distributor, importer or deployer becomes the provider of a high-risk AI system if it puts its own name on it, substantially modifies it, or changes its intended purpose so it becomes high-risk.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/dgms-circulars-how-to-find-track-mine-managers.html",
+   "url": "https://unadhi.com/guides/dgms-circulars-how-to-find-track-mine-managers.html",
+   "title": "DGMS circulars: how mine managers and exam candidates find, track and file them",
+   "summary": "A practical method for mine managers, safety officers and DGMS exam candidates to find DGMS technical and legislation circulars, track new ones each month, and keep a simple compliance register.",
+   "content_text": "A practical method for mine managers, safety officers and DGMS exam candidates to find DGMS technical and legislation circulars, track new ones each month, and keep a simple compliance register.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/gst-registration-amendment-reg-14-core-non-core-fields.html",
+   "url": "https://unadhi.com/guides/gst-registration-amendment-reg-14-core-non-core-fields.html",
+   "title": "GST registration amendment (REG-14): core vs non-core fields, the 15-day rule and when a new GSTIN is needed",
+   "summary": "Rule 19 of the CGST Rules: apply in REG-14 within 15 days of a change. Core fields (legal or trade name, principal place, partners/directors) need officer approval; non-core changes go through directly. PAN change needs new registration.",
+   "content_text": "Rule 19 of the CGST Rules: apply in REG-14 within 15 days of a change. Core fields (legal or trade name, principal place, partners/directors) need officer approval; non-core changes go through directly. PAN change needs new registration.",
+   "date_modified": "2026-10-21T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/e-way-bill-50000-rule-validity-distance-2026.html",
+   "url": "https://unadhi.com/guides/e-way-bill-50000-rule-validity-distance-2026.html",
+   "title": "E-way bill rules 2026: the ₹50,000 limit, validity by distance, Part B and extension",
+   "summary": "When an e-way bill is needed (consignment value above ₹50,000), how validity is counted (1 day per 200 km), when Part B can be skipped, extension and cancellation. Official GST sources.",
+   "content_text": "When an e-way bill is needed (consignment value above ₹50,000), how validity is counted (1 day per 200 km), when Part B can be skipped, extension and cancellation. Official GST sources.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/gst-registration-threshold-40-lakh-20-lakh-who-must-register.html",
+   "url": "https://unadhi.com/guides/gst-registration-threshold-40-lakh-20-lakh-who-must-register.html",
+   "title": "GST registration threshold 2026: ₹40 lakh, ₹20 lakh or ₹10 lakh, and who must register anyway",
+   "summary": "Which GST registration limit applies to you (goods vs services, your state), what counts in aggregate turnover, the cases where registration is compulsory at any turnover, and the 30-day deadline.",
+   "content_text": "Which GST registration limit applies to you (goods vs services, your state), what counts in aggregate turnover, the cases where registration is compulsory at any turnover, and the 30-day deadline.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/inc-20a-commencement-of-business-180-days-penalty.html",
+   "url": "https://unadhi.com/guides/inc-20a-commencement-of-business-180-days-penalty.html",
+   "title": "INC-20A commencement of business: 180-day deadline, penalty and strike-off risk",
+   "summary": "Section 10A: a company with share capital must file INC-20A within 180 days of incorporation. Penalty ₹50,000 on the company, ₹1,000 a day on officers (max ₹1 lakh), and ROC strike-off risk.",
+   "content_text": "Section 10A: a company with share capital must file INC-20A within 180 days of incorporation. Penalty ₹50,000 on the company, ₹1,000 a day on officers (max ₹1 lakh), and ROC strike-off risk.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/gst-on-under-construction-flat-hyderabad-5-percent-1-percent-affordable.html",
+   "url": "https://unadhi.com/guides/gst-on-under-construction-flat-hyderabad-5-percent-1-percent-affordable.html",
+   "title": "GST on an under-construction flat in Hyderabad: 5%, 1% affordable, and 0% after the OC",
+   "summary": "Buying a flat in Hyderabad? Under-construction homes attract 5% GST (1% if affordable: up to 60 sq m carpet in Hyderabad and up to ₹45 lakh). Ready flats with a completion certificate attract no GST.",
+   "content_text": "Buying a flat in Hyderabad? Under-construction homes attract 5% GST (1% if affordable: up to 60 sq m carpet in Hyderabad and up to ₹45 lakh). Ready flats with a completion certificate attract no GST.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/influencer-ad-disclosure-rules-india-telugu-creators.html",
+   "url": "https://unadhi.com/guides/influencer-ad-disclosure-rules-india-telugu-creators.html",
+   "title": "Paid promotion rules for Indian creators: how to disclose ads (Telugu creators' guide)",
+   "summary": "The Consumer Affairs 'Endorsement Know-hows' and CCPA misleading-ad guidelines in plain words for YouTube and Instagram creators: what counts as a paid tie-up, where the label goes, and the penalties.",
+   "content_text": "The Consumer Affairs 'Endorsement Know-hows' and CCPA misleading-ad guidelines in plain words for YouTube and Instagram creators: what counts as a paid tie-up, where the label goes, and the penalties.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/explosives-magazine-licence-peso-mines-quarries-steps-mistakes.html",
+   "url": "https://unadhi.com/guides/explosives-magazine-licence-peso-mines-quarries-steps-mistakes.html",
+   "title": "Explosives magazine licence for mines and quarries: PESO steps and common mistakes",
+   "summary": "Storing explosives for blasting needs a magazine licence from PESO under the Explosives Act 1884 and Explosives Rules 2008. The steps: site plan approval, district NOC, construction, inspection, licence and renewal.",
+   "content_text": "Storing explosives for blasting needs a magazine licence from PESO under the Explosives Act 1884 and Explosives Rules 2008. The steps: site plan approval, district NOC, construction, inspection, licence and renewal.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-ai-act-fines-article-99-sme-lower-amount-rule.html",
+   "url": "https://unadhi.com/guides/eu-ai-act-fines-article-99-sme-lower-amount-rule.html",
+   "title": "EU AI Act fines for SMEs: Article 99 tiers and the 'lower amount' rule",
+   "summary": "Article 99 sets three fine tiers (€35m/7%, €15m/3%, €7.5m/1%). For SMEs and start-ups the cap is whichever is lower. Worked examples and what reduces a fine.",
+   "content_text": "Article 99 sets three fine tiers (€35m/7%, €15m/3%, €7.5m/1%). For SMEs and start-ups the cap is whichever is lower. Worked examples and what reduces a fine.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-ai-act-fundamental-rights-impact-assessment-article-27-who-must.html",
+   "url": "https://unadhi.com/guides/eu-ai-act-fundamental-rights-impact-assessment-article-27-who-must.html",
+   "title": "EU AI Act fundamental rights impact assessment (Article 27): who must do one and what goes in it",
+   "summary": "Article 27 FRIA: required for public bodies and private providers of public services using Annex III high-risk AI, and for credit scoring and life/health insurance pricing. The six required contents and how it links to a DPIA.",
+   "content_text": "Article 27 FRIA: required for public bodies and private providers of public services using Annex III high-risk AI, and for credit scoring and life/health insurance pricing. The six required contents and how it links to a DPIA.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-ai-act-authorised-representative-article-22-non-eu-provider.html",
+   "url": "https://unadhi.com/guides/eu-ai-act-authorised-representative-article-22-non-eu-provider.html",
+   "title": "EU AI Act authorised representative (Article 22): does a non-EU or Indian AI provider need one?",
+   "summary": "Article 22: providers outside the EU must appoint an EU authorised representative by written mandate before offering high-risk AI in the EU; Article 54 does the same for general-purpose AI models. Tasks, timing and who doesn't need one.",
+   "content_text": "Article 22: providers outside the EU must appoint an EU authorised representative by written mandate before offering high-risk AI in the EU; Article 54 does the same for general-purpose AI models. Tasks, timing and who doesn't need one.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://unadhi.com/guides/eu-vat-sme-scheme-cross-border-100000-euro-ex-number.html",
+   "url": "https://unadhi.com/guides/eu-vat-sme-scheme-cross-border-100000-euro-ex-number.html",
+   "title": "EU VAT SME scheme since 2025: the €100,000 cross-border exemption and the EX number",
+   "summary": "Since 1 January 2025 (Directive (EU) 2020/285) small EU businesses can use the VAT exemption in other Member States if EU-wide turnover is €100,000 or less. Notification, the EX number, quarterly reporting and common errors.",
+   "content_text": "Since 1 January 2025 (Directive (EU) 2020/285) small EU businesses can use the VAT exemption in other Member States if EU-wide turnover is €100,000 or less. Notification, the EX number, quarterly reporting and common errors.",
+   "date_modified": "2026-10-20T12:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/opc-registration-mca-v3-mistakes-resubmission.html",
+   "url": "https://mininglife7-dev.github.io/guides/opc-registration-mca-v3-mistakes-resubmission.html",
+   "title": "OPC registration on MCA V3: 8 mistakes that cause resubmission (2026)",
+   "summary": "Registering a One Person Company through SPICe+ on MCA V3? The 8 mistakes that send forms back or cause problems later: member and nominee eligibility, the 20-day name window, INC-22, MoA/AoA and more.",
+   "content_text": "Registering a One Person Company through SPICe+ on MCA V3? The 8 mistakes that send forms back or cause problems later: member and nominee eligibility, the 20-day name window, INC-22, MoA/AoA and more.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/one-person-company-vs-sole-proprietorship-india.html",
+   "url": "https://mininglife7-dev.github.io/guides/one-person-company-vs-sole-proprietorship-india.html",
+   "title": "One Person Company vs sole proprietorship in India: which fits you (2026)",
+   "summary": "OPC or proprietorship? A plain comparison for one-owner businesses in India: legal identity, liability, eligibility, paperwork every year, adding partners and when an OPC is worth it.",
+   "content_text": "OPC or proprietorship? A plain comparison for one-owner businesses in India: legal identity, liability, eligibility, paperwork every year, adding partners and when an OPC is worth it.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/gst-nil-return-late-fee-gstr-3b-cap.html",
+   "url": "https://mininglife7-dev.github.io/guides/gst-nil-return-late-fee-gstr-3b-cap.html",
+   "title": "'7000 ka penalty' on a nil GST return? GSTR-3B late fee caps explained (2026)",
+   "summary": "Paid a big late fee for months with zero business? Since June 2021 the GSTR-3B late fee per return is capped: ₹250 CGST for nil returns, ₹1,000 or ₹2,500 for others by turnover. Why it still adds up.",
+   "content_text": "Paid a big late fee for months with zero business? Since June 2021 the GSTR-3B late fee per return is capped: ₹250 CGST for nil returns, ₹1,000 or ₹2,500 for others by turnover. Why it still adds up.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/eu-ai-act-ai-literacy-article-4-small-business.html",
+   "url": "https://mininglife7-dev.github.io/guides/eu-ai-act-ai-literacy-article-4-small-business.html",
+   "title": "EU AI Act AI literacy (Article 4): what a small business must actually provide",
+   "summary": "Article 4 of the EU AI Act has applied since 2 Feb 2025 to anyone who provides or uses AI systems. After the AI Omnibus: no certificate, no mandated level, no test. What to do, in 4 steps.",
+   "content_text": "Article 4 of the EU AI Act has applied since 2 Feb 2025 to anyone who provides or uses AI systems. After the AI Omnibus: no certificate, no mandated level, no test. What to do, in 4 steps.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/eu-oss-10000-euro-threshold-quarterly-return.html",
+   "url": "https://mininglife7-dev.github.io/guides/eu-oss-10000-euro-threshold-quarterly-return.html",
+   "title": "'Every time I think I understand OSS…': EU €10,000 threshold and OSS return, plainly",
+   "summary": "Selling to consumers in other EU countries? The EUR 10,000 EU-wide threshold, who can use the Union and non-Union OSS schemes, the quarterly return due the month after, nil returns, and common mistakes.",
+   "content_text": "Selling to consumers in other EU countries? The EUR 10,000 EU-wide threshold, who can use the Union and non-Union OSS schemes, the quarterly return due the month after, nil returns, and common mistakes.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/telangana-rera-check-before-booking-flat-hyderabad.html",
+   "url": "https://mininglife7-dev.github.io/guides/telangana-rera-check-before-booking-flat-hyderabad.html",
+   "title": "Booking a flat in Hyderabad? Check TG-RERA registration first (and the 10% rule)",
+   "summary": "Before you pay a booking amount in Hyderabad or anywhere in Telangana: which projects must be RERA-registered, how to check on TG-RERA, the 10% advance limit, quarterly updates and the 5-year defect liability.",
+   "content_text": "Before you pay a booking amount in Hyderabad or anywhere in Telangana: which projects must be RERA-registered, how to check on TG-RERA, the 10% advance limit, quarterly updates and the 5-year defect liability.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/encumbrance-certificate-online-telangana-andhra-pradesh.html",
+   "url": "https://mininglife7-dev.github.io/guides/encumbrance-certificate-online-telangana-andhra-pradesh.html",
+   "title": "Encumbrance certificate (EC) online in Telangana and AP: what it shows, what it misses",
+   "summary": "Before buying a flat or plot in Hyderabad, Vizag or Vijayawada: where to search the EC online on the official registration portals, how to read it, and the gaps you still need your lawyer to close.",
+   "content_text": "Before buying a flat or plot in Hyderabad, Vizag or Vijayawada: where to search the EC online on the official registration portals, how to read it, and the gaps you still need your lawyer to close.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/dgms-offline-application-competency-certificate-exemption-2026.html",
+   "url": "https://mininglife7-dev.github.io/guides/dgms-offline-application-competency-certificate-exemption-2026.html",
+   "title": "DGMS notice 8 Oct 2026: offline application for competency certificates (exemption basis)",
+   "summary": "The Board of Mining Examinations (Coal & Metal) will take offline Form-II applications for statutory competency certificates on exemption basis while the online portal is unavailable. Documents, steps and mistakes.",
+   "content_text": "The Board of Mining Examinations (Coal & Metal) will take offline Form-II applications for statutory competency certificates on exemption basis while the online portal is unavailable. Documents, steps and mistakes.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/telugu-typing-on-mobile-gboard-iphone.html",
+   "url": "https://mininglife7-dev.github.io/guides/telugu-typing-on-mobile-gboard-iphone.html",
+   "title": "'Telugu font ela type cheyyali?' Type Telugu on Android and iPhone (free)",
+   "summary": "Type Telugu on your phone without buying any app: add Telugu in Gboard on Android (Telugu script or transliteration from English letters) or add the Telugu keyboard on iPhone. Steps, tips and common problems.",
+   "content_text": "Type Telugu on your phone without buying any app: add Telugu in Gboard on Android (Telugu script or transliteration from English letters) or add the Telugu keyboard on iPhone. Steps, tips and common problems.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/ca-firm-client-deadline-reminder-system.html",
+   "url": "https://mininglife7-dev.github.io/guides/ca-firm-client-deadline-reminder-system.html",
+   "title": "'No SMS came, so I stopped filing': a client deadline reminder system for CA firms",
+   "summary": "Clients miss GST and TDS dates when nobody reminds them. A free weekly system for CA firms and GST practitioners: the dates that drive most reminders, a 3-touch rhythm, message templates and what to track.",
+   "content_text": "Clients miss GST and TDS dates when nobody reminds them. A free weekly system for CA firms and GST practitioners: the dates that drive most reminders, a 3-touch rhythm, message templates and what to track.",
+   "date_modified": "2026-10-13T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/tds-return-due-date-q2-2026-27.html",
+   "url": "https://mininglife7-dev.github.io/guides/tds-return-due-date-q2-2026-27.html",
+   "title": "TDS return due date Q2 2026-27: 31 Oct 2026 (Forms 138, 140, 144, 143)",
+   "summary": "The July–September 2026 TDS/TCS statements are due 31 Oct 2026 in the new Forms 138, 140, 144 and 143. What changed, common mistakes and a checklist.",
+   "content_text": "The July–September 2026 TDS/TCS statements are due 31 Oct 2026 in the new Forms 138, 140, 144 and 143. What changed, common mistakes and a checklist.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/tax-audit-report-due-date-21-october-2026.html",
+   "url": "https://mininglife7-dev.github.io/guides/tax-audit-report-due-date-21-october-2026.html",
+   "title": "Tax audit report due date 21 Oct 2026: CBDT Circular 7/2026 explained",
+   "summary": "CBDT Circular 7/2026 moved the tax audit report for FY 2025-26 from 30 Sep to 21 Oct 2026, and the matching ITR to 21 Nov 2026. Who is covered and who is not.",
+   "content_text": "CBDT Circular 7/2026 moved the tax audit report for FY 2025-26 from 30 Sep to 21 Oct 2026, and the matching ITR to 21 Nov 2026. Who is covered and who is not.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/revised-itr-last-date-fy-2025-26.html",
+   "url": "https://mininglife7-dev.github.io/guides/revised-itr-last-date-fy-2025-26.html",
+   "title": "Revised ITR last date FY 2025-26: 31 Mar 2027 (fee after 31 Dec 2026)",
+   "summary": "Finance Act 2026 extended the window to revise an ITR for FY 2025-26 (AY 2026-27) to 31 Mar 2027, with a fee for revisions after 31 Dec 2026. Belated return: 31 Dec 2026.",
+   "content_text": "Finance Act 2026 extended the window to revise an ITR for FY 2025-26 (AY 2026-27) to 31 Mar 2027, with a fee for revisions after 31 Dec 2026. Belated return: 31 Dec 2026.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/gstr-3b-quarterly-due-date-oct-2026-22nd-24th.html",
+   "url": "https://mininglife7-dev.github.io/guides/gstr-3b-quarterly-due-date-oct-2026-22nd-24th.html",
+   "title": "GSTR-3B quarterly due date Oct 2026: 22nd or 24th by state (QRMP)",
+   "summary": "Under QRMP, quarterly GSTR-3B is due on the 22nd (Telangana, AP, Karnataka, Maharashtra and others) or the 24th (Delhi, UP, West Bengal and others). Jul–Sep 2026: 22 or 24 Oct.",
+   "content_text": "Under QRMP, quarterly GSTR-3B is due on the 22nd (Telangana, AP, Karnataka, Maharashtra and others) or the 24th (Delhi, UP, West Bengal and others). Jul–Sep 2026: 22 or 24 Oct.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/msme-45-day-payment-rule-2026.html",
+   "url": "https://mininglife7-dev.github.io/guides/msme-45-day-payment-rule-2026.html",
+   "title": "MSME 45-day payment rule 2026: interest, 43B(h) and filing on the ODR portal",
+   "summary": "If you are a Udyam-registered micro or small supplier, buyers must pay within 45 days (15 if nothing agreed). Interest at 3x RBI bank rate, s.43B(h), and the MSME ODR portal.",
+   "content_text": "If you are a Udyam-registered micro or small supplier, buyers must pay within 45 days (15 if nothing agreed). Interest at 3x RBI bank rate, s.43B(h), and the MSME ODR portal.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/hra-form-124-rent-receipts-2026.html",
+   "url": "https://mininglife7-dev.github.io/guides/hra-form-124-rent-receipts-2026.html",
+   "title": "Form 124 (new 12BB) for HRA in 2026: landlord PAN, relationship, rent receipts",
+   "summary": "From tax year 2026-27, Form 124 replaces Form 12BB. For HRA: landlord name, address, PAN if rent is over ₹1 lakh a year, and your relationship with the landlord.",
+   "content_text": "From tax year 2026-27, Form 124 replaces Form 12BB. For HRA: landlord name, address, PAN if rent is over ₹1 lakh a year, and your relationship with the landlord.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/freelance-invoice-payment-reminder-templates.html",
+   "url": "https://mininglife7-dev.github.io/guides/freelance-invoice-payment-reminder-templates.html",
+   "title": "Freelance invoice and payment reminder templates (polite to firm)",
+   "summary": "What a clear invoice must contain, when to send reminders, and four copy-paste payment reminder templates from friendly to final. Works for freelancers anywhere.",
+   "content_text": "What a clear invoice must contain, when to send reminders, and four copy-paste payment reminder templates from friendly to final. Works for freelancers anywhere.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/small-business-cashbook-guide.html",
+   "url": "https://mininglife7-dev.github.io/guides/small-business-cashbook-guide.html",
+   "title": "Simple cashbook for small business: how to keep one in 10 minutes a day",
+   "summary": "What a cashbook is, the five columns you need, how to record cash, UPI and bank payments, a daily routine and the common mistakes that make the balance wrong.",
+   "content_text": "What a cashbook is, the five columns you need, how to record cash, UPI and bank payments, a daily routine and the common mistakes that make the balance wrong.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/ai-agent-cost-guide.html",
+   "url": "https://mininglife7-dev.github.io/guides/ai-agent-cost-guide.html",
+   "title": "How much does it cost to build and run an AI agent? An honest breakdown",
+   "summary": "The cost lines of an AI agent setup (agent subscriptions, model usage, hosting, automation, your time), where bills surprise people, and the human steps agents can't do.",
+   "content_text": "The cost lines of an AI agent setup (agent subscriptions, model usage, hosting, automation, your time), where bills surprise people, and the human steps agents can't do.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/telangana-professional-tax-due-dates-2026-27.html",
+   "url": "https://mininglife7-dev.github.io/guides/telangana-professional-tax-due-dates-2026-27.html",
+   "title": "Telangana professional tax due date: 10th of every month (Form V), 2026-27",
+   "summary": "Employers registered under the Telangana Profession Tax Act file Form V and pay by the 10th of the following month. Full 2026-27 date list, common mistakes and a checklist.",
+   "content_text": "Employers registered under the Telangana Profession Tax Act file Form V and pay by the 10th of the following month. Full 2026-27 date list, common mistakes and a checklist.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/telugu-wedding-invitation-wording.html",
+   "url": "https://mininglife7-dev.github.io/guides/telugu-wedding-invitation-wording.html",
+   "title": "Telugu wedding invitation wording (పెళ్లి శుభలేఖ) with English, plus AI prompts",
+   "summary": "Traditional Telugu wedding invitation lines with English meanings, a bilingual template for families abroad, common mistakes, and AI prompts to draft invitations in Telugu.",
+   "content_text": "Traditional Telugu wedding invitation lines with English meanings, a bilingual template for families abroad, common mistakes, and AI prompts to draft invitations in Telugu.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/tds-challan-paid-under-old-act-fix-before-q2-return.html",
+   "url": "https://mininglife7-dev.github.io/guides/tds-challan-paid-under-old-act-fix-before-q2-return.html",
+   "title": "TDS challan paid under the old Act (1961) for 2026-27? How to fix it before the Q2 return",
+   "summary": "If TDS for a payment made after 1 Apr 2026 was deposited under the Income-tax Act 1961 (AY/FY 2025-26) instead of the 2025 Act (Tax Year 2026-27), fix the challan on TRACES before the 31 Oct Q2 statement.",
+   "content_text": "If TDS for a payment made after 1 Apr 2026 was deposited under the Income-tax Act 1961 (AY/FY 2025-26) instead of the 2025 Act (Tax Year 2026-27), fix the challan on TRACES before the 31 Oct Q2 statement.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/telugu-gruhapravesam-invitation-wording.html",
+   "url": "https://mininglife7-dev.github.io/guides/telugu-gruhapravesam-invitation-wording.html",
+   "title": "Telugu Gruhapravesam invitation wording (గృహప్రవేశ ఆహ్వానం) with English meanings",
+   "summary": "Traditional Telugu housewarming (Gruhapravesam) invitation lines with English meanings, a ready template, a WhatsApp version for relatives abroad, and the mistakes to avoid.",
+   "content_text": "Traditional Telugu housewarming (Gruhapravesam) invitation lines with English meanings, a ready template, a WhatsApp version for relatives abroad, and the mistakes to avoid.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/gstr-1-quarterly-iff-qrmp-due-date-oct-2026.html",
+   "url": "https://mininglife7-dev.github.io/guides/gstr-1-quarterly-iff-qrmp-due-date-oct-2026.html",
+   "title": "GSTR-1 for QRMP filers, Oct 2026: quarterly return due 13 Oct, and how IFF works",
+   "summary": "QRMP filers file GSTR-1 for Jul–Sep 2026 by 13 Oct 2026. IFF is optional for months 1 and 2 (by the 13th, up to ₹50 lakh). Late fee caps, the 31 Oct switch window and mistakes.",
+   "content_text": "QRMP filers file GSTR-1 for Jul–Sep 2026 by 13 Oct 2026. IFF is optional for months 1 and 2 (by the 13th, up to ₹50 lakh). Late fee caps, the 31 Oct switch window and mistakes.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/form-26q-to-form-140-section-code-mapping-2026.html",
+   "url": "https://mininglife7-dev.github.io/guides/form-26q-to-form-140-section-code-mapping-2026.html",
+   "title": "Form 26Q is now Form 140 (2026): what changed, old-to-new section codes, Q2 due 31 Oct 2026",
+   "summary": "From tax year 2026-27, non-salary TDS for residents is reported in Form 140 (was 26Q), with numeric payment codes instead of 194C/194J. Mapping table, the right utility, and mistakes.",
+   "content_text": "From tax year 2026-27, non-salary TDS for residents is reported in Form 140 (was 26Q), with numeric payment codes instead of 194C/194J. Mapping table, the right utility, and mistakes.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/tds-late-filing-fee-2026-27-section-427-234e.html",
+   "url": "https://mininglife7-dev.github.io/guides/tds-late-filing-fee-2026-27-section-427-234e.html",
+   "title": "TDS late filing fee 2026: ₹200 a day under section 427 (old 234E), and the 30 Nov 2026 penalty line",
+   "summary": "Under the Income-tax Act 2025, a late TDS/TCS statement costs ₹200 a day (s.427, was 234E), capped at the TDS. File within one month of the due date to avoid the s.461 penalty. Examples.",
+   "content_text": "Under the Income-tax Act 2025, a late TDS/TCS statement costs ₹200 a day (s.427, was 234E), capped at the TDS. File within one month of the due date to avoid the s.461 penalty. Examples.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/gst-interest-calculation-2026-section-50.html",
+   "url": "https://mininglife7-dev.github.io/guides/gst-interest-calculation-2026-section-50.html",
+   "title": "GST interest calculation 2026: 18% a year on the cash part, with examples (section 50, Rule 88B)",
+   "summary": "Late GSTR-3B? Interest is 18% a year under section 50(1), on the tax paid in cash, for the days of delay (Rule 88B). Wrong ITC used: 18% under 50(3). Formula, examples and mistakes.",
+   "content_text": "Late GSTR-3B? Interest is 18% a year under section 50(1), on the tax paid in cash, for the days of delay (Rule 88B). Wrong ITC used: 18% under 50(3). Formula, examples and mistakes.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/diwali-bonus-gift-tax-rules-2026.html",
+   "url": "https://mininglife7-dev.github.io/guides/diwali-bonus-gift-tax-rules-2026.html",
+   "title": "Diwali bonus and gifts: tax rules for 2026-27 (₹15,000 employer gift limit, ₹50,000 rule)",
+   "summary": "A cash Diwali bonus is salary. Employer gifts and vouchers are tax-free only below ₹15,000 a year in total (new 2026 Rules). Gifts from friends: taxable above ₹50,000. Relatives: exempt.",
+   "content_text": "A cash Diwali bonus is salary. Employer gifts and vouchers are tax-free only below ₹15,000 a year in total (new 2026 Rules). Gifts from friends: taxable above ₹50,000. Relatives: exempt.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/msme-udyam-registration-2026-steps-free.html",
+   "url": "https://mininglife7-dev.github.io/guides/msme-udyam-registration-2026-steps-free.html",
+   "title": "Udyam (MSME) registration 2026: free, step by step, and the micro/small limits in force since April 2025",
+   "summary": "Udyam registration is free, paperless and needs only Aadhaar plus PAN/GSTIN. Steps on udyamregistration.gov.in, the 2025 micro/small/medium limits, Udyam Assist, and mistakes to avoid.",
+   "content_text": "Udyam registration is free, paperless and needs only Aadhaar plus PAN/GSTIN. Steps on udyamregistration.gov.in, the 2025 micro/small/medium limits, Udyam Assist, and mistakes to avoid.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/freelancer-gst-registration-2026-export-of-services.html",
+   "url": "https://mininglife7-dev.github.io/guides/freelancer-gst-registration-2026-export-of-services.html",
+   "title": "GST for Indian freelancers with foreign clients (2026): the ₹20 lakh threshold, export of services and LUT",
+   "summary": "Export of services counts toward the ₹20 lakh GST threshold (₹10 lakh in four NE states). Below it you can stay unregistered; above it, register and file a LUT to bill abroad without IGST.",
+   "content_text": "Export of services counts toward the ₹20 lakh GST threshold (₹10 lakh in four NE states). Below it you can stay unregistered; above it, register and file a LUT to bill abroad without IGST.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/telugu-diwali-karthika-masam-greetings.html",
+   "url": "https://mininglife7-dev.github.io/guides/telugu-diwali-karthika-masam-greetings.html",
+   "title": "Telugu Diwali and Karthika Masam greetings (దీపావళి శుభాకాంక్షలు) for family and business",
+   "summary": "Ready Telugu Deepavali, Naraka Chaturdasi and Karthika Masam wishes with English meanings, a polite shop greeting for customers, a version for relatives abroad, and mistakes to avoid.",
+   "content_text": "Ready Telugu Deepavali, Naraka Chaturdasi and Karthika Masam wishes with English meanings, a polite shop greeting for customers, a version for relatives abroad, and mistakes to avoid.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/telugu-barasala-naming-ceremony-invitation.html",
+   "url": "https://mininglife7-dev.github.io/guides/telugu-barasala-naming-ceremony-invitation.html",
+   "title": "Telugu Barasala (naming ceremony) invitation wording (బారసాల ఆహ్వానం) with English",
+   "summary": "Common Telugu lines for a Barasala (naming and cradle ceremony) invitation, with English meanings, a fill-in template, a message for relatives abroad, and mistakes to avoid.",
+   "content_text": "Common Telugu lines for a Barasala (naming and cradle ceremony) invitation, with English meanings, a fill-in template, a message for relatives abroad, and mistakes to avoid.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/ai-prompts-for-small-shops-customer-replies.html",
+   "url": "https://mininglife7-dev.github.io/guides/ai-prompts-for-small-shops-customer-replies.html",
+   "title": "AI prompts for small shops: customer replies, product posts and reviews (copy-paste, with safety rules)",
+   "summary": "Ten copy-paste ChatGPT/Gemini prompts for small shops: replies, product descriptions, festival posts, review answers and translations (incl. Telugu), with five rules so AI never invents prices.",
+   "content_text": "Ten copy-paste ChatGPT/Gemini prompts for small shops: replies, product descriptions, festival posts, review answers and translations (incl. Telugu), with five rules so AI never invents prices.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/making-tax-digital-sole-traders-quarterly-checklist.html",
+   "url": "https://mininglife7-dev.github.io/guides/making-tax-digital-sole-traders-quarterly-checklist.html",
+   "title": "Making Tax Digital for sole traders: the quarterly checklist (2026–2028)",
+   "summary": "Who must use Making Tax Digital for Income Tax and when (over £50k from April 2026, £30k from 2027, £20k from 2028), quarterly update deadlines, the year-end tax return, software, mistakes and a checklist. Checked against GOV.UK.",
+   "content_text": "Who must use Making Tax Digital for Income Tax and when (over £50k from April 2026, £30k from 2027, £20k from 2028), quarterly update deadlines, the year-end tax return, software, mistakes and a checklist. Checked against GOV.UK.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/dgms-overman-sirdar-cmr-2017-key-rules.html",
+   "url": "https://mininglife7-dev.github.io/guides/dgms-overman-sirdar-cmr-2017-key-rules.html",
+   "title": "DGMS Overman & Sirdar exam: CMR 2017 key rules with numbers (2026)",
+   "summary": "The CMR 2017 numbers most asked in the DGMS Sirdar and Overman CBT: shot-firing, gas limits, inspections, support and fire. Why each rule exists, with Telugu notes.",
+   "content_text": "The CMR 2017 numbers most asked in the DGMS Sirdar and Overman CBT: shot-firing, gas limits, inspections, support and fire. Why each rule exists, with Telugu notes.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  },
+  {
+   "id": "https://mininglife7-dev.github.io/guides/india-tax-deadline-calendar-oct-2026-google-calendar.html",
+   "url": "https://mininglife7-dev.github.io/guides/india-tax-deadline-calendar-oct-2026-google-calendar.html",
+   "title": "Free India tax deadline calendar Oct 2026 (.ics): every GST, TDS, ITR date to Mar 2027",
+   "summary": "Free .ics calendar with 59 GST, TDS/TCS, advance-tax and ITR due dates from Oct 2026 to Mar 2027, each with a 3-day reminder and the official source. Import steps for Google Calendar, Outlook, iPhone and Android, plus a spreadsheet copy.",
+   "content_text": "Free .ics calendar with 59 GST, TDS/TCS, advance-tax and ITR due dates from Oct 2026 to Mar 2027, each with a 3-day reminder and the official source. Import steps for Google Calendar, Outlook, iPhone and Android, plus a spreadsheet copy.",
+   "date_modified": "2026-10-11T00:00:00+05:30"
+  }
+ ]
+}
