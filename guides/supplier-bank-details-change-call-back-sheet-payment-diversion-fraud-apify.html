@@ -1,0 +1,166 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Supplier bank details changed? A call-back sheet that checks every supplier's phone and email on file against the supplier's own website, and logs each change request before you pay</title><meta name="description" content="A free Google Sheet for small businesses and bookkeepers against mandate fraud: one row per supplier comparing the phone and email you hold with those on the supplier's own website, flags for mismatches and recent contact changes, and a call-back log that says Do not pay yet until a change is confirmed on a number from your records and approved by a second person."><link rel="canonical" href="https://unadhi.com/guides/supplier-bank-details-change-call-back-sheet-payment-diversion-fraud-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Supplier bank details changed? A call-back sheet in Google Sheets"><meta property="og:description" content="One row per supplier: phone and email on file vs the supplier's own website, with flags. Plus a call-back log for every bank-detail change request. Formulas included."><meta property="og:url" content="https://unadhi.com/guides/supplier-bank-details-change-call-back-sheet-payment-diversion-fraud-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Supplier bank details changed? A call-back sheet that checks every supplier's phone and email on file against the supplier's own website, and logs each change request before you pay", "dateModified": "2026-10-22", "datePublished": "2026-10-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/supplier-bank-details-change-call-back-sheet-payment-diversion-fraud-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A supplier emailed new bank details. What should I do?", "acceptedAnswer": {"@type": "Answer", "text": "Do not change anything or pay yet. Call the supplier on contact details you already hold in your own records, not on a number in the email, read the old and new details back, and have a second person approve the change. UK police guidance also suggests a small test payment before a large one."}}, {"@type": "Question", "name": "Why check supplier contact details against their website?", "acceptedAnswer": {"@type": "Answer", "text": "The call-back rule only works if the contact details on file are right. NHS Counter Fraud guidance warns that fraudsters may first ask for contact details on file to be amended. Comparing your file with the phone numbers and shared mailboxes on the supplier's own website shows which records to confirm before a change request arrives."}}, {"@type": "Question", "name": "Does the bank check the payee name on a transfer?", "acceptedAnswer": {"@type": "Answer", "text": "Often not: PSNI guidance says that in most cases only the sort code and account number are checked. Where your bank offers a payee name check, such as Confirmation of Payee in the UK, use it as well."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Supplier bank details changed? A call-back sheet that checks every supplier's phone and email on file against the supplier's own website, and logs each change request before you pay</h1>
+<p class="meta">Updated 22 Oct 2026 · Disclosure: the contact details scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the call-back log and checks work without it if you type the website details in by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. This is general information, not legal or banking advice.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet that protects your supplier payments from <strong>"our bank details have changed" emails</strong> (called mandate fraud, payment diversion fraud or business email compromise). The <strong>suppliers</strong> tab has <strong>one row per supplier</strong>: the phone number and email you hold on file, next to the phone numbers and shared mailboxes the supplier publishes on <strong>its own website</strong>, with a plain-English flag on every row where they disagree (<strong>phone on file not on website</strong>, <strong>email on file is on a different domain</strong>, <strong>contact changed recently</strong>, <strong>website could not be read</strong>). You clean up those rows <em>before</em> a change request arrives. The <strong>change requests</strong> tab is the call-back log: every request to change bank details gets one row, and the verdict column says <strong>"Do not pay yet"</strong> until someone has called a number from your own records, read the details back, and a second person has approved. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>suppliers tab (example rows are made up)</h3>
+<table><thead><tr><th>Supplier</th><th>Website domain</th><th>Phone on file</th><th>Email on file</th><th>Phones on supplier website</th><th>Phone check</th><th>Email check</th><th>Status</th></tr></thead><tbody>
+<tr><td>Northfield Packaging</td><td>northfield-packaging.example</td><td>+44 20 7946 0123</td><td>accounts@northfield-packaging.example</td><td>+442079460123 +442079460456</td><td>On website</td><td>Same domain</td><td>Ready</td></tr>
+<tr><td>Bright Print Co</td><td>brightprint.example</td><td>07700 900321</td><td>brightprint.accounts@gmail.example</td><td>+442079460789</td><td>Not on website</td><td>Different domain</td><td>Check before next payment</td></tr>
+<tr><td>Coastline Freight</td><td>coastline-freight.example</td><td>+44 20 7946 0999</td><td>billing@coastline-freight.example</td><td>not scraped (blocked-by-robots)</td><td></td><td>Same domain</td><td>Check by hand</td></tr>
+</tbody></table>
+<h3>change requests tab (example row is made up)</h3>
+<table><thead><tr><th>Received</th><th>Supplier</th><th>Sender address</th><th>Sender domain</th><th>Number called</th><th>Where the number came from</th><th>Details read back</th><th>Second approver</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>21/10/2026</td><td>Bright Print Co</td><td>accounts@brightprlnt.example</td><td>Not the supplier's domain</td><td></td><td></td><td></td><td></td><td>Do not pay yet</td></tr>
+</tbody></table>
+<p>The Bright Print row shows why the suppliers tab matters: its email on file is a free-mail address and its phone on file is a mobile that the supplier's website does not list. If a "new bank details" email comes from a look-alike domain (<code>brightprlnt</code> with an L instead of an i), the team should call the website-listed switchboard and ask for accounts, not the mobile on file, and certainly not a number in the email.</p>
+
+<h2>Who this is for</h2>
+<p>Small businesses that pay suppliers by bank transfer, and the bookkeepers, accountants and outsourced finance teams who run payments for them. UK police guidance says a request to change a supplier's bank account is unusual and should be treated with suspicion, and every official source below gives the same core rule: <strong>verify the change by calling the supplier on contact details you already hold, never on details in the request</strong>. That rule only works if the contact details you hold are right. NHS Counter Fraud guidance warns that fraudsters may first ask you to amend the contact details on file, as a step before the bank-detail change. This sheet checks your file against a second, independent source: what each supplier publishes on its own website.</p>
+
+<h2>Step 1: list your suppliers</h2>
+<p>Export your supplier list from your accounting software (most have a contacts or suppliers export to CSV) and paste it into a tab named <code>suppliers</code> with these headers in row 1:</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>What goes in it</th></tr></thead><tbody>
+<tr><td>A</td><td>Supplier</td><td>Name as in your accounts</td></tr>
+<tr><td>B</td><td>Website domain</td><td>The supplier's own website, without <code>https://</code> or <code>www.</code>, for example <code>northfield-packaging.example</code>. Take it from a past invoice or contract you already trust, not from a new email.</td></tr>
+<tr><td>C</td><td>Phone on file</td><td>The number your payments team would call today</td></tr>
+<tr><td>D</td><td>Email on file</td><td>The address remittances and invoices come from</td></tr>
+<tr><td>E</td><td>Contact last changed</td><td>Date the phone or email on file was last edited (blank if never)</td></tr>
+</tbody></table>
+<p>Start with the suppliers you pay most, or most often. Those are the ones worth a fraudster's time.</p>
+
+<h2>Step 2: read each supplier's own website</h2>
+<h3>With the contact details scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_supplier_callback_sheet">Contact Details Scraper</a> on the Apify Store, paste column B into the plain list field and run it with this input:</p>
+<pre>{
+  "urls": ["northfield-packaging.example", "brightprint.example", "coastline-freight.example"],
+  "maxPagesPerSite": 4,
+  "checkEmailMx": true,
+  "defaultCountry": "GB"
+}</pre>
+<ul>
+<li>You get <strong>one row per website</strong>: the homepage plus the most contact-like pages (contact, about, impressum, support). <code>maxPagesPerSite</code> defaults to 4. You pay only for pages actually fetched.</li>
+<li>Phones are normalised to international format (<code>+442079460123</code>), and <code>tel:</code> links on the page are preferred. Set <code>defaultCountry</code> to the country your suppliers are in, so local-format numbers are read correctly when the domain does not say.</li>
+<li>Only shared mailboxes (accounts@, info@, sales@) are returned by default; addresses that identify one person are dropped and only counted. For this job that is what you want: the accounts or main office mailbox.</li>
+<li>Every email and phone carries <code>foundOn</code>, the page it was read from, so you can open that page and see it yourself before you rely on it.</li>
+<li>The scraper follows robots.txt and reads each site's terms. Sites that disallow it come back with a <code>status</code> such as <code>blocked-by-robots</code> or <code>blocked-by-terms</code> and are not charged; the sheet marks them "Check by hand".</li>
+</ul>
+<p>Export the run's dataset as CSV and import it into the same Google Sheet as a new tab named <code>scrape</code> (File → Import → Upload → Insert new sheet). Do not rename headers. You get columns such as <code>domain</code>, <code>status</code>, <code>phones/0/phone</code>, <code>phones/1/phone</code>, <code>emails/0/email</code>, <code>emails/0/mxValid</code> and <code>phones/0/foundOn</code>.</p>
+<h3>Free, by hand</h3>
+<p>For a handful of suppliers, open each website yourself (type the address; do not click a link in an email), copy the main phone number and accounts mailbox from the contact page into a <code>scrape</code> tab with the same three headers <code>domain</code>, <code>phones/0/phone</code> and <code>emails/0/email</code>, and the formulas below work unchanged.</p>
+
+<h2>Step 3: the check columns on the suppliers tab</h2>
+<p>Add these headers in F1 to J1 and the formulas in row 2, then copy down.</p>
+<pre>F2 (Phones on supplier website):
+=IF(B2="", "", IFERROR(LET(h, scrape!$A$1:$ZZ$1,
+   r, MATCH(LOWER(B2), INDEX(scrape!$A$2:$ZZ, 0, MATCH("domain", h, 0)), 0),
+   st, INDEX(scrape!$A$2:$ZZ, r, MATCH("status", h, 0)),
+   p, TEXTJOIN(" ", TRUE, FILTER(INDEX(scrape!$A$2:$ZZ, r, 0), REGEXMATCH(h, "^phones/\d+/phone$"))),
+   IF(AND(st&lt;&gt;"", st&lt;&gt;"ok"), "not scraped ("&amp;st&amp;")", p)), "not scraped"))
+
+G2 (Mailboxes on supplier website):
+=IF(B2="", "", IFERROR(LET(h, scrape!$A$1:$ZZ$1,
+   r, MATCH(LOWER(B2), INDEX(scrape!$A$2:$ZZ, 0, MATCH("domain", h, 0)), 0),
+   TEXTJOIN(" ", TRUE, FILTER(INDEX(scrape!$A$2:$ZZ, r, 0), REGEXMATCH(h, "^emails/\d+/email$")))), ""))
+
+H2 (Phone check):
+=IF(OR(C2="", F2="", LEFT(F2, 11)="not scraped"), "",
+   IF(REGEXMATCH(REGEXREPLACE(F2, "[^0-9 ]", ""), RIGHT(REGEXREPLACE(C2, "[^0-9]", ""), 9)),
+      "On website", "Not on website"))
+
+I2 (Email check):
+=IF(OR(D2="", B2=""), "", IF(REGEXMATCH(LOWER(D2), "@([a-z0-9-]+\.)*"&amp;REGEXREPLACE(LOWER(B2), "\.", "\\.")&amp;"$"),
+   "Same domain", "Different domain"))
+
+J2 (Status):
+=IF(A2="", "", IF(LEFT(F2, 11)="not scraped", "Check by hand",
+   IF(OR(H2="Not on website", I2="Different domain", AND(E2&lt;&gt;"", TODAY()-E2&lt;=90)),
+      "Check before next payment", IF(H2="", "Check by hand", "Ready"))))</pre>
+<ul>
+<li><strong>Phone check</strong> compares the last 9 digits of your number with the website numbers, so <code>020 7946 0123</code> on file matches <code>+442079460123</code> on the website. Short numbers (fewer than 9 digits) will not match reliably; check those by eye.</li>
+<li><strong>Email check</strong> accepts the supplier's domain and its subdomains (<code>accounts@billing.northfield-packaging.example</code>). A free-mail address or a different domain on file is not proof of fraud, since many small suppliers use one, but it means the email on file cannot be checked against the website, so the phone on file matters more.</li>
+<li><strong>Contact changed in the last 90 days</strong> is flagged because of the NHS Counter Fraud warning that a contact-detail change can come first. Ask who changed it and on what evidence.</li>
+<li>For each "Check before next payment" row, call the website-listed switchboard, ask for accounts, and confirm the phone and email you hold. Update your file, write the date in column E, and note who confirmed it.</li>
+</ul>
+
+<h2>Step 4: the change requests tab (the call-back log)</h2>
+<p>Every request to change a supplier's bank details, or to pay a new account, gets one row before anything is changed in your accounting or banking software. Headers in row 1:</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Entry</th></tr></thead><tbody>
+<tr><td>A</td><td>Received</td><td>Date</td></tr>
+<tr><td>B</td><td>Supplier</td><td>Exactly as in the suppliers tab (use a drop-down: Data → Data validation → Dropdown from a range → suppliers!A2:A)</td></tr>
+<tr><td>C</td><td>Sender address</td><td>The full address the request came from (open the sender details; display names can be faked)</td></tr>
+<tr><td>D</td><td>Sender domain</td><td>Formula below</td></tr>
+<tr><td>E</td><td>Number called</td><td>The number you rang</td></tr>
+<tr><td>F</td><td>Where the number came from</td><td>Drop-down: <code>Our records (suppliers tab)</code>, <code>Supplier website, typed in by us</code>, <code>The request itself</code></td></tr>
+<tr><td>G</td><td>Details read back</td><td>Drop-down Yes / No: you read the old and the new account details back to the supplier on the call, and they confirmed the change</td></tr>
+<tr><td>H</td><td>Second approver</td><td>Name or initials of a second person who approved the change</td></tr>
+<tr><td>I</td><td>Test payment confirmed</td><td>For large payments: Yes once a small first payment has been confirmed by the supplier, or N/A</td></tr>
+<tr><td>J</td><td>Verdict</td><td>Formula below</td></tr>
+</tbody></table>
+<pre>D2: =IF(C2="", "", LET(d, LOWER(REGEXEXTRACT(C2, "@(.+)$")),
+      w, LOWER(IFERROR(VLOOKUP(B2, suppliers!$A:$B, 2, FALSE), "")),
+      IF(w="", "Supplier not in list",
+         IF(REGEXMATCH(d, "(^|\.)"&amp;REGEXREPLACE(w, "\.", "\\.")&amp;"$"), "Supplier's domain", "Not the supplier's domain"))))
+
+J2: =IF(A2="", "",
+      IF(F2="The request itself", "Stop: call a number from your records",
+      IF(AND(E2&lt;&gt;"", OR(F2="Our records (suppliers tab)", F2="Supplier website, typed in by us"),
+             G2="Yes", H2&lt;&gt;"", I2&lt;&gt;""), "OK to change", "Do not pay yet")))</pre>
+<ul>
+<li>"Supplier's domain" does not make a request genuine: a supplier's real mailbox can be taken over, and the fraud email then comes from the right address. That is why the verdict depends on the call, not on column D. "Not the supplier's domain" (a look-alike such as <code>brightprlnt</code>) is a strong reason to stop.</li>
+<li>If the call gets you a person who says "just reply to the email", or the request is urgent and unusual, stop and escalate. Urgency and last-minute changes to account details are red flags in both UK police and FBI guidance.</li>
+<li>Report Fraud (the UK police service) suggests a small test payment, confirmed by the supplier, before sending a large sum to a new account. Column I records that.</li>
+<li>Keep this tab private (Share → Restricted). It holds supplier bank and contact information.</li>
+</ul>
+
+<h2>If money has already gone</h2>
+<p>Call your bank straight away and ask them to contact the receiving bank and try to recall the payment. Then report it: in the UK to Report Fraud on 0300 123 2040 or online; in the US to the FBI's IC3 at ic3.gov; elsewhere to your national police cyber-crime or fraud reporting service. Note the time of each call in the change requests tab.</p>
+
+<h2>Honest notes</h2>
+<ul>
+<li>The website is a second source, not the first. Official guidance says to call on details from your own records; the website check is there to catch records that are already wrong. Always type the supplier's address yourself or use the domain from a past invoice you trust.</li>
+<li>The sheet does not verify a bank account. In most cases a bank transfer is checked only against the account number and sort code, not the payee name (PSNI). Where your bank offers a payee name check (in the UK, Confirmation of Payee), use it as well.</li>
+<li>Only the supplier's public business contact details are used. Personal staff emails are dropped by the scraper's default.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Verify a request to move money to a new account by contacting the supplier on official and verifiable contact details; consider a small test payment first; only designated employees should change payment details: <a href="https://www.reportfraud.police.uk/mandate-fraud/">Report Fraud (UK police), Mandate fraud</a> (read 22 Oct 2026).</li>
+<li>Bank-account changes are unusual and should be treated with suspicion and authorised at a senior level; call back using records in your system, not the letter; usually only sort code and account number are checked, not the payee name: <a href="https://www.psni.police.uk/safety-and-support/keeping-safe/scams-and-fraud/mandate-fraud">Police Service of Northern Ireland, Mandate fraud</a> (read 22 Oct 2026).</li>
+<li>Contact the supplier on details in existing records, not from the change request; fraudsters may first ask for contact details on file to be amended: <a href="https://cfa.nhs.uk/resources/downloads/guidance/fraud-awareness/quick-reference-guides/Mandate-Fraud-Quick-Guide-23.pdf">NHS Counter Fraud Authority, Mandate fraud quick guide</a> (PDF, read 22 Oct 2026).</li>
+<li>Use secondary channels to verify requests to change account information; contact your bank first and file a complaint at ic3.gov: <a href="https://www.ic3.gov/CrimeInfo/BEC">FBI Internet Crime Complaint Center, Business Email Compromise</a> (read 22 Oct 2026).</li>
+<li>Red flags (unexplained urgency, last-minute changes in account information) and "verify any changes via the contact on file, not the number provided in the email": <a href="https://www.fbi.gov/contact-us/field-offices/sacramento/news/press-releases/sacramento-fbi-encourages-business-community-to-guard-against-and-report-business-email-compromise">FBI Sacramento, business email compromise advice</a> (read 22 Oct 2026).</li>
+<li>Contact details scraper inputs and outputs (<code>urls</code>, <code>maxPagesPerSite</code> default 4, contact-like pages, E.164 phones with <code>tel:</code> links preferred, <code>defaultCountry</code>, role mailboxes only by default, <code>foundOn</code>, <code>mxValid</code>, <code>status</code> values, skipped sites not charged): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_supplier_callback_sheet">Apify Store page</a> (Actor input schema, README and source read 22 Oct 2026).</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="supplier-rfq-quote-request-sheet-sales-export-inboxes-landed-cost-apify.html">Supplier quote request sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean an Apify contact CSV into a call sheet</a></li>
+<li><a href="web-agency-client-website-contact-check-sheet-apify.html">Web agency client website contact check sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
