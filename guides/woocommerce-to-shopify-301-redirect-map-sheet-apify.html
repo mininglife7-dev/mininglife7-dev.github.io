@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moving from WooCommerce to Shopify: a redirect sheet that maps every old product URL to its new Shopify page, ready to import as Shopify's URL redirect CSV</title><meta name="description" content="A free Google Sheet for shops moving from WooCommerce to Shopify: one row per old product URL, matched to the new Shopify product by SKU, then by title, with checks for duplicates and paths Shopify cannot redirect, and a two-column tab you download and import in Content > Menus > URL redirects."><link rel="canonical" href="https://unadhi.com/guides/woocommerce-to-shopify-301-redirect-map-sheet-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="WooCommerce to Shopify redirect sheet in Google Sheets"><meta property="og:description" content="One row per old WooCommerce product URL, matched to the new Shopify handle by SKU or title, with checks. Download the redirects tab as CSV and import it into Shopify."><meta property="og:url" content="https://unadhi.com/guides/woocommerce-to-shopify-301-redirect-map-sheet-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Moving from WooCommerce to Shopify: a redirect sheet that maps every old product URL to its new Shopify page, ready to import as Shopify's URL redirect CSV", "dateModified": "2026-10-22", "datePublished": "2026-10-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/woocommerce-to-shopify-301-redirect-map-sheet-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need redirects when I move from WooCommerce to Shopify?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if your product URLs change. WooCommerce product pages usually live under /product/ and Shopify product pages under /products/. Google's site move guidance says to map each old URL to its new URL and use permanent redirects, so visitors and search engines that follow old links land on the right product."}}, {"@type": "Question", "name": "Can I send every old URL to my Shopify home page?", "acceptedAnswer": {"@type": "Answer", "text": "Google advises against it: redirecting many old URLs to one irrelevant page such as the home page can confuse users and may be treated as a soft 404. Send each old product to its new product, and an unmatched one to the closest collection."}}, {"@type": "Question", "name": "Why does Shopify ignore some of my redirects?", "acceptedAnswer": {"@type": "Answer", "text": "Shopify redirects only from URLs that are broken on the Shopify store, and it cannot redirect from fixed paths such as /products and /collections or from paths that begin with /shop, /cart, /apps, /orders or /services. The sheet flags those rows."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Moving from WooCommerce to Shopify: a redirect sheet that maps every old product URL to its new Shopify page, ready to import as Shopify's URL redirect CSV</h1>
+<p class="meta">Updated 22 Oct 2026 · Disclosure: the product data scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works without it if you list your old product URLs by hand or from your sitemap. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. Menu names in Shopify and WooCommerce change from time to time.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet that turns your old WooCommerce shop into a finished <strong>Shopify URL redirect file</strong>. The <strong>map</strong> tab has <strong>one row per old product URL</strong> (for example <code>/product/oak-chopping-board/</code>), matched to the new Shopify product page (<code>/products/oak-chopping-board-large</code>) <strong>by SKU first, then by title</strong>, with a column you can type over by hand. Every row says how it was matched and gets a check: <strong>ok</strong>, <strong>ok: to collection</strong> (no product match, so it goes to the closest collection you chose), <strong>duplicate</strong> or <strong>path Shopify will not redirect</strong>. The <strong>redirects</strong> tab keeps only the ok rows in two columns, <strong>Redirect from</strong> and <strong>Redirect to</strong>, which you download as CSV and import in Shopify under Content → Menus → URL redirects. Old links from Google, Pinterest, newsletters and other sites then land on the right product instead of a "Page not found". Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>map tab (example rows are made up)</h3>
+<table><thead><tr><th>Redirect from (old path)</th><th>Old SKU</th><th>Old title</th><th>Handle by SKU</th><th>Handle by title</th><th>Your handle</th><th>Redirect to</th><th>Matched by</th><th>Check</th></tr></thead><tbody>
+<tr><td>/product/oak-chopping-board/</td><td>OAK-L</td><td>Oak chopping board, large</td><td>oak-chopping-board-large</td><td></td><td></td><td>/products/oak-chopping-board-large</td><td>SKU</td><td>ok</td></tr>
+<tr><td>/product/linen-apron-sage/</td><td></td><td>Linen apron – sage</td><td></td><td>linen-apron-sage</td><td></td><td>/products/linen-apron-sage</td><td>title</td><td>ok</td></tr>
+<tr><td>/product/gift-box-2025/</td><td>GB-25</td><td>Gift box 2025</td><td></td><td></td><td></td><td>/collections/gift-boxes</td><td>no match: closest collection</td><td>ok: to collection</td></tr>
+<tr><td>/shop/</td><td></td><td></td><td></td><td></td><td></td><td>/collections/all</td><td>no match: closest collection</td><td>path Shopify will not redirect</td></tr>
+</tbody></table>
+<h3>redirects tab (what you import)</h3>
+<table><thead><tr><th>Redirect from</th><th>Redirect to</th></tr></thead><tbody>
+<tr><td>/product/oak-chopping-board/</td><td>/products/oak-chopping-board-large</td></tr>
+<tr><td>/product/linen-apron-sage/</td><td>/products/linen-apron-sage</td></tr>
+<tr><td>/product/gift-box-2025/</td><td>/collections/gift-boxes</td></tr>
+</tbody></table>
+
+<h2>Who this is for, and when you need it</h2>
+<p>Small shops moving their own store from WooCommerce to Shopify (the same sheet works from other platforms the scraper can read). WooCommerce product pages usually sit under <code>/product/</code> and Shopify's under <code>/products/</code>, so every old product link breaks on the day you point your domain at Shopify unless you add a redirect for it. Build the sheet while both stores exist: the old shop still live, the new Shopify store set up with its products. Google's site move guidance also suggests moving in a quieter period if your traffic is seasonal, so if you can choose, avoid the weeks just before Black Friday.</p>
+
+<h2>Step 1: list your old product URLs in a tab named scrape</h2>
+<h3>With the product data scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_woo_shopify_redirect_map">E-commerce Product Data Scraper (Shopify, WooCommerce, any shop)</a> on the Apify Store and run it on your <strong>old</strong> shop:</p>
+<pre>{
+  "startUrls": [{ "url": "https://your-old-shop.example" }],
+  "maxProductsPerShop": 5000,
+  "includeDescription": false
+}</pre>
+<ul>
+<li><code>maxProductsPerShop</code>: set it above your number of products (the default is 100). You pay only for products delivered.</li>
+<li><code>includeDescription</code>: off, because the sheet needs only the URL, SKU and title.</li>
+<li>For WooCommerce shops the scraper reads the WooCommerce Store API, so you get each product's real public URL, SKU and title. It follows robots.txt and reads your shop's terms page; if your own terms forbid automated access, it skips the shop and charges nothing. Check the run's Storage → Key-value store → <code>SHOPS_SUMMARY</code>: your shop should show <code>ok</code>.</li>
+</ul>
+<p>Export the dataset as CSV. In your Google Sheet use File → Import → Upload, "Insert new sheet", and name the tab <code>scrape</code>. Keep the headers as they are; the formulas look up <code>url</code>, <code>sku</code> and <code>title</code> by name.</p>
+<h3>Free, without the scraper</h3>
+<p>Paste your old product URLs into column A of a tab named <code>scrape</code> with the header <code>url</code>, and add <code>sku</code> and <code>title</code> columns if you have them. WordPress lists product URLs in its sitemap (often <code>/wp-sitemap-posts-product-1.xml</code>, or <code>/product-sitemap.xml</code> if an SEO plugin makes the sitemap). Your analytics "top pages" report is worth adding too, because Google's guidance is to start with the URLs that get traffic and links.</p>
+
+<h2>Step 2: export your new Shopify products into a tab named shopify</h2>
+<p>In Shopify admin go to Products → Export, choose all products and the plain CSV option, and import the file into the same Google Sheet as a new tab named <code>shopify</code>. The current export has columns named <code>Title</code>, <code>URL handle</code> and <code>SKU</code> (one row per variant; the title is only on the first row of each product). Older exports call them <code>Handle</code> and <code>Variant SKU</code>; if yours do, change those names in the formulas.</p>
+
+<h2>Step 3: the settings tab</h2>
+<ul>
+<li><code>settings!B1</code>: where unmatched products go, for example <code>/collections/all</code> or better a real collection such as <code>/collections/gift-boxes</code>. Google advises against sending many old URLs to the home page: it can confuse visitors and may be treated as a soft 404.</li>
+</ul>
+
+<h2>Step 4: build the map tab</h2>
+<p>Row 1 headers as in the table above (columns A to J below). Put these in row 2 and fill down as far as your scrape tab goes.</p>
+<ul>
+<li><strong>A Old URL:</strong> <code>=IFERROR(INDEX(scrape!$A:$ZZ, ROW(), MATCH("url", scrape!$1:$1, 0)), "")</code></li>
+<li><strong>B Redirect from:</strong> the path only, because Shopify redirects within your domain use relative paths: <code>=IF(A2="", "", REGEXREPLACE(A2, "^https?://[^/]+", ""))</code></li>
+<li><strong>C Old SKU:</strong> <code>=IF(A2="", "", IFERROR(INDEX(scrape!$A:$ZZ, ROW(), MATCH("sku", scrape!$1:$1, 0)), ""))</code></li>
+<li><strong>D Old title:</strong> <code>=IF(A2="", "", IFERROR(INDEX(scrape!$A:$ZZ, ROW(), MATCH("title", scrape!$1:$1, 0)), ""))</code></li>
+<li><strong>E Handle by SKU:</strong> <code>=IF(C2="", "", IFERROR(INDEX(shopify!$A:$ZZ, MATCH(C2, INDEX(shopify!$A:$ZZ, 0, MATCH("SKU", shopify!$1:$1, 0)), 0), MATCH("URL handle", shopify!$1:$1, 0)), ""))</code></li>
+<li><strong>F Handle by title</strong> (ignores capitals and extra spaces): <code>=IF(D2="", "", IFERROR(INDEX(shopify!$A:$ZZ, MATCH(LOWER(TRIM(D2)), ARRAYFORMULA(LOWER(TRIM(INDEX(shopify!$A:$ZZ, 0, MATCH("Title", shopify!$1:$1, 0))))), 0), MATCH("URL handle", shopify!$1:$1, 0)), ""))</code></li>
+<li><strong>G Your handle:</strong> empty. Type a Shopify handle here to override the match, for example when you merged two old products into one.</li>
+<li><strong>H Redirect to:</strong> <code>=IF(B2="", "", IF(G2&lt;&gt;"", "/products/"&amp;G2, IF(E2&lt;&gt;"", "/products/"&amp;E2, IF(F2&lt;&gt;"", "/products/"&amp;F2, settings!$B$1))))</code></li>
+<li><strong>I Matched by:</strong> <code>=IF(B2="", "", IF(G2&lt;&gt;"", "you", IF(E2&lt;&gt;"", "SKU", IF(F2&lt;&gt;"", "title", "no match: closest collection"))))</code></li>
+<li><strong>J Check:</strong> <code>=IF(B2="", "", IF(REGEXMATCH(LOWER(B2), "^/(products|collections|apps|application|cart|carts|orders|services|shop|a|community|tools)(/|$)"), "path Shopify will not redirect", IF(COUNTIF($B:$B, B2)&gt;1, "duplicate", IF(I2="no match: closest collection", "ok: to collection", "ok"))))</code></li>
+</ul>
+<p>Work down the sheet in this order: fix every <strong>duplicate</strong> (usually the same product listed twice in the scrape), then look at every <strong>ok: to collection</strong> row: if the product still exists on Shopify under another name or SKU, type its handle in column G so the visitor lands on the product itself. Rows marked <strong>path Shopify will not redirect</strong> are fine to leave: for example WooCommerce's <code>/shop/</code> page can't be redirected because Shopify reserves paths beginning with <code>/shop</code>, and an old path that already starts with <code>/products/</code> only works if the Shopify handle is the same.</p>
+
+<h2>Step 5: the redirects tab, then import into Shopify</h2>
+<ol>
+<li>New tab named <code>redirects</code>. In A1 type <code>Redirect from</code>, in B1 <code>Redirect to</code>. In A2: <code>=FILTER({map!B2:B, map!H2:H}, LEFT(map!J2:J, 2)="ok")</code></li>
+<li>With the redirects tab open, use File → Download → Comma-separated values (.csv). Compare the header row with Shopify's sample URL redirect CSV (linked from the "Import your URL redirects" section of Shopify's help page) and match its header names if they differ.</li>
+<li>In Shopify admin go to Content → Menus → URL redirects → Import, add the file, review the import, then import the redirects.</li>
+<li>Shopify redirects only from URLs that are broken on the Shopify store, so they start working once your domain points at Shopify and the old pages no longer exist there. Shopify allows up to 100,000 URL redirects (more on Plus).</li>
+<li>Test ten old URLs from the sheet in a private browser window after the switch, including your three best sellers. Then keep the redirects: Google's guidance is at least a year, and longer is better for people following old links.</li>
+</ol>
+<p>Categories are not in the scrape. Add your old category pages by hand at the bottom of the map tab (WooCommerce usually uses <code>/product-category/name/</code>), and type the matching Shopify collection path, such as <code>/collections/name</code>, straight into column H over the formula.</p>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Shopify URL redirects: relative paths within your domain, redirects work only from broken (404) URLs, no redirects from <code>/products</code>, <code>/collections</code>, <code>/collections/all</code> or paths beginning <code>/apps</code>, <code>/application</code>, <code>/cart</code>, <code>/carts</code>, <code>/orders</code>, <code>/services</code>, <code>/shop</code>; reserved <code>/a/</code>, <code>/community/</code>, <code>/tools/</code>; limit 100,000 (Plus 20,000,000); import and sample CSV under Content → Menus → URL redirects; 301 redirects cached: <a href="https://help.shopify.com/en/manual/online-store/menus-and-links/url-redirect">Shopify Help Center, Creating and managing URL redirects</a> (read 22 Oct 2026).</li>
+<li>Shopify product CSV columns <code>Title</code>, <code>URL handle</code>, <code>SKU</code>; older column names still accepted: <a href="https://help.shopify.com/en/manual/products/import-export/using-csv">Shopify Help Center, Using CSV files to import and export products</a> (read 22 Oct 2026).</li>
+<li>Map old URLs to new ones, start with sitemaps and pages with traffic and links, use permanent redirects, don't redirect many URLs to one irrelevant page such as the home page (soft 404), test the redirects, keep them at least a year, move in a quieter period: <a href="https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes">Google Search Central, Site moves with URL changes</a> (read 22 Oct 2026).</li>
+<li>Product data scraper inputs and outputs (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>includeDescription</code>, WooCommerce Store API, <code>SHOPS_SUMMARY</code> statuses, skipped shops not charged): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_woo_shopify_redirect_map">Apify Store page</a> (Actor input schema and README read 22 Oct 2026).</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="facebook-instagram-shop-catalog-feed-google-sheet-shopify-woocommerce-apify.html">Facebook and Instagram shop catalogue feed from your own store</a></li>
+<li><a href="wholesale-line-sheet-from-shopify-woocommerce-store-google-sheet-apify.html">Wholesale line sheet from your own Shopify or WooCommerce store</a></li>
+<li><a href="google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html">Google Shopping product listing check sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
