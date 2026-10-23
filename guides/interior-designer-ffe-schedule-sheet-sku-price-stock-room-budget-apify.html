@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FF&amp;E schedule sheet for interior designers and home stagers: product links to SKU, finish, price, stock and a budget per room</title><meta name="description" content="A free Google Sheet that turns the product links you pick for a client into a furniture and lighting schedule: picture, SKU, chosen finish, price, stock, line totals, a budget per room and a check for price rises or sold-out items before you order."><link rel="canonical" href="https://unadhi.com/guides/interior-designer-ffe-schedule-sheet-sku-price-stock-room-budget-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="FF&amp;E schedule sheet: product links to SKU, price, stock and room budget"><meta property="og:description" content="Product links in, schedule out: picture, SKU, finish, price, stock and quantity per item, room totals against budget, and a check for price rises before you order."><meta property="og:url" content="https://unadhi.com/guides/interior-designer-ffe-schedule-sheet-sku-price-stock-room-budget-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "FF&E schedule sheet for interior designers and home stagers: product links to SKU, finish, price, stock and a budget per room", "dateModified": "2026-10-23", "datePublished": "2026-10-23", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/interior-designer-ffe-schedule-sheet-sku-price-stock-room-budget-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an FF&E schedule?", "acceptedAnswer": {"@type": "Answer", "text": "FF&E stands for furniture, fixtures and equipment. The schedule is the list of every loose item for a project, usually with room, product, supplier, finish, quantity and price, that the client approves and you order from."}}, {"@type": "Question", "name": "Which shops can the product scraper read?", "acceptedAnswer": {"@type": "Answer", "text": "Shopify, WooCommerce and shops that publish schema.org product data. It checks each shop's robots.txt and terms first and skips shops whose terms forbid scraping, and it never fetches marketplaces such as Amazon or Etsy. Skipped shops are not charged; copy their details by hand."}}, {"@type": "Question", "name": "Why does the price in the CSV differ from the finish I chose?", "acceptedAnswer": {"@type": "Answer", "text": "For a Shopify product with several variants, the top-level price is the cheapest variant. Set the variant number in the sheet so price, SKU and stock come from the finish or size you chose."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>FF&amp;E schedule sheet for interior designers and home stagers: product links to SKU, finish, price, stock and a budget per room</h1>
+<p class="meta">Updated 23 Oct 2026 · Disclosure: the product scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or with details copied by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet that turns the product links you pick for a client into a <strong>furniture, lighting and decor schedule</strong> (often called an FF&amp;E schedule): <strong>one row per item</strong> with room, a thumbnail picture, product name, brand, SKU, the <strong>finish or size you chose</strong>, its price, whether it is <strong>in stock</strong>, quantity and line total. A <strong>rooms</strong> tab adds up each room against its budget, and a <strong>Check</strong> column tells you, before you order, which items went <strong>up in price</strong> or <strong>out of stock</strong> since the client approved them. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>schedule tab (example rows are made up)</h3>
+<table><thead><tr><th>Room</th><th>Picture</th><th>Item</th><th>Brand</th><th>SKU</th><th>Finish</th><th>Price</th><th>In stock</th><th>Qty</th><th>Line total</th><th>Approved at</th><th>Check</th></tr></thead><tbody>
+<tr><td>Living</td><td>(thumbnail)</td><td>Example Linen Sofa 3-seat</td><td>Example Home</td><td>ELS-3-OAT</td><td>Oatmeal</td><td>1290</td><td>TRUE</td><td>1</td><td>1290</td><td>1290</td><td>ok to order</td></tr>
+<tr><td>Living</td><td>(thumbnail)</td><td>Sample Rattan Pendant</td><td>Sample Light Co</td><td>SRP-45</td><td>45 cm</td><td>189</td><td>TRUE</td><td>2</td><td>378</td><td>165</td><td>price up 24</td></tr>
+<tr><td>Bedroom 1</td><td>(thumbnail)</td><td>Demo Oak Bedside Table</td><td>Demo Furniture</td><td>DOB-01</td><td>Natural oak</td><td>240</td><td>FALSE</td><td>2</td><td>480</td><td>240</td><td>out of stock: find alternative</td></tr>
+<tr><td>Bedroom 1</td><td>(thumbnail)</td><td>Test Wool Rug 160x230</td><td>Test Rugs</td><td>TWR-160</td><td>Charcoal</td><td>310</td><td>TRUE</td><td>1</td><td>310</td><td></td><td>send to client</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Freelance interior designers and decorators</strong> who send a client a list of pieces to approve and then order them weeks later.</li>
+<li><strong>Home stagers</strong> furnishing a property for sale and working to a fixed budget per room.</li>
+<li><strong>Holiday-let and serviced-apartment owners</strong> furnishing several units with the same pieces, who need quantities and totals.</li>
+<li><strong>Office managers</strong> choosing chairs, desks and lighting for a small office move.</li>
+</ul>
+<p>The slow parts are copying the name, SKU, price and picture from each shop page, and then finding out on order day that a piece went up in price or sold out after the client said yes. This sheet does the copying from a list of links, and the Check column catches the changes.</p>
+
+<h2>Step 1: list the picks (tab <code>picks</code>)</h2>
+<p>Columns: <code>A room</code>, <code>B product link</code>, <code>D qty</code>, <code>E budget note</code> (optional). Paste the link of each product page you are considering, one per row. In <code>C2</code>, make a join key from each link (shop domain plus the last part of the address):</p>
+<pre>=ARRAYFORMULA(IF(B2:B="",,LOWER(
+  REGEXEXTRACT(B2:B, "^(?:https?://)?(?:www\.)?([^/?#]+)") &amp; "|" &amp;
+  REGEXEXTRACT(REGEXREPLACE(B2:B, "[?#].*$", ""), "([^/]+)/?$"))))</pre>
+<p>That turns <code>https://www.example-home.com/collections/sofas/products/linen-sofa-3-seat?variant=123</code> into <code>example-home.com|linen-sofa-3-seat</code>. The same key is built from the scraper's <code>url</code> field in Step 3, so it does not matter whether you copied the link from a collection page or with a <code>?variant=</code> on the end.</p>
+
+<h2>Step 2: get each product's details (tab <code>scrape</code>)</h2>
+<h3>With the product scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_ffe_schedule_sheet">E-commerce Product Scraper: Shopify &amp; Woo</a> on the Apify Store, paste column B into <strong>Shop, category or product URLs</strong> and use this input (JSON tab):</p>
+<pre>{
+  "startUrls": [
+    { "url": "https://example-home.com/products/linen-sofa-3-seat" },
+    { "url": "https://sample-light.co.uk/products/rattan-pendant" }
+  ],
+  "maxProductsPerShop": 50,
+  "includeDescription": false
+}</pre>
+<ul>
+<li>Give it <strong>product page links</strong>, not shop homepages. On a Shopify shop, a product link returns just that one product; a homepage returns the whole catalogue (up to <code>maxProductsPerShop</code>), which you do not need here.</li>
+<li><code>includeDescription</code> off keeps the CSV small. Turn it on if you want dimensions or materials that the shop only writes in its description.</li>
+<li>You pay only for products delivered. Shops that are skipped, blocked or return nothing are not charged.</li>
+<li>It reads Shopify, WooCommerce and shops that publish schema.org product data. Before it fetches anything it checks each shop's robots.txt and terms, and it <strong>skips any shop whose terms forbid scraping</strong>. Many Shopify shops keep Shopify's default terms, which do, so expect some shops to be skipped. Amazon, eBay, Etsy, Walmart and other marketplaces are never fetched. For those, copy the details by hand (below).</li>
+</ul>
+<p>When the run finishes, export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Keep the headers. Apify flattens lists into numbered columns such as <code>images/0</code>, <code>variants/0/title</code>, <code>variants/0/price</code>, <code>variants/0/sku</code> and <code>variants/0/available</code>; the formulas below find columns by header name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make a <code>scrape</code> tab with the headers <code>url</code>, <code>title</code>, <code>brand</code>, <code>sku</code>, <code>price</code>, <code>currency</code>, <code>inStock</code> and <code>images/0</code> (right-click the product photo, "Copy image address"), and type one row per product. Slower, but the same formulas work. Leave the Finish column empty for these rows.</p>
+
+<h2>Step 3: the keys tab</h2>
+<p>Add a small tab named <code>keys</code>. Type <code>key</code> in A1 and this in A2; it builds the same key from the scraper's <code>url</code> column, row for row with the scrape tab:</p>
+<pre>=ARRAYFORMULA(LET(u, INDEX(scrape!A2:ZZ, 0, MATCH("url", scrape!A1:ZZ1, 0)),
+  IF(u="",, LOWER(REGEXEXTRACT(u, "^(?:https?://)?(?:www\.)?([^/?#]+)") &amp; "|" &amp;
+  REGEXEXTRACT(REGEXREPLACE(u, "[?#].*$", ""), "([^/]+)/?$")))))</pre>
+<p>Keeping the key on its own tab means you can replace the scrape tab with a fresh CSV later without losing it. Every lookup in the schedule then uses this one pattern; change only the header in quotes:</p>
+<pre>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH(picks!$C2, keys!$A:$A, 0),
+  MATCH("title", scrape!$1:$1, 0)), "")</pre>
+<p>Use it with <code>title</code> for Item, <code>brand</code> for Brand and <code>currency</code> in a spare column. If a link finds nothing, its shop was probably skipped: see the status table below.</p>
+
+<h2>Step 4: the schedule columns</h2>
+<p>Build the <code>schedule</code> tab with Room <code>=picks!A2</code> and Qty <code>=picks!D2</code>, and the lookups above.</p>
+<p><strong>Finish</strong> (F). A Shopify product with several finishes or sizes comes back with each one as a variant: <code>variants/0/title</code>, <code>variants/1/title</code> and so on (for example <code>Oatmeal</code>, <code>Charcoal</code>). The top-level <code>price</code> is the <strong>cheapest</strong> variant, which may not be the one you chose. Add a column <strong>V</strong> with the number of the variant you chose (0, 1, 2...; check it against the titles in the scrape tab). Then in F2:</p>
+<pre>=IF($V2="", "", IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH(picks!$C2, keys!$A:$A, 0),
+  MATCH("variants/" &amp; $V2 &amp; "/title", scrape!$1:$1, 0)), ""))</pre>
+<p><strong>SKU</strong>, <strong>Price</strong> and <strong>In stock</strong> use the variant's own values when V is set, and the product's otherwise. Price in G2 (swap <code>price</code> for <code>sku</code> to get the SKU, and use <code>available</code> / <code>inStock</code> for stock):</p>
+<pre>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH(picks!$C2, keys!$A:$A, 0),
+  MATCH(IF($V2="", "price", "variants/" &amp; $V2 &amp; "/price"), scrape!$1:$1, 0)), "")</pre>
+<p><strong>Picture</strong> in B2 shows the first product photo inside the cell:</p>
+<pre>=IFERROR(IMAGE(INDEX(scrape!$A:$ZZ,
+  MATCH(picks!$C2, keys!$A:$A, 0),
+  MATCH("images/0", scrape!$1:$1, 0))), "")</pre>
+<p><strong>Line total</strong> in J2: <code>=IF(G2="", "", G2*I2)</code>. If you get a trade discount, add a column <strong>Trade %</strong> and use <code>=IF(G2="", "", G2*I2*(1-N(W2)))</code>. The scraper reads the public price on the shop's page only; it never sees trade prices.</p>
+
+<h2>Step 5: the approval price and the Check column</h2>
+<p>When you send the schedule to the client, copy the Price column and paste it as <strong>values only</strong> (Ctrl+Shift+V) into <strong>Approved at</strong> (K). That freezes the price the client said yes to. On order day, run the scraper again with the same links, import the new CSV into the <code>scrape</code> tab with "Replace current sheet", and read the Check column in L2:</p>
+<pre>=IF(C2="", "",
+ IF(H2=FALSE, "out of stock: find alternative",
+ IF(K2="", "send to client",
+ IF(G2&gt;K2, "price up " &amp; TEXT(G2-K2, "0.##"),
+ IF(G2&lt;K2, "price down " &amp; TEXT(K2-G2, "0.##"), "ok to order")))))</pre>
+<p>Shops list prices in their own currency (the <code>currency</code> column). If your picks come from shops in different currencies, convert them in a spare column before adding totals.</p>
+
+<h2>Step 6: the rooms tab</h2>
+<p>Put each room in A and its budget in B. Then:</p>
+<pre>C2 (spent):     =SUMIFS(schedule!J:J, schedule!A:A, A2)
+D2 (left):      =B2-C2
+E2 (items):     =COUNTIFS(schedule!A:A, A2)
+F2 (to sort):   =COUNTIFS(schedule!A:A, A2, schedule!L:L, "&lt;&gt;ok to order")</pre>
+<p>Add a total row with <code>=SUM(B2:B)</code> and <code>=SUM(C2:C)</code>. Format D red when it is below zero (Format → Conditional formatting → Less than 0), and the client can see at a glance which room is over budget.</p>
+
+<h2>What the shop status values mean</h2>
+<p>Each run also saves a <code>SHOPS_SUMMARY</code> record (run → Storage → Key-value store) with one line per shop and its <code>status</code>:</p>
+<table><thead><tr><th>status</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>ok</code></td><td>Shop read</td><td>Use the rows</td></tr>
+<tr><td><code>blocked-by-terms</code></td><td>The shop's terms forbid scraping (clause in <code>termsClause</code>)</td><td>Copy the details by hand</td></tr>
+<tr><td><code>skipped-terms-unverifiable</code></td><td>The terms page could not be read because robots.txt hides it</td><td>Same</td></tr>
+<tr><td><code>blocked-by-robots</code></td><td>The shop asks bots not to crawl</td><td>Same</td></tr>
+<tr><td><code>blocked-by-tos-list</code></td><td>A marketplace such as Amazon or Etsy</td><td>Same</td></tr>
+<tr><td><code>no-products-found</code></td><td>No machine-readable product data (often a JavaScript-only shop)</td><td>Same</td></tr>
+<tr><td><code>rate-limited</code>, <code>failed</code></td><td>Too many requests, or the shop was unreachable</td><td>Run again later</td></tr>
+</tbody></table>
+<p>None of these are charged.</p>
+
+<h2>Check before you order</h2>
+<ul class="check">
+<li>Every row has a Finish (V set) where the product has more than one variant, and the SKU is the variant's SKU.</li>
+<li>The Check column says <strong>ok to order</strong> on every row, or the client has approved the new price.</li>
+<li>Out-of-stock items have an approved alternative.</li>
+<li>Delivery charges, lead times and returns terms are noted for each shop; the scraper does not read them.</li>
+<li>Dimensions have been checked on the shop page against your floor plan.</li>
+<li>The rooms tab shows no room over budget, or the client has agreed the overspend.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Product scraper input and output fields (<code>startUrls</code>, <code>maxProductsPerShop</code>, <code>includeDescription</code>; <code>url</code>, <code>title</code>, <code>brand</code>, <code>sku</code>, <code>price</code>, <code>currency</code>, <code>inStock</code>, <code>images</code>, <code>variants</code> with <code>title</code>, <code>price</code>, <code>sku</code>, <code>available</code>; <code>SHOPS_SUMMARY</code> status values): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_ffe_schedule_sheet">Apify Store page</a> (input schema and README)</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="wholesale-line-sheet-from-shopify-woocommerce-store-google-sheet-apify.html">Wholesale line sheet from a Shopify or WooCommerce store</a></li>
+<li><a href="gift-guide-product-shortlist-sheet-black-friday-christmas-apify.html">Gift guide product shortlist sheet</a></li>
+<li><a href="office-christmas-party-venue-quote-sheet-events-inbox-deposit-apify.html">Office Christmas party venue sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
