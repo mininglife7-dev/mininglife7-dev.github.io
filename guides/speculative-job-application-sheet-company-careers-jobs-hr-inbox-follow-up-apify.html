@@ -1,0 +1,161 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Speculative job application sheet: each company's careers@, jobs@ or hr@ inbox from its own website, with date sent, follow-up date and reply</title><meta name="description" content="A free Google Sheet for speculative job and internship applications: one row per company with the careers, jobs or hr inbox from its own website, the page it was found on, date sent, follow-up date, reply and a Next step column."><link rel="canonical" href="https://unadhi.com/guides/speculative-job-application-sheet-company-careers-jobs-hr-inbox-follow-up-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Speculative job application sheet: careers inbox, follow-up date and reply"><meta property="og:description" content="One row per company: careers@, jobs@ or hr@ inbox from its own site, date sent, automatic follow-up date, reply and Next step."><meta property="og:url" content="https://unadhi.com/guides/speculative-job-application-sheet-company-careers-jobs-hr-inbox-follow-up-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Speculative job application sheet: each company's careers@, jobs@ or hr@ inbox from its own website, with date sent, follow-up date and reply", "dateModified": "2026-10-23", "datePublished": "2026-10-23", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/speculative-job-application-sheet-company-careers-jobs-hr-inbox-follow-up-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is it fine to email a company's careers inbox without an advertised job?", "acceptedAnswer": {"@type": "Answer", "text": "A careers, jobs or hr inbox that a company publishes on its own website is there for job enquiries. Write one specific letter per company, follow up once, and use the company's portal instead if its careers page asks you to apply only there."}}, {"@type": "Question", "name": "Why did the scraper not return a recruitment@ or talent@ address?", "acceptedAnswer": {"@type": "Answer", "text": "With personal emails off, it returns only addresses on its shared-inbox list, which includes careers@, jobs@ and hr@ but not recruitment@, talent@ or hiring@. Copy those by hand from the careers page."}}, {"@type": "Question", "name": "Do I need the scraper at all?", "acceptedAnswer": {"@type": "Answer", "text": "No. For a short list, open each company's careers and contact pages and type the inbox into the scrape tab by hand. The formulas work the same way."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Speculative job application sheet: each company's careers@, jobs@ or hr@ inbox from its own website, with date sent, follow-up date and reply</h1>
+<p class="meta">Updated 23 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or by copying inboxes by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for speculative job applications with <strong>one row per company</strong> you would like to work for: the <strong>careers@, jobs@ or hr@ inbox</strong> the company publishes on its own website, the <strong>page it was found on</strong>, the company's main phone and LinkedIn company page, the role you are asking about, the <strong>date you sent</strong>, an automatic <strong>follow-up date</strong>, the <strong>reply</strong>, and a <strong>Next step</strong> column (find inbox / send now / follow up today / wait / interview / closed). A <strong>summary</strong> tab counts sent, replied and interviews per week. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>companies tab (example rows are made up)</h3>
+<table><thead><tr><th>Company</th><th>Domain</th><th>Inbox</th><th>Found on</th><th>Role asked about</th><th>Sent on</th><th>Follow up on</th><th>Reply</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Example Logistics</td><td>example-logistics.in</td><td>careers@example-logistics.in</td><td>example-logistics.in/careers</td><td>Operations analyst</td><td>2026-10-12</td><td>2026-10-22</td><td></td><td>follow up today</td></tr>
+<tr><td>Sample Foods</td><td>sample-foods.com</td><td>hr@sample-foods.com</td><td>sample-foods.com/contact</td><td>Supply chain trainee</td><td>2026-10-20</td><td>2026-10-30</td><td></td><td>wait</td></tr>
+<tr><td>Demo Software</td><td>demo-software.io</td><td>jobs@demo-software.io</td><td>demo-software.io/about</td><td>Junior data analyst</td><td>2026-10-08</td><td>2026-10-18</td><td>interview</td><td>interview</td></tr>
+<tr><td>Test Pharma</td><td>test-pharma.co</td><td></td><td></td><td>QA associate</td><td></td><td></td><td></td><td>find inbox</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Graduates and career changers</strong> writing to companies they want to join, whether or not a job is advertised.</li>
+<li><strong>Students looking for internships</strong>, where many smaller companies never post a listing.</li>
+<li><strong>Placement cells, career coaches and mentors</strong> who keep one shortlist of employers per batch or per client.</li>
+</ul>
+<p>The slow part of a speculative application is not the letter. It is finding the right inbox for each company, then remembering who you wrote to, when, and who to follow up with. This sheet does both, and keeps every company in one place.</p>
+
+<h2>Step 1: list the companies (tab <code>list</code>)</h2>
+<p>Columns: <code>A company</code>, <code>B website</code>, <code>D role</code> (the role or team you are asking about). Put the company's <strong>careers or jobs page</strong> in B if it has one, otherwise its homepage. In <code>C2</code>, turn the websites into domains:</p>
+<pre>=ARRAYFORMULA(IF(B2:B="",,LOWER(REGEXREPLACE(REGEXREPLACE(TRIM(B2:B),"^(https?://)?(www\.)?",""),"[/?#].*$",""))))</pre>
+<p>That turns <code>https://www.Example-Logistics.in/careers</code> into <code>example-logistics.in</code>, the same form the scraper writes in its <code>domain</code> field, so it is the key the formulas join on.</p>
+
+<h2>Step 2: get each company's published inbox (tab <code>scrape</code>)</h2>
+<h3>With the contact scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_job_application_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> on the Apify Store, paste column B into <strong>Websites or domains (plain list)</strong> and use this input (JSON tab):</p>
+<pre>{
+  "urls": ["example-logistics.in/careers", "sample-foods.com", "demo-software.io"],
+  "maxPagesPerSite": 4,
+  "defaultCountry": "IN",
+  "checkEmailMx": true,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false
+}</pre>
+<ul>
+<li><strong>Start on the careers page when there is one.</strong> The scraper fetches the address you give it first, then the most contact-like links on the same site (contact, about, team, imprint and similar). It does not look for careers pages by itself, so a careers inbox that appears only on a jobs page is found only if you start there.</li>
+<li>Give <strong>one address per company</strong>. Rows are de-duplicated by domain, so a second URL on the same site is not visited again.</li>
+<li>Keep <code>includePersonalEmails</code> and <code>includePersonProfiles</code> <strong>off</strong>. With them off, only shared inboxes are returned: <code>careers@</code>, <code>jobs@</code> and <code>hr@</code> are kept (also with a place, such as <code>careers.india@</code>), while an address with a person's name in it, such as <code>hr.priya@</code>, is dropped and only counted. Inboxes such as <code>recruitment@</code>, <code>talent@</code> or <code>hiring@</code> are not on the scraper's shared-inbox list, so they are dropped too: if a company's careers page shows one, copy it by hand.</li>
+<li>Set <code>defaultCountry</code> to your own country (IN, GB, US, AE...) so local phone numbers are read correctly. You pay only for pages actually fetched; sites skipped because of robots.txt or their terms are not charged.</li>
+</ul>
+<p>When the run finishes, export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Keep the headers. Apify flattens lists into numbered columns such as <code>emails/0/email</code>, <code>emails/0/foundOn</code>, <code>emails/1/email</code>, <code>phones/0/phone</code> and <code>socials/linkedin/0/url</code>; the formulas find them by header name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code>, <code>emails/0/email</code>, <code>emails/0/foundOn</code>, <code>emails/1/email</code>, <code>emails/1/foundOn</code>, <code>emails/2/email</code>, <code>phones/0/phone</code> and <code>socials/linkedin/0/url</code>. Open each company's careers and contact pages, type what you see, and put <code>ok</code> in status. Slower, but the same formulas work.</p>
+
+<h2>Step 3: the companies tab</h2>
+<p>Company <code>=list!A2</code>, Domain <code>=list!C2</code>, Role <code>=list!D2</code>. Every contact column uses one lookup pattern; change only the header in quotes. Put the first three emails found in hidden helper columns <code>M</code>, <code>N</code> and <code>O</code>:</p>
+<pre>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH($B2, INDEX(scrape!$A:$ZZ, 0, MATCH("domain", scrape!$1:$1, 0)), 0),
+  MATCH("emails/0/email", scrape!$1:$1, 0)), "")</pre>
+<p>with <code>emails/1/email</code> in N and <code>emails/2/email</code> in O. Then the Inbox in C2 prefers a careers inbox, then jobs, then hr, then the first address found:</p>
+<pre>=IFERROR(INDEX(FILTER({M2,N2,O2}, REGEXMATCH({M2,N2,O2}, "(?i)^careers?[.@-]")), 1),
+ IFERROR(INDEX(FILTER({M2,N2,O2}, REGEXMATCH({M2,N2,O2}, "(?i)^jobs?[.@-]")), 1),
+ IFERROR(INDEX(FILTER({M2,N2,O2}, REGEXMATCH({M2,N2,O2}, "(?i)^hr[.@-]")), 1), M2)))</pre>
+<p>Found on in D2 uses the same lookup with <code>emails/0/foundOn</code> (use <code>emails/1/foundOn</code> or <code>emails/2/foundOn</code> when the Inbox came from N or O), so you can open the page and check the inbox is meant for applications. Add a Phone column with <code>phones/0/phone</code> and a LinkedIn company page column with <code>socials/linkedin/0/url</code> (company pages are always kept; staff profiles are dropped). If the inbox is only <code>info@</code>, say in the subject line that it is a job enquiry, so it is passed on.</p>
+
+<h2>Step 4: dates, reply and Next step</h2>
+<p>Type <strong>Sent on</strong> (F) when you send. <strong>Follow up on</strong> in G2 is ten days later; change the number to suit:</p>
+<pre>=IF(F2="", "", F2+10)</pre>
+<p>Column H <strong>Reply</strong>: blank, <code>replied</code>, <code>interview</code>, <code>no</code> or <code>no opening</code>. Column L <strong>Followed up</strong>: the date you sent the follow-up. <strong>Next step</strong> in I2:</p>
+<pre>=IF(A2="", "",
+ IF(H2="interview", "interview",
+ IF(OR(H2="no", H2="no opening"), "closed",
+ IF(H2="replied", "answer them",
+ IF(C2="", "find inbox",
+ IF(F2="", "send now",
+ IF(L2&lt;&gt;"", IF(TODAY()-L2&gt;=14, "closed: no reply", "wait"),
+ IF(TODAY()&gt;=G2, "follow up today", "wait"))))))))</pre>
+<p>One follow-up is enough. After that the row closes by itself, so the list shows only the companies worth your time this week. Sort or filter by Next step each morning.</p>
+
+<h2>Step 5: the summary tab</h2>
+<pre>Sent:            =COUNTIF(companies!F:F, "&lt;&gt;")-1
+Sent this week:  =COUNTIFS(companies!F:F, "&gt;="&amp;TODAY()-WEEKDAY(TODAY(),2)+1)
+Replied:         =COUNTIF(companies!H:H, "replied")+COUNTIF(companies!H:H, "interview")
+Interviews:      =COUNTIF(companies!H:H, "interview")
+Follow up today: =COUNTIF(companies!I:I, "follow up today")</pre>
+<p>If many letters get no reply, look at the role line and the first two sentences before writing more. A short, specific letter to fewer companies usually does better than the same letter sent everywhere.</p>
+
+<h2>What the status values mean</h2>
+<table><thead><tr><th>status</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>ok</code></td><td>Site read</td><td>Use the inbox found, or check Found on if it looks wrong</td></tr>
+<tr><td><code>blocked-by-robots</code></td><td>The site asks bots not to crawl</td><td>Open its careers or contact page yourself</td></tr>
+<tr><td><code>blocked-by-terms</code></td><td>The site's terms forbid scraping (clause quoted in <code>error</code>)</td><td>Same</td></tr>
+<tr><td><code>blocked-by-tos-list</code></td><td>The "website" is a page on a site such as LinkedIn or Facebook</td><td>Apply through that site or find the company's own site</td></tr>
+<tr><td><code>blocked-by-site</code>, <code>rate-limited</code>, <code>failed</code></td><td>HTTP 401/403/429, too many requests, or unreachable</td><td>Retry later</td></tr>
+</tbody></table>
+
+<h2>The letter and the follow-up</h2>
+<pre>Subject: [Role or team] enquiry: [your name], [one-line strength]
+
+Hello,
+
+I would like to work in [team] at [company] because [one specific
+reason: a product, a project, a recent opening of an office].
+I have [one or two facts that match the role: degree, project,
+tool, result you can show].
+
+Is there an opening now or in the coming months that would suit me?
+My CV is attached, and [link to portfolio / GitHub / LinkedIn].
+
+Thank you,
+[Name], [city], [phone]</pre>
+<pre>Follow-up, same thread, about ten days later:
+
+Hello, a short follow-up on my note below about [role/team].
+I am still very interested, and happy to send anything else that helps.
+Thank you, [Name]</pre>
+<ul>
+<li>Write to the company's careers, jobs or hr inbox, not to staff whose addresses you guessed. If the careers page says "apply only through our portal", use the portal and mark the row closed.</li>
+<li>Mention one specific thing about the company in every letter. That is the line that shows it is not a mass mailing.</li>
+<li>Send from your own personal address, attach one CV as a PDF, and keep the file name to your name and the role.</li>
+<li>Keep the sheet to company details and your own notes; share it only with a mentor or placement officer helping you.</li>
+</ul>
+
+<h2>Check before you send</h2>
+<ul class="check">
+<li>The inbox is one the company publishes for applications or general enquiries, and Found on confirms the page.</li>
+<li>The company's careers page does not ask you to apply only through a portal.</li>
+<li>The role line and the one specific reason are filled in for this company.</li>
+<li>Your CV file name, phone and links are correct.</li>
+<li>Sent on is filled in, so the follow-up date appears.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper input and output fields (<code>urls</code>, <code>maxPagesPerSite</code>, <code>defaultCountry</code>, <code>checkEmailMx</code>, <code>includePersonalEmails</code>, <code>includePersonProfiles</code>; <code>domain</code>, <code>status</code>, <code>emails</code> with <code>type</code> and <code>foundOn</code>, <code>phones</code>, <code>socials</code>; shared-inbox list incl. careers, jobs and hr; de-duplication by domain; blocklist of sites such as LinkedIn and Facebook): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_job_application_sheet">Apify Store page</a> (input schema and README)</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="ats-jobs-greenhouse-lever-ashby/">Open jobs from Greenhouse, Lever and Ashby boards</a></li>
+<li><a href="india-ats-jobs-zoho-recruit-keka/">Open jobs from Zoho Recruit, Keka and Freshteam boards</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean a contact CSV into a call sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
