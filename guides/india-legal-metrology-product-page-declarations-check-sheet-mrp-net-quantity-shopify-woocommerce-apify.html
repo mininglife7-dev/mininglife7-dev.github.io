@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Legal Metrology check sheet for Shopify and WooCommerce stores in India: which product pages are missing MRP, net quantity, maker's address or country of origin</title><meta name="description" content="A free Google Sheet for Indian D2C brands and store agencies: one row per product from your own store, with a column for each declaration rule 6(10) of the Legal Metrology (Packaged Commodities) Rules, 2011 asks to be shown online, a Missing list in words and a Next step column."><link rel="canonical" href="https://unadhi.com/guides/india-legal-metrology-product-page-declarations-check-sheet-mrp-net-quantity-shopify-woocommerce-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Legal Metrology product page check sheet: MRP, net quantity, maker, country of origin"><meta property="og:description" content="One row per product: MRP, net quantity, maker/packer/importer, country of origin, best before, Missing and Next step."><meta property="og:url" content="https://unadhi.com/guides/india-legal-metrology-product-page-declarations-check-sheet-mrp-net-quantity-shopify-woocommerce-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Legal Metrology check sheet for Shopify and WooCommerce stores in India: which product pages are missing MRP, net quantity, maker's address or country of origin", "dateModified": "2026-10-23", "datePublished": "2026-10-23", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/india-legal-metrology-product-page-declarations-check-sheet-mrp-net-quantity-shopify-woocommerce-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What must an Indian online store show for pre-packaged goods?", "acceptedAnswer": {"@type": "Answer", "text": "Rule 6(10) of the Legal Metrology (Packaged Commodities) Rules, 2011 says an e-commerce entity must ensure the declarations in rule 6(1), except the month and year of manufacture or packing, are displayed online: maker, packer or importer name and address, country of origin for imported goods, generic name, net quantity, best before or use by where relevant, MRP inclusive of all taxes, and dimensions where size is relevant."}}, {"@type": "Question", "name": "Does the product page need the month and year of manufacture?", "acceptedAnswer": {"@type": "Answer", "text": "No. Rule 6(10) expressly leaves out the month and year in which the commodity is manufactured or packed. It still has to be on the package itself."}}, {"@type": "Question", "name": "What if the label details are in a theme tab or a photo of the pack?", "acceptedAnswer": {"@type": "Answer", "text": "The sheet reads only the product description text, so those products show as check page by hand or as missing items. Open those pages and confirm the declarations are shown somewhere on the page."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Legal Metrology check sheet for Shopify and WooCommerce stores in India: which product pages are missing MRP, net quantity, maker's address or country of origin</h1>
+<p class="meta">Updated 23 Oct 2026 · Disclosure: the product scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works just as well with a product CSV exported from your own Shopify or WooCommerce admin. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. This is general information, not legal advice.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for an Indian brand selling pre-packaged goods from its own Shopify or WooCommerce store, with <strong>one row per product</strong> and a column for each declaration that rule 6(10) of the Legal Metrology (Packaged Commodities) Rules, 2011 asks an e-commerce entity to show online: <strong>maker, packer or importer name and address</strong>, <strong>country of origin</strong> (imported goods), <strong>net quantity</strong>, <strong>MRP inclusive of all taxes</strong>, <strong>best before or use by</strong> (where the goods can go bad) and <strong>dimensions</strong> (where size matters), plus <strong>consumer care contact</strong>. A <strong>Missing</strong> column lists, in words, what each product page does not say yet, and a <strong>Next step</strong> column tells you whether to fix the page, check it by hand or leave it. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>check tab (example rows are made up)</h3>
+<table><thead><tr><th>Product</th><th>Price (₹)</th><th>MRP on page (₹)</th><th>Net qty</th><th>Maker / packer / importer</th><th>Imported?</th><th>Country of origin</th><th>Can go bad?</th><th>Best before</th><th>Consumer care</th><th>Missing</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Example Turmeric Powder 200 g</td><td>149</td><td>180</td><td>yes</td><td>yes</td><td>N</td><td></td><td>Y</td><td>yes</td><td>yes</td><td></td><td>all found</td></tr>
+<tr><td>Sample Cold-Pressed Coconut Oil 1 L</td><td>420</td><td></td><td>yes</td><td></td><td>N</td><td></td><td>Y</td><td></td><td>yes</td><td>MRP, maker/packer/importer, best before / use by</td><td>fix page</td></tr>
+<tr><td>Demo Bamboo Toothbrush (pack of 4)</td><td>299</td><td>249</td><td>yes</td><td>yes</td><td>Y</td><td></td><td>N</td><td></td><td></td><td>country of origin, consumer care</td><td>price above MRP shown: check first</td></tr>
+<tr><td>Test Gift Hamper</td><td>1,499</td><td></td><td></td><td></td><td>N</td><td></td><td>Y</td><td></td><td></td><td>no description text</td><td>check page by hand</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Indian D2C brands</strong> selling packaged food, personal care, home and kitchen goods or gifts from their own Shopify or WooCommerce store.</li>
+<li><strong>Store agencies and freelancers</strong> who build and run those stores and want one check per client before a sale or a catalogue upload.</li>
+<li><strong>Importers and resellers</strong> who put imported packaged goods on their own site.</li>
+</ul>
+<p>The slow part is not knowing the list. It is opening a few hundred product pages to see which ones forgot the MRP line, the net quantity or the importer's address. This sheet reads every product description at once and shows only the pages that need work.</p>
+
+<h2>What the rules ask for (the short version)</h2>
+<ul>
+<li><strong>On the package.</strong> Rule 6(1) lists the declarations every package must carry: (a) the name and address of the manufacturer (and of the packer if different; for an imported package, the importer), and for imported products the country of origin, manufacture or assembly; (b) the common or generic name of the product; (c) the net quantity in a standard unit (or the number, if sold by number); (d) the month and year of manufacture, and a "best before" or "use by" date, month and year if the product may become unfit for human consumption after a time; (e) the retail sale price, shown as the <strong>maximum retail price inclusive of all taxes</strong> in Indian currency; (f) dimensions, where the size of the product is relevant.</li>
+<li><strong>Online.</strong> Rule 6(10) says an e-commerce entity must ensure that the declarations in rule 6(1), <strong>except the month and year of manufacture or packing</strong>, are displayed on the digital and electronic network used for e-commerce transactions. So the product page needs the same facts as the label, apart from the manufacturing date.</li>
+<li><strong>Marketplaces.</strong> On a marketplace, a proviso to rule 6(10) puts responsibility for the correctness of the declarations on the manufacturer, seller, dealer or importer if the marketplace only hosts what the seller provides and meets its intermediary due diligence. On your own store, you are the one showing the page.</li>
+<li><strong>Consumer care and unit price.</strong> Rule 6(2) asks every package to carry the name, address, telephone number and email of the person or office to contact for consumer complaints, and rule 6(11) asks for a unit sale price (per gram, per ml, per unit and so on) on pre-packaged goods. These are separate sub-rules from 6(1), so 6(10) does not name them. The sheet has a consumer care column anyway, because shoppers ask for it; drop it if you do not want it.</li>
+<li><strong>Food and cosmetics.</strong> For packages of food, rule 6(1)(a) and the date rule point to the Food Safety and Standards Act, 2006 and its rules instead, and for cosmetics the date rule points to the Drugs and Cosmetics Rules, 1945. Check those labelling rules for those products.</li>
+</ul>
+
+<h2>Step 1: get every product's description (tab <code>products</code>)</h2>
+<h3>With the product scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_legal_metrology_page_check">E-commerce Product Data Scraper (Shopify, WooCommerce, any shop)</a> on the Apify Store and use this input (JSON tab), with your store's homepage:</p>
+<pre>{
+  "startUrls": [{ "url": "https://www.example-store.in" }],
+  "maxProductsPerShop": 500,
+  "maxListingPages": 10,
+  "includeDescription": true
+}</pre>
+<ul>
+<li><strong>Keep <code>includeDescription</code> on.</strong> The checks read the <code>description</code> field: on Shopify that is the product's main description, on WooCommerce the description (or the short description if the long one is empty), elsewhere the description in the page's product data. It is plain text, cut at 5,000 characters.</li>
+<li><strong>Your own terms come first.</strong> Before fetching anything, the scraper reads the shop's robots.txt and terms of service and skips the shop if they forbid scraping. Shopify's default store terms do, so your own store may come back as <code>blocked-by-terms</code> in the <code>SHOPS_SUMMARY</code> record. That costs nothing; use the free route below.</li>
+<li>You pay only per product delivered; listing pages are free. Marketplaces such as Amazon and Flipkart are never fetched, so this check is for your own store.</li>
+</ul>
+<p>Export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>products</code>. Keep the headers.</p>
+<h3>Free, without the scraper</h3>
+<p>Export your products from your store admin (Shopify: Products → Export; WooCommerce: Products → Export), import the file as the <code>products</code> tab and rename the headers you need to <code>title</code>, <code>price</code> and <code>description</code> (in Shopify's export these are <code>Title</code>, <code>Variant Price</code> and <code>Body (HTML)</code>; the HTML tags do not stop the formulas). The <code>url</code> column is optional. Keep one row per product, not per variant: Shopify puts extra variants and images on rows with an empty title, so filter those out first.</p>
+
+<h2>Step 2: the check tab</h2>
+<p>Each row of <code>check</code> reads the same row of <code>products</code> by header name, so column order does not matter. In hidden helper column <code>Q2</code> put the description:</p>
+<pre>=INDEX(products!$A:$ZZ, ROW(), MATCH("description", products!$1:$1, 0))</pre>
+<p>Product in A2 uses the same formula with <code>"title"</code>, URL in R2 with <code>"url"</code> and Price in B2 with <code>"price"</code>. Copy row 2 down as far as the products go.</p>
+<p><strong>MRP on page</strong> in C2 picks up the first number written after "MRP":</p>
+<pre>=IFERROR(VALUE(REGEXREPLACE(REGEXEXTRACT(Q2,
+ "(?i)M\.?R\.?P\.?[^0-9]{0,30}([0-9][0-9,]*(?:\.[0-9]+)?)"), ",", "")), "")</pre>
+<p>The yes/blank columns all use one pattern; change only the words in quotes:</p>
+<pre>D2 Net qty:      =IF(REGEXMATCH(Q2, "(?i)net\s*(qty|quantity|wt|weight|content|vol)"), "yes", "")
+E2 Maker:        =IF(REGEXMATCH(Q2, "(?i)(manufactured|marketed|packed|imported)\s*by|manufacturer|packer|importer"), "yes", "")
+G2 Origin:       =IF(REGEXMATCH(Q2, "(?i)country\s*of\s*origin|made\s*in\s"), "yes", "")
+I2 Best before:  =IF(REGEXMATCH(Q2, "(?i)best\s*before|use\s*by|expiry"), "yes", "")
+J2 Care:         =IF(REGEXMATCH(Q2, "(?i)(customer|consumer)\s*care|complaint"), "yes", "")
+S2 Size:         =IF(REGEXMATCH(Q2, "(?i)dimension|size|[0-9]\s*(cm|mm)\b"), "yes", "")
+T2 Incl. taxes:  =IF(REGEXMATCH(Q2, "(?i)incl[a-z.]*\s*(of\s*)?all\s*tax"), "yes", "")</pre>
+<p>Type <code>Y</code> or <code>N</code> yourself in <strong>Imported?</strong> (F), <strong>Can go bad?</strong> (H) and, in hidden column U, <strong>Size matters?</strong>. The sheet cannot know these. Words that also appear in your own text (for example "size" in a care line) can give a false "yes", so spot-check a few rows.</p>
+
+<h2>Step 3: Missing and Next step</h2>
+<p><strong>Missing</strong> in K2 lists, in words, what the page does not say:</p>
+<pre>=IF(A2="", "", IF(Q2="", "no description text",
+ TEXTJOIN(", ", TRUE,
+  IF(C2="", "MRP", IF(T2="", "MRP: add 'inclusive of all taxes'", "")),
+  IF(D2="", "net quantity", ""),
+  IF(E2="", "maker/packer/importer", ""),
+  IF(AND(F2="Y", G2=""), "country of origin", ""),
+  IF(AND(H2="Y", I2=""), "best before / use by", ""),
+  IF(AND(U2="Y", S2=""), "dimensions", ""),
+  IF(J2="", "consumer care", ""))))</pre>
+<p><strong>Next step</strong> in L2:</p>
+<pre>=IF(A2="", "",
+ IF(Q2="", "check page by hand",
+ IF(AND(C2&lt;&gt;"", B2&gt;C2), "price above MRP shown: check first",
+ IF(K2="", "all found", "fix page"))))</pre>
+<p>Sort by Next step. "check page by hand" means the description is empty: many themes show the label details in a separate tab, a metafield or a photo of the pack, which the description does not contain. Open those pages and look. "fix page" rows need the missing items added. "price above MRP shown" means the selling price in the store is higher than the MRP written in the description, so one of them is out of date.</p>
+
+<h2>Step 4: a summary tab</h2>
+<pre>Products checked:     =COUNTA(check!A2:A)
+All found:            =COUNTIF(check!L:L, "all found")
+Fix page:             =COUNTIF(check!L:L, "fix page")
+Check by hand:        =COUNTIF(check!L:L, "check page by hand")
+Price above MRP:      =COUNTIF(check!L:L, "price above MRP*")
+No MRP line:          =COUNTIF(check!K:K, "MRP*")
+No net quantity:      =COUNTIF(check!K:K, "*net quantity*")
+No maker/packer:      =COUNTIF(check!K:K, "*maker/packer/importer*")</pre>
+<p>Re-run the scrape (or re-export) after you fix pages and paste the new CSV over the <code>products</code> tab: the counts update by themselves.</p>
+
+<h2>A block you can paste into each product description</h2>
+<pre>MRP: ₹[amount] (inclusive of all taxes)
+Net quantity: [200 g / 1 L / 4 pieces]
+Manufactured by: [name], [full address with PIN code]
+Packed by: [name and address, if different]
+Imported by: [name and address in India, for imported goods]
+Country of origin: [country, for imported goods]
+Best before: [period or date, if the product can go bad]
+Dimensions: [size, if size matters]
+Consumer care: [name or office], [address], [phone], [email]</pre>
+<p>Keep the wording the same as on the label, and update the page whenever the label or the MRP changes. If the details live in a theme tab or metafield rather than the description, the checks above will not see them; that is fine, as long as the page shows them.</p>
+
+<h2>Check before you call it done</h2>
+<ul class="check">
+<li>Every "fix page" row has been fixed, and the new export shows it as "all found".</li>
+<li>Every "check page by hand" product page was opened and shows the declarations somewhere on the page.</li>
+<li>No product sells above the MRP its own page shows.</li>
+<li>Imported?, Can go bad? and Size matters? are filled in for every row.</li>
+<li>Food and cosmetics pages were also checked against their own labelling rules.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Legal Metrology (Packaged Commodities) Rules, 2011, rules 6(1), 6(2), 6(10) and 6(11), as reproduced by the Legal Metrology Department, Government of Kerala: <a href="https://lmd.kerala.gov.in/2025/06/09/relevant-rules/">Relevant Rules</a></li>
+<li>Product scraper input and output fields (<code>startUrls</code>, <code>maxProductsPerShop</code>, <code>maxListingPages</code>, <code>includeDescription</code>; <code>title</code>, <code>url</code>, <code>price</code>, <code>compareAtPrice</code>, <code>description</code>; robots.txt and terms check, <code>SHOPS_SUMMARY</code> statuses, marketplaces never fetched): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_legal_metrology_page_check">Apify Store page</a> (input schema and README)</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="export-shopify-store-products-to-csv.html">Export a Shopify store's products to CSV</a></li>
+<li><a href="export-woocommerce-store-products-to-csv.html">Export a WooCommerce store's products to CSV</a></li>
+<li><a href="google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html">Google Shopping product listing check sheet</a></li>
+<li><a href="black-friday-real-discount-check-sheet-30-day-lowest-price-snapshots-apify.html">Real-discount check sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
