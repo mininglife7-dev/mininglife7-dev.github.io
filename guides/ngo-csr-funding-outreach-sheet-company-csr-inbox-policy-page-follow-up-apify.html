@@ -1,0 +1,179 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CSR funding outreach sheet for NGOs: each company's csr@ inbox and CSR policy page, with your CSR-1 details, ask, date sent and follow-up</title><meta name="description" content="A free Google Sheet for NGOs, trusts and section 8 companies asking companies for CSR funding: one row per company with the csr@ or general inbox from its own website, the CSR policy page, focus areas, your project and ask, date sent, follow-up date and a Next step column."><link rel="canonical" href="https://unadhi.com/guides/ngo-csr-funding-outreach-sheet-company-csr-inbox-policy-page-follow-up-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="CSR funding outreach sheet for NGOs: csr@ inbox, policy page, ask and follow-up"><meta property="og:description" content="One row per company: csr@ inbox, CSR policy page, focus areas, ask, date sent, follow-up and Next step."><meta property="og:url" content="https://unadhi.com/guides/ngo-csr-funding-outreach-sheet-company-csr-inbox-policy-page-follow-up-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CSR funding outreach sheet for NGOs: each company's csr@ inbox and CSR policy page, with your CSR-1 details, ask, date sent and follow-up", "dateModified": "2026-10-23", "datePublished": "2026-10-23", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/ngo-csr-funding-outreach-sheet-company-csr-inbox-policy-page-follow-up-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which companies in India must spend on CSR?", "acceptedAnswer": {"@type": "Answer", "text": "Under section 135(1) of the Companies Act, 2013, a company that in the immediately preceding financial year had a net worth of ₹500 crore or more, a turnover of ₹1,000 crore or more, or a net profit of ₹5 crore or more. It must spend at least two per cent of its average net profits of the three immediately preceding financial years."}}, {"@type": "Question", "name": "Does an NGO need CSR-1 registration to receive CSR funds?", "acceptedAnswer": {"@type": "Answer", "text": "Under rule 4 of the Companies (CSR Policy) Rules, 2014, an entity that carries out CSR activities for a company must register with the Central Government on e-form CSR-1. A section 8 company, registered trust or society also needs 12A registration and 80G approval (or the 10(23C) route) and, if it was not set up by the company or by government, a track record of at least three years in similar activities. A revised CSR-1 applies from 14 July 2025."}}, {"@type": "Question", "name": "Will the scraper find foundation@ or sustainability@ inboxes?", "acceptedAnswer": {"@type": "Answer", "text": "With personal emails off (the default), it returns only shared inboxes on its list, which includes csr@ (also csr.india@), info@, contact@ and corporate@. Addresses like foundation@, sustainability@ or esg@ are not on that list, so they are dropped and only counted in personalEmailsDropped; copy them by hand from the company's CSR page."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>CSR funding outreach sheet for NGOs: each company's csr@ inbox and CSR policy page, with your CSR-1 details, ask, date sent and follow-up</h1>
+<p class="meta">Updated 23 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or with inboxes copied by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. This is general information, not legal advice.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for an NGO, trust or section 8 company asking companies for CSR funding, with <strong>one row per company</strong>: the <strong>csr@ (or general) inbox</strong> the company publishes on its own website, the <strong>page it was found on</strong>, the company's <strong>CSR policy page</strong>, the focus areas its policy names, <strong>your project and amount asked</strong>, the <strong>date you sent</strong>, an automatic <strong>follow-up date</strong>, the <strong>reply</strong>, and a <strong>Next step</strong> column (find inbox / send now / follow up today / wait / answer them / meeting / closed). A <strong>summary</strong> tab counts sent, replies and meetings, and holds your own CSR-1, 12A and 80G details so every letter quotes them. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>companies tab (example rows are made up)</h3>
+<table><thead><tr><th>Company</th><th>Domain</th><th>CSR inbox</th><th>Found on</th><th>Their focus (from policy)</th><th>Our project</th><th>Ask (₹)</th><th>Sent on</th><th>Follow up on</th><th>Reply</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Example Steel Ltd</td><td>example-steel.in</td><td>csr@example-steel.in</td><td>example-steel.in/csr</td><td>education, health</td><td>Evening reading classes, 3 villages</td><td>4,50,000</td><td>2026-10-09</td><td>2026-10-23</td><td></td><td>follow up today</td></tr>
+<tr><td>Sample Chemicals Ltd</td><td>sample-chem.com</td><td>info@sample-chem.com</td><td>sample-chem.com/contact-us</td><td>water, sanitation</td><td>School toilet repairs</td><td>2,80,000</td><td>2026-10-20</td><td>2026-11-03</td><td></td><td>wait</td></tr>
+<tr><td>Demo Software Pvt Ltd</td><td>demo-software.co.in</td><td>csr.india@demo-software.co.in</td><td>demo-software.co.in/sustainability</td><td>skills, women</td><td>Basic computer course for women</td><td>3,00,000</td><td>2026-10-05</td><td>2026-10-19</td><td>meeting</td><td>meeting</td></tr>
+<tr><td>Test Foods Ltd</td><td>test-foods.in</td><td></td><td></td><td>nutrition</td><td>Mid-morning meals, 2 schools</td><td>5,00,000</td><td></td><td></td><td></td><td>find inbox</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>NGOs, registered trusts, societies and section 8 companies</strong> in India looking for company CSR partners for a project.</li>
+<li><strong>Fundraising and partnerships staff</strong> who keep one list of companies per project or per year.</li>
+<li><strong>CSR consultants and volunteers</strong> helping a small NGO send its first proposals.</li>
+</ul>
+<p>The slow part is not the proposal. It is finding, for each company, the inbox it actually reads for CSR requests and what its CSR policy says it funds, then remembering who you wrote to and when to follow up. This sheet does that in one place.</p>
+
+<h2>Before you write: is the company covered, and are you eligible?</h2>
+<ul>
+<li><strong>Which companies must spend on CSR.</strong> Section 135(1) of the Companies Act, 2013 covers a company that, in the immediately preceding financial year, had a <strong>net worth of ₹500 crore or more</strong>, or a <strong>turnover of ₹1,000 crore or more</strong>, or a <strong>net profit of ₹5 crore or more</strong>. Such a company must spend at least <strong>two per cent of its average net profits</strong> of the three immediately preceding financial years (or of the years it has, if younger). This is checked company by company: a holding or subsidiary company is not covered just because another group company is.</li>
+<li><strong>Where its policy is.</strong> Section 135(4)(a) asks the board of a covered company to disclose the contents of its CSR policy in its report and place it on the company's website, if it has one. That is why this sheet starts from each company's CSR or sustainability page: it tells you what the company says it funds.</li>
+<li><strong>What CSR money cannot be used for.</strong> The CSR Rules exclude, among other things, activities in the company's normal course of business, activities outside India (with a sports-training exception), contributions to political parties, activities that benefit the company's own employees, <strong>sponsorship to get marketing benefit for the company's products or services</strong>, and activities that fulfil a legal obligation. So pitch a project, not a logo on a banner.</li>
+<li><strong>Your own eligibility.</strong> Rule 4 of the Companies (CSR Policy) Rules, 2014 lets a company carry out CSR through a section 8 company, registered public trust or registered society that has <strong>12A registration and 80G approval</strong> (or the 10(23C) route), and, for an entity not set up by the company or by government, an <strong>established track record of at least three years</strong> in similar activities. The entity must first <strong>register with the Central Government on e-form CSR-1</strong>, which gives a CSR registration number. A revised CSR-1 applies from <strong>14 July 2025</strong> and needs PAN, an OTP-verified email, a digital signature and certification by a practising CA, CS or CMA.</li>
+</ul>
+<p>Put your CSR-1 registration number, 12A and 80G details and the year you started this kind of work on the summary tab (Step 5). A company's CSR team will usually ask for them first.</p>
+
+<h2>Step 1: list the companies (tab <code>list</code>)</h2>
+<p>Columns: <code>A company</code>, <code>B website</code>, <code>D project</code>, <code>E ask</code>. In B put the company's <strong>CSR, sustainability or foundation page</strong> on its own site if it has one, otherwise its homepage. In <code>C2</code>, turn the websites into domains:</p>
+<pre>=ARRAYFORMULA(IF(B2:B="",,LOWER(REGEXREPLACE(REGEXREPLACE(TRIM(B2:B),"^(https?://)?(www\.)?",""),"[/?#].*$",""))))</pre>
+<p>That turns <code>https://www.Example-Steel.in/csr</code> into <code>example-steel.in</code>, the same form the scraper writes in its <code>domain</code> field, so it is the key the formulas join on. While you are on the CSR page, note the focus areas the policy names (education, health, water...) in column F; that is what you match your project to.</p>
+
+<h2>Step 2: get each company's published inbox (tab <code>scrape</code>)</h2>
+<h3>With the contact scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_ngo_csr_outreach_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> on the Apify Store, paste column B into <strong>Websites or domains (plain list)</strong> and use this input (JSON tab):</p>
+<pre>{
+  "urls": ["example-steel.in/csr", "sample-chem.com", "demo-software.co.in/sustainability"],
+  "maxPagesPerSite": 4,
+  "defaultCountry": "IN",
+  "checkEmailMx": true,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false
+}</pre>
+<ul>
+<li><strong>Start on the CSR page when there is one.</strong> The scraper fetches the address you give it first, then the most contact-like links on the same site (contact, about, team, support and similar). It does not look for CSR pages by itself, so a CSR inbox printed only on the CSR page is found only if you start there.</li>
+<li>Give <strong>one address per company</strong>. Rows are de-duplicated by domain, so a second URL on the same site is not visited again.</li>
+<li>Keep <code>includePersonalEmails</code> and <code>includePersonProfiles</code> <strong>off</strong>. With them off, only shared inboxes come back: <code>csr@</code> is on the scraper's shared-inbox list (also with a place, such as <code>csr.india@</code>), as are <code>info@</code>, <code>contact@</code> and <code>corporate@</code>. An address with a person's name in it is dropped and only counted. Inboxes such as <code>foundation@</code>, <code>sustainability@</code>, <code>esg@</code> or <code>csrfoundation@</code> are <strong>not</strong> on that list, so they are dropped too and only counted in <code>personalEmailsDropped</code>: if that count is above zero and no csr@ came back, open the CSR page and copy the inbox by hand.</li>
+<li>Set <code>defaultCountry</code> to <code>IN</code> so local phone numbers are read correctly. You pay only for pages actually fetched; sites skipped because of robots.txt or their terms are not charged.</li>
+</ul>
+<p>When the run finishes, export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Keep the headers. Apify flattens lists into numbered columns such as <code>emails/0/email</code>, <code>emails/0/foundOn</code>, <code>emails/1/email</code>, <code>phones/0/phone</code> and <code>socials/linkedin/0/url</code>; the formulas find them by header name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code>, <code>emails/0/email</code>, <code>emails/0/foundOn</code>, <code>emails/1/email</code>, <code>emails/1/foundOn</code>, <code>emails/2/email</code> and <code>phones/0/phone</code>. Open each company's CSR and contact pages, type what you see, and put <code>ok</code> in status. Slower, but the same formulas work.</p>
+
+<h2>Step 3: the companies tab</h2>
+<p>Company <code>=list!A2</code>, Domain <code>=list!C2</code>, Their focus <code>=list!F2</code>, Our project <code>=list!D2</code>, Ask <code>=list!E2</code>. Every contact column uses one lookup pattern; change only the header in quotes. Put the first three emails found in hidden helper columns <code>N</code>, <code>O</code> and <code>P</code>:</p>
+<pre>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH($B2, INDEX(scrape!$A:$ZZ, 0, MATCH("domain", scrape!$1:$1, 0)), 0),
+  MATCH("emails/0/email", scrape!$1:$1, 0)), "")</pre>
+<p>with <code>emails/1/email</code> in O and <code>emails/2/email</code> in P. Then the CSR inbox in C2 prefers a csr inbox, then corporate, then the first address found:</p>
+<pre>=IFERROR(INDEX(FILTER({N2,O2,P2}, REGEXMATCH({N2,O2,P2}, "(?i)^csr[.@-]")), 1),
+ IFERROR(INDEX(FILTER({N2,O2,P2}, REGEXMATCH({N2,O2,P2}, "(?i)^corporate[.@-]")), 1), N2))</pre>
+<p>Found on in D2 uses the same lookup with <code>emails/0/foundOn</code>, so you can open the page and check the inbox is meant for requests like yours. If the inbox is only <code>info@</code>, put "CSR proposal" at the start of the subject line so it is passed on. If the CSR page asks for proposals through a form or portal, use that and note it in Reply.</p>
+
+<h2>Step 4: dates, reply and Next step</h2>
+<p>Type <strong>Sent on</strong> (H) when you send. <strong>Follow up on</strong> in I2 is fourteen days later; change the number to suit:</p>
+<pre>=IF(H2="", "", H2+14)</pre>
+<p>Column J <strong>Reply</strong>: blank, <code>replied</code>, <code>meeting</code>, <code>no</code> or <code>next year</code>. Column M <strong>Followed up</strong>: the date you sent the follow-up. <strong>Next step</strong> in K2:</p>
+<pre>=IF(A2="", "",
+ IF(J2="meeting", "meeting",
+ IF(J2="no", "closed",
+ IF(J2="next year", "closed: ask again next year",
+ IF(J2="replied", "answer them",
+ IF(C2="", "find inbox",
+ IF(H2="", "send now",
+ IF(M2&lt;&gt;"", IF(TODAY()-M2&gt;=21, "closed: no reply", "wait"),
+ IF(TODAY()&gt;=I2, "follow up today", "wait")))))))))</pre>
+<p>One follow-up is enough. After that the row closes by itself, so the list shows only the companies worth your time this week. Sort or filter by Next step each morning.</p>
+
+<h2>Step 5: the summary tab</h2>
+<pre>Sent:            =COUNTIF(companies!H:H, "&lt;&gt;")-1
+Sent this week:  =COUNTIFS(companies!H:H, "&gt;="&amp;TODAY()-WEEKDAY(TODAY(),2)+1)
+Replied:         =COUNTIF(companies!J:J, "replied")+COUNTIF(companies!J:J, "meeting")
+Meetings:        =COUNTIF(companies!J:J, "meeting")
+Follow up today: =COUNTIF(companies!K:K, "follow up today")
+Total asked (sent): =SUMIFS(companies!G:G, companies!H:H, "&lt;&gt;")</pre>
+<p>Below the counts, keep your own details in fixed cells: <strong>CSR-1 registration number</strong>, <strong>12A registration</strong>, <strong>80G approval</strong>, PAN, the year you started this kind of work, and the link to your last audited accounts. The letter below pulls them in, so they are the same in every proposal.</p>
+
+<h2>What the status values mean</h2>
+<table><thead><tr><th>status</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>ok</code></td><td>Site read</td><td>Use the inbox found, or check Found on if it looks wrong</td></tr>
+<tr><td><code>blocked-by-robots</code></td><td>The site asks bots not to crawl</td><td>Open its CSR or contact page yourself</td></tr>
+<tr><td><code>blocked-by-terms</code></td><td>The site's terms forbid scraping (clause quoted in <code>error</code>)</td><td>Same</td></tr>
+<tr><td><code>blocked-by-tos-list</code></td><td>The "website" is a platform page such as LinkedIn or Facebook</td><td>Find the company's own site</td></tr>
+<tr><td><code>blocked-by-site</code>, <code>rate-limited</code>, <code>failed</code></td><td>HTTP 401/403/429, too many requests, or unreachable</td><td>Retry later</td></tr>
+</tbody></table>
+
+<h2>The first letter and the follow-up</h2>
+<pre>Subject: CSR proposal: [project] in [district], ₹[ask], [your NGO]
+
+Hello,
+
+Your CSR policy lists [focus area from column F]. We run [one line on
+the project] in [place] for [who benefits, how many], and would like
+[company] to fund [what exactly] for [period] at ₹[ask].
+
+About us: [legal form: trust / society / section 8 company],
+CSR-1 registration [number], 12A [number], 80G [number],
+working on [this kind of work] since [year].
+
+A two-page proposal and budget are attached. Could we have
+20 minutes with your CSR team in the next two weeks?
+
+Thank you,
+[Name], [role], [NGO], [phone]</pre>
+<pre>Follow-up, same thread, about two weeks later:
+
+Hello, a short follow-up on our CSR proposal below for [project].
+If this year's CSR budget is already committed, we would be glad
+to know when you plan next year's projects.
+Thank you, [Name]</pre>
+<ul>
+<li>Write to the inbox the company publishes, not to staff addresses you guessed.</li>
+<li>Name one focus area from the company's own CSR policy in the first line. That is what shows it is not a mass mailing.</li>
+<li>Do not offer branding, advertising or product promotion in return: sponsorship for marketing benefit is not a CSR activity under the rules.</li>
+<li>Send from your organisation's address, attach one PDF proposal, and keep the sheet to company details and your own notes.</li>
+</ul>
+
+<h2>Check before you send</h2>
+<ul class="check">
+<li>Your CSR-1 registration number, 12A and 80G details on the summary tab are current.</li>
+<li>The project fits a focus area the company's own CSR policy names.</li>
+<li>The inbox is one the company publishes, and Found on confirms the page.</li>
+<li>The CSR page does not ask for proposals only through a form or portal.</li>
+<li>The amount, place and people served are filled in for this company.</li>
+<li>Sent on is filled in, so the follow-up date appears.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Companies Act, 2013, section 135 (criteria in 135(1), policy on the website in 135(4)(a), two per cent in 135(5)) and Ministry of Corporate Affairs FAQs on CSR, General Circular No. 14/2021 dated 25 August 2021 (FAQ 1.1 criteria, 1.2 holding and subsidiary, 1.4 younger companies, 4.1 excluded activities under rule 2(1)(d)): <a href="https://www.mca.gov.in/Ministry/pdf/FAQ_CSR.pdf">MCA</a></li>
+<li>Companies (CSR Policy) Rules, 2014, rule 4 (implementing agencies, 12A and 80G, three-year track record, registration on e-form CSR-1) and Companies (CSR Policy) Amendment Rules, 2025, G.S.R. 452(E) dated 7 July 2025, revised e-form CSR-1 in force from 14 July 2025: <a href="https://taxguru.in/company-law/companies-csr-policy-amendment-rules-2025.html">notification text</a></li>
+<li>Contact scraper input and output fields (<code>urls</code>, <code>maxPagesPerSite</code>, <code>defaultCountry</code>, <code>checkEmailMx</code>, <code>includePersonalEmails</code>, <code>includePersonProfiles</code>; <code>domain</code>, <code>status</code>, <code>emails</code> with <code>type</code> and <code>foundOn</code>, <code>phones</code>, <code>personalEmailsDropped</code>; shared-inbox list incl. csr, info, contact and corporate; de-duplication by domain; platform blocklist): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_ngo_csr_outreach_sheet">Apify Store page</a> (input schema and README)</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="local-business-sponsor-raffle-prize-ask-sheet-school-fair-charity-event-apify.html">Local business sponsor and raffle prize ask sheet for school fairs and charity events</a></li>
+<li><a href="speculative-job-application-sheet-company-careers-jobs-hr-inbox-follow-up-apify.html">Speculative job application sheet: careers@, jobs@ or hr@ inbox and follow-up</a></li>
+<li><a href="press-list-sheet-product-launch-black-friday-media-inboxes-apify.html">Press list sheet: the media inboxes each publication publishes</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean a contact CSV into a call sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
