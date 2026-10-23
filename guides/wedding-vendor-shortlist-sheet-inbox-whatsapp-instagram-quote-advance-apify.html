@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wedding vendor shortlist sheet: each photographer's, caterer's and decorator's published inbox, WhatsApp and Instagram, with quote, advance and the date they hold</title><meta name="description" content="A free Google Sheet for hiring wedding vendors: one row per vendor with the booking inbox, phone, WhatsApp link and Instagram page from its own website, quote, advance, hold-until date, a Next step column and a budget per category."><link rel="canonical" href="https://unadhi.com/guides/wedding-vendor-shortlist-sheet-inbox-whatsapp-instagram-quote-advance-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Wedding vendor shortlist sheet: inbox, WhatsApp, Instagram, quote and advance"><meta property="og:description" content="One row per wedding vendor: booking inbox, phone, WhatsApp and Instagram, quote, advance and hold date, plus compare and budget tabs per category."><meta property="og:url" content="https://unadhi.com/guides/wedding-vendor-shortlist-sheet-inbox-whatsapp-instagram-quote-advance-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Wedding vendor shortlist sheet: each photographer's, caterer's and decorator's published inbox, WhatsApp and Instagram, with quote, advance and the date they hold", "dateModified": "2026-10-23", "datePublished": "2026-10-23", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/wedding-vendor-shortlist-sheet-inbox-whatsapp-instagram-quote-advance-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many wedding vendors should I ask for a quote?", "acceptedAnswer": {"@type": "Answer", "text": "Ask four to six vendors in each category you care most about and aim for two or three full quotes that cover the same events, dates and guest count, so you can compare them like for like."}}, {"@type": "Question", "name": "Can the scraper read a vendor's Instagram page?", "acceptedAnswer": {"@type": "Answer", "text": "No. Instagram, Facebook and similar platforms are on its blocklist and are skipped without charge. Give it the vendor's own website; Instagram and WhatsApp links shown on that website are collected. Message Instagram-only vendors on Instagram yourself."}}, {"@type": "Question", "name": "Do I need the scraper at all?", "acceptedAnswer": {"@type": "Answer", "text": "No. For a short list, open each vendor's contact page and type the inbox, phone, WhatsApp and Instagram link into the scrape tab by hand. The formulas work the same way."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Wedding vendor shortlist sheet: each photographer's, caterer's and decorator's published inbox, WhatsApp and Instagram, with quote, advance and the date they hold</h1>
+<p class="meta">Updated 23 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or by copying contacts by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for hiring wedding vendors with <strong>one row per vendor</strong> you are considering (photographer, caterer, decorator, makeup artist, DJ or band, mehendi artist, venue): the <strong>inbox</strong>, <strong>phone</strong>, ready <strong>wa.me link</strong> and <strong>Instagram page</strong> each vendor publishes on its own website, the date you asked, the <strong>quote</strong>, the <strong>advance</strong> they want and the date they <strong>hold your wedding date until</strong>. A <strong>Next step</strong> column (ask now / message on Instagram / chase today / decide by ... / booked / no), a <strong>compare</strong> tab that ranks quotes inside the budget for each category, and a <strong>budget</strong> tab with booked totals and advances paid per category. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>vendors tab (example rows are made up)</h3>
+<table><thead><tr><th>Category</th><th>Vendor</th><th>Domain</th><th>Inbox</th><th>Phone</th><th>Instagram</th><th>Asked on</th><th>Quote</th><th>Advance</th><th>Hold until</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Photography</td><td>Example Studio</td><td>example-studio.in</td><td>bookings@example-studio.in</td><td>+910000000001</td><td>instagram.com/examplestudio</td><td>2026-10-19</td><td>180000</td><td>50000</td><td>2026-10-31</td><td>decide by 2026-10-31</td></tr>
+<tr><td>Photography</td><td>Sample Frames</td><td>sample-frames.com</td><td>hello@sample-frames.com</td><td>+910000000002</td><td></td><td>2026-10-16</td><td></td><td></td><td></td><td>chase today</td></tr>
+<tr><td>Catering</td><td>Demo Caterers</td><td>demo-caterers.in</td><td></td><td></td><td>instagram.com/democaterers</td><td></td><td></td><td></td><td></td><td>message on Instagram</td></tr>
+<tr><td>Decor</td><td>Test Decor Co</td><td>test-decor.co</td><td>events@test-decor.co</td><td>+910000000004</td><td></td><td>2026-10-21</td><td>240000</td><td>80000</td><td>2026-10-25</td><td>decide by 2026-10-25</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Couples and families</strong> planning a wedding who want two or three real quotes in each category before paying an advance.</li>
+<li><strong>Freelance wedding planners and coordinators</strong> building a vendor shortlist for each new client.</li>
+<li><strong>Siblings, cousins and friends</strong> splitting the calls, where nobody knows who has already asked which photographer.</li>
+</ul>
+<p>Good vendors get booked early for popular dates. The slow part is finding each vendor's actual booking inbox, phone and WhatsApp, then comparing quotes that arrive in different shapes (package price, per plate, advance, hold period). This sheet does both, and keeps every category in one place.</p>
+
+<h2>Step 1: list the vendors (tab <code>list</code>)</h2>
+<p>Columns: <code>A category</code>, <code>B vendor</code>, <code>C website</code>, <code>E instagram</code> (optional). Add every vendor you are considering from recommendations, wedding fairs and search results. In <code>D2</code>, turn the websites into domains:</p>
+<pre>=ARRAYFORMULA(IF(C2:C="",,LOWER(REGEXREPLACE(REGEXREPLACE(TRIM(C2:C),"^(https?://)?(www\.)?",""),"[/?#].*$",""))))</pre>
+<p>That turns <code>https://www.Example-Studio.in/weddings</code> into <code>example-studio.in</code>, the same form the scraper writes in its <code>domain</code> field, so it is the key the formulas join on. Many wedding vendors only have an Instagram page and no website: leave C empty for them and paste the Instagram link into E.</p>
+
+<h2>Step 2: get each vendor's public inbox, phone, WhatsApp and Instagram (tab <code>scrape</code>)</h2>
+<h3>With the contact scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_wedding_vendor_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> on the Apify Store, paste column D into <strong>Websites or domains (plain list)</strong> and use this input (JSON tab):</p>
+<pre>{
+  "urls": ["example-studio.in", "sample-frames.com", "demo-caterers.in"],
+  "maxPagesPerSite": 4,
+  "defaultCountry": "IN",
+  "checkEmailMx": true,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false
+}</pre>
+<ul>
+<li>Set <code>defaultCountry</code> to your own country (IN, GB, US, AE...) so local phone numbers without a country code are read correctly.</li>
+<li>Keep <code>includePersonalEmails</code> and <code>includePersonProfiles</code> <strong>off</strong>. You want the vendor's booking inbox, not a named person's address.</li>
+<li>Only give it the vendors' own websites. Instagram, Facebook and similar platform pages are on its blocklist and are skipped (status <code>blocked-by-tos-list</code>), so message those vendors on the platform yourself. Instagram links that a vendor shows on its own website are collected.</li>
+<li>Four pages per site (homepage plus the most contact-like pages) is the default. You pay only for pages actually fetched; sites skipped because of robots.txt or their terms are not charged.</li>
+</ul>
+<p>When the run finishes, export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Keep the headers. Apify flattens lists into numbered columns such as <code>emails/0/email</code>, <code>emails/1/email</code>, <code>phones/0/phone</code>, <code>socials/whatsapp/0/url</code> and <code>socials/instagram/0/url</code>; the formulas find them by header name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code>, <code>emails/0/email</code>, <code>emails/1/email</code>, <code>phones/0/phone</code>, <code>socials/whatsapp/0/url</code> and <code>socials/instagram/0/url</code>, open each vendor's contact page and type what you see, with <code>ok</code> in status. Slower, but the same formulas work.</p>
+
+<h2>Step 3: the vendors tab</h2>
+<p>Category <code>=list!A2</code>, Vendor <code>=list!B2</code>, Domain <code>=list!D2</code>. Every contact column uses one lookup pattern; change only the header in quotes. Put the first two emails found in hidden helper columns <code>N</code> and <code>O</code>:</p>
+<pre>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH($C2, INDEX(scrape!$A:$ZZ, 0, MATCH("domain", scrape!$1:$1, 0)), 0),
+  MATCH("emails/0/email", scrape!$1:$1, 0)), "")</pre>
+<p>with <code>emails/1/email</code> in O. Then the Inbox in D2 prefers an address that looks like a booking inbox:</p>
+<pre>=IF(REGEXMATCH(O2, "(?i)^(bookings?|enquir(y|ies)|inquir(y|ies)|weddings?|events?|hello)@"), O2, N2)</pre>
+<p>Phone in E2 uses the same lookup with <code>phones/0/phone</code>, WhatsApp in a column P with <code>socials/whatsapp/0/url</code>, and Instagram in F2 with <code>socials/instagram/0/url</code>, wrapped so a link you typed yourself is kept:</p>
+<pre>=IF(list!E2&lt;&gt;"", list!E2, IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH($C2, INDEX(scrape!$A:$ZZ, 0, MATCH("domain", scrape!$1:$1, 0)), 0),
+  MATCH("socials/instagram/0/url", scrape!$1:$1, 0)), ""))</pre>
+<p>If Inbox, Phone and WhatsApp are all empty, check <code>status</code> in the table below.</p>
+
+<h2>Step 4: the quote columns and Next step</h2>
+<p>Type what each vendor sends you: <strong>Asked on</strong> (G), <strong>Quote</strong> (H, the full package price for what you asked for), <strong>Advance</strong> (I) and <strong>Hold until</strong> (J, the date the vendor keeps your wedding date free without an advance). Add column L <strong>Answer</strong>: booked, no or blank, and column M <strong>Advance paid</strong> (the amount, once you pay it).</p>
+<p><strong>Next step</strong> in K2:</p>
+<pre>=IF(B2="", "",
+ IF(L2="booked", "booked", IF(L2="no", "no",
+ IF(G2="", IF(AND(D2="", E2="", P2=""), IF(F2="", "find contact", "message on Instagram"), "ask now"),
+ IF(H2="", IF(TODAY()-G2&gt;=3, "chase today", "wait"),
+ IF(J2="", "ask how long they hold the date",
+ IF(J2&lt;TODAY(), "hold expired: ask again", "decide by " &amp; TEXT(J2, "yyyy-mm-dd"))))))))</pre>
+<p>Three days is the chase point; change it to suit. Sort or filter by Next step each evening and whoever is helping takes the "ask now" and "chase today" rows.</p>
+
+<h2>Step 5: the budget and compare tabs</h2>
+<p>On a <code>budget</code> tab, put each category in A and its budget in B. Then:</p>
+<pre>C2 (booked):       =SUMIFS(vendors!H:H, vendors!A:A, A2, vendors!L:L, "booked")
+D2 (left):         =B2-C2
+E2 (advance paid): =SUMIFS(vendors!M:M, vendors!A:A, A2)
+F2 (quotes in):    =COUNTIFS(vendors!A:A, A2, vendors!H:H, "&lt;&gt;")</pre>
+<p>Add a total row with <code>=SUM(B2:B)</code>, <code>=SUM(C2:C)</code> and <code>=SUM(E2:E)</code>, and format D red when it is below zero. On a <code>compare</code> tab, type a category in A1 and list every quote for it inside its budget, cheapest first:</p>
+<pre>=SORT(FILTER({vendors!B2:B, vendors!H2:H, vendors!I2:I, vendors!J2:J},
+  vendors!A2:A=A1, vendors!H2:H&lt;&gt;"",
+  vendors!H2:H&lt;=VLOOKUP(A1, budget!A:B, 2, FALSE), vendors!L2:L&lt;&gt;"no"), 2, TRUE)</pre>
+<p>Quotes are only comparable when they cover the same things. Note in a spare column what each one includes (hours, number of photographers, album, plates, travel, taxes) before you rank them.</p>
+
+<h2>What the status values mean</h2>
+<table><thead><tr><th>status</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>ok</code></td><td>Site read</td><td>Use the inbox, phone, WhatsApp or Instagram found</td></tr>
+<tr><td><code>blocked-by-robots</code></td><td>The site asks bots not to crawl</td><td>Open its contact page yourself</td></tr>
+<tr><td><code>blocked-by-terms</code></td><td>The site's terms forbid scraping (clause quoted in <code>error</code>)</td><td>Same</td></tr>
+<tr><td><code>blocked-by-tos-list</code></td><td>The "website" is a platform page such as Instagram or Facebook</td><td>Message the vendor on that platform</td></tr>
+<tr><td><code>blocked-by-site</code>, <code>rate-limited</code>, <code>failed</code></td><td>HTTP 401/403/429, too many requests, or unreachable</td><td>Retry later, or call</td></tr>
+</tbody></table>
+
+<h2>The enquiry that gets a full quote back</h2>
+<p>Ask for everything you need to compare in one message, so the vendor answers once. Example for a photographer:</p>
+<pre>Subject: Wedding photography enquiry: 12-13 Dec, about 300 guests
+
+Hello,
+
+We are planning our wedding on 12 and 13 December in [city], with
+about 300 guests: [list the events, e.g. haldi, sangeet, wedding, reception].
+Could you send:
+
+1. Whether you are free on those dates
+2. Your package price for this, and what it includes
+   (hours, number of photographers, video, album, travel)
+3. The advance, and when the balance is due
+4. Your cancellation and date-change terms
+5. How long you can hold the dates for us
+
+Thank you,
+[Name], [phone]</pre>
+<ul>
+<li>Use the same list of events, dates and guest count in every enquiry, so quotes cover the same work.</li>
+<li>Ask how long they will hold the date. That is the date in <strong>Hold until</strong>, and it stops you losing a good vendor while you wait for others.</li>
+<li>Read the cancellation and date-change terms before paying an advance, and get the package in writing.</li>
+<li>When you book, tell the vendors you did not choose, so they can free the date.</li>
+</ul>
+<p>This is a customer asking for a quote, not marketing, so it is fine to email or message a vendor's published booking contact. Keep the sheet to what the booking needs and share it only with the people planning.</p>
+
+<h2>Check before you pay an advance</h2>
+<ul class="check">
+<li>You have at least two or three quotes in this category, written down with what each includes.</li>
+<li>The chosen vendor's hold date has not passed, and they confirmed they are free on all your dates.</li>
+<li>Advance, balance due date, what is included and cancellation terms are written in the row.</li>
+<li>The budget tab shows the category within budget, or the family has agreed the extra.</li>
+<li>Vendors you did not choose have been told.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper input and output fields (<code>urls</code>, <code>maxPagesPerSite</code>, <code>defaultCountry</code>, <code>checkEmailMx</code>, <code>includePersonalEmails</code>, <code>includePersonProfiles</code>; <code>domain</code>, <code>status</code>, <code>emails</code>, <code>phones</code>, <code>socials</code> incl. <code>whatsapp</code> and <code>instagram</code>; platform blocklist): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_wedding_vendor_sheet">Apify Store page</a> (input schema and README)</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="office-christmas-party-venue-quote-sheet-events-inbox-deposit-apify.html">Office Christmas party venue sheet</a></li>
+<li><a href="business-website-whatsapp-social-links-apify.html">Get a business website's WhatsApp and social links</a></li>
+<li><a href="enrich-google-maps-apify-emails-phones.html">Add emails and phones to a Google Maps scrape</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
