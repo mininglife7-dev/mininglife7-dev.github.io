@@ -1,0 +1,118 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Black Friday real-discount check sheet: weekly price snapshots from 28 October, lowest price seen, "was" price and real cut per product</title><meta name="description" content="A free Google Sheet that shows on Black Friday, 27 November 2026, whether each sale price is lower than the shop charged before: weekly price snapshots, lowest price seen, the shop's was price, real cut, claimed cut and a Verdict column."><link rel="canonical" href="https://unadhi.com/guides/black-friday-real-discount-check-sheet-30-day-lowest-price-snapshots-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Black Friday real-discount check sheet: lowest price seen vs sale price"><meta property="og:description" content="Weekly price snapshots from 28 Oct, lowest price seen, real cut vs claimed cut and a Verdict per product."><meta property="og:url" content="https://unadhi.com/guides/black-friday-real-discount-check-sheet-30-day-lowest-price-snapshots-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Black Friday real-discount check sheet: weekly price snapshots from 28 October, lowest price seen, \"was\" price and real cut per product", "dateModified": "2026-10-23", "datePublished": "2026-10-23", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/black-friday-real-discount-check-sheet-30-day-lowest-price-snapshots-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When should I start recording prices for Black Friday 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Black Friday 2026 is on 27 November. Thirty days before is 28 October, so take the first snapshot on or before 28 October and then one a week."}}, {"@type": "Question", "name": "What is the prior price on an EU sale label?", "acceptedAnswer": {"@type": "Answer", "text": "Under Article 6a of Directive 98/6/EC, added by Directive (EU) 2019/2161, the prior price is the lowest price the trader applied in a period of at least 30 days before the reduction. Member states may set different rules for perishable goods, new goods and step-by-step reductions."}}, {"@type": "Question", "name": "Does the scraper work on Amazon or other marketplaces?", "acceptedAnswer": {"@type": "Answer", "text": "No. It reads independent Shopify, WooCommerce and schema.org shops and skips shops whose robots.txt or terms forbid scraping. For other pages, type the prices into the snapshot tab by hand."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Black Friday real-discount check sheet: weekly price snapshots from 28 October, lowest price seen, "was" price and real cut per product</h1>
+<p class="meta">Updated 23 Oct 2026 · Disclosure: the product scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or with prices typed by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet that tells you, on <strong>Black Friday (27 November 2026)</strong>, whether each "sale" price is really lower than what the shop charged before. One row per product page: the price at <strong>each weekly snapshot</strong> from late October, the <strong>lowest price you saw</strong>, the Black Friday price, the shop's own <strong>"was" price</strong>, the <strong>real cut</strong> against your lowest snapshot, the <strong>claimed cut</strong> against the "was" price, and a <strong>Verdict</strong> column (real cut / real cut smaller than claimed / not lower than before / not read). Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>watch tab (example rows are made up)</h3>
+<table><thead><tr><th>Product page</th><th>28 Oct</th><th>4 Nov</th><th>11 Nov</th><th>18 Nov</th><th>25 Nov</th><th>Lowest seen</th><th>27 Nov</th><th>"Was" shown</th><th>Real cut</th><th>Claimed cut</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>example-shop.com/products/desk-lamp</td><td>2,499</td><td>2,499</td><td>2,999</td><td>2,999</td><td>2,999</td><td>2,499</td><td>2,399</td><td>2,999</td><td>4%</td><td>20%</td><td>real cut smaller than claimed</td></tr>
+<tr><td>sample-store.in/product/kettle</td><td>1,800</td><td>1,800</td><td>1,800</td><td>1,800</td><td>1,800</td><td>1,800</td><td>1,440</td><td>1,800</td><td>20%</td><td>20%</td><td>real cut</td></tr>
+<tr><td>demo-goods.com/products/backpack</td><td>3,200</td><td>3,600</td><td>3,600</td><td>3,600</td><td>3,600</td><td>3,200</td><td>3,240</td><td>3,600</td><td>-1%</td><td>10%</td><td>not lower than before</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Deal bloggers and newsletter writers</strong> who want to list only Black Friday offers that are lower than the price a few weeks earlier.</li>
+<li><strong>Shoppers</strong> watching a handful of products in independent online shops before buying.</li>
+<li><strong>Small shop owners selling into the EU</strong> who want to check their own sale labels against the 30-day prior-price rule before Black Friday.</li>
+</ul>
+<p>A "was" price on a sale label is whatever the shop chose to show. The only way to know what it charged before is to have written the price down before. This sheet does that once a week, so the check on 27 November takes a minute.</p>
+
+<h2>Start by 28 October</h2>
+<p>Black Friday 2026 falls on Friday 27 November. Thirty days before that is <strong>Wednesday 28 October</strong>, so take your first snapshot on or before that day, then one a week: 28 Oct, 4 Nov, 11 Nov, 18 Nov, 25 Nov, and a last one on 27 Nov. Weekly snapshots can miss a short low price between two runs, so "Lowest seen" is the lowest price <em>you</em> recorded, not a full price history. Take snapshots more often if that matters to you.</p>
+
+<h2>Step 1: list the product pages (tab <code>watch</code>)</h2>
+<p>Put one product page URL per row in column A, exactly as the scraper writes it in its <code>url</code> field (open one result once to see the form, usually <code>https://shop-domain/products/handle</code> for Shopify). In row 1, from column B to F, type the names of the snapshot tabs you will create: <code>s1028</code>, <code>s1104</code>, <code>s1111</code>, <code>s1118</code>, <code>s1125</code>. In H1 type <code>s1127</code>.</p>
+
+<h2>Step 2: take a snapshot</h2>
+<h3>With the product scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_black_friday_real_discount">E-commerce Product Data scraper</a> on the Apify Store. It reads independent <strong>Shopify, WooCommerce and schema.org shops</strong> (not marketplaces), checks each shop's robots.txt and terms, and skips shops that forbid scraping. Give it the shops, not single products, with this input (JSON tab):</p>
+<pre>{
+  "startUrls": [
+    { "url": "https://example-shop.com" },
+    { "url": "https://sample-store.in" }
+  ],
+  "maxProductsPerShop": 500,
+  "maxListingPages": 20,
+  "includeDescription": false
+}</pre>
+<ul>
+<li>Use the <strong>same input every week</strong>, so every snapshot covers the same products.</li>
+<li><code>maxProductsPerShop</code> defaults to 100. Raise it if a shop has more products than that, or the product you watch may be left out.</li>
+<li>Keep <code>includeDescription</code> off: you only need prices, and the CSV stays small.</li>
+</ul>
+<p>When the run finishes, export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab after the date, such as <code>s1028</code>. Keep the headers. The columns you need are <code>url</code>, <code>price</code>, <code>compareAtPrice</code>, <code>onSale</code> and <code>inStock</code>; the formulas find them by header name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make the snapshot tab by hand with the headers <code>url</code>, <code>price</code> and <code>compareAtPrice</code>, open each product page on the day, and type what you see. Slower, but the same formulas work.</p>
+
+<h2>Step 3: the price formulas</h2>
+<p>In <code>B2</code> (copy across to F2, then into H2), read the price of the product in A2 from the tab named in row 1:</p>
+<pre>=IFERROR(INDEX(INDIRECT("'"&amp;B$1&amp;"'!A:ZZ"),
+  MATCH($A2, INDEX(INDIRECT("'"&amp;B$1&amp;"'!A:ZZ"), 0, MATCH("url", INDIRECT("'"&amp;B$1&amp;"'!1:1"), 0)), 0),
+  MATCH("price", INDIRECT("'"&amp;B$1&amp;"'!1:1"), 0)), "")</pre>
+<p>A blank cell means the product was not in that snapshot (sold out and hidden, renamed, or the tab is not imported yet). <strong>Lowest seen</strong> in G2:</p>
+<pre>=IF(COUNT(B2:F2)=0, "", MIN(B2:F2))</pre>
+<p><strong>"Was" shown</strong> in I2 is the same formula as H2 with <code>"compareAtPrice"</code> in place of <code>"price"</code>: it is the crossed-out price the shop displays on Black Friday.</p>
+
+<h2>Step 4: real cut, claimed cut and Verdict</h2>
+<pre>J2 real cut:     =IF(AND(ISNUMBER(G2), ISNUMBER(H2)), 1-H2/G2, "")
+K2 claimed cut:  =IF(AND(ISNUMBER(I2), ISNUMBER(H2)), 1-H2/I2, "")</pre>
+<p>Format J and K as percent. <strong>Verdict</strong> in L2:</p>
+<pre>=IF(A2="", "",
+ IF(NOT(ISNUMBER(H2)), "not read",
+ IF(NOT(ISNUMBER(G2)), "no earlier price",
+ IF(H2&gt;=G2, "not lower than before",
+ IF(AND(ISNUMBER(K2), K2-J2&gt;0.05), "real cut smaller than claimed", "real cut")))))</pre>
+<p>The 0.05 means a claimed cut more than five percentage points bigger than the real one is flagged; change it to suit. Filter column L to <code>real cut</code> for the offers worth sharing or buying.</p>
+
+<h2>What the rule says in the EU</h2>
+<p>Since 28 May 2022, Article 6a of the EU Price Indication Directive (98/6/EC, added by Directive (EU) 2019/2161) says that any announcement of a price reduction must show the <strong>prior price</strong>, and that the prior price is the <strong>lowest price the trader applied in a period of at least 30 days before the reduction</strong>. EU countries may set different rules for goods that spoil quickly, for goods on the market for less than 30 days, and for reductions that grow step by step. Each country enforces its own version, so a shop owner should check the national rules where it sells. This sheet is a record of what you saw, not a legal finding.</p>
+
+<h2>Check before you publish or buy</h2>
+<ul class="check">
+<li>The first snapshot is dated on or before 28 October, and every snapshot used the same input.</li>
+<li>The URL in column A matches the scraper's <code>url</code> field exactly (no tracking parameters).</li>
+<li>For a product with variants, you compared the same size or colour: each variant's own price is in the <code>variants/0/price</code>, <code>variants/1/price</code>... columns, so use that header in the formula instead of <code>price</code>.</li>
+<li>Blank cells are explained (not imported yet, sold out, or renamed) before you call a deal fake.</li>
+<li>Your post says "lowest price we recorded since 28 October", not "lowest price ever".</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Product scraper input fields (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>maxListingPages</code>, <code>includeDescription</code>) and output fields (<code>url</code>, <code>shop</code>, <code>title</code>, <code>price</code>, <code>compareAtPrice</code>, <code>currency</code>, <code>onSale</code>, <code>inStock</code>, <code>variants</code>): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_black_friday_real_discount">Apify Store page</a> (input schema and README of build 0.1.3)</li>
+<li>Directive (EU) 2019/2161, Article 2, inserting Article 6a into Directive 98/6/EC (prior price = lowest price in at least the 30 days before a reduction; applies from 28 May 2022): <a href="https://eur-lex.europa.eu/eli/dir/2019/2161/oj/eng">EUR-Lex</a></li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="affiliate-blog-gift-guide-price-stock-freshness-sheet-black-friday-apify.html">Gift guide price and stock freshness sheet for Black Friday</a></li>
+<li><a href="gift-guide-product-shortlist-sheet-black-friday-christmas-apify.html">Gift guide product shortlist sheet</a></li>
+<li><a href="eu-30-day-lowest-price-log-black-friday-shopify-woocommerce.html">30-day lowest price log for your own shop (EU sale labels)</a></li>
+<li><a href="competitor-store-discount-sheet-black-friday.html">Competitor store discount sheet for Black Friday</a></li>
+<li><a href="competitor-shopify-price-sheet-apify.html">Competitor Shopify price sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
