@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Broken size run sheet for clothing and shoe shops: which sizes each style has sold out of, from the shop's own product data</title><meta name="description" content="A free Google Sheet for clothing, footwear and boutique owners: one row per product with sizes offered, sizes in stock, sold-out variants such as White / M, missing core sizes and a Status column to plan reorders and markdowns before Black Friday."><link rel="canonical" href="https://unadhi.com/guides/broken-size-run-sheet-sold-out-sizes-per-style-shopify-clothing-shoe-shop-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Broken size run sheet: sold-out sizes per style for clothing and shoe shops"><meta property="og:description" content="One row per style: sizes offered, in stock, sold out, core sizes missing and Status (Sold out / Broken run / Some sold out / Full run)."><meta property="og:url" content="https://unadhi.com/guides/broken-size-run-sheet-sold-out-sizes-per-style-shopify-clothing-shoe-shop-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Broken size run sheet for clothing and shoe shops: which sizes each style has sold out of, from the shop's own product data", "dateModified": "2026-10-24", "datePublished": "2026-10-24", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/broken-size-run-sheet-sold-out-sizes-per-style-shopify-clothing-shoe-shop-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a broken size run?", "acceptedAnswer": {"@type": "Answer", "text": "A style that has sold out of some of its sizes, usually the core middle sizes, while other sizes are still in stock. The product still looks in stock, but most customers cannot buy it in their size."}}, {"@type": "Question", "name": "Does the scraper show how many items are left in each size?", "acceptedAnswer": {"@type": "Answer", "text": "No. Public product data says whether each variant can be bought (TRUE or FALSE), not the quantity. For your own shop, confirm quantities in your admin before you reorder."}}, {"@type": "Question", "name": "Does it work for WooCommerce shops?", "acceptedAnswer": {"@type": "Answer", "text": "Partly. WooCommerce rows come from the Store API with an in-stock flag but no variant columns, so the sheet shows them as In stock, no size data or Sold out."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Broken size run sheet for clothing and shoe shops: which sizes each style has sold out of, from the shop's own product data</h1>
+<p class="meta">Updated 24 Oct 2026 · Disclosure: the product data scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the idea also works with the free exports from your own Shopify admin. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> a <strong>broken size run list</strong> in one Google Sheet, built from a web shop's public product data. It has <strong>one row per product</strong>: product name, shop, link, how many sizes or variants are offered, how many are in stock, <strong>which ones are sold out</strong> (for example <code>White / M</code>), <strong>which of your core sizes are missing</strong>, a share-in-stock figure and a <strong>Status</strong> column (Sold out / Broken run / Some sold out / Full run). Sort by Status every Monday and you know which styles to reorder before Black Friday and Christmas, and which to move to markdown. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>sizerun tab (example rows are made up; core sizes in settings: S, M, L)</h3>
+<table><thead><tr><th>Product</th><th>Offered</th><th>In stock</th><th>Sold out</th><th>Core sizes missing</th><th>Share in stock</th><th>Status</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Linen shirt, white</td><td>4</td><td>2</td><td>M, L</td><td>M, L</td><td>50%</td><td>Broken run</td><td>Reorder M and L</td></tr>
+<tr><td>Cotton tee</td><td>6</td><td>5</td><td>White / M</td><td>M</td><td>83%</td><td>Broken run</td><td>Reorder white M</td></tr>
+<tr><td>Wool jumper, navy</td><td>5</td><td>4</td><td>XS</td><td></td><td>80%</td><td>Some sold out</td><td>Leave</td></tr>
+<tr><td>Canvas tote</td><td>1</td><td>1</td><td></td><td></td><td>100%</td><td>Full run</td><td></td></tr>
+<tr><td>Silk scarf, rust</td><td>1</td><td>0</td><td>Default Title</td><td></td><td>0%</td><td>Sold out</td><td>Hide or reorder</td></tr>
+</tbody></table>
+<p>The cotton tee row shows why the sheet works per variant, not per product: the product is still "in stock" because five of six variants are, but a customer looking for a white medium finds nothing.</p>
+
+<h2>Who this is for</h2>
+<p>Owners and merchandisers of small clothing, footwear and lingerie shops that sell online, and buyers at multi-brand boutiques who want to see which sizes a brand's own web shop has run out of. A style that has sold out of its middle sizes but still has XS and XXL looks "in stock" on a product list, yet it no longer sells. This sheet puts those styles at the top.</p>
+
+<h2>Step 1: get the products into a tab named <code>scrape</code></h2>
+<h3>With the product data scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_broken_size_run_sheet">E-commerce Product Data Scraper (Shopify, WooCommerce, any shop)</a> on the Apify Store and use this input with the shop's address:</p>
+<pre>{ "startUrls": [{ "url": "https://your-shop.example" }],
+  "maxProductsPerShop": 2000, "includeDescription": false }</pre>
+<ul>
+<li><code>maxProductsPerShop</code>: set it above the shop's number of products (the default is 100). You pay only for products delivered.</li>
+<li><code>includeDescription</code>: this sheet does not need descriptions, so switch it off to keep the file small.</li>
+<li>You can also give a single collection or category page, for example only the dresses collection.</li>
+</ul>
+<p>The scraper follows robots.txt and reads the shop's terms page. If the terms forbid automated access (Shopify's default terms do), it skips the shop and charges nothing. Check the run's <strong>Storage → Key-value store → <code>SHOPS_SUMMARY</code></strong>: the shop should show <code>ok</code>. If it shows <code>blocked-by-terms</code>, use the free admin route below for your own shop, and leave other shops alone.</p>
+<p>In the run, export the dataset as <strong>CSV</strong>. In your Google Sheet use File → Import → Upload, "Insert new sheet", and name the tab <code>scrape</code>. Do not rename the headers.</p>
+<h3>What the variant columns contain</h3>
+<ul>
+<li><strong>Shopify shops</strong> (read from the shop's public product JSON): one set of columns per variant, <code>variants/0/title</code>, <code>variants/0/available</code>, <code>variants/1/title</code> and so on. The variant title is the option values joined with a slash, for example <code>White / M</code>. <code>available</code> is TRUE or FALSE. It says whether the variant can be bought, not how many are left.</li>
+<li><strong>Shops that publish schema.org product data with variants</strong>: the same columns, with the variant name the shop publishes. Some shops write names like <code>Tee - M</code>; see the note on core sizes below.</li>
+<li><strong>WooCommerce shops</strong> (read from the WooCommerce Store API): one row per product with <code>inStock</code>, but <strong>no variant columns</strong>. These rows show "In stock, no size data" or "Sold out".</li>
+<li>A Shopify product with only one variant has the variant title <code>Default Title</code>.</li>
+</ul>
+<h3>Free, from your own Shopify admin</h3>
+<p>Products → Export gives one row per variant with the option values (Option1 Value, Option2 Value and so on), and the inventory export gives stock per variant and location. With those you can count sold-out sizes per product in a pivot table instead of using the formulas below. Your admin also shows quantities, which public data does not.</p>
+
+<h2>Step 2: the settings tab</h2>
+<p>Add a tab named <code>settings</code>. In <code>B1</code> type your core sizes, separated by commas, exactly as they appear in variant titles: for example <code>S, M, L</code>, or <code>8, 10, 12, 14</code>, or <code>UK 6, UK 7, UK 8</code>. A style missing any of these counts as a broken run.</p>
+
+<h2>Step 3: build the <code>sizerun</code> tab</h2>
+<p>Add a tab named <code>sizerun</code>. Row 1 holds the headers below; row 2 holds the formulas, which you copy down one row per row of <code>scrape</code>.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Product</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("title", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>B</td><td>Shop</td><td>same pattern with <code>"shop"</code></td></tr>
+<tr><td>C</td><td>Link</td><td>same pattern with <code>"url"</code></td></tr>
+<tr><td>D</td><td>Offered</td><td><code>=IFERROR(COUNTA(FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^variants/\d+/title$"), scrape!$A2:$ZZ2&lt;&gt;"")), 0)</code></td></tr>
+<tr><td>E</td><td>In stock</td><td><code>=IFERROR(COUNTA(FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^variants/\d+/available$"), UPPER(scrape!$A2:$ZZ2&amp;"")="TRUE")), 0)</code></td></tr>
+<tr><td>F</td><td>Sold out</td><td><code>=IFERROR(TEXTJOIN(", ", TRUE, FILTER(FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^variants/\d+/title$")), UPPER(FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^variants/\d+/available$"))&amp;"")="FALSE")), "")</code></td></tr>
+<tr><td>G</td><td>Core sizes missing</td><td><code>=IF(F2="", "", IFERROR(TEXTJOIN(", ", TRUE, FILTER(TRIM(SPLIT(settings!$B$1, ",")), ISNUMBER(SEARCH("/ "&amp;TRIM(SPLIT(settings!$B$1, ","))&amp;" /", "/ "&amp;SUBSTITUTE(F2, ", ", " / ")&amp;" /")))), ""))</code></td></tr>
+<tr><td>H</td><td>Share in stock</td><td><code>=IF(N(D2)=0, "", E2/D2)</code> (format as %)</td></tr>
+<tr><td>I</td><td>Status</td><td><code>=IF(A2="", "", LET(s, UPPER(IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("inStock", scrape!$A$1:$ZZ$1, 0)), "")&amp;""), IF(s="FALSE", "Sold out", IF(D2=0, IF(s="TRUE", "In stock, no size data", "Check"), IF(G2&lt;&gt;"", "Broken run", IF(F2&lt;&gt;"", "Some sold out", "Full run"))))))</code></td></tr>
+<tr><td>J</td><td>Price</td><td>same pattern as A with <code>"price"</code></td></tr>
+<tr><td>K</td><td>Next step</td><td>you type: reorder / markdown / hide / ask brand / leave</td></tr>
+</tbody></table>
+<p>Notes on the formulas:</p>
+<ul>
+<li><strong>Sold out</strong> pairs each <code>variants/N/title</code> with its <code>variants/N/available</code>. Every variant has both columns, so the two lists line up.</li>
+<li><strong>Core sizes missing</strong> wraps the sold-out list in slashes and looks for <code>/ M /</code>, so <code>L</code> does not match <code>XL</code> and <code>White / M</code> counts as a missing M. SEARCH ignores upper and lower case. If a shop names variants like <code>Tee - M</code>, change the slashes in the formula to the shop's separator, or check column F by eye.</li>
+<li>A missing core size in one colour counts as a broken run for the whole product, because column F tells you which colour it is.</li>
+<li><strong>Status</strong> uses the product's own <code>inStock</code> first, so a fully sold-out product shows "Sold out" even when it has no variant columns.</li>
+</ul>
+
+<h2>Step 4: the Monday routine</h2>
+<ol>
+<li>Run the scraper again (or re-export from your admin) and re-import the <code>scrape</code> tab with "Replace current sheet". The <code>sizerun</code> formulas and your Next step notes stay, but check that row order still matches if products were added; sorting <code>scrape</code> by <code>title</code> before importing keeps it stable.</li>
+<li>Add a filter on <code>sizerun</code> and show only "Broken run". These are the styles to reorder first.</li>
+<li>Styles that stay "Broken run" for several weeks and that you will not reorder are markdown candidates: the remaining sizes are what customers can still buy.</li>
+<li>For a brand you stock, a broken run on the brand's own web shop can mean the brand itself is short of those sizes. Ask your rep before you plan a reorder around it.</li>
+</ol>
+
+<h2>Check before you act on it</h2>
+<ul class="check">
+<li><code>SHOPS_SUMMARY</code> shows <code>ok</code> for the shop, or you used your own admin export.</li>
+<li><code>settings!B1</code> sizes are spelled exactly as in the variant titles.</li>
+<li>Rows marked "In stock, no size data" are WooCommerce or similar shops: check sizes on the product page.</li>
+<li>Public data says whether a size can be bought, not how many are left. For your own shop, confirm quantities in your admin before you reorder.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Product data scraper inputs and outputs (<code>startUrls</code>, <code>maxProductsPerShop</code> default 100, <code>includeDescription</code>; Shopify variants with <code>title</code> and <code>available</code> from the public product JSON; schema.org <code>hasVariant</code> names and availability; WooCommerce Store API rows with <code>inStock</code> and no variants; <code>SHOPS_SUMMARY</code> statuses; skipped shops not charged): <a href="https://apify.com/laudable_instrument/ecommerce-product-data-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_broken_size_run_sheet">Apify Store page</a> (Actor input schema, README and source read 24 Oct 2026)</li>
+<li>Google Sheets FILTER, REGEXMATCH, TEXTJOIN, SEARCH, SPLIT and LET functions: Google Docs Editors Help.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="competitor-store-out-of-stock-new-products-weekly.html">Competitor store: out of stock and new products, weekly</a></li>
+<li><a href="wholesale-line-sheet-from-shopify-woocommerce-store-google-sheet-apify.html">Wholesale line sheet from your own Shopify or WooCommerce store</a></li>
+<li><a href="brand-stockist-price-stock-check-sheet-apify.html">Brand stockist price and stock check sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
