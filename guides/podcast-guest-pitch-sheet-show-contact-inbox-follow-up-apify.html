@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Podcast guest pitch sheet: each show's published contact inbox from its own website, with the episode you heard, date sent, follow-up and reply</title><meta name="description" content="A free Google Sheet for founders, consultants and PR freelancers pitching themselves as podcast guests: one row per show with its published inbox, the page it was found on, your pitch angle, an automatic follow-up date and a Next step column."><link rel="canonical" href="https://unadhi.com/guides/podcast-guest-pitch-sheet-show-contact-inbox-follow-up-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Podcast guest pitch sheet: show inbox, episode heard, follow-up and reply"><meta property="og:description" content="One row per show: published inbox, found on, episode heard, pitch angle, sent on, follow up on, reply and Next step."><meta property="og:url" content="https://unadhi.com/guides/podcast-guest-pitch-sheet-show-contact-inbox-follow-up-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Podcast guest pitch sheet: each show's published contact inbox from its own website, with the episode you heard, date sent, follow-up and reply", "dateModified": "2026-10-24", "datePublished": "2026-10-24", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/podcast-guest-pitch-sheet-show-contact-inbox-follow-up-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Where should I send a podcast guest pitch?", "acceptedAnswer": {"@type": "Answer", "text": "To the inbox or form the show publishes on its own website for guests or general enquiries. Do not guess personal addresses, and if a show says it takes no guest pitches, leave it."}}, {"@type": "Question", "name": "How often should I follow up on a podcast pitch?", "acceptedAnswer": {"@type": "Answer", "text": "Once, in the same thread, about ten days later. The sheet sets the follow-up date automatically and closes the row 14 days after the follow-up if there is no reply."}}, {"@type": "Question", "name": "Can I build the sheet without the scraper?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Make a scrape tab with the same headers, type the inbox and page you see on each show's guests or contact page, and the same formulas work."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Podcast guest pitch sheet: each show's published contact inbox from its own website, with the episode you heard, date sent, follow-up and reply</h1>
+<p class="meta">Updated 24 Oct 2026 · Disclosure: the contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any tool or by copying inboxes by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for pitching yourself as a podcast guest, with <strong>one row per show</strong>: the <strong>contact inbox the show publishes on its own website</strong>, the <strong>page it was found on</strong>, the show's Instagram, YouTube and X links, the <strong>episode you actually listened to</strong>, your <strong>pitch angle</strong> for that show, the <strong>date you sent</strong>, an automatic <strong>follow-up date</strong>, the <strong>reply</strong>, and a <strong>Next step</strong> column (find inbox / send now / follow up today / wait / booked / closed). A <strong>summary</strong> tab counts pitches, replies and bookings per week. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>shows tab (example rows are made up)</h3>
+<table><thead><tr><th>Show</th><th>Domain</th><th>Inbox</th><th>Found on</th><th>Episode heard</th><th>Pitch angle</th><th>Sent on</th><th>Follow up on</th><th>Reply</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Example Founder Talks</td><td>examplefoundertalks.com</td><td>hello@examplefoundertalks.com</td><td>examplefoundertalks.com/contact</td><td>Ep 112, pricing a first product</td><td>How we priced our first B2B order</td><td>2026-10-12</td><td>2026-10-22</td><td></td><td>follow up today</td></tr>
+<tr><td>Sample Retail Podcast</td><td>sampleretailpod.in</td><td>team@sampleretailpod.in</td><td>sampleretailpod.in/about</td><td>Ep 48, festive season stock</td><td>Running a small store's year-end sale</td><td>2026-10-21</td><td>2026-10-31</td><td></td><td>wait</td></tr>
+<tr><td>Demo Marketing Hour</td><td>demomarketinghour.co</td><td>press@demomarketinghour.co</td><td>demomarketinghour.co/guests</td><td>Ep 9, cold outreach</td><td>Three emails that got replies</td><td>2026-10-05</td><td>2026-10-15</td><td>booked</td><td>booked</td></tr>
+<tr><td>Test Tech Weekly</td><td>testtechweekly.fm</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>find inbox</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Founders, consultants and authors</strong> who want to be interviewed on shows their buyers already listen to.</li>
+<li><strong>PR freelancers and small agencies</strong> who keep one shortlist of shows per client.</li>
+<li><strong>Coaches and experts</strong> with one clear topic they can teach in a 30-minute conversation.</li>
+</ul>
+<p>The slow part of guest pitching is not the email. It is finding where each show actually wants to hear from guests, then remembering who you wrote to, when, and who to follow up with. This sheet does both and keeps every show in one place.</p>
+
+<h2>Step 1: list the shows (tab <code>list</code>)</h2>
+<p>Columns: <code>A show</code>, <code>B website</code>, <code>D episode heard</code>, <code>E pitch angle</code>. Put the show's <strong>own website</strong> in B: its guests or contact page if it has one, otherwise its homepage. A page on a podcast app or directory is not the show's website, so look for the site link in the show notes. In <code>C2</code>, turn the websites into domains:</p>
+<pre>=ARRAYFORMULA(IF(B2:B="",,LOWER(REGEXREPLACE(REGEXREPLACE(TRIM(B2:B),"^(https?://)?(www\.)?",""),"[/?#].*$",""))))</pre>
+<p>That turns <code>https://www.ExampleFounderTalks.com/guests</code> into <code>examplefoundertalks.com</code>, the same form the scraper writes in its <code>domain</code> field, so it is the key the formulas join on. Fill in D and E only after you have listened to at least one episode: that is the line that gets a reply.</p>
+
+<h2>Step 2: get each show's published inbox (tab <code>scrape</code>)</h2>
+<h3>With the contact scraper</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_podcast_guest_pitch_sheet">Website Contact Scraper: Emails, Phones &amp; WhatsApp</a> on the Apify Store, paste column B into <strong>Websites or domains (plain list)</strong> and use this input (JSON tab):</p>
+<pre>{
+  "urls": ["examplefoundertalks.com/guests", "sampleretailpod.in", "demomarketinghour.co"],
+  "maxPagesPerSite": 4,
+  "defaultCountry": "IN",
+  "checkEmailMx": true,
+  "includePersonalEmails": false,
+  "includePersonProfiles": false
+}</pre>
+<ul>
+<li><strong>Start on the guests page when there is one.</strong> The scraper fetches the address you give it first, then the most contact-like links on the same site (contact, about, team and similar). A guest form or inbox that appears only on a "be a guest" page is found only if you start there.</li>
+<li>Give <strong>one address per show</strong>. Rows are de-duplicated by domain, so a second URL on the same site is not visited again.</li>
+<li>Keep <code>includePersonalEmails</code> and <code>includePersonProfiles</code> <strong>off</strong>. With them off, only shared inboxes are returned, such as <code>hello@</code>, <code>contact@</code>, <code>info@</code>, <code>team@</code>, <code>press@</code>, <code>media@</code>, <code>pr@</code> or <code>bookings@</code>. An address with a person's name in it, such as <code>host.anita@</code>, is dropped and only counted. Inboxes such as <code>podcast@</code> or <code>guests@</code> are not on the scraper's shared-inbox list, so they are dropped too: if a show's page shows one, copy it by hand.</li>
+<li>The scraper also reads the show's social links. Instagram, YouTube and X profiles come out in columns such as <code>socials/instagram/0/url</code>, <code>socials/youtube/0/url</code> and <code>socials/twitter/0/url</code>.</li>
+<li>Set <code>defaultCountry</code> to your own country (IN, GB, US, AE...) so local phone numbers are read correctly. You pay only for pages actually fetched; sites skipped because of robots.txt or their terms are not charged.</li>
+</ul>
+<p>When the run finishes, export the dataset as CSV, then in your sheet use <strong>File → Import → Upload</strong>, "Insert new sheet", and name the tab <code>scrape</code>. Keep the headers. Apify flattens lists into numbered columns such as <code>emails/0/email</code>, <code>emails/0/foundOn</code> and <code>emails/1/email</code>; the formulas find them by header name, so column order does not matter.</p>
+<h3>Free, without the scraper</h3>
+<p>Make a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code>, <code>emails/0/email</code>, <code>emails/0/foundOn</code>, <code>emails/1/email</code>, <code>emails/1/foundOn</code>, <code>emails/2/email</code>, <code>socials/instagram/0/url</code>, <code>socials/youtube/0/url</code> and <code>socials/twitter/0/url</code>. Open each show's guests and contact pages, type what you see, and put <code>ok</code> in status. Slower, but the same formulas work.</p>
+
+<h2>Step 3: the shows tab</h2>
+<p>Show <code>=list!A2</code>, Domain <code>=list!C2</code>, Episode heard <code>=list!D2</code>, Pitch angle <code>=list!E2</code>. Every contact column uses one lookup pattern; change only the header in quotes. Put the first three emails found in hidden helper columns <code>N</code>, <code>O</code> and <code>P</code>:</p>
+<pre>=IFERROR(INDEX(scrape!$A:$ZZ,
+  MATCH($B2, INDEX(scrape!$A:$ZZ, 0, MATCH("domain", scrape!$1:$1, 0)), 0),
+  MATCH("emails/0/email", scrape!$1:$1, 0)), "")</pre>
+<p>with <code>emails/1/email</code> in O and <code>emails/2/email</code> in P. Then the Inbox in C2 prefers a bookings, press or media inbox, then hello or team, then the first address found:</p>
+<pre>=IFERROR(INDEX(FILTER({N2,O2,P2}, REGEXMATCH({N2,O2,P2}, "(?i)^(bookings|press|media|pr)[.@-]")), 1),
+ IFERROR(INDEX(FILTER({N2,O2,P2}, REGEXMATCH({N2,O2,P2}, "(?i)^(hello|team|hi)[.@-]")), 1), N2))</pre>
+<p>Found on in D2 uses the same lookup with <code>emails/0/foundOn</code> (use <code>emails/1/foundOn</code> or <code>emails/2/foundOn</code> when the Inbox came from O or P), so you can open the page and check the inbox is meant for guest requests or general enquiries. Add Instagram, YouTube and X columns with the <code>socials/…/0/url</code> headers above. If a show says it takes guest requests only through a form, put the form link in Found on and leave Inbox blank with a note.</p>
+
+<h2>Step 4: dates, reply and Next step</h2>
+<p>Type <strong>Sent on</strong> (G) when you send. <strong>Follow up on</strong> in H2 is ten days later; change the number to suit:</p>
+<pre>=IF(G2="", "", G2+10)</pre>
+<p>Column I <strong>Reply</strong>: blank, <code>replied</code>, <code>booked</code>, <code>no</code> or <code>not now</code>. Column M <strong>Followed up</strong>: the date you sent the follow-up. <strong>Next step</strong> in J2:</p>
+<pre>=IF(A2="", "",
+ IF(I2="booked", "booked",
+ IF(OR(I2="no", I2="not now"), "closed",
+ IF(I2="replied", "answer them",
+ IF(AND(C2="", D2=""), "find inbox",
+ IF(G2="", "send now",
+ IF(M2&lt;&gt;"", IF(TODAY()-M2&gt;=14, "closed: no reply", "wait"),
+ IF(TODAY()&gt;=H2, "follow up today", "wait"))))))))</pre>
+<p>One follow-up is enough. After that the row closes by itself, so the list shows only the shows worth your time this week. Sort or filter by Next step each morning.</p>
+
+<h2>Step 5: the summary tab</h2>
+<pre>Pitched:         =COUNTIF(shows!G:G, "&lt;&gt;")-1
+Pitched this week: =COUNTIFS(shows!G:G, "&gt;="&amp;TODAY()-WEEKDAY(TODAY(),2)+1)
+Replied:         =COUNTIF(shows!I:I, "replied")+COUNTIF(shows!I:I, "booked")
+Booked:          =COUNTIF(shows!I:I, "booked")
+Follow up today: =COUNTIF(shows!J:J, "follow up today")</pre>
+<p>If many pitches get no reply, rewrite the subject line and the episode line before sending more. A short pitch that names one episode and one useful topic for that show's listeners usually does better than the same note sent everywhere.</p>
+
+<h2>What the status values mean</h2>
+<table><thead><tr><th>status</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>ok</code></td><td>Site read</td><td>Use the inbox found, or check Found on if it looks wrong</td></tr>
+<tr><td><code>blocked-by-robots</code></td><td>The site asks bots not to crawl</td><td>Open its guests or contact page yourself</td></tr>
+<tr><td><code>blocked-by-terms</code></td><td>The site's terms forbid scraping (clause quoted in <code>error</code>)</td><td>Same</td></tr>
+<tr><td><code>blocked-by-tos-list</code></td><td>The "website" is a page on a site such as LinkedIn or Facebook</td><td>Find the show's own site in its show notes</td></tr>
+<tr><td><code>blocked-by-site</code>, <code>rate-limited</code>, <code>failed</code></td><td>HTTP 401/403/429, too many requests, or unreachable</td><td>Retry later</td></tr>
+</tbody></table>
+
+<h2>The pitch and the follow-up</h2>
+<pre>Subject: Guest idea for [show]: [topic in six words or fewer]
+
+Hello [show] team,
+
+I enjoyed episode [number/title], especially [one specific point].
+I think your listeners would get value from [topic]: [one sentence
+on what they will learn, e.g. three steps, one mistake to avoid].
+
+I am [name], [one line on who you are and what you have done that
+makes you credible on this topic]. A recent example: [link to a
+talk, article or past interview].
+
+Happy to work around your recording schedule.
+Thank you,
+[Name], [website]</pre>
+<pre>Follow-up, same thread, about ten days later:
+
+Hello, a short follow-up on my guest idea below about [topic].
+Happy to suggest a different angle if that suits the show better.
+Thank you, [Name]</pre>
+<ul>
+<li>Write to the inbox the show publishes for guests or general enquiries, not to addresses you guessed. If the show says it does not take guest pitches, mark the row closed.</li>
+<li>Name one episode and one specific point in every pitch. That is the line that shows it is not a mass mailing.</li>
+<li>Send each pitch yourself, one at a time, from your own address, and stop after one follow-up.</li>
+<li>Keep the sheet to show details and your own notes; share it only with someone helping you pitch.</li>
+</ul>
+
+<h2>Check before you send</h2>
+<ul class="check">
+<li>The inbox or form is one the show publishes, and Found on confirms the page.</li>
+<li>The show does not say "no guest pitches".</li>
+<li>Episode heard and Pitch angle are filled in for this show.</li>
+<li>Your one-line bio and example link are correct.</li>
+<li>Sent on is filled in, so the follow-up date appears.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper input and output fields (<code>urls</code>, <code>maxPagesPerSite</code>, <code>defaultCountry</code>, <code>checkEmailMx</code>, <code>includePersonalEmails</code>, <code>includePersonProfiles</code>; <code>domain</code>, <code>status</code>, <code>emails</code> with <code>type</code> and <code>foundOn</code>, <code>socials</code> incl. Instagram, YouTube and X; shared-inbox list; de-duplication by domain; blocklist of sites such as LinkedIn and Facebook): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_podcast_guest_pitch_sheet">Apify Store page</a> (input schema and README)</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="press-list-sheet-product-launch-black-friday-media-inboxes-apify.html">Press list sheet for a product launch</a></li>
+<li><a href="speculative-job-application-sheet-company-careers-jobs-hr-inbox-follow-up-apify.html">Speculative job application sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean a contact CSV into a call sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
