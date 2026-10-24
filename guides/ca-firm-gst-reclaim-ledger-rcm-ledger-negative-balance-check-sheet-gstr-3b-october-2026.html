@@ -1,0 +1,102 @@
+<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reclaim ledger and RCM ledger check sheet for CA firms: find negative balances before GSTR-3B for October 2026</title><meta name="description" content="A Google Sheet layout for CA firms: one row per client for the Electronic Credit Reversal and Re-claimed Statement and the RCM Liability/ITC Statement, with limit formulas for Table 4(D)(1) and Tables 4(A)(2)/(3) before GSTR-3B for October 2026."><link rel="canonical" href="https://unadhi.com/guides/ca-firm-gst-reclaim-ledger-rcm-ledger-negative-balance-check-sheet-gstr-3b-october-2026.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Reclaim ledger and RCM ledger check sheet for CA firms: find negative balances before GSTR-3B for October 2026"><meta property="og:description" content="GSTN said negative balances in the reclaim and RCM ledgers would stop GSTR-3B filing. One sheet to check every client’s closing balance, planned reclaim and RCM credit before 20 November."><meta property="og:url" content="https://unadhi.com/guides/ca-firm-gst-reclaim-ledger-rcm-ledger-negative-balance-check-sheet-gstr-3b-october-2026.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+.signup{border:1px dashed #0a5c55;border-radius:8px;padding:10px 16px;background:#f4faf9;margin-top:1.4em}.signup p{margin:.3em 0}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Reclaim ledger and RCM ledger check sheet for CA firms: find negative balances before GSTR-3B for October 2026", "dateModified": "2026-10-24", "datePublished": "2026-10-24", "inLanguage": "en-IN", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/ca-firm-gst-reclaim-ledger-rcm-ledger-negative-balance-check-sheet-gstr-3b-october-2026.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Electronic Credit Reversal and Re-claimed Statement?", "acceptedAnswer": {"@type": "Answer", "text": "A GST portal statement, from the August 2023 return period for monthly filers, that tracks ITC temporarily reversed in Table 4(B)(2) of GSTR-3B and reclaimed later in Tables 4(A)(5) and 4(D)(1). It is under Services, Ledger, Electronic Credit Reversal and Re-claimed."}}, {"@type": "Question", "name": "What is the limit on reclaiming ITC in Table 4(D)(1)?", "acceptedAnswer": {"@type": "Answer", "text": "Per the GSTN advisory of 29 December 2025, the reclaim in Table 4(D)(1) must be less than or equal to the closing balance of the reclaim ledger plus ITC reversed in Table 4(B)(2) of the same GSTR-3B."}}, {"@type": "Question", "name": "What is the limit on RCM credit in Tables 4(A)(2) and 4(A)(3)?", "acceptedAnswer": {"@type": "Answer", "text": "Per the same advisory, RCM credit claimed must be less than or equal to the RCM liability paid in Table 3.1(d) of the same GSTR-3B plus the closing balance of the RCM Liability/ITC Statement."}}, {"@type": "Question", "name": "What if a client already has a negative balance?", "acceptedAnswer": {"@type": "Answer", "text": "The advisory says GSTR-3B cannot be filed until the excess is reversed in Table 4(B)(2) (reclaim ledger) or extra RCM liability is paid in Table 3.1(d) or RCM credit is reduced (RCM ledger)."}}, {"@type": "Question", "name": "Has the hard check gone live?", "acceptedAnswer": {"@type": "Answer", "text": "The advisory of 29 December 2025 said it would apply shortly. We could not confirm the go-live date from an official source, so check each client ledger before filing."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Reclaim ledger and RCM ledger check sheet for CA firms: find negative balances before GSTR-3B for October 2026</h1>
+<p class="meta">Updated 24 Oct 2026 · Disclosure: the white-label calendar linked below is an Unadhi product (₹999/year). This guide is for information only, not professional advice.</p>
+<p><strong>What you get:</strong> a ready-to-copy Google Sheet layout that checks every client's two GST portal ledgers <strong>before</strong> you file GSTR-3B for October 2026 (due 20 November for monthly filers). Tab 1 has <strong>one row per client</strong> for the <strong>Electronic Credit Reversal and Re-claimed Statement</strong> (the "reclaim ledger"): closing balance, what you plan to reverse in Table 4(B)(2), what you plan to reclaim in Table 4(D)(1), and a formula that flags any reclaim above the limit. Tab 2 does the same for the <strong>RCM Liability/ITC Statement</strong> (the "RCM ledger"): RCM tax paid in Table 3.1(d) against RCM credit claimed in Tables 4(A)(2) and 4(A)(3). Tab 3 lists clients with a <strong>negative closing balance</strong> and the fix. You also get a made-up example and a WhatsApp message for clients.</p>
+<p class="answer"><strong>Short answer (checked 24 Oct 2026):</strong> GSTN's advisory of 29 December 2025 said that, shortly, the portal would stop negative values in both ledgers. The reclaim in Table 4(D)(1) must be <strong>less than or equal to</strong> the reclaim ledger's closing balance plus the ITC reversed in Table 4(B)(2) of the same GSTR-3B. RCM credit in Tables 4(A)(2) and 4(A)(3) must be <strong>less than or equal to</strong> the RCM tax in Table 3.1(d) of the same GSTR-3B plus the RCM ledger's closing balance. A client who already has a negative closing balance <strong>cannot file GSTR-3B</strong> until it is fixed. We could not confirm from an official source the date this hard check went live, so open each client's ledger before the 20th and treat any negative balance as a blocker.</p>
+
+<h2>What GSTN's advisories say</h2>
+<ul>
+<li><strong>Reclaim ledger.</strong> It started from the August 2023 return period for monthly filers and from the July-September 2023 quarter for quarterly filers. It captures ITC temporarily reversed in Table 4(B)(2) and reclaimed later in Tables 4(A)(5) and 4(D)(1). Path on the portal: Services, Ledger, Electronic Credit Reversal and Re-claimed.</li>
+<li><strong>RCM ledger.</strong> It started from August 2024 for monthly filers and from the July-September 2024 quarter for quarterly filers. It tracks RCM liability in Table 3.1(d) and the matching credit in Tables 4(A)(2) and 4(A)(3). Path: Services, Ledger, RCM Liability/ITC Statement.</li>
+<li><strong>Before the hard check.</strong> Taxpayers saw only a warning when they reclaimed or claimed more than the balance, and could still file. Several chances were given to report and amend opening balances.</li>
+<li><strong>The new check (advisory of 29 Dec 2025).</strong> Negative values and credit above the available balance "shall not be allowed" in both ledgers, using the two limits in the short answer above.</li>
+<li><strong>If a ledger is already negative.</strong> Reclaim ledger: reverse the excess in Table 4(B)(2) of the current GSTR-3B. If there is not enough ITC that period, the reversal is added to the tax payable. RCM ledger: pay the extra RCM liability in Table 3.1(d), or cut the RCM credit claimed in Tables 4(A)(2)/4(A)(3) down to the closing balance.</li>
+</ul>
+
+<h2>Tab "Reclaim": one row per client (reclaim ledger check)</h2>
+<table>
+<tr><th>Col</th><th>Header</th><th>What goes in it</th></tr>
+<tr><td>A</td><td>Client</td><td>Trade name</td></tr>
+<tr><td>B</td><td>GSTIN</td><td>15 characters</td></tr>
+<tr><td>C</td><td>Filing</td><td>Monthly or QRMP</td></tr>
+<tr><td>D</td><td>Closing balance (₹)</td><td>From Services, Ledger, Electronic Credit Reversal and Re-claimed, latest period filed. Enter IGST+CGST+SGST+cess total, or add four columns if you want it by head.</td></tr>
+<tr><td>E</td><td>Reverse now, 4(B)(2) (₹)</td><td>Reclaimable reversal planned in October's GSTR-3B (for example rule 37 unpaid supplier invoices, rule 37A)</td></tr>
+<tr><td>F</td><td>Reclaim now, 4(D)(1) (₹)</td><td>Amount you plan to reclaim this period</td></tr>
+<tr><td>G</td><td>Limit (₹)</td><td><code>=D2+E2</code></td></tr>
+<tr><td>H</td><td>Over limit (₹)</td><td><code>=MAX(0,F2-G2)</code></td></tr>
+<tr><td>I</td><td>Status</td><td><code>=IF(D2&lt;0,"NEGATIVE: reverse "&amp;TEXT(-D2,"#,##0")&amp;" in 4(B)(2)",IF(H2&gt;0,"CUT reclaim by "&amp;TEXT(H2,"#,##0"),"OK"))</code></td></tr>
+<tr><td>J</td><td>Working paper</td><td>Link to the invoice list behind the reclaim (supplier paid, GSTR-3B filed by supplier, and so on)</td></tr>
+</table>
+
+<h2>Tab "RCM": one row per client (RCM ledger check)</h2>
+<table>
+<tr><th>Col</th><th>Header</th><th>What goes in it</th></tr>
+<tr><td>A</td><td>Client</td><td>Same as tab 1</td></tr>
+<tr><td>B</td><td>Closing balance (₹)</td><td>From Services, Ledger, RCM Liability/ITC Statement</td></tr>
+<tr><td>C</td><td>RCM tax now, 3.1(d) (₹)</td><td>RCM liability in October's GSTR-3B (for example rent from an unregistered landlord, legal fees, GTA)</td></tr>
+<tr><td>D</td><td>RCM credit now, 4(A)(2)+4(A)(3) (₹)</td><td>Import of services plus other inward supplies liable to RCM</td></tr>
+<tr><td>E</td><td>Limit (₹)</td><td><code>=B2+C2</code></td></tr>
+<tr><td>F</td><td>Status</td><td><code>=IF(B2&lt;0,"NEGATIVE: pay more in 3.1(d) or cut 4(A)(2)/(3)",IF(D2&gt;E2,"CUT credit by "&amp;TEXT(D2-E2,"#,##0"),"OK"))</code></td></tr>
+<tr><td>G</td><td>Cash needed?</td><td><code>=IF(C2&gt;0,"Yes: RCM tax is paid in cash","No")</code> (RCM liability cannot be paid from the credit ledger)</td></tr>
+</table>
+
+<h2>Tab "Blockers": clients who cannot file until fixed</h2>
+<p>Use <code>=FILTER(Reclaim!A2:I,LEFT(Reclaim!I2:I,8)="NEGATIVE")</code> and the same on the RCM tab. Add columns for who will call the client, the date the fix was agreed, and the GSTR-3B ARN once filed. Sort by GSTR-3B due date so 20 November (monthly) comes before 22 or 24 January (QRMP, quarter October-December, by State group).</p>
+
+<h2>Made-up example (not a real client)</h2>
+<p>Client "Sample Traders" has a reclaim ledger closing balance of ₹18,000. In October they reverse ₹6,000 in Table 4(B)(2) for invoices not paid within 180 days and want to reclaim ₹30,000 in Table 4(D)(1) for suppliers since paid. Limit = 18,000 + 6,000 = ₹24,000, so the sheet shows "CUT reclaim by 6,000". Check whether the missing ₹6,000 was reversed before August 2023 and never declared as opening balance; under the advisory, the reclaim cannot go above the limit in this return.</p>
+
+<h2>Plan to 20 November</h2>
+<ul>
+<li><strong>By 5 Nov:</strong> download both ledgers for every client and fill columns D and B.</li>
+<li><strong>By 12 Nov:</strong> after GSTR-1 (11 Nov) and GSTR-2B (14 Nov) are out, fill the planned 4(B)(2), 4(D)(1), 3.1(d) and 4(A) amounts.</li>
+<li><strong>By 15 Nov:</strong> call every client on the Blockers tab; agree the reversal or extra RCM cash.</li>
+<li><strong>By 20 Nov:</strong> file; record ARNs; re-download the ledgers so next month starts from the new closing balance.</li>
+</ul>
+
+<h2>WhatsApp message to a client</h2>
+<p>"Hello, before we file your October GST return (due 20 November) we checked your ITC reclaim and RCM statements on the GST portal. The portal now limits reclaims to the balance shown there. For your GSTIN we need to [reverse ₹X / pay ₹Y extra RCM in cash] this month. Please confirm by 15 November so the return is not stuck."</p>
+
+<h2>Related guides</h2>
+<ul>
+<li><a href="ca-firm-gst-rule-37a-itc-reversal-supplier-gstr-3b-not-filed-30-nov-2026-sheet.html">Rule 37A ITC reversal sheet</a></li>
+<li><a href="ca-firm-gst-drc-01b-drc-01c-gstr-1-3b-2b-mismatch-reply-sheet-october-2026.html">DRC-01B and DRC-01C mismatch sheet</a></li>
+<li><a href="ca-firm-gst-ims-invoice-action-sheet-october-2026-gstr-2b.html">IMS invoice action sheet</a></li>
+<li><a href="gst-rcm-commercial-property-rent-unregistered-landlord.html">RCM on commercial rent from an unregistered landlord</a></li>
+<li><a href="ca-firm-gstr3b-chase-list-before-20th.html">GSTR-3B chase list before the 20th</a></li>
+<li><a href="ca-firm-november-2026-due-date-client-chase-list.html">November 2026 due-date chase list</a></li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<div class="next"><p>The <a href="https://mininglife1.gumroad.com/l/ca-firm-compliance-calendar?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=ca_gst_reclaim_rcm_ledger_oct2026">White-Label Client Compliance Calendar for CA Firms</a> (₹999/year) sends four quarterly packs with your firm name on the DOCX, PDF and WhatsApp image, plus national .ics/.xlsx and extension notes. Files are made after checkout (not instant). 14-day refund from when you receive the first pack. Disclosure: that is an Unadhi product. You can use this ledger sheet without buying anything.</p></div>
+
+<h2>Sources</h2>
+<ul class="src">
+<li><a href="https://ftp.caalley.com/gst25/gst-adv1229.pdf">GSTN advisory and FAQ on the Electronic Credit Reversal and Re-claimed Statement and RCM Liability/ITC Statement, 29 Dec 2025 (copy of the GST portal advisory)</a></li>
+<li><a href="https://tutorial.gst.gov.in/downloads/news/itc_pending_ledger.pdf">GSTN advisory introducing the Electronic Credit Reversal and Re-claimed Statement</a></li>
+<li><a href="https://services.gst.gov.in/services/advisoryandreleases/read/514">GSTN advisory introducing the RCM Liability/ITC Statement</a></li>
+</ul>
+<div class="note"><p>This sheet is a working aid, not professional advice. Portal checks and due dates can change; check the portal before you rely on them. Checked on 24 October 2026. Spot an error? Write to mininglife7@gmail.com.</p></div>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
