@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vendor master check sheet: catch wrong GSTINs, PANs and IFSC codes before the payment run and GSTR-2B</title><meta name="description" content="A free Google Sheet for accounts teams and CA firms: one row per supplier with GSTIN check character, PAN match, GSTIN state, IFSC bank name, an Issues column and a Pay or Hold status."><link rel="canonical" href="https://unadhi.com/guides/vendor-master-gstin-pan-ifsc-check-sheet-before-payment-run-gstr-2b-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Vendor master check sheet: GSTIN, PAN and IFSC"><meta property="og:description" content="One row per supplier: GSTIN check character, PAN inside the GSTIN, state, IFSC bank name and a hold list to fix before you pay."><meta property="og:url" content="https://unadhi.com/guides/vendor-master-gstin-pan-ifsc-check-sheet-before-payment-run-gstr-2b-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Vendor master check sheet: catch wrong GSTINs, PANs and IFSC codes before the payment run and GSTR-2B", "dateModified": "2026-10-24", "datePublished": "2026-10-24", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/vendor-master-gstin-pan-ifsc-check-sheet-before-payment-run-gstr-2b-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does a correct GSTIN check character mean the registration is active?", "acceptedAnswer": {"@type": "Answer", "text": "No. The check character only shows the number is well formed. Confirm the status, legal name and registration date on the GST portal's public Search Taxpayer page."}}, {"@type": "Question", "name": "Can PAN and IFSC be checked the same way?", "acceptedAnswer": {"@type": "Answer", "text": "Only partly. PAN and IFSC have no public check digit, so the sheet checks their format, the PAN holder type and the bank an IFSC code belongs to. The branch and the account itself are not confirmed."}}, {"@type": "Question", "name": "Can I check GSTINs without any tool?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The guide includes a Google Sheets formula that recomputes the GSTIN check character from the first 14 characters and returns TRUE when the 15th is right."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Vendor master check sheet: catch wrong GSTINs, PANs and IFSC codes before the payment run and GSTR-2B</h1>
+<p class="meta">Updated 24 Oct 2026 · Disclosure: the validator linked below is an Unadhi product on the Apify Store. This guide is free, and the free formula in Step 4 checks GSTINs without it. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> a <strong>vendor master check sheet</strong> in one Google Sheet, with <strong>one row per supplier</strong>: the GSTIN, PAN and IFSC you hold for them, whether the <strong>GSTIN check character is right</strong>, whether the <strong>PAN inside the GSTIN matches the PAN</strong> you hold, whether the <strong>GSTIN's state matches the supplier's state</strong>, the <strong>bank name the IFSC belongs to</strong> next to the bank on their cancelled cheque, an <strong>Issues</strong> column and a <strong>Pay / Hold</strong> status. A <strong>hold</strong> tab lists only the suppliers to fix before the payment run and before their invoices are expected in GSTR-2B. Formulas are below. The example rows and numbers are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>vendors tab (example rows are made up)</h3>
+<table><thead><tr><th>Supplier</th><th>GSTIN</th><th>GSTIN check</th><th>PAN match</th><th>State</th><th>IFSC bank</th><th>Issues</th><th>Status</th></tr></thead><tbody>
+<tr><td>Example Packaging</td><td>36AAACZ0001A1Z9</td><td>OK</td><td>TRUE</td><td>Telangana</td><td>ICICI Bank</td><td></td><td>Pay</td></tr>
+<tr><td>Example Traders</td><td>29AAAFZ0002B1Z0</td><td>check character should be V</td><td>TRUE</td><td>Karnataka</td><td>HDFC Bank</td><td>GSTIN: check character should be V</td><td>Hold</td></tr>
+<tr><td>Example Electricals</td><td>27AAAPZ0003C1ZB</td><td>OK</td><td>FALSE</td><td>Maharashtra</td><td>State Bank of India</td><td>PAN in GSTIN differs from PAN held</td><td>Hold</td></tr>
+<tr><td>Example Steel</td><td>33AAACZ0004D1Z6</td><td>OK</td><td>TRUE</td><td>Tamil Nadu</td><td>format must be 4 letters, the digit 0, then 6 letters/digits</td><td>GSTIN state is Tamil Nadu, supplier state is Karnataka; IFSC: format must be 4 letters, the digit 0, then 6 letters/digits</td><td>Hold</td></tr>
+</tbody></table>
+<p>Row 2 is the usual one-character typo: the last character of a GSTIN is a check character worked out from the other 14, so a single wrong character almost always shows up. Row 4 has the letter O typed where the IFSC needs the digit 0, and a GSTIN from a different state than the supplier's address, which matters for whether the invoice should carry IGST or CGST plus SGST.</p>
+
+<h2>Who this is for</h2>
+<p>Accounts teams in small businesses, and CA firms and bookkeepers who keep vendor masters for clients. A wrong GSTIN in your books means the supplier's invoice may not match what appears in your GSTR-2B, and a wrong IFSC or a changed bank account is how payments go to the wrong place. The sheet catches the typing mistakes in one pass, so the manual checks (GST portal, call-back to the supplier) are spent only on the rows that need them.</p>
+
+<h2>Step 1: the <code>vendors</code> tab</h2>
+<p>Add a tab named <code>vendors</code> with these headers in row 1 and one supplier per row from your accounting software's supplier export:</p>
+<p><code>A Supplier</code>, <code>B Supplier state</code> (as on their address, spelled like "Tamil Nadu"), <code>C GSTIN</code>, <code>D PAN</code>, <code>E IFSC</code>, <code>F Bank on cancelled cheque</code>.</p>
+
+<h2>Step 2: check all three numbers at once</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/email-verifier-india-validators-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_vendor_master_gstin_pan_ifsc">Email Verifier + GSTIN/PAN/IFSC Validator (Half Price)</a> on the Apify Store. To build its input from your sheet, put this in any empty cell of a tab named <code>settings</code>, then copy the result into the input's JSON view:</p>
+<pre>="{""gstins"": [" &amp; TEXTJOIN(",", TRUE, ARRAYFORMULA(IF(vendors!C2:C="", "", """" &amp; UPPER(TRIM(vendors!C2:C)) &amp; """"))) &amp; "], ""pans"": [" &amp; TEXTJOIN(",", TRUE, ARRAYFORMULA(IF(vendors!D2:D="", "", """" &amp; UPPER(TRIM(vendors!D2:D)) &amp; """"))) &amp; "], ""ifscs"": [" &amp; TEXTJOIN(",", TRUE, ARRAYFORMULA(IF(vendors!E2:E="", "", """" &amp; UPPER(TRIM(vendors!E2:E)) &amp; """"))) &amp; "], ""checkDns"": false}"</pre>
+<ul>
+<li><code>checkDns: false</code> means the run makes no network lookups at all. GSTIN, PAN and IFSC checks are done offline.</li>
+<li>Duplicates are removed before the run is charged.</li>
+</ul>
+<p>When the run finishes, export the dataset as <strong>CSV with all fields</strong> and import it into the same Google Sheet (File → Import → Upload, "Insert new sheet"). Name the tab <code>checks</code> and keep the headers. If you do not see a <code>reason</code> or <code>normalised</code> column, you exported only the short results view; export again with all fields.</p>
+<h3>What the checks tab contains</h3>
+<ul>
+<li>Every row has <code>type</code> (<code>gstin</code>, <code>pan</code> or <code>ifsc</code>), <code>input</code> and <code>normalised</code> (upper case, spaces removed).</li>
+<li><strong>GSTIN</strong>: <code>valid</code>, <code>state</code>, <code>stateCode</code>, <code>pan</code> (characters 3 to 12), <code>panHolderType</code>, <code>checksumOk</code> and <code>reason</code>, which names the expected check character when it is wrong.</li>
+<li><strong>PAN</strong>: <code>valid</code>, <code>holderType</code> (from the 4th character: company, individual, firm and so on) and <code>reason</code>. PAN has no public check digit, so this is a format check only.</li>
+<li><strong>IFSC</strong>: <code>validFormat</code>, <code>bankCode</code>, <code>bank</code>, <code>bankKnown</code> and <code>reason</code>. IFSC has no check digit, and the branch itself is not looked up.</li>
+</ul>
+
+<h2>Step 3: the result columns</h2>
+<p>In <code>vendors</code>, add these headers and put the formulas in row 2, then copy them down.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>G</td><td>GSTIN check</td><td><code>=IF(C2="", "", LET(h, checks!$A$1:$ZZ$1, d, checks!$A$2:$ZZ, f, FILTER(d, INDEX(d, 0, MATCH("type", h, 0))="gstin", INDEX(d, 0, MATCH("normalised", h, 0))=UPPER(TRIM(C2))), IFERROR(IF(UPPER(TO_TEXT(INDEX(f, 1, MATCH("valid", h, 0))))="TRUE", "OK", INDEX(f, 1, MATCH("reason", h, 0))), "not checked")))</code></td></tr>
+<tr><td>H</td><td>PAN check</td><td>same formula with <code>D2</code> in place of <code>C2</code> and <code>"pan"</code> in place of <code>"gstin"</code></td></tr>
+<tr><td>I</td><td>PAN match</td><td><code>=IF(OR(C2="", D2=""), "", MID(UPPER(TRIM(C2)), 3, 10)=UPPER(TRIM(D2)))</code></td></tr>
+<tr><td>J</td><td>GSTIN state</td><td><code>=IF(C2="", "", LET(h, checks!$A$1:$ZZ$1, d, checks!$A$2:$ZZ, IFERROR(INDEX(FILTER(INDEX(d, 0, MATCH("state", h, 0)), INDEX(d, 0, MATCH("type", h, 0))="gstin", INDEX(d, 0, MATCH("normalised", h, 0))=UPPER(TRIM(C2))), 1), "")))</code></td></tr>
+<tr><td>K</td><td>IFSC bank</td><td><code>=IF(E2="", "", LET(h, checks!$A$1:$ZZ$1, d, checks!$A$2:$ZZ, f, FILTER(d, INDEX(d, 0, MATCH("type", h, 0))="ifsc", INDEX(d, 0, MATCH("normalised", h, 0))=UPPER(TRIM(E2))), IFERROR(IF(UPPER(TO_TEXT(INDEX(f, 1, MATCH("validFormat", h, 0))))="TRUE", IF(INDEX(f, 1, MATCH("bank", h, 0))="", "Bank code not in list", INDEX(f, 1, MATCH("bank", h, 0))), INDEX(f, 1, MATCH("reason", h, 0))), "not checked")))</code></td></tr>
+<tr><td>L</td><td>Issues</td><td><code>=IF(A2="", "", TEXTJOIN("; ", TRUE, IF(C2="", "No GSTIN: confirm unregistered", ""), IF(AND(G2&lt;&gt;"", G2&lt;&gt;"OK"), "GSTIN: " &amp; G2, ""), IF(AND(H2&lt;&gt;"", H2&lt;&gt;"OK"), "PAN: " &amp; H2, ""), IF(I2=FALSE, "PAN in GSTIN differs from PAN held", ""), IF(AND(J2&lt;&gt;"", B2&lt;&gt;"", LOWER(J2)&lt;&gt;LOWER(TRIM(B2))), "GSTIN state is " &amp; J2 &amp; ", supplier state is " &amp; B2, ""), IF(OR(K2="not checked", K2="Bank code not in list", REGEXMATCH(K2, "format")), "IFSC: " &amp; K2, ""), IF(AND(F2&lt;&gt;"", K2&lt;&gt;"", K2&lt;&gt;"not checked", K2&lt;&gt;"Bank code not in list", NOT(REGEXMATCH(K2, "format")), NOT(REGEXMATCH(LOWER(F2), LOWER(LEFT(K2, FIND(" ", K2 &amp; " ")-1))))), "Bank on cheque differs from IFSC bank: call back", "")))</code></td></tr>
+<tr><td>M</td><td>Status</td><td><code>=IF(A2="", "", IF(L2="", "Pay", "Hold"))</code></td></tr>
+</tbody></table>
+<p>Add a tab named <code>hold</code> with <code>=FILTER(vendors!A2:L, vendors!M2:M="Hold")</code> in <code>A2</code>. That is the list to clear before the payment run.</p>
+<p>The bank-name comparison only looks at the first word of the IFSC bank name, so "HDFC Bank" matches "HDFC Bank Ltd, Banjara Hills". It is a prompt to look, not a verdict.</p>
+
+<h2>Step 4: free route for GSTINs only</h2>
+<p>If you only need the GSTIN check character, this formula does it in Google Sheets with no tool. It returns TRUE when the 15th character is right:</p>
+<pre>=IF(LEN(TRIM(C2))&lt;&gt;15, "", IFERROR(LET(g, UPPER(TRIM(C2)), c, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", n, SEQUENCE(14), v, ARRAYFORMULA((FIND(MID(g, n, 1), c)-1)*(2-MOD(n, 2))), s, SUM(ARRAYFORMULA(INT(v/36)+MOD(v, 36))), MID(c, MOD(36-MOD(s, 36), 36)+1, 1)=RIGHT(g, 1)), FALSE))</pre>
+<p>It does not check the state code, the PAN inside the GSTIN or anything about PAN and IFSC; the PAN match formula in column I works without any tool.</p>
+
+<h2>Step 5: what the sheet cannot tell you</h2>
+<ul class="check">
+<li><strong>A correct GSTIN is not an active GSTIN.</strong> Look up each new supplier, and every Hold row after you fix it, on the GST portal's public <a href="https://services.gst.gov.in/services/searchtp">Search Taxpayer</a> page: it shows the legal name, status and registration date.</li>
+<li><strong>A correct IFSC is not the supplier's account.</strong> Before the first payment and after any request to change bank details, call the supplier on a number you already had, not one from the change request. Our <a href="supplier-bank-details-change-call-back-sheet-payment-diversion-fraud-apify.html">bank details change call-back sheet</a> covers that step.</li>
+<li><strong>A valid PAN format is not a verified PAN.</strong> PAN verification needs the Income Tax e-filing services.</li>
+<li>Re-run the check whenever suppliers are added, and before the month's GSTR-2B is reviewed.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Validator inputs and outputs (<code>gstins</code>, <code>pans</code>, <code>ifscs</code>, <code>checkDns</code>; per-row <code>type</code>, <code>input</code>, <code>normalised</code>, <code>valid</code>, <code>state</code>, <code>pan</code>, <code>panHolderType</code>, <code>checksumOk</code>, <code>reason</code>, <code>holderType</code>, <code>validFormat</code>, <code>bank</code>, <code>bankKnown</code>; GSTIN official check character; PAN and IFSC have no checksum; branch not checked): <a href="https://apify.com/laudable_instrument/email-verifier-india-validators-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_vendor_master_gstin_pan_ifsc">Apify Store listing</a>. The example error messages in the table above are the tool's own wording.</li>
+<li>GSTIN status, legal name and registration date: <a href="https://services.gst.gov.in/services/searchtp">GST portal, Search Taxpayer</a>.</li>
+<li>Google Sheets LET, FILTER, TEXTJOIN, SEQUENCE and REGEXMATCH functions: Google Docs Editors Help.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="supplier-bank-details-change-call-back-sheet-payment-diversion-fraud-apify.html">Supplier bank details change call-back sheet</a></li>
+<li><a href="ca-firm-gst-fy-2025-26-missing-itc-supplier-chase-sheet-30-nov-2026.html">Missing ITC supplier chase sheet before 30 November 2026</a></li>
+<li><a href="ca-firm-gst-ims-invoice-action-sheet-october-2026-gstr-2b.html">GST IMS invoice action sheet for October 2026</a></li>
+<li><a href="email-verifier-india-validators-half-price/">Email verifier and GSTIN, PAN, IFSC validator: what it checks</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
