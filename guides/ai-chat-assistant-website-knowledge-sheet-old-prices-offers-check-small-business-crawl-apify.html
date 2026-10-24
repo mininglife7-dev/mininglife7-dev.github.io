@@ -1,0 +1,125 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Website knowledge sheet for an AI chat assistant: check old prices, offers and short pages before your small business chatbot learns from your site</title><meta name="description" content="A free Google Sheet for small businesses adding an AI chat assistant: crawl your site, get one row per page with old-year, price and short-page flags, mark Yes or No, and build a clean knowledge file to upload."><link rel="canonical" href="https://unadhi.com/guides/ai-chat-assistant-website-knowledge-sheet-old-prices-offers-check-small-business-crawl-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Website knowledge sheet for an AI chat assistant"><meta property="og:description" content="One row per page: words, status, old year, price and short-page flags, a Yes/No column and a knowledge tab of clean text blocks to upload to your chat tool."><meta property="og:url" content="https://unadhi.com/guides/ai-chat-assistant-website-knowledge-sheet-old-prices-offers-check-small-business-crawl-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Website knowledge sheet for an AI chat assistant: check old prices, offers and short pages before your small business chatbot learns from your site", "dateModified": "2026-10-24", "datePublished": "2026-10-24", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/ai-chat-assistant-website-knowledge-sheet-old-prices-offers-check-small-business-crawl-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why check the pages before uploading them to a chat assistant?", "acceptedAnswer": {"@type": "Answer", "text": "The assistant repeats what you upload. Old offer pages, last year's prices and outdated hours are often still on a website, and a crawl finds them. The sheet flags pages that mention an old year or a price so you can check or leave them out first."}}, {"@type": "Question", "name": "What if a page is longer than a Google Sheets cell allows?", "acceptedAnswer": {"@type": "Answer", "text": "A Google Sheets cell holds at most 50,000 characters. The sheet flags very long pages so you can take their full text from the crawler's JSON export instead."}}, {"@type": "Question", "name": "Can I use the sheet without the Apify crawler?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Paste a crawl tab with the headers url, title, wordCount, httpStatus and markdown (the page text) from another tool, and the formulas work unchanged."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Website knowledge sheet for an AI chat assistant: check old prices, offers and short pages before your small business chatbot learns from your site</h1>
+<p class="meta">Updated 24 Oct 2026 · Disclosure: the website crawler linked below is an Unadhi product on the Apify Store. This guide is free, and the same sheet works with a crawl export from other tools. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> a <strong>website knowledge sheet for an AI chat assistant</strong> in one Google Sheet. It has <strong>one row per page of your website</strong>: the page address, title, word count and status, plus flags for pages that <strong>mention an old year</strong>, <strong>mention a price</strong> or are <strong>too short to help</strong>. You mark each page Yes or No, and a <code>knowledge</code> tab gathers the Yes pages as clean text blocks (title, source address, page text) that you upload to your chat tool. You check the old prices, hours and offers before the assistant repeats them to customers. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>check tab (example rows are made up; old years setting: 2010 to 2024)</h3>
+<table><thead><tr><th>Page</th><th>Words</th><th>Old year</th><th>Price</th><th>Issues</th><th>Use?</th></tr></thead><tbody>
+<tr><td>/services/hair-colour</td><td>540</td><td>FALSE</td><td>TRUE</td><td>Has a price: check it</td><td>Yes</td></tr>
+<tr><td>/offers/diwali-2024</td><td>180</td><td>TRUE</td><td>TRUE</td><td>Old year; Has a price: check it</td><td>No</td></tr>
+<tr><td>/faq</td><td>1,120</td><td>FALSE</td><td>FALSE</td><td></td><td>Yes</td></tr>
+<tr><td>/blog/team-news</td><td>60</td><td>TRUE</td><td>FALSE</td><td>Old year; Short page</td><td>No</td></tr>
+<tr><td>/contact</td><td>45</td><td>FALSE</td><td>FALSE</td><td>Short page</td><td>Yes (hours and address)</td></tr>
+</tbody></table>
+<p>The Diwali 2024 offer page is the usual trap: it is still on the site, the crawler finds it, and without this check the assistant can quote last year's discount as if it were current.</p>
+
+<h2>Who this is for</h2>
+<p>Small businesses (salons, clinics, coaching centres, shops, accountants, trades) that are adding an AI chat assistant to their website or messaging channel and want it to answer from their own pages, and the freelancers and small agencies who set these up. Most chat tools let you upload files as knowledge. What you upload is what the assistant repeats, so a sheet that shows every page and flags the risky ones is quicker than reading the site page by page.</p>
+
+<h2>Step 1: crawl the site into a tab named <code>crawl</code></h2>
+<h3>With the website crawler</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/website-content-crawler-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_chat_assistant_knowledge_sheet">Website Content Crawler (Half Price)</a> on the Apify Store and use this input with your site's address:</p>
+<pre>{ "startUrls": [{ "url": "https://your-site.example/" }],
+  "maxPagesPerSite": 300, "maxDepth": 5, "useSitemap": true,
+  "minWords": 0, "outputMarkdown": true }</pre>
+<ul>
+<li><code>outputMarkdown</code>: keep it on. The <code>markdown</code> column is the page's main text with headings, lists and tables kept, and menus, footers and cookie banners removed. That is the text the assistant will learn from.</li>
+<li><code>maxPagesPerSite</code>: set it above the number of pages on the site (the default is 50).</li>
+<li><code>minWords</code>: set it to <code>0</code> so short pages such as Contact still appear; the sheet flags them instead of dropping them.</li>
+<li><code>useSitemap</code> adds pages listed in your sitemap, including old offer pages that are no longer linked from the menu. Those are the ones you most need to see.</li>
+</ul>
+<p>The crawler follows robots.txt. Run it on your own site or a client's site that you look after.</p>
+<p>In the run, export the dataset as <strong>CSV</strong>. In your Google Sheet use File → Import → Upload, "Insert new sheet", and name the tab <code>crawl</code>. Do not rename the headers.</p>
+<h3>What the columns contain</h3>
+<ul>
+<li><code>url</code>, <code>title</code>, <code>description</code>, <code>language</code>, <code>canonicalUrl</code>, <code>headings</code>: the page address and its basic details.</li>
+<li><code>wordCount</code>: words in the main content.</li>
+<li><code>markdown</code> and <code>text</code>: the main content as Markdown and as plain text.</li>
+<li><code>httpStatus</code>, <code>depth</code> and <code>fetchedAt</code>: the server response, how many clicks from the start page, and when the page was read.</li>
+<li>Pages whose main text exactly matches a page already delivered are skipped, so copies do not appear twice.</li>
+</ul>
+<p>A Google Sheets cell holds at most 50,000 characters. A very long page (a big price list or terms page) can be cut short in the sheet; the sheet flags those so you can take their text from the JSON export instead.</p>
+<h3>Free routes</h3>
+<p>For a small site you can copy each page's text into a document by hand. Free desktop crawlers such as the free version of Screaming Frog SEO Spider (up to 500 addresses) list your pages; paste a <code>crawl</code> tab with the headers <code>url</code>, <code>title</code>, <code>wordCount</code>, <code>httpStatus</code> and <code>markdown</code> (page text) and the formulas below work unchanged.</p>
+
+<h2>Step 2: the settings tab</h2>
+<p>Add a tab named <code>settings</code>. In <code>B1</code> type the pattern for years you treat as old: <code>20(1[0-9]|2[0-4])</code> matches 2010 to 2024. In <code>B2</code> type <code>80</code> (fewer words than this counts as a short page). Next year, change <code>2[0-4]</code> to <code>2[0-5]</code>.</p>
+
+<h2>Step 3: build the <code>check</code> tab</h2>
+<p>Add a tab named <code>check</code>. Row 1 holds the headers below; row 2 holds the formulas, which you copy down one row per row of <code>crawl</code>.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Page</td><td><code>=IFERROR(INDEX(crawl!$A2:$ZZ2, MATCH("url", crawl!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>B</td><td>Title</td><td>same pattern with <code>"title"</code></td></tr>
+<tr><td>C</td><td>Words</td><td>same pattern with <code>"wordCount"</code></td></tr>
+<tr><td>D</td><td>Status</td><td>same pattern with <code>"httpStatus"</code></td></tr>
+<tr><td>E</td><td>Text</td><td>same pattern with <code>"markdown"</code> (hide this column once it works)</td></tr>
+<tr><td>F</td><td>Old year</td><td><code>=IF(A2="", "", REGEXMATCH(E2, "\b(" &amp; settings!$B$1 &amp; ")\b"))</code></td></tr>
+<tr><td>G</td><td>Price</td><td><code>=IF(A2="", "", REGEXMATCH(E2, "(₹|Rs\.?|INR|€|£|\$)\s?\d"))</code></td></tr>
+<tr><td>H</td><td>Issues</td><td><code>=IF(A2="", "", TEXTJOIN("; ", TRUE, IF(AND(D2&lt;&gt;"", N(D2)&lt;&gt;200), "Status " &amp; D2, ""), IF(F2=TRUE, "Old year", ""), IF(G2=TRUE, "Has a price: check it", ""), IF(N(C2)&lt;settings!$B$2, "Short page", ""), IF(LEN(E2)&gt;=49000, "Text may be cut: use JSON export", "")))</code></td></tr>
+<tr><td>I</td><td>Use?</td><td>you type <code>Yes</code> or <code>No</code></td></tr>
+<tr><td>J</td><td>Block</td><td><code>=IF(I2="Yes", "## " &amp; B2 &amp; CHAR(10) &amp; "Source: " &amp; A2 &amp; CHAR(10) &amp; CHAR(10) &amp; E2, "")</code></td></tr>
+</tbody></table>
+<p>Notes on the formulas:</p>
+<ul>
+<li><strong>Old year</strong> catches "2024" anywhere in the text, including a copyright line or "since 2012". Read the page before marking it No; often only one sentence needs changing on the website.</li>
+<li><strong>Price</strong> only looks for a currency sign or code followed by a number. It is a prompt to check that the price on the page is today's price, not a judgement that the page is wrong.</li>
+<li><strong>Status</strong> other than 200 means the page did not load normally when it was read; check it in a browser.</li>
+</ul>
+
+<h2>Step 4: the <code>knowledge</code> tab and the upload</h2>
+<ol>
+<li>Add a tab named <code>knowledge</code> and put <code>=FILTER(check!J2:J, check!J2:J&lt;&gt;"")</code> in <code>A1</code>. Each cell is one page: its title, its address and its text.</li>
+<li>Fix the website first where you can (old offers, old prices, old hours), then crawl again, so the site and the assistant say the same thing.</li>
+<li>Download the <code>knowledge</code> tab (File → Download → Comma-separated values, or Microsoft Excel) and upload it to your chat tool's knowledge or files section if it accepts that format. If it only takes documents, copy column A into a document and save it in a format the tool accepts. Check your tool's own help pages for file types and size limits.</li>
+<li>Add a short first line of your own, such as your opening hours, booking link and "if a price is not listed here, ask the customer to call", so the assistant has a safe answer when the pages do not cover a question.</li>
+<li>Re-run the crawl after any price or offer change and replace the upload. Note the date in the sheet.</li>
+</ol>
+
+<h2>If you serve customers in the EU</h2>
+<p>From 2 August 2026, Article 50 of the EU AI Act requires that people are told when they are talking to an AI system, unless it is obvious. Our <a href="eu-ai-act-article-50-chatbot-disclosure-checklist.html">chatbot disclosure checklist</a> covers the wording.</p>
+
+<h2>Check before you act on it</h2>
+<ul class="check">
+<li>The number of rows is close to the number of pages you expect. If it is much lower, raise <code>maxPagesPerSite</code> or <code>maxDepth</code>.</li>
+<li>Open three Yes pages and compare the Text column with the live page: the main content should be there without menus or footers.</li>
+<li>Ask the assistant five real customer questions (price, hours, location, a service you no longer offer, a refund) and check each answer against the site before you switch it on for customers.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Website crawler inputs and outputs (<code>startUrls</code>, <code>maxPagesPerSite</code> default 50, <code>maxDepth</code>, <code>useSitemap</code>, <code>minWords</code> default 20, <code>outputMarkdown</code>; per-page <code>url</code>, <code>site</code>, <code>depth</code>, <code>title</code>, <code>description</code>, <code>language</code>, <code>canonicalUrl</code>, <code>headings</code>, <code>wordCount</code>, <code>markdown</code>, <code>text</code>, <code>contentHash</code>, <code>httpStatus</code>, <code>fetchedAt</code>; duplicate pages skipped; robots.txt followed): <a href="https://apify.com/laudable_instrument/website-content-crawler-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_chat_assistant_knowledge_sheet">Apify Store listing</a>.</li>
+<li>Google Sheets limits (50,000 characters per cell) and REGEXMATCH, TEXTJOIN, FILTER and INDEX/MATCH functions: Google Docs Editors Help.</li>
+<li>EU AI Act Article 50 transparency obligations and their application date: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">Regulation (EU) 2024/1689 on EUR-Lex</a>.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="page-title-meta-description-check-sheet-small-business-website-crawl-apify.html">Page title and meta description check sheet</a></li>
+<li><a href="eu-ai-act-article-50-chatbot-disclosure-checklist.html">EU AI Act Article 50 chatbot disclosure checklist</a></li>
+<li><a href="web-agency-client-website-contact-check-sheet-apify.html">Web agency client website contact check sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
