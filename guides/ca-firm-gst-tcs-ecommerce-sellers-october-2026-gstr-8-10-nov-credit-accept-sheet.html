@@ -1,0 +1,106 @@
+<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GST TCS for e-commerce sellers, October 2026: a GSTR-8 credit check and accept sheet for CA firms (operators file by 10 November)</title><meta name="description" content="A Google Sheet layout for CA firms with marketplace seller clients: one row per client per operator, expected 0.5% TCS on net value, the difference against GSTR-8, an accept or check status formula and a cash ledger tracker before the 20 November GSTR-3B."><link rel="canonical" href="https://unadhi.com/guides/ca-firm-gst-tcs-ecommerce-sellers-october-2026-gstr-8-10-nov-credit-accept-sheet.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="GST TCS for e-commerce sellers, October 2026: a GSTR-8 credit check and accept sheet for CA firms (operators file by 10 November)"><meta property="og:description" content="Operators file October 2026 GSTR-8 by Tuesday 10 November. One sheet to check every seller client TCS record, accept it and get the cash into the ledger before GSTR-3B."><meta property="og:url" content="https://unadhi.com/guides/ca-firm-gst-tcs-ecommerce-sellers-october-2026-gstr-8-10-nov-credit-accept-sheet.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}
+.signup{border:1px dashed #0a5c55;border-radius:8px;padding:10px 16px;background:#f4faf9;margin-top:1.4em}.signup p{margin:.3em 0}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "GST TCS for e-commerce sellers, October 2026: a GSTR-8 credit check and accept sheet for CA firms (operators file by 10 November)", "dateModified": "2026-10-25", "datePublished": "2026-10-25", "inLanguage": "en-IN", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/ca-firm-gst-tcs-ecommerce-sellers-october-2026-gstr-8-10-nov-credit-accept-sheet.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When is GSTR-8 for October 2026 due?", "acceptedAnswer": {"@type": "Answer", "text": "Section 52(4) of the CGST Act requires the e-commerce operator to file the monthly statement within ten days after the end of the month, so GSTR-8 for October 2026 is due by Tuesday 10 November 2026. The TCS itself must also be paid within ten days (section 52(3))."}}, {"@type": "Question", "name": "What is the GST TCS rate in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "0.5% of the net value of taxable supplies: 0.25% CGST plus 0.25% SGST or UTGST, or 0.5% IGST, since 10 July 2024 under Notification 15/2024-Central Tax."}}, {"@type": "Question", "name": "How does a seller get the TCS credit?", "acceptedAnswer": {"@type": "Answer", "text": "On the GST portal, Services, Returns, TDS and TCS Credit Received: accept or reject every record and file the statement. The accepted amount is credited to the electronic cash ledger only after the statement is filed."}}, {"@type": "Question", "name": "What happens if the seller rejects a TCS record?", "acceptedAnswer": {"@type": "Answer", "text": "It goes to Table 4 of the operator next GSTR-8 for amendment. The amended record comes back to the seller for action in a later period, so reject only after checking the settlement report."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>GST TCS for e-commerce sellers, October 2026: a GSTR-8 credit check and accept sheet for CA firms (operators file by 10 November)</h1>
+<p class="meta">Updated 25 Oct 2026 · Disclosure: the white-label calendar linked below is an Unadhi product (₹999/year). This guide is for information only, not professional advice.</p>
+<div class="answer"><p><strong>What you get:</strong> a finished Google Sheet layout with three tabs: <strong>"Oct TCS"</strong> (one row per client per e-commerce operator, with the expected 0.5% TCS formula, the difference against what the operator reported in GSTR-8, and an Accept / Check status formula), <strong>"Ledger"</strong> (when each client filed the TDS and TCS Credit Received statement and when the cash reached the electronic cash ledger), and <strong>"Open"</strong> (a FILTER of everything still pending), plus a made-up example, a 10 to 20 November plan and a WhatsApp message for sellers.</p>
+<p><strong>Short answer (checked 25 Oct 2026):</strong> e-commerce operators must file <strong>GSTR-8 for October 2026 by Tuesday 10 November 2026</strong> (section 52(4) CGST Act: within ten days after the end of the month). TCS is <strong>0.5% of the net value of taxable supplies</strong> (0.25% CGST + 0.25% SGST/UTGST, or 0.5% IGST) since 10 July 2024. Your seller clients do not get this money automatically: the records appear in <strong>Services &gt; Returns &gt; TDS and TCS Credit Received</strong>, the seller must <strong>accept or reject every record</strong>, and the accepted amount reaches the <strong>electronic cash ledger only after that statement is filed</strong>. If you want to use October TCS against the October GSTR-3B (due 20 November for monthly filers), file the statement first.</p></div>
+
+<h2>What the official sources say</h2>
+<ul class="check">
+<li><strong>Due date:</strong> section 52(3) and 52(4) of the CGST Act: the operator pays TCS and files the monthly statement within ten days after the end of the month. The GSTR-8 FAQ on the GST portal says the due date is the 10th of the following month unless extended by notification. We found no extension for October 2026.</li>
+<li><strong>Rate:</strong> Notification 15/2024-Central Tax (10 July 2024) cut the CGST part from 0.5% to 0.25%. The GSTN advisory of 2 August 2024 confirms the total is 0.5% (0.25% + 0.25%, or 0.5% IGST) from 10 July 2024.</li>
+<li><strong>Net value:</strong> taxable supplies made through the operator in the month, less supplies returned in that month, excluding services notified under section 9(5) (where the operator itself pays the tax).</li>
+<li><strong>Seller action:</strong> the GST portal manual says action on all auto-populated records is mandatory before the statement can be filed; rejected records go to Table 4 of the operator's next GSTR-8 for amendment; amended records must be acted on again in the later period.</li>
+<li><strong>Place of supply:</strong> the TCS Credit Received summary shows a POS column from April 2025 (Notification 09/2025-Central Tax), which helps you match IGST versus CGST/SGST rows.</li>
+<li><strong>Late filing by the operator:</strong> the GSTR-8 FAQ says late fee applies from the October 2022 period and interest applies to late payment. We have not quoted amounts here; check section 47 and section 50 before you advise an operator client.</li>
+</ul>
+
+<h2>Tab "Oct TCS": one row per client per operator</h2>
+<table><thead><tr><th>Col</th><th>Field</th><th>What to enter or formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Client</td><td>Trade name</td></tr>
+<tr><td>B</td><td>Client GSTIN</td><td>From your client master</td></tr>
+<tr><td>C</td><td>Operator</td><td>Marketplace name as shown on the portal</td></tr>
+<tr><td>D</td><td>Operator GSTIN</td><td>Copy from the TCS Credit Received summary (one GSTIN per state)</td></tr>
+<tr><td>E</td><td>Gross sales via operator (Oct)</td><td>From the operator's October settlement or tax report</td></tr>
+<tr><td>F</td><td>Returns via operator (Oct)</td><td>Same report, returns in October</td></tr>
+<tr><td>G</td><td>Net value per client books</td><td><code>=E2-F2</code></td></tr>
+<tr><td>H</td><td>Expected TCS</td><td><code>=ROUND(G2*0.5%,2)</code></td></tr>
+<tr><td>I</td><td>Net value shown by operator</td><td>From the portal record (GSTR-8 data)</td></tr>
+<tr><td>J</td><td>TCS shown by operator</td><td>IGST + CGST + SGST from the portal record</td></tr>
+<tr><td>K</td><td>Difference</td><td><code>=J2-H2</code></td></tr>
+<tr><td>L</td><td>Matches GSTR-1 Table 14?</td><td>Value the client reported in GSTR-1 Table 14 (supplies through operators who collect TCS) for this operator GSTIN; <code>=IF(ABS(L2-G2)&lt;=1,"Yes","Check")</code> in a helper column</td></tr>
+<tr><td>M</td><td>Status</td><td><code>=IF(J2="","WAIT: operator GSTR-8 due 10 Nov",IF(ABS(K2)&lt;=10,"ACCEPT",IF(K2&lt;0,"CHECK: operator shows less","CHECK: operator shows more")))</code></td></tr>
+<tr><td>N</td><td>Action taken</td><td>Accepted / Rejected / Left for next period, with date</td></tr>
+</tbody></table>
+<p>The ₹10 tolerance in column M is our working rule for rounding across many orders, not a legal threshold. Change it to suit your clients. Reject only after you have checked the operator's report: a rejected record goes back to the operator and the credit waits until they amend it.</p>
+
+<h2>Tab "Ledger": one row per client</h2>
+<table><thead><tr><th>Col</th><th>Field</th><th>What to enter or formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Client GSTIN</td><td>Same as Oct TCS column B</td></tr>
+<tr><td>B</td><td>TCS accepted (₹)</td><td><code>=SUMIFS('Oct TCS'!J:J,'Oct TCS'!B:B,A2,'Oct TCS'!N:N,"Accepted*")</code></td></tr>
+<tr><td>C</td><td>Statement filed on</td><td>Date the TDS and TCS Credit Received statement was filed (DSC or EVC)</td></tr>
+<tr><td>D</td><td>Seen in cash ledger on</td><td>Date you saw the credit in the electronic cash ledger</td></tr>
+<tr><td>E</td><td>GSTR-3B due</td><td><code>=DATE(2026,11,20)</code> for monthly filers; QRMP clients pay October by 25 November through PMT-06</td></tr>
+<tr><td>F</td><td>Status</td><td><code>=IF(B2=0,"NOTHING TO FILE",IF(C2="",IF(TODAY()&gt;E2-3,"URGENT: file credit statement","OPEN: file after 10 Nov"),IF(D2="","FILED: check cash ledger","DONE")))</code></td></tr>
+</tbody></table>
+
+<h2>Tab "Open": what still needs work</h2>
+<p><code>=FILTER('Oct TCS'!A2:N,'Oct TCS'!M2:M&lt;&gt;"ACCEPT",'Oct TCS'!A2:A&lt;&gt;"")</code> lists every row that is waiting or needs a check. Add a second FILTER on Ledger column F for anything not "DONE".</p>
+
+<h2>Made-up example (not a real client or marketplace)</h2>
+<div class="next"><p><strong>Example Home Linen</strong> (sells through "Example Marketplace A" and "Example Marketplace B"). October: Marketplace A gross ₹4,80,000, returns ₹30,000, net ₹4,50,000, expected TCS ₹2,250. Portal record shows net ₹4,50,000 and TCS ₹2,250: <strong>ACCEPT</strong>. Marketplace B gross ₹1,20,000, returns ₹20,000, net ₹1,00,000, expected ₹500. Portal shows net ₹1,20,000 and TCS ₹600: <strong>CHECK: operator shows more</strong>. The settlement report shows the returns were processed on 2 November, so the operator is probably right to count them in November; the firm accepts the record and notes that November returns will be higher. Ledger: TCS accepted ₹2,850, statement filed 12 Nov, credit seen 12 Nov, used in GSTR-3B on 18 Nov.</p></div>
+
+<h2>Plan for 10 to 20 November</h2>
+<ul class="check">
+<li><strong>Before Tue 10 Nov:</strong> ask every seller client for the October settlement or tax report from each marketplace.</li>
+<li><strong>Wed 11 Nov:</strong> file the October GSTR-1 for monthly filers, with operator-wise values in Table 14. Use the same numbers in column G.</li>
+<li><strong>Thu 12 to Fri 13 Nov:</strong> open TCS Credit Received for each client, fill columns I and J, accept matches, investigate the rest.</li>
+<li><strong>By Mon 16 Nov:</strong> file the TDS and TCS Credit Received statement for every client with accepted records, then check the cash ledger.</li>
+<li><strong>By Fri 20 Nov:</strong> file the October GSTR-3B; the cash ledger balance from TCS can be used to pay tax.</li>
+</ul>
+
+<h2>WhatsApp message to a seller client</h2>
+<p>"Hello, marketplaces must report October TCS by 10 November. Please send us your October settlement or tax report from each marketplace by Monday 9 November. We will check that each one collected 0.5% on your net sales and accept the credit on the GST portal so the money reaches your cash ledger before your October GSTR-3B on 20 November."</p>
+
+<h2>Related guides</h2>
+<ul>
+<li><a href="ca-firm-gst-tds-gstr-7-october-2026-metal-scrap-government-10-nov-sheet.html">GST TDS (GSTR-7) for October 2026 by 10 November</a></li>
+<li><a href="ca-firm-gstr1-chase-before-11th.html">GSTR-1 chase list before the 11th</a></li>
+<li><a href="ca-firm-gstr3b-chase-list-before-20th.html">GSTR-3B chase list before the 20th</a></li>
+<li><a href="ca-firm-gst-qrmp-pmt-06-october-2026-monthly-payment-25-nov-sheet.html">QRMP PMT-06 for October 2026 by 25 November</a></li>
+<li><a href="ca-firm-november-2026-due-date-client-chase-list.html">November 2026 due-date chase list for CA firms</a></li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<div class="next"><p>The <a href="https://mininglife1.gumroad.com/l/ca-firm-compliance-calendar?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=ca_gst_tcs_gstr8_oct2026">White-Label Client Compliance Calendar for CA Firms</a> (₹999/year) sends four quarterly packs with your firm name on the DOCX, PDF and WhatsApp image, plus national .ics/.xlsx and extension notes. Files are made after checkout (not instant). 14-day refund from when you receive the first pack. Disclosure: that is an Unadhi product. You can use this TCS sheet without buying anything.</p></div>
+
+<h2>Sources</h2>
+<ul class="src">
+<li><a href="https://taxinformation.cbic.gov.in/content/html/tax_repository/gst/acts/2017_CGST_act/active/chapter10/section52_v1.00.html">CBIC: section 52, CGST Act 2017 (collection of tax at source, ten-day deadlines, net value)</a></li>
+<li><a href="https://gstcouncil.gov.in/sites/default/files/2024-09/central-tax-15-2024-11072024.pdf">Notification 15/2024-Central Tax, 10 July 2024 (0.25% CGST)</a></li>
+<li><a href="https://tutorial.gst.gov.in/userguide/returns/FAQs_GSTR-8.htm">GST portal: FAQs on Form GSTR-8 (due date, late fee, 0.5% to 1% validation from July 2024)</a></li>
+<li><a href="https://tutorial.gst.gov.in/userguide/inputtaxcredit/manual_tds_and_tcs_credit_received.htm">GST portal manual: TDS and TCS Credit Received (accept/reject, cash ledger credit after filing, POS column)</a></li>
+</ul>
+<div class="note"><p>This sheet is a working aid, not professional advice. Due dates and portal behaviour can change; check the GST portal before you rely on them. The example business and marketplaces are made up. Checked on 25 October 2026. Spot an error? Write to mininglife7@gmail.com.</p></div>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
