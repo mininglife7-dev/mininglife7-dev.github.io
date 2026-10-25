@@ -1,0 +1,161 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Client-hunting sheet for Indian recruitment agencies: which companies on Zoho Recruit and Keka are hiring in your desk, and which roles are open 30+ days</title><meta name="description" content="A free Google Sheet for Indian recruitment and staffing agencies: one row per target company with open roles, new in 7 days, roles open 30+ days, top city, roles in your desk and experience band, weekly change and a Pitch now, Growing, Warm, Watch or Quiet status."><link rel="canonical" href="https://unadhi.com/guides/india-recruitment-agency-client-hunting-sheet-companies-hiring-zoho-recruit-keka-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Client-hunting sheet for Indian recruitment agencies: Zoho Recruit and Keka hiring signals"><meta property="og:description" content="One row per target company: open roles, new this week, hard-to-fill roles open 30+ days, top city and roles in your desk, from public Zoho Recruit and Keka career pages."><meta property="og:url" content="https://unadhi.com/guides/india-recruitment-agency-client-hunting-sheet-companies-hiring-zoho-recruit-keka-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Client-hunting sheet for Indian recruitment agencies: which companies on Zoho Recruit and Keka are hiring in your desk, and which roles are open 30+ days", "dateModified": "2026-10-25", "datePublished": "2026-10-25", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/india-recruitment-agency-client-hunting-sheet-companies-hiring-zoho-recruit-keka-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I know if a company uses Zoho Recruit or Keka?", "acceptedAnswer": {"@type": "Answer", "text": "Open any job on its careers page. If the address contains zohorecruit, keka.com/careers or freshteam.com, the sheet works for that company."}}, {"@type": "Question", "name": "Why is Open 30+ days a good signal for an agency?", "acceptedAnswer": {"@type": "Answer", "text": "A role that stays open for a month usually means the company's own posting and referrals have not found the right person. That is when an outside recruiter is most useful. Check the job is still open first."}}, {"@type": "Question", "name": "Why does a company show 0 open roles?", "acceptedAnswer": {"@type": "Answer", "text": "Either it has no open jobs, the company name in pipeline does not match the export exactly, or the career page address was wrong. Check BOARDS_SUMMARY in the run's key-value store."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Client-hunting sheet for Indian recruitment agencies: which companies on Zoho Recruit and Keka are hiring in your desk, and which roles are open 30+ days</h1>
+<p class="meta">Updated 25 Oct 2026 · Disclosure: the jobs actor linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet layout works with any export that has one row per job with company, title, city and published date. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> a <strong>client-hunting sheet</strong> in one Google Sheet with <strong>one row per Indian company you want as a client</strong>: how many <strong>roles are open</strong>, how many were <strong>published in the last 7 days</strong>, how many have been <strong>open for 30+ days</strong> (the hard-to-fill roles an agency can help with), the <strong>city hiring most</strong>, how many roles fall in <strong>your desk</strong> (for example sales, accounts or IT), how many ask for <strong>your experience band</strong>, the <strong>change since last week</strong> and a <strong>Pitch now / Growing / Warm / Watch / Quiet</strong> status. It is built for Indian recruitment and staffing agencies, freelance recruiters and HR service firms. The jobs come from public company career pages on Zoho Recruit and Keka (plus Freshteam while it lasts). The example rows and numbers are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>pipeline tab (example rows are made up)</h3>
+<table><thead><tr><th>Company</th><th>Open roles</th><th>New in 7 days</th><th>Open 30+ days</th><th>Top city</th><th>Roles in your desk</th><th>Your experience band</th><th>Change vs last week</th><th>Status</th></tr></thead><tbody>
+<tr><td>Example Foods Pvt Ltd</td><td>14</td><td>2</td><td>5</td><td>Pune</td><td>4</td><td>3</td><td>+1</td><td>Pitch now: hard-to-fill roles in your desk</td></tr>
+<tr><td>Example Fintech</td><td>22</td><td>6</td><td>1</td><td>Bengaluru</td><td>0</td><td>0</td><td>+6</td><td>Growing: call this week</td></tr>
+<tr><td>Example Clinics</td><td>5</td><td>0</td><td>0</td><td>Hyderabad</td><td>2</td><td>1</td><td>0</td><td>Warm: your desk is hiring</td></tr>
+<tr><td>Example Textiles</td><td>0</td><td>0</td><td>0</td><td></td><td>0</td><td>0</td><td>-2</td><td>Quiet</td></tr>
+</tbody></table>
+<p>"Roles in your desk" counts jobs whose title contains the word you set (for example <code>Sales</code>, <code>Accountant</code> or <code>Java</code>). "Your experience band" counts Keka jobs whose stated minimum experience is at least the number of years you set, because most agencies place mid-level and senior people, not freshers.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Recruitment and staffing agencies in India</strong>: a company that has had five sales roles open for over a month is a better first call than one that just posted a single role and will fill it from referrals.</li>
+<li><strong>Freelance and boutique recruiters</strong>: keep a shortlist of 20 to 200 target companies and see each Monday which ones are hiring in your desk.</li>
+<li><strong>HR service firms</strong> (payroll, background checks, onboarding, training): a company adding many people this month is a good time to offer help.</li>
+</ul>
+<p>Many Indian SMBs and startups publish their openings on a Zoho Recruit or Keka career page rather than (or before) a job portal. Those pages are public and need no login, so you can read them like a candidate would.</p>
+
+<h2>Step 1: the <code>prospects</code> tab</h2>
+<p>Add a tab named <code>prospects</code> with <code>A Company</code>, <code>B Career page</code>, <code>C Why they matter</code> and <code>D Owner</code> in row 1, then one row per target company. In <code>B Career page</code> put the company's career page address. You find it by opening the company's website, clicking Careers and then any job:</p>
+<ul>
+<li>Zoho Recruit pages look like <code>https://examplefoods.zohorecruit.in/jobs/Careers</code> (or <code>.com</code> / <code>.eu</code>).</li>
+<li>Keka pages look like <code>https://examplefintech.keka.com/careers</code>.</li>
+<li>Freshteam pages look like <code>https://exampleclinics.freshteam.com/jobs</code>.</li>
+</ul>
+<p>The actor also accepts short forms such as <code>zoho:examplefoods</code>, <code>keka:examplefintech</code> or <code>freshteam:exampleclinics</code>. If the careers page shows Darwinbox, Naukri or a plain list on the company's own site, this sheet will not read it: leave that company out or track it by hand.</p>
+
+<h2>Step 2: run the jobs pull for every company at once</h2>
+<p>Open <a href="https://apify.com/laudable_instrument/india-ats-jobs-zoho-recruit-keka?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_india_ats_agency_clients">India ATS Jobs: Zoho Recruit, Keka, Freshteam</a> on the Apify Store. It reads each public career page and returns one row per open job in the same columns, whichever of the three systems the company uses. To build its input from your sheet, add a tab named <code>settings</code> and put this in any empty cell (for example <code>D1</code>), then copy the result into the input's JSON view:</p>
+<pre>="{""boards"": [" &amp; TEXTJOIN(",", TRUE, ARRAYFORMULA(IF(prospects!B2:B="", "", """" &amp; TRIM(prospects!B2:B) &amp; """"))) &amp; "], ""postedWithinDays"": 0, ""includeDescription"": false}"</pre>
+<ul>
+<li><code>postedWithinDays: 0</code> returns every open job, which you need for the open-roles and 30+ days counts. The 7-day count is worked out in the sheet.</li>
+<li><code>includeDescription: false</code> leaves out the long job text, so the export is small and easy to import.</li>
+<li>Leave <code>keywords</code> empty. Your desk word is applied in the sheet, so you still see each company's total hiring.</li>
+</ul>
+<p>When the run succeeds, download the dataset as CSV and import it into a new tab named <code>jobs</code> (File → Import → Upload → Replace current sheet). Each row is one job with fields such as <code>company</code>, <code>title</code>, <code>city</code>, <code>experience</code> (Keka, for example <code>1-3</code>), <code>department</code>, <code>publishedAt</code>, <code>ats</code> and <code>jobUrl</code>. Also open the run's key-value store and check the <code>BOARDS_SUMMARY</code> record: it shows a status for every career page, so a wrong address shows up there instead of silently giving zero.</p>
+
+<h2>Step 3: find the columns by name</h2>
+<p>CSV column order can change between runs, so the sheet looks up each column by its header. In the <code>settings</code> tab, put these in <code>A2:B8</code>:</p>
+<table><thead><tr><th>A</th><th>B (formula)</th></tr></thead><tbody>
+<tr><td>company</td><td><code>=MATCH(A2, jobs!$1:$1, 0)</code></td></tr>
+<tr><td>title</td><td><code>=MATCH(A3, jobs!$1:$1, 0)</code></td></tr>
+<tr><td>city</td><td><code>=MATCH(A4, jobs!$1:$1, 0)</code></td></tr>
+<tr><td>experience</td><td><code>=MATCH(A5, jobs!$1:$1, 0)</code></td></tr>
+<tr><td>publishedAt</td><td><code>=MATCH(A6, jobs!$1:$1, 0)</code></td></tr>
+<tr><td>ats</td><td><code>=MATCH(A7, jobs!$1:$1, 0)</code></td></tr>
+<tr><td>jobUrl</td><td><code>=MATCH(A8, jobs!$1:$1, 0)</code></td></tr>
+</tbody></table>
+<p>Then put your desk word in <code>settings!B10</code> (for example <code>Sales</code>) and your minimum years of experience in <code>settings!B11</code> (for example <code>3</code>). If a MATCH shows <code>#N/A</code>, open the <code>jobs</code> tab and copy the exact header text into column A.</p>
+
+<h2>Step 4: the <code>pipeline</code> tab, one row per company</h2>
+<p>After the first run, copy each company name exactly as it appears in the <code>company</code> column of <code>jobs</code> into <code>pipeline!A2</code> downwards (the career page sometimes uses a longer legal name than you typed). Row 1 headers: <code>A Company</code>, <code>B Open roles</code>, <code>C New in 7 days</code>, <code>D Open 30+ days</code>, <code>E Top city</code>, <code>F Roles in your desk</code>, <code>G Your experience band</code>, <code>H Last week</code>, <code>I Change</code>, <code>J Status</code>. Formulas for row 2 (copy down):</p>
+<pre>B2  =COUNTIF(INDEX(jobs!$A:$ZZ, 0, settings!$B$2), A2)
+
+C2  =SUMPRODUCT((INDEX(jobs!$A$2:$ZZ, 0, settings!$B$2)=A2) *
+      (IFERROR(DATEVALUE(LEFT(INDEX(jobs!$A$2:$ZZ, 0, settings!$B$6), 10)), 0) &gt;= TODAY()-7))
+
+D2  =SUMPRODUCT((INDEX(jobs!$A$2:$ZZ, 0, settings!$B$2)=A2) *
+      (IFERROR(DATEVALUE(LEFT(INDEX(jobs!$A$2:$ZZ, 0, settings!$B$6), 10)), 0) &gt; 0) *
+      (IFERROR(DATEVALUE(LEFT(INDEX(jobs!$A$2:$ZZ, 0, settings!$B$6), 10)), 0) &lt;= TODAY()-30))
+
+E2  =IFERROR(INDEX(QUERY({INDEX(jobs!$A$2:$ZZ, 0, settings!$B$2), INDEX(jobs!$A$2:$ZZ, 0, settings!$B$4)},
+      "select Col2, count(Col1) where Col1 = '" &amp; SUBSTITUTE(A2, "'", "''") &amp; "' and Col2 &lt;&gt; ''
+       group by Col2 order by count(Col1) desc limit 1 label count(Col1) ''", 0), 1, 1), "")
+
+F2  =SUMPRODUCT((INDEX(jobs!$A$2:$ZZ, 0, settings!$B$2)=A2) *
+      ISNUMBER(SEARCH(settings!$B$10, INDEX(jobs!$A$2:$ZZ, 0, settings!$B$3))))
+
+G2  =SUMPRODUCT((INDEX(jobs!$A$2:$ZZ, 0, settings!$B$2)=A2) *
+      (IFERROR(VALUE(REGEXEXTRACT(TO_TEXT(INDEX(jobs!$A$2:$ZZ, 0, settings!$B$5)), "\d+")), -1) &gt;= settings!$B$11))
+
+I2  =IF(H2="", "", B2-H2)
+
+J2  =IF(B2=0, "Quiet",
+      IF(AND(F2&gt;=1, D2&gt;=1), "Pitch now: hard-to-fill roles in your desk",
+      IF(C2&gt;=3, "Growing: call this week",
+      IF(F2&gt;=1, "Warm: your desk is hiring", "Watch"))))</pre>
+<p>The thresholds in <code>J2</code> (30 days, 3 new roles in a week) are <strong>our working rule, not an industry standard</strong>. Change them to fit your desk: IT roles often stay open longer than sales roles.</p>
+<p>Optional: add a tab named <code>aged</code> with <code>=FILTER(jobs!A:ZZ, ISNUMBER(SEARCH(settings!B10, INDEX(jobs!A:ZZ, 0, settings!B3))), IFERROR(DATEVALUE(LEFT(INDEX(jobs!A:ZZ, 0, settings!B6), 10)), TODAY()) &lt;= TODAY()-30)</code>. It lists every role in your desk that has been open 30+ days, with its job link, so you can quote the exact role in your first message.</p>
+
+<h2>Step 5: the weekly routine (about 20 minutes)</h2>
+<ol>
+<li>Monday morning: before importing, copy column <code>B Open roles</code> and paste it as values into <code>H Last week</code>.</li>
+<li>Run the actor again with the same input and import the new CSV into <code>jobs</code> (replace the tab).</li>
+<li>Sort <code>pipeline</code> by Status. Open two or three job links for each "Pitch now" company and check the roles are still open (see the Zoho note below).</li>
+<li>Write to the company's HR or careers inbox, or call the number on its website. Log the date in <code>prospects!D</code> so two people don't call the same company.</li>
+<li>Add new target companies to <code>prospects</code> and drop the ones that said no.</li>
+</ol>
+
+<h2>First message template</h2>
+<pre>Subject: [Role title] in [city]: shortlisted candidates in 7 days
+
+Hello [Company] team,
+
+I saw the [Role title] role on your careers page has been open for a few weeks.
+We place [desk, e.g. sales and business development] people in [city/region]
+and have placed similar roles at [type of company, no client names without permission].
+
+If useful, I can send 3 screened profiles within 7 days. Our fee is
+[your terms], payable only on joining.
+
+Regards,
+[Your name], [Agency], [phone]</pre>
+<p>Keep it short, name the exact role, and never claim a placement you didn't make.</p>
+
+<h2>Honest limits</h2>
+<ul>
+<li><strong>Only Zoho Recruit, Keka and Freshteam career pages.</strong> Darwinbox and Naukri are not supported, and neither are jobs listed only on a company's own website or on job portals.</li>
+<li><strong>Zoho Recruit companies can choose to keep filled or closed jobs visible</strong> on their career site (Zoho documents a "Show filled/closed/unpublished jobs" option). Such a job can look "open 30+ days" when it is already filled. Open the job link before you pitch.</li>
+<li><strong>Freshteam is closing down.</strong> Freshworks' own sunset FAQ says renewals stopped from 7 June 2026 and accounts stay reachable for 90 days after the subscription ends. Freshteam pages also give no published date, so their jobs count in "Open roles" but never in "New in 7 days" or "Open 30+ days". Expect those companies to move to another system.</li>
+<li><strong>Published date is the date the company shows.</strong> Some companies re-post an old role, which resets the date, so a hard-to-fill role can look new.</li>
+<li><strong>Experience is only stated on Keka</strong> (for example <code>1-3</code>), so "Your experience band" is 0 for Zoho and Freshteam jobs. Read the title instead.</li>
+<li><strong>Keka rarely states full-time or contract</strong>, so this sheet does not filter by employment type.</li>
+<li><strong>This lists jobs, not people.</strong> When you contact someone, use the company's published HR or careers contact, honour opt-outs, and follow India's Digital Personal Data Protection Act, 2023 and its rules for any personal data you keep. This is not legal advice.</li>
+</ul>
+<p>Sources checked today (25 Oct 2026): Zoho Recruit help pages on <a href="https://help.zoho.com/portal/en/kb/recruit/talent-sourcing/career-site/google-tag-manager/articles/setting-up-your-career-site">setting up a career site</a> and <a href="https://help.zoho.com/portal/en/kb/recruit/talent-sourcing/career-site/google-tag-manager/articles/retaining-closed-jobs-on-the-careers-site">retaining closed jobs on the career site</a>; the <a href="https://support.freshteam.com/support/solutions/articles/19000162935-freshteam-sunset-support-faqs">Freshteam sunset support FAQ</a>; the robots.txt of a Keka careers host (it allows <code>/careers</code>); and the actor's README and input schema on Apify.</p>
+
+<h2>Related</h2>
+<ul>
+<li><a href="india-ats-jobs-zoho-recruit-keka/">How to run the India ATS jobs actor (Zoho Recruit, Keka, Freshteam)</a></li>
+<li><a href="hiring-signal-sheet-target-companies-new-job-openings-per-team-greenhouse-lever-ashby-apify.html">Hiring signal sheet for Greenhouse, Lever and Ashby companies</a></li>
+<li><a href="speculative-job-application-sheet-company-careers-jobs-hr-inbox-follow-up-apify.html">Speculative job application sheet (find the HR inbox)</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Turn a website contact export into a call sheet</a></li>
+<li><a href="vendor-master-gstin-pan-ifsc-check-sheet-before-payment-run-gstr-2b-apify.html">GSTIN, PAN and IFSC check sheet</a></li>
+</ul>
+
+<h2>Questions</h2>
+<h3>How do I know if a company uses Zoho Recruit or Keka?</h3>
+<p>Open any job on its careers page. If the address contains zohorecruit, keka.com/careers or freshteam.com, the sheet works for that company.</p>
+<h3>Why is "Open 30+ days" a good signal for an agency?</h3>
+<p>A role that stays open for a month usually means the company's own posting and referrals have not found the right person. That is when an outside recruiter is most useful. Check the job is still open first.</p>
+<h3>Why does a company show 0 open roles?</h3>
+<p>Either it has no open jobs, the company name in pipeline does not match the export exactly, or the career page address was wrong. Check BOARDS_SUMMARY in the run's key-value store.</p>
+
+<p class="note">Partner programme opening soon: join the free waitlist. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received. <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">Join the partner waitlist</a></p>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
