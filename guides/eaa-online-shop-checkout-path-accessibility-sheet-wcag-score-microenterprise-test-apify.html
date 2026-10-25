@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>European Accessibility Act check sheet for online shops: a WCAG score for every page on the way to checkout, a microenterprise test and the information you must publish</title><meta name="description" content="A free Google Sheet for online shops selling to EU consumers: does the EAA apply (microenterprise test from Article 3(23)), a 0-100 WCAG score and worst problem for every page from home to payment, the Annex V information checklist and the Article 14 burden record."><link rel="canonical" href="https://unadhi.com/guides/eaa-online-shop-checkout-path-accessibility-sheet-wcag-score-microenterprise-test-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="European Accessibility Act check sheet for online shops"><meta property="og:description" content="Does the EAA apply to your shop? Microenterprise test, a WCAG score and fix for every page on the path to checkout, and the Annex V information checklist."><meta property="og:url" content="https://unadhi.com/guides/eaa-online-shop-checkout-path-accessibility-sheet-wcag-score-microenterprise-test-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "European Accessibility Act check sheet for online shops: a WCAG score for every page on the way to checkout, a microenterprise test and the information you must publish", "dateModified": "2026-10-25", "datePublished": "2026-10-25", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/eaa-online-shop-checkout-path-accessibility-sheet-wcag-score-microenterprise-test-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "My shop is outside the EU. Does the EAA apply?", "acceptedAnswer": {"@type": "Answer", "text": "If you offer your shop to consumers in the EU, the Directive's definition of service provider includes you (Article 3(4)), unless you are a microenterprise. Enforcement is by each EU country's authority."}}, {"@type": "Question", "name": "Which WCAG version does the EAA require?", "acceptedAnswer": {"@type": "Answer", "text": "The Directive itself does not name a WCAG version. It asks for websites and apps to be perceivable, operable, understandable and robust, and lets providers use harmonised standards published in the Official Journal. Many teams test against WCAG 2.1 AA as a practical baseline."}}, {"@type": "Question", "name": "We have 8 staff and EUR 3 million turnover. Are we a microenterprise?", "acceptedAnswer": {"@type": "Answer", "text": "By Article 3(23), yes if your balance sheet total is EUR 2 million or less: the test is fewer than 10 people and turnover or balance sheet total not over EUR 2 million. Check your country's law and ask an adviser if unsure."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>European Accessibility Act check sheet for online shops: a WCAG score for every page on the way to checkout, a microenterprise test and the information you must publish</h1>
+<p class="meta">Updated 25 Oct 2026 · Disclosure: the scanner linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet layout works with any scanner that exports a score and issue counts per page. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. General information, not legal advice.</p>
+<div class="answer"><p><strong>What you get:</strong> a <strong>European Accessibility Act (EAA) checkout-path sheet</strong> in one Google Sheet for an online shop that sells to consumers in the EU. Tab 1 answers <strong>"does the EAA apply to my shop?"</strong> with a microenterprise test built from the Directive's own definition. Tab 2 has <strong>one row per page a customer must get through to buy</strong> (home, category, product, search, cart, checkout, payment, account, contact, returns) with a <strong>0-100 automated WCAG score</strong>, critical and serious problem counts, the <strong>worst problem with a one-line fix</strong>, a keyboard-test column and a status. Tab 3 is the <strong>accessibility information checklist</strong> (Annex V), and tab 4 is the <strong>record you must keep</strong> if you rely on the "disproportionate burden" exception. The example rows and numbers are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>path tab (example rows are made up)</h3>
+<table><thead><tr><th>Step</th><th>Page</th><th>Score</th><th>Critical</th><th>Serious</th><th>Worst problem</th><th>Keyboard test</th><th>Status</th></tr></thead><tbody>
+<tr><td>Product</td><td>/products/linen-shirt</td><td>78</td><td>1</td><td>2</td><td>Buttons must have discernible text (size picker)</td><td>No</td><td>Fix before next sale</td></tr>
+<tr><td>Cart</td><td>/cart</td><td>88</td><td>0</td><td>2</td><td>Elements must meet minimum colour contrast</td><td>Yes</td><td>Fix this month</td></tr>
+<tr><td>Checkout</td><td>/checkout</td><td>not checked</td><td></td><td></td><td></td><td>No</td><td>Check address or test by hand</td></tr>
+<tr><td>Contact</td><td>/pages/contact</td><td>100</td><td>0</td><td>0</td><td></td><td>Yes</td><td>OK for now</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>Small online shops selling to EU consumers</strong> on Shopify, WooCommerce or any other cart, including shops based outside the EU: the Directive defines a service provider as anyone who provides a service on the Union market "or makes offers to provide such a service to consumers in the Union" (Article 3(4)).</li>
+<li><strong>Exporters and D2C brands</strong> (for example from India, the UK or the US) shipping to EU customers from their own site.</li>
+<li><strong>Web agencies and freelancers</strong> who build shops and want a one-page answer for a client who asks "do we need to do anything about the EAA?"</li>
+</ul>
+
+<h2>Step 1: the scope tab (does the EAA apply to you?)</h2>
+<p>Directive (EU) 2019/882 applies to <strong>e-commerce services provided to consumers after 28 June 2025</strong> (Article 2(2)(f)). It defines e-commerce services as "services provided at a distance, through websites and mobile device-based services by electronic means and at the individual request of a consumer with a view to concluding a consumer contract" (Article 3(30)). <strong>Microenterprises providing services are exempt</strong> from the service accessibility requirements (Article 4(5)). A microenterprise "employs fewer than 10 persons and ... has an annual turnover not exceeding EUR 2 million or an annual balance sheet total not exceeding EUR 2 million" (Article 3(23)).</p>
+<p>Add a tab named <code>scope</code> and type these labels in column A, your answers in column B:</p>
+<table><thead><tr><th>Cell</th><th>Question</th><th>Answer</th></tr></thead><tbody>
+<tr><td>B2</td><td>Do consumers in the EU buy from your site or app? (Yes/No)</td><td>Yes</td></tr>
+<tr><td>B3</td><td>Number of people employed</td><td>14</td></tr>
+<tr><td>B4</td><td>Annual turnover in EUR</td><td>1,200,000</td></tr>
+<tr><td>B5</td><td>Annual balance sheet total in EUR</td><td>600,000</td></tr>
+<tr><td>B6</td><td>Microenterprise?</td><td><code>=AND(B3&lt;10, OR(B4&lt;=2000000, B5&lt;=2000000))</code></td></tr>
+<tr><td>B7</td><td>Result</td><td>formula below</td></tr>
+</tbody></table>
+<pre>=IF(B2&lt;&gt;"Yes", "No EU consumer sales: the e-commerce part of the EAA probably does not apply",
+ IF(B6, "Microenterprise: exempt from the service requirements (Art. 4(5)). Fixing the checkout still wins sales",
+ "In scope since 28 June 2025: work through the path, info and burden tabs"))</pre>
+<p>The Directive is put into force through each EU country's own law, and the authority that checks shops differs by country. If your numbers sit close to the limits, or you sell only to businesses, ask a local adviser.</p>
+
+<h2>Step 2: the path tab (every page between "I want this" and "paid")</h2>
+<p>Annex I of the Directive asks services to make "websites, including the related online applications, and mobile device-based services, including mobile applications, accessible in a consistent and adequate way by making them perceivable, operable, understandable and robust" (Section III(c)). Those four words are the four principles of WCAG. For e-commerce it also names "the functionality for identification, security and payment" and "identification methods, electronic signatures, and payment services" (Section IV(g)), so the login and payment steps matter as much as the product page.</p>
+<p>Add a tab named <code>path</code> with headers <strong>A Step</strong>, <strong>B Page URL</strong>, <strong>C Score</strong>, <strong>D Critical</strong>, <strong>E Serious</strong>, <strong>F Worst problem</strong>, <strong>G How to fix</strong>, <strong>H Keyboard test</strong>, <strong>I Status</strong>, <strong>J Fix by</strong>. Fill A and B with one row per step: home, one category page, your two best-selling product pages, search results, cart, checkout, account login, contact, returns or delivery info, and any app web view. Use full addresses with <code>https://</code>.</p>
+
+<h3>Run the scan on every page at once</h3>
+<p>Open the <a href="https://apify.com/laudable_instrument/website-accessibility-wcag-scanner?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_wcag_eaa_shop_checkout">Website Accessibility Scanner (WCAG 2.1 AA, axe-core)</a> on the Apify Store. It loads each page in a real Chromium browser and runs the open-source axe-core rules for WCAG 2.0 and 2.1 Level A and AA. Its README lists pricing as $0.004 per page scanned, with pages that fail to load or are blocked by robots.txt not charged; check the Store page for the current price. To build the input from your sheet, put this in any empty cell of a tab named <code>settings</code> and copy the result into the input's JSON view:</p>
+<pre>="{""startUrls"": [" &amp; TEXTJOIN(",", TRUE, ARRAYFORMULA(IF(path!B2:B="", "", "{""url"": """ &amp; TRIM(path!B2:B) &amp; """}"))) &amp; "], ""maxPages"": " &amp; COUNTA(path!B2:B) &amp; ", ""respectRobotsTxt"": true}"</pre>
+<p>When the run finishes, export the dataset as CSV and import it into the same Google Sheet as a new tab named <code>results</code>. Apify's CSV export turns nested fields into columns such as <code>byImpact/critical</code> and <code>issues/0/help</code>; issues are listed worst first.</p>
+
+<h3>Pull the results into the path tab</h3>
+<p>In C2 (copy down, and across to D to G changing only the header text in quotes):</p>
+<pre>=IF($B2="", "", IFERROR(INDEX(results!A:ZZ, MATCH($B2, INDEX(results!A:ZZ, 0, MATCH("url", results!1:1, 0)), 0), MATCH("score", results!1:1, 0)), "not checked"))</pre>
+<p>D2 <code>"byImpact/critical"</code>, E2 <code>"byImpact/serious"</code>, F2 <code>"issues/0/help"</code>, G2 <code>"issues/0/howToFix"</code>.</p>
+<p>H2 is a manual Yes/No: can you reach and use every control on that page with the Tab, Enter, Space and arrow keys only, and can you always see where you are? Status in I2 is a working rule of ours, not a legal standard:</p>
+<pre>=IF($B2="", "", IF(C2="not checked", "Check address or test by hand", IF(D2&gt;0, "Fix before next sale", IF(E2&gt;0, "Fix this month", IF(H2&lt;&gt;"Yes", "Do keyboard test", "OK for now")))))</pre>
+<p>Fix by in J2: <code>=IF(I2="Fix before next sale", TODAY()+7, IF(I2="Fix this month", TODAY()+30, ""))</code>.</p>
+<p>The score is the scanner's own: 100 minus 10 per critical rule failed, 6 per serious, 3 per moderate and 1 per minor, never below 0. It sorts pages; it is not a compliance grade.</p>
+
+<h2>Step 3: the info tab (what you must publish)</h2>
+<p>Service providers "shall prepare the necessary information in accordance with Annex V and shall explain how the services meet the applicable accessibility requirements", make it available "in written and oral format, including in a manner which is accessible to persons with disabilities", and keep it "for as long as the service is in operation" (Article 13(2)). Annex V says it goes in "the general terms and conditions, or equivalent document". Add a tab named <code>info</code> with columns <strong>Item</strong>, <strong>Done? (Yes/No)</strong>, <strong>Where (URL)</strong>, <strong>Last updated</strong>:</p>
+<ul class="check">
+<li>A general description of the service in accessible formats (Annex V 1(a))</li>
+<li>Descriptions and explanations needed to understand how the service works (Annex V 1(b))</li>
+<li>A description of how the Annex I accessibility requirements are met (Annex V 1(c)): this is where the path tab results and your fixes go, in plain words</li>
+<li>Published in your terms and conditions or an equivalent page, linked from the footer</li>
+<li>Available in written and oral form (for example a phone or voice option on request), and the page itself passes the scan</li>
+<li>Accessibility information about the products you sell, where the brand or maker gives it to you (Annex I Section IV(g)(i))</li>
+<li>Re-checked after every theme, checkout or payment-provider change (Article 13(3) asks you to take such changes into account)</li>
+</ul>
+<p>Count of open items: <code>=COUNTIF(B2:B, "No")</code>.</p>
+
+<h2>Step 4: the burden tab (only if you rely on an exception)</h2>
+<p>The requirements apply only to the extent they do not cause a "fundamental alteration" of the service or a "disproportionate burden" (Article 14(1)). If you rely on this you must document the assessment, keep the results for five years after the service was last provided, renew it when the service changes, when an authority asks, "and in any event, at least every five years", and (unless you are a microenterprise) send information to the authority of each country where you provide the service (Article 14(2), (3), (5), (8)). You cannot claim disproportionate burden if you received outside funding meant for improving accessibility (Article 14(6)).</p>
+<p>Columns: <strong>Requirement or page</strong>, <strong>Why it would be a disproportionate burden (facts and cost)</strong>, <strong>Assessed on</strong>, <strong>Renew by</strong> <code>=IF(C2="", "", EDATE(C2, 60))</code>, <strong>Authority informed (country, date)</strong>. A failing checkout button is rarely a credible burden case; the tab is for genuinely large items such as rebuilding a custom app.</p>
+
+<h2>Transitional rule worth knowing</h2>
+<p>Article 32(1): service contracts agreed before 28 June 2025 "may continue without alteration until they expire, but no longer than five years from that date", and countries provide a transition until 28 June 2030 for products already used to provide similar services before then. This does not cover a new customer buying on your site today.</p>
+
+<h2>What an automated scan cannot tell you</h2>
+<ul>
+<li><strong>Automated rules catch only part of WCAG.</strong> Keyboard order, whether a screen reader makes sense of the page, captions and documents need a person.</li>
+<li><strong>Cart and checkout often need a session.</strong> The scanner opens each address fresh, so it may see an empty cart or a redirect. Add an item, copy the checkout address, and still do the keyboard test by hand.</li>
+<li><strong>Payment widgets and pages behind a login</strong> may not be reached by the scan. Test them by hand; the Directive names payment and identification steps explicitly.</li>
+<li><strong>A clean score does not certify conformance</strong> and does not make a site "compliant". Overlays that promise that have drawn regulator action in the US: see the FTC press release of 22 April 2025, <a href="https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million">FTC order against accessiBe</a>.</li>
+</ul>
+<p>Sources checked today (25 Oct 2026): the text of <a href="https://www.legislation.gov.uk/eudr/2019/882/contents">Directive (EU) 2019/882</a> as published on legislation.gov.uk (Articles <a href="https://www.legislation.gov.uk/eudr/2019/882/article/2">2</a>, <a href="https://www.legislation.gov.uk/eudr/2019/882/article/3">3</a>, <a href="https://www.legislation.gov.uk/eudr/2019/882/article/4">4</a>, <a href="https://www.legislation.gov.uk/eudr/2019/882/article/13">13</a>, <a href="https://www.legislation.gov.uk/eudr/2019/882/article/14">14</a>, <a href="https://www.legislation.gov.uk/eudr/2019/882/article/32">32</a>, <a href="https://www.legislation.gov.uk/eudr/2019/882/annex/I">Annex I</a> and <a href="https://www.legislation.gov.uk/eudr/2019/882/annex/V">Annex V</a>; EUR-Lex returned a robot check to our fetch, so check the official copy there too), and the scanner's README and input schema on Apify.</p>
+
+<h2>Related</h2>
+<ul>
+<li><a href="website-accessibility-wcag-scanner/">How to run the accessibility scanner</a></li>
+<li><a href="web-agency-accessibility-fix-list-sheet-wcag-score-per-client-page-apify.html">Accessibility fix list sheet for web agencies</a></li>
+<li><a href="eu-30-day-lowest-price-log-black-friday-shopify-woocommerce.html">EU 30-day lowest price log for Black Friday</a></li>
+<li><a href="google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html">Google Shopping product listing check sheet</a></li>
+<li><a href="../accessibility-global/">Unadhi accessibility guides</a></li>
+</ul>
+
+<h2>Questions</h2>
+<h3>My shop is outside the EU. Does the EAA apply?</h3>
+<p>If you offer your shop to consumers in the EU, the Directive's definition of service provider includes you (Article 3(4)), unless you are a microenterprise. Enforcement is by each EU country's authority.</p>
+<h3>Which WCAG version does the EAA require?</h3>
+<p>The Directive itself does not name a WCAG version. It asks for websites and apps to be perceivable, operable, understandable and robust, and lets providers use harmonised standards published in the Official Journal. Many teams test against WCAG 2.1 AA as a practical baseline.</p>
+<h3>We have 8 staff and EUR 3 million turnover. Are we a microenterprise?</h3>
+<p>By Article 3(23), yes if your balance sheet total is EUR 2 million or less: the test is fewer than 10 people and turnover or balance sheet total not over EUR 2 million. Check your country's law and ask an adviser if unsure.</p>
+
+<p class="note">Partner programme opening soon: join the free waitlist. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received. <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">Join the partner waitlist</a></p>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
