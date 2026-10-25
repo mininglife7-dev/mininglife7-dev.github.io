@@ -1,0 +1,115 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hiring signal sheet for B2B sales and recruitment: which target companies opened new roles this week, and in which team (Greenhouse, Lever, Ashby)</title><meta name="description" content="A free Google Sheet for B2B sales teams and recruitment agencies: one row per target company with open roles, roles published in the last 7 days, the top hiring department, roles in your team, remote and salary share, weekly change and a Hot, Warm, Watch or Quiet status."><link rel="canonical" href="https://unadhi.com/guides/hiring-signal-sheet-target-companies-new-job-openings-per-team-greenhouse-lever-ashby-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Hiring signal sheet: which target companies opened new roles this week"><meta property="og:description" content="One row per target company: open roles, new this week, top department, roles in the team you sell to and a weekly status, from public Greenhouse, Lever and Ashby job boards."><meta property="og:url" content="https://unadhi.com/guides/hiring-signal-sheet-target-companies-new-job-openings-per-team-greenhouse-lever-ashby-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Hiring signal sheet for B2B sales and recruitment: which target companies opened new roles this week, and in which team (Greenhouse, Lever, Ashby)", "dateModified": "2026-10-25", "datePublished": "2026-10-25", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/hiring-signal-sheet-target-companies-new-job-openings-per-team-greenhouse-lever-ashby-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I know which job system a company uses?", "acceptedAnswer": {"@type": "Answer", "text": "Open any job on its careers page. If the address contains greenhouse.io, lever.co or ashbyhq.com, the sheet works for that company. If not, the company uses another system."}}, {"@type": "Question", "name": "How often should I refresh the sheet?", "acceptedAnswer": {"@type": "Answer", "text": "Once a week is enough for most sales and recruitment work. Hiring plans change over weeks, not hours."}}, {"@type": "Question", "name": "Why does a company show 0 open roles?", "acceptedAnswer": {"@type": "Answer", "text": "Either it has no open jobs, or the board address was wrong. Check the run's BOARDS_SUMMARY: a wrong address shows an error or zero jobs found for that input."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Hiring signal sheet for B2B sales and recruitment: which target companies opened new roles this week, and in which team (Greenhouse, Lever, Ashby)</h1>
+<p class="meta">Updated 25 Oct 2026 · Disclosure: the jobs actor linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet layout works with any export that has one row per job with company, department and published date. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> a <strong>hiring signal sheet</strong> in one Google Sheet with <strong>one row per target company</strong>: how many <strong>roles are open</strong>, how many were <strong>published in the last 7 days</strong>, the <strong>department hiring most</strong>, how many roles are in <strong>the team you sell to</strong>, the <strong>share of remote roles</strong>, the <strong>share with a published salary</strong>, the <strong>change since last week</strong> and a <strong>Hot / Warm / Watch / Quiet</strong> status. It is built for B2B sales teams, recruitment agencies and freelancers who want to know which accounts are growing this week. The jobs come from public Greenhouse, Lever and Ashby job boards. The example rows and numbers are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>signals tab (example rows are made up)</h3>
+<table><thead><tr><th>Company</th><th>Open roles</th><th>New in 7 days</th><th>Top department</th><th>Roles in your team</th><th>Remote share</th><th>Salary published</th><th>Change vs last week</th><th>Status</th></tr></thead><tbody>
+<tr><td>Example Payments</td><td>42</td><td>6</td><td>Engineering</td><td>3</td><td>38%</td><td>71%</td><td>+5</td><td>Hot: call this week</td></tr>
+<tr><td>Example Logistics</td><td>11</td><td>1</td><td>Sales</td><td>2</td><td>9%</td><td>0%</td><td>+1</td><td>Warm: your team is hiring</td></tr>
+<tr><td>Example Health</td><td>7</td><td>0</td><td>Operations</td><td>0</td><td>0%</td><td>43%</td><td>-2</td><td>Watch</td></tr>
+<tr><td>Example Studio</td><td>0</td><td>0</td><td></td><td>0</td><td></td><td></td><td>-1</td><td>Quiet</td></tr>
+</tbody></table>
+<p>"Roles in your team" counts jobs whose department contains the word you set (for example <code>Sales</code> if you sell sales tools, <code>Data</code> if you place data engineers).</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>B2B sales teams and agencies</strong>: a company opening five sales roles this month is a better time to pitch a sales tool, training or a CRM clean-up than a company with none.</li>
+<li><strong>Recruitment agencies</strong>: see which client and prospect companies are growing, in which team, and which ones publish pay ranges.</li>
+<li><strong>Job seekers and career coaches</strong>: track openings at a shortlist of companies without checking each careers page by hand.</li>
+</ul>
+
+<h2>Step 1: the <code>accounts</code> tab</h2>
+<p>Add a tab named <code>accounts</code> with <code>A Company</code>, <code>B Board</code>, <code>C Why they matter</code> and <code>D Owner</code> in row 1, then one row per target company. In <code>B Board</code> put the job board address, for example <code>https://job-boards.greenhouse.io/examplepay</code>, <code>https://jobs.lever.co/examplelogistics</code> or <code>https://jobs.ashbyhq.com/examplehealth</code>. You find it by opening the company's careers page and clicking any job: the address bar shows which of the three systems it uses. The actor also accepts a bare company slug or the careers page address and tries to find the board itself.</p>
+
+<h2>Step 2: run the jobs pull for every company at once</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/ats-jobs-greenhouse-lever-ashby?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_ats_hiring_signals">ATS Jobs API: Greenhouse, Lever &amp; Ashby</a> on the Apify Store. It reads each company's public job board feed and returns one row per open job in the same columns, whichever system the company uses. To build its input from your sheet, put this in any empty cell of a tab named <code>settings</code>, then copy the result into the input's JSON view:</p>
+<pre>="{""boards"": [" &amp; TEXTJOIN(",", TRUE, ARRAYFORMULA(IF(accounts!B2:B="", "", """" &amp; TRIM(accounts!B2:B) &amp; """"))) &amp; "], ""postedWithinDays"": 0, ""includeDescription"": false}"</pre>
+<ul>
+<li><code>postedWithinDays: 0</code> returns every open job, which you need for the open-roles count. The 7-day count is worked out in the sheet.</li>
+<li><code>includeDescription: false</code> leaves out the long job text, so the export is small and easy to import.</li>
+<li>In the same <code>settings</code> tab, put the team word you care about in <code>B1</code> (for example <code>Sales</code>). Step 3 uses it.</li>
+</ul>
+<p>When the run finishes, export the dataset as <strong>CSV</strong> and import it into the same Google Sheet (File → Import → Upload, "Insert new sheet"). Name the tab <code>jobs</code>. Then open the run's key-value store and look at <code>BOARDS_SUMMARY</code>: it lists each board with its status and job count, so you can see which companies returned nothing because the address was wrong or they use a different system.</p>
+
+<h2>Step 3: the <code>signals</code> tab</h2>
+<p>CSV column positions can change between runs, so every formula looks a column up by its header name. Add a tab named <code>signals</code> with these headers: <code>A Company</code>, <code>B Open roles</code>, <code>C New in 7 days</code>, <code>D Top department</code>, <code>E Roles in your team</code>, <code>F Remote share</code>, <code>G Salary published</code>, <code>H Last week</code>, <code>I Change</code>, <code>J Status</code>.</p>
+<p>A2, the companies found in this run:</p>
+<pre>=SORT(UNIQUE(FILTER(INDEX(jobs!A:ZZ, 0, MATCH("company", jobs!$1:$1, 0)), ROW(jobs!A:A)&gt;1, INDEX(jobs!A:ZZ, 0, MATCH("company", jobs!$1:$1, 0))&lt;&gt;"")))</pre>
+<p>B2, open roles:</p>
+<pre>=IF(A2="", "", COUNTIF(INDEX(jobs!A:ZZ, 0, MATCH("company", jobs!$1:$1, 0)), A2))</pre>
+<p>C2, roles published in the last 7 days (the ATS dates are in UTC, written like <code>2026-10-21T09:30:00Z</code>, so the formula reads the first 10 characters):</p>
+<pre>=IF(A2="", "", SUMPRODUCT((INDEX(jobs!A:ZZ, 0, MATCH("company", jobs!$1:$1, 0))=A2) * (IFERROR(DATEVALUE(LEFT(INDEX(jobs!A:ZZ, 0, MATCH("publishedAt", jobs!$1:$1, 0)), 10)), 0) &gt;= TODAY()-7)))</pre>
+<p>D2, the department with the most open roles:</p>
+<pre>=IF(A2="", "", IFERROR(INDEX(QUERY({INDEX(jobs!A2:ZZ, 0, MATCH("department", jobs!$1:$1, 0)), INDEX(jobs!A2:ZZ, 0, MATCH("company", jobs!$1:$1, 0))}, "select Col1, count(Col2) where Col2 = '" &amp; SUBSTITUTE(A2, "'", "''") &amp; "' and Col1 is not null group by Col1 order by count(Col2) desc limit 1", 0), 2, 1), ""))</pre>
+<p>E2, roles in the team you set in <code>settings!B1</code>:</p>
+<pre>=IF(A2="", "", COUNTIFS(INDEX(jobs!A:ZZ, 0, MATCH("company", jobs!$1:$1, 0)), A2, INDEX(jobs!A:ZZ, 0, MATCH("department", jobs!$1:$1, 0)), "*" &amp; settings!$B$1 &amp; "*"))</pre>
+<p>F2, share of remote roles, and G2, share with a published salary (format both as %):</p>
+<pre>=IF(OR(A2="", B2=0), "", COUNTIFS(INDEX(jobs!A:ZZ, 0, MATCH("company", jobs!$1:$1, 0)), A2, INDEX(jobs!A:ZZ, 0, MATCH("workplaceType", jobs!$1:$1, 0)), "REMOTE") / B2)
+=IF(OR(A2="", B2=0), "", COUNTIFS(INDEX(jobs!A:ZZ, 0, MATCH("company", jobs!$1:$1, 0)), A2, INDEX(jobs!A:ZZ, 0, MATCH("salaryMin", jobs!$1:$1, 0)), "&lt;&gt;") / B2)</pre>
+<p>H is last week's open roles (see Step 4). I2: <code>=IF(OR(A2="", H2=""), "", B2-H2)</code>.</p>
+<p>J2, the status. This is a working rule of ours, not an industry standard; change the numbers to suit your market:</p>
+<pre>=IF(A2="", "", IF(C2&gt;=3, "Hot: call this week", IF(AND(C2&gt;=1, E2&gt;=1), "Warm: your team is hiring", IF(B2=0, "Quiet", "Watch"))))</pre>
+<p>Companies that use a different system, or whose address was wrong, will not appear in <code>signals</code> at all. Add them back as <code>Quiet</code> by hand only after checking <code>BOARDS_SUMMARY</code>, so a broken address is not mistaken for a company that stopped hiring.</p>
+
+<h2>Step 4: the weekly routine</h2>
+<ol>
+<li>Every Monday, copy column B of <code>signals</code> and paste it as values only into column H, so H holds last week's numbers.</li>
+<li>Run the actor again with the same input (you can save it as a task and add a schedule in Apify Console), export the CSV and import it over the <code>jobs</code> tab.</li>
+<li>Sort <code>signals</code> by status, then by C. Work the Hot rows first and note what you did in <code>accounts!D</code>.</li>
+</ol>
+<p>If a company is missing this week but was there last week, its column A row disappears, so keep a copy of the previous week's tab (right-click the tab, Duplicate) before importing.</p>
+
+<h2>A first message you can adapt</h2>
+<pre>Hi [name], I saw [company] has opened [n] [department] roles in the last few weeks, including [job title]. Teams growing that fast usually hit [problem you solve] around now. We help [type of company] with [one-line offer]. Would a 15-minute call next week be useful? If not, no reply needed.</pre>
+<p>Mention only what the public job post says. Do not guess about funding, layoffs or reasons for hiring.</p>
+
+<h2>What this sheet cannot tell you</h2>
+<ul>
+<li><strong>Only Greenhouse, Lever and Ashby.</strong> Companies on Workday, iCIMS, SuccessFactors or their own careers system are not covered. For Indian companies on Zoho Recruit, Keka or Freshteam, see the <a href="india-ats-jobs-zoho-recruit-keka/">India ATS jobs guide</a>.</li>
+<li><strong>A job post is not a buying signal on its own.</strong> Some companies leave evergreen posts open all year, and some reposts get a new published date. Treat the status as a reason to look, not a reason to send a message to everyone.</li>
+<li><strong>Department names are the company's own.</strong> One company says "Go To Market", another "Revenue". Check the top department column before trusting the team count.</li>
+<li><strong>Salary fields are only filled when the company publishes pay.</strong> For Greenhouse, the actor reads the first pay range stated in the job text, which is often the first location only.</li>
+<li><strong>This lists jobs, not people.</strong> If you go on to contact someone at the company, the usual email and data protection rules for your country apply (for EU or UK contacts that includes GDPR).</li>
+</ul>
+<p>The three job board feeds are documented and public: the <a href="https://developers.greenhouse.io/job-board.html">Greenhouse Job Board API</a> says job board data "is publicly available, so authentication is not required" for reading jobs, the <a href="https://github.com/lever/postings-api">Lever Postings API</a> notes that published postings are publicly viewable, and Ashby documents its <a href="https://developers.ashbyhq.com/docs/public-job-posting-api">public job posting API</a> for careers pages.</p>
+
+<h2>Related</h2>
+<ul>
+<li><a href="ats-jobs-greenhouse-lever-ashby/">How to run the Greenhouse, Lever and Ashby jobs actor</a></li>
+<li><a href="india-ats-jobs-zoho-recruit-keka/">India ATS jobs: Zoho Recruit, Keka and Freshteam</a></li>
+<li><a href="speculative-job-application-sheet-company-careers-jobs-hr-inbox-follow-up-apify.html">Speculative job application sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Turn a website contact export into a call sheet</a></li>
+</ul>
+
+<h2>Questions</h2>
+<h3>How do I know which job system a company uses?</h3>
+<p>Open any job on its careers page. If the address contains greenhouse.io, lever.co or ashbyhq.com, the sheet works for that company. If not, the company uses another system.</p>
+<h3>How often should I refresh the sheet?</h3>
+<p>Once a week is enough for most sales and recruitment work. Hiring plans change over weeks, not hours.</p>
+<h3>Why does a company show 0 open roles?</h3>
+<p>Either it has no open jobs, or the board address was wrong. Check the run's BOARDS_SUMMARY: a wrong address shows an error or zero jobs found for that input.</p>
+
+<p class="note">Partner programme opening soon: join the free waitlist. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received. <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">Join the partner waitlist</a></p>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
