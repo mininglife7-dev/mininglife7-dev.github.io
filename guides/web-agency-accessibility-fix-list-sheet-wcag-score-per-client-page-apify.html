@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accessibility fix list sheet for web agencies: a WCAG score, the worst problem and a fix date for every client page</title><meta name="description" content="A free Google Sheet for web agencies and freelancers: one row per client page with a 0-100 accessibility score, critical and serious problem counts, the worst problem in plain English, an owner, a due date and a client summary."><link rel="canonical" href="https://unadhi.com/guides/web-agency-accessibility-fix-list-sheet-wcag-score-per-client-page-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Accessibility fix list sheet for web agencies"><meta property="og:description" content="One row per client page: score, critical and serious problems, the one-line fix, owner and re-check date, plus a one-line summary per client."><meta property="og:url" content="https://unadhi.com/guides/web-agency-accessibility-fix-list-sheet-wcag-score-per-client-page-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Accessibility fix list sheet for web agencies: a WCAG score, the worst problem and a fix date for every client page", "dateModified": "2026-10-25", "datePublished": "2026-10-25", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/web-agency-accessibility-fix-list-sheet-wcag-score-per-client-page-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does a score of 100 mean the page is accessible?", "acceptedAnswer": {"@type": "Answer", "text": "No. It means none of the automated rules failed on that page. Keyboard use, screen-reader meaning, captions and documents still need a manual review."}}, {"@type": "Question", "name": "How many pages should I check per client?", "acceptedAnswer": {"@type": "Answer", "text": "Start with the pages people must use to become customers: home, contact, booking or checkout and any form. Add the top content pages once those are clean."}}, {"@type": "Question", "name": "Can I use this sheet with a different scanner?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Change the header names in quotes in the Step 3 formulas to match the columns your scanner exports."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Accessibility fix list sheet for web agencies: a WCAG score, the worst problem and a fix date for every client page</h1>
+<p class="meta">Updated 25 Oct 2026 · Disclosure: the scanner linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet layout works with any scanner that exports a score and issue counts per page. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. Not legal advice.</p>
+<div class="answer"><p><strong>What you get:</strong> an <strong>accessibility fix list</strong> in one Google Sheet for every client site you look after, with <strong>one row per page</strong>: the client, the page, a <strong>0-100 score</strong>, how many <strong>critical, serious, moderate and minor</strong> problems the automated check found, the <strong>worst problem in plain English</strong> with a <strong>one-line fix</strong>, an <strong>owner</strong>, a <strong>due date</strong> and a <strong>re-check date</strong>. A <strong>summary</strong> tab gives each client one line (pages checked, average score, pages with critical problems), which is what you paste into the monthly client report. The example rows and numbers are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>fixlist tab (example rows are made up)</h3>
+<table><thead><tr><th>Client</th><th>Page</th><th>Score</th><th>Critical</th><th>Serious</th><th>Worst problem</th><th>Owner</th><th>Due</th><th>Status</th></tr></thead><tbody>
+<tr><td>Example Dental</td><td>/book-appointment</td><td>78</td><td>1</td><td>2</td><td>Form fields have no labels</td><td>Dev</td><td>1 Nov</td><td>Fix this week</td></tr>
+<tr><td>Example Dental</td><td>/</td><td>91</td><td>0</td><td>1</td><td>Text colour contrast too low</td><td>Designer</td><td>15 Nov</td><td>Fix this month</td></tr>
+<tr><td>Example Bakery</td><td>/shop</td><td>84</td><td>1</td><td>1</td><td>Images have no alt text</td><td>Client</td><td>1 Nov</td><td>Fix this week</td></tr>
+<tr><td>Example Bakery</td><td>/contact</td><td>100</td><td>0</td><td>0</td><td></td><td></td><td></td><td>Next review</td></tr>
+</tbody></table>
+<h3>summary tab (example rows are made up)</h3>
+<table><thead><tr><th>Client</th><th>Pages checked</th><th>Average score</th><th>Pages with a critical problem</th><th>Last check</th></tr></thead><tbody>
+<tr><td>Example Dental</td><td>12</td><td>87</td><td>2</td><td>25 Oct 2026</td></tr>
+<tr><td>Example Bakery</td><td>8</td><td>90</td><td>1</td><td>25 Oct 2026</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<p>Small web agencies, freelancers and in-house web teams who look after several sites and want a repeatable monthly accessibility check without paying for a per-site subscription. It also suits teams working for US cities, counties and school districts: the US Department of Justice ADA Title II web rule asks state and local governments to meet WCAG 2.1 Level AA by 26 April 2027 (populations of 50,000 or more) or 26 April 2028 (smaller ones), per <a href="https://www.ada.gov/resources/2024-03-08-web-rule/">ada.gov</a>.</p>
+
+<h2>Step 1: the <code>pages</code> tab</h2>
+<p>Add a tab named <code>pages</code> with <code>A Client</code> and <code>B Page URL</code> in row 1, then one row per page you want checked. Start with the pages that matter most to each client: home, contact, booking or checkout, the top product or service pages, and any form. Use the full address including <code>https://</code>.</p>
+
+<h2>Step 2: run the check on every page at once</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/website-accessibility-wcag-scanner?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_wcag_agency_fixlist">Website Accessibility Scanner (WCAG 2.1 AA, axe-core)</a> on the Apify Store. It loads each page in a real Chromium browser and runs the open-source axe-core rules for WCAG 2.0 and 2.1 Level A and AA. To build its input from your sheet, put this in any empty cell of a tab named <code>settings</code>, then copy the result into the input's JSON view:</p>
+<pre>="{""startUrls"": [" &amp; TEXTJOIN(",", TRUE, ARRAYFORMULA(IF(pages!B2:B="", "", "{""url"": """ &amp; TRIM(pages!B2:B) &amp; """}"))) &amp; "], ""maxPages"": " &amp; COUNTA(pages!B2:B) &amp; ", ""respectRobotsTxt"": true}"</pre>
+<ul>
+<li><code>maxPages</code> is set to the number of pages in your list, so the run stops at your list.</li>
+<li>Pages that fail to load or are blocked by robots.txt are reported in the results and, per the Store listing, are not charged.</li>
+</ul>
+<p>When the run finishes, export the dataset as <strong>CSV</strong> and import it into the same Google Sheet (File → Import → Upload, "Insert new sheet"). Name the tab <code>results</code>. Apify's CSV export turns nested fields into columns with slashes in their names, such as <code>byImpact/critical</code> and <code>issues/0/help</code>. Issues are listed worst first, so <code>issues/0/…</code> is the most serious problem on that page.</p>
+
+<h2>Step 3: the <code>fixlist</code> tab</h2>
+<p>Add a tab named <code>fixlist</code> with these headers: <code>A Client</code>, <code>B Page</code>, <code>C Score</code>, <code>D Critical</code>, <code>E Serious</code>, <code>F Moderate</code>, <code>G Minor</code>, <code>H Worst problem</code>, <code>I How to fix</code>, <code>J Owner</code>, <code>K Due</code>, <code>L Re-check</code>, <code>M Status</code>. Put <code>=pages!A2:B</code> in A2 to pull the list across. CSV column positions can change between runs, so each column is looked up by its header name. In C2 put the score, then copy the same formula to the other columns, changing only the header text in quotes:</p>
+<pre>=IF($B2="", "", IFERROR(INDEX(results!A:ZZ, MATCH($B2, INDEX(results!A:ZZ, 0, MATCH("url", results!1:1, 0)), 0), MATCH("score", results!1:1, 0)), "not checked"))</pre>
+<ul>
+<li>D2: same formula with <code>"byImpact/critical"</code>; E2 <code>"byImpact/serious"</code>; F2 <code>"byImpact/moderate"</code>; G2 <code>"byImpact/minor"</code>.</li>
+<li>H2: <code>"issues/0/help"</code> (the problem in plain English). I2: <code>"issues/0/howToFix"</code> (the one-line fix).</li>
+<li>If a page shows <code>not checked</code>, its address in <code>pages</code> differs from the <code>url</code> the scanner reported (often a trailing slash or a redirect). Copy the reported address into <code>pages</code>.</li>
+</ul>
+<p>Status in M2, a working rule of ours rather than any legal standard (change it to suit your clients):</p>
+<pre>=IF($B2="", "", IF(D2="not checked", "Check address", IF(D2>0, "Fix this week", IF(E2>0, "Fix this month", "Next review"))))</pre>
+<p>Due date in K2: <code>=IF(M2="Fix this week", TODAY()+7, IF(M2="Fix this month", TODAY()+30, ""))</code>. Re-check in L2: <code>=IF(K2="", "", K2+1)</code>. Fill <code>J Owner</code> by hand: dev, designer, content writer or the client.</p>
+<p>The score comes from the scanner: 100 minus 10 for each critical rule failed, 6 for each serious, 3 for each moderate and 1 for each minor, never below 0. It is a way to sort pages, not a compliance grade.</p>
+
+<h2>Step 4: the <code>summary</code> tab</h2>
+<p>Put the client names in column A (<code>=UNIQUE(FILTER(pages!A2:A, pages!A2:A&lt;&gt;""))</code> in A2), then:</p>
+<ul>
+<li>Pages checked, B2: <code>=COUNTIFS(fixlist!A:A, A2, fixlist!C:C, "&gt;=0")</code></li>
+<li>Average score, C2: <code>=IFERROR(ROUND(AVERAGEIFS(fixlist!C:C, fixlist!A:A, A2)), "")</code></li>
+<li>Pages with a critical problem, D2: <code>=COUNTIFS(fixlist!A:A, A2, fixlist!D:D, "&gt;0")</code></li>
+<li>Last check, E2: type the run date.</li>
+</ul>
+
+<h2>Step 5: re-check after fixes</h2>
+<p>Before the next run, copy the <code>fixlist</code> score column into a new column headed with today's date (paste values only). Run the same input again, import the new CSV over the <code>results</code> tab, and the score column updates. The dated columns show each client their progress month by month.</p>
+
+<h2>A note you can send each client</h2>
+<pre>Hi, this month's accessibility check covered [pages] pages on your site. Average score: [score]/100. [n] pages have a problem we rate as critical, mostly [worst problem]. We plan to fix these by [date] and re-check on [date]. This is an automated check: it finds common problems but does not certify the site as accessible, so we also do a short keyboard-only test on your booking and contact pages.</pre>
+
+<h2>What an automated check cannot tell you</h2>
+<p>Automated rules catch only part of WCAG. Keyboard navigation order, whether a screen reader announces things in a way that makes sense, captions and transcripts, and PDFs need a person to review them. A clean score does not make a site "ADA compliant", does not certify WCAG conformance and does not prevent complaints. For the official success criteria, see the <a href="https://www.w3.org/WAI/WCAG21/quickref/">W3C WCAG 2.1 quick reference</a>.</p>
+
+<h2>Related</h2>
+<ul>
+<li><a href="website-accessibility-wcag-scanner/">How to run the accessibility scanner</a></li>
+<li><a href="page-title-meta-description-check-sheet-small-business-website-crawl-apify.html">Page title and meta description check sheet for small business websites</a></li>
+<li><a href="web-agency-client-website-contact-check-sheet-apify.html">Client website contact check for web agencies</a></li>
+<li><a href="../accessibility-global/">Unadhi accessibility guides</a></li>
+</ul>
+
+<h2>Questions</h2>
+<h3>Does a score of 100 mean the page is accessible?</h3>
+<p>No. It means none of the automated rules failed on that page. Keyboard use, screen-reader meaning, captions and documents still need a manual review.</p>
+<h3>How many pages should I check per client?</h3>
+<p>Start with the pages people must use to become customers: home, contact, booking or checkout and any form. Add the top content pages once those are clean.</p>
+<h3>Can I use this sheet with a different scanner?</h3>
+<p>Yes. Change the header names in quotes in the Step 3 formulas to match the columns your scanner exports.</p>
+
+<p class="note">Partner programme opening soon: join the free waitlist. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received. <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">Join the partner waitlist</a></p>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
