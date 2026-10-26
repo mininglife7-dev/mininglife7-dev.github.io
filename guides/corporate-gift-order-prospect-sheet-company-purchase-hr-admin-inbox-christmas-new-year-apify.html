@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Corporate gift order prospect sheet for small gift makers: each company's purchase, HR or admin inbox, an order-by date and a follow-up tracker for Christmas and New Year</title><meta name="description" content="A free Google Sheet for bakers, hamper and gift-box makers: one row per local company with the best shared inbox it publishes, an order-by date from your lead time, one follow-up and a do-not-contact column."><link rel="canonical" href="https://unadhi.com/guides/corporate-gift-order-prospect-sheet-company-purchase-hr-admin-inbox-christmas-new-year-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Corporate gift order prospect sheet for small gift makers"><meta property="og:description" content="One row per company: purchase, HR or admin inbox, next step, order-by date, follow-up date and a Send? column, plus a plan tab."><meta property="og:url" content="https://unadhi.com/guides/corporate-gift-order-prospect-sheet-company-purchase-hr-admin-inbox-christmas-new-year-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Corporate gift order prospect sheet for small gift makers: each company's purchase, HR or admin inbox, an order-by date and a follow-up tracker for Christmas and New Year", "dateModified": "2026-10-26", "datePublished": "2026-10-26", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/corporate-gift-order-prospect-sheet-company-purchase-hr-admin-inbox-christmas-new-year-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which company inbox should a corporate gift offer go to?", "acceptedAnswer": {"@type": "Answer", "text": "A purchase or procurement inbox if the company publishes one, then HR, admin or office, then a general inbox where you ask who buys staff or client gifts. The sheet picks the first one found in that order."}}, {"@type": "Question", "name": "Does the scraper return named employees' email addresses?", "acceptedAnswer": {"@type": "Answer", "text": "Not by default. Only shared role inboxes are returned; addresses that identify one person are dropped and only counted, so the sheet tells you to use the shared inbox or the contact form instead."}}, {"@type": "Question", "name": "How is the order-by date worked out?", "acceptedAnswer": {"@type": "Answer", "text": "From your own deliver-by date and lead time in working days, with WORKDAY. For example, delivery on Friday 18 December 2026 with a 10 working day lead time gives an order-by date of Friday 4 December 2026."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Corporate gift order prospect sheet for small gift makers: each company's purchase, HR or admin inbox, an order-by date and a follow-up tracker for Christmas and New Year</h1>
+<p class="meta">Updated 26 Oct 2026 · Disclosure: the website contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works if you copy inboxes from company contact pages by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for a small <strong>corporate gift</strong> business (gift boxes, sweets, cakes, hampers, printed merchandise) with <strong>one row per company</strong> you want to offer Christmas or New Year gifts to. Each row shows the <strong>best shared inbox</strong> the company publishes on its own website (purchase or procurement first, then HR, admin or office, then a general inbox), the company phone and WhatsApp link if listed, a <strong>Next step</strong> column, an <strong>Order by</strong> date worked back from your own delivery date and lead time, a follow-up date and a <strong>Send?</strong> column that stops you writing to anyone who said no. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>gifts tab (example rows are made up)</h3>
+<table><thead><tr><th>Domain</th><th>Status</th><th>Best inbox</th><th>Inbox type</th><th>Next step</th><th>Deliver by</th><th>Order by</th><th>Pitched on</th><th>Follow up on</th><th>Send?</th></tr></thead><tbody>
+<tr><td>acmetech.example</td><td>ok</td><td>procurement@acmetech.example</td><td>Purchase</td><td>Send offer to purchase inbox</td><td>18 Dec 2026</td><td>4 Dec 2026</td><td>2 Nov 2026</td><td>9 Nov 2026</td><td>Wait</td></tr>
+<tr><td>brightclinic.example</td><td>ok</td><td>hr@brightclinic.example</td><td>HR</td><td>Send offer to HR inbox (staff gifts)</td><td>18 Dec 2026</td><td>4 Dec 2026</td><td></td><td></td><td>Ready</td></tr>
+<tr><td>riverlogistics.example</td><td>ok</td><td>info@riverlogistics.example</td><td>General</td><td>General inbox: ask who buys staff or client gifts</td><td>18 Dec 2026</td><td>4 Dec 2026</td><td></td><td></td><td>Ready</td></tr>
+<tr><td>bigbank.example</td><td>blocked-by-terms</td><td></td><td></td><td>Skipped: open the site's contact page yourself</td><td>18 Dec 2026</td><td>4 Dec 2026</td><td></td><td></td><td>Ready</td></tr>
+<tr><td>studiojane.example</td><td>ok</td><td>hello@studiojane.example</td><td>General</td><td>General inbox: ask who buys staff or client gifts</td><td>18 Dec 2026</td><td>4 Dec 2026</td><td></td><td></td><td>NO: UK sole trader, consent first</td></tr>
+</tbody></table>
+<p>Lead time in the example is 10 working days; use your own. Christmas Day 2026 and New Year's Day 2027 are both Fridays, so many offices hand out gifts in the week before.</p>
+
+<h2>Who this is for</h2>
+<ul>
+<li>Home bakers, sweet shops, hamper and gift-box makers, florists and print shops who want 20 to 200 local companies to hear about a staff-gift or client-gift offer before Christmas and New Year.</li>
+<li>Anyone who already has a list of company websites (from a business park, a chamber of commerce member page, a trade fair, a Google Maps export) and wants the right inbox filled in one run.</li>
+</ul>
+<p>It is not for buying a mass email list. A short list of companies near you that you can actually deliver to gets more replies, and it keeps each message relevant.</p>
+
+<h2>Step 1: list the companies in a tab named <code>sites</code></h2>
+<table><thead><tr><th>Column</th><th>What to put</th></tr></thead><tbody>
+<tr><td>A Company</td><td>Name, for example "Acme Tech"</td></tr>
+<tr><td>B Website</td><td>The homepage, for example <code>https://www.acmetech.example</code></td></tr>
+<tr><td>C Type</td><td><code>Corporate</code> (a company, LLP or other body with its own legal identity) or <code>Sole trader</code> (a one-person business or an ordinary partnership). This matters for UK companies in Step 5.</td></tr>
+<tr><td>D Staff (approx.)</td><td>Optional. A rough headcount helps you size the offer (for example a box per employee).</td></tr>
+</tbody></table>
+<p>Put two settings at the top of a tab named <code>settings</code>: in <code>B1</code> your <strong>deliver-by date</strong> (for example <code>18/12/2026</code>) and in <code>B2</code> your <strong>lead time in working days</strong> (how long you need from a confirmed order to delivery, for example <code>10</code>).</p>
+
+<h2>Step 2: run the contact scraper on the websites</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_contact_corporate_gifts">website contact scraper</a> on the Apify Store and paste column B into <code>urls</code> (one per line). What it does with the default settings, as written in the Actor's input schema and code on 26 October 2026:</p>
+<ul>
+<li>Reads the homepage plus the most contact-like pages (contact, about, support): <code>maxPagesPerSite</code> is 4 by default. Try 6 if many rows come back with only <code>info@</code>.</li>
+<li>Returns only <strong>shared role inboxes</strong>. <code>purchase@</code>, <code>procurement@</code>, <code>hr@</code>, <code>admin@</code>, <code>office@</code>, <code>corporate@</code>, <code>events@</code>, <code>info@</code>, <code>contact@</code> and <code>hello@</code> are all on its role list. Addresses that identify one person (for example <code>hr.priya@</code>) are dropped and only counted in <code>personalEmailsDropped</code>, because <code>includePersonalEmails</code> is off.</li>
+<li>Checks each inbox's domain can receive mail (<code>mxValid</code>), returns phone numbers in international format and links such as WhatsApp.</li>
+<li>Follows robots.txt and reads each site's terms. A site whose terms forbid scraping comes back as <code>blocked-by-terms</code> (or <code>blocked-by-tos-list</code> or <code>blocked-by-robots</code>) and is not charged. You look those up by hand.</li>
+</ul>
+<p>When the run finishes, export the dataset as <strong>CSV</strong>, then in your sheet use File → Import → Upload, "Insert new sheet", and rename it <code>scrape</code>. Nested fields become headers like <code>emails/0/email</code>, <code>emails/1/email</code>, <code>phones/0/phone</code> and <code>socials/whatsapp/0/url</code>, so the formulas below find columns by header name, not by position.</p>
+<h3>Free route</h3>
+<p>For 10 or 20 companies, open each website's contact page and copy the inboxes into a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code> (type <code>ok</code>) and <code>emails/0/email</code>, <code>emails/1/email</code> and so on. The formulas work the same.</p>
+
+<h2>Step 3: build the <code>gifts</code> tab</h2>
+<p>Create a tab named <code>gifts</code>, put these headers in row 1 and these formulas in row 2, and fill down as many rows as <code>scrape</code> has.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Domain</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("domain", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>B</td><td>Status</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("status", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>C</td><td>All inboxes</td><td><code>=IFERROR(TEXTJOIN(", ", TRUE, FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^emails/\d+/email$"))), "")</code></td></tr>
+<tr><td>D</td><td>Purchase inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:purchase|procurement|tenders)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>E</td><td>HR / admin inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:hr|admin|office|corporate|events|reception)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>F</td><td>General inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:info|contact|hello|enquiry|enquiries|mail|general)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>G</td><td>Best inbox</td><td><code>=IF(D2&lt;&gt;"", D2, IF(E2&lt;&gt;"", E2, F2))</code></td></tr>
+<tr><td>H</td><td>Inbox type</td><td><code>=IF(D2&lt;&gt;"", "Purchase", IF(REGEXMATCH(E2, "^hr"), "HR", IF(E2&lt;&gt;"", "Admin", IF(F2&lt;&gt;"", "General", ""))))</code></td></tr>
+<tr><td>I</td><td>Phone</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("phones/0/phone", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>J</td><td>WhatsApp</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("socials/whatsapp/0/url", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>K</td><td>Named inboxes dropped</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("personalEmailsDropped", scrape!$A$1:$ZZ$1, 0)), 0)</code></td></tr>
+<tr><td>L</td><td>Next step</td><td><code>=IFS(B2&lt;&gt;"ok", "Skipped ("&amp;B2&amp;"): open the site's contact page yourself", H2="Purchase", "Send offer to purchase inbox", H2="HR", "Send offer to HR inbox (staff gifts)", H2="Admin", "Send offer to admin inbox", H2="General", "General inbox: ask who buys staff or client gifts", I2&lt;&gt;"", "No inbox found: call the office number", TRUE, "No inbox found: use the site's contact form")</code></td></tr>
+<tr><td>M</td><td>Type</td><td><code>=IFERROR(INDEX(sites!$C:$C, MATCH("*"&amp;A2&amp;"*", sites!$B:$B, 0)), "")</code></td></tr>
+<tr><td>N</td><td>Deliver by</td><td><code>=settings!$B$1</code> (overwrite on any row where the company asks for a different date)</td></tr>
+<tr><td>O</td><td>Order by</td><td><code>=IF(N2="", "", WORKDAY(N2, -settings!$B$2))</code></td></tr>
+<tr><td>P</td><td>Pitched on</td><td>Type the date you sent the offer</td></tr>
+<tr><td>Q</td><td>Follow up on</td><td><code>=IF(P2="", "", MIN(WORKDAY(P2, 5), WORKDAY(O2, -3)))</code></td></tr>
+<tr><td>R</td><td>Reply</td><td>Type: Ordered / Sample asked / Not this year / No</td></tr>
+<tr><td>S</td><td>Do not contact</td><td>Type <code>Y</code> the moment anyone asks you to stop or replies "No"</td></tr>
+<tr><td>T</td><td>Send?</td><td><code>=IFS(S2="Y", "NO: do not contact", M2="Sole trader", "NO: UK sole trader, consent first", R2&lt;&gt;"", "Done: "&amp;R2, AND(O2&lt;&gt;"", TODAY()&gt;O2), "Too late for this date", P2="", "Ready", TODAY()&gt;=Q2, "Send one follow-up", TRUE, "Wait")</code></td></tr>
+</tbody></table>
+<p>Notes on the formulas:</p>
+<ul>
+<li>The follow-up date in Q is five working days after the offer, but never later than three working days before the order-by date, so a late follow-up does not land after the company could still order. The three days is our working rule, not a law; change it if you like.</li>
+<li>WORKDAY skips Saturdays and Sundays only. If your workshop is closed on public holidays, add a holiday range as a third argument, for example <code>WORKDAY(N2, -settings!$B$2, settings!$D$2:$D$20)</code>.</li>
+<li>A general inbox such as <code>info@</code> may be read by whoever answers enquiries, not by the person who buys gifts. That is why the general row asks "who buys staff or client gifts" instead of pitching the full offer straight away.</li>
+</ul>
+
+<h2>Step 4: the <code>plan</code> tab</h2>
+<p>Add a tab named <code>plan</code>. In <code>A1</code>: <code>=QUERY(gifts!A2:T, "select T, count(A) where A is not null group by T order by count(A) desc label T 'Send?', count(A) 'Companies'", 0)</code>. Filter <code>gifts</code> on column T to <strong>Ready</strong> and work those rows first, sorted by <strong>Order by</strong>.</p>
+<p>A short offer that works: what the gift is (with one photo or a link to it), price per box at two or three quantities, the last order date from column O, delivery area, and one line saying they can reply "no" and you will not write again.</p>
+
+<h2>Step 5: check before you send</h2>
+<ul class="check">
+<li><strong>Bad MX:</strong> if the CSV has <code>emails/0/mxValid</code> = <code>FALSE</code> for the inbox you picked, that domain has no mail server. Use the phone number or contact form instead.</li>
+<li><strong>Named inboxes dropped above 0</strong> (column K) means the site lists people's own addresses. Do not guess them; use the shared inbox or the contact form.</li>
+<li><strong>UK companies:</strong> the ICO says the PECR rule on marketing by email does not apply to corporate subscribers (companies, LLPs, Scottish partnerships, some government bodies), but sole traders and other partnerships are treated like individuals, so you need their consent or a soft opt-in. Either way, say who you are and give a working opt-out address. That is what the "NO: UK sole trader" row does.</li>
+<li><strong>India and elsewhere:</strong> an email to a shared company inbox is still marketing. Keep it relevant to that company, send one follow-up at most, and mark column S as soon as anyone says no. Data protection law (for example India's DPDP Act 2023 or the GDPR) may apply to any personal data you keep. This is not legal advice.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Contact scraper inputs and outputs (<code>urls</code>, <code>maxPagesPerSite</code> default 4, <code>includePersonalEmails</code> off by default, role inbox list incl. purchase, procurement, hr, admin, office, corporate, events; <code>personalEmailsDropped</code>, <code>mxValid</code>, statuses <code>blocked-by-terms</code>, <code>blocked-by-tos-list</code>, <code>blocked-by-robots</code>): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_contact_corporate_gifts">Apify Store listing</a> and the Actor's input schema and code.</li>
+<li>Corporate and individual subscribers, email marketing to companies versus sole traders, identifying yourself and giving an opt-out: <a href="https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/business-to-business-marketing/">ICO, Business-to-business marketing</a>.</li>
+<li>Google Sheets INDEX/MATCH, FILTER, REGEXEXTRACT, WORKDAY and QUERY functions: Google Docs Editors Help.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="press-list-sheet-product-launch-black-friday-media-inboxes-apify.html">Press list sheet for a product launch or Black Friday pitch</a></li>
+<li><a href="office-christmas-party-venue-quote-sheet-events-inbox-deposit-apify.html">Office Christmas party venue quote sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean a contact CSV into a call sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
