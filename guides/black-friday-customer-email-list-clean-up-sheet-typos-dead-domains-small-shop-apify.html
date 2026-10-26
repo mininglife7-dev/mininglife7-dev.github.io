@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Black Friday customer email list clean-up sheet for small shops: fix gmial.com typos and drop dead and throwaway addresses before you send</title><meta name="description" content="A free Google Sheet for small online shops: check your own customer list before the Black Friday email and get one row per customer with Send, Remove, Fix typo, Hold or No consent, plus a count of each group."><link rel="canonical" href="https://unadhi.com/guides/black-friday-customer-email-list-clean-up-sheet-typos-dead-domains-small-shop-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Black Friday customer email list clean-up sheet for small shops"><meta property="og:description" content="One row per customer: verdict, reason, typo hint and an Action column (Send, Remove, Fix typo?, Hold, Re-check, No consent), with a summary tab."><meta property="og:url" content="https://unadhi.com/guides/black-friday-customer-email-list-clean-up-sheet-typos-dead-domains-small-shop-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Black Friday customer email list clean-up sheet for small shops: fix gmial.com typos and drop dead and throwaway addresses before you send", "dateModified": "2026-10-26", "datePublished": "2026-10-26", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/black-friday-customer-email-list-clean-up-sheet-typos-dead-domains-small-shop-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does a valid result mean the email will not bounce?", "acceptedAnswer": {"@type": "Answer", "text": "No. Valid means the address is well-formed and its domain accepts mail. The checker does not contact the mail server, so a closed mailbox at a working domain can still bounce. Remove addresses that bounce after the send."}}, {"@type": "Question", "name": "Should I correct a typo like gmial.com myself?", "acceptedAnswer": {"@type": "Answer", "text": "No. The sheet marks it Fix typo? with the likely address. Confirm with the customer before changing it, because the suggestion is a guess."}}, {"@type": "Question", "name": "Can I use this sheet on a bought or scraped list?", "acceptedAnswer": {"@type": "Answer", "text": "It is built for your own customers who agreed to receive marketing email. The Consent column comes first, so any address without a yes is marked Don't send."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Black Friday customer email list clean-up sheet for small shops: fix gmial.com typos and drop dead and throwaway addresses before you send</h1>
+<p class="meta">Updated 26 Oct 2026 · Disclosure: the email checker linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet works with a CSV from any checker that gives one verdict per address. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned.</p>
+<div class="answer"><p><strong>What you get:</strong> a <strong>customer email list clean-up sheet</strong> in one Google Sheet, with <strong>one row per customer</strong> and an <strong>Action</strong> column that says what to do before your Black Friday email goes out: <code>Send</code>, <code>Remove: domain-does-not-exist</code>, <code>Fix typo? asha@gmail.com (confirm with customer)</code>, <code>Hold: disposable-domain</code>, <code>Re-check later</code> or <code>Don't send: no marketing consent</code>. A summary tab counts each group, so you know how many addresses you are about to drop before you send. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>list tab (example rows are made up)</h3>
+<table><thead><tr><th>Email</th><th>Consent</th><th>Verdict</th><th>Reason</th><th>Did you mean</th><th>Action</th></tr></thead><tbody>
+<tr><td>asha@gmial.com</td><td>yes</td><td>risky</td><td>possible typo of gmail.com</td><td>asha@gmail.com</td><td>Fix typo? asha@gmail.com (confirm with customer)</td></tr>
+<tr><td>orders@oldbakery-example.in</td><td>yes</td><td>invalid</td><td>domain-does-not-exist</td><td></td><td>Remove: domain-does-not-exist</td></tr>
+<tr><td>ravi123@mailinator.com</td><td>yes</td><td>risky</td><td>disposable-domain</td><td></td><td>Hold: disposable-domain</td></tr>
+<tr><td>meena.k@example-mail.com</td><td>no</td><td>valid</td><td>domain-accepts-mail (MX found; mailbox not probed)</td><td></td><td>Don't send: no marketing consent</td></tr>
+<tr><td>john.doe@outlook.com</td><td>yes</td><td>valid</td><td>domain-accepts-mail (MX found; mailbox not probed)</td><td></td><td>Send</td></tr>
+</tbody></table>
+<p>The first row is the most common problem in a shop's customer list: a customer typed the address on a phone at checkout, so the order confirmation never arrived and every later email goes nowhere too.</p>
+
+<h2>Who this is for</h2>
+<p>Small online shops (Shopify, WooCommerce or a hand-kept list from a counter or a stall) that are about to send a Black Friday, Diwali sale or Christmas email to their <strong>own customers</strong>. Addresses with dead domains and typos bounce, and Google's sender guidelines ask senders to remove recipients who bounce repeatedly. Cleaning the list once before the big send costs a few minutes; this sheet does it in one pass. It is not for bought or scraped lists: send only to people who agreed to hear from you.</p>
+
+<h2>Step 1: put your customers in a tab named <code>customers</code></h2>
+<p>Export your customers from your shop (for example the customer CSV export in your shop admin) and import it with File → Import → Upload, "Insert new sheet". Rename the tab <code>customers</code> and arrange it so that:</p>
+<ul>
+<li>column <code>A</code> holds the email address, starting in row 2;</li>
+<li>column <code>B</code> holds <code>yes</code> or <code>no</code> for "agreed to receive marketing email". Use the consent column from your shop's export if it has one; if your list has no consent record, type <code>no</code> until you know.</li>
+</ul>
+
+<h2>Step 2: check the addresses</h2>
+<h3>With the email checker</h3>
+<p>Add a tab named <code>input</code> and put this in <code>A1</code>. It builds the run input from column A:</p>
+<pre>="{ ""emails"": [" &amp; TEXTJOIN(",", TRUE, ARRAYFORMULA(IF(customers!A2:A="", "", """" &amp; TRIM(customers!A2:A) &amp; """"))) &amp; "], ""checkDns"": true }"</pre>
+<p>Copy the cell's value, open the <a href="https://apify.com/laudable_instrument/email-verifier-india-validators-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_verifier_bf_customer_list">Email Verifier and Indian Validators (Half Price)</a> on the Apify Store, switch the input to JSON and paste it. A Google Sheets cell holds about 50,000 characters, so for more than about 1,500 addresses build the input in batches (rows 2 to 1501, then 1502 onward) and run once per batch.</p>
+<ul>
+<li>Put only <code>emails</code> in this run. If you add phones, GSTINs or PANs too, their rows land in the same file with different columns.</li>
+<li><code>checkDns</code> stays <code>true</code>: it is the check that finds dead domains. Exact duplicate addresses are removed before the check.</li>
+<li>The checker looks at each address's syntax, whether its domain exists and accepts mail (MX records), throwaway domains, role mailboxes such as <code>info@</code>, and likely typos of common providers. It sends only the domain to public DNS, and <strong>it does not contact any mail server</strong>.</li>
+</ul>
+<p>In the run, export the dataset as <strong>CSV</strong> and import it into the Sheet as a new tab named <code>verify</code>. Do not rename the headers. The columns this sheet uses are <code>input</code> (the address as you gave it), <code>verdict</code> (<code>valid</code>, <code>risky</code>, <code>invalid</code> or <code>unknown</code>), <code>reason</code>, <code>didYouMean</code>, <code>role</code> and <code>disposable</code>.</p>
+<h3>Free routes</h3>
+<p>For a short list, the bounce report from your last campaign in your email tool is free and is the best evidence there is: an address that hard-bounced is gone. Free online checkers usually take a handful of addresses at a time. Any tool works with this sheet if you paste its results into a <code>verify</code> tab with the headers <code>input</code>, <code>verdict</code>, <code>reason</code> and <code>didYouMean</code>.</p>
+
+<h2>Step 3: build the <code>list</code> tab</h2>
+<p>Add a tab named <code>list</code>. Row 1 holds the headers below; row 2 holds the formulas, which you copy down as far as your customer list goes.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Email</td><td><code>=TRIM(customers!A2)</code></td></tr>
+<tr><td>B</td><td>Consent</td><td><code>=LOWER(TRIM(customers!B2))</code></td></tr>
+<tr><td>C</td><td>Verdict</td><td><code>=IF(A2="", "", IFERROR(INDEX(verify!$A:$ZZ, MATCH(A2, INDEX(verify!$A:$ZZ, 0, MATCH("input", verify!$1:$1, 0)), 0), MATCH("verdict", verify!$1:$1, 0)), "not checked"))</code></td></tr>
+<tr><td>D</td><td>Reason</td><td>same as C with <code>"reason"</code></td></tr>
+<tr><td>E</td><td>Did you mean</td><td>same as C with <code>"didYouMean"</code> (blank when there is no likely typo)</td></tr>
+<tr><td>F</td><td>Role mailbox</td><td>same as C with <code>"role"</code></td></tr>
+<tr><td>G</td><td>Action</td><td><code>=IF(A2="", "", IF(B2&lt;&gt;"yes", "Don't send: no marketing consent", IF(C2="invalid", "Remove: " &amp; D2, IF(AND(E2&lt;&gt;"", E2&lt;&gt;"not checked"), "Fix typo? " &amp; E2 &amp; " (confirm with customer)", IF(C2="risky", "Hold: " &amp; D2, IF(OR(C2="unknown", C2="not checked"), "Re-check later", "Send"))))))</code></td></tr>
+</tbody></table>
+<p>Notes on the formulas:</p>
+<ul>
+<li>The lookups in C to F find each column by its header name, so the column order in the CSV does not matter. They match your address against the <code>input</code> column, which holds the address exactly as you sent it.</li>
+<li>MATCH ignores upper and lower case, so <code>Asha@Gmail.com</code> and <code>asha@gmail.com</code> find the same row.</li>
+<li><strong>Consent comes first</strong> on purpose: a perfectly valid address without marketing consent is still a "Don't send". Order and delivery emails are a different matter from a sale email.</li>
+</ul>
+
+<h2>Step 4: the summary tab</h2>
+<p>Add a tab named <code>summary</code>. In <code>A1</code>: <code>=QUERY(list!G2:G, "select G, count(G) where G is not null group by G order by count(G) desc label G 'Action', count(G) 'Customers'", 0)</code>. Because the Action text carries the reason, you see how many addresses are dead domains, how many look like typos and how many lack consent.</p>
+<p>For the send itself, filter <code>list</code> to <code>Send</code> and export column A, or use your email tool's own unsubscribe or suppression list for the removed addresses so they are not re-imported next time.</p>
+
+<h2>What to do with each group</h2>
+<ol>
+<li><strong>Remove</strong> (<code>domain-does-not-exist</code>, <code>no-mail-server</code>, <code>domain-refuses-mail</code>, <code>bad-syntax</code>): these addresses cannot receive mail. Keep the customer record for orders, but take the address out of the marketing send.</li>
+<li><strong>Fix typo?</strong>: do not change the address yourself. Ask the customer on their next order, in your shop's account page or by phone if they gave one, and update it only when they confirm.</li>
+<li><strong>Hold</strong> (<code>disposable-domain</code>, <code>no-mx-implicit-a-record-only</code>): throwaway addresses often stop working within days. Leave them out of the big send.</li>
+<li><strong>Re-check later</strong> (<code>unknown</code>): the domain's DNS did not answer in time. Run those addresses again the next day before deciding.</li>
+<li><strong>Send</strong>: the domain accepts mail. Include a clear one-click unsubscribe, which Google's guidelines require for marketing email.</li>
+</ol>
+
+<h2>Check before you act on it</h2>
+<ul class="check">
+<li><strong>"valid" does not prove the mailbox exists.</strong> The checker confirms the domain accepts mail; it does not ask the mail server about the person, so a closed mailbox at a working domain can still bounce. After the send, remove addresses that bounce.</li>
+<li>The number of rows in <code>verify</code> is close to the number of unique addresses in <code>customers</code>. If it is much lower, a batch is missing.</li>
+<li>Role addresses such as <code>accounts@</code> or <code>info@</code> are normal for business customers; column F is there for information, not as a reason to remove.</li>
+<li>Customer email addresses are personal data. Process only your own customers' list, for a purpose they agreed to, under the data protection law that applies to you (for example India's DPDP Act 2023 or the GDPR). This is not legal advice.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Email checker inputs and outputs (<code>emails</code>, <code>checkDns</code>; per-address <code>input</code>, <code>verdict</code> valid/risky/invalid/unknown, <code>reason</code>, <code>didYouMean</code>, <code>role</code>, <code>disposable</code>, <code>freeProvider</code>; duplicates removed; no SMTP probing; only the domain sent to public DNS): <a href="https://apify.com/laudable_instrument/email-verifier-india-validators-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_verifier_bf_customer_list">Apify Store listing</a>.</li>
+<li>Removing recipients who bounce repeatedly, one-click unsubscribe for marketing messages, spam rate below 0.3%: <a href="https://support.google.com/a/answer/81126?hl=en">Google, Email sender guidelines</a>.</li>
+<li>Google Sheets INDEX/MATCH, TEXTJOIN and QUERY functions: Google Docs Editors Help.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="black-friday-real-discount-check-sheet-30-day-lowest-price-snapshots-apify.html">Black Friday real discount check sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean a contact CSV into a call sheet</a></li>
+<li><a href="google-shopping-product-listing-check-sheet-shopify-woocommerce-black-friday.html">Google Shopping product listing check sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
