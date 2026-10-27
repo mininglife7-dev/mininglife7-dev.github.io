@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google listing vs website phone check: one sheet that flags every local business whose Google Maps number differs from the number on its own website</title><meta name="description" content="A free Google Sheet: one row per business with its Google Maps phone, every phone on its own website, a Match / Different / Missing result, the page the number was found on and a next step. For web agencies and multi-branch owners."><link rel="canonical" href="https://unadhi.com/guides/google-listing-vs-website-phone-check-sheet-local-business-nap-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Google listing vs website phone check sheet"><meta property="og:description" content="Google Maps phone next to every phone on the business website, with Match / Different / Missing and the page it was found on."><meta property="og:url" content="https://unadhi.com/guides/google-listing-vs-website-phone-check-sheet-local-business-nap-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Google listing vs website phone check: one sheet that flags every local business whose Google Maps number differs from the number on its own website", "dateModified": "2026-10-27", "datePublished": "2026-10-27", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/google-listing-vs-website-phone-check-sheet-local-business-nap-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need both scrapers?", "acceptedAnswer": {"@type": "Answer", "text": "No. For a few businesses, copy the Google listing number and the website number by hand into the scrape tab. The scrapers save time when you check dozens or hundreds."}}, {"@type": "Question", "name": "Why does a number show as Different when it looks the same?", "acceptedAnswer": {"@type": "Answer", "text": "Usually one side lost its plus sign or country code on import. Re-import the CSV with Convert text to numbers, dates and formulas unticked."}}, {"@type": "Question", "name": "Does the contact scraper read Google Maps?", "acceptedAnswer": {"@type": "Answer", "text": "No. It reads only each business's own website. The Google listing data comes from a separate Google Maps scraper whose dataset you pass in with datasetId."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Google listing vs website phone check: one sheet that flags every local business whose Google Maps number differs from the number on its own website</h1>
+<p class="meta">Updated 27 Oct 2026 · Disclosure: the website contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works if you copy the numbers by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. Google Maps data comes from a separate Apify Actor that Unadhi does not make.</p>
+<p class="partner"><strong>Partner programme opening soon:</strong> <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet with <strong>one row per business</strong> that puts the phone number on its <strong>Google Maps listing</strong> next to every phone number its <strong>own website</strong> shows. Each row gets a <strong>Result</strong> (Match / Different / No phone on website / No phone on Google / Skipped), the <strong>page the matching number was found on</strong>, and a plain <strong>Next step</strong>. Web and local SEO agencies use it to check client sites before a call; owners of several branches use it to catch the branch whose website still shows an old number. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>check tab (example rows are made up)</h3>
+<table><thead><tr><th>Business</th><th>Domain</th><th>Status</th><th>Google phone</th><th>Website phones</th><th>Result</th><th>Found on</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Smile Dental</td><td>smiledental.example</td><td>ok</td><td>+914012345678</td><td>+914012345678, +919800000001</td><td>Match</td><td>smiledental.example/contact</td><td>OK: same number on Google and the website</td></tr>
+<tr><td>Corner Bakery</td><td>cornerbakery.example</td><td>ok</td><td>+914022223333</td><td>+914044445555</td><td>Different</td><td></td><td>Ask the owner which number is right, then fix the other place</td></tr>
+<tr><td>City Physio</td><td>cityphysio.example</td><td>ok</td><td>+914066667777</td><td></td><td>No phone on website</td><td></td><td>Add the number to the contact page and footer as a tap-to-call link</td></tr>
+<tr><td>Green Florist</td><td>greenflorist.example</td><td>ok</td><td></td><td>+914088889999</td><td>No phone on Google</td><td></td><td>Owner adds a phone to the Google Business Profile</td></tr>
+<tr><td>Big Chain Store</td><td>bigchain.example</td><td>blocked-by-terms</td><td>+911800000000</td><td></td><td>Skipped</td><td></td><td>Check the website by hand</td></tr>
+</tbody></table>
+
+<h2>Why check the two numbers against each other</h2>
+<ul>
+<li><strong>Customers call the number they see first.</strong> If the Google listing and the website disagree, one of them often rings an old line, a former owner or nobody. A Different row is a lost call you can fix in five minutes.</li>
+<li><strong>Google asks for it.</strong> Its Business Profile guidelines (read 27 Oct 2026) say to represent your business "as it's consistently represented and recognized in the real world", to provide a phone number "that connects to your individual business location", and to use a local number instead of a central call-centre helpline whenever possible. We do not claim anything about rankings; the point here is that the number works and is the same everywhere.</li>
+<li><strong>Branches drift.</strong> A chain with ten locations often has one branch page still showing the head-office number. The sheet shows that on one screen.</li>
+</ul>
+
+<h2>Step 1: get the Google listings</h2>
+<p>Run a Google Maps scraper on Apify for your search (for example "physiotherapist in Hyderabad") or for your own list of places. The popular <a href="https://apify.com/compass/crawler-google-places">Google Maps Scraper</a> (made by Compass, not by us) returns <code>title</code>, <code>website</code> and <code>phoneUnformatted</code> (the phone in international format, like <code>+17183565168</code>) for each place. Note the run's <strong>dataset ID</strong>.</p>
+<p>Agency checking existing clients? Skip this step and type the client list straight into the scrape tab (see the free route below).</p>
+
+<h2>Step 2: run the contact scraper on those websites</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_contact_google_vs_website_phone">website contact scraper</a> and set the input like this:</p>
+<div class="tpl">{ "datasetId": "PASTE_THE_MAPS_DATASET_ID",
+  "datasetCarryFields": ["title", "phoneUnformatted", "address", "placeId"],
+  "maxPagesPerSite": 5, "defaultCountry": "IN", "checkEmailMx": false }</div>
+<p>What it does, as written in the Actor's input schema and code on 27 October 2026:</p>
+<ul>
+<li>Reads each item's <code>website</code> field and ignores items without one (counted as <code>datasetItemsWithoutWebsite</code>). Google Maps links are never treated as the business website.</li>
+<li><code>datasetCarryFields</code> replaces the default list, so keep <code>title</code> in it. The carried values land in <code>sourceItems</code> on each output row.</li>
+<li>Reads the homepage plus the most contact-like pages (contact, about, imprint, support). Phones are returned in international format in <code>phones/N/phone</code>, with <code>phones/N/foundOn</code> (the first page it was seen on) and <code>phones/N/source</code> (for example a tap-to-call link or a WhatsApp link).</li>
+<li>Duplicate domains are removed, so a chain whose branches share one website gives one row; its <code>sourceItems</code> list holds up to 20 branches.</li>
+<li>Follows robots.txt and reads each site's terms, so some rows come back as <code>blocked-by-terms</code>, <code>blocked-by-tos-list</code> or <code>blocked-by-robots</code>. Those you check by hand.</li>
+</ul>
+<p>Export the dataset as <strong>CSV</strong>. In your sheet use File → Import → Upload, choose "Insert new sheet", <strong>untick "Convert text to numbers, dates and formulas"</strong> (otherwise <code>+91...</code> numbers lose their plus sign), and rename the tab <code>scrape</code>. Headers look like <code>sourceItems/0/phoneUnformatted</code> and <code>phones/0/phone</code>, so the formulas find columns by header name.</p>
+<h3>Free route</h3>
+<p>For a handful of businesses, make a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code> (type <code>ok</code>), <code>sourceItems/0/title</code>, <code>sourceItems/0/phoneUnformatted</code>, <code>phones/0/phone</code>, <code>phones/0/foundOn</code>, <code>phones/1/phone</code>, <code>phones/1/foundOn</code>. Copy the number from the Google listing and from the website, both written as <code>+</code>, country code, then digits with no spaces. The formulas work the same.</p>
+
+<h2>Step 3: build the <code>check</code> tab</h2>
+<p>Create a tab named <code>check</code>, put these headers in row 1 and these formulas in row 2, and fill down as many rows as <code>scrape</code> has.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Business</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("sourceItems/0/title", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>B</td><td>Domain</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("domain", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>C</td><td>Status</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("status", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>D</td><td>Google phone</td><td><code>=IFERROR(REGEXREPLACE(TO_TEXT(INDEX(scrape!$A2:$ZZ2, MATCH("sourceItems/0/phoneUnformatted", scrape!$A$1:$ZZ$1, 0))), "[^0-9+]", ""), "")</code></td></tr>
+<tr><td>E</td><td>Website phones</td><td><code>=IFERROR(TEXTJOIN(", ", TRUE, FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^phones/\d+/phone$"))), "")</code></td></tr>
+<tr><td>F</td><td>Result</td><td><code>=IFS(C2&lt;&gt;"ok", "Skipped", AND(D2="", E2=""), "No phone anywhere", D2="", "No phone on Google", E2="", "No phone on website", ISNUMBER(SEARCH(D2, E2)), "Match", TRUE, "Different")</code></td></tr>
+<tr><td>G</td><td>Found on</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH(SUBSTITUTE(INDEX(scrape!$A$1:$ZZ$1, MATCH(D2, scrape!$A2:$ZZ2, 0)), "/phone", "/foundOn"), scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>H</td><td>Next step</td><td><code>=IFS(F2="Match", "OK: same number on Google and the website", F2="Different", "Ask the owner which number is right, then fix the other place", F2="No phone on website", "Add the number to the contact page and footer as a tap-to-call link", F2="No phone on Google", "Owner adds a phone to the Google Business Profile", F2="Skipped", "Check the website by hand", TRUE, "Find a working number before anything else")</code></td></tr>
+</tbody></table>
+<p>Notes on the formulas:</p>
+<ul>
+<li>Column D strips spaces and dashes so <code>+91 40 1234 5678</code> and <code>+914012345678</code> compare as the same number.</li>
+<li>Column G finds which <code>phones/N/phone</code> header holds the Google number, swaps it for <code>phones/N/foundOn</code> and returns that page.</li>
+<li>A Different row is not always wrong: a clinic may list a reception line on Google and a mobile on the website. That is why the next step is to ask the owner, not to change anything yourself.</li>
+<li>Chains: if <code>sourceItems/1/phoneUnformatted</code> exists, add columns for the other branches with the same formula as D and E, one per branch.</li>
+</ul>
+
+<h2>Step 4: work the list</h2>
+<p>Add a tab named <code>plan</code>. In <code>A1</code>: <code>=QUERY(check!A2:H, "select F, count(B) where B is not null group by F order by count(B) desc label F 'Result', count(B) 'Businesses'", 0)</code>. Fix your own or your clients' Different and No phone on website rows first; they are the ones losing calls today.</p>
+<ul class="check">
+<li>Call the number on each Different row before changing anything. Write down which one answered and the date.</li>
+<li>Only the owner or a manager of the Google Business Profile can edit the listing. Send them the right number and the link to the listing.</li>
+<li>On the website, make the number a tap-to-call link (<code>tel:+914012345678</code>) in the footer, so every page has it.</li>
+<li>Re-run the two scrapers a week later and check that the rows turned to Match.</li>
+</ul>
+<p>Agencies: a Different row on a business that is not your client is a reason to offer help, not to send bulk email. Contact one business at a time, say how you found the mismatch, and honour every "no".</p>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Do I need both scrapers?</h3><p>No. For a few businesses, copy both numbers by hand into the scrape tab. The scrapers save time when you check dozens or hundreds.</p>
+<h3>Why does a number show as Different when it looks the same?</h3><p>Usually one side lost its plus sign or country code on import. Re-import the CSV with "Convert text to numbers, dates and formulas" unticked.</p>
+<h3>Does the contact scraper read Google Maps?</h3><p>No. It reads only each business's own website. The Google listing data comes from a separate Google Maps scraper whose dataset you pass in.</p>
+<h3>What does the Unadhi Actor cost?</h3><p>No Actor fee during launch. You pay Apify only for the platform usage of each run; Apify's free plan includes $5 of usage a month.</p>
+
+<div class="note"><p>Not legal advice. Use public business phone numbers only for business contact, follow anti-spam and telemarketing rules where you are, and honour every opt-out. Spotted an error? Write to mininglife7@gmail.com and we correct it.</p></div>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>Google Business Profile guidelines ("consistently represented and recognized in the real world", phone that connects to the individual location, local number over a central helpline): <a href="https://support.google.com/business/answer/3038177?hl=en">support.google.com</a> (read 27 October 2026).</li>
+<li>Google Maps Scraper output fields <code>title</code>, <code>website</code>, <code>phoneUnformatted</code>: <a href="https://apify.com/compass/crawler-google-places">Apify Store listing by Compass</a> (read 27 October 2026).</li>
+<li>Contact scraper inputs and outputs (<code>datasetId</code>, <code>datasetCarryFields</code>, <code>sourceItems</code> up to 20 per domain, <code>phones/N/phone</code>, <code>foundOn</code>, <code>source</code>, <code>datasetItemsWithoutWebsite</code>, blocked statuses): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_contact_google_vs_website_phone">Apify Store listing</a> and the Actor's input schema and code.</li>
+<li>Apify pricing (free plan, $5 monthly usage): <a href="https://apify.com/pricing">apify.com/pricing</a>.</li>
+<li>Google Sheets INDEX/MATCH, FILTER, REGEXREPLACE, SEARCH and QUERY functions: Google Docs Editors Help.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="enrich-google-maps-apify-emails-phones.html">Add emails and phones to a Google Maps export</a></li>
+<li><a href="web-agency-client-website-contact-check-sheet-apify.html">Web agency client website contact check sheet</a></li>
+<li><a href="business-website-whatsapp-social-links-apify.html">Business website WhatsApp and social links</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean a contact CSV into a call sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
