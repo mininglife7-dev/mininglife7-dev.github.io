@@ -1,0 +1,141 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Franchise shortlist sheet: each brand's franchise enquiry inbox from its own website, the day your 14-day FDD wait ends, and a call list of current and former franchisees</title><meta name="description" content="A free Google Sheet for franchise buyers: one row per brand with its franchise inbox, phone and the page found on, the first day you may sign or pay after receiving the FDD, fees from Items 5-7 and a call list from Item 20."><link rel="canonical" href="https://unadhi.com/guides/franchise-shortlist-sheet-brand-franchise-inbox-fdd-14-day-wait-franchisee-call-list-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Franchise shortlist sheet"><meta property="og:description" content="Franchise inbox per brand, the 14-day FDD date and a franchisee call list in one sheet."><meta property="og:url" content="https://unadhi.com/guides/franchise-shortlist-sheet-brand-franchise-inbox-fdd-14-day-wait-franchisee-call-list-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Franchise shortlist sheet: each brand's franchise enquiry inbox from its own website, the day your 14-day FDD wait ends, and a call list of current and former franchisees", "dateModified": "2026-10-27", "datePublished": "2026-10-27", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/franchise-shortlist-sheet-brand-franchise-inbox-fdd-14-day-wait-franchisee-call-list-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When can I sign a franchise agreement or pay a deposit?", "acceptedAnswer": {"@type": "Answer", "text": "Under the US FTC Franchise Rule, not until at least 14 calendar days after you received the franchisor's current disclosure document (16 CFR 436.2(a)). The sheet adds 14 days to the date you log."}}, {"@type": "Question", "name": "Where do I find people to ask about a franchise?", "acceptedAnswer": {"@type": "Answer", "text": "Item 20 of the disclosure document must list current franchisees with outlet phone numbers and the franchisees who left the system in the last completed fiscal year."}}, {"@type": "Question", "name": "Does the scraper find franchising@ addresses?", "acceptedAnswer": {"@type": "Answer", "text": "No. By default it keeps only role mailboxes on its list, and franchising@ is not on it, so it is dropped and counted in personalEmailsDropped. franchise@ and partners@ are kept."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Franchise shortlist sheet: each brand's franchise enquiry inbox from its own website, the day your 14-day FDD wait ends, and a call list of current and former franchisees</h1>
+<p class="meta">Updated 27 Oct 2026 · Disclosure: the website contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works if you copy the details by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. We do not sell, rate or recommend any franchise.</p>
+<p class="partner"><strong>Partner programme opening soon:</strong> <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet for anyone comparing franchises. The <strong>brands</strong> tab holds one row per franchise brand with its <strong>franchise enquiry inbox</strong>, a general inbox, a phone number, the <strong>page each was found on</strong> and a plain <strong>Next step</strong>. The <strong>fdd</strong> tab logs the day you received each brand's Franchise Disclosure Document and works out the <strong>first day you may sign or pay</strong> (14 calendar days later under the US FTC Franchise Rule), next to the fees and outlet numbers you copy from Items 5, 6, 7, 19 and 20. The <strong>calls</strong> tab is your list of current and former franchisees to phone before you decide. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>brands tab (example rows are made up)</h3>
+<table><thead><tr><th>Brand site</th><th>Status</th><th>Franchise inbox</th><th>General inbox</th><th>Phone</th><th>Found on</th><th>Next step</th></tr></thead><tbody>
+<tr><td>tutorbrand.example</td><td>ok</td><td>franchise@tutorbrand.example</td><td>info@tutorbrand.example</td><td>+12125550101</td><td>tutorbrand.example/franchise</td><td>Ask for the FDD at the franchise inbox</td></tr>
+<tr><td>cafebrand.example</td><td>ok</td><td></td><td>hello@cafebrand.example</td><td>+12125550102</td><td></td><td>Ask the general inbox who handles franchise enquiries</td></tr>
+<tr><td>gymbrand.example</td><td>ok</td><td></td><td></td><td>+12125550103</td><td></td><td>Call and ask who handles franchise enquiries</td></tr>
+<tr><td>cleanbrand.example</td><td>blocked-by-terms</td><td></td><td></td><td></td><td></td><td>Check the website by hand</td></tr>
+</tbody></table>
+<h3>fdd tab (example row is made up)</h3>
+<table><thead><tr><th>Brand</th><th>FDD received</th><th>First day to sign or pay</th><th>Item 5 initial fee</th><th>Item 6 royalty</th><th>Item 7 total investment</th><th>Item 19 earnings info?</th><th>Item 20 outlets start → end of last year</th><th>Status</th></tr></thead><tbody>
+<tr><td>tutorbrand.example</td><td>Mon 2 Nov 2026</td><td>Mon 16 Nov 2026</td><td>(copy from Item 5)</td><td>(copy from Item 6)</td><td>(copy from Item 7)</td><td>Yes</td><td>(copy from Item 20 Table 1)</td><td>Reading: do not sign or pay before 16 Nov 2026</td></tr>
+</tbody></table>
+
+<h2>Who this is for</h2>
+<ul>
+<li><strong>People thinking of buying a franchise</strong> who have a long list of brands and want one place to track who answered, which disclosure documents arrived and what each one costs.</li>
+<li><strong>Franchise consultants and small business advisers</strong> who help a client compare five or ten brands and want the same columns for each.</li>
+</ul>
+
+<h2>What the FTC Franchise Rule says, in the parts this sheet uses</h2>
+<p>From 16 CFR Part 436 on eCFR, read 27 October 2026:</p>
+<ul>
+<li><strong>14 calendar days.</strong> It is an unfair or deceptive act for a franchisor "to fail to furnish a prospective franchisee with a copy of the franchisor's current disclosure document … at least 14 calendar-days before the prospective franchisee signs a binding agreement with, or makes any payment to, the franchisor or an affiliate" (§ 436.2(a)). Payment counts too, so a deposit is covered.</li>
+<li><strong>7 calendar days for a changed contract.</strong> If the franchisor alters the agreement unilaterally and materially, you must get the revised agreement at least seven calendar days before you sign it. Changes you asked for in negotiation do not restart that clock (§ 436.2(b)).</li>
+<li><strong>Delivery by email counts.</strong> The document is furnished if it was hand-delivered, faxed, emailed or otherwise delivered by the required date (§ 436.2(c)). So log the day it reached you.</li>
+<li><strong>Item 5</strong> is initial fees, <strong>Item 6</strong> other fees in a table (royalties, advertising and others), <strong>Item 7</strong> your estimated initial investment, <strong>Item 19</strong> financial performance representations (if a franchisor gives none, it must say so), and <strong>Item 20</strong> outlet numbers for the last three fiscal years.</li>
+<li><strong>Item 20 lists the people to call.</strong> It must give the names of current franchisees with the address and phone number of their outlets, and the name, city and state and phone number of every franchisee whose outlet was terminated, cancelled, not renewed or otherwise left the system in the last completed fiscal year, with the line "If you buy this franchise, your contact information may be disclosed to other buyers when you leave the franchise system."</li>
+</ul>
+<p>The Franchise Rule is US federal law and covers franchises to be located in the United States or its territories, unless an exemption in subpart E applies (§ 436.2). If you are buying outside the US, the 14-day rule above does not apply as written, but the same columns are still the right questions to ask. The FTC's own buyer guide also suggests visiting franchised outlets near you and talking to the owners.</p>
+
+<h2>Step 1: list the brands and their franchise pages</h2>
+<p>Make a list of the brands you are considering. For each one, open its website and copy the address of its franchise page (often <code>/franchise</code>, <code>/franchising</code> or <code>/own-a-franchise</code>). If you cannot find one, use the homepage.</p>
+
+<h2>Step 2: run the contact scraper on those pages</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_contact_franchise_shortlist_fdd">website contact scraper</a> and paste the franchise page addresses, one per line:</p>
+<div class="tpl">{ "urls": ["https://tutorbrand.example/franchise", "https://cafebrand.example/franchising"],
+  "maxPagesPerSite": 5, "defaultCountry": "US", "checkEmailMx": true }</div>
+<p>What it does, as written in the Actor's input schema and code on 27 October 2026:</p>
+<ul>
+<li>It fetches the address you give first, so the franchise page itself is read, then follows the most contact-like links on that page (contact, about, support, locations and similar) up to <code>maxPagesPerSite</code>.</li>
+<li>By default it keeps only shared role mailboxes. <code>franchise@</code>, <code>partners@</code>, <code>partnerships@</code>, <code>sales@</code> and <code>info@</code> are on its role list, and so is an address like <code>franchiseenquiry@</code> (it ends in a role word). <code>franchising@</code> and <code>development@</code> are <strong>not</strong> on the list, so they are dropped and only counted in <code>personalEmailsDropped</code>. If that count is above 0 and you found no franchise inbox, look at the franchise page by hand.</li>
+<li>Each email comes as <code>emails/N/email</code> with <code>emails/N/foundOn</code> (the page it was first seen on) and, with <code>checkEmailMx</code> on, <code>emails/N/mxValid</code> (the domain can receive mail). Phones come in international format in <code>phones/N/phone</code>.</li>
+<li>Duplicate domains are removed, so give one address per brand.</li>
+<li>It follows robots.txt and reads each site's terms. Some rows come back as <code>blocked-by-terms</code>, <code>blocked-by-tos-list</code> or <code>blocked-by-robots</code>; check those by hand.</li>
+</ul>
+<p>Export the dataset as <strong>CSV</strong>. In your sheet use File → Import → Upload, choose "Insert new sheet", <strong>untick "Convert text to numbers, dates and formulas"</strong> (otherwise <code>+1...</code> numbers lose their plus sign), and rename the tab <code>scrape</code>. The formulas find columns by header name.</p>
+<h3>Free route</h3>
+<p>For three or four brands, make a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code> (type <code>ok</code>), <code>emails/0/email</code>, <code>emails/0/foundOn</code>, <code>emails/1/email</code>, <code>emails/1/foundOn</code>, <code>phones/0/phone</code> and copy the details from each franchise page. The formulas work the same.</p>
+
+<h2>Step 3: build the <code>brands</code> tab</h2>
+<p>Create a tab named <code>brands</code>, put these headers in row 1 and these formulas in row 2, and fill down as many rows as <code>scrape</code> has.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Brand site</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("domain", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>B</td><td>Status</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("status", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>C</td><td>Franchise inbox</td><td><code>=IFERROR(INDEX(FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^emails/\d+/email$"), REGEXMATCH(TO_TEXT(scrape!$A2:$ZZ2), "(?i)franchis|partner")), 1), "")</code></td></tr>
+<tr><td>D</td><td>General inbox</td><td><code>=IFERROR(INDEX(FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^emails/\d+/email$"), scrape!$A2:$ZZ2&lt;&gt;"", scrape!$A2:$ZZ2&lt;&gt;C2), 1), "")</code></td></tr>
+<tr><td>E</td><td>Phone</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("phones/0/phone", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>F</td><td>Found on</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH(SUBSTITUTE(INDEX(scrape!$A$1:$ZZ$1, MATCH(C2, scrape!$A2:$ZZ2, 0)), "/email", "/foundOn"), scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>G</td><td>Next step</td><td><code>=IFS(B2&lt;&gt;"ok", "Check the website by hand", C2&lt;&gt;"", "Ask for the FDD at the franchise inbox", D2&lt;&gt;"", "Ask the general inbox who handles franchise enquiries", E2&lt;&gt;"", "Call and ask who handles franchise enquiries", TRUE, "Use the enquiry form on the franchise page")</code></td></tr>
+</tbody></table>
+<p>Column C looks for an inbox with "franchis" or "partner" in it. Column F finds which <code>emails/N/email</code> header holds that inbox, swaps it for <code>emails/N/foundOn</code> and returns the page. Many brands only take enquiries through a form; that is what the last next step is for.</p>
+
+<h2>Step 4: the <code>fdd</code> tab</h2>
+<p>Headers in row 1: Brand, FDD received, First day to sign or pay, Revised agreement received, First day to sign revised agreement, Item 5 initial fee, Item 6 royalty, Item 7 total investment, Item 19 earnings info?, Item 20 outlets start → end of last year, Item 20 left last year, Status. Type dates as dates.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>C</td><td>First day to sign or pay</td><td><code>=IF(B2="", "", B2+14)</code></td></tr>
+<tr><td>E</td><td>First day to sign revised agreement</td><td><code>=IF(D2="", "", D2+7)</code></td></tr>
+<tr><td>L</td><td>Status</td><td><code>=IFS(B2="", "Ask for the FDD", TODAY()&lt;C2, "Reading: do not sign or pay before "&amp;TEXT(C2, "d mmm yyyy"), AND(D2&lt;&gt;"", TODAY()&lt;E2), "Revised agreement: do not sign before "&amp;TEXT(E2, "d mmm yyyy"), COUNTIF(calls!A:A, A2)&lt;3, "Call more franchisees first", TRUE, "Ready to talk to your lawyer and accountant")</code></td></tr>
+</tbody></table>
+<ul>
+<li>Column C adds 14 calendar days to the day the document reached you. That is our reading of "at least 14 calendar-days before"; if in doubt, wait one more day.</li>
+<li>Column E applies only when the franchisor changed the contract on its own. Changes you negotiated do not restart the clock.</li>
+<li>"Call more franchisees first" and the number 3 are our working rule, not a legal one. Change it to suit you.</li>
+<li>Copy fee amounts exactly as written in Items 5, 6 and 7, including any range or formula. Do not average or estimate them.</li>
+</ul>
+
+<h2>Step 5: the <code>calls</code> tab</h2>
+<p>Headers: Brand, Name, City and state, Phone, Current or former, Called on, What they said, Would they buy it again?. Copy the names and phone numbers from Item 20 of each FDD: a few current franchisees and, more important, the franchisees who left last year. Then add a summary in a tab named <code>plan</code>, cell A1:</p>
+<div class="tpl">=QUERY(calls!A2:H, "select A, E, count(B) where A is not null group by A, E label A 'Brand', E 'Current or former', count(B) 'Called'", 0)</div>
+<ul class="check">
+<li>Send one enquiry per brand from the franchise inbox column, ask for the current FDD and note the day it arrives in the <code>fdd</code> tab.</li>
+<li>Do not pay a deposit or sign anything before the date in column C.</li>
+<li>Earnings figures that are not in Item 19 are a reason to ask questions. Write down who said them and when.</li>
+<li>Use Item 20 numbers only to ask former and current franchisees about their own experience. Do not add them to a mailing list.</li>
+<li>Take the FDD and the agreement to a franchise lawyer and an accountant before you sign.</li>
+</ul>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>When can I sign a franchise agreement or pay a deposit?</h3><p>Under the US FTC Franchise Rule, not until at least 14 calendar days after you received the franchisor's current disclosure document (16 CFR 436.2(a)). The sheet adds 14 days to the date you log.</p>
+<h3>Where do I find people to ask about a franchise?</h3><p>Item 20 of the disclosure document must list current franchisees with outlet phone numbers and the franchisees who left the system in the last completed fiscal year.</p>
+<h3>Does the scraper find franchising@ addresses?</h3><p>No. By default it keeps only role mailboxes on its list, and franchising@ is not on it, so it is dropped and counted in personalEmailsDropped. franchise@ and partners@ are kept.</p>
+<h3>What does the Unadhi Actor cost?</h3><p>No Actor fee during launch. You pay Apify only for the usage of each run; Apify's free plan includes $5 of usage a month.</p>
+
+<div class="note"><p>Not legal or investment advice. This guide does not rate or recommend any franchise. Read the whole disclosure document and get independent legal and accounting advice before you sign or pay anything. Spotted an error? Write to mininglife7@gmail.com and we correct it.</p></div>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>FTC Franchise Rule, 16 CFR Part 436: § 436.2(a)-(c) (14 and 7 calendar days, delivery by email), § 436.5 Items 5, 6, 7, 19 and 20: <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-D/part-436">eCFR</a> (read 27 October 2026).</li>
+<li>FTC, A Consumer's Guide to Buying a Franchise (visit local outlets and talk to the owners): <a href="https://www.ftc.gov/business-guidance/resources/consumers-guide-buying-franchise">ftc.gov</a>.</li>
+<li>Contact scraper inputs and outputs (<code>urls</code>, start page fetched first, role mailbox list, <code>personalEmailsDropped</code>, <code>emails/N/foundOn</code>, <code>mxValid</code>, blocked statuses): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_contact_franchise_shortlist_fdd">Apify Store listing</a> and the Actor's input schema and code.</li>
+<li>Apify pricing (free plan, $5 monthly usage): <a href="https://apify.com/pricing">apify.com/pricing</a>.</li>
+<li>Google Sheets INDEX/MATCH, FILTER, REGEXMATCH, IFS and QUERY functions: Google Docs Editors Help.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean a contact CSV into a call sheet</a></li>
+<li><a href="supplier-rfq-quote-request-sheet-sales-export-inboxes-landed-cost-apify.html">Supplier quote request sheet</a></li>
+<li><a href="trade-fair-exhibitor-contact-sheet-apify.html">Trade fair exhibitor contact sheet</a></li>
+<li><a href="web-agency-client-website-contact-check-sheet-apify.html">Web agency client website contact check sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
