@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vendor privacy contact sheet: each supplier's DPO, privacy or grievance inbox from its own website, with the page it was found on and a re-check date</title><meta name="description" content="A free Google Sheet for small businesses: one row per vendor that handles personal data, with its best privacy contact (DPO, privacy, grievance, legal or general inbox), the page it came from, a security inbox and a status column."><link rel="canonical" href="https://unadhi.com/guides/vendor-privacy-contact-sheet-supplier-dpo-privacy-grievance-inbox-gdpr-dpdp-apify.html"><meta name="robots" content="index,follow">
+<meta property="og:type" content="article"><meta property="og:title" content="Vendor privacy contact sheet: DPO, privacy or grievance inbox per supplier"><meta property="og:description" content="One row per vendor: DPO or privacy inbox, page found on, security inbox, status and re-check date, for breach notices and customer data requests."><meta property="og:url" content="https://unadhi.com/guides/vendor-privacy-contact-sheet-supplier-dpo-privacy-grievance-inbox-gdpr-dpdp-apify.html"><meta property="og:site_name" content="Unadhi Guides">
+<meta name="twitter:card" content="summary"><style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Telugu',sans-serif;color:#1d2a2a;background:#fbfaf7}
+a{color:#0a5c55}header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}header{padding-top:14px;font-weight:600}header a{text-decoration:none}
+h1{font-size:1.65rem;line-height:1.25;margin:.6em 0 .3em}h2{font-size:1.25rem;margin:1.6em 0 .4em}h3{font-size:1.05rem;margin:1.2em 0 .3em}
+.meta{color:#5b6b6b;font-size:.9rem}.answer{background:#e9f4f2;border-left:4px solid #0a5c55;padding:12px 16px;border-radius:6px}
+.note{background:#fff6e0;border-left:4px solid #c98a00;padding:10px 14px;border-radius:6px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}th,td{border:1px solid #d6dede;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef3f2}
+code,pre{background:#eef3f2;border-radius:4px;font-size:.88rem}code{padding:1px 4px}pre{padding:10px 12px;overflow-x:auto}
+ul.check{list-style:none;padding-left:0}ul.check li:before{content:"\2610  ";}
+.next{border:1px solid #d6dede;border-radius:8px;padding:12px 16px;background:#fff}.src li{word-break:break-word;font-size:.92rem}
+footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-top:1px solid #ddd}details{margin:.4em 0}summary{cursor:pointer;font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Vendor privacy contact sheet: each supplier's DPO, privacy or grievance inbox from its own website, with the page it was found on and a re-check date", "dateModified": "2026-10-27", "datePublished": "2026-10-27", "inLanguage": "en", "author": {"@type": "Organization", "name": "Unadhi"}, "publisher": {"@type": "Organization", "name": "Unadhi"}, "mainEntityOfPage": "https://unadhi.com/guides/vendor-privacy-contact-sheet-supplier-dpo-privacy-grievance-inbox-gdpr-dpdp-apify.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why would a vendor's DPO contact be on its website?", "acceptedAnswer": {"@type": "Answer", "text": "GDPR Article 37(7) says a controller or processor that has a data protection officer must publish the DPO's contact details, and Article 13(1)(b) puts them in the privacy notice. In India, rule 9 of the DPDP Rules 2025 asks Data Fiduciaries to publish a DPO or other contact; that rule comes into force eighteen months after 13 November 2025."}}, {"@type": "Question", "name": "Why did the scraper not return a dataprotection@ or gdpr@ address?", "acceptedAnswer": {"@type": "Answer", "text": "Those two are not on its shared-inbox list, so with personal emails off they are dropped and only counted in personalEmailsDropped. If that count is above 0, open the vendor's privacy policy and copy the address by hand. dpo@, privacy@, dsar@, grievance@, legal@, compliance@ and security@ are on the list."}}, {"@type": "Question", "name": "Do I need the scraper at all?", "acceptedAnswer": {"@type": "Answer", "text": "No. For about ten vendors, open each privacy policy and type the inboxes into the scrape tab by hand. The formulas work the same way. The scraper saves time when you have dozens of vendors."}}]}</script>
+</head><body>
+<header><a href="./">Unadhi Guides</a></header><main>
+<h1>Vendor privacy contact sheet: each supplier's DPO, privacy or grievance inbox from its own website, with the page it was found on and a re-check date</h1>
+<p class="meta">Updated 27 Oct 2026 · Disclosure: the website contact scraper linked below is an Unadhi product on the Apify Store. This guide is free, and the sheet also works if you copy contacts from each vendor's privacy policy by hand. Current Apify pricing is only on the Store page. This page has no affiliate links and nobody paid to be mentioned. This is not legal advice.</p>
+<div class="answer"><p><strong>What you get:</strong> one Google Sheet with <strong>one row per vendor</strong> that handles personal data for your business (payroll, email marketing, CRM, hosting, an AI chatbot, a booking tool). Each row shows the vendor's <strong>best privacy contact</strong> taken from its own website (a DPO inbox first, then a privacy or data-request inbox, then a grievance inbox, then legal or compliance, then a general inbox), the <strong>page it was found on</strong>, its security inbox if listed, a <strong>Status</strong> column (OK / Weak / Missing / Skipped) and a <strong>Re-check on</strong> date. You use it the day a customer asks what a vendor holds about them, or a vendor tells you about a breach and you need to write back to the right place. Formulas are below. The example rows are made up.</p></div>
+
+<h2>The finished sheet</h2>
+<h3>privacy tab (example rows are made up)</h3>
+<table><thead><tr><th>Domain</th><th>Status</th><th>Best privacy contact</th><th>Type</th><th>Found on</th><th>Security inbox</th><th>Last checked</th><th>Re-check on</th><th>Next step</th></tr></thead><tbody>
+<tr><td>payrollco.example</td><td>ok</td><td>dpo@payrollco.example</td><td>DPO</td><td>payrollco.example/privacy</td><td>security@payrollco.example</td><td>27 Oct 2026</td><td>27 Apr 2027</td><td>OK: DPO inbox on file</td></tr>
+<tr><td>mailblast.example</td><td>ok</td><td>privacy@mailblast.example</td><td>Privacy</td><td>mailblast.example/legal/privacy</td><td></td><td>27 Oct 2026</td><td>27 Apr 2027</td><td>OK: privacy inbox on file</td></tr>
+<tr><td>chatbotly.example</td><td>ok</td><td>legal@chatbotly.example</td><td>Legal</td><td>chatbotly.example/terms</td><td></td><td>27 Oct 2026</td><td>27 Apr 2027</td><td>Weak: legal inbox only, read its privacy policy</td></tr>
+<tr><td>smallhost.example</td><td>ok</td><td>info@smallhost.example</td><td>General</td><td>smallhost.example/contact</td><td></td><td>27 Oct 2026</td><td>27 Apr 2027</td><td>Weak: general inbox only, ask for a privacy contact</td></tr>
+<tr><td>bigcloud.example</td><td>blocked-by-terms</td><td></td><td></td><td></td><td></td><td></td><td></td><td>Skipped: copy the contact from its privacy policy by hand</td></tr>
+</tbody></table>
+<p>The six-month re-check is our working rule, not a legal deadline. Change it in one cell if you prefer every three or twelve months.</p>
+
+<h2>Why keep vendor privacy contacts in one place</h2>
+<ul>
+<li><strong>A vendor has a breach.</strong> Under GDPR Article 33(2), a processor must notify the controller (you) without undue delay after becoming aware of a personal data breach. You then have your own 72-hour clock under Article 33(1). Knowing who to write back to at the vendor saves hours. Our <a href="eu-ai-tools-gdpr-personal-data-breach-72-hour-sheet-sme.html">72-hour breach sheet</a> covers your side.</li>
+<li><strong>A customer asks for their data.</strong> Article 28(3)(e) says the processor contract must require the processor to help you answer data subject requests. You still need to reach the right team.</li>
+<li><strong>The vendor has to publish it anyway.</strong> Under Article 37(7), a controller or processor that has a data protection officer must publish the DPO's contact details, and Article 13(1)(b) puts the DPO's contact details in the privacy notice where there is one. So the contact you need is usually already on the vendor's own website.</li>
+<li><strong>India:</strong> Rule 9 of the Digital Personal Data Protection Rules, 2025 requires every Data Fiduciary to prominently publish on its website or app the business contact information of its DPO, if it has one, or of a person who can answer questions about processing. Rule 9 is in the group that comes into force eighteen months after the Rules were published on 13 November 2025, which works out to 13 May 2027. Until then many Indian vendors will list a grievance officer or a general inbox instead.</li>
+</ul>
+<p>The sheet sits next to your record of processing. If you are building that too, see the <a href="eu-ai-tools-gdpr-article-30-records-of-processing-sheet-sme.html">Article 30 records of processing sheet</a> and the <a href="eu-ai-tools-gdpr-article-28-processor-agreement-dpa-clause-check-sheet-sme.html">Article 28 processor agreement check sheet</a>.</p>
+
+<h2>Step 1: list your vendors in a tab named <code>vendors</code></h2>
+<table><thead><tr><th>Column</th><th>What to put</th></tr></thead><tbody>
+<tr><td>A Vendor</td><td>Name, for example "PayrollCo"</td></tr>
+<tr><td>B Website</td><td>The vendor's homepage, for example <code>https://www.payrollco.example</code></td></tr>
+<tr><td>C What it does for you</td><td>Payroll, newsletter, CRM, website hosting, AI chatbot, appointment booking...</td></tr>
+<tr><td>D Personal data it gets</td><td>For example "staff names, bank details" or "customer emails, chat transcripts"</td></tr>
+<tr><td>E Role</td><td><code>Processor</code> (acts on your instructions), <code>Separate controller</code> or <code>Not sure</code></td></tr>
+<tr><td>F Country</td><td>Where the vendor is based</td></tr>
+</tbody></table>
+<p>The quickest way to find vendors is your last 12 months of card and bank statements plus the "connected apps" page of your email and website tools.</p>
+
+<h2>Step 2: run the contact scraper on the vendor websites</h2>
+<p>Open the <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_contact_vendor_privacy">website contact scraper</a> on the Apify Store and paste column B into <code>urls</code> (one per line). What it does, as written in the Actor's input schema and code on 27 October 2026:</p>
+<ul>
+<li>Reads the homepage, then the most contact-like pages first. Contact and imprint pages rank highest; links with <code>privacy</code>, <code>legal</code>, <code>about</code> or <code>support</code> in them come next. <code>maxPagesPerSite</code> is 4 by default. For this job set it to <strong>8</strong> so the privacy policy page is more likely to be read.</li>
+<li>Returns only <strong>shared role inboxes</strong>. <code>dpo@</code>, <code>privacy@</code>, <code>dsar@</code>, <code>dsarequests@</code>, <code>grievance@</code>, <code>nodal@</code>, <code>legal@</code>, <code>compliance@</code> and <code>security@</code> are all on its role list. <code>dataprotection@</code> and <code>gdpr@</code> are <strong>not</strong> on the list, so with personal emails off they are dropped and only counted in <code>personalEmailsDropped</code>. If that count is above 0, open the privacy policy and check.</li>
+<li>Records the page each inbox was found on (<code>emails/N/foundOn</code>) and whether the domain can receive mail (<code>emails/N/mxValid</code>).</li>
+<li>Follows robots.txt and reads each site's terms. Many large software companies' terms forbid scraping, so expect some rows to come back as <code>blocked-by-terms</code>, <code>blocked-by-tos-list</code> or <code>blocked-by-robots</code>. Those are not charged; you copy their contact by hand.</li>
+</ul>
+<p>When the run finishes, export the dataset as <strong>CSV</strong>, then in your sheet use File → Import → Upload, "Insert new sheet", and rename it <code>scrape</code>. Nested fields become headers like <code>emails/0/email</code> and <code>emails/0/foundOn</code>, so the formulas below find columns by header name, not by position.</p>
+<h3>Free route</h3>
+<p>For ten vendors, open each privacy policy, search the page for "@", and type what you find into a <code>scrape</code> tab with the headers <code>domain</code>, <code>status</code> (type <code>ok</code>), <code>emails/0/email</code>, <code>emails/0/foundOn</code>, <code>emails/1/email</code>, <code>emails/1/foundOn</code> and so on. The formulas work the same.</p>
+
+<h2>Step 3: build the <code>privacy</code> tab</h2>
+<p>Create a tab named <code>privacy</code>, put these headers in row 1 and these formulas in row 2, and fill down as many rows as <code>scrape</code> has.</p>
+<table><thead><tr><th>Col</th><th>Header</th><th>Formula (row 2)</th></tr></thead><tbody>
+<tr><td>A</td><td>Domain</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("domain", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>B</td><td>Status</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("status", scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>C</td><td>All inboxes</td><td><code>=IFERROR(TEXTJOIN(", ", TRUE, FILTER(scrape!$A2:$ZZ2, REGEXMATCH(scrape!$A$1:$ZZ$1, "^emails/\d+/email$"))), "")</code></td></tr>
+<tr><td>D</td><td>DPO inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", (dpo(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>E</td><td>Privacy inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:privacy|dsar|dsarequests)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>F</td><td>Grievance inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:grievance|grievances|nodal)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>G</td><td>Legal inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:legal|compliance)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>H</td><td>General inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", ((?:support|help|info|contact|hello)(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>I</td><td>Best privacy contact</td><td><code>=IF(D2&lt;&gt;"", D2, IF(E2&lt;&gt;"", E2, IF(F2&lt;&gt;"", F2, IF(G2&lt;&gt;"", G2, H2))))</code></td></tr>
+<tr><td>J</td><td>Type</td><td><code>=IFS(D2&lt;&gt;"", "DPO", E2&lt;&gt;"", "Privacy", F2&lt;&gt;"", "Grievance", G2&lt;&gt;"", "Legal", H2&lt;&gt;"", "General", TRUE, "")</code></td></tr>
+<tr><td>K</td><td>Found on</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH(SUBSTITUTE(INDEX(scrape!$A$1:$ZZ$1, MATCH(I2, scrape!$A2:$ZZ2, 0)), "/email", "/foundOn"), scrape!$A$1:$ZZ$1, 0)), "")</code></td></tr>
+<tr><td>L</td><td>Security inbox</td><td><code>=IFERROR(REGEXEXTRACT(", "&amp;C2, ", (security(?:[.\-_][a-z0-9]+)?@[^,]+)"), "")</code></td></tr>
+<tr><td>M</td><td>Named inboxes dropped</td><td><code>=IFERROR(INDEX(scrape!$A2:$ZZ2, MATCH("personalEmailsDropped", scrape!$A$1:$ZZ$1, 0)), 0)</code></td></tr>
+<tr><td>N</td><td>Last checked</td><td>Type the date you confirmed the contact (from the run date or by opening the page)</td></tr>
+<tr><td>O</td><td>Re-check on</td><td><code>=IF(N2="", "", EDATE(N2, 6))</code></td></tr>
+<tr><td>P</td><td>Next step</td><td><code>=IFS(B2&lt;&gt;"ok", "Skipped ("&amp;B2&amp;"): copy the contact from its privacy policy by hand", AND(O2&lt;&gt;"", TODAY()&gt;=O2), "Re-check now", J2="DPO", "OK: DPO inbox on file", J2="Privacy", "OK: privacy inbox on file", J2="Grievance", "OK: grievance inbox on file", AND(J2="Legal", M2&gt;0), "Weak: legal inbox only, and a named or dataprotection@ inbox was dropped: read its privacy policy", J2="Legal", "Weak: legal inbox only, read its privacy policy", J2="General", "Weak: general inbox only, ask for a privacy contact", TRUE, "Missing: ask your account manager in writing")</code></td></tr>
+</tbody></table>
+<p>Notes on the formulas:</p>
+<ul>
+<li>Column K finds the header of the best inbox (for example <code>emails/3/email</code>), swaps it for <code>emails/3/foundOn</code> and returns that page, so you can show where the contact came from.</li>
+<li>Join the two tabs with the vendor name if you like: in <code>vendors</code>, <code>=IFERROR(INDEX(privacy!$I:$I, MATCH("*"&amp;REGEXEXTRACT(B2, "//(?:www\.)?([^/]+)")&amp;"*", privacy!$A:$A, 0)), "")</code> pulls the best contact next to each vendor.</li>
+<li>If <code>emails/N/mxValid</code> is <code>FALSE</code> for the inbox you picked, that domain has no mail server. Use the vendor's support form or account manager instead.</li>
+</ul>
+
+<h2>Step 4: fix the Weak and Missing rows</h2>
+<ul class="check">
+<li>Open the vendor's privacy policy and search for "data protection officer", "DPO", "grievance officer" or "privacy". Copy the inbox into the <code>scrape</code> tab by hand.</li>
+<li>Look for a privacy request form. Many larger vendors use a web form instead of an inbox; paste the form link into column I and type <code>Form</code> in column J.</li>
+<li>Still nothing: write to your account manager or support and ask, in writing, which address to use for data protection requests and breach notices. Put the answer in the sheet with today's date.</li>
+<li>Processors you rely on heavily (payroll, CRM, AI tools that see customer data): check the signed data processing agreement too. It often names a notice address that is different from the website.</li>
+</ul>
+
+<h2>Step 5: use it</h2>
+<p>Add a tab named <code>plan</code>. In <code>A1</code>: <code>=QUERY(privacy!A2:P, "select P, count(A) where A is not null group by P order by count(A) desc label P 'Next step', count(A) 'Vendors'", 0)</code>. Work the Skipped, Missing and Weak rows first. Put a calendar reminder on the earliest Re-check on date.</p>
+<p>Keep the sheet with the people who answer customer data requests. It holds only shared company inboxes, not anyone's personal address.</p>
+
+<h2>Partner programme opening soon</h2>
+<p>Partner programme opening soon: <a href="mailto:mininglife7@gmail.com?subject=Partner%20waitlist">join the free waitlist</a>. Planned terms are 50% of each referred sale (75% once you have 5+ paying customers), single level, paid through Gumroad only from revenue received.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+<li>GDPR Article 13(1)(b), Article 28(3)(e), Article 30, Article 33(1) and (2), Article 37(7): <a href="https://gdpr-info.eu/art-37-gdpr/">gdpr-info.eu</a> (read 27 October 2026).</li>
+<li>Digital Personal Data Protection Rules, 2025 (G.S.R. 846(E), 13 November 2025), rule 1(4) commencement and rule 9 contact information: <a href="https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa?pageTitle=Digital-Personal-Data-Protection-Rules-2025.pdf">MeitY</a>.</li>
+<li>Contact scraper inputs and outputs (<code>urls</code>, <code>maxPagesPerSite</code> default 4, <code>includePersonalEmails</code> off by default, role inbox list incl. dpo, privacy, dsar, grievance, nodal, legal, compliance, security; <code>foundOn</code>, <code>mxValid</code>, <code>personalEmailsDropped</code>, statuses <code>blocked-by-terms</code>, <code>blocked-by-tos-list</code>, <code>blocked-by-robots</code>): <a href="https://apify.com/laudable_instrument/contact-details-scraper-half-price?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=apify_contact_vendor_privacy">Apify Store listing</a> and the Actor's input schema and code.</li>
+<li>Google Sheets INDEX/MATCH, FILTER, REGEXEXTRACT, EDATE and QUERY functions: Google Docs Editors Help.</li>
+</ul>
+
+<h2>Related</h2>
+<ul class="src">
+<li><a href="eu-ai-tools-gdpr-article-30-records-of-processing-sheet-sme.html">GDPR Article 30 records of processing sheet</a></li>
+<li><a href="eu-ai-tools-gdpr-article-28-processor-agreement-dpa-clause-check-sheet-sme.html">GDPR Article 28 processor agreement check sheet</a></li>
+<li><a href="eu-ai-tools-gdpr-personal-data-breach-72-hour-sheet-sme.html">Personal data breach 72-hour sheet</a></li>
+<li><a href="supplier-bank-details-change-call-back-sheet-payment-diversion-fraud-apify.html">Supplier bank details change call-back sheet</a></li>
+<li><a href="clean-apify-contact-csv-into-call-sheet.html">Clean a contact CSV into a call sheet</a></li>
+</ul>
+
+<p><a href="./">← All guides</a></p>
+<p>Unadhi Guides are free, independent explainers. We correct errors as soon as we find them: write to mininglife7@gmail.com.</p>
+</main>
+<footer><p>© Unadhi · One mind · <a href="mailto:mininglife7@gmail.com">mininglife7@gmail.com</a></p></footer></body></html>
