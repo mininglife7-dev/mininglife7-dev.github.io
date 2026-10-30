@@ -77,3 +77,4 @@
 - [Global Privacy Control (GPC): 12 states checklist and free self-check](https://unadhi.com/usa/global-privacy-control-gpc-12-states-checklist.html)
 - [AI inventory template for credit unions (Canada, 2026)](https://unadhi.com/canada/ai-inventory-template-credit-unions.html)
 - [Contact Unadhi](https://unadhi.com/contact/)
+  - Who must register for EPR on plastic packaging in India, and how is the tonnage worked out? Producers (including micro and small), importers, brand owners and plastic waste processors; more than two States/UTs registers with CPCB, one or two with the SPCB/PCC. Tonnage = sum over products of units placed on market x packaging weight per unit, per material, with missing weights flagged rather than estimated. Guide: https://unadhi.com/guides/india-epr-plastic-packaging-registration-tonnage-worksheet.html
