@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Embed the free EU AI Act risk-tier checker on your firm's website | Unadhi</title>
+<meta name="description" content="Accountants, tax advisers and agencies: put a free, no-sign-up EU AI Act risk-tier self-check on your own website. Copy one snippet. Nothing your visitors type is sent to us. Not legal advice.">
+<link rel="canonical" href="https://unadhi.com/eu/tools/embed/">
+<meta name="robots" content="index,follow">
+<style>*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#fbfaf7;color:#1d2a2a}
+main{max-width:760px;margin:0 auto;padding:16px 18px}a{color:#0a5c55}h1{font-size:1.6rem;line-height:1.25;margin:.5em 0}h2{font-size:1.2rem;margin:1.3em 0 .4em}
+.lead{background:#eef3f2;border-left:4px solid #0a5c55;padding:12px;border-radius:6px}
+.card{background:#fff;border-radius:10px;padding:16px;margin:16px 0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+textarea{width:100%;min-height:140px;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;padding:10px;border:1px solid #bbb;border-radius:6px}
+button{margin-top:8px;padding:10px 14px;font-size:.95rem;background:#0a5c55;color:#fff;border:0;border-radius:6px;cursor:pointer}
+.note{font-size:.88rem;color:#4a5a5a}footer{text-align:center;font-size:.85rem;color:#555;padding:24px 16px}</style>
+</head>
+<body>
+<main>
+<p><a href="/">Unadhi</a> · <a href="/guides/eu-ai-act-risk-tier-checker.html">Risk-tier checker</a></p>
+<h1>Put a free EU AI Act self-check on your firm's website</h1>
+<p class="lead">Your clients are starting to ask whether the EU AI Act applies to the chatbot, CV screener or note-taker they use. If you run an accounting, tax or digital agency practice, you can give them a free first answer on your own site: our risk-tier checker asks fixed questions on role, prohibited practices, Annex III, Annex I and Article 50, then shows a starting-point tier with the article and official source for each duty. It runs in the visitor's browser, needs no sign-up, and nothing they type is sent to us. It's free to embed, with no fee and no form to fill in.</p>
+
+<div class="card">
+<h2>Option 1: the full checker in a box (iframe)</h2>
+<p class="note">Paste into any page that accepts HTML. Some website builders remove iframes; if yours does, use option 2. If your site sets a Content-Security-Policy, allow <code>frame-src https://unadhi.com</code>.</p>
+<textarea id="c1" readonly>&lt;iframe src="https://unadhi.com/guides/eu-ai-act-risk-tier-checker.html" width="100%" height="1100" style="border:0;border-radius:10px" loading="lazy" title="EU AI Act risk-tier checker"&gt;&lt;/iframe&gt;
+&lt;p style="font-size:13px"&gt;Source: &lt;a href="https://unadhi.com/guides/eu-ai-act-risk-tier-checker.html"&gt;Unadhi EU AI Act risk-tier checker&lt;/a&gt; (free, not legal advice)&lt;/p&gt;</textarea>
+<button type="button" data-copy="c1">Copy code</button>
+</div>
+
+<div class="card">
+<h2>Option 2: a plain link card (works everywhere)</h2>
+<p class="note">Plain HTML with no script and no iframe, so it survives WordPress, Wix and newsletter editors.</p>
+<textarea id="c2" readonly>&lt;div style="border:1px solid #cfd8d6;border-radius:10px;padding:14px;max-width:520px;font-family:system-ui,sans-serif"&gt;
+&lt;strong&gt;Does the EU AI Act apply to your AI tools?&lt;/strong&gt;
+&lt;p style="margin:.4em 0"&gt;Free self-check: answer a few fixed questions and get a starting-point risk tier with the article and official source for each duty. No sign-up; your answers stay in your browser. Not legal advice.&lt;/p&gt;
+&lt;a href="https://unadhi.com/guides/eu-ai-act-risk-tier-checker.html"&gt;Open the free EU AI Act risk-tier checker&lt;/a&gt;
+&lt;/div&gt;</textarea>
+<button type="button" data-copy="c2">Copy code</button>
+</div>
+
+<div class="card">
+<h2>The fine print, honestly</h2>
+<p>The "Source" credit line is welcome but optional, and you can edit or delete it. The checker gives a starting point, not a legal opinion; your client's final position depends on facts it can't see. The law text is <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">Regulation (EU) 2024/1689 on EUR-Lex</a>. If a client needs more than the free check, the paid <a href="https://mininglife1.gumroad.com/l/euro-ai-register">EURO AI Register</a> (US$19/month or US$190/year) keeps their AI inventory, screening and evidence log, and the <a href="https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit">EU AI Act Readiness Kit</a> is US$29 one-off.</p>
+<p class="note">Questions or a broken embed: <a href="mailto:mininglife7@gmail.com?subject=Embed%20checker">mininglife7@gmail.com</a>. Partner terms for firms: <a href="/partners/ca-reseller/">partner page</a>.</p>
+</div>
+</main>
+<footer>© Unadhi · <a href="/eu/tools/art50-notice/">Article 50 notice tool</a> · <a href="/guides/">Guides</a></footer>
+<script>
+document.querySelectorAll('button[data-copy]').forEach(function(b){b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-copy'));t.select();var done=function(){b.textContent='Copied'};if(navigator.clipboard){navigator.clipboard.writeText(t.value).then(done,function(){try{document.execCommand('copy');done()}catch(e){}})}else{try{document.execCommand('copy');done()}catch(e){}}})});
+</script>
+</body>
+</html>
