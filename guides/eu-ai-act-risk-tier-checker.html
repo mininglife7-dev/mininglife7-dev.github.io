@@ -98,14 +98,14 @@ footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-
 </form>
 
 <section id="result" aria-live="polite" hidden></section>
-<div class="offer-box"><p><strong>These duties already apply.</strong> AI literacy for staff (Article 4) since 2 Feb 2025; chatbot and AI-content transparency (Article 50) since 2 Aug 2026 (<a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="nofollow noopener">Regulation (EU) 2024/1689</a>).</p><p><strong>Free first step:</strong> the <a href="https://unadhi.com/guides/eu-ai-act-risk-tier-checker.html">risk-tier checker</a> and the <a href="https://unadhi.com/register/">EURO AI Register</a> run in your browser; the Register is free for up to 10 AI systems. Nothing is uploaded.</p><p><strong>Honest comparison:</strong> published SME compliance software starts at €499 a month (<a href="https://www.complipath.io/eu-ai-act-compliance-software-sme/" rel="nofollow noopener">CompliPath</a>). The EU AI Act Readiness Kit is US$29 once: an Excel AI inventory and risk-screening workbook, an AI literacy policy template and a plain-English guide. It is the first organising step, not a substitute for a lawyer.</p><p><strong>No risk:</strong> 14-day money-back if it isn't useful. Not legal advice.</p><p><a href="https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit?utm_source=unadhi&amp;utm_medium=guide&amp;utm_campaign=offer14-eurtc" rel="noopener"><strong>See the US$29 kit →</strong></a></p></div>
+<div class="offer-box"><p><strong>These duties already apply.</strong> AI literacy for staff (Article 4) since 2 Feb 2025; chatbot and AI-content transparency (Article 50) since 2 Aug 2026 (<a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="nofollow noopener">Regulation (EU) 2024/1689</a>).</p><p><strong>Free first step:</strong> the <a href="https://unadhi.com/guides/eu-ai-act-risk-tier-checker.html">risk-tier checker</a> and the <a href="https://unadhi.com/register/">EURO AI Register</a> run in your browser; the Register is free for up to 10 AI systems. Nothing is uploaded.</p><p><strong>Honest comparison:</strong> published SME compliance software starts at €499 a month (<a href="https://www.complipath.io/eu-ai-act-compliance-software-sme/" rel="nofollow noopener">CompliPath</a>). The EU AI Act Readiness Kit is US$29 once: an Excel AI inventory and risk-screening workbook, an AI literacy policy template and a plain-English guide. It is the first organising step, not a substitute for a lawyer.</p><p><strong>No risk:</strong> 14-day money-back if it isn't useful. Not legal advice.</p><p><a href="https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit?utm_source=unadhi&utm_medium=guide&utm_campaign=offer14-eurtc" rel="noopener"><strong>See the US$29 kit →</strong></a></p></div>
 
 <section id="next-steps" class="no-print" hidden>
 <h2>Next steps</h2>
 <ul>
 <li>Read the free guide: <a href="./eu-ai-act-what-applies-now-2026.html">EU AI Act: what applies now (2026)</a>.</li>
-<li>Keep this as a register: <a href="https://mininglife7-dev.github.io/register/?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=eu-ai-act-risk-tier-checker">EURO AI Register</a> lets you record each AI system, its screening, duties, policy and evidence in one place. Free for up to 10 AI systems plus the Art. 4 AI-literacy record; your data stays in your browser. It is a record-keeping tool, not proof of compliance.</li>
-<li>Want the full working files? The <a href="https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit?utm_source=unadhi-guides&amp;utm_medium=organic&amp;utm_campaign=eu-ai-act-risk-tier-checker">EU AI Act Readiness Kit ($29)</a> has an AI inventory workbook, a risk-screening sheet, an AI literacy policy template and a 90-day roadmap. It is a self-help kit, not a certification or legal advice.</li>
+<li>Keep this as a register: <a href="https://mininglife7-dev.github.io/register/?utm_source=unadhi-guides&utm_medium=organic&utm_campaign=eu-ai-act-risk-tier-checker">EURO AI Register</a> lets you record each AI system, its screening, duties, policy and evidence in one place. Free for up to 10 AI systems plus the Art. 4 AI-literacy record; your data stays in your browser. It is a record-keeping tool, not proof of compliance.</li>
+<li>Want the full working files? The <a href="https://mininglife1.gumroad.com/l/eu-ai-act-readiness-kit?utm_source=unadhi-guides&utm_medium=organic&utm_campaign=eu-ai-act-risk-tier-checker">EU AI Act Readiness Kit ($29)</a> has an AI inventory workbook, a risk-screening sheet, an AI literacy policy template and a 90-day roadmap. It is a self-help kit, not a certification or legal advice.</li>
 <li>For a legal opinion on your system, ask a qualified lawyer in your EU country.</li>
 </ul>
 </section>
@@ -530,11 +530,45 @@ footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-
     var pb = el("button", { type: "button", id: "print-btn" }, "Print or save as PDF");
     pb.addEventListener("click", function () { window.print(); });
     actions.appendChild(pb);
+    actions.appendChild(document.createTextNode(" "));
+    var sb = el("button", { type: "button", id: "share-btn", "class": "secondary" }, "Copy a link to this result");
+    var ss = el("span", { id: "share-status", role: "status" });
+    sb.addEventListener("click", function () {
+      var link = shareLink();
+      try { history.replaceState(null, "", link); } catch (e) {}
+      function done(ok) { ss.textContent = ok ? " Link copied. It opens this checker with your answers ticked, so a colleague, client or adviser sees the same result." : " Copy this link: " + link; }
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(link).then(function () { done(true); }, function () { done(false); }); } else { done(false); }
+    });
+    actions.appendChild(sb);
+    actions.appendChild(ss);
     out.appendChild(actions);
+    var sp = el("p", { "class": "meta no-print" }, "The link holds only your ticked answers, after the # sign, which browsers do not send to our server. It has no names and nothing is stored. Anyone with the link can see the answers, so share it like you would share the answers themselves.");
+    out.appendChild(sp);
 
     out.hidden = false;
     document.getElementById("next-steps").hidden = false;
     h.focus();
+  }
+
+  var SHARE_FIELDS = ["role", "prohibited", "annex3", "derogation", "profiling", "annex1", "annex1ThirdParty", "annex1NonSafetyOnly", "art50"];
+  function shareLink() {
+    var parts = ["v=1"];
+    SHARE_FIELDS.forEach(function (n) { var v = checked(n); if (v.length) parts.push(n + "=" + v.map(encodeURIComponent).join(",")); });
+    return location.href.split("#")[0] + "#" + parts.join("&");
+  }
+  function loadShared() {
+    var h = (location.hash || "").replace(/^#/, "");
+    if (h.indexOf("v=1") !== 0) return false;
+    var any = false;
+    h.split("&").forEach(function (kv) {
+      var i = kv.indexOf("="); if (i < 1) return;
+      var n = kv.slice(0, i); if (SHARE_FIELDS.indexOf(n) === -1) return;
+      kv.slice(i + 1).split(",").forEach(function (raw) {
+        var v; try { v = decodeURIComponent(raw); } catch (e) { return; }
+        Array.prototype.slice.call(form.querySelectorAll('input[name="' + n + '"]')).forEach(function (inp) { if (inp.value === v) { inp.checked = true; any = true; } });
+      });
+    });
+    return any;
   }
 
   form.addEventListener("submit", function (ev) {
@@ -547,6 +581,13 @@ footer{color:#5b6b6b;font-size:.85rem;padding-bottom:30px;margin-top:2em;border-
     out.hidden = true; out.textContent = "";
     document.getElementById("next-steps").hidden = true;
   });
+  if (loadShared()) {
+    toggle();
+    var ans0 = answers();
+    render(ans0, R.evaluate(ans0, localToday()));
+    var note = el("p", { "class": "meta no-print" }, "You opened a shared result. The answers were ticked by whoever sent the link. Change any answer and press the button again to check your own AI system.");
+    out.insertBefore(note, out.firstChild.nextSibling);
+  }
 })();
 </script>
 </body>
